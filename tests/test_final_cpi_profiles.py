@@ -15,6 +15,7 @@ from scripts.research.final_cpi_profiles import (
 )
 from src.engine import run_attack_query
 from src.engine.graph import EngineGraph
+from tests.source_a_identity import identity_source_a
 
 
 def test_taxonomy_covers_engine_and_recovery_remains_a_gap():
@@ -114,7 +115,7 @@ def _source_a_traces(paths, names):
 
 
 def test_native_generator_consumes_all_source_a_histories_only_on_synthetic_copy():
-    query, canonical = bind_source_a("source-a-projection")
+    query, canonical = identity_source_a()
     graph = EngineGraph.from_canonical(canonical)
     before = copy.deepcopy(query)
     expected, names = _source_a_first_goal_programs(query["budget"]["max_steps"])

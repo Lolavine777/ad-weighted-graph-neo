@@ -1,0 +1,253 @@
+{
+  "python": "3.14.7 (main, Aug  5 2026, 15:35:18) [Clang 22.1.3 ]",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "scope": "One pinned machine-to-DA query; compact native CLI, macOS time -l peak RSS",
+  "trials_per_variant_and_order": 3,
+  "input_sha256": {
+    "query.json": "sha256:07b4bbb04a8d861cba32fb461aa6714e1c5b8bb778ac6a7326adec7cabe2d03a",
+    "snapshot.json": "sha256:c52336faed50d7ff99f66729b97b1f2d5b6c6be848fa37cebc34fdb453d523a7"
+  },
+  "variants": {
+    "before": {
+      "revision": "e96c1c0c8544b98d0add2c44bf4289ab60b4a6d1",
+      "query_cli_sha256": "sha256:9a8a36e1f7b9b3647022f6fcb6204d642c32c4db335c0f32bd8c0d638096c873"
+    },
+    "after": {
+      "revision": "e96c1c0c8544b98d0add2c44bf4289ab60b4a6d1",
+      "query_cli_sha256": "sha256:7422d445599ed0259bd476b8f9f119ce0e6e33707d3715fa7cfdaa8b2ff003fd"
+    }
+  },
+  "trials": [
+    {
+      "trial": 1,
+      "variant": "before",
+      "search_order": "fifo",
+      "wall_seconds": 6.004690875066444,
+      "reported_seconds": 5.321130292024463,
+      "peak_rss_bytes": 1030701056,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "search_order": "fifo",
+      "wall_seconds": 4.5955505419988185,
+      "reported_seconds": 3.9884114160668105,
+      "peak_rss_bytes": 1102626816,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 1,
+      "variant": "before",
+      "search_order": "goal_guided",
+      "wall_seconds": 6.632213708013296,
+      "reported_seconds": 5.931163875153288,
+      "peak_rss_bytes": 1196916736,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    },
+    {
+      "trial": 1,
+      "variant": "after",
+      "search_order": "goal_guided",
+      "wall_seconds": 5.743997124955058,
+      "reported_seconds": 5.046327667078003,
+      "peak_rss_bytes": 1197654016,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "search_order": "fifo",
+      "wall_seconds": 4.609949208097532,
+      "reported_seconds": 4.003880583913997,
+      "peak_rss_bytes": 1102643200,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "search_order": "fifo",
+      "wall_seconds": 5.505914457840845,
+      "reported_seconds": 4.897846791893244,
+      "peak_rss_bytes": 1025490944,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 2,
+      "variant": "after",
+      "search_order": "goal_guided",
+      "wall_seconds": 5.692490916932002,
+      "reported_seconds": 4.989695917116478,
+      "peak_rss_bytes": 1197588480,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    },
+    {
+      "trial": 2,
+      "variant": "before",
+      "search_order": "goal_guided",
+      "wall_seconds": 6.716161250136793,
+      "reported_seconds": 5.996436124900356,
+      "peak_rss_bytes": 1196982272,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    },
+    {
+      "trial": 3,
+      "variant": "before",
+      "search_order": "fifo",
+      "wall_seconds": 5.482564334059134,
+      "reported_seconds": 4.872382667148486,
+      "peak_rss_bytes": 1025605632,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 3,
+      "variant": "after",
+      "search_order": "fifo",
+      "wall_seconds": 4.58092345809564,
+      "reported_seconds": 3.9688670840114355,
+      "peak_rss_bytes": 1102626816,
+      "semantic_sha256": "sha256:83bfc0536a91b184751d0415c93fa3d84e64a6f54cc0c2924e49f94a1a572edf",
+      "expansions": 6000,
+      "witnesses": 0,
+      "best_C": null,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "truncated_incomplete"
+      }
+    },
+    {
+      "trial": 3,
+      "variant": "before",
+      "search_order": "goal_guided",
+      "wall_seconds": 6.64805154199712,
+      "reported_seconds": 5.940692083211616,
+      "peak_rss_bytes": 1196998656,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    },
+    {
+      "trial": 3,
+      "variant": "after",
+      "search_order": "goal_guided",
+      "wall_seconds": 5.771261125104502,
+      "reported_seconds": 5.058110667159781,
+      "peak_rss_bytes": 1197539328,
+      "semantic_sha256": "sha256:9322bc6e78d139ab1dd1597ceb1ae0630c49727adb55440b4d882826525c2037",
+      "expansions": 4995,
+      "witnesses": 1,
+      "best_C": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset"
+      }
+    }
+  ],
+  "medians": {
+    "before": {
+      "fifo": {
+        "wall_seconds": 5.505914457840845,
+        "reported_seconds": 4.897846791893244,
+        "peak_rss_bytes": 1025605632
+      },
+      "goal_guided": {
+        "wall_seconds": 6.64805154199712,
+        "reported_seconds": 5.940692083211616,
+        "peak_rss_bytes": 1196982272
+      }
+    },
+    "after": {
+      "fifo": {
+        "wall_seconds": 4.5955505419988185,
+        "reported_seconds": 3.9884114160668105,
+        "peak_rss_bytes": 1102626816
+      },
+      "goal_guided": {
+        "wall_seconds": 5.743997124955058,
+        "reported_seconds": 5.046327667078003,
+        "peak_rss_bytes": 1197588480
+      }
+    }
+  },
+  "complete_semantic_parity": true
+}

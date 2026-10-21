@@ -82,6 +82,36 @@ def test_execution_metadata_is_observed():
     assert dataset["command"] is None
 
 
+def test_cli_acceptance_validates_content_provenance_in_working_tree():
+    actual, _, processes = runner.run_cli_acceptance()
+    assert actual["source_provenance_verified"] is True
+    assert "clean_tracked_source" not in actual
+    assert processes[0]["reproducibility"]["revision"]
+
+
+def test_cli_acceptance_rejects_forged_source_pin(monkeypatch):
+    import json
+
+    from scripts.research import week4_cli_acceptance as cli
+
+    original = cli.subprocess.run
+
+    def forged(*args, **kwargs):
+        process = original(*args, **kwargs)
+        if process.returncode == 0 and process.stdout.lstrip().startswith("{"):
+            payload = json.loads(process.stdout)
+            if "reproducibility" in payload:
+                payload["reproducibility"]["source_files"]["src/engine/query.py"] = (
+                    "sha256:" + "0" * 64
+                )
+                process.stdout = json.dumps(payload)
+        return process
+
+    monkeypatch.setattr(cli.subprocess, "run", forged)
+    actual, _, _ = cli.run_cli_acceptance()
+    assert actual["source_provenance_verified"] is False
+
+
 def test_every_normative_field_controls_verdict():
     from copy import deepcopy
 

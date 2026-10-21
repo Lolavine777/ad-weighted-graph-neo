@@ -12,6 +12,7 @@ from scripts.research.final_cpi_release import apply_release, template, validate
 from src.engine import run_attack_query
 from src.engine.graph import EngineGraph
 from src.engine.query_cli import wire
+from tests.source_a_identity import identity_source_a
 from tests.test_final_cpi_profiles import _source_a_first_goal_programs, _source_a_traces
 
 
@@ -33,12 +34,26 @@ def simulated_release():
 
 @pytest.fixture(scope="module")
 def native_case():
-    query, canonical = bind_source_a("source-a-projection")
-    graph = EngineGraph.from_canonical(canonical)
-    release = simulated_release()
-    adopted = apply_release(query, release)
-    result = run_attack_query(adopted, graph)
-    return query, graph, release, adopted, result
+    from scripts.research import final_cpi_release
+
+    with pytest.MonkeyPatch.context() as patch:
+        # A fresh proposal pins the explicit identity scenario before simulated review.
+        patch.setattr(final_cpi_release, "bind_source_a", identity_source_a)
+        query, canonical = identity_source_a()
+        graph = EngineGraph.from_canonical(canonical)
+        release = simulated_release()
+        adopted = apply_release(query, release)
+        result = run_attack_query(adopted, graph)
+        yield query, graph, release, adopted, result
+
+
+def test_historical_release_does_not_authorize_new_machine_identity_context():
+    from scripts.research.final_cpi_profiles import PACKAGE, read
+
+    query, _ = identity_source_a()
+    historical = read(PACKAGE.parent / "final-cpi-release-v1/decisions.adopted.json")
+    with pytest.raises(ValueError, match="query"):
+        apply_release(query, historical)
 
 
 def test_pending_release_never_activates_numeric_authority():
@@ -123,6 +138,7 @@ def test_rejected_dimension_is_not_promoted(native_case, dimension):
 @pytest.mark.parametrize(
     "field",
     [
+        "identity",
         "horizon",
         "retry",
         "cap",
@@ -139,7 +155,9 @@ def test_rejected_dimension_is_not_promoted(native_case, dimension):
 def test_release_refuses_changed_questions_and_missing_authority(native_case, field):
     query, _, release, _, _ = native_case
     query, release = copy.deepcopy(query), copy.deepcopy(release)
-    if field == "horizon":
+    if field == "identity":
+        query["initial_state"] = {"control": [query["initial_actor"]]}
+    elif field == "horizon":
         query["rating_resolution"]["scope"]["horizon"] = "1s"
     elif field == "retry":
         query["rating_resolution"]["scope"]["retry_policy"] = {"max_attempts": 1}

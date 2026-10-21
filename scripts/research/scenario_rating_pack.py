@@ -22,6 +22,15 @@ from src.engine.ranking.resolution_service import canonical_digest
 ROOT = Path(__file__).resolve().parents[2]
 PACKAGE = Path("docs/research/ratings/scenario-basis-v1")
 PENDING = "proposed_pending_b_review"
+NEO_SOURCE_MANIFEST = Path("reports/neo/source-manifest.json")
+HISTORICAL_SOURCE_MANIFEST = PACKAGE / "source-manifest-v14.json"
+HISTORICAL_SOURCE_SHA256 = "sha256:da0896ece92187c1458b000179a5fc47a0d38a8352ed91117257fb9049bf1311"
+HISTORICAL_SOURCE_MANIFESTS = {
+    HISTORICAL_SOURCE_MANIFEST.as_posix(): HISTORICAL_SOURCE_SHA256,
+    "docs/research/ratings/likelihood-v1/source-manifest-v14.json": (
+        "sha256:ba3cad7abec7a5f9edf800d81cfa591385094cfa9856971bad67874f02311597"
+    ),
+}
 
 
 def _require(condition: bool, detail: str) -> None:
@@ -199,6 +208,30 @@ def build_source_a_query(
     return query, _read(root, PACKAGE / "source-a-graph.json")
 
 
+def write_source_manifest(root: Path = ROOT) -> Path:
+    """Generate neo integrity pins without changing historical evidence or approval."""
+    names = set()
+    for name, expected in HISTORICAL_SOURCE_MANIFESTS.items():
+        _require(
+            "sha256:" + hashlib.sha256((root / name).read_bytes()).hexdigest() == expected,
+            "historical source manifest pin mismatch",
+        )
+        names.update(_read(root, name)["source_pins"])
+    packet = {
+        "schema_version": "neo-source-manifest/1.0.0",
+        "purpose": "Live neo source integrity only; no historical numeric adoption or approval",
+        "historical_source_manifests": HISTORICAL_SOURCE_MANIFESTS,
+        "source_pins": {
+            name: "sha256:" + hashlib.sha256((root / name).read_bytes()).hexdigest()
+            for name in sorted(names)
+        },
+    }
+    destination = root / NEO_SOURCE_MANIFEST
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(json.dumps(packet, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return destination
+
+
 def verify_package(root: Path = ROOT) -> dict[str, Any]:
     manifest = _read(root, PACKAGE / "source-manifest-v2.json")
     historical = _read(root, PACKAGE / "manifest.json")
@@ -268,9 +301,25 @@ def verify_package(root: Path = ROOT) -> dict[str, Any]:
         }
     )
     _require(set(successor["source_pins"]) == required_sources, "source pin coverage mismatch")
-    for name, expected in successor["source_pins"].items():
+    _require(
+        "sha256:" + hashlib.sha256((root / HISTORICAL_SOURCE_MANIFEST).read_bytes()).hexdigest()
+        == HISTORICAL_SOURCE_SHA256,
+        "historical source manifest pin mismatch",
+    )
+    live_manifest = _read(root, NEO_SOURCE_MANIFEST)
+    _require(live_manifest["schema_version"] == "neo-source-manifest/1.0.0", "neo source version")
+    _require(
+        live_manifest["historical_source_manifests"] == HISTORICAL_SOURCE_MANIFESTS,
+        "historical source baseline mismatch",
+    )
+    _require(required_sources <= set(live_manifest["source_pins"]), "neo source coverage mismatch")
+    archived_source_drift = []
+    for name in sorted(required_sources):
+        expected = live_manifest["source_pins"][name]
         actual = "sha256:" + hashlib.sha256((root / name).read_bytes()).hexdigest()
         _require(actual == expected, f"authoritative source pin drift: {name}")
+        if actual != successor["source_pins"][name]:
+            archived_source_drift.append(name)
     pack = load_scenario_pack(root)
     _require(pack["status"] == PENDING, "package must remain pending B review")
     _require(not pack["governance"]["numeric_activation_permitted"], "unauthorized activation")
@@ -315,6 +364,8 @@ def verify_package(root: Path = ROOT) -> dict[str, Any]:
         "status": pack["status"],
         "files_verified": len(manifest["files"]),
         "source_pins_verified": len(successor["source_pins"]),
+        "source_baseline": NEO_SOURCE_MANIFEST.as_posix(),
+        "archived_source_drift": sorted(archived_source_drift),
     }
 
 
@@ -408,6 +459,10 @@ def run_source_a_probe(root: Path = ROOT) -> dict[str, Any]:
     _require(
         all(v["rated"] == 0 for v in pending.rating_coverage["numeric_requests"].values()),
         "pending Source A transfer activated",
+    )
+    _require(
+        not any("computer_actor_authenticated" in attempt.failed for attempt in pending.attempts),
+        "Historical Source A lacks usable Computer identity; a new context requires new review",
     )
     query, graph = build_source_a_query(root, simulate_review=True)
     result = run_attack_query(query, graph)

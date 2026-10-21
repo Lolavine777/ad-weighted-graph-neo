@@ -35,6 +35,8 @@ def test_source_successors_preserve_all_asrep_frozen_history():
         "coverage",
         "current_source",
         "graph_source",
+        "neo_coverage",
+        "neo_historical_pin",
     ],
 )
 def test_successor_still_rejects_historical_or_current_tampering(
@@ -48,6 +50,9 @@ def test_successor_still_rejects_historical_or_current_tampering(
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / name, target)
+    baseline = Path("reports/neo/source-manifest.json")
+    (tmp_path / baseline).parent.mkdir(parents=True)
+    shutil.copyfile(ROOT / baseline, tmp_path / baseline)
     if change == "historical_pin":
         data["historical_manifest_sha256"] = "sha256:" + "0" * 64
     elif change in ("previous_manifest", "ancestor_manifest"):
@@ -58,14 +63,45 @@ def test_successor_still_rejects_historical_or_current_tampering(
         previous.write_bytes(previous.read_bytes() + b"\n")
     elif change == "coverage":
         data["source_pins"].pop("src/engine/query.py")
+    elif change.startswith("neo_"):
+        live_path = tmp_path / baseline
+        live = json.loads(live_path.read_text())
+        if change == "neo_coverage":
+            live["source_pins"].pop("src/engine/query.py")
+        else:
+            live["historical_source_manifests"][relative.as_posix() + "/" + manifest] = (
+                "sha256:" + "0" * 64
+            )
+        live_path.write_text(json.dumps(live))
     else:
         source = tmp_path / (
             "src/engine/graph.py" if change == "graph_source" else "src/engine/query.py"
         )
         source.write_bytes(source.read_bytes() + b"\n# tampered source\n")
-    path.write_text(json.dumps(data))
+    if change in ("historical_pin", "coverage"):
+        path.write_text(json.dumps(data))
     with pytest.raises(ValueError, match="historical|previous|coverage|source.*drift"):
         verify(tmp_path)
+
+
+def test_neo_source_generator_is_deterministic_and_preserves_archives(tmp_path):
+    from scripts.research.scenario_rating_pack import (
+        HISTORICAL_SOURCE_MANIFESTS,
+        NEO_SOURCE_MANIFEST,
+        write_source_manifest,
+    )
+
+    recorded = json.loads((ROOT / NEO_SOURCE_MANIFEST).read_text())
+    for name in set(recorded["source_pins"]) | set(HISTORICAL_SOURCE_MANIFESTS):
+        destination = tmp_path / name
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / name, destination)
+    output = write_source_manifest(tmp_path)
+    first = output.read_bytes()
+    assert write_source_manifest(tmp_path).read_bytes() == first
+    assert json.loads(first) == recorded
+    for name in HISTORICAL_SOURCE_MANIFESTS:
+        assert (tmp_path / name).read_bytes() == (ROOT / name).read_bytes()
 
 
 def test_generator_refuses_to_overwrite_published_successor(tmp_path, monkeypatch):

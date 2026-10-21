@@ -1,22 +1,30 @@
 """Proposed historical scenario transfer through native #258 public resolution."""
 
+import copy
+
 import pytest
 
+from scripts.research.final_cpi_profiles import engineering_copy
 from scripts.research.scenario_rating_pack import build_source_a_query
 from src.engine import run_attack_query
-from tests.test_final_cpi_profiles import _source_a_first_goal_programs, _source_a_traces
+from src.engine.graph import EngineGraph
+from tests.source_a_identity import identity_source_a
 
 
-def test_pending_source_a_generates_all_paths_without_numeric_activation():
+def test_pending_source_a_cannot_infer_machine_identity_from_host_control():
     query, graph = build_source_a_query()
     result = run_attack_query(query, graph)
     assert result.search_result.complete
-    expected, names = _source_a_first_goal_programs(query["budget"]["max_steps"])
-    assert len(expected) == 330
-    assert len(result.paths) == len(expected)
-    assert _source_a_traces(result.paths, names) == expected
+    assert not result.paths
+    assert result.attempts
+    assert all("computer_actor_authenticated" in attempt.failed for attempt in result.attempts)
     assert all(v["rated"] == 0 for v in result.rating_coverage["numeric_requests"].values())
     assert not result.ranking_result["pareto_frontier"]
+
+
+def synthetic_identity_case():
+    query, graph = identity_source_a()
+    return engineering_copy(query, EngineGraph.from_canonical(graph))
 
 
 def test_frozen_numeric_basis_matches_historical_source_without_rescoring():
@@ -104,78 +112,32 @@ def test_frozen_numeric_basis_matches_historical_source_without_rescoring():
         assert record["retry_policy"]["by_mechanism"][operation] == old["execution_policy"]
 
 
-def test_real_automatic_products_frontier_and_all_generated_history_gaps():
+def test_historical_numeric_review_cannot_supply_missing_machine_identity():
+    from scripts.research.scenario_rating_pack import run_source_a_probe
+
+    with pytest.raises(ValueError, match="lacks usable Computer identity"):
+        run_source_a_probe()
+    query, graph = build_source_a_query(simulate_review=True)
+    result = run_attack_query(query, graph)
+    assert result.search_result.complete
+    assert not result.paths
+    assert all("computer_actor_authenticated" in attempt.failed for attempt in result.attempts)
+    assert not result.ranking_result["eligible_candidates"]
+
+
+def test_frozen_source_a_exact_products_remain_independent_numeric_expectations():
     import json
     from fractions import Fraction
 
-    from scripts.research.scenario_rating_pack import PACKAGE, ROOT, run_source_a_probe
+    from scripts.research.scenario_rating_pack import PACKAGE, ROOT
 
-    report = run_source_a_probe()
-    assert report["status"] == "PASS"
-    assert not report["numeric_approval"]
-    assert report["fully_rated_paths"] == 2
-    assert report["p_unrated_paths"] == 328
     oracle = json.loads((ROOT / PACKAGE / "source-a-oracles.json").read_text())
-    plan = json.loads(
-        (ROOT / "docs/research/ratings/week3-closeout/semantic-bridge-plan.json").read_text()
-    )
-    bindings = plan["sources"]["source_a"]["transition_action_bindings"]
-    labels = {
-        (b["technique_id"], b["actor"], b["source"], b["target"]): b["action_id"] for b in bindings
-    }
-    query, graph = build_source_a_query(simulate_review=True)
-    result = run_attack_query(query, graph)
-    expected_programs, names = _source_a_first_goal_programs(query["budget"]["max_steps"])
-    assert len(result.paths) == len(expected_programs)
-    assert _source_a_traces(result.paths, names) == expected_programs
-    programs = {
-        tuple(
-            labels[
-                (
-                    s.result.request.technique_id,
-                    s.result.request.actor,
-                    s.result.request.source,
-                    s.result.request.target,
-                )
-            ]
-            for s in path.transition_history
-        ): f"generated_{index:04d}"
-        for index, path in enumerate(result.paths, 1)
-    }
-    for expected in oracle["programs"]:
-        assert tuple(expected["generated_actions"]) in programs
-        assert (
-            report["historical_candidate_ids"][expected["candidate_id"]]
-            == programs[tuple(expected["generated_actions"])]
-        )
-    for cid, record in oracle["exact_products"].items():
+    for record in oracle["exact_products"].values():
         lo, hi = Fraction(1), Fraction(1)
         for a, b in record["q_intervals"]:
             lo *= Fraction(a)
             hi *= Fraction(b)
         assert [str(lo), str(hi)] == record["P"]
-        assert (
-            result.ranking_result["eligible_candidates"][report["historical_candidate_ids"][cid]][
-                "likelihood_interval"
-            ]
-            == record["P"]
-        )
-    assert result.rating_coverage["binding"]["shared_preparation_units"] == []
-    assert result.rating_coverage["binding"]["canonical_rejections"] == {}
-    assert result.min_effort["all_best_candidate_ids"] == [
-        report["historical_candidate_ids"][cid] for cid in oracle["min_effort_ties"]
-    ]
-    assert result.ranking_result["pareto_frontier"] == [
-        report["historical_candidate_ids"][cid] for cid in oracle["pareto_frontier"]
-    ]
-    assert all(
-        d["reasons"] == ["likelihood_unrated"]
-        for d in result.ranking_result["diagnostics"].values()
-    )
-    assert all(
-        s["c_complete"] and s["i_complete"]
-        for s in result.rating_coverage["candidate_summaries"].values()
-    )
 
 
 def test_review_simulation_changes_only_gates_on_copies():
@@ -195,10 +157,8 @@ def test_review_simulation_changes_only_gates_on_copies():
     assert simulated == query
 
 
-def test_false_veto_blocks_historical_route_despite_numeric_gate_simulation():
-    import copy
-
-    query, graph = build_source_a_query(simulate_review=True)
+def test_false_veto_blocks_explicit_identity_scenario_despite_synthetic_ratings():
+    query, graph = synthetic_identity_case()
     # Retain optimistic assumptions while adding authoritative negative evidence.
     facts = [
         copy.deepcopy(f)
@@ -218,12 +178,13 @@ def test_false_veto_blocks_historical_route_despite_numeric_gate_simulation():
 def test_native_exact_p_transfer_scope_refuses_mismatch(mutation):
     from src.engine.ranking.resolution_service import canonical_digest
 
-    query, graph = build_source_a_query(simulate_review=True)
+    query, graph = synthetic_identity_case()
     env = query["rating_resolution"]["registries"]["likelihood"]
     for record in env["data"]:
         if mutation == "prefix":
             record["ordered_work_prefix"] = ["unreviewed-history", *record["ordered_work_prefix"]]
         elif mutation == "retry":
+            record["retry_policy"] = copy.deepcopy(record["retry_policy"])
             record["retry_policy"]["by_mechanism"]["reset_password"]["max_attempts"] = 99
         else:
             record[{"auth": "auth_context", "snapshot": "snapshot_id"}.get(mutation, mutation)] = (
@@ -231,6 +192,7 @@ def test_native_exact_p_transfer_scope_refuses_mismatch(mutation):
             )
     env["sha256"] = canonical_digest(env["data"])
     result = run_attack_query(query, graph)
+    assert result.paths
     assert result.rating_coverage["numeric_requests"]["P"]["rated"] == 0
     assert not result.ranking_result["pareto_frontier"]
 
@@ -239,7 +201,7 @@ def test_native_exact_p_transfer_scope_refuses_mismatch(mutation):
 def test_native_impact_or_effort_transfer_refuses_wrong_goal_context(mutation):
     from src.engine.ranking.resolution_service import canonical_digest
 
-    query, graph = build_source_a_query(simulate_review=True)
+    query, graph = synthetic_identity_case()
     regs = query["rating_resolution"]["registries"]
     if mutation == "authority":
         query.pop("scenario_reference")
@@ -255,6 +217,7 @@ def test_native_impact_or_effort_transfer_refuses_wrong_goal_context(mutation):
             app["semantic_goal"]["required_state"] = {"control": [query["target"]]}
         regs["impact"]["sha256"] = canonical_digest(regs["impact"]["data"])
     result = run_attack_query(query, graph)
+    assert result.paths
     dimension = "C" if mutation == "auth_context" else "I"
     assert result.rating_coverage["numeric_requests"][dimension]["rated"] == 0
     if dimension == "C":

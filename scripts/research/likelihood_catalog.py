@@ -364,11 +364,33 @@ def verify_package(root=ROOT):
         }
     )
     _require(set(successor["source_pins"]) == required_sources, "source pin coverage mismatch")
-    for name, expected in successor["source_pins"].items():
+    from scripts.research.scenario_rating_pack import (
+        HISTORICAL_SOURCE_MANIFESTS,
+        NEO_SOURCE_MANIFEST,
+    )
+
+    historical_path = (PACKAGE / "source-manifest-v14.json").as_posix()
+    _require(
+        "sha256:" + hashlib.sha256((root / historical_path).read_bytes()).hexdigest()
+        == HISTORICAL_SOURCE_MANIFESTS[historical_path],
+        "historical source manifest pin mismatch",
+    )
+    live_manifest = _read(root, NEO_SOURCE_MANIFEST)
+    _require(live_manifest["schema_version"] == "neo-source-manifest/1.0.0", "neo source version")
+    _require(
+        live_manifest["historical_source_manifests"] == HISTORICAL_SOURCE_MANIFESTS,
+        "historical source baseline mismatch",
+    )
+    _require(required_sources <= set(live_manifest["source_pins"]), "neo source coverage mismatch")
+    archived_source_drift = []
+    for name in sorted(required_sources):
+        expected = live_manifest["source_pins"][name]
         path = root / name
         _require(path.resolve().is_relative_to(root.resolve()), "invalid source path")
         actual = "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
         _require(actual == expected, f"authoritative source drift: {name}")
+        if actual != successor["source_pins"][name]:
+            archived_source_drift.append(name)
     counts = validate_catalog(catalog, root)
     bindings = validate_bindings(_read(root, PACKAGE / "bindings.json"), root)
     decisions = _read(root, PACKAGE / "release-dispositions.json")
@@ -441,6 +463,8 @@ def verify_package(root=ROOT):
         "pending_bindings": len(bindings),
         "C_release_recommendations": dict(Counter(d["recommendation"] for d in decisions["C"])),
         "status": PENDING,
+        "source_baseline": NEO_SOURCE_MANIFEST.as_posix(),
+        "archived_source_drift": archived_source_drift,
     }
 
 

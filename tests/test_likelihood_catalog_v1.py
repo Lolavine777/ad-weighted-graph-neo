@@ -144,10 +144,8 @@ def test_private_generated_programs_preserve_independent_oracles(case):
     from scripts.research.likelihood_demo_probe import probe_frozen_243, probe_source_a
 
     if case == "source_a":
-        report = probe_source_a(raw_dir)
-        assert report["reviewed_subset_count"] == 2
-        assert report["current_context_P"] is None
-        assert report["numeric_activation_permitted"] is False
+        with pytest.raises(ValueError, match="lacks usable Computer identity"):
+            probe_source_a(raw_dir)
     else:
         report = probe_frozen_243(raw_dir)
         assert report["candidate_count"] == 1

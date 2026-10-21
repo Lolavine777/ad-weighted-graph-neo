@@ -10,12 +10,12 @@ import pytest
 
 from scripts.research.final_cpi_coverage import COUNT_FIELDS
 from scripts.research.final_cpi_profiles import bind_source_a, read
-from scripts.research.final_cpi_release import apply_release
 from scripts.research.issue250_public_probe import save
 from src.engine import run_attack_query
 from src.engine.graph import EngineGraph
 from src.engine.query_cli import wire
 from src.engine.ranking.resolution_service import canonical_digest
+from tests.test_final_cpi_release import native_case as native_case
 
 
 @pytest.fixture
@@ -67,11 +67,9 @@ def test_candidate_withholds_unlisted_typed_impact(replay):
         )
 
 
-def test_family_coverage_counts_programs_nonexclusively(replay):
-    query, canonical = bind_source_a("source-a-projection")
-    graph = EngineGraph.from_canonical(canonical)
+def test_family_coverage_counts_programs_nonexclusively(replay, native_case):
+    query, graph, _, _, actual = native_case
     pending = run_attack_query(query, graph)
-    actual = run_attack_query(apply_release(query, read(replay.RELEASE)), graph)
     pending_families = replay.report_family_coverage(pending)
     actual_families = replay.report_family_coverage(actual)
     assert actual_families.keys() == {
@@ -97,10 +95,10 @@ def test_family_coverage_counts_programs_nonexclusively(replay):
     assert "S-1-5-" not in str(ledger)
 
 
-def test_production_wave1_native_topk_preserves_full_coverage(replay, tmp_path):
-    query, canonical = bind_source_a("source-a-projection")
-    query = apply_release(query, read(replay.RELEASE))
-    baseline = run_attack_query(query, EngineGraph.from_canonical(canonical))
+def test_production_wave1_native_topk_preserves_full_coverage(replay, native_case, tmp_path):
+    _, graph, _, query, baseline = native_case
+    query = copy.deepcopy(query)
+    canonical = graph.to_canonical()
     # Top-K is a presentation selector; source, scope, caps and rating histories stay exact.
     query["top_k"] = 3
     selected = run_attack_query(query, EngineGraph.from_canonical(canonical))

@@ -31,7 +31,10 @@ def repin(query, role):
 
 
 def test_manifest_and_pending_numeric_governance():
-    assert verify_package()["verified"]
+    verification = verify_package()
+    assert verification["verified"]
+    assert verification["source_baseline"] == "reports/neo/source-manifest.json"
+    assert "src/engine/query_cli.py" in verification["archived_source_drift"]
     pack = load_scenario_pack()
     assert pack["status"] == "proposed_pending_b_review"
     assert not pack["governance"]["numeric_activation_permitted"]

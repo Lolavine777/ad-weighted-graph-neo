@@ -410,40 +410,17 @@ def test_proposed_source_a_binding_is_not_numeric_acceptance():
     assert all("lower" not in b and "upper" not in b for b in proposal["binding_inventory"])
 
 
-def test_private_generated_source_a_proposal_reproduces_exact_inventory():
-    import json
+def test_private_historical_source_a_proposal_requires_new_identity_context_review():
     import os
     from pathlib import Path
 
     from scripts.research.rating_p_binding_probe import probe_generated_source_a
-    from src.engine.semantics.evidence_view import digest
 
     raw_dir = Path(os.environ.get("SEAMLESS_RAW_DIR", "data/raw/SEAMLESS"))
     if not raw_dir.is_dir():
         pytest.skip("manifest-verified private SEAMLESS raw inputs required")
-    report = probe_generated_source_a(raw_dir)
-    proposal = json.loads(
-        Path("docs/research/ratings/week4/source-a-p-binding-proposal.json").read_text()
-    )
-    assert report["candidate_source"] == "generate_attack_paths"
-    assert report["numeric_reuse_permitted"] is False
-    assert report["truncated"] is True
-    assert report["historical_candidates"] == proposal["historical_candidates"]
-    assert len(report["binding_inventory"]) == 8
-    for actual, pinned in zip(
-        report["binding_inventory"], proposal["binding_inventory"], strict=True
-    ):
-        assert actual["status"] == "proposed_pending_b_review"
-        assert actual["source_record_digest"] == pinned["source_record_digest"]
-        assert digest(actual["generated_lookup_key"]) == pinned["generated_lookup_key_digest"]
-        assert digest(actual["legacy_lookup_key"]) == pinned["legacy_lookup_key_digest"]
-        assert actual["provider_trace"][0]["disposition"] == "refused"
-        assert actual["reason_detail"].startswith(
-            (
-                "Likelihood prefix applicability not reviewed",
-                "Legacy packet has no reviewed applicability context",
-            )
-        )
+    with pytest.raises(ValueError, match="lacks usable Computer identity"):
+        probe_generated_source_a(raw_dir)
 
 
 @pytest.mark.parametrize("value", ["different-work-unit", 12, None])

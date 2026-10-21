@@ -1,0 +1,8 @@
+Logging into BloodHound API...
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_computers.json 202
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_domains.json 202
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_gpos.json 202
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_groups.json 202
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_ous.json 202
+reports/generated/awg-r04-ce-v1/envelope-v3/20210920185958_users.json 202
+{"user_id": "66eb7ce0-ec5f-4c06-a664-c52f9caec072", "user_email_address": "admin@example.com", "status": 2, "status_message": "Complete", "start_time": "2026-10-19T15:07:18.049742Z", "end_time": "2026-10-19T15:07:40.395216Z", "last_ingest": "2026-10-19T15:07:18.239325Z", "total_files": 6, "failed_files": 0, "partial_failed_files": 0, "id": 2, "created_at": "2026-10-19T15:07:18.05406Z", "updated_at": "2026-10-19T15:07:40.395463Z", "deleted_at": {"Time": "0001-01-01T00:00:00Z", "Valid": false}}

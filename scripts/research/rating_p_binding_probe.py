@@ -62,6 +62,10 @@ def probe_generated_source_a(raw_dir: Path) -> dict:
         catalog=tuple(t for t in load_catalog() if t.id in source["semantic_catalog"]),
         scenario_reference=payload["query"]["query_metadata"]["scenario_id"],
     )
+    if any("computer_actor_authenticated" in attempt.failed for attempt in generated.attempts):
+        raise ValueError(
+            "Historical Source A lacks usable Computer identity; a new context requires new review"
+        )
     bridge = {
         (b["technique_id"], b["actor"], b["source"], b["target"]): b["action_id"]
         for b in source["transition_action_bindings"]

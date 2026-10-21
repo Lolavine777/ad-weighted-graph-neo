@@ -1,0 +1,652 @@
+graph-db-1  | Changed password for user 'neo4j'. IMPORTANT: this change will only take effect if performed before the database is started for the first time.
+graph-db-1  | 2026-10-19 15:19:17.699+0000 INFO  Starting...
+graph-db-1  | 2026-10-19 15:19:17.840+0000 INFO  This instance is ServerId{950fc80f} (950fc80f-90fe-44dc-a163-4ee4105dbc70)
+graph-db-1  | 2026-10-19 15:19:18.228+0000 INFO  ======== Neo4j 4.4.42 ========
+graph-db-1  | 2026-10-19 15:19:18.885+0000 INFO  Initializing system graph model for component 'security-users' with version -1 and status UNINITIALIZED
+graph-db-1  | 2026-10-19 15:19:18.889+0000 INFO  Setting up initial user from `auth.ini` file: neo4j
+graph-db-1  | 2026-10-19 15:19:18.889+0000 INFO  Creating new user 'neo4j' (passwordChangeRequired=false, suspended=false)
+graph-db-1  | 2026-10-19 15:19:18.892+0000 INFO  Setting version for 'security-users' to 3
+graph-db-1  | 2026-10-19 15:19:18.893+0000 INFO  After initialization of system graph model component 'security-users' have version 3 and status CURRENT
+graph-db-1  | 2026-10-19 15:19:18.894+0000 INFO  Performing postInitialization step for component 'security-users' with version 3 and status CURRENT
+graph-db-1  | 2026-10-19 15:19:19.013+0000 INFO  Bolt enabled on [0:0:0:0:0:0:0:0]:7687.
+graph-db-1  | 2026-10-19 15:19:19.305+0000 INFO  Remote interface available at http://localhost:7474/
+graph-db-1  | 2026-10-19 15:19:19.307+0000 INFO  id: BF5C70A02DB23D6AE1460D5F8349C074CBA88E5DC8195B60ED0FEE81A2A65FAF
+graph-db-1  | 2026-10-19 15:19:19.307+0000 INFO  name: system
+graph-db-1  | 2026-10-19 15:19:19.307+0000 INFO  creationDate: 2026-10-19T15:19:18.447Z
+graph-db-1  | 2026-10-19 15:19:19.307+0000 INFO  Started.
+app-db-1    | The files belonging to this database system will be owned by user "postgres".
+app-db-1    | This user must also own the server process.
+app-db-1    |
+app-db-1    | The database cluster will be initialized with locale "en_US.utf8".
+app-db-1    | The default database encoding has accordingly been set to "UTF8".
+app-db-1    | The default text search configuration will be set to "english".
+app-db-1    |
+app-db-1    | Data page checksums are disabled.
+app-db-1    |
+app-db-1    | fixing permissions on existing directory /var/lib/postgresql/data ... ok
+app-db-1    | creating subdirectories ... ok
+app-db-1    | selecting dynamic shared memory implementation ... posix
+app-db-1    | selecting default max_connections ... 100
+app-db-1    | selecting default shared_buffers ... 128MB
+app-db-1    | selecting default time zone ... UTC
+app-db-1      | creating configuration files ... ok
+app-db-1      | running bootstrap script ... ok
+app-db-1      | sh: locale: not found
+app-db-1      | 2026-10-19 15:19:15.956 UTC [35] WARNING:  no usable system locales were found
+app-db-1      | performing post-bootstrap initialization ... ok
+app-db-1      | initdb: warning: enabling "trust" authentication for local connections
+app-db-1      | initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+app-db-1      | syncing data to disk ... ok
+app-db-1      |
+app-db-1      |
+app-db-1      | Success. You can now start the database server using:
+app-db-1      |
+app-db-1      |     pg_ctl -D /var/lib/postgresql/data -l logfile start
+app-db-1      |
+app-db-1      | waiting for server to start....2026-10-19 15:19:16.195 UTC [41] LOG:  starting PostgreSQL 16.15 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+app-db-1      | 2026-10-19 15:19:16.196 UTC [41] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+app-db-1      | 2026-10-19 15:19:16.199 UTC [44] LOG:  database system was shut down at 2026-10-19 15:19:16 UTC
+app-db-1      | 2026-10-19 15:19:16.201 UTC [41] LOG:  database system is ready to accept connections
+app-db-1      |  done
+app-db-1      | server started
+bloodhound-1  | {"time":"2026-10-19T15:19:21.38691518Z","level":"INFO","message":"Reading configuration found at","path":"/bloodhound.config.json"}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.387241721Z","level":"INFO","message":"Logging configured","log_level":"INFO"}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.399105055Z","level":"INFO","message":"No database driver has been set for migration, using configured driver","configured_driver":"neo4j"}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.399179138Z","level":"INFO","message":"Connecting to graph using Neo4j"}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.39943018Z","level":"INFO","message":"Starting daemon","name":"Tools API"}
+app-db-1      | CREATE DATABASE
+bloodhound-1  | {"time":"2026-10-19T15:19:21.399445388Z","level":"INFO","message":"DogTags provider initialized","namespace":"dogtags","provider":"NoopProvider"}
+app-db-1      |
+bloodhound-1  | {"time":"2026-10-19T15:19:21.399449721Z","level":"INFO","message":"DogTags Configuration","namespace":"dogtags","flags":{"auth.environment_targeted_access_control":false,"privilege_zones.label_limit":0,"privilege_zones.multi_tier_analysis":false,"privilege_zones.tier_limit":1}}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.63699393Z","level":"INFO","message":"Successfully ran goose migrations"}
+bloodhound-1  | {"time":"2026-10-19T15:19:21.63733168Z","level":"INFO","message":"Default admin enabled, creating admin account"}
+app-db-1      |
+app-db-1      | /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+app-db-1      |
+app-db-1      | waiting for server to shut down....2026-10-19 15:19:16.311 UTC [41] LOG:  received fast shutdown request
+app-db-1      | 2026-10-19 15:19:16.312 UTC [41] LOG:  aborting any active transactions
+app-db-1      | 2026-10-19 15:19:16.313 UTC [41] LOG:  background worker "logical replication launcher" (PID 47) exited with exit code 1
+app-db-1      | 2026-10-19 15:19:16.314 UTC [42] LOG:  shutting down
+app-db-1      | 2026-10-19 15:19:16.314 UTC [42] LOG:  checkpoint starting: shutdown immediate
+app-db-1      | 2026-10-19 15:19:16.333 UTC [42] LOG:  checkpoint complete: wrote 926 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.006 s, sync=0.013 s, total=0.020 s; sync files=301, longest=0.006 s, average=0.001 s; distance=4283 kB, estimate=4283 kB; lsn=0/1925D20, redo lsn=0/1925D20
+app-db-1      | 2026-10-19 15:19:16.335 UTC [41] LOG:  database system is shut down
+bloodhound-1  | ###################################################################
+bloodhound-1  | #                                                                 #
+bloodhound-1  | # Initial Password Set To: [REDACTED]    #
+bloodhound-1  | #                                                                 #
+bloodhound-1  | ###################################################################
+bloodhound-1  | {"time":"2026-10-19T15:19:24.157583708Z","level":"INFO","message":"Adding index azuser_domainsid_index to labels AZUser on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.196299958Z","level":"INFO","message":"Adding index azvmscaleset_environmentid_index to labels AZVMScaleSet on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.230657875Z","level":"INFO","message":"Adding index azfederatedidentitycredential_system_tags_index to labels AZFederatedIdentityCredential on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.312906292Z","level":"INFO","message":"Adding index azmanagedcluster_user_tags_index to labels AZManagedCluster on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.352199084Z","level":"INFO","message":"Adding index azmanagedcluster_tenantid_index to labels AZManagedCluster on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.389268584Z","level":"INFO","message":"Adding index computer_name_index to labels Computer on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.432023584Z","level":"INFO","message":"Adding index azvmscaleset_user_tags_index to labels AZVMScaleSet on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.460116584Z","level":"INFO","message":"Adding index group_name_index to labels Group on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.486904375Z","level":"INFO","message":"Adding index container_environmentid_index to labels Container on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.51138675Z","level":"INFO","message":"Adding index enterpriseca_tenantid_index to labels EnterpriseCA on properties tenantid using native-btree-1.0"}
+app-db-1      |  done
+app-db-1      | server stopped
+app-db-1      |
+app-db-1      | PostgreSQL init process complete; ready for start up.
+app-db-1      |
+bloodhound-1  | {"time":"2026-10-19T15:19:24.54938775Z","level":"INFO","message":"Adding index azfederatedidentitycredential_user_tags_index to labels AZFederatedIdentityCredential on properties user_tags using lucene+native-3.0"}
+app-db-1      | 2026-10-19 15:19:16.421 UTC [1] LOG:  starting PostgreSQL 16.15 on aarch64-unknown-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+app-db-1      | 2026-10-19 15:19:16.421 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+app-db-1      | 2026-10-19 15:19:16.421 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+app-db-1      | 2026-10-19 15:19:16.422 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+bloodhound-1  | {"time":"2026-10-19T15:19:24.583146917Z","level":"INFO","message":"Adding index azdevice_system_tags_index to labels AZDevice on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.624802167Z","level":"INFO","message":"Adding index azcontainerregistry_user_tags_index to labels AZContainerRegistry on properties user_tags using lucene+native-3.0"}
+app-db-1      | 2026-10-19 15:19:16.424 UTC [57] LOG:  database system was shut down at 2026-10-19 15:19:16 UTC
+app-db-1      | 2026-10-19 15:19:16.425 UTC [1] LOG:  database system is ready to accept connections
+bloodhound-1  | {"time":"2026-10-19T15:19:24.653145042Z","level":"INFO","message":"Adding index adlocalgroup_tenantid_index to labels ADLocalGroup on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.689890292Z","level":"INFO","message":"Adding index azresourcegroup_name_index to labels AZResourceGroup on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.731431375Z","level":"INFO","message":"Adding index base_environmentid_index to labels Base on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.757407667Z","level":"INFO","message":"Adding index azvm_environmentid_index to labels AZVM on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.795127334Z","level":"INFO","message":"Adding index certtemplate_user_tags_index to labels CertTemplate on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.824848084Z","level":"INFO","message":"Adding index azserviceprincipal_name_index to labels AZServicePrincipal on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.865712584Z","level":"INFO","message":"Adding index user_tenantid_index to labels User on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.904237459Z","level":"INFO","message":"Adding index azfederatedidentitycredential_environmentid_index to labels AZFederatedIdentityCredential on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.931148709Z","level":"INFO","message":"Adding index azsubscription_tenantid_index to labels AZSubscription on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.955797917Z","level":"INFO","message":"Adding index migrationdata_name_index to labels MigrationData on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:24.993328459Z","level":"INFO","message":"Adding index azkeyvault_user_tags_index to labels AZKeyVault on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.030830542Z","level":"INFO","message":"Adding index aztenant_name_index to labels AZTenant on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.067113667Z","level":"INFO","message":"Adding index ntauthstore_name_index to labels NTAuthStore on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.103841501Z","level":"INFO","message":"Adding index migrationdata_domainsid_index to labels MigrationData on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.139288334Z","level":"INFO","message":"Adding index azvmscaleset_name_index to labels AZVMScaleSet on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.176586126Z","level":"INFO","message":"Adding index user_domainsid_index to labels User on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.199867751Z","level":"INFO","message":"Adding index aztenant_tenantid_index to labels AZTenant on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.234357501Z","level":"INFO","message":"Adding index azsubscription_user_tags_index to labels AZSubscription on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.273595834Z","level":"INFO","message":"Adding index site_domainsid_index to labels Site on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.309596917Z","level":"INFO","message":"Adding index azmanagementgroup_domainsid_index to labels AZManagementGroup on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.348892792Z","level":"INFO","message":"Adding index aiaca_name_index to labels AIACA on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.386798209Z","level":"INFO","message":"Adding index azdevice_domainsid_index to labels AZDevice on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.423393501Z","level":"INFO","message":"Adding index azcontainerregistry_tenantid_index to labels AZContainerRegistry on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.457479959Z","level":"INFO","message":"Adding index gpo_name_index to labels GPO on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.495872501Z","level":"INFO","message":"Adding index azserviceprincipal_system_tags_index to labels AZServicePrincipal on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.532669376Z","level":"INFO","message":"Adding index aiaca_environmentid_index to labels AIACA on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.555905876Z","level":"INFO","message":"Adding index aiaca_system_tags_index to labels AIACA on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.595782126Z","level":"INFO","message":"Adding index azapp_user_tags_index to labels AZApp on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.635989959Z","level":"INFO","message":"Adding index issuancepolicy_name_index to labels IssuancePolicy on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.662704584Z","level":"INFO","message":"Adding index adlocaluser_environmentid_index to labels ADLocalUser on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.687767334Z","level":"INFO","message":"Adding index azwebapp_name_index to labels AZWebApp on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.725080084Z","level":"INFO","message":"Adding index aztenant_user_tags_index to labels AZTenant on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.763117001Z","level":"INFO","message":"Adding index azsubscription_system_tags_index to labels AZSubscription on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.798332543Z","level":"INFO","message":"Adding index azrole_system_tags_index to labels AZRole on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.824595001Z","level":"INFO","message":"Adding index azlogicapp_domainsid_index to labels AZLogicApp on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.857214834Z","level":"INFO","message":"Adding index azsubscription_domainsid_index to labels AZSubscription on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.890956251Z","level":"INFO","message":"Adding index domain_environmentid_index to labels Domain on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.923065709Z","level":"INFO","message":"Adding index siteserver_system_tags_index to labels SiteServer on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.949001793Z","level":"INFO","message":"Adding index azlogicapp_user_tags_index to labels AZLogicApp on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:25.984815709Z","level":"INFO","message":"Adding index adlocalgroup_name_index to labels ADLocalGroup on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.011009793Z","level":"INFO","message":"Adding index adlocaluser_name_index to labels ADLocalUser on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.039550834Z","level":"INFO","message":"Adding index azvmscaleset_domainsid_index to labels AZVMScaleSet on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.075578876Z","level":"INFO","message":"Adding index azmanagementgroup_system_tags_index to labels AZManagementGroup on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.102550709Z","level":"INFO","message":"Adding index azcontainerregistry_name_index to labels AZContainerRegistry on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.140600959Z","level":"INFO","message":"Adding index issuancepolicy_system_tags_index to labels IssuancePolicy on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.174734876Z","level":"INFO","message":"Adding index migrationdata_tenantid_index to labels MigrationData on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.208027418Z","level":"INFO","message":"Adding index enterpriseca_domainsid_index to labels EnterpriseCA on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.242436376Z","level":"INFO","message":"Adding index domain_domainsid_index to labels Domain on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.275542334Z","level":"INFO","message":"Adding index azresourcegroup_user_tags_index to labels AZResourceGroup on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.311556459Z","level":"INFO","message":"Adding index azresourcegroup_environmentid_index to labels AZResourceGroup on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.342922459Z","level":"INFO","message":"Adding index azserviceprincipal_domainsid_index to labels AZServicePrincipal on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.376538168Z","level":"INFO","message":"Adding index rootca_system_tags_index to labels RootCA on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.412256793Z","level":"INFO","message":"Adding index gpo_environmentid_index to labels GPO on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.447928043Z","level":"INFO","message":"Adding index container_user_tags_index to labels Container on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.486579001Z","level":"INFO","message":"Adding index adlocaluser_domainsid_index to labels ADLocalUser on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.519487168Z","level":"INFO","message":"Adding index site_environmentid_index to labels Site on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.553462376Z","level":"INFO","message":"Adding index issuancepolicy_user_tags_index to labels IssuancePolicy on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.58828446Z","level":"INFO","message":"Adding index issuancepolicy_tenantid_index to labels IssuancePolicy on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.624473085Z","level":"INFO","message":"Adding index azwebapp_user_tags_index to labels AZWebApp on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.663988293Z","level":"INFO","message":"Adding index azvmscaleset_tenantid_index to labels AZVMScaleSet on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.698743543Z","level":"INFO","message":"Adding index user_name_index to labels User on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.735498876Z","level":"INFO","message":"Adding index adlocaluser_system_tags_index to labels ADLocalUser on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.762661376Z","level":"INFO","message":"Adding index rootca_name_index to labels RootCA on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.808547918Z","level":"INFO","message":"Adding index azautomationaccount_user_tags_index to labels AZAutomationAccount on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.84783746Z","level":"INFO","message":"Adding index certtemplate_system_tags_index to labels CertTemplate on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.886964335Z","level":"INFO","message":"Adding index sitesubnet_environmentid_index to labels SiteSubnet on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.920773418Z","level":"INFO","message":"Adding index azwebapp_environmentid_index to labels AZWebApp on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.953912001Z","level":"INFO","message":"Adding index azserviceprincipal_tenantid_index to labels AZServicePrincipal on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:26.987853793Z","level":"INFO","message":"Adding index enterpriseca_user_tags_index to labels EnterpriseCA on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.014558626Z","level":"INFO","message":"Adding index enterpriseca_system_tags_index to labels EnterpriseCA on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.052628501Z","level":"INFO","message":"Adding index rootca_user_tags_index to labels RootCA on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.078864793Z","level":"INFO","message":"Adding index group_system_tags_index to labels Group on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.119356085Z","level":"INFO","message":"Adding index domain_user_tags_index to labels Domain on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.158063377Z","level":"INFO","message":"Adding index azdevice_name_index to labels AZDevice on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.193356085Z","level":"INFO","message":"Adding index meta_owner_objectid_index to labels Meta on properties owner_objectid using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.254109335Z","level":"INFO","message":"Adding index azcontainerregistry_system_tags_index to labels AZContainerRegistry on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.293865585Z","level":"INFO","message":"Adding index azkeyvault_domainsid_index to labels AZKeyVault on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.326314585Z","level":"INFO","message":"Adding index azwebapp_domainsid_index to labels AZWebApp on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.358644085Z","level":"INFO","message":"Adding index computer_user_tags_index to labels Computer on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.394466752Z","level":"INFO","message":"Adding index azfunctionapp_environmentid_index to labels AZFunctionApp on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.43040821Z","level":"INFO","message":"Adding index issuancepolicy_domainsid_index to labels IssuancePolicy on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.463169252Z","level":"INFO","message":"Adding index azautomationaccount_name_index to labels AZAutomationAccount on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.49026221Z","level":"INFO","message":"Adding index certtemplate_name_index to labels CertTemplate on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.529114377Z","level":"INFO","message":"Adding index azfunctionapp_domainsid_index to labels AZFunctionApp on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.551832252Z","level":"INFO","message":"Adding index azbase_system_tags_index to labels AZBase on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.590996127Z","level":"INFO","message":"Adding index azgroup_user_tags_index to labels AZGroup on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.629634793Z","level":"INFO","message":"Adding index azvmscaleset_system_tags_index to labels AZVMScaleSet on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.668177418Z","level":"INFO","message":"Adding index domain_system_tags_index to labels Domain on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.706579835Z","level":"INFO","message":"Adding index azmanagementgroup_environmentid_index to labels AZManagementGroup on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.742845168Z","level":"INFO","message":"Adding index azserviceprincipal_user_tags_index to labels AZServicePrincipal on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.781585127Z","level":"INFO","message":"Adding index container_tenantid_index to labels Container on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.815931877Z","level":"INFO","message":"Adding index certtemplate_tenantid_index to labels CertTemplate on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.849974835Z","level":"INFO","message":"Adding index azfederatedidentitycredential_domainsid_index to labels AZFederatedIdentityCredential on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.88444146Z","level":"INFO","message":"Adding index migrationdata_system_tags_index to labels MigrationData on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.921274669Z","level":"INFO","message":"Adding index adlocalgroup_environmentid_index to labels ADLocalGroup on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.956008294Z","level":"INFO","message":"Adding index aiaca_tenantid_index to labels AIACA on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:27.992136627Z","level":"INFO","message":"Adding index enterpriseca_environmentid_index to labels EnterpriseCA on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.02560871Z","level":"INFO","message":"Adding index container_domainsid_index to labels Container on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.057836335Z","level":"INFO","message":"Adding index azfunctionapp_name_index to labels AZFunctionApp on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.094493044Z","level":"INFO","message":"Adding index metadetail_owner_objectid_index to labels MetaDetail on properties owner_objectid using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.132677044Z","level":"INFO","message":"Adding index ou_name_index to labels OU on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.168445877Z","level":"INFO","message":"Adding index azapp_system_tags_index to labels AZApp on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.206458169Z","level":"INFO","message":"Adding index azgroup_domainsid_index to labels AZGroup on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.239675335Z","level":"INFO","message":"Adding index rootca_environmentid_index to labels RootCA on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.274550502Z","level":"INFO","message":"Adding index base_tenantid_index to labels Base on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.310468877Z","level":"INFO","message":"Adding index migrationdata_environmentid_index to labels MigrationData on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.33485821Z","level":"INFO","message":"Adding index azdevice_environmentid_index to labels AZDevice on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.367905169Z","level":"INFO","message":"Adding index azapp_domainsid_index to labels AZApp on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.405715627Z","level":"INFO","message":"Adding index azkeyvault_tenantid_index to labels AZKeyVault on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.431269585Z","level":"INFO","message":"Adding index site_tenantid_index to labels Site on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.469570002Z","level":"INFO","message":"Adding index container_name_index to labels Container on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.506270044Z","level":"INFO","message":"Adding index azdevice_tenantid_index to labels AZDevice on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.539383586Z","level":"INFO","message":"Adding index azkeyvault_name_index to labels AZKeyVault on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.572364544Z","level":"INFO","message":"Adding index azsubscription_name_index to labels AZSubscription on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.606120461Z","level":"INFO","message":"Adding index domain_tenantid_index to labels Domain on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.627574961Z","level":"INFO","message":"Adding index azrole_environmentid_index to labels AZRole on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.662733669Z","level":"INFO","message":"Adding index azvm_user_tags_index to labels AZVM on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.698960044Z","level":"INFO","message":"Adding index azlogicapp_system_tags_index to labels AZLogicApp on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.732470002Z","level":"INFO","message":"Adding index azcontainerregistry_environmentid_index to labels AZContainerRegistry on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.767341669Z","level":"INFO","message":"Adding index azmanagementgroup_user_tags_index to labels AZManagementGroup on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.803802336Z","level":"INFO","message":"Adding index azgroup_system_tags_index to labels AZGroup on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.841162961Z","level":"INFO","message":"Adding index siteserver_environmentid_index to labels SiteServer on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.876816294Z","level":"INFO","message":"Adding index ntauthstore_system_tags_index to labels NTAuthStore on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.914213627Z","level":"INFO","message":"Adding index azresourcegroup_system_tags_index to labels AZResourceGroup on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.951589086Z","level":"INFO","message":"Adding index domain_name_index to labels Domain on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:28.988975502Z","level":"INFO","message":"Adding index azrole_domainsid_index to labels AZRole on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.023193294Z","level":"INFO","message":"Adding index group_domainsid_index to labels Group on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.059267711Z","level":"INFO","message":"Adding index adlocalgroup_system_tags_index to labels ADLocalGroup on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.096112544Z","level":"INFO","message":"Adding index aztenant_environmentid_index to labels AZTenant on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.130511752Z","level":"INFO","message":"Adding index azbase_environmentid_index to labels AZBase on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.166786169Z","level":"INFO","message":"Adding index computer_system_tags_index to labels Computer on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.204035378Z","level":"INFO","message":"Adding index aiaca_user_tags_index to labels AIACA on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.243164711Z","level":"INFO","message":"Adding index azgroup_name_index to labels AZGroup on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.282371669Z","level":"INFO","message":"Adding index azrole_name_index to labels AZRole on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.309842419Z","level":"INFO","message":"Adding index azgroup_tenantid_index to labels AZGroup on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.343131003Z","level":"INFO","message":"Adding index azrole_tenantid_index to labels AZRole on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.379436003Z","level":"INFO","message":"Adding index azautomationaccount_environmentid_index to labels AZAutomationAccount on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.412884503Z","level":"INFO","message":"Adding index adlocalgroup_user_tags_index to labels ADLocalGroup on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.436397294Z","level":"INFO","message":"Adding index azmanagedcluster_name_index to labels AZManagedCluster on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.470178919Z","level":"INFO","message":"Adding index azbase_domainsid_index to labels AZBase on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.501562919Z","level":"INFO","message":"Adding index azserviceprincipal_environmentid_index to labels AZServicePrincipal on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.536783961Z","level":"INFO","message":"Adding index certtemplate_domainsid_index to labels CertTemplate on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.560600294Z","level":"INFO","message":"Adding index gpo_user_tags_index to labels GPO on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.599994711Z","level":"INFO","message":"Adding index azuser_tenantid_index to labels AZUser on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.636965836Z","level":"INFO","message":"Adding index azfunctionapp_user_tags_index to labels AZFunctionApp on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.676881211Z","level":"INFO","message":"Adding index ou_tenantid_index to labels OU on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.699362544Z","level":"INFO","message":"Adding index azwebapp_tenantid_index to labels AZWebApp on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.733282294Z","level":"INFO","message":"Adding index base_user_tags_index to labels Base on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.773478211Z","level":"INFO","message":"Adding index site_system_tags_index to labels Site on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.813662586Z","level":"INFO","message":"Adding index aztenant_domainsid_index to labels AZTenant on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.839167003Z","level":"INFO","message":"Adding index metadetail_system_tags_index to labels MetaDetail on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.880992294Z","level":"INFO","message":"Adding index azfunctionapp_system_tags_index to labels AZFunctionApp on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.920612128Z","level":"INFO","message":"Adding index base_domainsid_index to labels Base on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.956200836Z","level":"INFO","message":"Adding index user_system_tags_index to labels User on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:29.997916336Z","level":"INFO","message":"Adding index site_name_index to labels Site on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.03555242Z","level":"INFO","message":"Adding index sitesubnet_tenantid_index to labels SiteSubnet on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.070555336Z","level":"INFO","message":"Adding index azapp_environmentid_index to labels AZApp on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.104824545Z","level":"INFO","message":"Adding index azmanagedcluster_domainsid_index to labels AZManagedCluster on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.128035503Z","level":"INFO","message":"Adding index azvm_name_index to labels AZVM on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.166027503Z","level":"INFO","message":"Adding index azfederatedidentitycredential_name_index to labels AZFederatedIdentityCredential on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.203508128Z","level":"INFO","message":"Adding index adlocaluser_user_tags_index to labels ADLocalUser on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.237868003Z","level":"INFO","message":"Adding index azrole_user_tags_index to labels AZRole on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.261384545Z","level":"INFO","message":"Adding index sitesubnet_system_tags_index to labels SiteSubnet on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.296274378Z","level":"INFO","message":"Adding index meta_system_tags_index to labels Meta on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.331878461Z","level":"INFO","message":"Adding index azmanagementgroup_name_index to labels AZManagementGroup on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.368346045Z","level":"INFO","message":"Adding index sitesubnet_domainsid_index to labels SiteSubnet on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.401119378Z","level":"INFO","message":"Adding index siteserver_name_index to labels SiteServer on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.437718128Z","level":"INFO","message":"Adding index certtemplate_environmentid_index to labels CertTemplate on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.468800086Z","level":"INFO","message":"Adding index azlogicapp_tenantid_index to labels AZLogicApp on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.503200836Z","level":"INFO","message":"Adding index azautomationaccount_domainsid_index to labels AZAutomationAccount on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.53971292Z","level":"INFO","message":"Adding index azfederatedidentitycredential_tenantid_index to labels AZFederatedIdentityCredential on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.575650211Z","level":"INFO","message":"Adding index ou_user_tags_index to labels OU on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.611788587Z","level":"INFO","message":"Adding index gpo_domainsid_index to labels GPO on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.645723337Z","level":"INFO","message":"Adding index azautomationaccount_tenantid_index to labels AZAutomationAccount on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.676916295Z","level":"INFO","message":"Adding index azvm_system_tags_index to labels AZVM on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.71312442Z","level":"INFO","message":"Adding index siteserver_tenantid_index to labels SiteServer on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.740237337Z","level":"INFO","message":"Adding index user_user_tags_index to labels User on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.776946378Z","level":"INFO","message":"Adding index sitesubnet_name_index to labels SiteSubnet on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.814950337Z","level":"INFO","message":"Adding index ou_system_tags_index to labels OU on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.850515253Z","level":"INFO","message":"Adding index meta_user_tags_index to labels Meta on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.877734878Z","level":"INFO","message":"Adding index aztenant_system_tags_index to labels AZTenant on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.90224892Z","level":"INFO","message":"Adding index group_user_tags_index to labels Group on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.93738292Z","level":"INFO","message":"Adding index computer_domainsid_index to labels Computer on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.969307087Z","level":"INFO","message":"Adding index azfunctionapp_tenantid_index to labels AZFunctionApp on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:30.991346003Z","level":"INFO","message":"Adding index site_user_tags_index to labels Site on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.02451242Z","level":"INFO","message":"Adding index azlogicapp_environmentid_index to labels AZLogicApp on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.056342003Z","level":"INFO","message":"Adding index azbase_user_tags_index to labels AZBase on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.103051837Z","level":"INFO","message":"Adding index azdevice_user_tags_index to labels AZDevice on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.136783712Z","level":"INFO","message":"Adding index base_system_tags_index to labels Base on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.172629253Z","level":"INFO","message":"Adding index ntauthstore_domainsid_index to labels NTAuthStore on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.205239587Z","level":"INFO","message":"Adding index azresourcegroup_tenantid_index to labels AZResourceGroup on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.228657712Z","level":"INFO","message":"Adding index azbase_name_index to labels AZBase on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.264716545Z","level":"INFO","message":"Adding index sitesubnet_user_tags_index to labels SiteSubnet on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.300438837Z","level":"INFO","message":"Adding index gpo_tenantid_index to labels GPO on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.333049254Z","level":"INFO","message":"Adding index azapp_name_index to labels AZApp on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.370178087Z","level":"INFO","message":"Adding index azuser_name_index to labels AZUser on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.403687004Z","level":"INFO","message":"Adding index siteserver_user_tags_index to labels SiteServer on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.442390837Z","level":"INFO","message":"Adding index siteserver_domainsid_index to labels SiteServer on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.475695045Z","level":"INFO","message":"Adding index azautomationaccount_system_tags_index to labels AZAutomationAccount on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.512829004Z","level":"INFO","message":"Adding index adlocaluser_tenantid_index to labels ADLocalUser on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.53650992Z","level":"INFO","message":"Adding index aiaca_domainsid_index to labels AIACA on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.57548942Z","level":"INFO","message":"Adding index ntauthstore_environmentid_index to labels NTAuthStore on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.611823087Z","level":"INFO","message":"Adding index container_system_tags_index to labels Container on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.649088629Z","level":"INFO","message":"Adding index azcontainerregistry_domainsid_index to labels AZContainerRegistry on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.684797254Z","level":"INFO","message":"Adding index azapp_tenantid_index to labels AZApp on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.720645795Z","level":"INFO","message":"Adding index migrationdata_user_tags_index to labels MigrationData on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.757820587Z","level":"INFO","message":"Adding index gpo_system_tags_index to labels GPO on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.784567545Z","level":"INFO","message":"Adding index azkeyvault_environmentid_index to labels AZKeyVault on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.819271212Z","level":"INFO","message":"Adding index rootca_domainsid_index to labels RootCA on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.855882462Z","level":"INFO","message":"Adding index metadetail_user_tags_index to labels MetaDetail on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.891486379Z","level":"INFO","message":"Adding index base_name_index to labels Base on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.92658692Z","level":"INFO","message":"Adding index ntauthstore_tenantid_index to labels NTAuthStore on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.956982545Z","level":"INFO","message":"Adding index azuser_system_tags_index to labels AZUser on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:31.994653254Z","level":"INFO","message":"Adding index azmanagedcluster_system_tags_index to labels AZManagedCluster on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.030708004Z","level":"INFO","message":"Adding index azgroup_environmentid_index to labels AZGroup on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.063796921Z","level":"INFO","message":"Adding index azvm_tenantid_index to labels AZVM on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.099208504Z","level":"INFO","message":"Adding index computer_environmentid_index to labels Computer on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.121897712Z","level":"INFO","message":"Adding index azuser_environmentid_index to labels AZUser on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.154942504Z","level":"INFO","message":"Adding index azmanagementgroup_tenantid_index to labels AZManagementGroup on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.189526129Z","level":"INFO","message":"Adding index ou_domainsid_index to labels OU on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.211122087Z","level":"INFO","message":"Adding index enterpriseca_name_index to labels EnterpriseCA on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.246026671Z","level":"INFO","message":"Adding index azkeyvault_system_tags_index to labels AZKeyVault on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.280914462Z","level":"INFO","message":"Adding index ntauthstore_user_tags_index to labels NTAuthStore on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.314766212Z","level":"INFO","message":"Adding index azsubscription_environmentid_index to labels AZSubscription on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.349276671Z","level":"INFO","message":"Adding index group_environmentid_index to labels Group on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.383533671Z","level":"INFO","message":"Adding index azwebapp_system_tags_index to labels AZWebApp on properties system_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.418612796Z","level":"INFO","message":"Adding index azlogicapp_name_index to labels AZLogicApp on properties name using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.456682421Z","level":"INFO","message":"Adding index azuser_user_tags_index to labels AZUser on properties user_tags using lucene+native-3.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.494387171Z","level":"INFO","message":"Adding index azbase_tenantid_index to labels AZBase on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.516118921Z","level":"INFO","message":"Adding index azresourcegroup_domainsid_index to labels AZResourceGroup on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.551898712Z","level":"INFO","message":"Adding index azmanagedcluster_environmentid_index to labels AZManagedCluster on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.586433462Z","level":"INFO","message":"Adding index azvm_domainsid_index to labels AZVM on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.622810879Z","level":"INFO","message":"Adding index issuancepolicy_environmentid_index to labels IssuancePolicy on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.659684629Z","level":"INFO","message":"Adding index adlocalgroup_domainsid_index to labels ADLocalGroup on properties domainsid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.683994546Z","level":"INFO","message":"Adding index rootca_tenantid_index to labels RootCA on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.720320213Z","level":"INFO","message":"Adding index ou_environmentid_index to labels OU on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.758047588Z","level":"INFO","message":"Adding index group_tenantid_index to labels Group on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.793588629Z","level":"INFO","message":"Adding index user_environmentid_index to labels User on properties environmentid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.830102171Z","level":"INFO","message":"Adding index computer_tenantid_index to labels Computer on properties tenantid using native-btree-1.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.932609421Z","level":"WARN","message":"Unable to fetch migration data from graph","err":"not found"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.932641254Z","level":"INFO","message":"This is a new graph database. Creating a migration entry for GraphDB version","current_version":"v9.8.0"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.963656879Z","level":"INFO","message":"Executing extension data population","file":"ad_graph_schema.sql"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.974607713Z","level":"INFO","message":"Executing extension data population","file":"az_graph_schema.sql"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.990302046Z","level":"INFO","message":"Starting daemon","name":"API Daemon"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.990325588Z","level":"INFO","message":"Starting daemon","name":"Data Pruning Daemon"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.990328629Z","level":"INFO","message":"Starting daemon","name":"Changelog Daemon"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.990330046Z","level":"INFO","message":"Starting daemon","name":"Data Pipe Daemon"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.990331921Z","level":"INFO","message":"Server started successfully"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.992086213Z","level":"INFO","message":"Graph Storage Optimization","namespace":"optimize","fn":"OptimizeOnBoot","measurement_id":1}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.992284754Z","level":"INFO","message":"Graph Storage Optimization","namespace":"optimize","fn":"OptimizeOnBoot","measurement_id":1,"elapsed":0.19925}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.995961379Z","level":"INFO","message":"Graph Analysis","namespace":"analysis","fn":"Analyze","scope":"summary","measurement_id":2}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.996211588Z","level":"INFO","message":"Running Analysis Operations","namespace":"analysis","fn":"RunAnalysisOperations","analysis_steps_bits":15,"pipeline_steps":"ad_post_processing:execute,azure_post_processing:execute,tagging:execute,data_quality:execute"}
+bloodhound-1  | {"time":"2026-10-19T15:19:32.996431421Z","level":"INFO","message":"Active Directory Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":3}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.067703379Z","level":"INFO","message":"Fix well known node types","namespace":"analysis","fn":"FixWellKnownNodeTypes","scope":"process","elapsed":71.229041}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.087555713Z","level":"INFO","message":"Domain Associations","namespace":"analysis","fn":"RunDomainAssociations","scope":"process","elapsed":19.819583}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.115128546Z","level":"INFO","message":"Link well-known nodes","namespace":"analysis","fn":"LinkWellKnownNodes","scope":"process","elapsed":27.534291}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.59742113Z","level":"INFO","message":"Delete DCSync, ProtectAdminGroups, SyncLAPSPassword, CanRDP, AdminTo, CanPSRemote, ExecuteDCOM, TrustedForNTAuth, IssuedSignedBy, EnterpriseCAFor, GoldenCert, ADCSESC1, ADCSESC3, ADCSESC4, ADCSESC6a, ADCSESC6b, ADCSESC10a, ADCSESC10b, ADCSESC9a, ADCSESC9b, ADCSESC13, EnrollOnBehalfOf, SyncedToADUser, ExtendedByPolicy, CoerceAndRelayNTLMToADCS, CoerceAndRelayNTLMToSMB, CoerceAndRelayNTLMToLDAP, CoerceAndRelayNTLMToLDAPS, GPOAppliesTo, CanApplyGPO, HasTrustKeys post-processed relationships","namespace":"analysis","fn":"DeleteTransitEdges","scope":"process","elapsed":482.248251}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.597463671Z","level":"INFO","message":"Fetching local group data","namespace":"analysis","fn":"FetchLocalGroupData","scope":"process","measurement_id":4}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.614787046Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Computer","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":5}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.62056213Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Computer","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":5,"elapsed":5.775917}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.620590546Z","level":"INFO","message":"FetchComputerIDsWithLocalToComputer","namespace":"analysis","fn":"FetchComputerIDsWithLocalToComputer","scope":"routine","measurement_id":6}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.630492005Z","level":"INFO","message":"FetchComputerIDsWithLocalToComputer","namespace":"analysis","fn":"FetchComputerIDsWithLocalToComputer","scope":"routine","measurement_id":6,"elapsed":9.897041}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.630523546Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Group","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":7}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.635643088Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Group","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":7,"elapsed":5.116292}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.63601563Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":1,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648079213Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":1,"elapsed":12.063792,"state":"exit","num_nodes":0,"num_edges":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648109171Z","level":"INFO","message":"SLogMeasureFunction","fn":"StronglyConnectedComponents","measurement_id":2,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648114546Z","level":"INFO","message":"SLogMeasureFunction","fn":"StronglyConnectedComponents","measurement_id":2,"elapsed":0.006584,"state":"exit"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648117046Z","level":"INFO","message":"SLogMeasureFunction","fn":"NewComponentGraph","measurement_id":3,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648119046Z","level":"INFO","message":"SLogMeasureFunction","fn":"NewComponentGraph","measurement_id":3,"elapsed":0.002125,"state":"exit"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.648121671Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":4,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.656060713Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":4,"elapsed":7.93325,"state":"exit","num_nodes":0,"num_edges":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.656090671Z","level":"INFO","message":"Fetching local group data","namespace":"analysis","fn":"FetchLocalGroupData","scope":"process","measurement_id":4,"elapsed":58.63125}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.656096171Z","level":"INFO","message":"Post-processing DCSync","namespace":"analysis","fn":"PostDCSync","scope":"process","measurement_id":8}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.65897188Z","level":"INFO","message":"Post-processing DCSync","namespace":"analysis","fn":"PostDCSync","scope":"process","measurement_id":8,"elapsed":2.872959}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.659007546Z","level":"INFO","message":"Post-processing protected admin groups","namespace":"analysis","fn":"PostProtectAdminGroups","scope":"process","measurement_id":9}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.660889255Z","level":"INFO","message":"Post-processing protected admin groups","namespace":"analysis","fn":"PostProtectAdminGroups","scope":"process","measurement_id":9,"elapsed":1.881583}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.660905713Z","level":"INFO","message":"Post-processing SyncLAPSPassword","namespace":"analysis","fn":"PostSyncLAPSPassword","scope":"process","measurement_id":10}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.662646505Z","level":"INFO","message":"Post-processing SyncLAPSPassword","namespace":"analysis","fn":"PostSyncLAPSPassword","scope":"process","measurement_id":10,"elapsed":1.739875}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.662661171Z","level":"INFO","message":"Post-processing HasTrustKeys","namespace":"analysis","fn":"PostHasTrustKeys","scope":"process","measurement_id":11}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.664111005Z","level":"INFO","message":"Post-processing HasTrustKeys","namespace":"analysis","fn":"PostHasTrustKeys","scope":"process","measurement_id":11,"elapsed":1.449958}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.664145213Z","level":"INFO","message":"PostLocalGroups","namespace":"analysis","fn":"PostLocalGroups","scope":"process","measurement_id":12}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.664234046Z","level":"INFO","message":"PostLocalGroups","namespace":"analysis","fn":"PostLocalGroups","scope":"process","measurement_id":12,"elapsed":0.08875}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.664252338Z","level":"INFO","message":"FetchComputersWithURA","namespace":"analysis","fn":"FetchComputersWithURA","scope":"routine","measurement_id":13}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.675720671Z","level":"INFO","message":"FetchComputersWithURA","namespace":"analysis","fn":"FetchComputersWithURA","scope":"routine","measurement_id":13,"elapsed":11.46425}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.676122088Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":5,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.682938421Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":5,"elapsed":6.813625,"state":"exit","num_nodes":0,"num_edges":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.682968921Z","level":"INFO","message":"PostCanRDP","namespace":"analysis","fn":"PostCanRDP","scope":"process","measurement_id":14}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.683065255Z","level":"INFO","message":"PostCanRDP","namespace":"analysis","fn":"PostCanRDP","scope":"process","measurement_id":14,"elapsed":0.097834}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.683104296Z","level":"INFO","message":"Post-processing ADCS","namespace":"analysis","fn":"PostADCS","scope":"process","measurement_id":15}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.71130788Z","level":"INFO","message":"ADCS Post-processing Step 1","namespace":"analysis","fn":"postADCSPreProcessStep1","scope":"routine","elapsed":9.345834}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714145088Z","level":"INFO","message":"BuildCache cert template loop","namespace":"analysis","fn":"BuildCache.CertTemplates","scope":"routine","elapsed":0.000375}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714165838Z","level":"INFO","message":"BuildCache enterprise CA loop","namespace":"analysis","fn":"BuildCache.EnterpriseCAs","scope":"routine","elapsed":0.000166}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714171421Z","level":"INFO","message":"BuildCache domain loop","namespace":"analysis","fn":"BuildCache.Domains","scope":"routine","elapsed":0.000167}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714176171Z","level":"INFO","message":"BuildCache cert template domain linkage","namespace":"analysis","fn":"BuildCache.CertTemplateDomainLinkage","scope":"routine","elapsed":0.000292}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714325171Z","level":"INFO","message":"ADCSCache.BuildCache","namespace":"analysis","fn":"BuildCache","scope":"routine","elapsed":2.989834}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.71439938Z","level":"INFO","message":"ADCS Post-processing Step 2","namespace":"analysis","fn":"postADCSPreProcessStep2","scope":"routine","elapsed":0.062625}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714454505Z","level":"INFO","message":"ADCS ESC Processing","namespace":"analysis","fn":"PostADCS","scope":"routine","elapsed":0.045375}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714463505Z","level":"INFO","message":"Post-processing ADCS","namespace":"analysis","fn":"PostADCS","scope":"process","measurement_id":15,"elapsed":31.359375}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.714469838Z","level":"INFO","message":"Post-processing Owns and WriteOwner","namespace":"analysis","fn":"PostOwnsAndWriteOwner","scope":"process","measurement_id":16}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.783472505Z","level":"INFO","message":"Post-processing Owns and WriteOwner","namespace":"analysis","fn":"PostOwnsAndWriteOwner","scope":"process","measurement_id":16,"elapsed":69.000041}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.783499505Z","level":"INFO","message":"Post-processing NTLM","namespace":"analysis","fn":"PostNTLM","scope":"process","measurement_id":17}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.816008463Z","level":"INFO","message":"Post-processing NTLM","namespace":"analysis","fn":"PostNTLM","scope":"process","measurement_id":17,"elapsed":32.505041}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.816041671Z","level":"INFO","message":"Active Directory Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":3,"elapsed":819.618584}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.816369963Z","level":"INFO","message":"Azure Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":18}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.81638538Z","level":"INFO","message":"Fix Management Group Names","namespace":"analysis","fn":"FixManagementGroupNames","scope":"process","measurement_id":19}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.826455963Z","level":"INFO","message":"Fix Management Group Names","namespace":"analysis","fn":"FixManagementGroupNames","scope":"process","measurement_id":19,"elapsed":10.066083}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.826485296Z","level":"INFO","message":"Post-processing User Role Assignments","namespace":"analysis","fn":"UserRoleAssignments","scope":"process","measurement_id":20}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.906027213Z","level":"INFO","message":"Post-processing User Role Assignments","namespace":"analysis","fn":"UserRoleAssignments","scope":"process","measurement_id":20,"elapsed":79.538292}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.906054796Z","level":"INFO","message":"Post-processing App Role Assignments","namespace":"analysis","fn":"AppRoleAssignments","scope":"process","measurement_id":21}
+bloodhound-1  | {"time":"2026-10-19T15:19:33.991996796Z","level":"INFO","message":"Post-processing App Role Assignments","namespace":"analysis","fn":"AppRoleAssignments","scope":"process","measurement_id":21,"elapsed":85.939083}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.017788338Z","level":"INFO","message":"Delete AZExecuteCommand, SyncedToEntraUser, AZRoleApprover post-processed relationships","namespace":"analysis","fn":"DeleteTransitEdges","scope":"process","elapsed":25.758709}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.017821713Z","level":"INFO","message":"Post-processing ExecuteCommand","namespace":"analysis","fn":"ExecuteCommand","scope":"process","measurement_id":22}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.020091838Z","level":"INFO","message":"Post-processing ExecuteCommand","namespace":"analysis","fn":"ExecuteCommand","scope":"process","measurement_id":22,"elapsed":2.269417}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.020108921Z","level":"INFO","message":"Post-processing Add Owner Role Assignments","namespace":"analysis","fn":"AddOwnerRoleAssignments","scope":"process","measurement_id":23}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.040532921Z","level":"INFO","message":"Post-processing Add Owner Role Assignments","namespace":"analysis","fn":"AddOwnerRoleAssignments","scope":"process","measurement_id":23,"elapsed":20.420459}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.040580088Z","level":"INFO","message":"Post-processing AD-Azure Hybrid Edges","namespace":"analysis","fn":"PostHybrid","scope":"process","measurement_id":24}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.048887921Z","level":"INFO","message":"Post-processing AD-Azure Hybrid Edges","namespace":"analysis","fn":"PostHybrid","scope":"process","measurement_id":24,"elapsed":8.321375}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.048917796Z","level":"INFO","message":"Post-processing Azure Role Approver Edges","namespace":"analysis","fn":"CreateAZRoleApproverEdge","scope":"process","measurement_id":25}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.051052255Z","level":"INFO","message":"Post-processing Azure Role Approver Edges","namespace":"analysis","fn":"CreateAZRoleApproverEdge","scope":"process","measurement_id":25,"elapsed":2.132541}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.051071505Z","level":"INFO","message":"Azure Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":18,"elapsed":234.70875}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.051744338Z","level":"INFO","message":"Tag Asset Groups and Tier Zero","namespace":"analysis","fn":"TagAssetGroupsAndTierZero","scope":"step","measurement_id":26}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.075057838Z","level":"INFO","message":"Clear Legacy System Tags","namespace":"analysis","fn":"clearSystemTags","scope":"process","elapsed":23.16325}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.077307671Z","level":"INFO","message":"AGT: Pooling parameters","selector_worker_limit":7,"expansion_worker_limit":3,"dawgs_worker_limit":2,"agt_max_conn":42}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.105552047Z","level":"INFO","message":"AGT: Completed selecting","selector":"AIA CA (AD object)","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.111296088Z","level":"INFO","message":"AGT: Completed selecting","selector":"Account Operators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.112817963Z","level":"INFO","message":"AGT: Completed selecting","selector":"Administrators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.125889672Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Domain Controllers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.126061547Z","level":"INFO","message":"AGT: Completed selecting","selector":"Cryptographic Operators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.12649538Z","level":"INFO","message":"AGT: Completed selecting","selector":"Privileged Role Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.126566755Z","level":"INFO","message":"AGT: Completed selecting","selector":"Security Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.133396922Z","level":"INFO","message":"AGT: Completed selecting","selector":"Distributed COM Users","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.135112338Z","level":"INFO","message":"AGT: Completed selecting","selector":"Application Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.140043713Z","level":"INFO","message":"AGT: Completed selecting","selector":"Key Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.146916422Z","level":"INFO","message":"AGT: Completed selecting","selector":"Print Operators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.147193797Z","level":"INFO","message":"AGT: Completed selecting","selector":"Cert Publishers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.149004255Z","level":"INFO","message":"AGT: Completed selecting","selector":"DNS Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.149394213Z","level":"INFO","message":"AGT: Completed selecting","selector":"NTAuth store","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.15006188Z","level":"INFO","message":"AGT: Completed selecting","selector":"Exchange Trusted Subsystem","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.150183213Z","level":"INFO","message":"AGT: Completed selecting","selector":"AZUREADSSOACC object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.158488672Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain root object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.164098005Z","level":"INFO","message":"AGT: Completed selecting","selector":"Partner Tier2 Support","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.167673213Z","level":"INFO","message":"AGT: Completed selecting","selector":"Schema Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.171716338Z","level":"INFO","message":"AGT: Completed selecting","selector":"Certificate template","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.177828463Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise CA Computers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.179339213Z","level":"INFO","message":"AGT: Completed selecting","selector":"Knowledge Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.179718505Z","level":"INFO","message":"AGT: Completed selecting","selector":"Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.180459297Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.183528047Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Controllers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.18652938Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Key Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.187517297Z","level":"INFO","message":"AGT: Completed selecting","selector":"KRBTGT objects","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.190543713Z","level":"INFO","message":"AGT: Completed selecting","selector":"Read-Only Domain Controllers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.190592422Z","level":"INFO","message":"AGT: Completed selecting","selector":"Global Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.191303547Z","level":"INFO","message":"AGT: Completed selecting","selector":"Performance Log Users","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.194581463Z","level":"INFO","message":"AGT: Completed selecting","selector":"Intune Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.198324463Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Admins","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.199184755Z","level":"INFO","message":"AGT: Completed selecting","selector":"Azure tenant object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.201444463Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise CA (AD object)","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.203117797Z","level":"INFO","message":"AGT: Completed selecting","selector":"Server Operators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.203454172Z","level":"INFO","message":"AGT: Completed selecting","selector":"Privileged Authentication Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.205141213Z","level":"INFO","message":"AGT: Completed selecting","selector":"Backup Operators","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.208535463Z","level":"INFO","message":"AGT: Completed selecting","selector":"AdminSDHolder","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.208587463Z","level":"INFO","message":"AGT: Completed selecting","selector":"Root CA object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.21196888Z","level":"INFO","message":"AGT: Completed selecting","selector":"Exchange Windows Permissions","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.212964755Z","level":"INFO","message":"AGT: Completed selecting","selector":"Sites","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.213426963Z","level":"INFO","message":"AGT: Completed selecting","selector":"Incoming Forest Trust Builders","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.219549588Z","level":"INFO","message":"AGT: Completed selecting","selector":"Read-Only DCs","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.236123505Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Controller Site Servers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.23615588Z","level":"INFO","message":"Selecting agt nodes","namespace":"analysis","fn":"selectAssetGroupNodes","scope":"process","elapsed":160.191083}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.246781838Z","level":"INFO","message":"AGT: Completed in memory tagging","tag_type":"owned","tag_name":"Owned","total":0,"tagged":0,"untagged":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.255220713Z","level":"INFO","message":"AGT: Completed in memory tagging","tag_type":"tier","tag_name":"Tier Zero","total":0,"tagged":0,"untagged":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.25524438Z","level":"INFO","message":"Batch updating nodes","count":0}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.25529263Z","level":"INFO","message":"Tagging asset group nodes","namespace":"analysis","fn":"tagAssetGroupNodes","scope":"process","elapsed":19.129333}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.25530438Z","level":"INFO","message":"Tag Asset Groups and Tier Zero","namespace":"analysis","fn":"TagAssetGroupsAndTierZero","scope":"step","measurement_id":26,"elapsed":203.560667}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.255320672Z","level":"INFO","message":"Started Data Quality Stats Collection","namespace":"analysis","fn":"SaveDataQuality","scope":"process"}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.277567547Z","level":"INFO","message":"Completed Data Quality Stats Collection","namespace":"analysis","fn":"SaveDataQuality","scope":"process","elapsed":22.23225}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.277594713Z","level":"INFO","message":"Finished Running Analysis Operations","namespace":"analysis","fn":"RunAnalysisOperations","pipeline_status":"ad_post_processing:success,azure_post_processing:success,tagging:success,data_quality:success"}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.278924338Z","level":"INFO","message":"Cache successfully reset by datapipe daemon","namespace":"analysis","fn":"Analyze"}
+bloodhound-1  | {"time":"2026-10-19T15:19:34.278933463Z","level":"INFO","message":"Graph Analysis","namespace":"analysis","fn":"Analyze","scope":"summary","measurement_id":2,"elapsed":1282.972042}
+bloodhound-1  | {"time":"2026-10-19T15:19:47.174738719Z","level":"INFO","message":"Creating session for user","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45","principal_name":"admin","request_id":"b67aca61-f784-4038-b429-7fd79b44b9f3","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59422"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.553375512Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":93,"response_bytes":334,"status":200,"elapsed":1659.821834,"method":"POST","request_uri":"/api/v2/login","request_id":"b67aca61-f784-4038-b429-7fd79b44b9f3","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59422"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.563656053Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":42,"status":200,"elapsed":5.823875,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"f84e7310-af14-490a-bece-7e4445047760","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59430","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.953387512Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":458,"status":201,"elapsed":8.406709,"method":"POST","request_uri":"/api/v2/file-upload/start","request_id":"799d5d57-0418-4aae-9659-2b3b0a9e776a","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59436","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.967483595Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-a8cd47f158397edd76c167133997cf1a","request_id":"72874f8a-f9c7-407a-9599-9f8f2d099076","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59438","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.969849054Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":316917,"response_bytes":0,"status":202,"elapsed":13.961417,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"72874f8a-f9c7-407a-9599-9f8f2d099076","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59438","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.97325997Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-a6e60899bfce5ba7c8fd8cfb98aedab3","request_id":"3196ba42-6014-461a-a38b-d4958a94419c","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59440","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.974339429Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":4178,"response_bytes":0,"status":202,"elapsed":3.493375,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"3196ba42-6014-461a-a38b-d4958a94419c","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59440","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.977449512Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-f2b800be7f39a9e33e36f59afbb0f721","request_id":"15bab774-0b99-4d48-b511-8abdb178a549","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59454","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:48.978265179Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":3942,"response_bytes":0,"status":202,"elapsed":3.11675,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"15bab774-0b99-4d48-b511-8abdb178a549","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59454","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.001270595Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-aac3f184228fc3108e13ae785e988b73","request_id":"6138fe0c-52a4-4d55-b5f4-940dd02d7cb8","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59456","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.002167095Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":2516376,"response_bytes":0,"status":202,"elapsed":22.616958,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"6138fe0c-52a4-4d55-b5f4-940dd02d7cb8","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59456","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.01053922Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-1bb846a60fe871adcb0e1bf06836fc08","request_id":"6f119bdf-615c-41eb-a44c-423c367f9f30","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59466","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.011303387Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":734020,"response_bytes":0,"status":202,"elapsed":7.861042,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"6f119bdf-615c-41eb-a44c-423c367f9f30","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59466","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.068000762Z","level":"INFO","message":"File written and validated","temp_file_name":"file_upload_job1_tmp-eeabe78b72dc0c7cd6c0e798dbf9b7d2","request_id":"e26817cb-f0d6-4259-9f65-ec5ebf1e3259","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59476","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.068866387Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":8323169,"response_bytes":0,"status":202,"elapsed":55.678083,"method":"POST","request_uri":"/api/v2/file-upload/1","request_id":"e26817cb-f0d6-4259-9f65-ec5ebf1e3259","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59476","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:49.070947262Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":0,"status":200,"elapsed":1.164166,"method":"POST","request_uri":"/api/v2/file-upload/1/end","request_id":"08a22186-14e6-4bfa-b4be-212d72eb07f4","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59486","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:52.084281138Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.169625,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"cdad4619-e565-4750-9660-dd194669060e","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59494","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:55.098029084Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.122417,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"1cde22da-49bc-44d4-aa53-b15f08e9b31f","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:62112","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:19:58.107610294Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.543416,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"0e824430-52e5-4124-9614-f346299e583d","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:62118","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:01.122388545Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":6.495417,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"c87d5cfa-7698-41ce-8203-1076cccf27c1","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:62128","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:04.135026505Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.487,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"bfcf2ceb-ffe3-4013-93a1-e9c6f7669e0b","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:62140","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:07.148581881Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.06175,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"2c6e7b32-7424-4717-b63f-f08a9b549565","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:63976","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:10.162180216Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.736209,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"5a9b3164-2283-41a3-b7aa-d419176d8d2e","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:63984","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:13.175279592Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.352083,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"2dd24368-af95-4f40-a767-b4a06d7a8795","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:63994","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:16.179976927Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":1.677291,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"4d89c50e-9453-4aa9-bdac-b9324d15e5d7","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59380","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:19.191721137Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.353375,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"2d5de83a-5fb4-49c8-ac55-7663e71a177b","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59384","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:22.207448097Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":11.288625,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"6ebf43d3-db40-48fb-9e67-74cda22e0366","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:59386","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:25.219632459Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.735167,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"bc9de009-b2eb-491b-9f3c-6d2b8073c37f","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:64942","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:28.232538627Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.067667,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"da1a69db-e9e7-42ee-af69-092b365d561f","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:64956","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:31.245752795Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":4.539166,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"8a0f8fe5-2d2c-4eed-be5e-b4b676fad632","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:64972","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:34.259200713Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":5.175917,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"8751d9a8-573d-4fcb-8f6d-54f49f6038c0","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:64980","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:34.286148547Z","level":"INFO","message":"Ingest run starting","task_count":6}
+bloodhound-1  | {"time":"2026-10-19T15:20:35.085935422Z","level":"INFO","message":"Ingest task processed","task_id":1,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:35.328963089Z","level":"INFO","message":"Ingest task processed","task_id":2,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:35.425060755Z","level":"INFO","message":"Ingest task processed","task_id":3,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:36.655759673Z","level":"INFO","message":"Ingest task processed","task_id":4,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:37.070574715Z","level":"INFO","message":"Ingest task processed","task_id":5,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:37.269115048Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":495,"status":200,"elapsed":2.814333,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"13fd6507-0fcc-49e7-83cd-124b595c1313","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:61398","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.608685007Z","level":"INFO","message":"Ingest task processed","task_id":6,"file":"UnknownFileName.json"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.611744757Z","level":"INFO","message":"Ingest run finished","duration":4325605669,"task_count":6}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.616676799Z","level":"INFO","message":"Graph Analysis","namespace":"analysis","fn":"Analyze","scope":"summary","measurement_id":33}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.617204132Z","level":"INFO","message":"Running Analysis Operations","namespace":"analysis","fn":"RunAnalysisOperations","analysis_steps_bits":15,"pipeline_steps":"ad_post_processing:execute,azure_post_processing:execute,tagging:execute,data_quality:execute"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.61775309Z","level":"INFO","message":"Active Directory Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":34}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.671385757Z","level":"INFO","message":"Fix well known node types","namespace":"analysis","fn":"FixWellKnownNodeTypes","scope":"process","elapsed":53.618584}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.686308674Z","level":"INFO","message":"Domain Associations","namespace":"analysis","fn":"RunDomainAssociations","scope":"process","elapsed":14.889}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.692574174Z","level":"INFO","message":"Link well-known nodes","namespace":"analysis","fn":"LinkWellKnownNodes","scope":"process","elapsed":6.219041}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.896352549Z","level":"INFO","message":"Delete DCSync, ProtectAdminGroups, SyncLAPSPassword, CanRDP, AdminTo, CanPSRemote, ExecuteDCOM, TrustedForNTAuth, IssuedSignedBy, EnterpriseCAFor, GoldenCert, ADCSESC1, ADCSESC3, ADCSESC4, ADCSESC6a, ADCSESC6b, ADCSESC10a, ADCSESC10b, ADCSESC9a, ADCSESC9b, ADCSESC13, EnrollOnBehalfOf, SyncedToADUser, ExtendedByPolicy, CoerceAndRelayNTLMToADCS, CoerceAndRelayNTLMToSMB, CoerceAndRelayNTLMToLDAP, CoerceAndRelayNTLMToLDAPS, GPOAppliesTo, CanApplyGPO, HasTrustKeys post-processed relationships","namespace":"analysis","fn":"DeleteTransitEdges","scope":"process","elapsed":203.732}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.89638384Z","level":"INFO","message":"Fetching local group data","namespace":"analysis","fn":"FetchLocalGroupData","scope":"process","measurement_id":35}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.904259049Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Computer","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":36}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.907548549Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Computer","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":36,"elapsed":3.291542}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.907570882Z","level":"INFO","message":"FetchComputerIDsWithLocalToComputer","namespace":"analysis","fn":"FetchComputerIDsWithLocalToComputer","scope":"routine","measurement_id":37}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.91306509Z","level":"INFO","message":"FetchComputerIDsWithLocalToComputer","namespace":"analysis","fn":"FetchComputerIDsWithLocalToComputer","scope":"routine","measurement_id":37,"elapsed":5.491167}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.913092257Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Group","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":38}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.918266007Z","level":"INFO","message":"FetchNodeIDsByKind","kind":"Group","namespace":"analysis","fn":"FetchNodeIDsByKind","scope":"routine","measurement_id":38,"elapsed":5.171583}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.918747424Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":6,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.981465507Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":6,"elapsed":62.716625,"state":"exit","num_nodes":3146,"num_edges":15928}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.981496715Z","level":"INFO","message":"SLogMeasureFunction","fn":"StronglyConnectedComponents","measurement_id":7,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.982829382Z","level":"INFO","message":"SLogMeasureFunction","fn":"StronglyConnectedComponents","measurement_id":7,"elapsed":1.332375,"state":"exit"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.982841382Z","level":"INFO","message":"SLogMeasureFunction","fn":"NewComponentGraph","measurement_id":8,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.988675049Z","level":"INFO","message":"SLogMeasureFunction","fn":"NewComponentGraph","measurement_id":8,"elapsed":5.831959,"state":"exit"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.988697132Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":9,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.99438909Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":9,"elapsed":5.688125,"state":"exit","num_nodes":15,"num_edges":11}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.994416049Z","level":"INFO","message":"Fetching local group data","namespace":"analysis","fn":"FetchLocalGroupData","scope":"process","measurement_id":35,"elapsed":98.031916}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.994421715Z","level":"INFO","message":"Post-processing DCSync","namespace":"analysis","fn":"PostDCSync","scope":"process","measurement_id":39}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.996562632Z","level":"INFO","message":"Post-processing DCSync","namespace":"analysis","fn":"PostDCSync","scope":"process","measurement_id":39,"elapsed":2.140042}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.996582674Z","level":"INFO","message":"Post-processing protected admin groups","namespace":"analysis","fn":"PostProtectAdminGroups","scope":"process","measurement_id":40}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.998441257Z","level":"INFO","message":"Post-processing protected admin groups","namespace":"analysis","fn":"PostProtectAdminGroups","scope":"process","measurement_id":40,"elapsed":1.857625}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.998460674Z","level":"INFO","message":"Post-processing SyncLAPSPassword","namespace":"analysis","fn":"PostSyncLAPSPassword","scope":"process","measurement_id":41}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.999872174Z","level":"INFO","message":"Post-processing SyncLAPSPassword","namespace":"analysis","fn":"PostSyncLAPSPassword","scope":"process","measurement_id":41,"elapsed":1.410792}
+bloodhound-1  | {"time":"2026-10-19T15:20:38.999884924Z","level":"INFO","message":"Post-processing HasTrustKeys","namespace":"analysis","fn":"PostHasTrustKeys","scope":"process","measurement_id":42}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.001108466Z","level":"INFO","message":"Post-processing HasTrustKeys","namespace":"analysis","fn":"PostHasTrustKeys","scope":"process","measurement_id":42,"elapsed":1.223791}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.001132882Z","level":"INFO","message":"PostLocalGroups","namespace":"analysis","fn":"PostLocalGroups","scope":"process","measurement_id":43}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.046600674Z","level":"INFO","message":"PostLocalGroups","namespace":"analysis","fn":"PostLocalGroups","scope":"process","measurement_id":43,"elapsed":45.463625}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.046646424Z","level":"INFO","message":"FetchComputersWithURA","namespace":"analysis","fn":"FetchComputersWithURA","scope":"routine","measurement_id":44}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.052897257Z","level":"INFO","message":"FetchComputersWithURA","namespace":"analysis","fn":"FetchComputersWithURA","scope":"routine","measurement_id":44,"elapsed":6.243625}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.053492632Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":10,"state":"enter"}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.058878049Z","level":"INFO","message":"SLogMeasureFunction","fn":"FetchDirectedGraph","measurement_id":10,"elapsed":5.384417,"state":"exit","num_nodes":0,"num_edges":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.058904257Z","level":"INFO","message":"PostCanRDP","namespace":"analysis","fn":"PostCanRDP","scope":"process","measurement_id":45}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.081679507Z","level":"INFO","message":"PostCanRDP","namespace":"analysis","fn":"PostCanRDP","scope":"process","measurement_id":45,"elapsed":22.77375}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.081712174Z","level":"INFO","message":"Post-processing ADCS","namespace":"analysis","fn":"PostADCS","scope":"process","measurement_id":46}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.106974549Z","level":"INFO","message":"ADCS Post-processing Step 1","namespace":"analysis","fn":"postADCSPreProcessStep1","scope":"routine","elapsed":6.239084}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.110387257Z","level":"INFO","message":"BuildCache cert template loop","namespace":"analysis","fn":"BuildCache.CertTemplates","scope":"routine","elapsed":0.000333}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.110411174Z","level":"INFO","message":"BuildCache enterprise CA loop","namespace":"analysis","fn":"BuildCache.EnterpriseCAs","scope":"routine","elapsed":0.00025}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.131610549Z","level":"WARN","message":"Error fetching authenticated users group for domain","domain_id":134,"err":"property domainsid: property not found"}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.131636007Z","level":"INFO","message":"BuildCache domain loop","namespace":"analysis","fn":"BuildCache.Domains","scope":"routine","elapsed":21.218792}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.131645507Z","level":"INFO","message":"BuildCache cert template domain linkage","namespace":"analysis","fn":"BuildCache.CertTemplateDomainLinkage","scope":"routine","elapsed":0.001084}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.131865799Z","level":"INFO","message":"ADCSCache.BuildCache","namespace":"analysis","fn":"BuildCache","scope":"routine","elapsed":24.863417}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.131971091Z","level":"INFO","message":"ADCS Post-processing Step 2","namespace":"analysis","fn":"postADCSPreProcessStep2","scope":"routine","elapsed":0.093292}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.132072132Z","level":"INFO","message":"ADCS ESC Processing","namespace":"analysis","fn":"PostADCS","scope":"routine","elapsed":0.091959}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.132080924Z","level":"INFO","message":"Post-processing ADCS","namespace":"analysis","fn":"PostADCS","scope":"process","measurement_id":46,"elapsed":50.375292}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.132084549Z","level":"INFO","message":"Post-processing Owns and WriteOwner","namespace":"analysis","fn":"PostOwnsAndWriteOwner","scope":"process","measurement_id":47}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.430329841Z","level":"INFO","message":"Post-processing Owns and WriteOwner","namespace":"analysis","fn":"PostOwnsAndWriteOwner","scope":"process","measurement_id":47,"elapsed":298.24125}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.430379257Z","level":"INFO","message":"Post-processing NTLM","namespace":"analysis","fn":"PostNTLM","scope":"process","measurement_id":48}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.454877799Z","level":"INFO","message":"Post-processing NTLM","namespace":"analysis","fn":"PostNTLM","scope":"process","measurement_id":48,"elapsed":24.495083}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.454916716Z","level":"INFO","message":"Active Directory Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":34,"elapsed":837.164751}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.455222466Z","level":"INFO","message":"Azure Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":49}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.455232424Z","level":"INFO","message":"Fix Management Group Names","namespace":"analysis","fn":"FixManagementGroupNames","scope":"process","measurement_id":50}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.464051549Z","level":"INFO","message":"Fix Management Group Names","namespace":"analysis","fn":"FixManagementGroupNames","scope":"process","measurement_id":50,"elapsed":8.814417}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.464078299Z","level":"INFO","message":"Post-processing User Role Assignments","namespace":"analysis","fn":"UserRoleAssignments","scope":"process","measurement_id":51}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.532844174Z","level":"INFO","message":"Post-processing User Role Assignments","namespace":"analysis","fn":"UserRoleAssignments","scope":"process","measurement_id":51,"elapsed":68.762958}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.532875299Z","level":"INFO","message":"Post-processing App Role Assignments","namespace":"analysis","fn":"AppRoleAssignments","scope":"process","measurement_id":52}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.588525466Z","level":"INFO","message":"Post-processing App Role Assignments","namespace":"analysis","fn":"AppRoleAssignments","scope":"process","measurement_id":52,"elapsed":55.647208}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.608870257Z","level":"INFO","message":"Delete AZExecuteCommand, SyncedToEntraUser, AZRoleApprover post-processed relationships","namespace":"analysis","fn":"DeleteTransitEdges","scope":"process","elapsed":20.306417}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.608902549Z","level":"INFO","message":"Post-processing ExecuteCommand","namespace":"analysis","fn":"ExecuteCommand","scope":"process","measurement_id":53}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.610817966Z","level":"INFO","message":"Post-processing ExecuteCommand","namespace":"analysis","fn":"ExecuteCommand","scope":"process","measurement_id":53,"elapsed":1.915125}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.610837132Z","level":"INFO","message":"Post-processing Add Owner Role Assignments","namespace":"analysis","fn":"AddOwnerRoleAssignments","scope":"process","measurement_id":54}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.627260674Z","level":"INFO","message":"Post-processing Add Owner Role Assignments","namespace":"analysis","fn":"AddOwnerRoleAssignments","scope":"process","measurement_id":54,"elapsed":16.420125}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.627293049Z","level":"INFO","message":"Post-processing AD-Azure Hybrid Edges","namespace":"analysis","fn":"PostHybrid","scope":"process","measurement_id":55}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.652083299Z","level":"INFO","message":"Post-processing AD-Azure Hybrid Edges","namespace":"analysis","fn":"PostHybrid","scope":"process","measurement_id":55,"elapsed":24.788084}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.652109632Z","level":"INFO","message":"Post-processing Azure Role Approver Edges","namespace":"analysis","fn":"CreateAZRoleApproverEdge","scope":"process","measurement_id":56}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.654061591Z","level":"INFO","message":"Post-processing Azure Role Approver Edges","namespace":"analysis","fn":"CreateAZRoleApproverEdge","scope":"process","measurement_id":56,"elapsed":1.951}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.654078757Z","level":"INFO","message":"Azure Post Processing","namespace":"analysis","fn":"Post","scope":"step","measurement_id":49,"elapsed":198.858042}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.654367549Z","level":"INFO","message":"Tag Asset Groups and Tier Zero","namespace":"analysis","fn":"TagAssetGroupsAndTierZero","scope":"step","measurement_id":57}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.670890049Z","level":"INFO","message":"Clear Legacy System Tags","namespace":"analysis","fn":"clearSystemTags","scope":"process","elapsed":16.361458}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.673947924Z","level":"INFO","message":"AGT: Pooling parameters","selector_worker_limit":7,"expansion_worker_limit":3,"dawgs_worker_limit":2,"agt_max_conn":42}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.684310882Z","level":"INFO","message":"AGT: Completed selecting","selector":"Application Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.685422007Z","level":"INFO","message":"AGT: Completed selecting","selector":"AIA CA (AD object)","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.686118466Z","level":"INFO","message":"AGT: Completed selecting","selector":"Privileged Role Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.688434882Z","level":"INFO","message":"AGT: Completed selecting","selector":"Security Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.694819549Z","level":"INFO","message":"AGT: Completed selecting","selector":"AZUREADSSOACC object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.710424424Z","level":"INFO","message":"AGT: Completed selecting","selector":"AdminSDHolder","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.754291716Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Domain Controllers","count_total":4,"count_inserted":4,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.767412216Z","level":"INFO","message":"AGT: Completed selecting","selector":"Distributed COM Users","count_total":5,"count_inserted":5,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.772497799Z","level":"INFO","message":"AGT: Completed selecting","selector":"Cryptographic Operators","count_total":5,"count_inserted":5,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.776522924Z","level":"INFO","message":"AGT: Completed selecting","selector":"DNS Admins","count_total":13,"count_inserted":13,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.777944716Z","level":"INFO","message":"AGT: Completed selecting","selector":"Key Admins","count_total":8,"count_inserted":8,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.780120549Z","level":"INFO","message":"AGT: Completed selecting","selector":"NTAuth store","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.780406383Z","level":"INFO","message":"AGT: Completed selecting","selector":"Account Operators","count_total":12,"count_inserted":12,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.785836883Z","level":"INFO","message":"AGT: Completed selecting","selector":"Exchange Trusted Subsystem","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.796620716Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise CA Computers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.797851341Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain root object","count_total":2,"count_inserted":2,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.798366383Z","level":"INFO","message":"AGT: Completed selecting","selector":"Cert Publishers","count_total":7,"count_inserted":7,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.801962966Z","level":"INFO","message":"AGT: Completed selecting","selector":"Partner Tier2 Support","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.804613924Z","level":"INFO","message":"AGT: Completed selecting","selector":"Administrators","count_total":21,"count_inserted":21,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.808525591Z","level":"INFO","message":"AGT: Completed selecting","selector":"Certificate template","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.809835674Z","level":"INFO","message":"AGT: Completed selecting","selector":"Print Operators","count_total":9,"count_inserted":9,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.809894799Z","level":"INFO","message":"AGT: Completed selecting","selector":"Knowledge Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.810217799Z","level":"INFO","message":"AGT: Completed selecting","selector":"Administrator","count_total":1,"count_inserted":1,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.814593383Z","level":"INFO","message":"AGT: Completed selecting","selector":"Read-Only Domain Controllers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.817899924Z","level":"INFO","message":"AGT: Completed selecting","selector":"Schema Admins","count_total":2,"count_inserted":2,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.819959049Z","level":"INFO","message":"AGT: Completed selecting","selector":"Intune Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.824999091Z","level":"INFO","message":"AGT: Completed selecting","selector":"Global Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.825477341Z","level":"INFO","message":"AGT: Completed selecting","selector":"Privileged Authentication Administrator","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.826993174Z","level":"INFO","message":"AGT: Completed selecting","selector":"KRBTGT objects","count_total":1,"count_inserted":1,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.830255758Z","level":"INFO","message":"AGT: Completed selecting","selector":"Azure tenant object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.830843174Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Admins","count_total":2,"count_inserted":2,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.833754049Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise CA (AD object)","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.834149383Z","level":"INFO","message":"AGT: Completed selecting","selector":"Enterprise Key Admins","count_total":1,"count_inserted":1,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.839287049Z","level":"INFO","message":"AGT: Completed selecting","selector":"Root CA object","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.840940508Z","level":"INFO","message":"AGT: Completed selecting","selector":"Exchange Windows Permissions","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.848285383Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Controllers","count_total":14,"count_inserted":14,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.854355799Z","level":"INFO","message":"AGT: Completed selecting","selector":"Performance Log Users","count_total":11,"count_inserted":11,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.858683299Z","level":"INFO","message":"AGT: Completed selecting","selector":"Sites","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.861793883Z","level":"INFO","message":"AGT: Completed selecting","selector":"Read-Only DCs","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.862438258Z","level":"INFO","message":"AGT: Completed selecting","selector":"Server Operators","count_total":7,"count_inserted":7,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.864444633Z","level":"INFO","message":"AGT: Completed selecting","selector":"Backup Operators","count_total":5,"count_inserted":5,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.869467924Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Controller Site Servers","count_total":0,"count_inserted":0,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.876825299Z","level":"INFO","message":"AGT: Completed selecting","selector":"Domain Admins","count_total":14,"count_inserted":14,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.879288133Z","level":"INFO","message":"AGT: Completed selecting","selector":"Incoming Forest Trust Builders","count_total":13,"count_inserted":13,"count_updated":0,"count_deleted":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.879312924Z","level":"INFO","message":"Selecting agt nodes","namespace":"analysis","fn":"selectAssetGroupNodes","scope":"process","elapsed":207.330167}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.885497008Z","level":"INFO","message":"AGT: Completed in memory tagging","tag_type":"owned","tag_name":"Owned","total":0,"tagged":0,"untagged":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.893038091Z","level":"INFO","message":"AGT: Completed in memory tagging","tag_type":"tier","tag_name":"Tier Zero","total":107,"tagged":107,"untagged":0}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.893065133Z","level":"INFO","message":"Batch updating nodes","count":107}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.925658008Z","level":"INFO","message":"Tagging asset group nodes","namespace":"analysis","fn":"tagAssetGroupNodes","scope":"process","elapsed":46.332709}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.925691549Z","level":"INFO","message":"Tag Asset Groups and Tier Zero","namespace":"analysis","fn":"TagAssetGroupsAndTierZero","scope":"step","measurement_id":57,"elapsed":271.323625}
+bloodhound-1  | {"time":"2026-10-19T15:20:39.925699883Z","level":"INFO","message":"Started Data Quality Stats Collection","namespace":"analysis","fn":"SaveDataQuality","scope":"process"}
+bloodhound-1  | {"time":"2026-10-19T15:20:40.017373924Z","level":"INFO","message":"Completed Data Quality Stats Collection","namespace":"analysis","fn":"SaveDataQuality","scope":"process","elapsed":91.666791}
+bloodhound-1  | {"time":"2026-10-19T15:20:40.017404299Z","level":"INFO","message":"Finished Running Analysis Operations","namespace":"analysis","fn":"RunAnalysisOperations","pipeline_status":"ad_post_processing:success,azure_post_processing:success,tagging:success,data_quality:success"}
+bloodhound-1  | {"time":"2026-10-19T15:20:40.018233258Z","level":"INFO","message":"Cache successfully reset by datapipe daemon","namespace":"analysis","fn":"Analyze"}
+bloodhound-1  | {"time":"2026-10-19T15:20:40.018244424Z","level":"INFO","message":"Graph Analysis","namespace":"analysis","fn":"Analyze","scope":"summary","measurement_id":33,"elapsed":1401.572542}
+bloodhound-1  | {"time":"2026-10-19T15:20:40.280079716Z","level":"INFO","message":"HTTP request","proto":"HTTP/1.1","referer":"","user_agent":"Python-urllib/3.14","request_bytes":0,"response_bytes":510,"status":200,"elapsed":4.341708,"method":"GET","request_uri":"/api/v2/file-upload","request_id":"75c4d67a-72e8-4389-ac35-0b096aa8d4c3","request_ip":"172.25.0.1","remote_addr":"172.25.0.1:61406","user_id":"ef8b4094-16a2-4020-9cc3-8dd3106e9c45"}

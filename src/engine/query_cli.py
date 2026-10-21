@@ -287,7 +287,7 @@ def main(argv: list[str] | None = None) -> int:
             query["rating_resolution"] = read_input(
                 args.rating_resolution, references, "rating_resolution"
             )
-        semantic = wire(execute(query, graph))
+        semantic = execute(query, graph)
         semantic["input_label"] = args.label
         semantic["snapshot_metadata"] = graph.metadata
         semantic["snapshot_facts_present"] = graph.snapshot_facts is not None

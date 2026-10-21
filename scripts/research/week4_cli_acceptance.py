@@ -90,6 +90,28 @@ def run_cli_acceptance() -> tuple[dict, dict, list[dict]]:
     for process, package in zip(processes[:2], (first, second), strict=True):
         process["runtime"] = package.get("runtime")
         process["reproducibility"] = package.get("reproducibility")
+    expected_provenance = {
+        "revision": subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=ROOT, text=True
+        ).strip(),
+        "tracked_changes": subprocess.check_output(
+            ["git", "diff", "HEAD", "--name-only"], cwd=ROOT, text=True
+        ).splitlines(),
+        "source_files": {
+            path.relative_to(ROOT).as_posix(): digest(path.read_bytes())
+            for folder in ("src", "scripts")
+            for path in sorted((ROOT / folder).rglob("*.py"))
+        },
+        "config_files": {
+            path.relative_to(ROOT).as_posix(): digest(path.read_bytes())
+            for path in sorted((ROOT / "configs").rglob("*"))
+            if path.is_file()
+        },
+        "inputs": {
+            role: {"reference": name, "sha256": digest((ROOT / name).read_bytes())}
+            for role, name in (("query", QUERY), ("graph_input", GRAPH), ("ranking_input", RATINGS))
+        },
+    }
     semantic = first.get("semantic", {})
     oracle = json.loads(
         (ROOT / "tests/fixtures/attack_scenarios/week4-v1.json").read_text(encoding="utf-8")
@@ -150,7 +172,11 @@ def run_cli_acceptance() -> tuple[dict, dict, list[dict]]:
             "impacts": {key: value["impact"] for key, value in rated.items()},
             "semantic_digest_valid": first.get("reproducibility", {}).get("semantic_sha256")
             == digest(canonical_json(semantic).encode("utf-8")),
-            "clean_tracked_source": first.get("reproducibility", {}).get("tracked_changes") == [],
+            "source_provenance_verified": all(
+                package.get("reproducibility", {}).get(key) == expected
+                for package in (first, second)
+                for key, expected in expected_provenance.items()
+            ),
             "comparison_exit_code": comparison.returncode,
             "two_runs_equal": compared.get("equal") is True,
             "runtime_compared": compared.get("runtime_compared"),

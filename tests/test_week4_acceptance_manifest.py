@@ -7,6 +7,8 @@ from pathlib import Path
 
 from scripts.research.week4_acceptance_runner import (
     compute_digest,
+    evaluate_case,
+    execution_metadata,
     file_pins,
     run_all_cases,
     semantic_payload,
@@ -18,6 +20,9 @@ MANIFEST_PATH = ROOT / "reports/research/week4-guided-exploration-acceptance-man
 
 
 def test_guided_source_manifest_preserves_historical_evidence():
+    assert hashlib.sha256(MANIFEST_PATH.read_bytes()).hexdigest() == (
+        "3951d543abaa704cab2c50f84363a1eba47ce29a259539e1ab9ab038cc1e97de"
+    )
     historical = ROOT / "reports/research/week4-maintainer-acceptance-manifest-v2.json"
     assert hashlib.sha256(historical.read_bytes()).hexdigest() == (
         "1623c1c9e505550374402fdd5714de0a0eebb3a63d75eab0c825e19de3269dd9"
@@ -85,10 +90,11 @@ def normalize_prerequisite_observation(payload):
 
 
 def test_week4_acceptance_manifest_file_pins():
-    manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
-    for name, digest in manifest["execution"]["file_sha256"].items():
+    execution = execution_metadata(None)
+    for name, digest in execution["file_sha256"].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name
-    assert manifest["execution"]["file_sha256"] == file_pins()
+    assert execution["file_sha256"] == file_pins()
+    assert execution["source_input_digest"] == compute_digest(file_pins())
 
 
 def test_week4_acceptance_manifest_semantic_reproduction():
@@ -150,10 +156,25 @@ def test_week4_acceptance_manifest_semantic_reproduction():
     k_overlap["output_digest"] = compute_digest(k_overlap["actual"])
     assert reconciled_v3 == successor
     assert compute_digest(reconciled_v3) == compute_digest(successor)
-    for observed in (first, manifest):
-        assert compute_digest(normalize_prerequisite_observation(semantic_payload(observed))) == (
-            compute_digest(cases_v3)
-        )
+    assert compute_digest(normalize_prerequisite_observation(semantic_payload(manifest))) == (
+        compute_digest(cases_v3)
+    )
+    current = normalize_prerequisite_observation(semantic_payload(first))
+    historical = normalize_prerequisite_observation(semantic_payload(manifest))
+    for payload in (current, historical):
+        for case in payload["cases"]:
+            # Trace schemas evolve; current trace bytes are checked by the two live runs above.
+            case.pop("evidence_digest", None)
+    cli = next(case for case in historical["cases"] if case["case_id"] == "W4-CLI-PACKAGE")
+    assert cli["expected"].pop("clean_tracked_source") is True
+    assert cli["actual"].pop("clean_tracked_source") is True
+    cli["expected"]["source_provenance_verified"] = True
+    cli["actual"]["source_provenance_verified"] = True
+    evaluate_case(cli)
+    for payload in (current, historical):
+        for case in payload["cases"]:
+            case["assertions"].sort(key=lambda check: check["field"])
+    assert current == historical
     k_evidence = next(c for c in manifest["cases"] if c["case_id"] == "W4-K-OVERLAP")
     ext_on = k_evidence["evidence"]["extension_on"]
     search = ext_on["search"]

@@ -1,0 +1,17 @@
+Verified snapshot 'seamless' integrity against manifest (6 files, ID: sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812)
+Waiting for BloodHound to emit initial admin password...
+Logging into BloodHound API...
+Waiting for BloodHound file-upload API readiness...
+Verified snapshot 'seamless' integrity against manifest (6 files, ID: sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812)
+
+--- Ingesting seamless (6 files) ---
+Started upload job ID: 1
+  FAILED 20210920185958_computers.json: HTTP 500
+  FAILED 20210920185958_domains.json: HTTP 500
+  FAILED 20210920185958_gpos.json: HTTP 500
+  FAILED 20210920185958_groups.json: HTTP 500
+  FAILED 20210920185958_ous.json: HTTP 500
+  FAILED 20210920185958_users.json: HTTP 500
+Waiting for BloodHound ingestion worker to complete...
+
+All baseline results saved to /Users/nguyendanglong/Documents/ad-weighted-graph/reports/generated/awg-r04-ce-v1/raw-import.json
