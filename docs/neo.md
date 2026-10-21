@@ -135,3 +135,14 @@ Cả 12 trials giữ nguyên hash của toàn bộ semantic output theo từng s
 FIFO nhanh hơn khoảng 16,5% và guided nhanh hơn khoảng 13,6% trên workload này.
 Peak RSS FIFO tăng khoảng 7,5%; guided gần như không đổi.
 Đây là tradeoff thời gian/bộ nhớ quan sát được; không phải cải thiện RAM hoặc speedup phổ quát.
+
+## Xác minh bàn giao
+
+Full suite trên commit sạch `1c52e18`: 3.618 passed, 8 skipped, 99 subtests passed trong 707,50 giây.
+Các test converter/BloodHound runner với raw SEAMLESS: 47 passed.
+Sau suite, bổ sung chính sách Git giữ nguyên byte của hai gói rating lịch sử trên Windows và mở rộng test checkout thực; các kiểm tra portability/source integrity pass.
+Ruff check/format, yamllint, repository/contract checks và Docker Compose config validation đều pass.
+Đã kiểm native replay cùng parity API/CLI ở đường dẫn bàn giao và giữ nguyên 665 blobs nghiên cứu/fixtures/dữ liệu mẫu của upstream.
+Demo remediation synthetic cắt 50% programs, ngắt 0% source-goal pairs và giữ hai bypass; không suy rộng sang SEAMLESS.
+Chưa chạy đối chứng BloodHound live mới hoặc chờ kết quả CI trên GitHub.
+Kết quả tổng hợp ở [validation neo](../reports/neo/validation.json).

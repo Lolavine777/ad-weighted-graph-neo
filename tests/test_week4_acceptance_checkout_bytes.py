@@ -4,13 +4,14 @@ import hashlib
 import subprocess
 from pathlib import Path
 
+from scripts.research.scenario_rating_pack import HISTORICAL_SOURCE_MANIFESTS
 from scripts.research.week4_acceptance_runner import file_pins
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_acceptance_pins_survive_autocrlf_checkout(tmp_path):
-    pins = file_pins()
+    pins = file_pins() | HISTORICAL_SOURCE_MANIFESTS
     # Use the tracked blobs and actual attributes, rather than normalizing bytes
     # in Python. This also catches newly pinned fixtures lacking an LF policy.
     subprocess.run(

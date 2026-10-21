@@ -54,3 +54,8 @@ tests/fixtures/rating_resolution/** text eol=lf
 docs/research/public-rating-coverage.schema.json text eol=lf
 docs/research/week4-query-result-0.3.schema.json text eol=lf
 reports/research/issue250-*.json text eol=lf
+
+# Keep archived rating packages byte-identical on Windows checkouts.
+docs/research/ratings/scenario-basis-v1/** -text
+docs/research/ratings/likelihood-v1/** -text
+reports/neo/*.json text eol=lf

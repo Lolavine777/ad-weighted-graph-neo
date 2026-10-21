@@ -1,0 +1,90 @@
+{
+  "schema_version": "neo-validation/1.0.0",
+  "validated_code_commit": "1c52e181f90cbba9c8725852d07c684156c3afd9",
+  "full_suite": {
+    "command": ".venv/bin/python -m pytest -q",
+    "result": "3618 passed, 8 skipped, 99 subtests passed in 707.50s (0:11:47)",
+    "working_tree_was_clean": true
+  },
+  "raw_converter_and_runner": {
+    "command": "AWG_TEST_RAW_SEAMLESS=1 .venv/bin/python -m pytest tests/test_convert_seamless_ce.py tests/test_bloodhound_baseline_runner.py -q",
+    "result": "47 passed in 4.86s"
+  },
+  "post_suite_portability_fix": {
+    "change": "Freeze archived rating package bytes during Windows autocrlf checkout; no production Python code changes",
+    "test_result": "20 passed in 1.86s"
+  },
+  "handoff_baseline": {
+    "native_replay_and_API_CLI_parity": true,
+    "snapshot_sha256": "sha256:785df0fe2e99b9c59e308a773f8b48f404e8e40e7cc517628636f7500e2eb855",
+    "query_sha256": "sha256:07b4bbb04a8d861cba32fb461aa6714e1c5b8bb778ac6a7326adec7cabe2d03a",
+    "runs": [
+      {
+        "search_order": "fifo",
+        "expansions": 6000,
+        "witnesses": 0,
+        "best_C": null,
+        "truncated": true,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false,
+          "optimization_scope": "truncated_incomplete"
+        }
+      },
+      {
+        "search_order": "goal_guided",
+        "expansions": 4995,
+        "witnesses": 1,
+        "best_C": 1,
+        "truncated": true,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false,
+          "optimization_scope": "best_in_generated_subset"
+        }
+      }
+    ]
+  },
+  "synthetic_remediation": {
+    "programs_cut": {
+      "denominator": 4,
+      "numerator": 2,
+      "percent": 50.0,
+      "scope": "complete_declared_scope"
+    },
+    "pairs_disconnected": {
+      "denominator": 2,
+      "numerator": 0,
+      "percent": 0.0,
+      "scope": "complete_declared_scope"
+    },
+    "remaining_bypasses": 2,
+    "raw_unchanged": true
+  },
+  "upstream_frozen_research_fixture_data_blobs_preserved": 665,
+  "local_dataset_files_verified": 60,
+  "secrets": {
+    "tool": "gitleaks 8.30.1",
+    "initial_snapshot_reviewed_false_positives": 134,
+    "rework_staged_scan_findings": 0
+  },
+  "quality_checks": [
+    "ruff check .",
+    "ruff format --check .",
+    "yamllint .",
+    "scripts/check_repository.py",
+    "scripts/check_contract.py",
+    "docker compose config --quiet"
+  ],
+  "independent_review": "No actionable findings in core CLI, baseline helper, provenance and numeric-context fixture changes",
+  "not_executed": [
+    "Fresh live BloodHound comparison",
+    "Remote GitHub CI completion",
+    "Environment-gated raw research pilots skipped by default suite"
+  ],
+  "limits": [
+    "C=1 is best-found, not a global minimum proof",
+    "The one-query speed improvement includes a 7.5% FIFO peak RSS increase; guided RSS nearly unchanged",
+    "Supporting datasets remain local and are not in Git"
+  ]
+}
