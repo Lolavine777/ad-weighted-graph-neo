@@ -32,6 +32,11 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument(
+        "--scenario-policy",
+        choices=("neo-standard-v1", "seamless-standard-v1"),
+        default="neo-standard-v1",
+    )
+    parser.add_argument(
         "--effort-profile", choices=(MACHINE_PROFILE_ID, NEO_PROFILE_ID), default=MACHINE_PROFILE_ID
     )
     args = parser.parse_args(argv)
@@ -73,7 +78,7 @@ def main(argv=None):
         graph,
         TECHNIQUES,
         request.common_budget,
-        scenario_policy=load_policy_profile("seamless-standard-v1"),
+        scenario_policy=load_policy_profile(args.scenario_policy),
         effort_profile=load_effort_profile(args.effort_profile),
     )
     assert error is None, error
@@ -82,6 +87,7 @@ def main(argv=None):
     summary = {
         "revision": revision,
         "effort_profile": args.effort_profile,
+        "scenario_policy": args.scenario_policy,
         "python": sys.version,
         "platform": platform.platform(),
         "nodes": 3370,

@@ -25,6 +25,10 @@ uv pip sync --python .venv/bin/python requirements-neo.lock
 ```
 
 Lệnh tải hoặc kiểm tra SEAMLESS theo manifest, dựng snapshot, khai báo machine foothold và scenario assumptions, chạy FIFO/goal-guided qua CLI, rồi kiểm native replay và parity API/CLI.
+Scenario mặc định là `neo-standard-v1`: nhóm thiếu thuộc tính loại được giả định là
+security group, kể cả tên DISTLIST; thuộc tính non-security và fact False vẫn chặn.
+Các giả định được ghi rõ trong trace. Dùng `--scenario-policy seamless-standard-v1`
+để tái lập scenario thận trọng của baseline cũ.
 Dùng output directory mới cho mỗi lượt để giữ kết quả cũ.
 Đọc `summary.json`; `goal_guided.json` giữ đầy đủ witness, assumptions, C ledger, provenance và giới hạn.
 Đây là benchmark một machine-to-DA query với ba techniques và cap 6.000 expansions.

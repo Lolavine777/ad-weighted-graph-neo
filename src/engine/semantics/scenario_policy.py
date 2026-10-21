@@ -10,7 +10,7 @@ Non-negotiable architectural invariants:
    without explicit foothold declarations or valid applicable action effects.
 4. Authoritative False in snapshot facts or context always vetoes any assumption.
 5. Successful assumptions never imply P=1 (likelihood remains governed by rating basis).
-6. Groups without confirmed security group type (e.g. DISTLIST) cannot default to True.
+6. Neo may condition missing group type; authoritative non-security attributes still veto.
 7. Credential/password recovery requires explicit opt-in and cannot default to True.
 """
 
@@ -459,8 +459,11 @@ class ScenarioPolicyProfile:
     rules: tuple[ApplicabilityRule, ...]
     forbidden_predicates: tuple[str, ...]
     description: str
+    assume_missing_group_type_security: bool = False
 
     def __post_init__(self) -> None:
+        if type(self.assume_missing_group_type_security) is not bool:
+            raise ValueError("assume_missing_group_type_security must be a boolean")
         if not (
             self.profile_id.strip() and self.version.strip() and self.bound_snapshot_id.strip()
         ):
@@ -485,6 +488,11 @@ class ScenarioPolicyProfile:
             "description": self.description,
             "forbidden_predicates": list(self.forbidden_predicates),
             "rules": [r.to_dict() for r in self.rules],
+            **(
+                {"assume_missing_group_type_security": True}
+                if self.assume_missing_group_type_security
+                else {}
+            ),
         }
 
     def digest(self) -> str:
@@ -885,8 +893,22 @@ def create_evidence_only_profile() -> ScenarioPolicyProfile:
 SEAMLESS_STANDARD_PROFILE = create_seamless_standard_profile()
 SEAMLESS_WHAT_IF_PROFILE = create_seamless_what_if_profile()
 EVIDENCE_ONLY_PROFILE = create_evidence_only_profile()
+NEO_STANDARD_PROFILE = ScenarioPolicyProfile(
+    profile_id="neo-standard-v1",
+    version="1.0.0",
+    bound_snapshot_id=SEAMLESS_SNAPSHOT_ID,
+    evaluation_mode="seamless_standard_scenario",
+    rules=STANDARD_SEAMLESS_RULES,
+    forbidden_predicates=tuple(sorted(FORBIDDEN_PREDICATES)),
+    description=(
+        "Neo scenario: groups with missing type are assumed security-enabled, including "
+        "distribution-like names; observed non-security types and False facts still veto."
+    ),
+    assume_missing_group_type_security=True,
+)
 
 PROFILE_REGISTRY: dict[str, ScenarioPolicyProfile] = {
+    "neo-standard-v1": NEO_STANDARD_PROFILE,
     "seamless-standard-v1": SEAMLESS_STANDARD_PROFILE,
     "seamless_standard_scenario": SEAMLESS_STANDARD_PROFILE,
     "standard": SEAMLESS_STANDARD_PROFILE,
@@ -899,16 +921,20 @@ PROFILE_REGISTRY: dict[str, ScenarioPolicyProfile] = {
 
 
 def load_policy_profile(
-    profile_identifier: str | Path | ScenarioPolicyProfile,
+    profile_identifier: str | Path | ScenarioPolicyProfile | Mapping[str, Any],
 ) -> ScenarioPolicyProfile:
     """Resolve a policy profile by identifier, path, or direct instance."""
     if isinstance(profile_identifier, ScenarioPolicyProfile):
         return profile_identifier
     if isinstance(profile_identifier, str) and profile_identifier in PROFILE_REGISTRY:
         return PROFILE_REGISTRY[profile_identifier]
-    path = Path(profile_identifier)
-    if path.is_file():
-        data = json.loads(path.read_text(encoding="utf-8"))
+    path = None if isinstance(profile_identifier, Mapping) else Path(profile_identifier)
+    if isinstance(profile_identifier, Mapping) or path.is_file():
+        data = (
+            profile_identifier
+            if isinstance(profile_identifier, Mapping)
+            else json.loads(path.read_text(encoding="utf-8"))
+        )
         rules = tuple(
             ApplicabilityRule(
                 rule_id=r["rule_id"],
@@ -931,8 +957,32 @@ def load_policy_profile(
             rules=rules,
             forbidden_predicates=tuple(data.get("forbidden_predicates", ())),
             description=data.get("description", ""),
+            assume_missing_group_type_security=data.get(
+                "assume_missing_group_type_security", False
+            ),
         )
     raise ValueError(f"unknown scenario policy profile: {profile_identifier!r}")
+
+
+def _classify_group_for_policy(node, label, profile):
+    classification, basis, details = classify_ad_group_type_with_basis(node, label)
+    if profile.assume_missing_group_type_security and basis in {
+        "distribution_naming_pattern",
+        "unrecognized_missing_group_type",
+    }:
+        return (
+            "security_group",
+            "scenario_assumed_missing_group_type",
+            "Neo assumes security-enabled group because type attributes are missing; "
+            "the label is not evidence of group type",
+        )
+    return classification, basis, details
+
+
+def _group_rationale(label, basis):
+    if basis == "scenario_assumed_missing_group_type":
+        return f"Group {label}: security-enabled is a neo scenario assumption, not observed type"
+    return f"Group {label} is a verified security group ({basis})"
 
 
 def _extract_nodes_and_edges(
@@ -1322,8 +1372,8 @@ def resolve_scenario_policy(
         if kind == "MemberOf":
             # Target is a Group. Member is src_id.
             # Check Active Directory group classification
-            grp_class, grp_basis, grp_provenance = classify_ad_group_type_with_basis(
-                tgt_node, tgt_label
+            grp_class, grp_basis, grp_provenance = _classify_group_for_policy(
+                tgt_node, tgt_label, resolved_profile
             )
 
             if grp_class == "distribution_group":
@@ -1365,9 +1415,7 @@ def resolve_scenario_policy(
                             "classification_basis": grp_basis,
                             "identity_provenance": grp_provenance,
                         },
-                        custom_rationale=(
-                            f"Group {tgt_label} is a verified security group ({grp_basis})"
-                        ),
+                        custom_rationale=(_group_rationale(tgt_label, grp_basis)),
                     )
                     propose_candidate(
                         "membership_usable",
@@ -1442,8 +1490,8 @@ def resolve_scenario_policy(
                         custom_rationale="MS-RPC reachable for SAMR password reset",
                     )
             elif tgt_kind == "Group":
-                grp_class, grp_basis, grp_provenance = classify_ad_group_type_with_basis(
-                    tgt_node, tgt_label
+                grp_class, grp_basis, grp_provenance = _classify_group_for_policy(
+                    tgt_node, tgt_label, resolved_profile
                 )
 
                 if grp_class == "security_group":
@@ -1458,9 +1506,7 @@ def resolve_scenario_policy(
                                 "classification_basis": grp_basis,
                                 "identity_provenance": grp_provenance,
                             },
-                            custom_rationale=(
-                                f"Group {tgt_label} is a verified security group ({grp_basis})"
-                            ),
+                            custom_rationale=(_group_rationale(tgt_label, grp_basis)),
                         )
                 elif grp_class == "distribution_group":
                     if "security_group" in rules_by_pred:
@@ -1944,6 +1990,34 @@ def apply_policy_to_query(
         "rejected_assumptions": [r.to_dict() for r in resolution.rejected_assumptions],
         "applied_overrides": [o.to_dict() for o in resolution.applied_overrides],
     }
+    if resolved_profile.assume_missing_group_type_security:
+        if hasattr(graph, "to_prepared"):
+            nodes = graph.to_prepared().nodes_by_id.values()
+        elif isinstance(graph, Mapping):
+            nodes = graph["nodes"]
+        else:
+            nodes = _extract_nodes_and_edges(graph)[0].values()
+        updated["scenario_policy_metadata"].update(
+            on_demand=True,
+            profile=resolved_profile.canonical_dict(),
+            non_security_group_ids=sorted(
+                n["id"]
+                for n in nodes
+                if n.get("kind") == "Group"
+                and classify_ad_group_type_with_basis(n)[1]
+                == "authoritative_distribution_attribute"
+            ),
+        )
+        vetoes = set(updated["scenario_policy_metadata"]["non_security_group_ids"])
+        if any(
+            f["target"] in vetoes
+            and f["predicate"] in {"security_group", "membership_usable"}
+            and f.get("value", True) is True
+            for f in updated["assumptions"]
+        ):
+            raise ValueError(
+                "Group assumption conflicts with authoritative non-security attributes"
+            )
     return updated
 
 
@@ -1964,11 +2038,25 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
         *,
         max_cache_size: int = 10000,
         enforce_snapshot_binding: bool = True,
+        allowed_predicates: frozenset[str] | None = None,
     ) -> None:
         self.profile = load_policy_profile(profile)
-        self.nodes_dict, self.edges_list, self.snapshot_facts = _extract_nodes_and_edges(graph)
+        self._profile_digest = self.profile.digest()
+        if hasattr(graph, "to_prepared") or hasattr(graph, "nodes_by_id"):
+            prepared = graph.to_prepared() if hasattr(graph, "to_prepared") else graph
+            self.nodes_dict = prepared.nodes_by_id
+            self.edges_list = ()
+            self.snapshot_facts = prepared.snapshot_facts
+        else:
+            self.nodes_dict, self.edges_list, self.snapshot_facts = _extract_nodes_and_edges(graph)
         self.query_dict = _normalize_query_dict(query) if query is not None else {}
+        self.non_security_group_ids = set(
+            (self.query_dict.get("scenario_policy_metadata") or {}).get(
+                "non_security_group_ids", ()
+            )
+        )
         self.max_cache_size = max_cache_size
+        self.allowed_predicates = allowed_predicates
 
         # Validate snapshot binding
         graph_snapshot = None
@@ -2094,6 +2182,17 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
         props = node.get("properties") if isinstance(node.get("properties"), Mapping) else {}
         return props.get("enabled") is False
 
+    def for_graph(self, graph):
+        """Keep the declared scenario, with a fresh cache on a counterfactual graph."""
+        return type(self)(
+            graph,
+            self.query_dict,
+            self.profile,
+            overrides=tuple(self._user_overrides_by_key.values()),
+            max_cache_size=self.max_cache_size,
+            allowed_predicates=self.allowed_predicates,
+        )
+
     def _match_rule(self, pred: str, subj: str, tgt: str) -> ApplicabilityRule | None:
         rules = self.rules_by_pred.get(pred, [])
         if not rules:
@@ -2113,6 +2212,10 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
             return None
 
         pred, subj, tgt = key
+        if self.allowed_predicates is not None and pred not in self.allowed_predicates:
+            return None
+        if pred in {"security_group", "membership_usable"} and tgt in self.non_security_group_ids:
+            return None
 
         # 1. Authoritative False in runtime facts
         if key in self.auth_false_keys:
@@ -2196,7 +2299,7 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
                 assumption_metadata={
                     "rule_id": f"override-{ov.override_type}",
                     "profile_id": self.profile.profile_id,
-                    "profile_digest": self.profile.digest(),
+                    "profile_digest": self._profile_digest,
                     "policy_version": self.profile.version,
                     **ov_meta,
                 },
@@ -2239,8 +2342,8 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
                 or tgt_props.get("label")
                 or tgt
             )
-            grp_class, grp_basis, grp_provenance = classify_ad_group_type_with_basis(
-                tgt_node, tgt_label
+            grp_class, grp_basis, grp_provenance = _classify_group_for_policy(
+                tgt_node, tgt_label, self.profile
             )
 
             if grp_class == "distribution_group":
@@ -2281,12 +2384,12 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
                     value=rule.default_value,
                     origin=FactOrigin.DECLARED_ASSUMPTION,
                     scope=f"seamless-policy:{self.profile.profile_id}",
-                    rationale=f"Group {tgt_label} is a verified security group ({grp_basis})",
+                    rationale=_group_rationale(tgt_label, grp_basis),
                     provenance_reference=rule.provenance_reference,
                     assumption_metadata={
                         "rule_id": rule.rule_id,
                         "profile_id": self.profile.profile_id,
-                        "profile_digest": self.profile.digest(),
+                        "profile_digest": self._profile_digest,
                         "policy_version": self.profile.version,
                         "group_label": tgt_label,
                         "group_kind": "security_group",
@@ -2308,7 +2411,7 @@ class PolicyAssumptionResolver(Mapping[tuple[str, str, str], RuntimeFact]):
             assumption_metadata={
                 "rule_id": rule.rule_id,
                 "profile_id": self.profile.profile_id,
-                "profile_digest": self.profile.digest(),
+                "profile_digest": self._profile_digest,
                 "policy_version": self.profile.version,
                 **rule.metadata,
             },

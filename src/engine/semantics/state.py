@@ -1,5 +1,6 @@
 """Immutable scenario state, scoped to one snapshot and evaluation time window."""
 
+from collections import ChainMap
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from types import MappingProxyType
@@ -99,6 +100,7 @@ class RuntimeContext:
         authentication_context: str | None = None,
         withheld_relationships: frozenset[StructuralRelationship] = frozenset(),
         rbcd_bindings: tuple[DelegationBinding, ...] = (),
+        fallback_facts: Mapping[tuple[str, str, str], RuntimeFact] | None = None,
     ) -> None:
         if authentication_context is not None and not authentication_context.strip():
             raise ValueError("authentication_context must be non-empty")
@@ -174,4 +176,6 @@ class RuntimeContext:
             else:
                 raise ValueError("facts must be a Mapping or Sequence of RuntimeFact")
 
-        object.__setattr__(self, "facts", MappingProxyType(normalized))
+        facts_map = normalized if fallback_facts is None else ChainMap(normalized, fallback_facts)
+        object.__setattr__(self, "facts", MappingProxyType(facts_map))
+        object.__setattr__(self, "_fallback_facts", fallback_facts)

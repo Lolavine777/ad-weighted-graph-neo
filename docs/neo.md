@@ -58,7 +58,9 @@ Runner từ chối ghi đè directory đã tồn tại.
 Snapshot có 3.370 nodes và 56.367 edges.
 Máy nguồn là SID kết thúc `-4157`; Domain Admins được tìm theo domain SID và RID 512.
 Capability `computer_usable_identity` được khai báo tường minh tại context chính máy đó với provenance scenario, không suy ra từ host control.
-Policy là `seamless-standard-v1`; C-only profile là `reset-activation-c-v2`.
+Lượt baseline lịch sử dùng `seamless-standard-v1`; C-only profile là `reset-activation-c-v2`.
+Runner hiện mặc định `neo-standard-v1`; dùng `--scenario-policy seamless-standard-v1`
+để tái lập policy của lượt lịch sử này.
 Chỉ cho phép `scenario_reset_password`, `acquire_reset_identity` và `propagate_group_entitlement`.
 Budget là một witness, ba semantic steps và 6.000 expansions.
 
@@ -267,6 +269,7 @@ cases = [(1,1116,1000,1000,'A','fifo'), (2,2799,512,1000,'M','fifo'),
          (9,1395,1000,1000,'H','fifo'), (10,3385,1000,1000,'W','fifo')]
 g = EngineGraph.from_snapshot(Path('reports/generated/neo-c-001/snapshot.json').read_text())
 profile = load_effort_profile('neo-c-v1')
+policy = 'seamless-standard-v1'  # Đổi thành 'neo-standard-v1' để đối chiếu policy mới.
 for number, source, target, context, family, order in cases:
     s, t, c = map(n, (source, target, context))
     goal = {'target': t, 'kind': 'usable_identity_entitlement'} if target == 512 else {
@@ -277,7 +280,7 @@ for number, source, target, context, family, order in cases:
              scenario_reference=f'neo-cohort/Q{number}', evaluation_mode='scenario', search_order=order,
              budget={'max_paths': 1, 'max_steps': 5, 'max_expansions': 6000})
     started = time.perf_counter()
-    q = bind_effort_profile(apply_policy_to_query(q, g, 'seamless-standard-v1'), g, profile)
+    q = bind_effort_profile(apply_policy_to_query(q, g, policy), g, profile)
     r = run_attack_query(q, g)
     seconds = time.perf_counter() - started
     coverage = (r.rating_coverage or {}).get('candidate_summaries', {})
@@ -307,3 +310,46 @@ for number, source, target, context, family, order in cases:
         print('ordered goal matches:', m.semantic_goal.matches(state))
 PY
 ```
+
+## Scenario mặc định neo (2026-10-21)
+
+`neo-standard-v1` tái sử dụng các rule hiện có, với giả định được chọn cho khóa luận:
+nhóm thiếu group type được coi là security group trong scenario, kể cả tên DISTLIST.
+Tên nhóm không phải bằng chứng về loại nhóm. `security_enabled=False`, groupType
+non-security và runtime fact False vẫn chặn; không tạo cạnh, quyền hay usable identity.
+Mọi fact được bổ sung mang origin `declared_assumption`, với profile/rule/provenance.
+Không suy xác suất thành công từ các giả định này.
+
+Query dùng lại `PolicyAssumptionResolver` sẵn có theo nhu cầu cho `security_group`,
+`membership_usable`, `membership_change_allowed` và `directory_write_allowed`, nên các
+gates này vẫn được giải quyết sau khi đổi actor hoặc tạo quyền trong một prefix hợp lệ.
+Các điều kiện khác giữ scope biên dịch hiện có; không mở mặc định host-admin mapping,
+endpoint authorization hoặc password recovery. Không sinh trước
+Cartesian product actor × group. Các declaration tường minh được ưu tiên; các fact
+thực sự dùng được ghi trong transition decisions. Metadata giữ profile đầy đủ để CLI,
+batch worker và replay tái lập cùng scenario. Remediation giữ policy trên graph sau sửa.
+
+Đối chứng cùng snapshot và cohort 10 query, cùng techniques/5 steps/6.000 expansions:
+
+| Kiểm tra | `seamless-standard-v1` | `neo-standard-v1` |
+| --- | --- | --- |
+| Discovery | 4/10 witness; 3/4 đủ C | 4/10 witness; 3/4 đủ C |
+| Q4: membership tới nhóm 3790 | Unknown group gates | Replay prefix 2 MemberOf steps applicable |
+| Q5: membership tới nhóm 3610 (DISTLIST) | Unknown group gates | Replay prefix 1 MemberOf step applicable |
+| Q6: ACL → AddMember → DA, ordered probe | Dừng ở AddMember Unknown | Cả bốn actions applicable, đạt goal |
+| Q8: machine → DA, guided | C=1 sau 4.995 expansions | Giữ C=1 sau 4.995 expansions |
+
+Replay prefix/ordered probe là chẩn đoán riêng, không được tính thêm vào witness discovery.
+Sáu query vẫn chạm cap; thay đổi này sửa khả năng áp dụng scenario, chưa sửa search.
+Q10 vẫn chưa có C cho WinRM command session; nó không phải quyền admin.
+Không so runtime của lượt Linux này với bảng macOS ở trên.
+
+Runner `scripts.neo_baseline` mặc định dùng policy mới; thêm
+`--scenario-policy seamless-standard-v1` để chạy lại policy cũ.
+Exposure nhận `--scenario-policy neo-standard-v1`.
+Trong lệnh cohort phía trên, đổi biến `policy` giữa hai tên để đối chứng.
+Test riêng ở `tests/test_neo_scenario_policy.py` kiểm missing type, thuộc tính/fact False,
+quyền phát sinh, evidence-only, profile transport, worker/resume và counterfactual.
+23 test mới pass. Các lượt test tập trung engine/query/batch/C, policy và remediation
+có tổng 777 passed, 3 optional raw-remediation pilots skipped; không chạy full suite.
+Runner SEAMLESS với scenario mới đã qua native replay và API–CLI parity.

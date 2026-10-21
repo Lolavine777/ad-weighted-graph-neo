@@ -1863,8 +1863,39 @@ def materialize_query(
     if len(raw_rbcd) > 1:
         raise ValueError("supported RBCD scope enforces at most one delegation binding per query")
 
+    fallback_facts = None
+    policy_metadata = q_dict.get("scenario_policy_metadata") or {}
+    if eval_mode == "scenario" and policy_metadata.get("profile_id") == "neo-standard-v1":
+        from src.engine.semantics.scenario_policy import (
+            PolicyAssumptionResolver,
+            load_policy_profile,
+        )
+
+        if not isinstance(policy_metadata.get("profile"), Mapping):
+            raise ValueError("Neo scenario policy definition is missing")
+        profile = load_policy_profile(policy_metadata["profile"])
+        if profile.profile_id != "neo-standard-v1" or profile.digest() != policy_metadata.get(
+            "profile_digest"
+        ):
+            raise ValueError("Neo scenario policy definition/digest mismatch")
+        fallback_facts = PolicyAssumptionResolver(
+            graph,
+            q_dict,
+            profile,
+            overrides=policy_metadata.get("applied_overrides", ()),
+            allowed_predicates=frozenset(
+                {
+                    "security_group",
+                    "membership_usable",
+                    "membership_change_allowed",
+                    "directory_write_allowed",
+                }
+            ),
+        )
+
     runtime_context = RuntimeContext(
         facts=resolved_facts,
+        fallback_facts=fallback_facts,
         authentication_context=canonical_auth_context,
         withheld_relationships=withheld_relationships,
         rbcd_bindings=tuple(

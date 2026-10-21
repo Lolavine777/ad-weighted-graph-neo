@@ -527,7 +527,7 @@ def main(argv=None):
     )
     parser.add_argument(
         "--scenario-policy",
-        choices=("seamless-standard-v1",),
+        choices=("neo-standard-v1", "seamless-standard-v1"),
         help="Compile the existing snapshot-bound assumptions and select scenario mode",
     )
     parser.add_argument("--runtime-facts")

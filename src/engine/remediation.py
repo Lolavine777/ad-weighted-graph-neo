@@ -320,8 +320,12 @@ def _effective(request, graph, material):
             )
         prepared = PreparedSemanticGraph(canonical, snapshot_facts=snapshot, _defensive_copy=False)
     original = material.runtime_context
+    fallback = getattr(original, "_fallback_facts", None)
+    if hasattr(fallback, "for_graph"):
+        fallback = fallback.for_graph(prepared)
     context = RuntimeContext(
         facts,
+        fallback_facts=fallback,
         authentication_context=original.authentication_context,
         rbcd_bindings=original.rbcd_bindings,
         withheld_relationships=original.withheld_relationships,
