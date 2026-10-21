@@ -114,6 +114,7 @@ cũ; không chuyển trạng thái duyệt A/B hay xác suất lịch sử sang 
 | Cấp quyền sửa DACL | `genericall_grant_write_dacl` | 1 / 2 | 1 |
 | Sửa DACL để cấp GenericAll | `grant_new_object_right` | 2 / 2 | 2 |
 | Thực thi quản trị host | `obtain_admin_execution_on_host`, `scenario_winrm_admin` | 1 / 2 | 1 |
+| Phiên lệnh WinRM, không tự cấp admin | `open_winrm_remote_session` | 1 / 2 | 1 |
 
 Membership đã có là suy diễn quyền, không tạo work unit. Hành động C=0 vẫn cần qua
 semantic checks. Tổng C tính trên hợp các work unit, giữ nguyên cách khử trùng hiện có;
@@ -128,7 +129,7 @@ Techniques ngoài bảng tiếp tục chưa chấm C, không tự nhận C=0.
 
 API Python dùng `load_effort_profile("neo-c-v1")` và `bind_effort_profile(query, graph, profile)`
 tại `src.engine.ranking.effort_profiles`. Batch/exposure nhận `--effort-profile neo-c-v1`.
-Các profile reset cũ và mặc định runner được giữ để tái lập benchmark.
+Các profile reset cũ còn dùng được để tái lập benchmark; runner neo mặc định bảng C mới.
 Thay đổi này mở coverage C; chưa đổi search, thêm P/I hay mở roaming context.
 
 Ví dụ kỳ vọng trên mô hình hữu hạn: quyền qua nhóm → reset → dùng danh tính →
@@ -426,3 +427,48 @@ Raw data và generated outputs tiếp tục không commit.
 Validation thay đổi này: 487 focused tests passed, 1 optional raw-remediation test
 skipped; chưa chạy full suite. Native replay/API–CLI parity gồm Top-K pass;
 Ruff check/format, yamllint, repository và graph contract checks pass.
+
+## Chốt đầu ra một foothold: WinRM, thời gian và bản đọc nhanh
+
+`neo-c-v1` version 1.1.0 bổ sung `open_winrm_remote_session`: T1=1, T2=2,
+C=1 cho công cụ chuẩn và thao tác/xác minh phiên lệnh đã xác thực. Đây là ước lượng
+scenario theo rubric hiện có; chín mức C cũ không đổi. CanPSRemote chỉ đạt
+`remote_command_execution`, không tự cấp `admin_control`. Thiếu/False ở
+`winrm_available` hoặc `authentication_accepted` vẫn chặn đường như trước.
+Config rating nhúng của lượt cũ vẫn replay được với bộ giá cũ; profile mới có digest mới.
+
+Chạy lại max_paths=3 trên cùng 10 query: 10/10 đạt mục tiêu, 24 witness đều đủ C
+(trước bổ sung là 23/24). So sánh đủ 20 cells baseline/neo với lượt trước:
+witness bytes và expansions không đổi; C của Q1–Q9 không đổi, Q10 từ chưa chấm → 1.
+Mọi witness được replay, không tính ordered probe vào discovery.
+
+Profiling xác định hai phần lặp: sắp xếp quan hệ trong search và sao chép toàn graph
+cho từng witness trước scoring. Search nay chuẩn bị thứ tự theo source một lần,
+chèn quan hệ phát sinh của từng nhánh vào đúng thứ tự; cache tập source chỉ sống trong
+mỗi search và giới hạn 32 entries. Không cache kết quả applicability hay facts.
+Resolver tái sử dụng canonical graph đã được EngineGraph kiểm tra; edge đưa ra witness
+vẫn được copy riêng. Catalog, số expansions, thứ tự chương trình và evaluator không đổi.
+
+Đo riêng tuần tự bằng hai process/code tree trước (`bbc918b`) và sau thay đổi,
+cùng Python/Linux, snapshot/query đã nạp. Mỗi case có một lượt cold + ba lượt warm;
+thời gian dưới đây là median `run_attack_query`, không gồm ghi report hay load snapshot:
+
+| Query, max_paths=3 | Median trước | Median sau | Peak RSS trước → sau |
+| --- | ---: | ---: | ---: |
+| Q4, 1 witness / 6.000 expansions | 9,503s | 4,792s | 475,1 → 474,2 MiB |
+| Q9, 3 witness / 15 expansions | 3,933s | 2,626s | 429,4 → 427,4 MiB |
+
+Tương ứng giảm khoảng 50% và 33% thời gian ở hai ca này; RAM gần như không đổi.
+Không suy thành speedup toàn miền. Full semantic hashes trên hai public query cũ,
+gồm paths, C/Top-K, diagnostics và proof/budget dispositions, giữ nguyên.
+Không trộn số đo này với lượt cohort chạy đồng thời test hoặc benchmark macOS.
+
+`scripts.neo_baseline` nay sinh `neo_guided.md` cạnh JSON, trình bày nguồn–đích,
+scope kỹ thuật/context, hành động, work ledger C, P/I, giả định đã dùng và best-found/minimum.
+`scripts.neo_cohort` sinh `brief.md` cho mỗi cell. CLI query bất kỳ nhận
+`--brief reports/generated/result.md` cùng `--output reports/generated/result.json`.
+Cả hai được dựng từ cùng một execution; bản đọc nhanh không tìm lại đường hay tự chấm điểm.
+Thiếu C vẫn hiển thị chưa chấm; thiếu witness khi còn Unknown hoặc hết cap không kết luận an toàn.
+
+Validation: 686 focused tests passed, 1 optional raw-remediation test skipped;
+chưa chạy full suite. Native replay/API–CLI parity, Ruff, yamllint, repository và graph contract pass.

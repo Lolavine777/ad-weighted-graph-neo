@@ -100,7 +100,7 @@ def revision_metadata() -> dict[str, Any]:
     }
 
 
-def execute(query: dict, graph: EngineGraph) -> dict:
+def execute(query: dict, graph: EngineGraph, *, brief_output: str | None = None) -> dict:
     for field in ("initial_state", "initial_capabilities"):
         if query.get(field) is not None and not isinstance(query[field], Mapping):
             raise TypeError(f"{field} must be a JSON object")
@@ -134,6 +134,10 @@ def execute(query: dict, graph: EngineGraph) -> dict:
             raise ValueError("ranking target_asset_id must match materialized target")
 
     result = run_attack_query(materialized, graph)
+    if brief_output is not None:
+        from src.engine.query_report import render_query_brief
+
+        Path(brief_output).write_text(render_query_brief(result, graph), encoding="utf-8")
     candidates = []
     for index, path in enumerate(result.paths, 1):
         candidates.append({"candidate_id": f"generated_{index:04d}", **wire(path)})
@@ -220,6 +224,7 @@ def main(argv: list[str] | None = None) -> int:
     for name in ("max-paths", "max-steps", "max-expansions"):
         parser.add_argument(f"--{name}", type=int)
     parser.add_argument("--output", help="JSON output file; default stdout")
+    parser.add_argument("--brief", help="Also write a readable Vietnamese Markdown result")
     parser.add_argument(
         "--compact-output", action="store_true", help="Omit JSON whitespace; retain the full audit"
     )
@@ -287,7 +292,7 @@ def main(argv: list[str] | None = None) -> int:
             query["rating_resolution"] = read_input(
                 args.rating_resolution, references, "rating_resolution"
             )
-        semantic = execute(query, graph)
+        semantic = execute(query, graph, **({"brief_output": args.brief} if args.brief else {}))
         semantic["input_label"] = args.label
         semantic["snapshot_metadata"] = graph.metadata
         semantic["snapshot_facts_present"] = graph.snapshot_facts is not None

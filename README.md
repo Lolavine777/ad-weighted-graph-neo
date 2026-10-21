@@ -31,6 +31,7 @@ Các giả định được ghi rõ trong trace. Dùng `--scenario-policy seamle
 để tái lập scenario thận trọng của baseline cũ.
 Dùng output directory mới cho mỗi lượt để giữ kết quả cũ.
 Đọc `summary.json`; `neo_guided.json` giữ đầy đủ witness, assumptions, C ledger, Top-K và giới hạn.
+Mở `neo_guided.md` để đọc bản tóm tắt tiếng Việt: nguồn–đích, hành động, C và giả định đã dùng.
 Đây là benchmark một machine-to-DA query với ba techniques và cap 6.000 expansions.
 Không phải chứng minh an toàn toàn miền hoặc phép so sánh BloodHound.
 
@@ -41,7 +42,7 @@ Runner mặc định dùng bảng `neo-c-v1`. Để đối chiếu bảng reset 
   --output-dir reports/generated/neo-reset-001
 ```
 
-`neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi quản trị,
+`neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi host/WinRM,
 kể cả khi quyền đến từ nhóm hoặc danh tính thu được giữa đường.
 Membership có sẵn không thêm công sức; P/I không bắt buộc để có C.
 Runner trên vẫn chỉ bật ba techniques của benchmark cũ;
@@ -66,7 +67,8 @@ Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
   --query tests/fixtures/query_cli/two-routes-query.json \
   --graph tests/fixtures/attack_scenarios/graphs/two-routes.json \
   --ranking-query docs/research/ratings/week4/synthetic-a2-e.json \
-  --label synthetic --output reports/generated/toy-query.json
+  --label synthetic --output reports/generated/toy-query.json \
+  --brief reports/generated/toy-query.md
 ```
 
 ## Các use case tiếp theo

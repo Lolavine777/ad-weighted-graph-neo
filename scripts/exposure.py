@@ -389,7 +389,11 @@ def overview_report(request, result, selection):
         policy_description,
         (
             f"C profile: {effort['profile_id']}; ordinal scenario effort, không phải thời gian. "
-            "Chỉ reset trực tiếp/activation đúng owner/context; không adoption P/I."
+            + (
+                "Reset, membership, ACL và thực thi host/WinRM trong scope profile; P/I bổ trợ."
+                if effort["profile_id"] == "neo-c-v1"
+                else "Chỉ reset trực tiếp/activation đúng owner/context; không adoption P/I."
+            )
             if effort is not None
             else "C cần basis áp dụng; chưa chấm không phải C=0."
         ),

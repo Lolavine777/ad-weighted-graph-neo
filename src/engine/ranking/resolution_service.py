@@ -618,8 +618,11 @@ def resolve_generated_rating_inputs(config, graph, materialized, search_result):
     # Resolver's typed-path adapter hydrates graph edges in the shared orchestration boundary.
     from src.engine.ranking.orchestration import _hydrate_path_edges, coverage_from_search_result
 
+    canonical = graph._canonical_cache
+    if canonical is None:
+        canonical = graph.to_canonical()
     for candidate in candidates:
-        candidate.update(_hydrate_path_edges(candidate["path_result"], graph.to_canonical()))
+        candidate.update(_hydrate_path_edges(candidate["path_result"], canonical))
     output = resolver.resolve(
         candidates,
         scope,

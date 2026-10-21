@@ -38,6 +38,12 @@ OPERATIONS = {
         2,
         "Elevated WinRM execution and verification",
     ),
+    "open_winrm_remote_session": (
+        "CanPSRemote",
+        1,
+        2,
+        "Authenticated WinRM command session and verification; no elevation implied",
+    ),
 }
 
 
@@ -46,7 +52,7 @@ def load_effort_profile(identifier):
         return load_reset_effort_profile(identifier)
     return {
         "profile_id": NEO_PROFILE_ID,
-        "version": "1.0.0",
+        "version": "1.1.0",
         "dimension": "C",
         "formula": "T1 + T2 - 2",
         "basis": "estimated_expert_scenario",

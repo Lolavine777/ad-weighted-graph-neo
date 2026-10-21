@@ -5,9 +5,11 @@ from __future__ import annotations
 import copy
 import heapq
 import math
+from bisect import bisect_right
 from collections import deque
 from collections.abc import Callable, Iterator, Mapping, Sequence
 from dataclasses import dataclass
+from functools import lru_cache
 from itertools import islice
 from typing import Any, Protocol
 
@@ -379,6 +381,7 @@ def branch_action_candidates(
     relationships_by_source: dict[str, set[Any]],
     selected_catalog: Sequence[Technique],
     used: frozenset[tuple[Any, str, str]],
+    relationship_orderer: Callable | None = None,
 ) -> Iterator[tuple[str, Any, Technique, str, tuple[Any, str, str], dict[str, Any]]]:
     """Enumerate action candidates for a branch across all eligible actors (#294)."""
     eligible_actors = {initial_actor} if initial_actor in nodes else set()
@@ -396,16 +399,7 @@ def branch_action_candidates(
         sources = {sched_actor} | {
             group for user, group in state.effective_member if user == sched_actor
         }
-        relationships = set().union(
-            *(relationships_by_source.get(source, set()) for source in sources)
-        )
-        relationships.update(
-            rel
-            for host in state.admin_control
-            for rel in relationships_by_source.get(host, ())
-            if rel.kind == "HasSession"
-        )
-        relationships.update(producers(nodes, state, sched_actor, runtime_context))
+        relationships = set(producers(nodes, state, sched_actor, runtime_context))
         relationships.update(rbcd_producers(nodes, state, sched_actor, runtime_context))
         relationships.update(state.relationship_added)
         relationships.update(state.permission)
@@ -418,15 +412,21 @@ def branch_action_candidates(
                 for user in state.reset_password_control
                 if (user, runtime_context.authentication_context) not in state.usable_identity
             )
-        sorted_relationships = sorted(
-            relationships,
-            key=lambda rel: (
-                rel.source,
-                rel.kind,
-                rel.target,
-                repr(getattr(rel, "binding", None)),
-            ),
-        )
+        if relationship_orderer is not None:
+            sorted_relationships = relationship_orderer(
+                frozenset(sources), state.admin_control, frozenset(relationships)
+            )
+        else:
+            relationships.update(
+                rel for source in sources for rel in relationships_by_source.get(source, ())
+            )
+            relationships.update(
+                rel
+                for host in state.admin_control
+                for rel in relationships_by_source.get(host, ())
+                if rel.kind == "HasSession"
+            )
+            sorted_relationships = sorted(relationships, key=_relationship_sort_key)
         for relationship in sorted_relationships:
             source_node = nodes.get(relationship.source)
             target_node = nodes.get(relationship.target)
@@ -467,6 +467,10 @@ def branch_action_candidates(
                     action_key,
                     target_node,
                 )
+
+
+def _relationship_sort_key(rel):
+    return rel.source, rel.kind, rel.target, repr(getattr(rel, "binding", None))
 
 
 def generate_attack_paths(
@@ -564,6 +568,36 @@ def generate_attack_paths(
                 CapabilityRelationship(relation.source, "DeclaredHostAdmin", relation.target)
             )
 
+    sorted_by_source = {
+        source: tuple(sorted(relations, key=_relationship_sort_key))
+        for source, relations in relationships_by_source.items()
+    }
+
+    @lru_cache(maxsize=32)
+    def static_relationships(sources, admin_hosts):
+        # Source is the first sort key, so concatenating sorted source lists
+        # preserves the exact order without sorting thousands of edges again.
+        relations = tuple(
+            rel
+            for source in sorted(sources | admin_hosts)
+            for rel in sorted_by_source.get(source, ())
+            if source in sources or rel.kind == "HasSession"
+        )
+        return relations, frozenset(relations)
+
+    def ordered_relationships(sources, admin_hosts, dynamic):
+        # Search-local preparation only: facts, applicability and used actions
+        # remain branch-local. Insert the few new relations into the base order.
+        relations, known = static_relationships(sources, admin_hosts)
+        added = dynamic - known
+        if not added:
+            return relations
+        merged = list(relations)
+        for rel in sorted(added, key=_relationship_sort_key):
+            index = bisect_right(merged, _relationship_sort_key(rel), key=_relationship_sort_key)
+            merged.insert(index, rel)
+        return merged
+
     # actor, state, target-sequence, observed edges, transition trace, used actions,
     # and the transition that first introduced each derived relationship.
     initial = [(actor, initial_state, (actor,), (), (), frozenset(), {})]
@@ -617,6 +651,7 @@ def generate_attack_paths(
                     relationships_by_source,
                     selected_catalog,
                     used,
+                    ordered_relationships,
                 )
             )
             if has_candidates:
@@ -638,6 +673,7 @@ def generate_attack_paths(
                     relationships_by_source,
                     selected_catalog,
                     used,
+                    ordered_relationships,
                 )
             )
             start_index = 0

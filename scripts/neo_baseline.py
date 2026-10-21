@@ -116,6 +116,8 @@ def main(argv=None):
             "--prerequisite",
             str(ROOT / "data/samples/manifests/seamless-raw-v1.json"),
             "--compact-output",
+            "--brief",
+            str(output / f"{order}.md"),
             "--output",
             str(destination),
         ]

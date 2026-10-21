@@ -10,6 +10,7 @@ from pathlib import Path
 from src.engine.graph import EngineGraph
 from src.engine.query import run_attack_query
 from src.engine.query_cli import digest, wire
+from src.engine.query_report import render_query_brief
 from src.engine.ranking.effort_profiles import bind_effort_profile, load_effort_profile
 from src.engine.semantics.credentials import replay_path
 from src.engine.semantics.scenario_policy import apply_policy_to_query
@@ -116,6 +117,9 @@ def main(argv=None):
             summary["runs"].append(row)
             destination = args.output_dir / f"Q{index}" / variant
             destination.mkdir(parents=True)
+            (destination / "brief.md").write_text(
+                render_query_brief(result, graph), encoding="utf-8"
+            )
             for name, payload in (
                 ("query", query),
                 ("result", {**row, "witnesses": wire(result.paths), "top_k": result.top_k_result}),
