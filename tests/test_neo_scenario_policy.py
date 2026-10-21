@@ -246,6 +246,77 @@ def test_evidence_only_mode_does_not_activate_lazy_assumptions():
     assert not run_attack_query(neo, graph).paths
 
 
+def two_reset_chain():
+    graph, query = group_chain()
+    raw = graph.to_canonical()
+    second_group = "S-1-5-21-1000-2000-3000-2200"
+    second_user = "S-1-5-21-1000-2000-3000-2300"
+    raw["nodes"].extend(
+        [
+            {**graph.node(GROUP), "id": second_group},
+            {**graph.node(OTHER), "id": second_user},
+        ]
+    )
+    raw["edges"] = [
+        _edge(ACTOR, MID, "MemberOf"),
+        _edge(MID, OTHER, "GenericAll"),
+        _edge(OTHER, second_group, "MemberOf"),
+        _edge(second_group, second_user, "GenericAll"),
+        _edge(second_user, GROUP, "MemberOf"),
+    ]
+    query.update(
+        search_order="neo_guided",
+        budget={
+            "max_paths": 1,
+            "max_steps": 8,
+            "max_expansions": 256,
+        },
+    )
+    return type(graph).from_canonical(raw), query, second_user
+
+
+def test_existing_reset_policy_follows_an_acquired_identity():
+    graph, query, second_user = two_reset_chain()
+    neo = compiled(graph, query)
+    # Eager compilation covers initial actors; this pair arises only after reset.
+    assert not any(
+        f["subject"] == OTHER
+        and f["target"] == second_user
+        and f["predicate"] == "password_policy_accepts"
+        for f in neo["assumptions"]
+    )
+    result = run_attack_query(
+        bind_effort_profile(neo, graph, load_effort_profile("neo-c-v1")), graph
+    )
+    assert result.final_goal_reached
+    assert result.min_effort["minimum_effort_value"] == 2
+    path = result.paths[0]
+    reset = next(
+        s
+        for s in path.transition_history
+        if s.result.request.technique_id == RESET and s.result.request.actor == OTHER
+    )
+    fact = next(d.fact for d in reset.result.decisions if d.predicate == "password_policy_accepts")
+    assert fact.assumption_metadata["rule_id"] == "rule-typed-password-policy-accepts"
+    assert replay_path(path, graph) == path.final_state
+
+
+@pytest.mark.parametrize("predicate", ["password_policy_accepts", "network_rpc_reachable"])
+def test_observed_false_still_blocks_a_second_reset(predicate):
+    graph, query, second_user = two_reset_chain()
+    query["runtime_facts"] = [
+        {
+            "predicate": predicate,
+            "subject": OTHER,
+            "target": second_user,
+            "value": False,
+            "origin": "observed_evidence",
+            "provenance_reference": "synthetic://second-reset-denied",
+        }
+    ]
+    assert not run_attack_query(compiled(graph, query), graph).paths
+
+
 @pytest.mark.parametrize(
     "predicate", ["host_admin_mapping", "endpoint_authorized", "recovery_success"]
 )

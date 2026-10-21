@@ -27,7 +27,7 @@
     "scripts/research/week3_semantic_bridge_probe.py": "sha256:d1ebb68e4af64079e5d54eb3ec48af332169b1b4bd192840a0c2e66b65a9adae",
     "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
     "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
-    "src/engine/query.py": "sha256:bc88af8c78e0d56df6d65401a115ffecaf59f1ce884d16686cda2846b867265a",
+    "src/engine/query.py": "sha256:71a7c3afd359aa6452220d9aff8c5e0410b46e7014b1e7b26efe991fb5614a6e",
     "src/engine/query_cli.py": "sha256:f5d577e1794c931504901ea4f535f7a95091535e655af0e0c554720e3acd941c",
     "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
     "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",

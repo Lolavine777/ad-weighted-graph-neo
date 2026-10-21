@@ -82,8 +82,9 @@ scenario độc lập có danh tính mạng dùng được (không gộp quyền
   --output-dir reports/generated/neo-domain-001 --workers 4
 ```
 
-Lượt đầu mặc định 256 expansions, 5 bước và một witness mỗi cặp; hết cap không phải
+Mặc định 1.024 expansions, 12 bước và một witness mỗi cặp; hết cap không phải
 no-path. Thêm `--resume` để tiếp tục cùng scope, hoặc dùng `--max-cells` để chia lượt.
+Đổi độ sâu bằng `--max-steps`; giới hạn quá ngắn có thể bỏ sót chuỗi hợp lệ.
 `scope.json` giữ recipe/profile/source pins; `cells.jsonl` giữ kết quả và witness
 với các facts đã dùng, được native replay kiểm tra. Không lưu lặp toàn bộ graph/facts
 cho hàng nghìn query. Cần output directory mới khi đổi budget hoặc code.

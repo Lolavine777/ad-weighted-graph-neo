@@ -1904,6 +1904,9 @@ def materialize_query(
                     "membership_usable",
                     "membership_change_allowed",
                     "directory_write_allowed",
+                    # Existing reset rules must also follow acquired identities.
+                    "password_policy_accepts",
+                    "network_rpc_reachable",
                 }
             ),
         )

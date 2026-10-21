@@ -35,7 +35,7 @@ TECHNIQUES = (
 )
 
 
-def build_survey(graph, *, max_expansions=256):
+def build_survey(graph, *, max_expansions=1024, max_steps=12):
     inventory = inventory_exposure(graph)
     context = next(
         t["goal"]["target_node_id"]
@@ -52,7 +52,7 @@ def build_survey(graph, *, max_expansions=256):
         max_sources=0,
         max_targets=0,
         evaluation_mode="scenario",
-        budget={"max_paths": 1, "max_steps": 5, "max_expansions": max_expansions},
+        budget={"max_paths": 1, "max_steps": max_steps, "max_expansions": max_expansions},
     )
     targets = {inventory["domain_sid"] + "-512", inventory["domain_sid"] + "-519"}
     request["target_manifest"]["targets"] = [
@@ -194,7 +194,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--snapshot", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--max-expansions", type=int, default=256)
+    parser.add_argument("--max-expansions", type=int, default=1024)
+    parser.add_argument("--max-steps", type=int, default=12)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument(
         "--max-cells", type=int, help="Optional execution slice; scope stays all sources"
@@ -204,12 +205,15 @@ def main(argv=None):
     if (
         args.workers < 1
         or args.max_expansions < 1
+        or args.max_steps < 1
         or (args.max_cells is not None and args.max_cells < 1)
     ):
-        parser.error("workers, max-expansions and max-cells must be positive")
+        parser.error("workers, max-expansions, max-steps and max-cells must be positive")
     started = time.perf_counter()
     graph = EngineGraph.from_snapshot(args.snapshot.read_text(encoding="utf-8"))
-    inventory, request = build_survey(graph, max_expansions=args.max_expansions)
+    inventory, request = build_survey(
+        graph, max_expansions=args.max_expansions, max_steps=args.max_steps
+    )
     config = {
         "version": "neo-domain-survey/1",
         "request": request.to_dict(),

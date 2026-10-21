@@ -40,6 +40,9 @@ def test_all_eligible_sources_are_selected_without_reachability_filter(graph):
     summary = neo_domain.summarize({}, request, 0)
     assert summary["declared_pairs"] == len(request.sources) * 2
     assert summary["not_run_pairs"] == summary["declared_pairs"]
+    assert request.common_budget.max_steps == 12
+    _, shallow = neo_domain.build_survey(graph, max_steps=5)
+    assert shallow.common_budget.max_steps == 5
 
 
 def test_native_evaluation_preserves_independent_capabilities_and_replays_slice(graph, monkeypatch):
