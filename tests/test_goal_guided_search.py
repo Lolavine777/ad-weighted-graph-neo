@@ -24,12 +24,13 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.mark.parametrize("cap", [1000, 1])
-def test_two_owner_programs_c_actor_switch_and_native_replay(cap):
+@pytest.mark.parametrize("search_order", ["goal_guided", "neo_guided"])
+def test_two_owner_programs_c_actor_switch_and_native_replay(cap, search_order):
     graph, query = two_owner_inputs()
     query["budget"]["max_paths"] = cap
     query = bind_reset_effort(query, graph, load_reset_effort_profile("reset-activation-c-v2"))
     fifo = run_attack_query(query, graph)
-    guided = run_attack_query({**query, "search_order": "goal_guided"}, graph)
+    guided = run_attack_query({**query, "search_order": search_order}, graph)
     assert guided.final_goal_reached and guided.min_effort["minimum_effort_value"] == 1
     if cap == 1000:
         assert not fifo.truncated and not guided.truncated
@@ -50,20 +51,21 @@ def test_two_owner_programs_c_actor_switch_and_native_replay(cap):
         assert replay_path(path, graph) == path.final_state
     assert costs == ({1, 2} if cap == 1000 else {1})
     assert (
-        execute({**query, "search_order": "goal_guided"}, graph)["materialized"]["search_strategy"][
+        execute({**query, "search_order": search_order}, graph)["materialized"]["search_strategy"][
             "effective"
         ]
-        == "goal_guided"
+        == search_order
     )
 
 
 @pytest.mark.parametrize(
     "case", [c for c in CASES if c.name != "missing_context"], ids=lambda c: c.name
 )
-def test_guidance_keeps_false_unknown_identity_and_context_boundaries(case):
+@pytest.mark.parametrize("search_order", ["goal_guided", "neo_guided"])
+def test_guidance_keeps_false_unknown_identity_and_context_boundaries(case, search_order):
     graph, query = scenario(case)
     fifo = run_attack_query(query, graph)
-    guided = run_attack_query({**query, "search_order": "goal_guided"}, graph)
+    guided = run_attack_query({**query, "search_order": search_order}, graph)
     assert guided.status == fifo.status
     assert {program_key(p) for p in guided.paths} == {program_key(p) for p in fifo.paths}
     assert (
@@ -99,7 +101,10 @@ def test_unsupported_catalog_and_goal_use_explicit_fifo_fallback():
 
 
 @pytest.mark.parametrize("worker", [False, True])
-def test_order_bound_to_cells_checkpoint_worker_and_progress_is_isolated(tmp_path, worker):
+@pytest.mark.parametrize("search_order", ["goal_guided", "neo_guided"])
+def test_order_bound_to_cells_checkpoint_worker_and_progress_is_isolated(
+    tmp_path, worker, search_order
+):
     graph, query = scenario(CASES[2])
     req = request(graph, query)
     events = []
@@ -115,23 +120,24 @@ def test_order_bound_to_cells_checkpoint_worker_and_progress_is_isolated(tmp_pat
         checkpoint=tmp_path / "checkpoint.json",
         execution_budget=BatchExecutionBudget(per_query_seconds=10) if worker else None,
     )
-    first = run_source_goal_batch(req, graph, search_order="goal_guided", on_cell=record, **opts)
+    first = run_source_goal_batch(req, graph, search_order=search_order, on_cell=record, **opts)
     assert len(events) == 1 and events[0]["C"] == 1
     trace = next(iter(first.reproducibility["inputs"]["public_queries"].values()))
-    assert trace["query"]["search_order"] == "goal_guided"
-    assert trace["materialized"]["search_strategy"]["effective"] == "goal_guided"
-    resumed = run_source_goal_batch(req, graph, search_order="goal_guided", resume=True, **opts)
+    assert trace["query"]["search_order"] == search_order
+    assert trace["materialized"]["search_strategy"]["effective"] == search_order
+    resumed = run_source_goal_batch(req, graph, search_order=search_order, resume=True, **opts)
     assert resumed.source_goal_matrix == first.source_goal_matrix
     with pytest.raises(ValueError, match="CHECKPOINT_SCOPE_MISMATCH"):
         run_source_goal_batch(req, graph, search_order="fifo", resume=True, **opts)
 
 
-def test_remediation_scope_binds_search_order():
+@pytest.mark.parametrize("search_order", ["goal_guided", "neo_guided"])
+def test_remediation_scope_binds_search_order(search_order):
     graph, query = scenario(CASES[2])
     cell = {
         "source_id": "source",
         "goal_id": "goal",
-        "query": {**query, "search_order": "goal_guided"},
+        "query": {**query, "search_order": search_order},
     }
     baseline = prepare_baseline(graph, [cell], run_id="guided")
     inventory = inventory_interventions(graph, baseline)
@@ -146,7 +152,8 @@ def test_remediation_scope_binds_search_order():
         replay_baseline(intervention, graph, forged_baseline)
 
 
-def test_cli_guided_progress_and_refused_resume_preserve_prior_output(tmp_path):
+@pytest.mark.parametrize("search_order", ["goal_guided", "neo_guided"])
+def test_cli_guided_progress_and_refused_resume_preserve_prior_output(tmp_path, search_order):
     graph, query = scenario(CASES[2])
     graph_path = tmp_path / "graph.json"
     graph_path.write_text(json.dumps(graph.to_canonical()))
@@ -175,7 +182,7 @@ def test_cli_guided_progress_and_refused_resume_preserve_prior_output(tmp_path):
         "--effort-profile",
         "reset-activation-c-v2",
         "--search-order",
-        "goal_guided",
+        search_order,
         "--output-dir",
         str(out),
         "--max-paths",
@@ -190,7 +197,7 @@ def test_cli_guided_progress_and_refused_resume_preserve_prior_output(tmp_path):
     assert any(e["reached"] and e["C"] == 1 and e["witness"]["steps"] for e in events)
     assert (out / "defender-brief.md").exists()
     changed = list(command)
-    changed[changed.index("goal_guided")] = "fifo"
+    changed[changed.index(search_order)] = "fifo"
     refused = subprocess.run(changed + ["--resume"], cwd=ROOT, capture_output=True, text=True)
     assert refused.returncode == 2 and "CHECKPOINT_SCOPE_MISMATCH" in refused.stderr
     assert progress.read_bytes() == previous

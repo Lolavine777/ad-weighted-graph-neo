@@ -312,14 +312,29 @@ class MaterializedQuery:
 
     @property
     def search_strategy(self):
-        supported = isinstance(self.semantic_goal, UsableIdentityEntitlementGoal) and {
-            t.id for t in self.catalog
-        } <= {"scenario_reset_password", "acquire_reset_identity", "propagate_group_entitlement"}
+        from src.engine.search import NEO_GUIDED_TECHNIQUES
+
+        techniques = {t.id for t in self.catalog}
+        if self.search_order == "neo_guided":
+            supported = self.semantic_goal is not None and techniques <= NEO_GUIDED_TECHNIQUES
+        else:
+            supported = isinstance(self.semantic_goal, UsableIdentityEntitlementGoal) and (
+                techniques
+                <= {
+                    "scenario_reset_password",
+                    "acquire_reset_identity",
+                    "propagate_group_entitlement",
+                }
+            )
         effective = self.search_order if supported else "fifo"
         return {
             "requested": self.search_order,
             "effective": effective,
-            "version": "goal-guided-membership/1" if effective == "goal_guided" else "fifo/1",
+            "version": {
+                "fifo": "fifo/1",
+                "goal_guided": "goal-guided-membership/1",
+                "neo_guided": "neo-guided-topology/1",
+            }[effective],
             "fallback_reason": "unsupported_goal_or_catalog"
             if self.search_order != effective
             else None,

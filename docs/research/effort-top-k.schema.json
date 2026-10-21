@@ -21,6 +21,22 @@
     "objective": {
       "const": "unique_active_work_unit_effort_C"
     },
+    "rating_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_dimensions",
+        "supplementary_dimensions",
+        "missing_supplementary_blocks_selection",
+        "legacy_CPI_eligibility_applies"
+      ],
+      "properties": {
+        "required_dimensions": {"const": ["C"]},
+        "supplementary_dimensions": {"const": ["P", "I"]},
+        "missing_supplementary_blocks_selection": {"const": false},
+        "legacy_CPI_eligibility_applies": {"const": false}
+      }
+    },
     "requested_k": {
       "type": "integer",
       "minimum": 1
@@ -74,6 +90,9 @@
           "effort": {
             "type": "number",
             "minimum": 0
+          },
+          "eligibility": {
+            "const": "eligible_for_C_ranking"
           },
           "work_unit_ids": {
             "type": "array",

@@ -538,7 +538,7 @@ def main(argv=None):
         help="Opt-in C-only effort; neo-c-v1 covers reset, membership, ACL and host execution",
     )
     parser.add_argument("--technique", action="append")
-    parser.add_argument("--search-order", choices=("fifo", "goal_guided"), default="fifo")
+    parser.add_argument("--search-order", choices=("fifo", "goal_guided", "neo_guided"))
     parser.add_argument(
         "--max-sources", type=int, default=20, help="0 selects all eligible/explicit sources"
     )
@@ -575,6 +575,9 @@ def main(argv=None):
         "--remediation-targets", type=int, default=2, help="0 uses all selected goals"
     )
     args = parser.parse_args(argv)
+    args.search_order = args.search_order or (
+        "neo_guided" if args.effort_profile == "neo-c-v1" else "fifo"
+    )
     args.evaluation_mode = args.evaluation_mode or (
         "scenario" if args.scenario_policy else "evidence_only"
     )

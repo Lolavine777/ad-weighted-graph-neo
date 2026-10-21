@@ -80,6 +80,7 @@ def effort_programs(result: Any) -> tuple[list[dict[str, Any]], list[dict[str, A
             "program_id": program_id(key),
             "program_key": key,
             "effort": effort,
+            "eligibility": "eligible_for_C_ranking",
             "work_unit_ids": deepcopy(assessment.get("program", [])) if assessment else [],
             "work_unit_ledger": deepcopy(assessment.get("work_unit_basis", {}))
             if assessment
@@ -115,6 +116,12 @@ def select_top_k(result: Any, k: int) -> dict[str, Any]:
     return {
         "version": "effort-top-k/1.0.0",
         "objective": "unique_active_work_unit_effort_C",
+        "rating_policy": {
+            "required_dimensions": ["C"],
+            "supplementary_dimensions": ["P", "I"],
+            "missing_supplementary_blocks_selection": False,
+            "legacy_CPI_eligibility_applies": False,
+        },
         "requested_k": k,
         "returned_count": len(selected),
         "program_identity_policy": IDENTITY_POLICY,

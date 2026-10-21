@@ -24,21 +24,21 @@ uv pip sync --python .venv/bin/python requirements-neo.lock
 .venv/bin/python -m scripts.neo_baseline --output-dir reports/generated/neo-run-001
 ```
 
-Lệnh tải hoặc kiểm tra SEAMLESS theo manifest, dựng snapshot, khai báo machine foothold và scenario assumptions, chạy FIFO/goal-guided qua CLI, rồi kiểm native replay và parity API/CLI.
+Lệnh tải hoặc kiểm tra SEAMLESS theo manifest, dựng snapshot, khai báo machine foothold và scenario assumptions, đối chiếu FIFO/goal-guided/neo-guided qua CLI, rồi kiểm native replay và parity API/CLI.
 Scenario mặc định là `neo-standard-v1`: nhóm thiếu thuộc tính loại được giả định là
 security group, kể cả tên DISTLIST; thuộc tính non-security và fact False vẫn chặn.
 Các giả định được ghi rõ trong trace. Dùng `--scenario-policy seamless-standard-v1`
 để tái lập scenario thận trọng của baseline cũ.
 Dùng output directory mới cho mỗi lượt để giữ kết quả cũ.
-Đọc `summary.json`; `goal_guided.json` giữ đầy đủ witness, assumptions, C ledger, provenance và giới hạn.
+Đọc `summary.json`; `neo_guided.json` giữ đầy đủ witness, assumptions, C ledger, Top-K và giới hạn.
 Đây là benchmark một machine-to-DA query với ba techniques và cap 6.000 expansions.
 Không phải chứng minh an toàn toàn miền hoặc phép so sánh BloodHound.
 
-Để dùng bảng C mới của neo trên cùng query:
+Runner mặc định dùng bảng `neo-c-v1`. Để đối chiếu bảng reset cũ:
 
 ```sh
-.venv/bin/python -m scripts.neo_baseline --effort-profile neo-c-v1 \
-  --output-dir reports/generated/neo-c-001
+.venv/bin/python -m scripts.neo_baseline --effort-profile reset-activation-c-v2 \
+  --output-dir reports/generated/neo-reset-001
 ```
 
 `neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi quản trị,
@@ -46,7 +46,18 @@ kể cả khi quyền đến từ nhóm hoặc danh tính thu được giữa đ
 Membership có sẵn không thêm công sức; P/I không bắt buộc để có C.
 Runner trên vẫn chỉ bật ba techniques của benchmark cũ;
 dùng `scripts.exposure --effort-profile neo-c-v1` cho truy vấn nhiều techniques.
+Profile neo mặc định xuất Top-3 theo C; thiếu P/I không loại đường đủ C.
+Exposure chọn `neo_guided` khi dùng profile neo; catalog ngoài nhóm techniques hỗ trợ
+sẽ ghi rõ fallback FIFO. `--search-order fifo` giữ cách tìm cũ.
 Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
+
+Đối chiếu bộ 10 query trên snapshot vừa dựng; đổi `--max-paths 1` thành `3` để khảo sát nhiều đường:
+
+```sh
+.venv/bin/python -m scripts.neo_cohort \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-cohort-001 --max-paths 1
+```
 
 ## Query nhỏ có chi phí
 

@@ -353,3 +353,76 @@ quyền phát sinh, evidence-only, profile transport, worker/resume và counterf
 23 test mới pass. Các lượt test tập trung engine/query/batch/C, policy và remediation
 có tổng 777 passed, 3 optional raw-remediation pilots skipped; không chạy full suite.
 Runner SEAMLESS với scenario mới đã qua native replay và API–CLI parity.
+
+## Neo search và C-first (2026-10-21)
+
+`neo_guided` thêm thứ tự ưu tiên vào planner hiện có: khoảng cách cấu trúc tới đích,
+ưu tiên kích hoạt credential đã reset, rồi theo nhánh hữu ích trước khi xét tiếp
+các hành động còn lại của một state nhiều nhánh. Những hành động còn lại được giữ
+trong queue; không bỏ nhánh, thêm quyền hoặc sửa evaluator/scenario/bảng C.
+Đây là greedy guidance, không phải C lower bound hoặc bảo đảm minimum.
+Group/host goals và nhóm reset/membership/ACL/admin/WinRM được hỗ trợ;
+public query ngoài catalog đó hoặc thiếu typed goal ghi rõ fallback FIFO.
+FIFO và `goal_guided` cũ giữ nguyên để đối chiếu.
+
+`neo-c-v1` mặc định yêu cầu Top-3 theo C (giữ `top_k` tường minh của người gọi).
+Tái sử dụng selector và work-unit dedup hiện có. Top-K ghi rõ `eligible_for_C_ranking`,
+required dimension C, supplementary P/I; thiếu P/I không chặn selection.
+Nhãn `ineligible_partially_unrated` trong audit CPI cũ chỉ nói về đủ cả ba chiều,
+không phải loại khỏi Top-K theo C. Thiếu C vẫn bị loại, không biến thành C=0.
+
+Đối chiếu cùng snapshot, facts/policy, techniques, max_steps=5, cap=6.000;
+max_paths=1, Q8 dùng guided cũ ở cột baseline, các ca còn lại FIFO:
+
+| Query | Expansions baseline | Expansions neo | C neo |
+| --- | ---: | ---: | ---: |
+| Q1 | 1 | 1 | 1 |
+| Q2 | 8 | 1 | 0 |
+| Q3 | 6.000, chưa có witness | 6 | 1 |
+| Q4 | 6.000, chưa có witness | 5 | 1 |
+| Q5 | 6.000, chưa có witness | 7 | 1 |
+| Q6 | 6.000, chưa có witness | 4 | 3 |
+| Q7 | 6.000, chưa có witness | 6 | 1 |
+| Q8 | 4.995 | 6 | 1 |
+| Q9 | 6.000, chưa có witness | 11 | 2 |
+| Q10 | 1 | 1 | Chưa chấm |
+
+Discovery tăng 4/10 → 10/10; query có C tăng 3/10 → 9/10.
+Q2 là entitlement có sẵn; Q7/Q8 cùng nguồn–đích, khác search order baseline.
+Đây là cohort chẩn đoán nhỏ, không phải 10 ca độc lập ngẫu nhiên hay toàn miền.
+Tất cả witness qua native replay và declared goal; không đếm ordered probe.
+Q10 vẫn thiếu C, các kết quả best-found vẫn ghi giới hạn tìm kiếm.
+
+Với max_paths=3: baseline tìm 6 witness trên 4 query; neo tìm 24 trên 10 query.
+23/24 witness đủ C. Q6 có ba chương trình C=3,5,5 và Top-K xếp 3 trước 5;
+Q9 có ba đường C=2. Đồng điểm được giữ và công bố, không tự tạo khác biệt P/I.
+Q4 chỉ tìm một witness rồi chạm cap; không tuyên bố đã tìm hết alternative.
+Finite oracle riêng đối chiếu toàn bộ programs giữa FIFO/neo và các route C=1,2,4;
+kiểm False/Unknown, identity/context boundaries, work ledger, worker/resume và remediation.
+
+Tradeoff Linux trong lượt này: max_paths=1 tổng query time 16,62 → 20,66s;
+max_paths=3 là 19,44 → 57,03s. Tổng expansions tương ứng 41.005 → 48 và
+42.026 → 6.087. Mỗi phương án tìm/chấm số witness khác nhau; đây không phải
+speedup runtime. Số expansions không bao gồm preparation, sinh candidate hay scoring.
+Một lượt riêng Q4/max_paths=3 đo process peak RSS (gồm load snapshot/query):
+FIFO 309,4 MiB, neo 405,5 MiB, tăng khoảng 31%; neo tìm một witness, FIFO không tìm
+được. Đây không phải số đo RAM toàn cohort. Không so thời gian Linux với macOS baseline.
+
+Tái lập sau khi chạy `scripts.neo_baseline` để có snapshot:
+
+```sh
+.venv/bin/python -m scripts.neo_cohort \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-search-single --max-paths 1
+.venv/bin/python -m scripts.neo_cohort \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-search-multi --max-paths 3
+```
+
+Runner lưu public queries, witnesses/Top-K và summary; replay mọi witness ngay trong
+lượt chạy. Bản neo baseline mặc định C mới, chạy cả ba orders và kiểm parity API/CLI.
+Raw data và generated outputs tiếp tục không commit.
+
+Validation thay đổi này: 487 focused tests passed, 1 optional raw-remediation test
+skipped; chưa chạy full suite. Native replay/API–CLI parity gồm Top-K pass;
+Ruff check/format, yamllint, repository và graph contract checks pass.

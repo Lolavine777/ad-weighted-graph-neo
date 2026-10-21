@@ -37,7 +37,7 @@ def main(argv=None):
         default="neo-standard-v1",
     )
     parser.add_argument(
-        "--effort-profile", choices=(MACHINE_PROFILE_ID, NEO_PROFILE_ID), default=MACHINE_PROFILE_ID
+        "--effort-profile", choices=(MACHINE_PROFILE_ID, NEO_PROFILE_ID), default=NEO_PROFILE_ID
     )
     args = parser.parse_args(argv)
     output = args.output_dir.resolve()
@@ -98,7 +98,7 @@ def main(argv=None):
         "runs": [],
     }
     guided = None
-    for order in ("fifo", "goal_guided"):
+    for order in ("fifo", "goal_guided", "neo_guided"):
         destination = output / f"{order}.json"
         command = [
             sys.executable,
@@ -139,9 +139,9 @@ def main(argv=None):
                 "command": command,
             }
         )
-        if order == "goal_guided":
+        if order == "neo_guided":
             guided = semantic
-    native = run_attack_query({**query, "search_order": "goal_guided"}, graph)
+    native = run_attack_query({**query, "search_order": "neo_guided"}, graph)
     assert native.paths and native.min_effort["minimum_effort_value"] == 1
     assert native.min_effort["associated_likelihood_interval"] is None
     assert native.min_effort["associated_impact"] is None
@@ -150,6 +150,9 @@ def main(argv=None):
     ]
     assert wire(native.min_effort) == guided["min_effort"]
     assert wire(native.rating_coverage) == guided["rating_coverage"]
+    if args.effort_profile == NEO_PROFILE_ID:
+        assert wire(native.top_k_result) == guided["top_k"]
+    assert guided["materialized"]["search_strategy"]["effective"] == "neo_guided"
     for path in native.paths:
         assert replay_path(path, graph) == path.final_state
     summary["native_replay_and_API_CLI_parity"] = True

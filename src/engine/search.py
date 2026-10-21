@@ -8,6 +8,7 @@ import math
 from collections import deque
 from collections.abc import Callable, Iterator, Mapping, Sequence
 from dataclasses import dataclass
+from itertools import islice
 from typing import Any, Protocol
 
 from src.engine.program_identity import program_key
@@ -33,8 +34,83 @@ from .graph import EngineGraph
 
 
 def validate_search_order(value: str) -> None:
-    if value not in ("fifo", "goal_guided"):
-        raise ValueError("search_order must be fifo or goal_guided")
+    if value not in ("fifo", "goal_guided", "neo_guided"):
+        raise ValueError("search_order must be fifo, goal_guided or neo_guided")
+
+
+NEO_GUIDED_TECHNIQUES = frozenset(
+    {
+        "scenario_reset_password",
+        "genericall_reset_password",
+        "reset_target_password",
+        "acquire_reset_identity",
+        "propagate_group_entitlement",
+        "genericall_add_member",
+        "genericall_grant_write_dacl",
+        "grant_new_object_right",
+        "obtain_admin_execution_on_host",
+        "scenario_winrm_admin",
+        "open_winrm_remote_session",
+    }
+)
+
+
+class _NeoGoalQueue:
+    """Greedy topology guidance for core neo techniques; no pruning or cost claims.
+
+    Both branches and their next actions need ordering: a single high-fanout
+    branch can otherwise spend the entire budget before the queue is revisited.
+    Distances are hints only; semantics still checks every attempted transition.
+    """
+
+    def __init__(self, items, relationships, target, catalog):
+        kinds = {str(t.relationship) for t in catalog}
+        reverse = {}
+        for relation in relationships:
+            if relation.kind in kinds:
+                reverse.setdefault(relation.target, set()).add(relation.source)
+        self.distance = {target: 0}
+        pending = deque([target])
+        while pending:
+            node = pending.popleft()
+            for child in sorted(reverse.get(node, ())):
+                if child not in self.distance:
+                    self.distance[child] = self.distance[node] + 1
+                    pending.append(child)
+        self.heap = []
+        self.serial = 0
+        for item in items:
+            self.append(item)
+
+    def __bool__(self):
+        return bool(self.heap)
+
+    def _priority(self, request):
+        endpoint = (
+            request.source if request.technique_id == "acquire_reset_identity" else request.target
+        )
+        # Activate an obtained credential before collecting more reset targets.
+        phase = 0 if request.technique_id == "acquire_reset_identity" else 1
+        return self.distance.get(endpoint, math.inf), phase
+
+    def action_priority(self, candidate):
+        _, relation, technique, next_actor, _, _ = candidate
+        return self._priority(
+            TransitionRequest(technique.id, next_actor, relation.source, relation.target)
+        )
+
+    def append(self, item):
+        history = item[4]
+        if len(item) == 8:
+            candidates, start = item[7]
+            priority = self.action_priority(candidates[start])
+        else:
+            priority = self._priority(history[-1].result.request) if history else (math.inf, 1)
+        heapq.heappush(self.heap, (*priority, len(history), self.serial, item))
+        self.serial += 1
+
+    def popleft(self):
+        return heapq.heappop(self.heap)[-1]
 
 
 class _GoalQueue:
@@ -491,7 +567,12 @@ def generate_attack_paths(
     # actor, state, target-sequence, observed edges, transition trace, used actions,
     # and the transition that first introduced each derived relationship.
     initial = [(actor, initial_state, (actor,), (), (), frozenset(), {})]
-    if search_order == "goal_guided":
+    if search_order == "neo_guided":
+        targets = [n for n in nodes.values() if target_predicate(n)]
+        if len(targets) != 1 or not {t.id for t in selected_catalog} <= NEO_GUIDED_TECHNIQUES:
+            raise ValueError("neo_guided requires one target and supported neo techniques")
+        pending = _NeoGoalQueue(initial, edge_by_relationship, targets[0]["id"], selected_catalog)
+    elif search_order == "goal_guided":
         targets = [n for n in nodes.values() if target_predicate(n)]
         if len(targets) != 1 or targets[0]["kind"] != "Group":
             raise ValueError("goal_guided requires one Group target")
@@ -522,7 +603,8 @@ def generate_attack_paths(
                 else "expansion_limit_reached"
             )
             break
-        current_actor, state, path_nodes, path_edges, history, used, origins = pending.popleft()
+        branch = pending.popleft()
+        current_actor, state, path_nodes, path_edges, history, used, origins = branch[:7]
         if len(history) >= budget.max_steps:
             has_candidates = any(
                 True
@@ -543,18 +625,24 @@ def generate_attack_paths(
                     truncation_reason = "step_limit_reached"
             continue
 
-        candidates = list(
-            branch_action_candidates(
-                nodes,
-                state,
-                current_actor,
-                actor,
-                runtime_context,
-                relationships_by_source,
-                selected_catalog,
-                used,
+        if len(branch) == 8:
+            candidates, start_index = branch[7]
+        else:
+            candidates = list(
+                branch_action_candidates(
+                    nodes,
+                    state,
+                    current_actor,
+                    actor,
+                    runtime_context,
+                    relationships_by_source,
+                    selected_catalog,
+                    used,
+                )
             )
-        )
+            start_index = 0
+            if search_order == "neo_guided":
+                candidates.sort(key=pending.action_priority)
         advanced = False
 
         for idx, (
@@ -564,7 +652,7 @@ def generate_attack_paths(
             next_actor,
             action_key,
             target_node,
-        ) in enumerate(candidates):
+        ) in enumerate(islice(candidates, start_index, None), start_index):
             if expansions >= budget.max_expansions:
                 truncated = True
                 if truncation_reason is None:
@@ -765,6 +853,12 @@ def generate_attack_paths(
                     )
                 )
             advanced = True
+            if search_order == "neo_guided":
+                # Resume siblings later rather than spending the whole budget
+                # on one high-fanout state before visiting a useful child.
+                if idx + 1 < len(candidates):
+                    pending.append((*branch[:7], (candidates, idx + 1)))
+                break
 
         if expansions >= budget.max_expansions:
             if bool(pending):

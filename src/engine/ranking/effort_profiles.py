@@ -168,4 +168,6 @@ def bind_effort_profile(query, graph, profile):
         "P": "not_evaluated",
         "I": "not_evaluated",
     }
+    # Reuse the existing C-only selector. Missing P/I do not exclude these paths.
+    updated.setdefault("top_k", 3)
     return updated
