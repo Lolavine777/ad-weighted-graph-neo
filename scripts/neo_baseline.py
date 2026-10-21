@@ -17,7 +17,8 @@ from scripts.research.source_goal_batch import BatchQueryRequest
 from src.engine.batch import _query_for_cell
 from src.engine.query import run_attack_query
 from src.engine.query_cli import canonical_json, digest, wire
-from src.engine.ranking.reset_effort import MACHINE_PROFILE_ID, load_reset_effort_profile
+from src.engine.ranking.effort_profiles import NEO_PROFILE_ID, load_effort_profile
+from src.engine.ranking.reset_effort import MACHINE_PROFILE_ID
 from src.engine.semantics.credentials import replay_path
 from src.engine.semantics.scenario_policy import load_policy_profile
 from src.parser.snapshot_facts import serialize_snapshot
@@ -30,6 +31,9 @@ TECHNIQUES = ("scenario_reset_password", "acquire_reset_identity", "propagate_gr
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument(
+        "--effort-profile", choices=(MACHINE_PROFILE_ID, NEO_PROFILE_ID), default=MACHINE_PROFILE_ID
+    )
     args = parser.parse_args(argv)
     output = args.output_dir.resolve()
     output.mkdir(parents=True, exist_ok=False)
@@ -70,13 +74,14 @@ def main(argv=None):
         TECHNIQUES,
         request.common_budget,
         scenario_policy=load_policy_profile("seamless-standard-v1"),
-        effort_profile=load_reset_effort_profile(MACHINE_PROFILE_ID),
+        effort_profile=load_effort_profile(args.effort_profile),
     )
     assert error is None, error
     query_path = output / "query.json"
     query_path.write_text(json.dumps(query, indent=2) + "\n", encoding="utf-8")
     summary = {
         "revision": revision,
+        "effort_profile": args.effort_profile,
         "python": sys.version,
         "platform": platform.platform(),
         "nodes": 3370,

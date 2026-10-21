@@ -30,6 +30,20 @@ Dùng output directory mới cho mỗi lượt để giữ kết quả cũ.
 Đây là benchmark một machine-to-DA query với ba techniques và cap 6.000 expansions.
 Không phải chứng minh an toàn toàn miền hoặc phép so sánh BloodHound.
 
+Để dùng bảng C mới của neo trên cùng query:
+
+```sh
+.venv/bin/python -m scripts.neo_baseline --effort-profile neo-c-v1 \
+  --output-dir reports/generated/neo-c-001
+```
+
+`neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi quản trị,
+kể cả khi quyền đến từ nhóm hoặc danh tính thu được giữa đường.
+Membership có sẵn không thêm công sức; P/I không bắt buộc để có C.
+Runner trên vẫn chỉ bật ba techniques của benchmark cũ;
+dùng `scripts.exposure --effort-profile neo-c-v1` cho truy vấn nhiều techniques.
+Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
+
 ## Query nhỏ có chi phí
 
 ```sh

@@ -309,6 +309,7 @@ def _providers(data, policy, *, semantic_goal=None, scenario_reference=None):
                 "source_ids",
                 "snapshot_ids",
                 "work_unit_digests",
+                "node_ids",
             ):
                 if key in applicability and applicability[key] is not None:
                     if not isinstance(applicability[key], list) or any(

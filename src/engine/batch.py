@@ -36,7 +36,7 @@ from scripts.research.source_goal_batch import (
 from src.engine.graph import EngineGraph
 from src.engine.query import AttackQuery, materialize_query, run_attack_query
 from src.engine.query_cli import wire
-from src.engine.ranking.reset_effort import bind_reset_effort, load_reset_effort_profile
+from src.engine.ranking.effort_profiles import bind_effort_profile, load_effort_profile
 from src.engine.ranking.resolution_service import canonical_digest
 from src.engine.semantics import FactOrigin, RuntimeFact
 from src.engine.semantics.scenario_policy import (
@@ -287,7 +287,7 @@ def _query_for_cell(
     if scenario_policy is not None:
         query = apply_policy_to_query(_wire_query(query), graph, scenario_policy)
     if effort_profile is not None:
-        query = bind_reset_effort(_wire_query(query), graph, effort_profile)
+        query = bind_effort_profile(_wire_query(query), graph, effort_profile)
     return query, None
 
 
@@ -462,7 +462,7 @@ def run_source_goal_batch(
         raise TypeError("on_cell must be callable")
     request = _parse_request(request)
     policy = load_policy_profile(scenario_policy) if scenario_policy is not None else None
-    effort = load_reset_effort_profile(effort_profile) if effort_profile is not None else None
+    effort = load_effort_profile(effort_profile) if effort_profile is not None else None
     if effort is not None and request.rating_resolution is not None:
         raise ValueError("effort_profile conflicts with explicit rating_resolution")
     policy_input = {}

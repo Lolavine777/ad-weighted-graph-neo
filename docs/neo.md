@@ -95,6 +95,57 @@ Các hash này kiểm thay đổi source hiện hành; không cấp numeric auth
 Khi chủ động đổi source được pin, sinh lại baseline bằng công cụ đã cung cấp và chạy kiểm thử trước khi commit.
 Không sửa checksum lịch sử để che drift.
 
+## Chi phi C cho neo
+
+Profile opt-in `neo-c-v1` dùng bảng công sức C cho hành động thay vì khai báo từng cặp
+reset của actor ban đầu. C là điểm tương đối theo scenario, không phải thời gian hay P.
+Giữ công thức `C = T1 + T2 - 2`: T1 là độ phức tạp công cụ (1: chuẩn, 2: tùy biến,
+3: cần nghiên cứu); T2 là công sức thao tác (1: trao đổi đơn giản, 2: nhiều thao tác
+và xác minh, 3: xử lý/tính toán nặng). Đây là các ước lượng được chọn cho neo từ rubric
+cũ; không chuyển trạng thái duyệt A/B hay xác suất lịch sử sang scope mới.
+
+| Hành động | Techniques | T1 / T2 | C |
+| --- | --- | --- | --- |
+| Reset mật khẩu | `genericall_reset_password`, `reset_target_password`, `scenario_reset_password` | 1 / 2 | 1 |
+| Dùng danh tính vừa reset | `acquire_reset_identity` | 1 / 1 | 0 |
+| Thêm thành viên nhóm | `genericall_add_member` | 1 / 2 | 1 |
+| Cấp quyền sửa DACL | `genericall_grant_write_dacl` | 1 / 2 | 1 |
+| Sửa DACL để cấp GenericAll | `grant_new_object_right` | 2 / 2 | 2 |
+| Thực thi quản trị host | `obtain_admin_execution_on_host`, `scenario_winrm_admin` | 1 / 2 | 1 |
+
+Membership đã có là suy diễn quyền, không tạo work unit. Hành động C=0 vẫn cần qua
+semantic checks. Tổng C tính trên hợp các work unit, giữ nguyên cách khử trùng hiện có;
+không cộng riêng một bước chuẩn bị chung khi thao tác đã bao gồm nó.
+
+Scope là cùng miền, cùng authentication context, snapshot và scenario đã chọn.
+Actor, nguồn quyền và đích hành động phải thuộc tập node trong miền đó, không phải boundary.
+Giá áp dụng cả quyền qua nhóm, quyền vừa sửa và danh tính thu được giữa đường;
+việc cấp giá không cấp capability hay biến prerequisite Unknown/False thành True.
+Goal vẫn phân biệt danh tính thuộc nhóm đặc quyền với quyền thực thi trên host.
+Techniques ngoài bảng tiếp tục chưa chấm C, không tự nhận C=0.
+
+API Python dùng `load_effort_profile("neo-c-v1")` và `bind_effort_profile(query, graph, profile)`
+tại `src.engine.ranking.effort_profiles`. Batch/exposure nhận `--effort-profile neo-c-v1`.
+Các profile reset cũ và mặc định runner được giữ để tái lập benchmark.
+Thay đổi này mở coverage C; chưa đổi search, thêm P/I hay mở roaming context.
+
+Ví dụ kỳ vọng trên mô hình hữu hạn: quyền qua nhóm → reset → dùng danh tính →
+quản trị host có C=2; sửa DACL → reset → dùng danh tính → quản trị host có C=4.
+Độ nhạy của các mức điểm và coverage nhiều nguồn trên SEAMLESS cần đo riêng.
+
+Kiểm tra đầu tiên với raw SEAMLESS đã kiểm manifest: baseline machine-to-DA giữ
+witness C=1 sau 4.995 expansions và qua native replay/API–CLI parity.
+Một query User có usable identity → host qua AdminTo, cùng scenario và goal
+`admin_control`, giữ nguyên đường và 1 expansion: profile reset cũ không áp dụng,
+`neo-c-v1` chấm C=1. Đây là cải thiện coverage trên một ca, chưa phải toàn SEAMLESS
+hoặc cải thiện runtime. Các chain reset qua nhóm, ACL và đổi actor được kiểm riêng
+bằng finite tests trong `tests/test_neo_effort.py`.
+Ca AdminTo dùng source SID kết thúc `-1116`, host/context `-1000` trong miền SEAMLESS,
+chỉ bật `obtain_admin_execution_on_host`, cap 100 expansions và ba steps.
+550 test hồi quy engine/query/batch/scoring pass, gồm 23 test mới; lint, format,
+repository và contract checks pass. Lượt full suite được dừng trước khi hoàn tất
+do thời gian chạy các test lịch sử; không dùng lượt đó để tuyên bố full-suite pass.
+
 ## Ba ưu tiên tiếp theo
 
 1. Xây cost-guided search C-first trong planner stateful hiện hữu, tái dùng preparation giữa queries, với oracle finite kiểm work deduplication, zero-cost actions và bằng chứng optimality dưới budget.

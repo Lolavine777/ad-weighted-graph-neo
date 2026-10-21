@@ -534,8 +534,8 @@ def main(argv=None):
     parser.add_argument("--rating-resolution")
     parser.add_argument(
         "--effort-profile",
-        choices=("reset-activation-c-v1", "reset-activation-c-v2"),
-        help="Opt-in ordinal C-only reset/activation; v2 includes explicit machine identity",
+        choices=("reset-activation-c-v1", "reset-activation-c-v2", "neo-c-v1"),
+        help="Opt-in C-only effort; neo-c-v1 covers reset, membership, ACL and host execution",
     )
     parser.add_argument("--technique", action="append")
     parser.add_argument("--search-order", choices=("fifo", "goal_guided"), default="fifo")

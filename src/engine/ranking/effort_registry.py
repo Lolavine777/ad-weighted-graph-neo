@@ -95,6 +95,7 @@ class ClassApplicability:
     predicate: Callable[[EffortLookupKey, Mapping[str, Any], Mapping[str, Any]], bool] | None = None
     snapshot_ids: tuple[str, ...] | None = None
     work_unit_digests: tuple[str, ...] | None = None
+    node_ids: tuple[str, ...] | None = None
 
     def evaluate(
         self,
@@ -133,6 +134,11 @@ class ClassApplicability:
                 return ApplicabilityMatchResult.SCOPE_MISMATCH
 
         # 6. Auth / Resource context check
+        if self.node_ids is not None and any(
+            node not in self.node_ids
+            for node in (key.actor_id, key.source_id or key.actor_id, key.target_id)
+        ):
+            return ApplicabilityMatchResult.CONTEXT_MISMATCH
         if self.source_ids is not None and key.source_id not in self.source_ids:
             return ApplicabilityMatchResult.CONTEXT_MISMATCH
         if self.snapshot_ids is not None and scope.get("snapshot_id") not in self.snapshot_ids:
@@ -171,6 +177,7 @@ class ClassApplicability:
             "aliases": list(self.aliases),
             **({"source_ids": list(self.source_ids)} if self.source_ids is not None else {}),
             **({"snapshot_ids": list(self.snapshot_ids)} if self.snapshot_ids is not None else {}),
+            **({"node_ids": list(self.node_ids)} if self.node_ids is not None else {}),
             **(
                 {"work_unit_digests": list(self.work_unit_digests)}
                 if self.work_unit_digests is not None
