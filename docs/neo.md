@@ -197,3 +197,113 @@ Ruff check/format, yamllint, repository/contract checks và Docker Compose confi
 Demo remediation synthetic cắt 50% programs, ngắt 0% source-goal pairs và giữ hai bypass; không suy rộng sang SEAMLESS.
 Chưa chạy đối chứng BloodHound live mới hoặc chờ kết quả CI trên GitHub.
 Kết quả tổng hợp ở [validation neo](../reports/neo/validation.json).
+
+
+## Khảo sát 10 query SEAMLESS với neo-c-v1 (2026-10-21)
+
+Đo tại `9ede3d8`, Python 3.14.7, trên snapshot 3.370 nodes/56.367 edges do `neo_baseline` vừa dựng từ raw đã kiểm manifest.
+Chọn cohort chủ đích theo các cạnh có thật, không chọn theo kết quả search; đây không phải mẫu đại diện toàn miền.
+Mọi nguồn được khai báo có usable identity tại đúng context; riêng Computer cũng là giả định compromise tường minh, không suy từ host control.
+Dùng `seamless-standard-v1`, không thêm facts/assumptions thủ công, budget 1 witness/5 steps/6.000 expansions và technique scope ghi trong lệnh bên dưới.
+Mục tiêu nhóm là usable-identity entitlement; host là admin control, riêng Q10 chỉ là remote command execution.
+Thời gian là một lượt API gồm compile policy + bind C + query, dùng chung graph; không gồm snapshot load (1,072s), replay, CLI serialization hoặc ghi full audit.
+
+| Query | Nguồn → mục tiêu (RID) | Scope | Witness / C đầy đủ | Expansions | Giây | Điểm vướng hoặc giới hạn |
+| --- | --- | --- | --- | ---: | ---: | --- |
+| Q1 | User KATRINA 1116 → host 1000 | AdminTo trực tiếp | Có / C=1 | 1 | 0,610 | Đạt goal dưới hai runtime assumptions; complete trong scope AdminTo |
+| Q2 | User DENA 2799 → DA 512 | MemberOf | Có / C=0 | 8 | 0,433 | Membership đặc quyền đã có; không phải leo thang mới; cap 1 witness |
+| Q3 | User OLA 1395 → DA 512 | Reset trực tiếp + đổi identity | Chưa có / chưa đánh giá C | 6.000 | 1,958 | FIFO hết cap; ordered replay 3 bước đạt goal |
+| Q4 | User ROLANDO 1111 → DA 512 | Reset qua nhóm 3790 | Chưa có / chưa đánh giá C | 6.000 | 1,926 | Hết cap; đoạn membership đã kiểm còn Unknown security_group/membership_usable |
+| Q5 | User MARYANNE 1269 → DA 512 | Reset qua nhóm 3610 | Chưa có / chưa đánh giá C | 6.000 | 2,161 | Hết cap; membership tới nhóm 3610 còn Unknown; tên DISTLIST không thay bằng chứng group type |
+| Q6 | User KATRINA 1116 → DA 512 | Qua Administrators, WriteDacl → GenericAll → AddMember | Chưa có / chưa đánh giá C | 6.000 | 2,466 | Replay được membership + WriteDacl; AddMember còn Unknown security_group/membership_change_allowed |
+| Q7 | Computer FINWVIR 4157 → DA 512 | Reset; FIFO | Chưa có / chưa đánh giá C | 6.000 | 2,414 | Hết expansion cap |
+| Q8 | Computer FINWVIR 4157 → DA 512 | Cùng Q7; goal_guided | Có / C=1 | 4.995 | 3,190 | Cap 1 witness; best-found, chưa chứng minh minimum |
+| Q9 | User OLA 1395 → host 1000 | Reset → identity mới → AdminTo | Chưa có / chưa đánh giá C | 6.000 | 1,561 | FIFO hết cap; ordered replay 3 bước đạt admin control |
+| Q10 | User FERN 3385 → host 1000 | CanPSRemote | Có / chưa đủ C | 1 | 0,459 | open_winrm_remote_session nằm ngoài 9 techniques; không phải AdminTo/admin control |
+
+Có 4/10 query tìm witness và 3/4 witness đủ C, gồm một đường passive C=0; sáu query truncated chưa cho phép đánh giá coverage C hoặc kết luận no-path.
+Mẫu này xác nhận C cho AdminTo trực tiếp và reset/activation với actor thay đổi; chưa xác nhận coverage C của các chain qua nhóm/ACL trên SEAMLESS chỉ từ finite tests.
+Q3/Q9 có chuỗi conditional khả thi dưới cùng policy nhưng FIFO chưa tìm được trong budget; Q7/Q8 cô lập khác biệt search order mà không thay query facts hoặc C.
+Q4/Q5/Q6 cho thấy facts/policy cho membership và quyền phát sinh cũng là điểm vướng; chưa thể kết luận mọi đường của các query này bị chặn, hoặc chỉ cần sửa search.
+Chưa đổi engine/search, mở techniques, thêm assumptions hoặc dọn repo trong lượt khảo sát này.
+
+Đã native replay cả bốn witness và kiểm final state:
+
+- Q1: `obtain_admin_execution_on_host` dùng AdminTo của KATRINA tới BADBLOOD, C=1; admin_channel và authentication_accepted là assumptions.
+- Q2: `propagate_group_entitlement` của DENA tới DA là passive, không tạo work unit, C=0; không diễn giải thành xác suất tấn công mới.
+- Q8: FINWVIR reset OLLIE C=1 → OLLIE dùng credential vừa reset tại context FINWVIR C=0 → OLLIE có entitlement DA qua MemberOf C=0; hai active work units có tổng C=1.
+- Q10: `open_winrm_remote_session` của FERN đạt remote command execution, replay pass nhưng unit chưa có giá; C=None không được đổi thành 0.
+
+Ordered replay chẩn đoán Q3/Q9 không được đưa vào discovery hoặc tính thêm vào 4 witness ở bảng.
+Nó kiểm chuỗi OLA → reset DENA → activate DENA → DA hoặc AdminTo trên BADBLOOD, với cùng initial state, context và policy như query gốc.
+Q6 giữ nguyên Unknown ở AddMember sau quyền GenericAll phát sinh; không tự bổ sung gate để làm đường chạy được.
+
+Lệnh tái lập từ repo root; bỏ dòng `neo_baseline` nếu snapshot này đã tồn tại, hoặc dùng directory mới và đổi đường dẫn trong Python tương ứng:
+
+```sh
+.venv/bin/python -m scripts.neo_baseline --effort-profile neo-c-v1 --output-dir reports/generated/neo-c-001
+.venv/bin/python - <<'PY'
+import time
+from collections import Counter
+from pathlib import Path
+from src.engine.graph import EngineGraph
+from src.engine.query import materialize_query, run_attack_query
+from src.engine.ranking.effort_profiles import bind_effort_profile, load_effort_profile
+from src.engine.semantics import Status, TransitionRequest, apply_transition, evaluate
+from src.engine.semantics.credentials import replay_path
+from src.engine.semantics.scenario_policy import apply_policy_to_query
+D = 'S-1-5-21-1271839998-3495686680-2211690266'
+n = lambda rid: D + '-' + str(rid)
+M, R, I, A = ('propagate_group_entitlement', 'scenario_reset_password',
+              'acquire_reset_identity', 'obtain_admin_execution_on_host')
+W, ADD = 'grant_new_object_right', 'genericall_add_member'
+families = {'A': [A], 'M': [M], 'R': [M, R, I], 'H': [M, R, I, A],
+            'D': [M, W, ADD], 'W': ['open_winrm_remote_session']}
+# Q, source RID, goal RID, context RID, technique family, search order.
+cases = [(1,1116,1000,1000,'A','fifo'), (2,2799,512,1000,'M','fifo'),
+         (3,1395,512,1000,'R','fifo'), (4,1111,512,1000,'R','fifo'),
+         (5,1269,512,1000,'R','fifo'), (6,1116,512,1000,'D','fifo'),
+         (7,4157,512,4157,'R','fifo'), (8,4157,512,4157,'R','goal_guided'),
+         (9,1395,1000,1000,'H','fifo'), (10,3385,1000,1000,'W','fifo')]
+g = EngineGraph.from_snapshot(Path('reports/generated/neo-c-001/snapshot.json').read_text())
+profile = load_effort_profile('neo-c-v1')
+for number, source, target, context, family, order in cases:
+    s, t, c = map(n, (source, target, context))
+    goal = {'target': t, 'kind': 'usable_identity_entitlement'} if target == 512 else {
+        'target': t, 'required_state': {'remote_command_execution': [[s,t]]}
+        if family == 'W' else {'admin_control': [t]}}
+    q = dict(initial_actor=s, initial_state={'control': [s], 'usable_identity': [[s,c]]},
+             authentication_context=c, target=t, target_goal=goal, allowed_techniques=families[family],
+             scenario_reference=f'neo-cohort/Q{number}', evaluation_mode='scenario', search_order=order,
+             budget={'max_paths': 1, 'max_steps': 5, 'max_expansions': 6000})
+    started = time.perf_counter()
+    q = bind_effort_profile(apply_policy_to_query(q, g, 'seamless-standard-v1'), g, profile)
+    r = run_attack_query(q, g)
+    seconds = time.perf_counter() - started
+    coverage = (r.rating_coverage or {}).get('candidate_summaries', {})
+    print(f'Q{number}', 'paths=',len(r.paths), 'C=',(r.min_effort or {}).get('minimum_effort_value'),
+          'C_complete=',[v['c_complete'] for v in coverage.values()], 's=',round(seconds,3),
+          'exp=',r.expansions, 'cap=',r.truncation_reason,
+          'unknown=',Counter(p for a in r.attempts for p in a.unknown).most_common(3))
+    for index, path in enumerate(r.paths, 1):
+        assert replay_path(path, g) == path.final_state
+        assert r.materialized_query.semantic_goal.matches(path.final_state)
+        units = r.rating_coverage['candidates'][f'generated_{index:04d}']['effort']['units']
+        print('replay:', [a.result.request.technique_id for a in path.transition_history],
+              'C units:', [(v['rating_audit']['lookup_key']['technique'], v['cost']) for v in units.values()])
+    # Diagnostic ordered replay only; these requests never enter discovery/search.
+    a, v, h, da = n(1395), n(2799), n(1000), n(512)
+    k, admins = n(1116), 'domain:sid:' + D + ':S-1-5-32-544'
+    probes = {3: [(R,a,a,v),(I,v,v,h),(M,v,v,da)],
+              6: [(M,k,k,admins),(W,k,admins,da),(ADD,k,k,da),(M,k,k,da)],
+              9: [(R,a,a,v),(I,v,v,h),(A,v,v,h)]}
+    if number in probes:
+        m = materialize_query(q, g); state = m.initial_attack_state
+        for spec in probes[number]:
+            step = evaluate(g.to_prepared(), state, TransitionRequest(*spec), m.runtime_context, m.catalog)
+            print('ordered probe:', spec[0], step.status, 'failed=',step.failed, 'unknown=',step.unknown)
+            if step.status != Status.APPLICABLE: break
+            state = apply_transition(state, step)
+        print('ordered goal matches:', m.semantic_goal.matches(state))
+PY
+```
