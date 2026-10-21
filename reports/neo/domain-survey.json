@@ -1,0 +1,719 @@
+{
+  "schema_version": "neo-domain-survey-evidence/1.0.0",
+  "execution_commit": "5f8d3334f5289263c0894e07120f78e2a6e27746",
+  "dataset": "SEAMLESS",
+  "nodes": 3370,
+  "edges": 56367,
+  "snapshot_sha256": "sha256:65b8c478ce48f07d3154ce6b55c21e388ab2cfe9b14d5a7dd386055b0e129cc9",
+  "scope_digest": "sha256:edf683b78c7974fe50266d58a496bf806a6c703d596e547cc04e8dae3ab53888",
+  "scope_file_sha256": "sha256:301b892672c2db94b830add657f5114b699bf8c8dc3a42d8babb0d60bb432299",
+  "cells_file_sha256": "sha256:0845ad8ce07d7e67b306f6c4978d471bcbf920fd8754bebc4e497f0837c1621d",
+  "source_pins": {
+    "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+    "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+    "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+    "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+    "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+    "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+    "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+    "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+    "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+    "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+    "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+    "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+    "src/engine/batch.py": "sha256:4d4a10bf5d028f7fc14b69a6ec24073450f77c7595f50a3ac84001996e5aebc0",
+    "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+    "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+    "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+    "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+    "src/engine/query.py": "sha256:bc88af8c78e0d56df6d65401a115ffecaf59f1ce884d16686cda2846b867265a",
+    "src/engine/query_cli.py": "sha256:f5d577e1794c931504901ea4f535f7a95091535e655af0e0c554720e3acd941c",
+    "src/engine/query_report.py": "sha256:00ce31a58a87bdaf948a765bc41352c272888061328ae6045a1b2976979eee26",
+    "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+    "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+    "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+    "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+    "src/engine/ranking/effort_profiles.py": "sha256:1021857bf06932e5c21992a75abbe1ed6a532c47b9d0bba131371128f5d1cc45",
+    "src/engine/ranking/effort_registry.py": "sha256:03b7dfede1f1975e4f246b9efbc60f414a963814a0959bc9409966ca72b5ed23",
+    "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+    "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+    "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+    "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+    "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+    "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+    "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+    "src/engine/ranking/resolution_service.py": "sha256:62599bdc26dd9e553bccab59ca531b419193c5f0a1b74dcc5c015905a90cc1b9",
+    "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+    "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+    "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+    "src/engine/remediation.py": "sha256:7f4efe55643581dbce981423cd0cd457df8570f7b871c9bad5753b1f92b3c096",
+    "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+    "src/engine/search.py": "sha256:47c472297e6bd17a2fa19539cba0b257af1a21ec3822d7bce44f5d0811dfa7cc",
+    "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+    "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+    "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+    "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+    "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+    "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+    "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+    "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+    "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+    "src/engine/semantics/scenario_policy.py": "sha256:2b71ef4388784a319b93211e0200e910caa01a2be1dcc46a0ec265fbc63cfed2",
+    "src/engine/semantics/state.py": "sha256:2ba649c154682920c3387cd29db9abae67e885f656c664042b009882398bb59b",
+    "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+    "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+    "src/engine/top_k.py": "sha256:e2e2eb4e85ba5bc018326d7a1e98e20fe58bc847fcc9017d40018dd44f9583e0",
+    "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+    "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+    "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+    "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+    "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+    "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+    "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+    "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+    "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+    "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+    "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+    "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+    "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+    "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+    "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+  },
+  "runner_sha256": "sha256:3a8940ba7e8c8249fe4d38ffbcc009a7277d3c22fdac8b5a5f8a2b51c7157e93",
+  "budget": {
+    "max_expansions": 256,
+    "max_paths": 1,
+    "max_steps": 5
+  },
+  "techniques": [
+    "propagate_group_entitlement",
+    "scenario_reset_password",
+    "acquire_reset_identity",
+    "grant_new_object_right",
+    "genericall_add_member",
+    "genericall_grant_write_dacl",
+    "reset_target_password"
+  ],
+  "summary": {
+    "C_rated_reached_pairs": 255,
+    "declared_pairs": 5180,
+    "elapsed_seconds": 2108.0980746900004,
+    "eligible_sources": 2590,
+    "errors": 0,
+    "no_path_proven_pairs": 0,
+    "not_run_pairs": 0,
+    "reached_pairs": 255,
+    "recorded_pairs": 5180,
+    "selected_targets": 2,
+    "source_kinds": {
+      "Computer": 100,
+      "User": 2490
+    },
+    "status_counts": {
+      "success": 255,
+      "truncated": 4925
+    },
+    "truncated_pairs": 5180,
+    "unknown_attempts": {
+      "network_rpc_reachable": 25968,
+      "password_policy_accepts": 25968
+    }
+  },
+  "initial_capability": "Independent compromised usable network identity per eligible User/Computer; no pooled rights",
+  "targets": [
+    {
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "pairs": 2590,
+      "reached": 248,
+      "unresolved": 2342,
+      "C_distribution": {
+        "0": 5,
+        "1": 233,
+        "2": 8,
+        "3": 2
+      }
+    },
+    {
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "pairs": 2590,
+      "reached": 7,
+      "unresolved": 2583,
+      "C_distribution": {
+        "0": 1,
+        "3": 6
+      }
+    }
+  ],
+  "by_source_kind": {
+    "User": {
+      "pairs": 4980,
+      "reached": 251
+    },
+    "Computer": {
+      "pairs": 200,
+      "reached": 4
+    }
+  },
+  "unresolved_truncated_pairs": 4925,
+  "deeper_probe": {
+    "selection": {
+      "policy": "two minimum SHA256 per source kind and target; no reachability prefilter",
+      "pairs": [
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-1929",
+          "S-1-5-21-1271839998-3495686680-2211690266-512"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-2504",
+          "S-1-5-21-1271839998-3495686680-2211690266-512"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-1735",
+          "S-1-5-21-1271839998-3495686680-2211690266-519"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-2777",
+          "S-1-5-21-1271839998-3495686680-2211690266-519"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-4156",
+          "S-1-5-21-1271839998-3495686680-2211690266-512"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-4092",
+          "S-1-5-21-1271839998-3495686680-2211690266-512"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-4180",
+          "S-1-5-21-1271839998-3495686680-2211690266-519"
+        ],
+        [
+          "S-1-5-21-1271839998-3495686680-2211690266-4121",
+          "S-1-5-21-1271839998-3495686680-2211690266-519"
+        ]
+      ],
+      "budget": {
+        "max_expansions": 6000,
+        "max_paths": 1,
+        "max_steps": 8
+      }
+    },
+    "selection_seed": "neo-domain-probe-v1",
+    "rows": [
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1929",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "source_kind": "User",
+        "baseline_reached": true,
+        "deeper_reached": true,
+        "deeper_C": 1,
+        "deeper_expansions": 12,
+        "deeper_unknown_attempts": {}
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2504",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "source_kind": "User",
+        "baseline_reached": true,
+        "deeper_reached": true,
+        "deeper_C": 1,
+        "deeper_expansions": 6,
+        "deeper_unknown_attempts": {}
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1735",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "source_kind": "User",
+        "baseline_reached": false,
+        "deeper_reached": false,
+        "deeper_C": null,
+        "deeper_expansions": 6000,
+        "deeper_unknown_attempts": {
+          "password_policy_accepts": 2788,
+          "network_rpc_reachable": 2788
+        }
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4156",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "source_kind": "Computer",
+        "baseline_reached": false,
+        "deeper_reached": true,
+        "deeper_C": 1,
+        "deeper_expansions": 14,
+        "deeper_unknown_attempts": {}
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2777",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "source_kind": "User",
+        "baseline_reached": false,
+        "deeper_reached": false,
+        "deeper_C": null,
+        "deeper_expansions": 6000,
+        "deeper_unknown_attempts": {
+          "password_policy_accepts": 2840,
+          "network_rpc_reachable": 2840
+        }
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4092",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "source_kind": "Computer",
+        "baseline_reached": false,
+        "deeper_reached": false,
+        "deeper_C": null,
+        "deeper_expansions": 6000,
+        "deeper_unknown_attempts": {
+          "password_policy_accepts": 2548,
+          "network_rpc_reachable": 2548
+        }
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4121",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "source_kind": "Computer",
+        "baseline_reached": false,
+        "deeper_reached": false,
+        "deeper_C": null,
+        "deeper_expansions": 6000,
+        "deeper_unknown_attempts": {
+          "password_policy_accepts": 6,
+          "network_rpc_reachable": 6
+        }
+      },
+      {
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4180",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "source_kind": "Computer",
+        "baseline_reached": false,
+        "deeper_reached": false,
+        "deeper_C": null,
+        "deeper_expansions": 6000,
+        "deeper_unknown_attempts": {
+          "password_policy_accepts": 6,
+          "network_rpc_reachable": 6
+        }
+      }
+    ]
+  },
+  "ordered_diagnostic": {
+    "source": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "topology_path": [
+      "S-1-5-21-1271839998-3495686680-2211690266-1103",
+      "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "S-1-5-11",
+      "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+      "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "S-1-5-21-1271839998-3495686680-2211690266-512"
+    ],
+    "expanded_steps": 6,
+    "steps": [
+      {
+        "request": {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-513",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      },
+      {
+        "request": {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+          "target": "S-1-5-11",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      },
+      {
+        "request": {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+          "source": "S-1-5-11",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      },
+      {
+        "request": {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+          "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      },
+      {
+        "request": {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      },
+      {
+        "request": {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "rbcd_binding": null
+        },
+        "before_status": "applicable",
+        "before_unknown": [],
+        "after_status": "applicable",
+        "after_unknown": [],
+        "failed": []
+      }
+    ],
+    "added_existing_profile_facts": [],
+    "goal_reached_after_diagnostic": true,
+    "discovery_witness": false
+  },
+  "limits": [
+    "Bounded best-found results; no minimum or no-path proof",
+    "All truncated_pairs includes successful path-cap queries; use unresolved_truncated_pairs for missing witnesses",
+    "Unknown counters count attempted gates and do not establish causes of every unresolved pair",
+    "No live BloodHound comparison",
+    "C estimates scenario work; concentration at C=1 limits ranking resolution",
+    "ACL revoke is not supported by the current remediation executor"
+  ],
+  "remediation": {
+    "outcomes": [
+      {
+        "edits": [
+          "Loại quan hệ MemberOf: OLLIE_LONG@SEAMLESS.INTERNAL → DOMAIN ADMINS@SEAMLESS.INTERNAL"
+        ],
+        "intervention": "domain-observed:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+        "new_after_programs": 1,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "observed_corpus_only"
+        },
+        "programs_cut": {
+          "denominator": 2,
+          "numerator": 2,
+          "percent": 100.0,
+          "scope": "observed_corpus_only"
+        },
+        "reachable_after": 1,
+        "reachable_before": 2,
+        "unresolved_after": 3
+      }
+    ],
+    "pairs": 4,
+    "ranking": [
+      {
+        "configured_goals": [
+          "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e"
+        ],
+        "defender_cost": null,
+        "intervention": "domain-observed:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+        "operational_impact": null,
+        "policy": "defensive-complete-scope-first/2",
+        "quantities": {
+          "incomplete_observations": 8,
+          "observed_programs_cut": 2,
+          "proven_disconnected_pairs": 0,
+          "remaining_exposed_sources": 1,
+          "unresolved_after_pairs": 3
+        },
+        "rank": 1,
+        "rationale": "Prefer complete evidence, then more proven disconnections, fewer unresolved after pairs, fewer exposed sources, more observed cuts; tie by intervention ID."
+      }
+    ],
+    "scope": "Selected observed witness support only; not all domain pairs",
+    "sources": 2,
+    "status": "executed",
+    "package_sha256": "sha256:7301522b2b48a3324256202f98a9a86b64b1999b59c99bfa07321aa08f0c62ee",
+    "selection": "Two lexicographically first supporting source node IDs of the most shared executor-supported C>0 observed edge; both DA/EA goals",
+    "observed_interventions_file_sha256": "sha256:253d0bf1231c88a1aa700749801f6c34a8382fc2012ea4913af9fb4adc57af17"
+  },
+  "observed_interventions_top10": [
+    {
+      "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+      "executor_supported": true,
+      "observed_pairs": 168,
+      "observed_sources": 168,
+      "relationship": {
+        "id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:e44b0f47456908b5209f670f2cf0889ae4695e9efd24c82bbda4da1ae043cb48",
+      "executor_supported": true,
+      "observed_pairs": 44,
+      "observed_sources": 44,
+      "relationship": {
+        "id": "sha256:e44b0f47456908b5209f670f2cf0889ae4695e9efd24c82bbda4da1ae043cb48",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:a4f4a6ab658546fb204240b038972b11a8134e05b06e94b0c4899b94ca588cfd",
+      "executor_supported": false,
+      "observed_pairs": 42,
+      "observed_sources": 42,
+      "relationship": {
+        "id": "sha256:a4f4a6ab658546fb204240b038972b11a8134e05b06e94b0c4899b94ca588cfd",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:3b30de3caac96bad3b7b1980c323661cba1cbeccd3c676d20ce2eb15f4a67689",
+      "executor_supported": false,
+      "observed_pairs": 40,
+      "observed_sources": 40,
+      "relationship": {
+        "id": "sha256:3b30de3caac96bad3b7b1980c323661cba1cbeccd3c676d20ce2eb15f4a67689",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:dfa2adea2d5f1547e30d2bc7c1fe60cdae05c748644fddda6851d66779f9ecfc",
+      "executor_supported": false,
+      "observed_pairs": 38,
+      "observed_sources": 38,
+      "relationship": {
+        "id": "sha256:dfa2adea2d5f1547e30d2bc7c1fe60cdae05c748644fddda6851d66779f9ecfc",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:846deabeb52a998e15f268b3722b58d462be9ca74c5ac7b7f178103c0f293fcf",
+      "executor_supported": false,
+      "observed_pairs": 32,
+      "observed_sources": 32,
+      "relationship": {
+        "id": "sha256:846deabeb52a998e15f268b3722b58d462be9ca74c5ac7b7f178103c0f293fcf",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d",
+      "executor_supported": true,
+      "observed_pairs": 31,
+      "observed_sources": 31,
+      "relationship": {
+        "id": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:32f2fdab3e87101d699c3e6ad59c84791f10d0f5b57888f30bd3a5979aa6d686",
+      "executor_supported": false,
+      "observed_pairs": 30,
+      "observed_sources": 30,
+      "relationship": {
+        "id": "sha256:32f2fdab3e87101d699c3e6ad59c84791f10d0f5b57888f30bd3a5979aa6d686",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3903",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:042959a81aea384ef3b0ec13a2796df8c208dcb6208c82e77d4b0ab4bd713567",
+      "executor_supported": false,
+      "observed_pairs": 26,
+      "observed_sources": 26,
+      "relationship": {
+        "id": "sha256:042959a81aea384ef3b0ec13a2796df8c208dcb6208c82e77d4b0ab4bd713567",
+        "kind": "GenericAll",
+        "provenance": [
+          {
+            "attribute": "Aces[].PrincipalSID",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "weight": 1.0
+      }
+    },
+    {
+      "edge_id": "sha256:9e38ed9971e007f2ffb697f4392a0fd1fbb0cbf1fe5854d2b3f3c4d9a19dd279",
+      "executor_supported": true,
+      "observed_pairs": 25,
+      "observed_sources": 25,
+      "relationship": {
+        "id": "sha256:9e38ed9971e007f2ffb697f4392a0fd1fbb0cbf1fe5854d2b3f3c4d9a19dd279",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-3609",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+        "weight": 1.0
+      }
+    }
+  ]
+}

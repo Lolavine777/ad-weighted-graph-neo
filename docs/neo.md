@@ -472,3 +472,83 @@ Thiếu C vẫn hiển thị chưa chấm; thiếu witness khi còn Unknown ho�
 
 Validation: 686 focused tests passed, 1 optional raw-remediation test skipped;
 chưa chạy full suite. Native replay/API–CLI parity, Ruff, yamllint, repository và graph contract pass.
+
+## SEAMLESS: toàn bộ nguồn đủ điều kiện → DA/EA
+
+Lượt domain chạy trên snapshot SEAMLESS 3.370 nodes / 56.367 edges, không lọc nguồn
+bằng reachability: 2.490 User và 100 Computer, mỗi nguồn là một tình huống compromise
+độc lập với danh tính mạng dùng được. Không gộp quyền giữa các nguồn. Đích là hai group
+DA/EA theo SID quan sát; chưa bao gồm mọi tài sản hoặc kỹ thuật AD.
+Số liệu và hash tái lập nằm trong [domain-survey.json](../reports/neo/domain-survey.json).
+
+Budget lượt rộng: `neo_guided`, 1 witness, 5 semantic steps, 256 expansions/query;
+chỉ bảy kỹ thuật directory trong `scripts.neo_domain.TECHNIQUES`. Đây là budget
+nhỏ hơn cohort chẩn đoán 6.000 expansions trước, không phải so sánh ngang budget.
+Đã chạy đủ 5.180/5.180 cặp, không lỗi, không còn cặp chưa chạy.
+
+| Đích | Cặp khai báo và đã chạy | Có witness và C | Chưa có witness, còn giới hạn |
+| --- | ---: | ---: | ---: |
+| Domain Admins | 2.590 | 248 | 2.342 |
+| Enterprise Admins | 2.590 | 7 | 2.583 |
+| Tổng | 5.180 | 255 | 4.925 |
+
+User có witness trên 251/4.980 cặp; Computer 4/200. Phân bố C trên 255 witness:
+C=0: 6; C=1: 233; C=2: 8; C=3: 8. C=0 là entitlement có sẵn. Điểm tập trung
+ở C=1 nên chưa phân hạng chi tiết được các đường reset tương tự; không tự bổ sung
+điểm P/I hoặc biến C thành xác suất. Tất cả C là best-found, chưa chứng minh minimum.
+Không cặp nào được chứng minh no-path. Cờ `truncated_pairs` gồm cả query thành công
+đã dừng ở path cap; số **chưa có witness và còn giới hạn** là 4.925.
+
+Có 25.968 attempts Unknown ở mỗi gate `password_policy_accepts` và
+`network_rpc_reachable`. Đây là bộ đếm nhánh đã thử, không chứng minh hai gate này
+là nguyên nhân của mọi query chưa tìm được. Không thêm default mới để làm đẹp coverage.
+
+Probe sâu hơn chọn cố định hai nguồn có SHA256 nhỏ nhất trong mỗi nhóm
+User/Computer × DA/EA, dùng seed `neo-domain-probe-v1`, không lọc theo reachability.
+Với 8 steps / 6.000 expansions, 3/8 cặp có witness, so với 2/8 ở lượt rộng;
+5/8 vẫn hết giới hạn. Chỉ một cặp Computer → DA được tìm thêm; không ngoại suy
+probe này cho 5.180 cặp. Selection, budget và từng kết quả được lưu trong evidence JSON.
+
+Chẩn đoán riêng nguồn SID kết thúc `-1103` → DA: một đường topology 5 cạnh cần
+**6 semantic steps** (ba membership, reset, acquire identity, membership).
+Ordered replay đạt goal với policy hiện tại, không thêm fact. Đây là bằng chứng
+budget độ sâu bỏ sót ít nhất một đường; ordered replay không tính vào 255 discovery.
+Chưa có đối chứng BloodHound live mới.
+
+Tái lập lượt rộng, có checkpoint hash và resume cùng code/snapshot/budget:
+
+```sh
+.venv/bin/python -m scripts.neo_domain \
+  --snapshot reports/generated/neo-uc1/native/snapshot.json \
+  --output-dir reports/generated/neo-domain-256-v2 --workers 8
+# Nếu bị ngắt, chạy lại cùng lệnh và thêm --resume.
+.venv/bin/python -m scripts.neo_domain_report \
+  --survey reports/generated/neo-domain-256-v2 \
+  --snapshot reports/generated/neo-uc1/native/snapshot.json \
+  --output-dir reports/generated/neo-domain-final --interventions 1
+```
+
+Output directory mới phải chưa tồn tại. Runner dùng spawn workers; mỗi worker tái sử dụng
+snapshot, mỗi query giữ state/facts riêng. Witness lưu các facts đã dùng, kiểm native
+replay và program identity trước khi ghi; public query đầy đủ dựng lại từ scope/profile.
+Bản đọc nhanh phân biệt witness, giới hạn, Unknown và cặp chưa chạy/lỗi.
+
+Can thiệp đã kiểm bằng native replay và rediscovery độc lập trên **scope riêng 4 cặp**
+(hai nguồn hỗ trợ cạnh MemberOf chung nhất × DA/EA): bỏ MemberOf của OLLIE_LONG
+vào Domain Admins. Cạnh này xuất hiện trên 168 witness C>0 của lượt rộng;
+con số 168 là hỗ trợ quan sát, không phải số cặp sẽ được ngắt kết nối.
+Hai witness gốc đều bị cắt; một chương trình bypass được tìm lại. Sau can thiệp,
+một cặp còn reachable, ba cặp chưa kết luận; **0/2 cặp trước đó reachable được
+chứng minh disconnected**. Không báo giảm rủi ro toàn miền từ kết quả này.
+Executor hiện hỗ trợ membership; revoke GenericAll/WriteDacl/ForceChangePassword
+chưa được hỗ trợ, dù các cạnh đó vẫn xuất hiện trong danh sách điểm can thiệp.
+Chưa đo chi phí vận hành hoặc tác động nghiệp vụ của việc gỡ membership.
+
+Validation lượt này: 302 focused tests pass, 1 optional raw-remediation test skip;
+chưa chạy full suite. Witness được native replay khi ghi; remediation package đã
+qua independent verifier. Ruff, repository, contract và diff checks pass.
+
+Ưu tiên tiếp theo: xử lý bỏ sót do độ sâu trong cùng scope bảy kỹ thuật, rồi đo lại
+coverage DA/EA và khả năng phân hoá C. Những thay đổi policy/facts hoặc mở thêm
+loại intervention cần được trao đổi trước; kết quả domain hiện tại là baseline
+để đánh giá cải tiến, chưa phải bằng chứng hoàn thiện toàn miền.
