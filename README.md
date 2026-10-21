@@ -73,6 +73,21 @@ Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
 
 ## Các use case tiếp theo
 
+Khảo sát mọi User/Computer đủ điều kiện của SEAMLESS tới DA/EA, mỗi nguồn là một
+scenario độc lập có danh tính mạng dùng được (không gộp quyền):
+
+```sh
+.venv/bin/python -m scripts.neo_domain \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-domain-001 --workers 4
+```
+
+Lượt đầu mặc định 256 expansions, 5 bước và một witness mỗi cặp; hết cap không phải
+no-path. Thêm `--resume` để tiếp tục cùng scope, hoặc dùng `--max-cells` để chia lượt.
+`scope.json` giữ recipe/profile/source pins; `cells.jsonl` giữ kết quả và witness
+với các facts đã dùng, được native replay kiểm tra. Không lưu lặp toàn bộ graph/facts
+cho hàng nghìn query. Cần output directory mới khi đổi budget hoặc code.
+
 - Một foothold → tự chọn mục tiêu quan trọng: [demo exposure](docs/research/awg-r04/DEMO.md).
 - Nhiều nguồn độc lập → ưu tiên rủi ro, thử can thiệp và tìm bypass: [runner remediation](docs/research/awg-r04/DEMO.md).
 - Thiết kế và giới hạn hiện tại, datasets, số đo và ưu tiên nghiên cứu: [ghi chú neo](docs/neo.md).

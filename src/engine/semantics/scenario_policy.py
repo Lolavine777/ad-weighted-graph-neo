@@ -990,7 +990,9 @@ def _extract_nodes_and_edges(
 ) -> tuple[dict[str, dict[str, Any]], list[dict[str, Any]], Any]:
     """Extract nodes index, edges list, and optional snapshot facts from graph."""
     if hasattr(graph, "to_canonical") and callable(graph.to_canonical):
-        canon = graph.to_canonical()
+        canon = getattr(graph, "_canonical_cache", None)
+        if canon is None:
+            canon = graph.to_canonical()
         nodes_dict = {n["id"]: n for n in canon.get("nodes", [])}
         edges_list = list(canon.get("edges", []))
         snapshot_facts = getattr(graph, "snapshot_facts", None)
@@ -1048,6 +1050,7 @@ def resolve_scenario_policy(
     and forbidden-predicate restrictions.
     """
     resolved_profile = load_policy_profile(profile)
+    profile_digest = resolved_profile.digest()
     nodes_dict, edges_list, snapshot_facts = _extract_nodes_and_edges(graph)
     q_dict = _normalize_query_dict(query)
 
@@ -1126,7 +1129,7 @@ def resolve_scenario_policy(
         ]
         return ScenarioPolicyResolutionResult(
             profile_id=resolved_profile.profile_id,
-            profile_digest=resolved_profile.digest(),
+            profile_digest=profile_digest,
             evaluation_mode="evidence_only",
             snapshot_id=resolved_profile.bound_snapshot_id,
             assumptions=(),
@@ -1823,7 +1826,7 @@ def resolve_scenario_policy(
             assumption_metadata={
                 "rule_id": rule_id,
                 "profile_id": resolved_profile.profile_id,
-                "profile_digest": resolved_profile.digest(),
+                "profile_digest": profile_digest,
                 "policy_version": resolved_profile.version,
                 **meta,
             },
@@ -1854,7 +1857,7 @@ def resolve_scenario_policy(
 
     return ScenarioPolicyResolutionResult(
         profile_id=resolved_profile.profile_id,
-        profile_digest=resolved_profile.digest(),
+        profile_digest=profile_digest,
         evaluation_mode=resolved_profile.evaluation_mode,
         snapshot_id=resolved_profile.bound_snapshot_id,
         assumptions=tuple(final_facts),
