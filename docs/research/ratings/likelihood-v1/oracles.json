@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "freeze_policy": "Commit this input/basis/oracle package before first execution of likelihood_demo_probe; engine output never writes these expectations. Semantic sequences are assertions, never candidate inputs.",
+  "frozen_243": {
+    "source": "docs/research/scenarios/week4-seamless-v1.json",
+    "program": [
+      "asrep_request",
+      "recover_asrep_secret",
+      "activate_recovered_identity",
+      "obtain_admin_execution_on_host"
+    ],
+    "event_dispositions": [
+      "REQUIRES_CONTEXT",
+      "UNRATED_NO_BASIS",
+      "REQUIRES_CONTEXT",
+      "REQUIRES_CONTEXT"
+    ],
+    "current_P": null,
+    "q_event_count": 4,
+    "horizon": "fixed-snapshot-window",
+    "recovery_budget": "unmeasured-budget",
+    "proposed_C_by_event": [
+      0,
+      2,
+      0,
+      1
+    ],
+    "proposed_C_total": 3,
+    "proposed_I": "High",
+    "DA_checkpoint": false,
+    "no_new_preparation": true
+  },
+  "min_effort": {
+    "candidate_count": 3,
+    "complete": true,
+    "shared_preparation_C": 1,
+    "active_direct_C": 4,
+    "active_inherited_C": 1,
+    "expected_cost_multiset": [
+      2,
+      5,
+      5
+    ],
+    "winner_authorization_source": "Admins",
+    "winner_step_count": 2,
+    "minimum_effort": 2,
+    "passive_closure_C": 0,
+    "passive_closure_q_events": 0,
+    "current_C": null,
+    "current_P": null,
+    "claim": "Numeric C only in isolated synthetic what-if acceptance probe, not production acceptance."
+  },
+  "risk_comparison": {
+    "source": "accepted #181 Source-A generator/bridge and unchanged Week 3 q and I",
+    "expected_programs": [
+      {
+        "historical_candidate_id": "cand_seamless_01_direct_lidia",
+        "active_event_count": 3,
+        "q_intervals": [
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "1/2",
+            "9/10"
+          ]
+        ],
+        "exact_path_interval": [
+          "9/40",
+          "8379/10000"
+        ],
+        "C": 2,
+        "I": "High",
+        "question_ids": [
+          "cand_seamless_01_direct_lidia:q1",
+          "cand_seamless_01_direct_lidia:q2",
+          "cand_seamless_01_direct_lidia:q3"
+        ]
+      },
+      {
+        "historical_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+        "active_event_count": 5,
+        "q_intervals": [
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "1/2",
+            "9/10"
+          ]
+        ],
+        "exact_path_interval": [
+          "81/800",
+          "7800849/10000000"
+        ],
+        "C": 3,
+        "I": "High",
+        "question_ids": [
+          "cand_seamless_02_alt_vajer_ollie:q1",
+          "cand_seamless_02_alt_vajer_ollie:q2",
+          "cand_seamless_02_alt_vajer_ollie:q3",
+          "cand_seamless_02_alt_vajer_ollie:q4",
+          "cand_seamless_02_alt_vajer_ollie:q5"
+        ]
+      }
+    ],
+    "expected_nondominated": [
+      "cand_seamless_01_direct_lidia",
+      "cand_seamless_02_alt_vajer_ollie"
+    ],
+    "expected_dominated": [],
+    "relation": "Overlapping P intervals with equal High impact are incomparable; effort cannot break overlapping-interval risk ties. Direct candidate minimizes C=2 vs C=3.",
+    "current_generated_context_P": null,
+    "current_generated_context_I": null,
+    "numeric_activation_permitted": false,
+    "scope": "Two generated historical candidates within bounded subset; expansion cap preserved; no global optimum or exhaustive Pareto claim."
+  }
+}

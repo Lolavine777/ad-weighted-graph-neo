@@ -1,0 +1,38 @@
+name: Task / Công việc
+description: Công việc triển khai hoặc tài liệu có đầu ra và tiêu chí nghiệm thu.
+title: "[Task] "
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Mục tiêu và phạm vi
+      description: Nêu đầu ra cụ thể, file/module ảnh hưởng và điều ngoài phạm vi.
+    validations:
+      required: true
+  - type: dropdown
+    id: milestone
+    attributes:
+      label: Mốc dự kiến
+      options: [M0, M1, M2, M3, M4, M5]
+    validations:
+      required: true
+  - type: input
+    id: ownership
+    attributes:
+      label: Người thực hiện và reviewer
+      placeholder: "@owner / @reviewer; gán assignee và milestone ở sidebar"
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Tiêu chí nghiệm thu
+      description: Checklist có thể kiểm tra; ghi lệnh tái lập hoặc tài liệu cần bàn giao.
+      placeholder: "- [ ] Đầu ra ... được kiểm tra bằng ..."
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Phụ thuộc, ước lượng và rủi ro
+      description: Issue liên quan, thời lượng dự kiến, vấn đề cần chốt trước khi làm.

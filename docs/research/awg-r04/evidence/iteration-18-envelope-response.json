@@ -1,0 +1,47 @@
+{
+  "start": {
+    "http": 201,
+    "body": "{\"data\":{\"user_id\":\"66eb7ce0-ec5f-4c06-a664-c52f9caec072\",\"user_email_address\":null,\"status\":1,\"status_message\":\"\",\"start_time\":\"2026-10-19T15:07:18.049742803Z\",\"end_time\":\"0001-01-01T00:00:00Z\",\"last_ingest\":\"2026-10-19T15:07:18.049743345Z\",\"total_files\":0,\"failed_files\":0,\"partial_failed_files\":0,\"id\":2,\"created_at\":\"2026-10-19T15:07:18.054060637Z\",\"updated_at\":\"2026-10-19T15:07:18.054060637Z\",\"deleted_at\":{\"Time\":\"0001-01-01T00:00:00Z\",\"Valid\":false}}}"
+  },
+  "job_id": 2,
+  "uploads": [
+    {
+      "file": "20210920185958_computers.json",
+      "http": 202,
+      "body": ""
+    },
+    {
+      "file": "20210920185958_domains.json",
+      "http": 202,
+      "body": ""
+    },
+    {
+      "file": "20210920185958_gpos.json",
+      "http": 202,
+      "body": ""
+    },
+    {
+      "file": "20210920185958_groups.json",
+      "http": 202,
+      "body": ""
+    },
+    {
+      "file": "20210920185958_ous.json",
+      "http": 202,
+      "body": ""
+    },
+    {
+      "file": "20210920185958_users.json",
+      "http": 202,
+      "body": ""
+    }
+  ],
+  "end": {
+    "http": 200,
+    "body": ""
+  },
+  "jobs": {
+    "http": 200,
+    "body": "{\"count\":2,\"limit\":100,\"skip\":0,\"data\":[{\"user_id\":\"66eb7ce0-ec5f-4c06-a664-c52f9caec072\",\"user_email_address\":\"admin@example.com\",\"status\":2,\"status_message\":\"Complete\",\"start_time\":\"2026-10-19T15:07:18.049742Z\",\"end_time\":\"2026-10-19T15:07:40.395216Z\",\"last_ingest\":\"2026-10-19T15:07:18.239325Z\",\"total_files\":6,\"failed_files\":0,\"partial_failed_files\":0,\"id\":2,\"created_at\":\"2026-10-19T15:07:18.05406Z\",\"updated_at\":\"2026-10-19T15:07:40.395463Z\",\"deleted_at\":{\"Time\":\"0001-01-01T00:00:00Z\",\"Valid\":false}},{\"user_id\":\"66eb7ce0-ec5f-4c06-a664-c52f9caec072\",\"user_email_address\":\"admin@example.com\",\"status\":2,\"status_message\":\"Complete\",\"start_time\":\"2026-10-19T15:06:10.85399Z\",\"end_time\":\"2026-10-19T15:06:35.359813Z\",\"last_ingest\":\"2026-10-19T15:06:10.85399Z\",\"total_files\":0,\"failed_files\":0,\"partial_failed_files\":0,\"id\":1,\"created_at\":\"2026-10-19T15:06:10.85497Z\",\"updated_at\":\"2026-10-19T15:06:35.359876Z\",\"deleted_at\":{\"Time\":\"0001-01-01T00:00:00Z\",\"Valid\":false}}]}"
+  }
+}

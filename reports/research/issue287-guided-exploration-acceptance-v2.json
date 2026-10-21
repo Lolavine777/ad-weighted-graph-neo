@@ -1,0 +1,512 @@
+{
+  "kind": "real_SEAMLESS_backend_acceptance",
+  "code_revision": "ebffa1e6687b78030ea37b0f94602f38be45f4e6",
+  "runtime": {
+    "python": "3.14.7",
+    "platform": "Windows"
+  },
+  "dependencies": {
+    "networkx": "3.7",
+    "PyYAML": "6.0.3",
+    "pytest": "9.1.1",
+    "ruff": "0.16.8"
+  },
+  "case_scopes": {
+    "A": "Helper C0 Computer actor/AS-REP request capability; known V_A; admin_control(C0); effective_member(V_A,G_DA) checkpoint",
+    "B": "Unique requested labels resolved locally as B_SOURCE(User) -> B_TARGET(Computer); declared control(B_SOURCE) only; auth context C0; admin_control(B_TARGET); all catalog techniques; no runtime facts/assumptions/rating input"
+  },
+  "matrix": [
+    {
+      "check": "A_helper_scope",
+      "expected": "Computer C0 / known V_A / target C0; nine assumptions",
+      "observed": "canonical scope verified locally",
+      "status": "PASS",
+      "evidence": "helper-trace.json; A/raw.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_RAW_and_degenerate_structure",
+      "expected": "RAW unresolved; singleton structural_only",
+      "observed": {
+        "status": "indeterminate",
+        "candidates": 0,
+        "structural_paths": 1
+      },
+      "status": "PASS",
+      "evidence": "A/raw.json; A/structural.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_unchecked_proposals",
+      "expected": "nine unchecked; ledger retained",
+      "observed": {
+        "count": 9,
+        "rejected": 0
+      },
+      "status": "PASS",
+      "evidence": "A/proposals.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_none_scope",
+      "expected": "only assumptions/evaluation_mode change",
+      "observed": "scope identical",
+      "status": "PASS",
+      "evidence": "A/none.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_full_scope",
+      "expected": "only assumptions/evaluation_mode change",
+      "observed": "scope identical",
+      "status": "PASS",
+      "evidence": "A/full.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_drop-recovery_scope",
+      "expected": "only assumptions/evaluation_mode change",
+      "observed": "scope identical",
+      "status": "PASS",
+      "evidence": "A/drop-recovery.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_empty_rerun",
+      "expected": "no goal without proposals",
+      "observed": "indeterminate",
+      "status": "PASS",
+      "evidence": "A/none.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_full_rerun",
+      "expected": "conditional goal from actual rerun",
+      "observed": "success",
+      "status": "PASS",
+      "evidence": "A/full.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_unknown_prefix_stops",
+      "expected": "indeterminate; no suffix/effects",
+      "observed": "indeterminate",
+      "status": "PASS",
+      "evidence": "A/raw-prefix.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_applicable_step_0",
+      "expected": "applicable after exact replay",
+      "observed": "applicable",
+      "status": "PASS",
+      "evidence": "A/full-step-0.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_applicable_step_1",
+      "expected": "applicable after exact replay",
+      "observed": "applicable",
+      "status": "PASS",
+      "evidence": "A/full-step-1.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_applicable_step_2",
+      "expected": "applicable after exact replay",
+      "observed": "applicable",
+      "status": "PASS",
+      "evidence": "A/full-step-2.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_applicable_step_3",
+      "expected": "applicable after exact replay",
+      "observed": "applicable",
+      "status": "PASS",
+      "evidence": "A/full-step-3.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_applicable_step_4",
+      "expected": "applicable after exact replay",
+      "observed": "applicable",
+      "status": "PASS",
+      "evidence": "A/full-step-4.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_drop_recovery_no_fake_effects",
+      "expected": "recovery unresolved; suffix stopped; report bypass",
+      "observed": {
+        "recovery": "indeterminate",
+        "query": "indeterminate",
+        "bypass_programs": []
+      },
+      "status": "PASS",
+      "evidence": "A/drop-recovery.json; A/drop-recovery-probe.json; A/drop-recovery-suffix.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "A_scope_and_ID_controls",
+      "expected": "eight rejections",
+      "observed": [
+        "source_foothold",
+        "initial_actor",
+        "target",
+        "initial_state",
+        "budget",
+        "SnapshotFacts",
+        "duplicate",
+        "unknown"
+      ],
+      "status": "PASS",
+      "evidence": "A/scope-controls.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "known_false_veto",
+      "expected": "ledger rejection; blocked prefix; no material; real rerun",
+      "observed": {
+        "prefix": "blocked",
+        "query": "blocked"
+      },
+      "status": "PASS",
+      "evidence": "control/proposals.json; control/probe.json; control/veto.json",
+      "category": "experimental_control"
+    },
+    {
+      "check": "B_node_kinds",
+      "expected": "User source; Computer admin-control target",
+      "observed": [
+        "User",
+        "Computer"
+      ],
+      "status": "PASS",
+      "evidence": "B/bindings.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "B_real_multistep_structure",
+      "expected": "exact graph/provenance; structural_only independent of candidates",
+      "observed": {
+        "paths": 1,
+        "semantic_candidates": 0
+      },
+      "status": "PASS",
+      "evidence": "B/raw.json; B/structural.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "B_exact_edge_catalog",
+      "expected": "direct options match catalog/bindings; no fabricated effects",
+      "observed": "catalog and bindings compared",
+      "status": "PASS",
+      "evidence": "B/edge-*.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "B_unknown_structural_prefix",
+      "expected": "stop at unresolved GenericAll; no suffix options",
+      "observed": "indeterminate",
+      "status": "PASS",
+      "evidence": "B/halted-prefix.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "small_budget",
+      "expected": "truncated/not-evaluated; no false completeness/no-path",
+      "observed": {
+        "structural": true,
+        "semantic": "truncated",
+        "probe": "not_evaluated"
+      },
+      "status": "PASS",
+      "evidence": "B/tiny-structural.json; B/tiny-semantic.json; control/tiny-probe.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "numeric_boundary",
+      "expected": "unrated without rating basis; no numeric P from True",
+      "observed": {
+        "none": "unrated",
+        "full": "unrated",
+        "drop-recovery": "unrated"
+      },
+      "status": "PASS",
+      "evidence": "A/none.json; A/full.json; A/drop-recovery.json",
+      "category": "SEAMLESS"
+    },
+    {
+      "check": "raw_integrity",
+      "expected": "same bytes; official verifier before/after clean",
+      "observed": "unchanged",
+      "status": "PASS",
+      "evidence": "raw-integrity-before.json; raw-integrity-after.json",
+      "category": "SEAMLESS"
+    }
+  ],
+  "cases": {
+    "A/raw": {
+      "status": "indeterminate",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "expansions": 3,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:cbf6ee3e4bb024684a21d1fff7da7960dd89d3105e268ef989d12e6d08e9930d"
+    },
+    "A/structural": {
+      "kind": "structural_only",
+      "budget": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "expansions": 0,
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "path_count": 1,
+      "edge_counts": [
+        0
+      ]
+    },
+    "A/none": {
+      "status": "indeterminate",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "expansions": 3,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:cbf6ee3e4bb024684a21d1fff7da7960dd89d3105e268ef989d12e6d08e9930d"
+    },
+    "A/full": {
+      "status": "success",
+      "final_goal_reached": true,
+      "checkpoint_reached": true,
+      "caps": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "expansions": 34,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "budget_bounded",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 3,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:cbf6ee3e4bb024684a21d1fff7da7960dd89d3105e268ef989d12e6d08e9930d"
+    },
+    "A/drop-recovery": {
+      "status": "indeterminate",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "expansions": 6,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:cbf6ee3e4bb024684a21d1fff7da7960dd89d3105e268ef989d12e6d08e9930d"
+    },
+    "control/veto": {
+      "status": "blocked",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 50,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": true,
+      "truncated": false,
+      "truncation_reason": null,
+      "expansions": 3,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": true
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:04cecb165b63a3340165e285fc4913196cabb234f7234dbd951f3a82977f2fb6"
+    },
+    "B/raw": {
+      "status": "truncated",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 10,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "complete": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 5000,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "partial_truncated",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:02d692910858458a837176daa99580815625e6a903b87f0178445658e99ce4e8"
+    },
+    "B/structural": {
+      "kind": "structural_only",
+      "budget": {
+        "max_paths": 10,
+        "max_steps": 9,
+        "max_expansions": 5000
+      },
+      "expansions": 5000,
+      "complete": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "path_count": 1,
+      "edge_counts": [
+        2
+      ]
+    },
+    "B/tiny-semantic": {
+      "status": "truncated",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "caps": {
+        "max_paths": 1,
+        "max_steps": 1,
+        "max_expansions": 1
+      },
+      "complete": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 1,
+      "ranking_disposition": "unrated",
+      "engine_reported_guarantees": {
+        "optimization_scope": "partial_truncated",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "candidate_count": 0,
+      "numeric_rating_available": false,
+      "numeric_effort_available": false,
+      "scope_digest": "sha256:5a718befb62ff0a4b5ae0939f1b3ffd4ee4064d7936c8d3b5159308d0ed36dfe"
+    }
+  },
+  "limits": [
+    "Bounded declared scopes only; no all-source coverage or global optimum.",
+    "Case A template is helper-declared, pending maintainer adoption; never used in B.",
+    "Case B has no reviewed assumptions template; diagnostics only.",
+    "Veto is a separate experimental runtime view, not SEAMLESS observed evidence.",
+    "HTTP/UI/live comparison acceptance remains pending #279."
+  ],
+  "executable_tree_digest": "sha256:26b2d05b316a842691b501b02e646262e40af4f40b701c7d30fd740e40d168ca",
+  "runner_digest": "05dd7e9afae233a49c319b7bbef3d83795a37feba8111b9cd113579244b318de",
+  "config_identity": "sha256:8a164ca1e1e292cb634ee61072c8f0f129f9ca880fd9ca8cc4d27bf96bff667c",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "graph_identity": "sha256:1238890418724f824063f7904f4c662851ef140877199c59f704e1f46679d36d",
+  "facts_identity": "sha256:beb71f3fde7a21c82db37aad555317c349358360ec61b2966b539dbddb6db916",
+  "graph_counts": {
+    "nodes": 3370,
+    "edges": 56367
+  },
+  "raw_checksums": {
+    "20210920185958_computers.json": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+    "20210920185958_domains.json": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+    "20210920185958_gpos.json": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+    "20210920185958_groups.json": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+    "20210920185958_ous.json": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+    "20210920185958_users.json": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa"
+  },
+  "evidence_digests": {
+    "A/drop-recovery-probe.json": "cfa63691de2d69cca543283f2d3b83782da7d55b25947067d11fd4e86ea14460",
+    "A/drop-recovery-suffix.json": "3d7ccb99f8b993c2d6891b31050362e7491710f36856eff5b128c0b955685f25",
+    "A/drop-recovery.json": "e9071902bb3ced91da8eb695b2cfb56047fdf52312697a78e3905205cd438797",
+    "A/full-step-0.json": "69d9c708f2cd516d8ff6b9da18f9c12736f73bc63d1bda531f3482cb91cddadc",
+    "A/full-step-1.json": "c42a6d858305cd5d10b60c92c0d9e3df022a0de0bfd969816ff7a533a095c466",
+    "A/full-step-2.json": "44da8de44025844fb0c4394cbfca11bef108389c285f1e7e210dd87b380e8b71",
+    "A/full-step-3.json": "51ead3f1634857aab96ebf1c3055c3814519790c29619a0229c8b9e02dcda7d5",
+    "A/full-step-4.json": "619360072d76cf7536e168470ab903a196ebdbaf363edb2b4166ee3a0f8416d1",
+    "A/full.json": "d67b3544fbf89900bb8dd1295b46a1b0d12cdde0d9dd0d8e300b0e874804302e",
+    "A/none.json": "3e5240cf5e470174d51425ae415381bd6e4c36119a535fb0f138a375ce272606",
+    "A/proposals.json": "440e08ed16e99d9ecdcc79301e0e0e9a94816767e13e0097343539a513f20a4b",
+    "A/raw-prefix.json": "d199278a222cce87d9efbfb0171ba49c62b96566ec7839a742ccf4736e59536d",
+    "A/raw.json": "44b7580d53a8a2bb3d9ce25ff4726c7e2a51479fdb01b1c68be54b9c6a6bae9e",
+    "A/scope-controls.json": "04b0eab19f5c47bfe5d3c12934a01868c006a8e29215237f71bf1b47114b6f89",
+    "A/structural.json": "0c5413a2192ccb48c4ed81e5688e716f08784f5abe70f21f6046fbb9747d101f",
+    "A/template.json": "4d2851373252fa86f2af6e098ac32cc821d39f3b405ae88f285a548813a5bcef",
+    "B/bindings.json": "0d0e211e1bbe50d8020a95ebe7e0ea0d327ced7525ef87b463e525621b9b1895",
+    "B/edge-0.json": "cc45d5185eacf83fdd1abc0303adb9e78a5ca51d1cb7778138a936940742541a",
+    "B/edge-1.json": "a16efb89a9c30efd3194b94ac1336dc0629f256c7a559a2b6014a730dbbd3302",
+    "B/halted-prefix.json": "9f3210fd90a357c01d87f933e9d32c3edea92f1700048fd3536549739e997735",
+    "B/raw.json": "f7e3c41a675468fd3d91fa227db22e3683053efcc0a73dfe666d7a539e0df5ef",
+    "B/structural.json": "eb044c90f22f357631c8878e5534521299691c820671e9d3a12bdf8110f35b6e",
+    "B/tiny-semantic.json": "a1caf3ebbf30042ed7b35cb9993c7f8e3f09d779ce3ea8ec8c002958d0c1ca6c",
+    "B/tiny-structural.json": "b706bb62b7bebd4ddbc1f9e29aff96f4811168678529538e3cecc4e5a11aa5ab",
+    "control/probe.json": "47cfe0cf883493efa65ee958b5f78ea9b4443bf87e4671c3d89f98fd1e934cff",
+    "control/proposals.json": "6c311a94218e90ead8451a432809a214de5fd38925dde3790f55823b63569686",
+    "control/tiny-probe.json": "2a07f2b7f8760b4d44a68ff3fa859eafdaeec8392e92f79c716278e7fb0740bf",
+    "control/veto.json": "75ee8789384670c558fe63d075a94d6abd7dd46aaa753f6d3dc12859d85acddb",
+    "helper-trace.json": "bd988e7d11eddacc13c48156eb0b7fd0398694a5236b4d72948ec71152785eb1",
+    "raw-integrity-after.json": "28aada62638b0e6071847e2d44691bd1d78ed37acd4d43b6ea567cc76d10de57",
+    "raw-integrity-before.json": "28aada62638b0e6071847e2d44691bd1d78ed37acd4d43b6ea567cc76d10de57",
+    "snapshot.json": "4f64ea05800214cdc7443dc81c8968852ded632f81df9b66fd5bcfbf101a9780"
+  },
+  "elapsed_seconds": 225.526,
+  "status": "PASS"
+}

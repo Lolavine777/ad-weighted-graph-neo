@@ -1,0 +1,745 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "empirical-lab-benchmark-asrep-v1",
+  "created_at": "2026-10-08T10:00:00Z",
+  "methodology": "Controlled offline password recovery benchmark trial on Kerberos AS-REP hashes (etype 23)",
+  "environment": "Dedicated air-gapped security research lab, 1x NVIDIA RTX 4090 GPU",
+  "protocol": "NIST SP 800-63B evaluation with fixed guess budget and execution deadline",
+  "common_parameters": {
+    "technique": "recover_asrep_secret",
+    "method": "hashcat_dictionary_rockyou_best64",
+    "budget": 10000000,
+    "horizon_seconds": 3600.0,
+    "target_complexity_class": "standard_enterprise_user"
+  },
+  "training_observations": [
+    {
+      "trial_id": "trial_train_01",
+      "outcome": "success",
+      "target_hash_id": "hash_train_01",
+      "provenance_reference": "lab://trials/train/01",
+      "artifact_digest": "sha256:b5c066ac716f3a931fe22e9724e2414243b02e6ee579af7d6f6e8d64d7d3e22e"
+    },
+    {
+      "trial_id": "trial_train_02",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_02",
+      "provenance_reference": "lab://trials/train/02",
+      "artifact_digest": "sha256:5b5c5631a8913fbf03a0b1ebc4fc00774e2d7a49692e592b65bfc3ab9fdf9121"
+    },
+    {
+      "trial_id": "trial_train_03",
+      "outcome": "success",
+      "target_hash_id": "hash_train_03",
+      "provenance_reference": "lab://trials/train/03",
+      "artifact_digest": "sha256:e62d41de10ecdaa1e8e5e3de85dc85a285e5250c1902c09f5385199ab3232647"
+    },
+    {
+      "trial_id": "trial_train_04",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_04",
+      "provenance_reference": "lab://trials/train/04",
+      "artifact_digest": "sha256:95303b6cf5923e767e695342e77eb319b7fcde70055105a8d5ce7484888a9a47"
+    },
+    {
+      "trial_id": "trial_train_05",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_05",
+      "provenance_reference": "lab://trials/train/05",
+      "artifact_digest": "sha256:86da4d53f75cc65809e3f7b04e5e5b76d23856586a98362a1a8e62d64daceeaf"
+    },
+    {
+      "trial_id": "trial_train_06",
+      "outcome": "success",
+      "target_hash_id": "hash_train_06",
+      "provenance_reference": "lab://trials/train/06",
+      "artifact_digest": "sha256:db22ced56102855fc6f22f8364f2aa5aa6465beb269e5e7eccbdc80cc1e66606"
+    },
+    {
+      "trial_id": "trial_train_07",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_07",
+      "provenance_reference": "lab://trials/train/07",
+      "artifact_digest": "sha256:865690c9d70152701f298e9cf73db9c6e25cbe120dbf0029b0851ffde547b506"
+    },
+    {
+      "trial_id": "trial_train_08",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_08",
+      "provenance_reference": "lab://trials/train/08",
+      "artifact_digest": "sha256:4675ed61bfc4366b5cdfbb971f070e72c84b21799de806ffc5182398cb05b689"
+    },
+    {
+      "trial_id": "trial_train_09",
+      "outcome": "success",
+      "target_hash_id": "hash_train_09",
+      "provenance_reference": "lab://trials/train/09",
+      "artifact_digest": "sha256:369a93cbcc21aaf1c3068cca6f80f748d5dc6a692471a389650ac96a5aea4617"
+    },
+    {
+      "trial_id": "trial_train_10",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_10",
+      "provenance_reference": "lab://trials/train/10",
+      "artifact_digest": "sha256:d0bba97f95a8e9fba1fde7826f752ad59be505924ad612771597f95c77a4fbb5"
+    },
+    {
+      "trial_id": "trial_train_11",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_11",
+      "provenance_reference": "lab://trials/train/11",
+      "artifact_digest": "sha256:2f0ae7e3b374267b094a3129df786ec555cba9be05ec50338c5c57c3344985e9"
+    },
+    {
+      "trial_id": "trial_train_12",
+      "outcome": "success",
+      "target_hash_id": "hash_train_12",
+      "provenance_reference": "lab://trials/train/12",
+      "artifact_digest": "sha256:7834b6357c0bf2035aa27a723925d40b950611618cfd49a17f978e5cb64ddd5f"
+    },
+    {
+      "trial_id": "trial_train_13",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_13",
+      "provenance_reference": "lab://trials/train/13",
+      "artifact_digest": "sha256:c5e1cc737deecb03eb33d20c4d7d086dd64caf2ce24f733541439c3c975c7619"
+    },
+    {
+      "trial_id": "trial_train_14",
+      "outcome": "success",
+      "target_hash_id": "hash_train_14",
+      "provenance_reference": "lab://trials/train/14",
+      "artifact_digest": "sha256:c058ba7cfdb49f8f0f65e01972166d59fec63163cde3e400b072ef9cffc83255"
+    },
+    {
+      "trial_id": "trial_train_15",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_15",
+      "provenance_reference": "lab://trials/train/15",
+      "artifact_digest": "sha256:e2821d45cacef6f980a2b1fcba5bd91f877738b3cf1ad642fd317248fcb1cc14"
+    },
+    {
+      "trial_id": "trial_train_16",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_16",
+      "provenance_reference": "lab://trials/train/16",
+      "artifact_digest": "sha256:84924b8689c84d3dd424a9ecce3e2aebc636ebff5e2dbb3386af85d920609bcb"
+    },
+    {
+      "trial_id": "trial_train_17",
+      "outcome": "success",
+      "target_hash_id": "hash_train_17",
+      "provenance_reference": "lab://trials/train/17",
+      "artifact_digest": "sha256:37820c2ba889ede4304945aef0b49da042bcd8bf289e72d85832e50b4be7ae5f"
+    },
+    {
+      "trial_id": "trial_train_18",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_18",
+      "provenance_reference": "lab://trials/train/18",
+      "artifact_digest": "sha256:8108f5bab154e0acb52861c937f618292a4984336311bd40fb0432b9ea79ff55"
+    },
+    {
+      "trial_id": "trial_train_19",
+      "outcome": "success",
+      "target_hash_id": "hash_train_19",
+      "provenance_reference": "lab://trials/train/19",
+      "artifact_digest": "sha256:6e5860c162c22c28c80a6eae5e7377b65732ce84d2d30f0c082bc5ae84a2a58a"
+    },
+    {
+      "trial_id": "trial_train_20",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_20",
+      "provenance_reference": "lab://trials/train/20",
+      "artifact_digest": "sha256:cf4fdbae95175cbc5040a90b953802017f24b1732eac720ce4206824240418a3"
+    },
+    {
+      "trial_id": "trial_train_21",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_21",
+      "provenance_reference": "lab://trials/train/21",
+      "artifact_digest": "sha256:3c3a8b18772ef99e14ebc43d765cc27624a3dbe370aea908b040debcd481710d"
+    },
+    {
+      "trial_id": "trial_train_22",
+      "outcome": "success",
+      "target_hash_id": "hash_train_22",
+      "provenance_reference": "lab://trials/train/22",
+      "artifact_digest": "sha256:9a770b50d25c9a80ad237eb53fac6249601b6ea5b1bd36ccdd05ae711be70b63"
+    },
+    {
+      "trial_id": "trial_train_23",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_23",
+      "provenance_reference": "lab://trials/train/23",
+      "artifact_digest": "sha256:6d8afe1c999bf31404146c3251a87310dd78133bde59c62dfdc138fb2172e33a"
+    },
+    {
+      "trial_id": "trial_train_24",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_24",
+      "provenance_reference": "lab://trials/train/24",
+      "artifact_digest": "sha256:bd03bc5e5b5f4ecb5e3d8abf9781172258262e44a14616c9422674578f4a3f47"
+    },
+    {
+      "trial_id": "trial_train_25",
+      "outcome": "success",
+      "target_hash_id": "hash_train_25",
+      "provenance_reference": "lab://trials/train/25",
+      "artifact_digest": "sha256:acb1612fd8d0ce9d22b787be95d3f2278ea4b048455f2e65f00920f7c8885661"
+    },
+    {
+      "trial_id": "trial_train_26",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_26",
+      "provenance_reference": "lab://trials/train/26",
+      "artifact_digest": "sha256:ed3477573614dd42bb3cb0ff690d4115f7434d5954ee26d1ce80b6a45a3b5dee"
+    },
+    {
+      "trial_id": "trial_train_27",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_27",
+      "provenance_reference": "lab://trials/train/27",
+      "artifact_digest": "sha256:57c7f5776238582d4fcc5c49e4675d3aa4270ebddd605adcf3c9b7d16f8a4972"
+    },
+    {
+      "trial_id": "trial_train_28",
+      "outcome": "success",
+      "target_hash_id": "hash_train_28",
+      "provenance_reference": "lab://trials/train/28",
+      "artifact_digest": "sha256:0f4b479542c08608f85e188ceae9abb50a8fb81282c6a263890fd4e5c56f93af"
+    },
+    {
+      "trial_id": "trial_train_29",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_29",
+      "provenance_reference": "lab://trials/train/29",
+      "artifact_digest": "sha256:872226f10722ce095faac4d5a2694c753151adbd03613a16ee7b513555e03009"
+    },
+    {
+      "trial_id": "trial_train_30",
+      "outcome": "success",
+      "target_hash_id": "hash_train_30",
+      "provenance_reference": "lab://trials/train/30",
+      "artifact_digest": "sha256:0d7d017b78a28467e9948657fb13a718fdb8cf1d814b609db29f2d35ac16184f"
+    },
+    {
+      "trial_id": "trial_train_31",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_31",
+      "provenance_reference": "lab://trials/train/31",
+      "artifact_digest": "sha256:583f69594e89be64ecdd0f8ca9c0417d2537d547c940901a1d946fde580fb174"
+    },
+    {
+      "trial_id": "trial_train_32",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_32",
+      "provenance_reference": "lab://trials/train/32",
+      "artifact_digest": "sha256:eaea867e633daf98d83f5be8ccc478579370caf58f0feaefd50029cc6881732f"
+    },
+    {
+      "trial_id": "trial_train_33",
+      "outcome": "success",
+      "target_hash_id": "hash_train_33",
+      "provenance_reference": "lab://trials/train/33",
+      "artifact_digest": "sha256:11bacfb2051cc03a9d488aed256b9c891ca3c16047874cd8c8104eb53004e950"
+    },
+    {
+      "trial_id": "trial_train_34",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_34",
+      "provenance_reference": "lab://trials/train/34",
+      "artifact_digest": "sha256:f4132754862f488111d0f6bb618b733edb48dd49d2789c4d5767d561d29f5ba5"
+    },
+    {
+      "trial_id": "trial_train_35",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_35",
+      "provenance_reference": "lab://trials/train/35",
+      "artifact_digest": "sha256:8abf3c146c09be77789126d7f49c4fe08d4a9354ee7b5bd0177daf173557878d"
+    },
+    {
+      "trial_id": "trial_train_36",
+      "outcome": "success",
+      "target_hash_id": "hash_train_36",
+      "provenance_reference": "lab://trials/train/36",
+      "artifact_digest": "sha256:8ee6b8d5a5ec3652669d7650b4e6b609130921584cb55830ad2d1838b75aca48"
+    },
+    {
+      "trial_id": "trial_train_37",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_37",
+      "provenance_reference": "lab://trials/train/37",
+      "artifact_digest": "sha256:740da7230b88181ac72b2846721122793e4a9c7779ee220b350ef929ea8e1053"
+    },
+    {
+      "trial_id": "trial_train_38",
+      "outcome": "success",
+      "target_hash_id": "hash_train_38",
+      "provenance_reference": "lab://trials/train/38",
+      "artifact_digest": "sha256:61f448b2b20da7f6decdade595ffbaaec51c25204d497eaaf8d3ba2c3292c919"
+    },
+    {
+      "trial_id": "trial_train_39",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_39",
+      "provenance_reference": "lab://trials/train/39",
+      "artifact_digest": "sha256:a683cc10eed857842a33fe8db048e0101b6de6ea0271699f88f0143250ea4d6c"
+    },
+    {
+      "trial_id": "trial_train_40",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_40",
+      "provenance_reference": "lab://trials/train/40",
+      "artifact_digest": "sha256:e0349278b8998535c8982de8b6e73f56f52520312016a0e009d574169e4c0978"
+    },
+    {
+      "trial_id": "trial_train_41",
+      "outcome": "success",
+      "target_hash_id": "hash_train_41",
+      "provenance_reference": "lab://trials/train/41",
+      "artifact_digest": "sha256:95af7a524e53606e0110a02222f6d41916f4cf26a296549717747752ae1287fa"
+    },
+    {
+      "trial_id": "trial_train_42",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_42",
+      "provenance_reference": "lab://trials/train/42",
+      "artifact_digest": "sha256:d2126fe2376c7de31df041f239bd77d4d5d1c48d9769ad53e9aef59fea491a8c"
+    },
+    {
+      "trial_id": "trial_train_43",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_43",
+      "provenance_reference": "lab://trials/train/43",
+      "artifact_digest": "sha256:18e3303360afdf7b377fe2d5ce43905e4d27cbff629ed6536996ea70254e108e"
+    },
+    {
+      "trial_id": "trial_train_44",
+      "outcome": "success",
+      "target_hash_id": "hash_train_44",
+      "provenance_reference": "lab://trials/train/44",
+      "artifact_digest": "sha256:60db3465b8a49ef8d3c3b2e387a23f2b913c5fa7b3a093a44dc309b0baad35f6"
+    },
+    {
+      "trial_id": "trial_train_45",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_45",
+      "provenance_reference": "lab://trials/train/45",
+      "artifact_digest": "sha256:1289f1a85504cebad73babdfe336b2daaaba54f50d27897cf8864562e5fb0e39"
+    },
+    {
+      "trial_id": "trial_train_46",
+      "outcome": "success",
+      "target_hash_id": "hash_train_46",
+      "provenance_reference": "lab://trials/train/46",
+      "artifact_digest": "sha256:e314509dde9484b0fca8b521026d0269dbe6f90a2dfdff4275ffb4b691162565"
+    },
+    {
+      "trial_id": "trial_train_47",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_47",
+      "provenance_reference": "lab://trials/train/47",
+      "artifact_digest": "sha256:3d3b3c6a9a01b2bef82e55f812866c5a2a7e2d799a68a10488a5f8f88b16192e"
+    },
+    {
+      "trial_id": "trial_train_48",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_48",
+      "provenance_reference": "lab://trials/train/48",
+      "artifact_digest": "sha256:89ab112eda6606a7df864a821e2b847acbbe5907ad52e64b8ff7cc7f3a988477"
+    },
+    {
+      "trial_id": "trial_train_49",
+      "outcome": "success",
+      "target_hash_id": "hash_train_49",
+      "provenance_reference": "lab://trials/train/49",
+      "artifact_digest": "sha256:2554e745aeac620edc423b88b6ce9a005979876922f883ef234a1373d2436bf2"
+    },
+    {
+      "trial_id": "trial_train_50",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_50",
+      "provenance_reference": "lab://trials/train/50",
+      "artifact_digest": "sha256:43df60c3bc4d9d294fefd4c9d6615d5ef28bcbb8ff824c035ad6c708763c8c1c"
+    },
+    {
+      "trial_id": "trial_train_51",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_51",
+      "provenance_reference": "lab://trials/train/51",
+      "artifact_digest": "sha256:622f6036c6d60f0ef9cc8227abb86f865b4c7032b93dd97df63513f34d722bb3"
+    },
+    {
+      "trial_id": "trial_train_52",
+      "outcome": "success",
+      "target_hash_id": "hash_train_52",
+      "provenance_reference": "lab://trials/train/52",
+      "artifact_digest": "sha256:9a471c002eaa1865988cd58e3d6593f03cb0f8f72a07f326b310da94d7490279"
+    },
+    {
+      "trial_id": "trial_train_53",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_53",
+      "provenance_reference": "lab://trials/train/53",
+      "artifact_digest": "sha256:836067f275d39820168bc495a1df4365abd0515e788f0e7d7349044df3b88e22"
+    },
+    {
+      "trial_id": "trial_train_54",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_54",
+      "provenance_reference": "lab://trials/train/54",
+      "artifact_digest": "sha256:e77021b516fac35340ebaf1d43f9efa570efe2ae1ed6fc713fb8aa7500b02f7f"
+    },
+    {
+      "trial_id": "trial_train_55",
+      "outcome": "success",
+      "target_hash_id": "hash_train_55",
+      "provenance_reference": "lab://trials/train/55",
+      "artifact_digest": "sha256:d02c4db665908d9b7e0645c8fe228711fccbf604e957ec20d23fd4346a7c7703"
+    },
+    {
+      "trial_id": "trial_train_56",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_56",
+      "provenance_reference": "lab://trials/train/56",
+      "artifact_digest": "sha256:80a2a6629761dc4d7649a011a3d0b91d6dbbe2ff6704f6815a7e41dec3dd1162"
+    },
+    {
+      "trial_id": "trial_train_57",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_57",
+      "provenance_reference": "lab://trials/train/57",
+      "artifact_digest": "sha256:7175b53e87e4c67e35b4270d8e589b27d436a1229885e067a4c35f4734f46a28"
+    },
+    {
+      "trial_id": "trial_train_58",
+      "outcome": "success",
+      "target_hash_id": "hash_train_58",
+      "provenance_reference": "lab://trials/train/58",
+      "artifact_digest": "sha256:f07d338a636012cebd15d24bc69a325bda7a4aa820c6542ab73593de2ae70f4d"
+    },
+    {
+      "trial_id": "trial_train_59",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_59",
+      "provenance_reference": "lab://trials/train/59",
+      "artifact_digest": "sha256:84abe1f0f58b438882f5fa8e09ce392f7f429d7716468b484f98d0fe818c33a5"
+    },
+    {
+      "trial_id": "trial_train_60",
+      "outcome": "failure",
+      "target_hash_id": "hash_train_60",
+      "provenance_reference": "lab://trials/train/60",
+      "artifact_digest": "sha256:e6ee12d57399a2af19bf0bf14065f8c85727d134642f0bebeea4398575cc677c"
+    }
+  ],
+  "holdout_observations": [
+    {
+      "trial_id": "trial_test_01",
+      "outcome": "success",
+      "target_hash_id": "hash_test_01",
+      "provenance_reference": "lab://trials/test/01",
+      "artifact_digest": "sha256:40b3085372490230fa10b5994451119b1d3571d7dd76d93d301dd54e5553d47d"
+    },
+    {
+      "trial_id": "trial_test_02",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_02",
+      "provenance_reference": "lab://trials/test/02",
+      "artifact_digest": "sha256:0a31f9290841f4f6ad5799b44b8f6d0ac07a24f776d26bcc715d7ddad78f5a45"
+    },
+    {
+      "trial_id": "trial_test_03",
+      "outcome": "success",
+      "target_hash_id": "hash_test_03",
+      "provenance_reference": "lab://trials/test/03",
+      "artifact_digest": "sha256:b5859f9da95972e21bf300e4c19f6a5a1f880545a9c580d57f131c521f553551"
+    },
+    {
+      "trial_id": "trial_test_04",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_04",
+      "provenance_reference": "lab://trials/test/04",
+      "artifact_digest": "sha256:74c82fe0598b63a4d8dca807b8c385ddb4ea1645084064adcdc8aff89b776a2e"
+    },
+    {
+      "trial_id": "trial_test_05",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_05",
+      "provenance_reference": "lab://trials/test/05",
+      "artifact_digest": "sha256:d81bdcb9eb279c8320675839cb78d64afa3b9e1e7b23348ed692d30cba7a5298"
+    },
+    {
+      "trial_id": "trial_test_06",
+      "outcome": "success",
+      "target_hash_id": "hash_test_06",
+      "provenance_reference": "lab://trials/test/06",
+      "artifact_digest": "sha256:fd7652d71b56dd1aa35847f23dfe9ace7035d387db361df71b45eadf0e46c25f"
+    },
+    {
+      "trial_id": "trial_test_07",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_07",
+      "provenance_reference": "lab://trials/test/07",
+      "artifact_digest": "sha256:25c346752245145d95bd71f69703075f4596281eda06040937746c7b44713eb5"
+    },
+    {
+      "trial_id": "trial_test_08",
+      "outcome": "success",
+      "target_hash_id": "hash_test_08",
+      "provenance_reference": "lab://trials/test/08",
+      "artifact_digest": "sha256:76e70448dc5a38ef7aeb5a2c3cb493eebbd05ff21cae88fa5cd3ec77f3784579"
+    },
+    {
+      "trial_id": "trial_test_09",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_09",
+      "provenance_reference": "lab://trials/test/09",
+      "artifact_digest": "sha256:8eb333cbb6b53e459e2e1d8f5e163a624069cd241aede52806ea62d2ffb5a399"
+    },
+    {
+      "trial_id": "trial_test_10",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_10",
+      "provenance_reference": "lab://trials/test/10",
+      "artifact_digest": "sha256:9d80ab2181d8c5d5b074f5ea72d607afff951e3b724236d77d7fc4658fc53861"
+    },
+    {
+      "trial_id": "trial_test_11",
+      "outcome": "success",
+      "target_hash_id": "hash_test_11",
+      "provenance_reference": "lab://trials/test/11",
+      "artifact_digest": "sha256:7caef6b324c6b5f6443ca4a4135b58f48bc0b218b343d08c4eec55ab23658e0c"
+    },
+    {
+      "trial_id": "trial_test_12",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_12",
+      "provenance_reference": "lab://trials/test/12",
+      "artifact_digest": "sha256:f9c28fa536c9e5df2e9d91b0159db4604e5f18fc7834b5936b07a3c1736ff42d"
+    },
+    {
+      "trial_id": "trial_test_13",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_13",
+      "provenance_reference": "lab://trials/test/13",
+      "artifact_digest": "sha256:5e841e516d8b8c7ef8565b4fb3867a7016fb0f5f1cb2f102abc5359e3e40052b"
+    },
+    {
+      "trial_id": "trial_test_14",
+      "outcome": "success",
+      "target_hash_id": "hash_test_14",
+      "provenance_reference": "lab://trials/test/14",
+      "artifact_digest": "sha256:2f8e9991b5c9c6d501cd898ac8f54fb147e0b5306ebcf6b59e7f5a1f255ea799"
+    },
+    {
+      "trial_id": "trial_test_15",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_15",
+      "provenance_reference": "lab://trials/test/15",
+      "artifact_digest": "sha256:aceb25b4ff47a6eee2785e74d0a9e37aef95479dede31e7295b08cf83beb0d9e"
+    },
+    {
+      "trial_id": "trial_test_16",
+      "outcome": "success",
+      "target_hash_id": "hash_test_16",
+      "provenance_reference": "lab://trials/test/16",
+      "artifact_digest": "sha256:967cf8f75b8c74f1d6b94252c12345efc3727035705751481be3072cd15371a1"
+    },
+    {
+      "trial_id": "trial_test_17",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_17",
+      "provenance_reference": "lab://trials/test/17",
+      "artifact_digest": "sha256:e5704ab64e3649ab38b96e4c6440f2f15109e9dc036e8e67108d38eb7609d8ef"
+    },
+    {
+      "trial_id": "trial_test_18",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_18",
+      "provenance_reference": "lab://trials/test/18",
+      "artifact_digest": "sha256:bfdd33496a7e23c699560bff11a2136af4bc45a8c349a162bb50d04c9d081c7d"
+    },
+    {
+      "trial_id": "trial_test_19",
+      "outcome": "success",
+      "target_hash_id": "hash_test_19",
+      "provenance_reference": "lab://trials/test/19",
+      "artifact_digest": "sha256:0157a9f85ee352fdbfa2c701123b2ef4decc507bdb1df7a6b52f96cb05eec606"
+    },
+    {
+      "trial_id": "trial_test_20",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_20",
+      "provenance_reference": "lab://trials/test/20",
+      "artifact_digest": "sha256:a23361e2311efdc9b950de370eacb5621a4f6bf3236273b6ef0788fa5a853afa"
+    },
+    {
+      "trial_id": "trial_test_21",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_21",
+      "provenance_reference": "lab://trials/test/21",
+      "artifact_digest": "sha256:64b2c22d1ce6c41404a5a05a086c8781b3e69504a586461b59de265ecadb43e2"
+    },
+    {
+      "trial_id": "trial_test_22",
+      "outcome": "success",
+      "target_hash_id": "hash_test_22",
+      "provenance_reference": "lab://trials/test/22",
+      "artifact_digest": "sha256:1336c18ec10ad1b3abce93f690dac87fb1787a6760086ac4db76e344c104bdd4"
+    },
+    {
+      "trial_id": "trial_test_23",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_23",
+      "provenance_reference": "lab://trials/test/23",
+      "artifact_digest": "sha256:2426ee0e55808e81f12bf9cad85346ba5f65c98a70d0cb4be4b0ef13c6724bf1"
+    },
+    {
+      "trial_id": "trial_test_24",
+      "outcome": "success",
+      "target_hash_id": "hash_test_24",
+      "provenance_reference": "lab://trials/test/24",
+      "artifact_digest": "sha256:4b459028f3fc7de2722dccd78143ba443574677381d8e6f2b835d0d17ce91f0b"
+    },
+    {
+      "trial_id": "trial_test_25",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_25",
+      "provenance_reference": "lab://trials/test/25",
+      "artifact_digest": "sha256:be1de5b07840b44b44163375129971d45e30b102d577a69efc3b95a06919c056"
+    },
+    {
+      "trial_id": "trial_test_26",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_26",
+      "provenance_reference": "lab://trials/test/26",
+      "artifact_digest": "sha256:348e49e5e3962c5aee677d01a10b4836eb75b39408add2d9802144507ff5e157"
+    },
+    {
+      "trial_id": "trial_test_27",
+      "outcome": "success",
+      "target_hash_id": "hash_test_27",
+      "provenance_reference": "lab://trials/test/27",
+      "artifact_digest": "sha256:ba4f599c7569b4580ad950b01b4849f94c854b4c0f51f1ce28c31b6437836137"
+    },
+    {
+      "trial_id": "trial_test_28",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_28",
+      "provenance_reference": "lab://trials/test/28",
+      "artifact_digest": "sha256:1006742f4c745552f2abde9d2caaa23601bdc19c384c4ba1fde92bf9259e1c5f"
+    },
+    {
+      "trial_id": "trial_test_29",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_29",
+      "provenance_reference": "lab://trials/test/29",
+      "artifact_digest": "sha256:7265c7fe2984270bceac326373a01f5bd62baecc8699d2e72163f9a3ba4f5afe"
+    },
+    {
+      "trial_id": "trial_test_30",
+      "outcome": "success",
+      "target_hash_id": "hash_test_30",
+      "provenance_reference": "lab://trials/test/30",
+      "artifact_digest": "sha256:8af3729776727d7f8185813cf47c8213263367524f04fa652b3df0498b68e55a"
+    },
+    {
+      "trial_id": "trial_test_31",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_31",
+      "provenance_reference": "lab://trials/test/31",
+      "artifact_digest": "sha256:cbd55a5a7cb96cf66bb945ca103a9a89b8f6e9293064194392fd3acb8f3ee767"
+    },
+    {
+      "trial_id": "trial_test_32",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_32",
+      "provenance_reference": "lab://trials/test/32",
+      "artifact_digest": "sha256:e8b2036f49bb47a13d19b7fbb27031e8e70b8aa7c60507024718e94ec0f5593f"
+    },
+    {
+      "trial_id": "trial_test_33",
+      "outcome": "success",
+      "target_hash_id": "hash_test_33",
+      "provenance_reference": "lab://trials/test/33",
+      "artifact_digest": "sha256:e075e34ec6ba4161599fcdb435ab8b6e11e2da566d72f22a24963b446de21077"
+    },
+    {
+      "trial_id": "trial_test_34",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_34",
+      "provenance_reference": "lab://trials/test/34",
+      "artifact_digest": "sha256:c07b739c9353fe151600f4757ae45fdc4845469cd1f65e101bc93a06603118dd"
+    },
+    {
+      "trial_id": "trial_test_35",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_35",
+      "provenance_reference": "lab://trials/test/35",
+      "artifact_digest": "sha256:eb7cfe0f528f61fe9c19bfbe9a6a87855176cab56534ee921d1d655a853cab91"
+    },
+    {
+      "trial_id": "trial_test_36",
+      "outcome": "success",
+      "target_hash_id": "hash_test_36",
+      "provenance_reference": "lab://trials/test/36",
+      "artifact_digest": "sha256:3bf6c52d86d3d684bb64756f3eb418b3718b33b7a7b2c8ca773f05aa902d3a6b"
+    },
+    {
+      "trial_id": "trial_test_37",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_37",
+      "provenance_reference": "lab://trials/test/37",
+      "artifact_digest": "sha256:0e2c22f7b3e5829b86a2654fed3225a72dff26f027ceffbe907caa7d1f35cb82"
+    },
+    {
+      "trial_id": "trial_test_38",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_38",
+      "provenance_reference": "lab://trials/test/38",
+      "artifact_digest": "sha256:5875c71a891e54d5038013f4b59dbc88b238475a0db8ab44904cba3cddfa41fb"
+    },
+    {
+      "trial_id": "trial_test_39",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_39",
+      "provenance_reference": "lab://trials/test/39",
+      "artifact_digest": "sha256:ea8e17fe3234cafd53529c8ba464260cfde4e75a1759bdb35fc56b894bb24650"
+    },
+    {
+      "trial_id": "trial_test_40",
+      "outcome": "failure",
+      "target_hash_id": "hash_test_40",
+      "provenance_reference": "lab://trials/test/40",
+      "artifact_digest": "sha256:cfcb56ce8cddd72cadeb4a7f1fee89b455776ac2e8df55d587d831d0e6607c58"
+    }
+  ],
+  "dataset_classification": "controlled_lab_benchmark_prototype",
+  "evidence_manifest": {
+    "sampling_protocol": "Randomized trial without replacement from controlled test accounts under enterprise password policy",
+    "tool": "hashcat v6.2.6",
+    "tool_digest": "sha256:6e01a89c8a939460a59be524458bfa79f64db5dc1239aa802dc048455fa87508",
+    "dictionary": "rockyou.txt (cleansed)",
+    "dictionary_digest": "sha256:5b96e54ba5f07a72661858e99fa9b8cf14578ad4429cbda1bc0c849c7161b3ee",
+    "rules": "best64.rule",
+    "rules_digest": "sha256:889d70fa7d121c2108ecf635676ee5e08b260971b48b7fcaec3497d3e6912384",
+    "hardware": "1x NVIDIA GeForce RTX 4090 24GB, Driver 535.129.03, CUDA 12.2",
+    "hash_format": "Kerberos 5 AS-REP etype 23 ($...)",
+    "target_complexity_class": "standard_enterprise_user",
+    "supported_scenario_ids": [
+      "lab-benchmark-asrep-v1",
+      "lab://benchmarks/asrep/v1"
+    ],
+    "supported_prefix_sequences": [
+      [
+        "asrep_request",
+        "recover_asrep_secret"
+      ]
+    ],
+    "supported_actor_capabilities": [
+      "offline_gpu_cracking"
+    ]
+  }
+}

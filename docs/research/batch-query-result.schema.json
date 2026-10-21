@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Batch Query Result Specification (Issue #268)",
+  "description": "Structured output contract for batch analysis across multiple attack footholds and destinations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "batch_id",
+    "snapshot_id",
+    "reproducibility",
+    "summary",
+    "source_goal_matrix",
+    "source_prioritization",
+    "tie_breaking_applied"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": ["batch-query-result/1.0.0", "batch-query-result/1.1.0"]
+    },
+    "batch_id": {
+      "type": "string"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "reproducibility": {
+      "type": "object",
+      "required": [
+        "revision",
+        "inputs",
+        "runtime"
+      ],
+      "properties": {
+        "revision": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object"
+        },
+        "runtime": {
+          "type": "object"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_sources",
+        "supported_sources",
+        "unsupported_sources",
+        "successful_sources",
+        "sources_reaching_tier_0",
+        "status_counts"
+      ],
+      "properties": {
+        "total_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "supported_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unsupported_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "successful_sources": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sources_reaching_tier_0": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "status_counts": {
+          "type": "object"
+        }
+      }
+    },
+    "source_goal_matrix": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": {
+          "$ref": "#/$defs/sourceGoalCell"
+        }
+      }
+    },
+    "source_prioritization": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/prioritizationEntry"
+      }
+    },
+    "tie_breaking_applied": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"schema_version": {"const": "batch-query-result/1.0.0"}}},
+      "then": {
+        "properties": {
+          "source_goal_matrix": {
+            "additionalProperties": {
+              "additionalProperties": {
+                "properties": {"status": {"not": {"const": "unsupported_semantics"}}}
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sourceGoalCell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "control_level_attained",
+        "min_effort",
+        "likelihood_status",
+        "truncated"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "complete_success",
+            "truncated_success",
+            "truncated_incomplete",
+            "no_path",
+            "blocked",
+            "indeterminate",
+            "checkpoint_reached_final_goal_blocked",
+            "checkpoint_reached_final_goal_indeterminate",
+            "checkpoint_reached_final_goal_no_path",
+            "checkpoint_reached_final_goal_truncated",
+            "checkpoint_only",
+            "unsupported_source",
+            "unsupported_semantics",
+            "error"
+          ]
+        },
+        "control_level_attained": {
+          "enum": [
+            "admin_entitlement",
+            "host_admin_execution",
+            "remote_command",
+            "interactive_session",
+            "none"
+          ]
+        },
+        "min_effort": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "min_effort_path": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "likelihood_interval": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "likelihood_status": {
+          "enum": [
+            "rated",
+            "unrated"
+          ]
+        },
+        "impact": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "checkpoint_reached": {
+          "type": "boolean"
+        },
+        "final_goal_reached": {
+          "type": "boolean"
+        },
+        "optimization_scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "truncation_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "expansions": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diagnostics": {
+          "type": "array"
+        }
+      }
+    },
+    "prioritizationEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rank",
+        "source_id",
+        "node_id",
+        "node_kind",
+        "profile_kind",
+        "highest_impact_reached",
+        "min_effort_to_highest_impact",
+        "reachable_goals_count",
+        "reachable_tier_0_goals",
+        "priority_class",
+        "explainability",
+        "disposition"
+      ],
+      "properties": {
+        "rank": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "source_id": {
+          "type": "string"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "node_kind": {
+          "type": "string"
+        },
+        "profile_kind": {
+          "type": "string"
+        },
+        "highest_impact_reached": {
+          "type": "string"
+        },
+        "min_effort_to_highest_impact": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "likelihood_to_highest_impact": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "reachable_goals_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reachable_tier_0_goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "priority_class": {
+          "enum": [
+            "Critical",
+            "High",
+            "Elevated",
+            "Low",
+            "None",
+            "Unknown"
+          ]
+        },
+        "explainability": {
+          "type": "string"
+        },
+        "disposition": {
+          "type": "string"
+        },
+        "diagnostics": {
+          "type": "array"
+        }
+      }
+    }
+  }
+}

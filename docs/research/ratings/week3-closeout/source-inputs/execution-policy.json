@@ -1,0 +1,26 @@
+{
+  "policy_id": "week3-seamless-bounded-retry",
+  "version": "1.0.0",
+  "operational_horizon": "24h",
+  "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+  "by_mechanism": {
+    "reset_password": {
+      "max_attempts": 3,
+      "deadline_minutes": 15
+    },
+    "acquire_ticket": {
+      "max_attempts": 3,
+      "deadline_minutes": 10
+    },
+    "remote_exec_winrm": {
+      "max_attempts": 3,
+      "deadline_minutes": 30
+    }
+  },
+  "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+  "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+  "adopted_at": "2026-10-02T14:05:23+07:00",
+  "confirmation_record": "shared-review-confirmation.json",
+  "source": "../../seamless-parameter-basis-proposal.md",
+  "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+}

@@ -1,0 +1,202 @@
+[
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-adapter-tests.xml",
+    "bytes": 6483,
+    "sha256": "c48afe5251fdefb5dca75cdbc4463e85b27b2bf32e70ec28fad3be885cb047e1"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-ce-comparison.json",
+    "bytes": 16246,
+    "sha256": "92cda568d152b10f773c50581d953d9f910061e64bce1ff28a549e2de52e94b7"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-closeout.json",
+    "bytes": 7084,
+    "sha256": "ba8721072bd72c7d38efa3c71ef609f2186024c4bbde9fede8560dff050ae5f9"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-converted-import.log",
+    "bytes": 906,
+    "sha256": "e2d65312918e20237338db57146175d484f533989a17abfbd22dc6c7b7e65d7c"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-converted-manifest.json",
+    "bytes": 1968,
+    "sha256": "7f8493c7596d50f3478a52af16bfd9eb24eb27bf312b3585b3422d6d58e6c404"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-converted-server.log",
+    "bytes": 124027,
+    "sha256": "975d5f5b1892899b76b04006166abe5e419249392770d0fbd77581bb00acfc44"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-docker-version.json",
+    "bytes": 1110,
+    "sha256": "c167576a136645cbb0da512d95a016d99f4f6dd5cb08e87d54db7c41e534484b"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-envelope-probe.log",
+    "bytes": 977,
+    "sha256": "c2ac745767b8032e4af9b3899b2c4b5e541695a8f9785657edc96de8c5666ed0"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-envelope-response.json",
+    "bytes": 2331,
+    "sha256": "17309be9a419895357732667993b97cbc6767abccfced2a342be82c8cd5484c7"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-envelope-server.log",
+    "bytes": 218908,
+    "sha256": "2a2940707240ed2031105daf070d9267f16cfd5e02ce172356ac061903ab3493"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-final-ce-comparison.json",
+    "bytes": 16250,
+    "sha256": "b8986df9fb82ec02a584ab3ddfde447323025e24588b146add74e32233e4d76e"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-final-container-bindings.txt",
+    "bytes": 1344,
+    "sha256": "b0ab906fd43f458ba481a7a6f40e9ee5429f115e3f73de46b9b950a7db1bb0b8"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-final-import.json",
+    "bytes": 9002,
+    "sha256": "9f135602d0bffda0746f93ee2993cd8e90b4682e5f11921fd360002e179a5fb8"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-final-import.log",
+    "bytes": 902,
+    "sha256": "f66620d5b312b0de6cd4a3ff0c272c69ad8f53b40259a591920acdc42cc1dced"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-final-server.log",
+    "bytes": 128414,
+    "sha256": "804bba7c3eb87c3c210eaff2a7d17832975cc129a64a7b499e7bd8efe591623f"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-first-relationship-audit.json",
+    "bytes": 16031,
+    "sha256": "f4654b2400a33ffbbba0add4db0b428cc0c019c4de7ebc158f63553f2b1e7576"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-images.txt",
+    "bytes": 535,
+    "sha256": "b8679846131d89372c95562b31ef96f05475753fc586e878476f3ee9bf9e7274"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-captures.json",
+    "bytes": 1876,
+    "sha256": "895e0d6391bc7578cd2cc41fc5e83308907f1ff05bb1a624f49d0668399d2bfe"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-multi-discovery-progress.jsonl",
+    "bytes": 5379,
+    "sha256": "f6b553c2fdfae5476287788d8a87325a5f4da5f1eeb372930999a207258e8212"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-multi-request.json",
+    "bytes": 4325,
+    "sha256": "c9c688af1bd784fdc0e8d7858c6bf332a5e13c3a0bbf4acb755a8ff3df97b973"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-multi-selection.json",
+    "bytes": 535,
+    "sha256": "47d0475829ccab1a15c25dd9ec454b1c1dced2c9e76e9863fdbf2d455aeca9c7"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-multi-summary.json",
+    "bytes": 16796,
+    "sha256": "a73910c226f5ac97779facfedbab31f421ef4fff13405f39e3281073fa2175dc"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-one-discovery-progress.jsonl",
+    "bytes": 10827,
+    "sha256": "1dbf61606d64e79cd619f9af79cc9c45894f1d5c426f4fb6a4174983243b7c79"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-one-request.json",
+    "bytes": 11193,
+    "sha256": "273cbca854d40267f8394d7b84213669878b725fc2c0359c387b915bfbc74188"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-one-selection.json",
+    "bytes": 483,
+    "sha256": "61a67baed2273687e183a1d47a197a81a80f011be7f5c3ebb5bf670995138216"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-one-summary.json",
+    "bytes": 16742,
+    "sha256": "f7d094839a203ce61041491efefbfe3fb4a1d7fd4595600b4df361235ed2c154"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-remediation-analytics.json",
+    "bytes": 897,
+    "sha256": "09374dca99556b9c0aa6778121f9b6985e888d2bce52438b900e61530d5913e0"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-remediation-projection.json",
+    "bytes": 128429,
+    "sha256": "e5dea00b6a48fa8148e0914cae5dadcd59675c14ec59deb373ded949969220fe"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-remediation-report.json",
+    "bytes": 106467,
+    "sha256": "063ad2107993a4e105c108371d9f355ba2d2c69eb650c9131e9dc882dba2144e"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-remediation-request.json",
+    "bytes": 2453,
+    "sha256": "1e605c34ac0f1dbe41b3cac0c74459946108dd173b69c4931ad6f288173faf00"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-local-remediation-selection.json",
+    "bytes": 2341,
+    "sha256": "673f143fad59797ccb92b1f6eded9c053c5e3e9dbce7ac0200cd16fe740330b3"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-raw-import-failure.json",
+    "bytes": 2763,
+    "sha256": "c05ef40a0620077dfb3bfe48fd959065ddac4e3022976b94776c7b1e4175b82a"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-raw-import-server.log",
+    "bytes": 130610,
+    "sha256": "f031f6390bad665fe5e9b466c876b21a176301a29f52bdf948afa956203fff1f"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-raw-import.log",
+    "bytes": 947,
+    "sha256": "3e47b065b6909575ab976b149424a22dcfb1fd6e39db1352c97a7db2bb2b6736"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-raw-witness-checks.json",
+    "bytes": 5121,
+    "sha256": "3c31708c7f3c900c403eb4c967f5c70218f592e1321c32efa6e62fe3a60aa375"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/iteration-18-workflow-tests.xml",
+    "bytes": 12243,
+    "sha256": "3beba77f642d40eada5a72da88821f8dee592a5544618c1f36a4cdce5eec1fed"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/probe_ce_envelope.txt",
+    "bytes": 1988,
+    "sha256": "c73e85e8df11abe498f7fd52b427bb7545e349c599b1d4b864202584e501ea73"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/run_ce_comparison.txt",
+    "bytes": 6862,
+    "sha256": "a328875960cd0070932de6ad8c0122b9a672338af54274c9055da41032c0ab77"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/run_local_remediation.txt",
+    "bytes": 9457,
+    "sha256": "0899213e65cd59571574804c72ec3c625f928769ba3b06fd9a262413d275a356"
+  },
+  {
+    "path": "docs/research/awg-r04/evidence/run_local_remediation_captured.txt",
+    "bytes": 7053,
+    "sha256": "c29e5e128aaf64ad696c2ff3e304592db7879d587bdfc0c46650adfcdfaf5319"
+  }
+]

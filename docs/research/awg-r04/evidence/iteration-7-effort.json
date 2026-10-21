@@ -1,0 +1,1498 @@
+{
+  "acceptance_manifest": {
+    "bytes": 331231,
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v9.json",
+    "sha256": "sha256:90be6f244fc3c7fb87659c91149752033ee1ef835ce2476b8996f9a2bc2f623e"
+  },
+  "applicability": {
+    "I": "not_evaluated",
+    "P": "not_evaluated",
+    "activation_owners": 2491,
+    "active_classes": 2,
+    "coverage": "Direct initial User-owned GenericAll reset and reset-identity activation only",
+    "dimension": "C",
+    "direct_reset_pairs": 2491,
+    "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+    "profile_id": "reset-activation-c-v1",
+    "status": "bound"
+  },
+  "assumptions": {
+    "bytes": 2761,
+    "path": "docs/research/awg-r04/evidence/iteration-7-assumptions.json",
+    "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+  },
+  "effort_profile": {
+    "classes": {
+      "acquire_reset_identity": {
+        "cost": 0,
+        "method": "AuthenticationControl",
+        "name": "reset_identity_activation",
+        "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "name": "directory_password_reset",
+        "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+        "t1": 1,
+        "t2": 2
+      }
+    },
+    "dimension": "C",
+    "excluded": [
+      "P",
+      "I",
+      "password recovery",
+      "inherited/group ACL reset work",
+      "retries",
+      "existing source membership route",
+      "pre-seeded second usable identity/context"
+    ],
+    "historical_numeric_authority": {
+      "dimension": "C",
+      "review": {
+        "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+        "purpose": "numeric_context_history_adoption",
+        "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+        "reviewed_at": "2026-10-13T04:30:57Z",
+        "reviewer": "nairyuuu"
+      }
+    },
+    "profile_id": "reset-activation-c-v1",
+    "scope_adoption": {
+      "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+      "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+      "status": "explicit_opt_in_solo_fork_scenario"
+    },
+    "sources": {
+      "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+        "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+      },
+      "docs/research/ratings/final-cpi-v1/profile.json": {
+        "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+      }
+    },
+    "version": "1.0.0"
+  },
+  "evidence_generator": {
+    "bytes": 7284,
+    "path": "docs/research/awg-r04/evidence/iteration-7-evidence-generator.txt",
+    "sha256": "sha256:f7611800def07a5a307bf34c0476920b49734905165b839df0d02cea1469b842"
+  },
+  "exposure": {
+    "cells": [
+      {
+        "cell": {
+          "checkpoint_reached": false,
+          "control_level_attained": "none",
+          "expansions": 10000,
+          "final_goal_reached": false,
+          "impact": null,
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "min_effort": null,
+          "min_effort_path": null,
+          "optimization_scope": "partial_truncated",
+          "status": "truncated_incomplete",
+          "truncated": true,
+          "truncation_reason": "expansion_limit_reached"
+        },
+        "diagnostics_omitted_count": 10005,
+        "goal": {
+          "category": "tier_0_host",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "required_control_level": "host_admin_execution",
+          "required_state": {
+            "admin_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            ]
+          },
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "target_node_kind": "Computer",
+          "technical_consequence": "host_admin_execution"
+        },
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+      },
+      {
+        "cell": {
+          "checkpoint_reached": false,
+          "control_level_attained": "admin_entitlement",
+          "expansions": 7490,
+          "final_goal_reached": true,
+          "impact": "Unknown",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "min_effort": 1.0,
+          "min_effort_path": {
+            "candidate_id": "generated_0001",
+            "cost": 1.0,
+            "steps": [
+              "scenario_reset_password",
+              "acquire_reset_identity",
+              "propagate_group_entitlement"
+            ],
+            "trace_ref": "reproducibility.inputs.public_queries.sha256:effae186a96280cde41a0228a056b9128216fbfc41d06f53d3885c19bd5ad1f9"
+          },
+          "optimization_scope": "exhaustive_within_scope",
+          "status": "complete_success",
+          "truncated": false,
+          "truncation_reason": null
+        },
+        "diagnostics_omitted_count": 7495,
+        "goal": {
+          "category": "tier_0_identity",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+      }
+    ],
+    "full_local_artifacts": [
+      {
+        "bytes": 146800640,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/.result.json.9uQsyv",
+        "sha256": "sha256:5119a3942525b04ee1f4f1971db3a3e53f27934c2091358e1c99a41b9743212d"
+      },
+      {
+        "bytes": 126209561,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/checkpoint.json",
+        "sha256": "sha256:8cc70ed346f27e17da5043e967d264eded40d8a0f9b4f397594480be5a2cfbfb"
+      },
+      {
+        "bytes": 515606,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/inventory.json",
+        "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+      },
+      {
+        "bytes": 1700,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/overview.md",
+        "sha256": "sha256:e828cc5144d2f5e8e83662064b472b9fa414e16a95dd3dba0db09cd624b9327c"
+      },
+      {
+        "bytes": 6090,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/request.json",
+        "sha256": "sha256:41b0ebf3daf621ce469a98601422bab2cca3b4e5e239032b102abb31fdbd0224"
+      },
+      {
+        "bytes": 308335036,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/result.json",
+        "sha256": "sha256:6d650aabe7e2b771d735500114a24c9fdf90429b66366b00a33c111506ec8aeb"
+      },
+      {
+        "bytes": 481,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/selection.json",
+        "sha256": "sha256:2e6bb1ff69487965c1b5a1830bad947e1ef7881c54b2dbe8aa0ba78214963a71"
+      },
+      {
+        "bytes": 5120,
+        "path": "reports/generated/awg-r04-effort-exposure-v1/summary.json",
+        "sha256": "sha256:13ea846515de76e3673206e3092c6b6d1ea5a6151f68bb277aa39afded1ed586"
+      }
+    ],
+    "query_audit": [
+      {
+        "allowed_techniques": [
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_reset_password"
+        ],
+        "assumptions": [
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "password_policy_accepts",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "directory_write_allowed",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "network_rpc_reachable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "network_kdc_reachable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "authentication_accepted",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "security_group",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "membership_usable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "value": true
+          }
+        ],
+        "attempts_count": 10000,
+        "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "budget": {
+          "max_expansions": 10000,
+          "max_paths": 10,
+          "max_steps": 4
+        },
+        "effort_profile_metadata": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only usable_identity_entitlement Group goals",
+          "status": "not_applicable"
+        },
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "paths_count": 0,
+        "result": {
+          "caps": {
+            "max_expansions": 10000,
+            "max_paths": 10,
+            "max_steps": 4
+          },
+          "complete": false,
+          "expansions": 10000,
+          "status": "truncated",
+          "truncated": true
+        },
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "trace_ref": "sha256:dafdd61bd93da85dbb21de89f47d1dd562630db1554ce495f463995181ef3b15"
+      },
+      {
+        "allowed_techniques": [
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_reset_password"
+        ],
+        "assumptions": [
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "password_policy_accepts",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "directory_write_allowed",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "network_rpc_reachable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "network_kdc_reachable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "authentication_accepted",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "security_group",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "value": true
+          },
+          {
+            "assumption_metadata": {
+              "declared_by": "security_analyst"
+            },
+            "origin": "declared_assumption",
+            "predicate": "membership_usable",
+            "provenance_reference": "scenario://awg-r04/identity-goal",
+            "rationale": "Declared experimental gate, not observed evidence",
+            "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "value": true
+          }
+        ],
+        "attempts_count": 7490,
+        "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "budget": {
+          "max_expansions": 10000,
+          "max_paths": 10,
+          "max_steps": 4
+        },
+        "effort_profile_metadata": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User-owned GenericAll reset and reset-identity activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "status": "bound"
+        },
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "paths_count": 1,
+        "result": {
+          "caps": {
+            "max_expansions": 10000,
+            "max_paths": 10,
+            "max_steps": 4
+          },
+          "complete": true,
+          "expansions": 7490,
+          "status": "success",
+          "truncated": false
+        },
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "trace_ref": "sha256:effae186a96280cde41a0228a056b9128216fbfc41d06f53d3885c19bd5ad1f9"
+      }
+    ],
+    "runtime": {
+      "checkpoint_interval": 25,
+      "elapsed_seconds": 13.751020301999688,
+      "executed_cells": 2,
+      "execution_budget": {
+        "max_cells": 2,
+        "max_expansions": 20000,
+        "max_seconds": null,
+        "per_query_seconds": null
+      },
+      "python": "3.14.8",
+      "reused_cells": 0
+    },
+    "summary": {
+      "batch": {
+        "declared_cells": 2,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 2,
+        "likelihood_rated_cells": 0,
+        "not_run_cells_count": 0,
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 1,
+        "status_counts": {
+          "complete_success": 1,
+          "truncated_incomplete": 1
+        },
+        "successful_cells": 1,
+        "successful_sources": 1,
+        "supported_sources": 1,
+        "total_sources": 1,
+        "unsupported_sources": 0
+      },
+      "effort_profile": {
+        "classes": {
+          "acquire_reset_identity": {
+            "cost": 0,
+            "method": "AuthenticationControl",
+            "name": "reset_identity_activation",
+            "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+            "t1": 1,
+            "t2": 1
+          },
+          "scenario_reset_password": {
+            "cost": 1,
+            "method": "GenericAll",
+            "name": "directory_password_reset",
+            "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "dimension": "C",
+        "excluded": [
+          "P",
+          "I",
+          "password recovery",
+          "inherited/group ACL reset work",
+          "retries",
+          "existing source membership route",
+          "pre-seeded second usable identity/context"
+        ],
+        "historical_numeric_authority": {
+          "dimension": "C",
+          "review": {
+            "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+            "purpose": "numeric_context_history_adoption",
+            "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+            "reviewed_at": "2026-10-13T04:30:57Z",
+            "reviewer": "nairyuuu"
+          }
+        },
+        "profile_id": "reset-activation-c-v1",
+        "scope_adoption": {
+          "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+          "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+          "status": "explicit_opt_in_solo_fork_scenario"
+        },
+        "sources": {
+          "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+            "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+          },
+          "docs/research/ratings/final-cpi-v1/profile.json": {
+            "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "elapsed_seconds": 25.436764310999934,
+      "evaluation_mode": "scenario",
+      "execution_budget": {
+        "max_cells": 2,
+        "max_expansions": 20000,
+        "max_seconds": null,
+        "per_query_seconds": null
+      },
+      "impact": "Unknown unless separately bound by an applicable numeric registry",
+      "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+      "input_files": {
+        "assumptions": {
+          "reference": "reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+        },
+        "snapshot": {
+          "reference": "data/processed/awg-r04/pilot-v2/snapshot.json",
+          "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+        }
+      },
+      "phase_seconds": {
+        "batch_search_and_audit": 14.615261876000204,
+        "compile_and_write_request": 0.5454476499999146,
+        "inventory": 1.4542817990000003,
+        "load_and_validate_graph": 2.537200019000011,
+        "serialize_full_result": 5.939974100999734
+      },
+      "result": {
+        "path": "result.json",
+        "sha256": "sha256:6d650aabe7e2b771d735500114a24c9fdf90429b66366b00a33c111506ec8aeb"
+      },
+      "resume": {
+        "enabled": false,
+        "previous_artifacts": []
+      },
+      "scenario_policy": null,
+      "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+      "selection": {
+        "all_inventory_pairs_selected": false,
+        "eligible_sources": 2590,
+        "eligible_targets": 12,
+        "inventory_pairs_outside_selected_cohort": 31078,
+        "max_sources": 0,
+        "max_targets": 2,
+        "potential_pairs": 31080,
+        "selected_pairs": 2,
+        "selected_sources": 1,
+        "selected_targets": 2,
+        "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+        "source_selector": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1395"
+        ]
+      },
+      "version": "exposure-inventory/1.0.0"
+    }
+  },
+  "implementation": [
+    {
+      "bytes": 11776,
+      "path": "src/engine/ranking/reset_effort.py",
+      "sha256": "sha256:46fed609ad9cb8a62d77313f723b2503ce0cf404631abf290c8b1b54d8fdd78f"
+    },
+    {
+      "bytes": 33303,
+      "path": "src/engine/batch.py",
+      "sha256": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf"
+    },
+    {
+      "bytes": 30360,
+      "path": "scripts/exposure.py",
+      "sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837"
+    },
+    {
+      "bytes": 10675,
+      "path": "scripts/research/identity_effort_pilot.py",
+      "sha256": "sha256:24b5b2ebc3f7d2575b8d516c9187e008dd278775d2af2f7b05e2b7fa96f94821"
+    },
+    {
+      "bytes": 6646,
+      "path": "scripts/research/compare_identity_goals.py",
+      "sha256": "sha256:b7c398aae5caf81c3de7d62464c3fd21ec69bdbb7dec253773b0d9c9fd1b4c05"
+    },
+    {
+      "bytes": 17332,
+      "path": "tests/test_reset_effort.py",
+      "sha256": "sha256:cc2e5b1645553980f4a43bcee23447e2e36e0703f7bbba7e0d714b48e49807b1"
+    }
+  ],
+  "initial_runner_errors": {
+    "classification": "Development pilot first omitted required native CLI prerequisites; second compared CLI candidate envelopes without their documented candidate_id. Corrected orchestration only; CLI guards and semantics unchanged. Initial pytest failures were fixture/assertion-shape mistakes, not confirmed engine defects.",
+    "local_logs": [
+      {
+        "bytes": 7261,
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/effort-first.log",
+        "sha256": "sha256:bf32a82d6a60ed64742aeb3ca03529d4cc18de9ccd6df9dc016fdbe368bc60a7"
+      },
+      {
+        "bytes": 1244,
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/effort-pilot-first.log",
+        "sha256": "sha256:1cb51e4f2f1c5e416812a49919f4815eea51746db7310cf2747f1938438c259e"
+      },
+      {
+        "bytes": 556,
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/effort-pilot-v2.log",
+        "sha256": "sha256:2f7d2331e2f18d97eef889836e5d0ab79d88dbcc1fb921d9b07bd4348d5e11ff"
+      }
+    ],
+    "not_counted_as_final_evidence": [
+      "awg-r04-effort-pilot-first",
+      "awg-r04-effort-pilot-v2",
+      "awg-r04-effort-pilot-v3"
+    ]
+  },
+  "legacy_goal_comparison": {
+    "full_local_artifacts": [
+      {
+        "bytes": 38025,
+        "path": "reports/generated/awg-r04-effort-legacy-v1/any_usable_identity-paths.json",
+        "sha256": "sha256:26600991c178c96a4d4be3ede33926390e13ade2d46917371857d3586d6b939e"
+      },
+      {
+        "bytes": 3786,
+        "path": "reports/generated/awg-r04-effort-legacy-v1/any_usable_identity-query.json",
+        "sha256": "sha256:b6e3266d9e04c2d827f407b0189b99f8f84588cf64ef8954ac79a3ed66b84a21"
+      },
+      {
+        "bytes": 2,
+        "path": "reports/generated/awg-r04-effort-legacy-v1/original_actor-paths.json",
+        "sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "bytes": 3948,
+        "path": "reports/generated/awg-r04-effort-legacy-v1/original_actor-query.json",
+        "sha256": "sha256:cb49531efc08c75f82981ab4ee6a5f7de4b27cbbee7e0d2d617264f476734962"
+      },
+      {
+        "bytes": 9245,
+        "path": "reports/generated/awg-r04-effort-legacy-v1/summary.json",
+        "sha256": "sha256:0e1432855e800e20eed315b6eb989d29d7151d603dd193d03400f57bcbc3b617"
+      }
+    ],
+    "summary": {
+      "actual": {
+        "any_usable_identity": {
+          "complete": true,
+          "expansions": 7490,
+          "goal_reached": true,
+          "no_path_proven": false,
+          "programs": [
+            [
+              "scenario_reset_password",
+              "acquire_reset_identity",
+              "propagate_group_entitlement"
+            ]
+          ],
+          "seconds": 0.3007839789997888,
+          "status": "success",
+          "truncated": false
+        },
+        "original_actor": {
+          "complete": false,
+          "expansions": 10000,
+          "goal_reached": false,
+          "no_path_proven": false,
+          "programs": [],
+          "seconds": 0.922469134000039,
+          "status": "truncated",
+          "truncated": true
+        }
+      },
+      "eligible_input_pairs": 5,
+      "expected": {
+        "any_usable_identity": true,
+        "original_actor": false
+      },
+      "initial_state": "U already usable at declared Computer context; V is not initially usable",
+      "limitations": [
+        "One selected source/goal",
+        "Three techniques",
+        "Explicit scenario gates",
+        "No new numeric basis",
+        "No global optimality or domain-wide exposure claim"
+      ],
+      "runtime_gates": "seven declared positive assumptions",
+      "selected_reset_edge_id": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659",
+      "snapshot_file_sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "source_pins": {
+        "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+        "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+        "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+        "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+        "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+        "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+        "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+        "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+        "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+        "scripts/research/source_goal_batch.py": "sha256:2c3ce111348113c0b3d8189c8d990386326a73bddfda7e528744dcf6fba19715",
+        "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+        "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+        "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+        "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+        "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+        "src/engine/batch.py": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+        "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+        "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+        "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+        "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+        "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+        "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+        "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+        "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+        "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+        "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+        "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+        "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+        "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+        "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+        "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+        "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+        "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+        "src/engine/ranking/reset_effort.py": "sha256:46fed609ad9cb8a62d77313f723b2503ce0cf404631abf290c8b1b54d8fdd78f",
+        "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+        "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+        "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+        "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+        "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+        "src/engine/remediation_runner.py": "sha256:8372e106e5b8580057c1b3c62eb7bb26fb51e6580ecdb68e1a637db58488b622",
+        "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+        "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+        "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+        "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+        "src/engine/semantics/evaluator.py": "sha256:dabbc12ff5668ded6378c36d52ec5f00ef5c894c3d4806de282ba47c9b9dd445",
+        "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+        "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+        "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+        "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+        "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+        "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+        "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+        "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+        "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+        "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+        "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+        "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+        "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+        "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+        "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+        "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+        "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+        "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+        "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+        "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+        "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+        "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+        "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+        "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+        "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+      }
+    }
+  },
+  "native_execution_revision": "143dc5d833e20270a1b343124df11b95fab3f506",
+  "new_scope_vs_old_numbers": "Explicit opt-in solo-fork scenario adoption; historical C numbers are not historical reviewer approval of the new source/goal/context scope. No P/I records are imported.",
+  "pilot": {
+    "API_CLI_exact_semantic_parity": true,
+    "CLI_command": [
+      "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+      "-m",
+      "src.engine",
+      "query",
+      "--snapshot",
+      "data/processed/awg-r04/pilot-v2/snapshot.json",
+      "--query",
+      "reports/generated/awg-r04-effort-pilot-v4/batch-public-query.json",
+      "--label",
+      "seamless",
+      "--output",
+      "reports/generated/awg-r04-effort-pilot-v4/native-cli.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_computers.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_domains.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_gpos.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_groups.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_ous.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_users.json"
+    ],
+    "acquired_owner": {
+      "label": "DENA_WILLIAM@SEAMLESS.INTERNAL",
+      "node": "S-1-5-21-1271839998-3495686680-2211690266-2799"
+    },
+    "after": {
+      "complete": true,
+      "expansions": 7490,
+      "ledgers": [
+        {
+          "candidate_id": "generated_0001",
+          "expected_C": 1,
+          "native_units": {
+            "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2799:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-3b137a9995f671742c2bdb77be12c5d5fc1dffd942923fd443912e7258416469:intra_forest:1.0.0": {
+              "basis_category": "scenario_assumption",
+              "cost": 0,
+              "disposition": "rated",
+              "provider_trace": [
+                {
+                  "disposition": "rated",
+                  "provider": "reviewed_work_unit_class_effort_provider",
+                  "rating_audit": {
+                    "basis_category": "scenario_assumption",
+                    "lookup_key": {
+                      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                      "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                      "boundary": "intra_forest",
+                      "dimension": "C",
+                      "method": "AuthenticationControl",
+                      "policy_id": "reset-activation-c-v1",
+                      "resource_context": null,
+                      "scope": "r04-full-snapshot-identity-goal",
+                      "source_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                      "technique": "acquire_reset_identity",
+                      "version": "1.0.0",
+                      "work_class": "active_work",
+                      "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2799:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-3b137a9995f671742c2bdb77be12c5d5fc1dffd942923fd443912e7258416469:intra_forest:1.0.0"
+                    },
+                    "numeric_basis_class": "estimated_expert_scenario",
+                    "provenance_digest": "sha256:fd44b1a07aaa44d8f11a474e7c36fbec160383c0ebb0033ee7e81bc3576cc003",
+                    "provider_name": "reviewed_work_unit_class_effort_provider",
+                    "provider_version": "1.0.0",
+                    "review_disposition": "rated",
+                    "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                    "review_status": "accepted",
+                    "scope_binding": {
+                      "active_work_budget": 4,
+                      "evaluation_mode": "scenario",
+                      "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                      "governance": {
+                        "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+                        "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                        "status": "explicit_opt_in_solo_fork_scenario"
+                      },
+                      "horizon": "static_snapshot_no_elapsed_time",
+                      "is_synthetic_fixture": false,
+                      "policy_id": "reset-activation-c-v1",
+                      "query_id": "sha256:862632e4c900e409b65651b01f1463f66223fda4ca25256d02a122e912982219",
+                      "scenario_id": "r04-full-snapshot-identity-goal",
+                      "scenario_version": "1.0.0",
+                      "semantic_goal": {
+                        "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                        "kind": "usable_identity_entitlement",
+                        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                        "version": "semantic-goal/1.1.0"
+                      },
+                      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+                      "target_goal": {
+                        "goal_id": "identity-entitlement-9619ac766bfd7fe1cdcd212cfd6ce12c51d296124882d6e3bcbcd5b4c443a31c",
+                        "required_predicates": [
+                          "semantic_goal:S-1-5-21-1271839998-3495686680-2211690266-512:sha256:bca4f2ea26d1f7e33d8924d3a8c943396b5ed25d11dfe2d4e8e199812d3363ee"
+                        ],
+                        "success_event": "usable_identity_entitlement",
+                        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+                      },
+                      "version": "1.0.0",
+                      "work_boundary": "intra_forest"
+                    }
+                  },
+                  "reason_code": "reviewed_packet_match",
+                  "reason_detail": "Resolved via reviewed class reset-activation-c-v1:acquire_reset_identity"
+                }
+              ],
+              "rating_audit": {
+                "basis_category": "scenario_assumption",
+                "lookup_key": {
+                  "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                  "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                  "boundary": "intra_forest",
+                  "dimension": "C",
+                  "method": "AuthenticationControl",
+                  "policy_id": "reset-activation-c-v1",
+                  "resource_context": null,
+                  "scope": "r04-full-snapshot-identity-goal",
+                  "source_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                  "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                  "technique": "acquire_reset_identity",
+                  "version": "1.0.0",
+                  "work_class": "active_work",
+                  "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2799:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-3b137a9995f671742c2bdb77be12c5d5fc1dffd942923fd443912e7258416469:intra_forest:1.0.0"
+                },
+                "numeric_basis_class": "estimated_expert_scenario",
+                "provenance_digest": "sha256:fd44b1a07aaa44d8f11a474e7c36fbec160383c0ebb0033ee7e81bc3576cc003",
+                "provider_name": "reviewed_work_unit_class_effort_provider",
+                "provider_version": "1.0.0",
+                "review_disposition": "rated",
+                "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                "review_status": "accepted",
+                "scope_binding": {
+                  "active_work_budget": 4,
+                  "evaluation_mode": "scenario",
+                  "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                  "governance": {
+                    "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+                    "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                    "status": "explicit_opt_in_solo_fork_scenario"
+                  },
+                  "horizon": "static_snapshot_no_elapsed_time",
+                  "is_synthetic_fixture": false,
+                  "policy_id": "reset-activation-c-v1",
+                  "query_id": "sha256:862632e4c900e409b65651b01f1463f66223fda4ca25256d02a122e912982219",
+                  "scenario_id": "r04-full-snapshot-identity-goal",
+                  "scenario_version": "1.0.0",
+                  "semantic_goal": {
+                    "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                    "kind": "usable_identity_entitlement",
+                    "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "version": "semantic-goal/1.1.0"
+                  },
+                  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+                  "target_goal": {
+                    "goal_id": "identity-entitlement-9619ac766bfd7fe1cdcd212cfd6ce12c51d296124882d6e3bcbcd5b4c443a31c",
+                    "required_predicates": [
+                      "semantic_goal:S-1-5-21-1271839998-3495686680-2211690266-512:sha256:bca4f2ea26d1f7e33d8924d3a8c943396b5ed25d11dfe2d4e8e199812d3363ee"
+                    ],
+                    "success_event": "usable_identity_entitlement",
+                    "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+                  },
+                  "version": "1.0.0",
+                  "work_boundary": "intra_forest"
+                }
+              },
+              "reason_code": "reviewed_packet_match",
+              "reason_detail": "Resolved via reviewed class reset-activation-c-v1:acquire_reset_identity",
+              "selected_provider": "reviewed_work_unit_class_effort_provider",
+              "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2799:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-3b137a9995f671742c2bdb77be12c5d5fc1dffd942923fd443912e7258416469:intra_forest:1.0.0"
+            },
+            "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1395:S-1-5-21-1271839998-3495686680-2211690266-2799:ctx-1a19e620f68689584cef0cb574a2d2f3d5c4964af4f745b939ac0f0d1dbc9df0:intra_forest:1.0.0": {
+              "basis_category": "scenario_assumption",
+              "cost": 1,
+              "disposition": "rated",
+              "provider_trace": [
+                {
+                  "disposition": "rated",
+                  "provider": "reviewed_work_unit_class_effort_provider",
+                  "rating_audit": {
+                    "basis_category": "scenario_assumption",
+                    "lookup_key": {
+                      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                      "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                      "boundary": "intra_forest",
+                      "dimension": "C",
+                      "method": "GenericAll",
+                      "policy_id": "reset-activation-c-v1",
+                      "resource_context": null,
+                      "scope": "r04-full-snapshot-identity-goal",
+                      "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                      "technique": "scenario_reset_password",
+                      "version": "1.0.0",
+                      "work_class": "active_work",
+                      "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1395:S-1-5-21-1271839998-3495686680-2211690266-2799:ctx-1a19e620f68689584cef0cb574a2d2f3d5c4964af4f745b939ac0f0d1dbc9df0:intra_forest:1.0.0"
+                    },
+                    "numeric_basis_class": "estimated_expert_scenario",
+                    "provenance_digest": "sha256:4c223962b6e9b03036354f2b4e04deba63f6195f7f812d39b856a3de5dc7e2d2",
+                    "provider_name": "reviewed_work_unit_class_effort_provider",
+                    "provider_version": "1.0.0",
+                    "review_disposition": "rated",
+                    "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                    "review_status": "accepted",
+                    "scope_binding": {
+                      "active_work_budget": 4,
+                      "evaluation_mode": "scenario",
+                      "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                      "governance": {
+                        "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+                        "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                        "status": "explicit_opt_in_solo_fork_scenario"
+                      },
+                      "horizon": "static_snapshot_no_elapsed_time",
+                      "is_synthetic_fixture": false,
+                      "policy_id": "reset-activation-c-v1",
+                      "query_id": "sha256:862632e4c900e409b65651b01f1463f66223fda4ca25256d02a122e912982219",
+                      "scenario_id": "r04-full-snapshot-identity-goal",
+                      "scenario_version": "1.0.0",
+                      "semantic_goal": {
+                        "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                        "kind": "usable_identity_entitlement",
+                        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                        "version": "semantic-goal/1.1.0"
+                      },
+                      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+                      "target_goal": {
+                        "goal_id": "identity-entitlement-9619ac766bfd7fe1cdcd212cfd6ce12c51d296124882d6e3bcbcd5b4c443a31c",
+                        "required_predicates": [
+                          "semantic_goal:S-1-5-21-1271839998-3495686680-2211690266-512:sha256:bca4f2ea26d1f7e33d8924d3a8c943396b5ed25d11dfe2d4e8e199812d3363ee"
+                        ],
+                        "success_event": "usable_identity_entitlement",
+                        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+                      },
+                      "version": "1.0.0",
+                      "work_boundary": "intra_forest"
+                    }
+                  },
+                  "reason_code": "reviewed_packet_match",
+                  "reason_detail": "Resolved via reviewed class reset-activation-c-v1:scenario_reset_password"
+                }
+              ],
+              "rating_audit": {
+                "basis_category": "scenario_assumption",
+                "lookup_key": {
+                  "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                  "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                  "boundary": "intra_forest",
+                  "dimension": "C",
+                  "method": "GenericAll",
+                  "policy_id": "reset-activation-c-v1",
+                  "resource_context": null,
+                  "scope": "r04-full-snapshot-identity-goal",
+                  "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                  "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                  "technique": "scenario_reset_password",
+                  "version": "1.0.0",
+                  "work_class": "active_work",
+                  "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1395:S-1-5-21-1271839998-3495686680-2211690266-2799:ctx-1a19e620f68689584cef0cb574a2d2f3d5c4964af4f745b939ac0f0d1dbc9df0:intra_forest:1.0.0"
+                },
+                "numeric_basis_class": "estimated_expert_scenario",
+                "provenance_digest": "sha256:4c223962b6e9b03036354f2b4e04deba63f6195f7f812d39b856a3de5dc7e2d2",
+                "provider_name": "reviewed_work_unit_class_effort_provider",
+                "provider_version": "1.0.0",
+                "review_disposition": "rated",
+                "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                "review_status": "accepted",
+                "scope_binding": {
+                  "active_work_budget": 4,
+                  "evaluation_mode": "scenario",
+                  "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                  "governance": {
+                    "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+                    "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+                    "status": "explicit_opt_in_solo_fork_scenario"
+                  },
+                  "horizon": "static_snapshot_no_elapsed_time",
+                  "is_synthetic_fixture": false,
+                  "policy_id": "reset-activation-c-v1",
+                  "query_id": "sha256:862632e4c900e409b65651b01f1463f66223fda4ca25256d02a122e912982219",
+                  "scenario_id": "r04-full-snapshot-identity-goal",
+                  "scenario_version": "1.0.0",
+                  "semantic_goal": {
+                    "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                    "kind": "usable_identity_entitlement",
+                    "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "version": "semantic-goal/1.1.0"
+                  },
+                  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+                  "target_goal": {
+                    "goal_id": "identity-entitlement-9619ac766bfd7fe1cdcd212cfd6ce12c51d296124882d6e3bcbcd5b4c443a31c",
+                    "required_predicates": [
+                      "semantic_goal:S-1-5-21-1271839998-3495686680-2211690266-512:sha256:bca4f2ea26d1f7e33d8924d3a8c943396b5ed25d11dfe2d4e8e199812d3363ee"
+                    ],
+                    "success_event": "usable_identity_entitlement",
+                    "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+                  },
+                  "version": "1.0.0",
+                  "work_boundary": "intra_forest"
+                }
+              },
+              "reason_code": "reviewed_packet_match",
+              "reason_detail": "Resolved via reviewed class reset-activation-c-v1:scenario_reset_password",
+              "selected_provider": "reviewed_work_unit_class_effort_provider",
+              "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1395:S-1-5-21-1271839998-3495686680-2211690266-2799:ctx-1a19e620f68689584cef0cb574a2d2f3d5c4964af4f745b939ac0f0d1dbc9df0:intra_forest:1.0.0"
+            }
+          }
+        }
+      ],
+      "min_effort": {
+        "all_best_candidate_ids": [
+          "generated_0001"
+        ],
+        "associated_impact": null,
+        "associated_likelihood_interval": null,
+        "baseline_coverage": {
+          "caps_applied": {
+            "max_active_work_budget": 4,
+            "max_candidates": 10,
+            "max_expansions": 10000,
+            "max_steps": 4,
+            "timeout_ms": null
+          },
+          "completeness_scope": "budget_bounded",
+          "is_truncated": false,
+          "truncation_reasons": []
+        },
+        "best_candidate_id": "generated_0001",
+        "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+        "goal_id": "identity-entitlement-9619ac766bfd7fe1cdcd212cfd6ce12c51d296124882d6e3bcbcd5b4c443a31c",
+        "minimum_effort_value": 1,
+        "tie_count": 1
+      },
+      "minimum_proven_over_scope": false,
+      "paths": 1,
+      "truncated": false
+    },
+    "artifacts": [
+      {
+        "bytes": 49807360,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/.checkpoint.json.5f6ttc",
+        "sha256": "sha256:d72b7a9fe166b1677a6254aea6eafcf53dae50cc3458457c1a9d46d53c555181"
+      },
+      {
+        "bytes": 2761,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+        "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+      },
+      {
+        "bytes": 629606,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/batch-public-query.json",
+        "sha256": "sha256:fdd86fc9a626998664be0881e44390489f7f82a529ee17a9a89cf5e4a460dc28"
+      },
+      {
+        "bytes": 14313,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/batch-request.json",
+        "sha256": "sha256:5cac765ec7af7208383c7e4e5e74627f7ef4c219fea28b7d567cd823e661e3f9"
+      },
+      {
+        "bytes": 133066309,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/batch-result.json",
+        "sha256": "sha256:57a162212b5cf30a34717bdf489ab213f6186dce10e57dc0468e0983d930a0df"
+      },
+      {
+        "bytes": 126209561,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/checkpoint.json",
+        "sha256": "sha256:6023c68561a42da9faa4715d51a61a2c4a7bdef1499097d4eead0a770f0fe129"
+      },
+      {
+        "bytes": 90488145,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/native-cli.json",
+        "sha256": "sha256:6f82498c1d51d2c90f59d2e8055460e32cee6db8079c563420c64ee23edb7b6b"
+      },
+      {
+        "bytes": 0,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/native-cli.log",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "bytes": 627439,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/query-C-only.json",
+        "sha256": "sha256:ef962cb82e8958829c9b5ba3efb9da7a087dd919e491c7574dce6d1830f83ca0"
+      },
+      {
+        "bytes": 3787,
+        "path": "reports/generated/awg-r04-effort-pilot-v4/query-unrated.json",
+        "sha256": "sha256:299a411f869123feb5432306bc919e6da47df352902021133ada248d69049bf7"
+      }
+    ],
+    "batch_selection": {
+      "executed_goals": 1,
+      "goals_outside_pilot": 11,
+      "manifest_goals": 12
+    },
+    "batch_summary": {
+      "declared_cells": 1,
+      "effort_rated_cells": 1,
+      "evaluated_cells": 1,
+      "likelihood_rated_cells": 0,
+      "not_run_cells": [],
+      "policy": "min_effort_impact_pareto",
+      "sources_reaching_tier_0": 1,
+      "status_counts": {
+        "complete_success": 1
+      },
+      "successful_cells": 1,
+      "successful_sources": 1,
+      "supported_sources": 1,
+      "total_sources": 1,
+      "unsupported_sources": 0
+    },
+    "before": {
+      "min_effort": null,
+      "paths": 1
+    },
+    "before_after_full_path_parity": true,
+    "context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "direct_reset_edge": {
+      "id": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "weight": 1.0
+    },
+    "eligible_pairs": 5,
+    "group": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "limitations": [
+      "One selected direct GenericAll reset scenario; not whole-domain coverage.",
+      "Source is initially usable at the declared Computer; not password-only.",
+      "Seven runtime gates are assumptions, not observed success.",
+      "Ordinal C-only scope extension, not the old reviewer's new-scope approval.",
+      "P/I remain unrated. No timing improvement or globally optimal AD claim."
+    ],
+    "orchestration_pins": {
+      "scripts/research/compare_identity_goals.py": "sha256:b7c398aae5caf81c3de7d62464c3fd21ec69bdbb7dec253773b0d9c9fd1b4c05",
+      "scripts/research/identity_effort_pilot.py": "sha256:24b5b2ebc3f7d2575b8d516c9187e008dd278775d2af2f7b05e2b7fa96f94821"
+    },
+    "revision": "143dc5d833e20270a1b343124df11b95fab3f506",
+    "snapshot_sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8",
+    "source": {
+      "initial_state": {
+        "control": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1395"
+        ],
+        "usable_identity": [
+          [
+            "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ]
+        ]
+      },
+      "label": "OLA_CARSON@SEAMLESS.INTERNAL",
+      "membership_to_DA": false,
+      "node": "S-1-5-21-1271839998-3495686680-2211690266-1395"
+    },
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+      "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+      "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:2c3ce111348113c0b3d8189c8d990386326a73bddfda7e528744dcf6fba19715",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+      "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/reset_effort.py": "sha256:46fed609ad9cb8a62d77313f723b2503ce0cf404631abf290c8b1b54d8fdd78f",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+      "src/engine/remediation_runner.py": "sha256:8372e106e5b8580057c1b3c62eb7bb26fb51e6580ecdb68e1a637db58488b622",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:dabbc12ff5668ded6378c36d52ec5f00ef5c894c3d4806de282ba47c9b9dd445",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "stage_seconds": {
+      "C_only_native_query": 0.9248466459998781,
+      "exact_batch_query_CLI": 10.521495783999853,
+      "one_source_one_goal_batch": 9.904740333000063,
+      "unrated_native_query": 0.8617765519998102
+    },
+    "version": "identity-effort-pilot/1.0"
+  },
+  "projection_omissions": [
+    "Full native attempts/diagnostics, checkpoint and CLI payload remain in hashed local files, not duplicated in Git. Full per-unit ledger for the one C witness is included in pilot.after.ledgers.",
+    "The pilot artifact inventory includes an observed temporary checkpoint spill file; it is not a completed checkpoint or another evaluated run.",
+    "Two test runs overlap and the 166-check run precedes the last oracle-only additions. Neither is a whole-suite pass; final clean validation is published separately.",
+    "Stage wall times are observations of different work/output scopes, not a paired performance improvement experiment."
+  ],
+  "raw_manifest": {
+    "collected_at": null,
+    "collector": {
+      "name": "sharphound",
+      "version": null
+    },
+    "dataset_id": "seamless-v1",
+    "files": [
+      {
+        "relative_path": "20210920185958_computers.json",
+        "sha256": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+        "size_bytes": 303149
+      },
+      {
+        "relative_path": "20210920185958_domains.json",
+        "sha256": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+        "size_bytes": 3032
+      },
+      {
+        "relative_path": "20210920185958_gpos.json",
+        "sha256": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+        "size_bytes": 3946
+      },
+      {
+        "relative_path": "20210920185958_groups.json",
+        "sha256": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+        "size_bytes": 2410332
+      },
+      {
+        "relative_path": "20210920185958_ous.json",
+        "sha256": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+        "size_bytes": 475300
+      },
+      {
+        "relative_path": "20210920185958_users.json",
+        "sha256": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa",
+        "size_bytes": 8176069
+      }
+    ],
+    "schema_version": 1,
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "summary": {
+      "file_count": 6,
+      "total_size_bytes": 11371828
+    }
+  },
+  "schema_version": "awg-r04-reset-effort-experiment/1",
+  "snapshot": {
+    "bytes": 48326845,
+    "path": "data/processed/awg-r04/pilot-v2/snapshot.json",
+    "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+  },
+  "test_runs": [
+    {
+      "artifact": {
+        "bytes": 24747,
+        "path": "docs/research/awg-r04/evidence/iteration-7-selected.xml",
+        "sha256": "sha256:28e22caa5aab993d7f2df8d51b074f766c17d7b794b85b4de59977e335d84ab4"
+      },
+      "per_module": {
+        "tests.test_batch_scenario_policy": 10,
+        "tests.test_exposure": 18,
+        "tests.test_final_cpi_effort_release": 13,
+        "tests.test_identity_entitlement_goal": 25,
+        "tests.test_prepared_graph_binding": 12,
+        "tests.test_rating_source_successors": 14,
+        "tests.test_remediation_prepared_reuse": 4,
+        "tests.test_reset_effort": 20,
+        "tests.test_source_goal_batch_runner": 50
+      },
+      "suite": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "403d5e0687a2",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "166",
+        "time": "31.140",
+        "timestamp": "2026-10-18T12:05:02.489539+02:00"
+      }
+    },
+    {
+      "artifact": {
+        "bytes": 3142,
+        "path": "docs/research/awg-r04/evidence/iteration-7-oracles.xml",
+        "sha256": "sha256:f04498a182e64a4a5b5dc25d52a9877ff723677085ad75ad334f5de5aed427d3"
+      },
+      "per_module": {
+        "tests.test_reset_effort": 21
+      },
+      "suite": {
+        "errors": "0",
+        "failures": "0",
+        "hostname": "403d5e0687a2",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "21",
+        "time": "1.530",
+        "timestamp": "2026-10-18T12:06:29.672574+02:00"
+      }
+    }
+  ],
+  "unrated_query": {
+    "bytes": 3787,
+    "path": "docs/research/awg-r04/evidence/iteration-7-unrated-query.json",
+    "sha256": "sha256:299a411f869123feb5432306bc919e6da47df352902021133ada248d69049bf7"
+  }
+}

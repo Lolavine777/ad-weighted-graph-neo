@@ -1,0 +1,31 @@
+import hashlib,json,re,sys,time,urllib.request,urllib.error
+from pathlib import Path
+sys.path.insert(0,str(Path.cwd()))
+from scripts.run_bloodhound_baseline import login
+out=Path('reports/generated/awg-r04-ce-v1/envelope-v3');out.mkdir(exist_ok=False)
+files=[]
+for src in sorted(Path('data/raw/SEAMLESS').glob('*.json')):
+ raw=json.loads(src.read_text(encoding='utf-8-sig'));kind=raw['meta']['type']
+ data={'data':raw[kind],'meta':raw['meta']}
+ assert data['data']==raw[kind] and data['meta']==raw['meta']
+ p=out/src.name;p.write_text(json.dumps(data,separators=(',',':')))
+ files.append({'path':str(p),'raw_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'converted_sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'rows':len(data['data'])})
+(out/'manifest.json').write_text(json.dumps(files,indent=2))
+secret=re.findall(r'Initial Password Set To:\s+([^\s#]+)',Path('reports/generated/awg-r04-ce-v1/startup.log').read_text())[-1]
+token=login(secret)
+def api(path,data=None):
+ req=urllib.request.Request('http://127.0.0.1:18080/api/v2/'+path,data=data,headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
+ try:
+  with urllib.request.urlopen(req,timeout=30) as r:return {'http':r.status,'body':r.read().decode()}
+ except urllib.error.HTTPError as e:return {'http':e.code,'body':e.read().decode()}
+job=api('file-upload/start',b'{}');jid=json.loads(job['body'])['data']['id'];result={'start':job,'job_id':jid,'uploads':[]}
+for f in files:
+ r=api('file-upload/'+str(jid),Path(f['path']).read_bytes());result['uploads'].append({'file':Path(f['path']).name,**r});print(f['path'],r['http'],flush=True)
+result['end']=api(f'file-upload/{jid}/end',b'{}')
+for _ in range(30):
+ result['jobs']=api('file-upload')
+ (out/'response.json').write_text(json.dumps(result,indent=2))
+ jobs=json.loads(result['jobs']['body'])['data'];current=next(j for j in jobs if j['id']==jid)
+ if current['status'] in [-1,2,3,4,5,8]:break
+ time.sleep(2)
+print(json.dumps(current),flush=True)

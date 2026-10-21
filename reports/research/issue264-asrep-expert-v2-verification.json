@@ -1,0 +1,575 @@
+{
+  "cases": [
+    {
+      "API_CLI_orchestration_equal": true,
+      "cli": {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 1,
+            "total_unresolved_gaps": 9,
+            "unrated_candidates": 1
+          },
+          "canonical_work_units": 4,
+          "checkpoint_reached": false,
+          "efforts": {
+            "generated_0001": null
+          },
+          "final_goal_reached": true,
+          "gap_codes": [
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "P",
+              "disposition": "refused",
+              "reason_code": "prerequisite_gate_refusal"
+            },
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "P",
+              "disposition": "refused",
+              "reason_code": "prerequisite_gate_refusal"
+            },
+            {
+              "dimension": "P",
+              "disposition": "refused",
+              "reason_code": "prerequisite_gate_refusal"
+            },
+            {
+              "dimension": "I",
+              "disposition": "refused",
+              "reason_code": "prerequisite_gate_refusal"
+            }
+          ],
+          "likelihoods": {
+            "generated_0001": null
+          },
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 4
+            },
+            "I": {
+              "rated": 0,
+              "required": 1
+            },
+            "P": {
+              "rated": 0,
+              "required": 4
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 1,
+          "programs": [
+            [
+              "asrep_request",
+              "recover_asrep_secret",
+              "activate_recovered_identity",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "status": "success"
+        },
+        "case": "pending",
+        "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/pending.query.json --rating-resolution ./reports/generated/issue264/pending.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      "counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_events_rated": 0,
+        "P_events_required": 4,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible_paths": 1,
+        "fully_rated": 0,
+        "valid_generated_paths": 1
+      },
+      "graph_sha256": "sha256:5181deb41498ae2c9652dba4e1c8554ca90801fac6c175cdabcac69401e28fdc",
+      "graph_view": "original_verified_raw",
+      "mode": "pending"
+    },
+    {
+      "API_CLI_orchestration_equal": true,
+      "cli": {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 1,
+            "total_candidates": 1,
+            "total_unresolved_gaps": 1,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 4,
+          "checkpoint_reached": false,
+          "efforts": {
+            "generated_0001": 3
+          },
+          "final_goal_reached": true,
+          "gap_codes": [
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            }
+          ],
+          "likelihoods": {
+            "generated_0001": null
+          },
+          "minimum_effort": 3,
+          "minimum_proven": true,
+          "numeric_requests": {
+            "C": {
+              "rated": 4,
+              "required": 4
+            },
+            "I": {
+              "rated": 1,
+              "required": 1
+            },
+            "P": {
+              "rated": 3,
+              "required": 4
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 1,
+          "programs": [
+            [
+              "asrep_request",
+              "recover_asrep_secret",
+              "activate_recovered_identity",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "status": "success"
+        },
+        "case": "engineering_copy",
+        "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/engineering_copy.query.json --rating-resolution ./reports/generated/issue264/engineering_copy.config.json --snapshot ./reports/generated/issue264/engineering_copy.snapshot.json --label synthetic",
+        "evidence_class": "synthetic_test_only",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      "counts": {
+        "C_rated": 1,
+        "I_rated": 1,
+        "P_events_rated": 3,
+        "P_events_required": 4,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible_paths": 1,
+        "fully_rated": 0,
+        "valid_generated_paths": 1
+      },
+      "graph_sha256": "sha256:1d16c5cf5d4826459cb893ca0ccab9db82e426342d65f3f2ebf8c1bf32ee49b8",
+      "graph_view": "explicit_synthetic_derivative",
+      "mode": "engineering_copy"
+    }
+  ],
+  "committed_input_consumer_test_hashes": {
+    "docs/research/ratings/asrep-expert-v1/historical-pins.json": "944e44ed30a9b2c1eb289336e38cfe29acd0faf0a45444af92840e601a23f9f2",
+    "docs/research/ratings/asrep-expert-v2/oracle.json": "8fa2f40c579bf36d790d4174c740b12b69e4b2511a896bb539f6d7d36856bbb2",
+    "docs/research/ratings/asrep-expert-v2/proposal.json": "71486bb12eb06516a618f5a27a82dc7162774f118b2afc8753448ec24a1192b0",
+    "docs/research/ratings/asrep-expert-v2/source-records.json": "fb292b7cd5972aa3de42eb1b552e32a1436bf2d99bca86fd3d17715e99826247",
+    "scripts/research/asrep_expert_basis.py": "af63e155bafd1883b446f7c330be514e1d56b82e7fb627375f622171dc9604e2",
+    "tests/test_asrep_expert_basis.py": "a4c60b4de4f59e9da7eac16f04f4c1bc6c9d9c11a7ce0ab73fb4535f0118a044"
+  },
+  "conditional_assumptions": [
+    [
+      "network_kdc_reachable",
+      "X",
+      "V_A"
+    ],
+    [
+      "asrep_request_accepted",
+      "X",
+      "V_A"
+    ],
+    [
+      "recovery_success",
+      "X",
+      "V_A"
+    ],
+    [
+      "secret_valid",
+      "V_A",
+      "X"
+    ],
+    [
+      "network_kdc_reachable",
+      "V_A",
+      "X"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "X"
+    ],
+    [
+      "admin_channel",
+      "V_A",
+      "C0"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "C0"
+    ]
+  ],
+  "expected_product_if_reviewed": null,
+  "frozen_baseline": {
+    "C_rated": 1,
+    "I_rated": 1,
+    "P_events_rated": 0,
+    "P_events_required": 4,
+    "P_rated": 0,
+    "Pareto_eligible": 0,
+    "conditioned_feasible_paths": 1,
+    "fully_rated": 0,
+    "valid_generated_paths": 1
+  },
+  "historical_files_byte_preserved": 58,
+  "independent_b_review": false,
+  "issue": 264,
+  "native_output_label_gap_for_B": "scenario_assumption does not distinguish estimated_expert_scenario; engineering copy uses synthetic_test_only",
+  "numeric_activation_permitted": false,
+  "numeric_basis_class": "estimated_expert_scenario",
+  "oracle_sha256": "sha256:4d20628eba7c0272980850a6b38bc9fa98bac0c155e654c48c0909315ea8f0de",
+  "original_graph_sha256": "sha256:5181deb41498ae2c9652dba4e1c8554ca90801fac6c175cdabcac69401e28fdc",
+  "phase": 1,
+  "proposal_sha256": "sha256:b68b8989569b808269721add79fb5d0bf289695a1445e9005013a008d3ff4008",
+  "proposal_status": "proposed_pending_b_review",
+  "remaining_gaps": [
+    "No scoped expert elicitation of AS-REP request/response/parser reliability for this actor and policy; protocol specifications alone cannot supply a percentage.",
+    "Real V_A password distribution/rank, AS-REP etype and achieved distinct-verification count are absent. Cannot transfer this interval to the original unmeasured-budget or a natural password population.",
+    "No accepted equivalence of recovered-secret authentication with the historical reset-derived context, especially secret age/account policy after offline delay.",
+    "No accepted concrete terminal transport/policy equivalence and no independent conditional operational reliability judgment for the post-recovery history.",
+    "B numeric/context review and C/I applicability adoption pending",
+    "Natural password rank/completed-compute evidence remains absent",
+    "Phase 2 Source A 2/24 and broader generator coverage are unchanged"
+  ],
+  "revision": "6577a96edf65337d9bf40abad3390ff60a25a1d2",
+  "scenario_id": "week5-seamless-asrep-rank-unknown-v2",
+  "semantic_controls": [
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "blocked"
+      },
+      "case": "asset_veto",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/asset_veto.query.json --rating-resolution ./reports/generated/issue264/asset_veto.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "indeterminate"
+      },
+      "case": "missing_recovery",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/missing_recovery.query.json --rating-resolution ./reports/generated/issue264/missing_recovery.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "blocked"
+      },
+      "case": "no_request",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/no_request.query.json --rating-resolution ./reports/generated/issue264/no_request.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "no_path"
+      },
+      "case": "off",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/off.query.json --rating-resolution ./reports/generated/issue264/off.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "indeterminate"
+      },
+      "case": "raw",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/raw.query.json --rating-resolution ./reports/generated/issue264/raw.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "truncated"
+      },
+      "case": "step_cap",
+      "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue264/step_cap.query.json --rating-resolution ./reports/generated/issue264/step_cap.config.json --snapshot ./reports/generated/issue264/pending.snapshot.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    }
+  ],
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+}

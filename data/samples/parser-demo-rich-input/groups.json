@@ -1,0 +1,24 @@
+{
+  "meta": {"type": "groups"},
+  "groups": [
+    {
+      "ObjectIdentifier": "S-1-5-21-4100-4200-4300-2101",
+      "Properties": {"name": "Demo Helpdesk@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"},
+      "Members": [
+        {"MemberId": "S-1-5-21-4100-4200-4300-1101", "MemberType": "User"}
+      ]
+    },
+    {
+      "ObjectIdentifier": "S-1-5-21-4100-4200-4300-2102",
+      "Properties": {"name": "Demo Operators@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"},
+      "Members": [
+        {"MemberId": "S-1-5-21-4100-4200-4300-2101", "MemberType": "Group"}
+      ]
+    },
+    {
+      "ObjectIdentifier": "S-1-5-32-544",
+      "Properties": {"name": "Demo Administrators@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"},
+      "scope": {"kind": "host", "guid": "A1B2C3D4-1111-4222-8333-ABCDEF012345"}
+    }
+  ]
+}

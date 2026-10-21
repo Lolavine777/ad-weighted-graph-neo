@@ -1,0 +1,202 @@
+"""Independent direct-field audit. No AWG parser, evaluator, or cost imports."""
+import argparse
+import collections
+import hashlib
+import json
+import random
+import re
+import subprocess
+from pathlib import Path
+
+SID = re.compile(r"S-1-(?:[0-9]+-)+[0-9]+$")
+
+
+def digest(path):
+    return "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def main():
+    p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--repo", type=Path, required=True)
+    p.add_argument("--snapshot", type=Path, required=True)
+    p.add_argument("--output", type=Path, required=True)
+    a = p.parse_args()
+    if a.output.exists():
+        raise ValueError("Keep prior observations; choose a new output")
+    manifest_path = a.repo / "data/samples/manifests/seamless-raw-v1.json"
+    manifest = json.loads(manifest_path.read_text())
+    documents, input_pins = {}, {}
+    for entry in manifest["files"]:
+        path = a.repo / "data/raw/SEAMLESS" / entry["relative_path"]
+        assert path.stat().st_size == entry["size_bytes"]
+        assert digest(path) == "sha256:" + entry["sha256"]
+        document = json.loads(path.read_text(encoding="utf-8-sig"))
+        key = next(k for k in document if k != "meta")
+        documents[key] = (path.name, document[key])
+        input_pins[path.name] = digest(path)
+    snapshot = json.loads(a.snapshot.read_text())
+    assert snapshot["snapshot_id"] == manifest["snapshot_id"]
+    graph = snapshot["graph"]
+    index = {(e["source"], e["target"], e["kind"]): e for e in graph["edges"]}
+    assert len(index) == len(graph["edges"])
+    expected = collections.defaultdict(list)
+    excluded = collections.Counter()
+    raw_counts = collections.Counter()
+    scoped_references = 0
+    domains = {r["Properties"]["name"]: r["ObjectIdentifier"]
+               for r in documents["domains"][1]}
+
+    def endpoint(value, domain):
+        if not isinstance(value, str) or not SID.fullmatch(value):
+            return None
+        # A builtin SID is namespace-relative, not a globally unique AD object.
+        # Contract 1.3 scopes it using the independently collected Domain SID.
+        if value.startswith("S-1-5-32-") or value in ("S-1-5-18", "S-1-5-19", "S-1-5-20"):
+            domain_sid = domains.get(domain)
+            assert domain_sid and SID.fullmatch(domain_sid)
+            return f"domain:sid:{domain_sid}:{value}"
+        return value
+
+    def add(source, target, kind, filename, record, pointer, attribute, domain):
+        nonlocal scoped_references
+        raw_counts[kind] += 1
+        source_id, target_id = endpoint(source, domain), endpoint(target, domain)
+        if source_id is None or target_id is None:
+            excluded[kind] += 1
+            return
+        if (source_id, target_id) != (source, target):
+            scoped_references += 1
+        expected[(source_id, target_id, kind)].append({
+            "raw_file": filename, "record_id": record, "pointer": pointer,
+            "provenance_attribute": attribute,
+        })
+
+    for category, (filename, records) in sorted(documents.items()):
+        for i, record in enumerate(records):
+            target = record["ObjectIdentifier"]
+            domain = record["Properties"]["domain"]
+            base = f"#/{category}/{i}"
+            for j, ace in enumerate(record.get("Aces", [])):
+                if ace.get("RightName") in ("GenericAll", "WriteDacl"):
+                    add(ace["PrincipalSID"], target, ace["RightName"], filename,
+                        target, f"{base}/Aces/{j}", "Aces[].PrincipalSID", domain)
+            for j, member in enumerate(record.get("Members", [])):
+                add(member["MemberId"], target, "MemberOf", filename, target,
+                    f"{base}/Members/{j}", "Members[].MemberId", domain)
+            if record.get("PrimaryGroupSid"):
+                add(target, record["PrimaryGroupSid"], "MemberOf", filename,
+                    target, f"{base}/PrimaryGroupSid", "PrimaryGroupSid", domain)
+            for field, kind in (("LocalAdmins", "AdminTo"),
+                                ("PSRemoteUsers", "CanPSRemote")):
+                for j, member in enumerate(record.get(field, [])):
+                    add(member["MemberId"], target, kind, filename, target,
+                        f"{base}/{field}/{j}", f"{field}[]", domain)
+
+    def check(key, refs, edges):
+        edge = edges.get(key)
+        if edge is None:
+            return {"key": list(key), "problem": "missing direct edge", "raw": refs}
+        for ref in refs:
+            if not any(
+                prov["raw_file"].endswith("/" + ref["raw_file"])
+                and prov.get("record_id") == ref["record_id"]
+                and prov.get("attribute") == ref["provenance_attribute"]
+                and prov.get("evidence_type") == "positive"
+                and prov.get("timestamp_status") == "assumed"
+                for prov in edge["provenance"]
+            ):
+                return {"key": list(key), "problem": "raw reference/time provenance missing",
+                        "raw": ref, "edge_id": edge["id"]}
+        return None
+
+    problems = [problem for key, refs in sorted(expected.items())
+                if (problem := check(key, refs, index))]
+    # Prove that this oracle does not accept reversed/missing/provenance-free edges.
+    key = next(k for k in sorted(expected) if k[0] != k[1])
+    edge = index.get(key)
+    controls = {}
+    if edge is not None:
+        changed = dict(index)
+        changed.pop(key)
+        controls["removed_edge_detected"] = check(key, expected[key], changed) is not None
+        changed[(key[1], key[0], key[2])] = edge
+        controls["reversed_edge_detected"] = check(key, expected[key], changed) is not None
+        changed[key] = {**edge, "provenance": []}
+        controls["removed_provenance_detected"] = check(key, expected[key], changed) is not None
+    assert controls and all(controls.values())
+    rng = random.Random(297)
+    samples = []
+    for kind in sorted(raw_counts):
+        keys = sorted(k for k in expected if k[2] == kind)
+        for key in sorted(rng.sample(keys, min(10, len(keys)))):
+            samples.append({"source": key[0], "target": key[1], "kind": kind,
+                            "edge_id": index.get(key, {}).get("id"), "raw": expected[key]})
+    users = documents["users"][1]
+    computers = documents["computers"][1]
+    report = {
+        "schema_version": "awg-r04-direct-raw-audit/1.0",
+        "revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=a.repo,
+                                            text=True).strip(),
+        "script_sha256": digest(Path(__file__)),
+        "raw_manifest_sha256": digest(manifest_path), "raw_files": input_pins,
+        "snapshot_id": snapshot["snapshot_id"], "snapshot_file_sha256": digest(a.snapshot),
+        "graph_nodes": len(graph["nodes"]), "graph_edges": len(graph["edges"]),
+        "checked_unique_edges": len(expected),
+        "checked_raw_references": sum(map(len, expected.values())),
+        "checked_by_kind": dict(collections.Counter(k[2] for k in expected)),
+        "raw_candidates_by_kind": dict(raw_counts),
+        "excluded_non_plain_sid_references": dict(excluded),
+        "builtin_sid_scoped_references": scoped_references,
+        "builtin_scope_basis": (
+            "Explicit contract 1.3 rule + independently collected raw Domain ObjectIdentifier; "
+            "no label-based identity inference"
+        ),
+        "failures": problems, "negative_controls": controls,
+        "sample_seed": 297, "samples": samples,
+        "dataset_coverage_observations": {
+            "user_count": len(users), "computer_count": len(computers),
+            "users_dontreqpreauth_true": sum(
+                x["Properties"].get("dontreqpreauth") is True for x in users
+            ),
+            "users_hasspn_true": sum(x["Properties"].get("hasspn") is True for x in users),
+            "hosts_with_nonempty_local_admins": sum(bool(x.get("LocalAdmins")) for x in computers),
+            "direct_local_admin_references": sum(len(x.get("LocalAdmins", [])) for x in computers),
+            "hosts_with_nonempty_psremote": sum(bool(x.get("PSRemoteUsers")) for x in computers),
+            "session_references": sum(len(x.get("Sessions", [])) for x in computers),
+            "rdp_group_references": sum(len(x.get("RemoteDesktopUsers", [])) for x in computers),
+            "canonical_canrdp_edges": sum(e["kind"] == "CanRDP" for e in graph["edges"]),
+            "rdp_unknown_assessments": [x for x in graph["assessments"]
+                                        if x.get("kind") == "CanRDP"],
+        },
+        "scope": (
+            "Census of direct GenericAll/WriteDacl, explicit+primary MemberOf, "
+            "LocalAdmins/AdminTo and PSRemoteUsers/CanPSRemote with plain SID endpoints; "
+            "builtin SIDs explicitly domain-scoped per contract. No AWG imports. "
+            "Each direct reference must have the right directed edge and raw/time provenance."
+        ),
+        "limitations": [
+            "Not a BloodHound runtime comparison or validation of AD exploitability.",
+            (
+                "No assertion for raw DOMAIN-prefixed aliases or GUID endpoints; exclusions "
+                "counted. Raw builtin SIDs are explicitly domain-scoped."
+            ),
+            (
+                "Does not independently validate nested/GPO derivation, false-positive extras, "
+                "weights, or absence/completeness of raw collection."
+            ),
+            (
+                "Random rows are only an audit sample; the forward assertions census "
+                "the declared endpoint subset."
+            ),
+        ],
+    }
+    a.output.parent.mkdir(parents=True, exist_ok=True)
+    a.output.write_text(json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2) + "\n")
+    print(json.dumps({k: report[k] for k in ("checked_unique_edges", "checked_raw_references",
+                     "checked_by_kind", "excluded_non_plain_sid_references", "negative_controls")}))
+    print(json.dumps({"failure_count": len(problems), "first_failures": problems[:3]}))
+    return bool(problems)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

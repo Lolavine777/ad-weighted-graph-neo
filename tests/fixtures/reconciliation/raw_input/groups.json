@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "type": "groups",
+    "synthetic": true
+  },
+  "groups": [
+    {
+      "ObjectIdentifier": "S-1-5-21-700-800-900-2101",
+      "Properties": {
+        "name": "S-1-5-21-700-800-900-2101",
+        "domain": "SYNTHETIC.TEST"
+      },
+      "Members": [
+        {
+          "MemberId": "S-1-5-21-700-800-900-1101",
+          "MemberType": "User"
+        }
+      ]
+    }
+  ]
+}

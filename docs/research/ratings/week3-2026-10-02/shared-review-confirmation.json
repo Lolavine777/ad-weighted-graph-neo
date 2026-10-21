@@ -1,0 +1,38 @@
+{
+  "record_id": "week3-A-B-joint-review-2026-10-02",
+  "recorded_by": "Codex acting for Lolavine777 under user delegation",
+  "user_message_time": "2026-10-02T14:05:23+07:00",
+  "user_statement": "thôi sửa và đồng nhất cho cả B luôn đi, B đang ngồi đây với tôi xác nhận luôn rồi. Còn những bất đồng về mặt document sửa hộ cũng được, ta là SoT.",
+  "confirmation_channel": "B confirmation relayed by A in the current conversation; not a separate B-authored GitHub attestation.",
+  "participants": [
+    "Lolavine777 (TTS A)",
+    "nairyuuu (TTS B; account identity used by this project)"
+  ],
+  "scope": [
+    "Ủy quyền sửa và thống nhất điều kiện/tài liệu cho A và B.",
+    "Giữ 21 giá trị của A và 21 giá trị B đã đề xuất; B được ghi nhận xác nhận qua A, không bịa lời xác nhận riêng từng mục.",
+    "Áp dụng cùng bounded retry 3 lần, reset 15 phút, ticket 10 phút, WinRM 30 phút, trong horizon 24h.",
+    "Giữ khai báo AI hỗ trợ, tiếp xúc phiếu A và bản B AI gốc."
+  ],
+  "exposure": "B AI draft was exposed to A before likelihood/impact completion. Current joint review is not blind independent scoring.",
+  "evidence_class": "human_reviewed_ai_assisted_ratings",
+  "independent_inter_rater_agreement_eligible": false,
+  "final_parameter_dispositions": "not selected by this confirmation; retain distinct source intervals and review proposals separately",
+  "empirical_calibration": "none",
+  "original_inputs": {
+    "A": {
+      "sha256": "47ca08e828f765ddbd3ed388a22c039c46c3b5cea84a265cc38effa76b6926c0",
+      "url": "https://github.com/nairyuuu/ad-weighted-graph/blob/9b8aed43b8dd9f69efb338020f832c9c0b207b6d/docs/research/ratings/week3-2026-10-02/rater-A.json"
+    },
+    "B": {
+      "sha256": "e06dbbf8ddb2f8a88fd79182739fc9bb73ca158a9080e1d19d67fbe92f046d79",
+      "path": "rater-B-ai-draft.json",
+      "source_commit": "9b8aed43b8dd9f69efb338020f832c9c0b207b6d",
+      "ai_created_at": "2026-10-02T06:53:22Z"
+    }
+  },
+  "execution_policy": {
+    "path": "execution-policy.json",
+    "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+  }
+}

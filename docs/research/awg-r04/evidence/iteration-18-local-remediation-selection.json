@@ -1,0 +1,54 @@
+{
+  "policy": "Supported relationship edits only, descending native observed binding coverage, stable candidate_id; not effectiveness or defender cost",
+  "selected": {
+    "candidate_id": "sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+    "catalog_entry_id": "group-membership",
+    "technical_edits": [
+      {
+        "edit_id": "inventory-0ecdacec7b37-0",
+        "catalog_entry_id": "group-membership",
+        "rationale": "Observed-scope counterfactual candidate; validate operational prerequisites separately.",
+        "kind": "deny_relationship",
+        "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+        "relationship": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "kind": "MemberOf",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        "provenance_digest": "sha256:2fee941e3d7c6504de0973cd01158de3f45d505c0862cf067838c4d725cf646a",
+        "effective_right_verified": true,
+        "evidence_refs": [
+          "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+        ]
+      }
+    ],
+    "status": "supported",
+    "reason": "Observed native support; exact before evidence must revalidate.",
+    "required_evidence": [
+      "MemberOf edge and group/member record",
+      "scope and token-refresh policy"
+    ],
+    "support_scope": "native_declared_model_not_live_AD",
+    "prerequisites": [
+      "actor_controlled",
+      "actor_enabled",
+      "membership_usable",
+      "security_group",
+      "source_authorized"
+    ],
+    "observed_bindings": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "program_id": "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "program_id": "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+      }
+    ]
+  },
+  "all_inventory_candidates": 4,
+  "supported_relationship_candidates": 1
+}

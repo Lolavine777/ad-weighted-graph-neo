@@ -1,0 +1,74 @@
+"""Publish exact audit measurements, including failed instrumentation history."""
+import argparse
+import hashlib
+import json
+import shutil
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--execution-root', type=Path, required=True)
+a = p.parse_args()
+REPO, ROOT = a.repo.resolve(), a.execution_root.resolve()
+OUT = REPO / 'docs/research/awg-r04/evidence'
+
+def read(path):
+    return json.loads(path.read_text())
+
+def pin(path):
+    raw = path.read_bytes()
+    return {'path': str(path.relative_to(REPO)) if path.is_relative_to(REPO) else str(path),
+            'bytes': len(raw), 'sha256': 'sha256:' + hashlib.sha256(raw).hexdigest()}
+
+bench = read(REPO / 'reports/generated/awg-r04-audit-benchmark-v2/summary.json')
+assert bench['revisions'] == {
+    'before': '2708100b83549dc606d610de2c0b20e19130209d',
+    'after': 'b605f5db596511aad40204cc62af58cb625073b5'}
+assert bench['all_full_semantics_equal'] and bench['all_normalized_packages_equal']
+assert len(bench['trials']) == 9
+assert len({r['semantic_sha256'] for r in bench['trials']}) == 1
+assert len({r['normalized_package_sha256'] for r in bench['trials']}) == 1
+profiles = read(ROOT / 'audit-profile-summary.json')
+rss = read(ROOT / 'audit-rss-probe.json')
+assert rss['fresh_supervisor_wait4_peak_KiB'] < 65536 < rss['direct_wait4_peak_KiB']
+from scripts.research.benchmark_query_audit import normalized
+before = read(ROOT / 'audit-profile-before/result.json')
+after = read(ROOT / 'audit-profile-after/result.json')
+assert normalized(before) == normalized(after)
+assert before['reproducibility']['tracked_changes'] == []
+assert after['reproducibility']['tracked_changes'] == []
+src, dst = ROOT / 'audit-selected.xml', OUT / 'iteration-8-selected.xml'
+assert not dst.exists()
+shutil.copyfile(src, dst)
+suite = ET.parse(dst).getroot()[0]
+assert suite.get('tests') == '152' and suite.get('failures') == suite.get('errors') == '0'
+out = {
+    'schema_version': 'awg-r04-audit-serialization-experiment/1',
+    'native_execution_revision': bench['revisions']['after'],
+    'native_code_introduced_at': '745bbd2a206312756de024af020bb8d419b8ef98',
+    'benchmark': bench,
+    'profile': {'measurements': profiles, 'normalized_full_profile_packages_equal': True,
+                'full_local_artifacts': [pin(ROOT / ('audit-profile-' + side) / name)
+                    for side in ('before', 'after') for name in ('command.json', 'cli.pstats', 'result.json', 'run.log')],
+                'warning': 'Instrumented cumulative times overlap and include profiler overhead; do not infer wall speedup from their ratio.'},
+    'instrumentation_defect': {'rss_probe': rss,
+        'superseded_run': pin(REPO / 'reports/generated/awg-r04-audit-benchmark-v1/summary.json'),
+        'classification': 'wait4 inherited parser pre-exec RSS at fork. V1 full parity passed, but RSS and process-spawn timings are not primary evidence. V2 uses a fresh small supervisor. Native production code did not change for this correction.'},
+    'acceptance_manifest': pin(REPO / 'reports/research/week4-guided-exploration-acceptance-manifest-v10.json'),
+    'selected_tests': {'suite': suite.attrib, 'artifact': pin(dst)},
+    'implementation': [pin(REPO / name) for name in ('src/engine/query_cli.py', 'tests/test_query_cli.py', 'scripts/research/benchmark_query_audit.py')],
+    'generator': pin(OUT / 'iteration-8-evidence-generator.txt'),
+    'scope': {'returned_witnesses': 1, 'expansions_and_attempts': 7490, 'diagnostics': 7494,
+              'C': 1, 'P': 'unrated', 'I': 'unrated', 'minimum_proven_over_scope': False,
+              'unknowns_and_full_attempts_preserved': True},
+    'limits': ['One full-snapshot, narrow reset/activation/member query; not all-domain or all-catalog performance.',
+              'Three trials/mode on this environment, no statistical confidence interval or universal speed claim.',
+              'Native query CLI compact output is opt-in. Batch/exposure serialization format remains unchanged.',
+              'Default pretty output differs in physical revision/source metadata, not semantic fields.',
+              'Full native JSONs/pstats stay local with hashes. This projection is not a complete native decision package.',
+              'No search, state, scoring, source/facts binding or remediation decision was changed.']}
+dest = OUT / 'iteration-8-audit.json'
+assert not dest.exists()
+dest.write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
+print(json.dumps({'evidence': pin(dest), 'tests': suite.attrib}))

@@ -1,0 +1,354 @@
+{
+  "query": {
+    "query_metadata": {
+      "query_id": "query-seamless-source-b-to-dc-v1",
+      "version": "1.0.0",
+      "scenario_id": "scenario-seamless-source-b-to-dc",
+      "scenario_version": "1.1.0",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "evaluation_mode": "scenario",
+      "work_boundary": "intra_forest",
+      "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target_goal": {
+        "goal_id": "terminal_compromise_seamless_dc",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "horizon": "24h",
+      "active_work_budget": 6
+    },
+    "facts_ledger": {
+      "observed_facts": [
+        {
+          "predicate": "enabled_ollie",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_users.json#/users/917/Properties/enabled"
+        },
+        {
+          "predicate": "enabled_badblood",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_computers.json#/computers/0/Properties/enabled"
+        },
+        {
+          "predicate": "memberof_ollie_da",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_groups.json#/groups/40/Members/3"
+        },
+        {
+          "predicate": "genericall_da_badblood",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_computers.json#/computers/0/Aces/1"
+        },
+        {
+          "predicate": "enabled_finwvir",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_computers.json#/computers/67/Properties/enabled"
+        },
+        {
+          "predicate": "genericall_finwvir_ollie",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_users.json#/users/917/Aces/11"
+        }
+      ],
+      "false_facts": [],
+      "assumed_facts": [
+        {
+          "predicate": "network_rpc_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "Authenticated password-reset directory channel is reachable from Source B during 24h, including any protocol-specific secure transport; ports alone do not prove write success."
+        },
+        {
+          "predicate": "network_kdc_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The domain KDC is reachable with valid naming/time/protocol context during the horizon."
+        },
+        {
+          "predicate": "network_winrm_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected WinRM transport is reachable from the foothold during 24h."
+        },
+        {
+          "predicate": "service_winrm_running",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected WinRM listener is available during 24h; OS defaults do not establish observed service state."
+        },
+        {
+          "predicate": "da_host_admin_mapping",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The domain default DA-to-host-Administrators mapping on the DC remains usable in this scenario; this is a proposed technical-rule condition, not inferred from the AD computer GenericAll ACE."
+        },
+        {
+          "predicate": "password_policy_accepts_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The proposed replacement password satisfies the effective password policy at the write time."
+        },
+        {
+          "predicate": "directory_write_allowed_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write."
+        },
+        {
+          "predicate": "authentication_accepted_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition."
+        },
+        {
+          "predicate": "membership_security_group_usable_ollie_da",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated."
+        },
+        {
+          "predicate": "winrm_authentication_accepted_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The target WinRM service accepts this actor's authentication with the selected service identity/transport."
+        },
+        {
+          "predicate": "endpoint_authorized_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected Microsoft.PowerShell endpoint permits this actor's administrative token; endpoint ACL and logon controls allow it."
+        },
+        {
+          "predicate": "admin_execution_context_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected endpoint runs commands in this actor's unrestricted elevated administrative context, without JEA or a reduced RunAs identity; endpoint access alone is insufficient."
+        },
+        {
+          "predicate": "foothold_controlled_finwvir",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "Source B LocalSystem foothold controls the machine identity; separate proposed scope."
+        }
+      ],
+      "unknown_facts": [
+        {
+          "predicate": "edr_telemetry",
+          "layer": 3,
+          "rationale": "unmonitored_endpoint"
+        },
+        {
+          "predicate": "session_badblood",
+          "layer": 3,
+          "rationale": "No collected session connection; runtime presence is unknown."
+        }
+      ],
+      "predicate_layers": {
+        "credentials_ollie": 3,
+        "actor_controlled_ollie": 3,
+        "effective_member_da_ollie": 3,
+        "admin_control_badblood": 3,
+        "enabled_ollie": 2,
+        "enabled_badblood": 2,
+        "memberof_ollie_da": 1,
+        "network_rpc_reachable": 3,
+        "network_kdc_reachable": 3,
+        "network_winrm_reachable": 3,
+        "service_winrm_running": 3,
+        "da_host_admin_mapping": 3,
+        "password_policy_accepts_ollie": 3,
+        "directory_write_allowed_ollie": 3,
+        "authentication_accepted_ollie": 3,
+        "membership_security_group_usable_ollie_da": 3,
+        "winrm_authentication_accepted_ollie": 3,
+        "endpoint_authorized_ollie": 3,
+        "admin_execution_context_ollie": 3,
+        "edr_telemetry": 3,
+        "session_badblood": 3,
+        "genericall_da_badblood": 1,
+        "enabled_finwvir": 2,
+        "genericall_finwvir_ollie": 1,
+        "foothold_controlled_finwvir": 3
+      }
+    },
+    "bound_actions": [
+      {
+        "action_id": "action_reset_ollie_from_b",
+        "technique": "reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "referenced_work_unit_ids": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "foothold_controlled_finwvir",
+          "enabled_finwvir",
+          "enabled_ollie",
+          "genericall_finwvir_ollie",
+          "network_rpc_reachable",
+          "password_policy_accepts_ollie",
+          "directory_write_allowed_ollie"
+        ],
+        "adds": [
+          "credentials_ollie"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "reset_password"
+      },
+      {
+        "action_id": "action_activate_ollie",
+        "technique": "acquire_ticket",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "credentials_ollie",
+          "enabled_ollie",
+          "network_kdc_reachable",
+          "authentication_accepted_ollie"
+        ],
+        "adds": [
+          "actor_controlled_ollie"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "acquire_ticket"
+      },
+      {
+        "action_id": "action_closure_ollie_da",
+        "technique": "membership_closure",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_ollie",
+          "memberof_ollie_da",
+          "enabled_ollie",
+          "membership_security_group_usable_ollie_da"
+        ],
+        "adds": [
+          "effective_member_da_ollie"
+        ],
+        "is_passive_closure": true,
+        "technique_name": "membership_closure",
+        "bound_work_units": []
+      },
+      {
+        "action_id": "action_winrm_badblood_ollie",
+        "technique": "remote_exec_winrm",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "effective_member_da_ollie",
+          "network_winrm_reachable",
+          "service_winrm_running",
+          "enabled_badblood",
+          "actor_controlled_ollie",
+          "enabled_ollie",
+          "da_host_admin_mapping",
+          "winrm_authentication_accepted_ollie",
+          "endpoint_authorized_ollie",
+          "admin_execution_context_ollie"
+        ],
+        "adds": [
+          "admin_control_badblood"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "remote_exec_winrm"
+      }
+    ],
+    "work_units_ledger": {
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0": {
+        "overlap_state": "unresolved_overlap",
+        "rating_status": "unrated",
+        "effort": null,
+        "missing_basis_reasons": [
+          "pending_independent_ratings"
+        ]
+      },
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "unresolved_overlap",
+        "rating_status": "unrated",
+        "effort": null,
+        "missing_basis_reasons": [
+          "pending_independent_ratings"
+        ]
+      },
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "unresolved_overlap",
+        "rating_status": "unrated",
+        "effort": null,
+        "missing_basis_reasons": [
+          "pending_independent_ratings"
+        ]
+      }
+    },
+    "conditional_bounds_table": [],
+    "target_impact_assessments": {
+      "S-1-5-21-1271839998-3495686680-2211690266-1000": {
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "rating_status": "unrated",
+        "consequence_rating": null,
+        "missing_basis_reasons": [
+          "pending_independent_ratings"
+        ]
+      }
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_seamless_source_b_01_ollie",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "bound_action_ids": [
+        "action_reset_ollie_from_b",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "structural_routes": [
+        {
+          "route_id": "route_seamless_source_b_01",
+          "node_ids": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ],
+          "edge_ids": [
+            "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b",
+            "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+            "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9"
+          ],
+          "provenance_locators": [
+            "20210920185958_users.json#/users/917/Aces/11",
+            "20210920185958_groups.json#/groups/40/Members/3",
+            "20210920185958_computers.json#/computers/0/Aces/1"
+          ]
+        }
+      ],
+      "scope_binding": {
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157"
+      }
+    }
+  ]
+}

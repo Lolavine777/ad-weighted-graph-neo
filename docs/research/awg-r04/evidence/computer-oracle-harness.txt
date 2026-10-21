@@ -1,0 +1,58 @@
+"""Execute the finite oracle against a separately selected native checkout."""
+import argparse
+import hashlib
+import importlib.util
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--case-module', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+a = p.parse_args()
+assert not a.output.exists(), 'Preserve prior run'
+repo = a.repo.resolve()
+sys.path[:0] = [str(repo), str(repo / 'tests')]
+spec = importlib.util.spec_from_file_location('computer_oracle_cases', a.case_module.resolve())
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+from src.engine import query, search
+from src.engine.semantics import evaluator
+from src.engine.query_cli import wire
+assert Path(evaluator.__file__).resolve().is_relative_to(repo)
+
+rows = []
+for case in module.CASES:
+    graph, public = module.scenario(case)
+    if case.identity == 'missing_context':
+        public['target_goal'] = {'target': module.GROUP, 'required_state': {'effective_member': [[module.ACTOR, module.GROUP]]}}
+    result = query.run_attack_query(public, graph)
+    expected = module.oracle(case)
+    rows.append({
+        'case': case.name, 'oracle': expected, 'native_status': result.status,
+        'matches_oracle': result.status == expected,
+        'query': wire(public), 'graph': graph.to_canonical(),
+        'complete': result.complete, 'truncated': result.truncated,
+        'goal_reached': result.final_goal_reached,
+        'minimum_proven': result.is_minimum_proven_over_scope,
+        'no_path_proven_over_declared_scope': result.is_no_path_proven_over_scope,
+        'expansions': result.search_result.expansions,
+        'paths': wire(result.paths),
+    })
+pin = lambda path: 'sha256:' + hashlib.sha256(path.read_bytes()).hexdigest()
+data = {
+    'schema_version': 'awg-r04-computer-capability-oracle/1',
+    'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
+    'native_checkout': str(repo),
+    'tracked_status': subprocess.check_output(['git', 'status', '--porcelain', '-uno'], cwd=repo, text=True),
+    'source_pins': {str(Path(m.__file__).resolve().relative_to(repo)): pin(Path(m.__file__)) for m in (query, search, evaluator)},
+    'case_module_sha256': pin(a.case_module),
+    'rows': rows, 'passed': sum(r['matches_oracle'] for r in rows), 'total': len(rows),
+    'limits': ['Finite three-action oracle only; not an AD execution or full catalog proof.', 'No rating basis is supplied; no minimum C or probability claim.', 'Scoped no_path is not proof that an unsupported credential bootstrap is impossible.'],
+}
+a.output.parent.mkdir(parents=True, exist_ok=True)
+a.output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'revision': data['revision'], 'passed': data['passed'], 'total': data['total'], 'statuses': [(r['case'], r['oracle'], r['native_status']) for r in rows]}))

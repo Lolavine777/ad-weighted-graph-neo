@@ -1,0 +1,610 @@
+{
+  "schema_version": "offline-recovery-scenarios/1.1.0",
+  "status": "proposed_pending_b_review",
+  "b_adopted": false,
+  "author": "Nguyễn Đăng Long / TTS A / Lolavine777; AI-assisted scenario proposal",
+  "prepared_at": "2026-10-13",
+  "base_revision": "8de3e0431f65a57fa5d9d357e48bfe178a07458b",
+  "refs": [
+    264,
+    267,
+    265,
+    280
+  ],
+  "profiles": [
+    {
+      "profile_id": "asrep_password_recovery-bounded1e9-reference-v1",
+      "class_id": "asrep_password_recovery",
+      "technique_id": "recover_asrep_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "AS-REP",
+        "etype": 23,
+        "hashcat_mode": 18200,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": 1000000000,
+        "max_complete_distinct_verifications": 1000000000,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "human_reference_envelope",
+        "reference_transfer": "explicit_assumption_requires_separate_b_review",
+        "selection": "human-created comp8-like ordinary User; after acquisition and all prior successful events; no known password reuse, reset-derived chosen secret, targeted side information or managed generation",
+        "rank_assumption": "Conditional target rank CDF lies between the three public-attacker Table 6 reference curves at the stated anchor points. Includes policy, language/time/cohort, preauth selection and published-guess-to-distinct-verification transfer; not inferred from snapshot."
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "asrep_password_recovery-widecap2p36-reference-v1",
+      "class_id": "asrep_password_recovery",
+      "technique_id": "recover_asrep_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "AS-REP",
+        "etype": 23,
+        "hashcat_mode": 18200,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": 1000000000,
+        "max_complete_distinct_verifications": 68719476736,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "human_reference_envelope",
+        "reference_transfer": "explicit_assumption_requires_separate_b_review",
+        "selection": "human-created comp8-like ordinary User; after acquisition and all prior successful events; no known password reuse, reset-derived chosen secret, targeted side information or managed generation",
+        "rank_assumption": "Conditional target rank CDF lies between the three public-attacker Table 6 reference curves at the stated anchor points. Includes policy, language/time/cohort, preauth selection and published-guess-to-distinct-verification transfer; not inferred from snapshot."
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "asrep_password_recovery-snapshot-only-unknown-v1",
+      "class_id": "asrep_password_recovery",
+      "technique_id": "recover_asrep_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "AS-REP",
+        "etype": 23,
+        "hashcat_mode": 18200,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": null,
+        "max_complete_distinct_verifications": 68719476736,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "unknown_natural_password",
+        "selection": "snapshot supplies no conditional password-rank population"
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "kerberoast_password_recovery-bounded1e9-reference-v1",
+      "class_id": "kerberoast_password_recovery",
+      "technique_id": "recover_ticket_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "TGS",
+        "etype": 23,
+        "hashcat_mode": 13100,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": 1000000000,
+        "max_complete_distinct_verifications": 1000000000,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "service_conditional_mixture",
+        "reference_transfer": "explicit_assumption_requires_separate_b_review",
+        "selection": "ordinary User service accounts with SPNs; excludes Computer, gMSA, dMSA and krbtgt; mixture is conditional on successful TGS acquisition and exact history",
+        "manual_weight_given_history": [
+          "1/4",
+          "1/2"
+        ],
+        "weight_basis": "Declared planning regime, not observed enterprise prevalence or expert elicitation: 25–50% human-set comp8-like secrets, remainder generated by the exact random14 regime. B may reject this regime; changing weights changes profile/version.",
+        "manual_rank_assumption": "Manual service-operator choices are assumed bounded by the reference human rank envelope as a separately reviewed service-specific transfer. The paper contains no service-account sample; AS-REP adoption cannot authorize this assumption.",
+        "generated_stratum": {
+          "generation": "independent_uniform_characters_no_side_information",
+          "alphabet_size": 94,
+          "length": 14,
+          "basis": "Declared 94 printable ASCII symbols, unbiased independent generation; this exact generator is a scenario assumption, not a claim about Microsoft gMSA or SEAMLESS.",
+          "post_history_uniformity_assumption": {
+            "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+            "posterior_law": "uniform_on_full_declared_space",
+            "password_correlated_side_information": "assumed_absent",
+            "password_dependent_account_selection": "assumed_absent",
+            "known_rejected_candidates": "assumed_absent",
+            "basis_class": "declared_scenario_assumption_pending_b_review",
+            "assumption_reference": "kerberoast_password_recovery-bounded1e9-reference-v1/generated-post-history-uniformity",
+            "bindings_required": [
+              "exact_acquired_material_lineage",
+              "exact_ordered_successful_work_identity_prefix",
+              "password_correlated_information_history",
+              "account_selection_rule",
+              "candidate_rejection_history"
+            ],
+            "refusal_examples": [
+              "known password prefix/partial secret",
+              "secret reuse information from another successful recovery",
+              "password-dependent account selection",
+              "prior failed guesses on this secret",
+              "missing or unknown conditional posterior"
+            ]
+          }
+        }
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "Uniform generated-stratum distribution must hold after acquisition and exact full successful history; generation uniformity alone is insufficient. Review history/selection/side information before binding.",
+        "service-specific post-acquisition mixture weight and manual-rank transfer; no AS-REP q copy",
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "kerberoast_password_recovery-widecap2p36-reference-v1",
+      "class_id": "kerberoast_password_recovery",
+      "technique_id": "recover_ticket_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "TGS",
+        "etype": 23,
+        "hashcat_mode": 13100,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": 1000000000,
+        "max_complete_distinct_verifications": 68719476736,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "service_conditional_mixture",
+        "reference_transfer": "explicit_assumption_requires_separate_b_review",
+        "selection": "ordinary User service accounts with SPNs; excludes Computer, gMSA, dMSA and krbtgt; mixture is conditional on successful TGS acquisition and exact history",
+        "manual_weight_given_history": [
+          "1/4",
+          "1/2"
+        ],
+        "weight_basis": "Declared planning regime, not observed enterprise prevalence or expert elicitation: 25–50% human-set comp8-like secrets, remainder generated by the exact random14 regime. B may reject this regime; changing weights changes profile/version.",
+        "manual_rank_assumption": "Manual service-operator choices are assumed bounded by the reference human rank envelope as a separately reviewed service-specific transfer. The paper contains no service-account sample; AS-REP adoption cannot authorize this assumption.",
+        "generated_stratum": {
+          "generation": "independent_uniform_characters_no_side_information",
+          "alphabet_size": 94,
+          "length": 14,
+          "basis": "Declared 94 printable ASCII symbols, unbiased independent generation; this exact generator is a scenario assumption, not a claim about Microsoft gMSA or SEAMLESS.",
+          "post_history_uniformity_assumption": {
+            "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+            "posterior_law": "uniform_on_full_declared_space",
+            "password_correlated_side_information": "assumed_absent",
+            "password_dependent_account_selection": "assumed_absent",
+            "known_rejected_candidates": "assumed_absent",
+            "basis_class": "declared_scenario_assumption_pending_b_review",
+            "assumption_reference": "kerberoast_password_recovery-widecap2p36-reference-v1/generated-post-history-uniformity",
+            "bindings_required": [
+              "exact_acquired_material_lineage",
+              "exact_ordered_successful_work_identity_prefix",
+              "password_correlated_information_history",
+              "account_selection_rule",
+              "candidate_rejection_history"
+            ],
+            "refusal_examples": [
+              "known password prefix/partial secret",
+              "secret reuse information from another successful recovery",
+              "password-dependent account selection",
+              "prior failed guesses on this secret",
+              "missing or unknown conditional posterior"
+            ]
+          }
+        }
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "Uniform generated-stratum distribution must hold after acquisition and exact full successful history; generation uniformity alone is insufficient. Review history/selection/side information before binding.",
+        "service-specific post-acquisition mixture weight and manual-rank transfer; no AS-REP q copy",
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "kerberoast_password_recovery-snapshot-only-unknown-v1",
+      "class_id": "kerberoast_password_recovery",
+      "technique_id": "recover_ticket_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "TGS",
+        "etype": 23,
+        "hashcat_mode": 13100,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": null,
+        "max_complete_distinct_verifications": 68719476736,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "unknown_natural_password",
+        "selection": "snapshot supplies no conditional password-rank population"
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "service-specific post-acquisition mixture weight and manual-rank transfer; no AS-REP q copy",
+        "conditional population/rank-envelope and guess-unit transfer",
+        "mode-specific conditional work completion and reserved floor",
+        "exact history/material/resource/budget scope",
+        "numeric endpoints/uncertainty label in a new adopted release",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    },
+    {
+      "profile_id": "kerberoast-uniform-random14-bounded1e9-v1",
+      "class_id": "kerberoast_password_recovery",
+      "technique_id": "recover_ticket_secret",
+      "status": "proposed_pending_b_review",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "target_success_event": "validated_password_for_acquired_material",
+      "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+      "verifier": {
+        "material": "TGS",
+        "etype": 23,
+        "hashcat_mode": 13100,
+        "actual_material_observed": false,
+        "reserved_worker_compatibility_observed": false,
+        "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut"
+      },
+      "budget": {
+        "jobs": 1,
+        "deadline_seconds": 72000,
+        "work_unit": "distinct_complete_verification",
+        "min_complete_distinct_verifications_on_no_hit": null,
+        "max_complete_distinct_verifications": 1000000000,
+        "reuse_budget_for_second_event": false,
+        "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+        "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+        "cap_feasibility": {
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "attainment_evidence": "not_demonstrated",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+        }
+      },
+      "horizon_seconds": 86400,
+      "completion_given_floor_rank": [
+        "19/20",
+        "1"
+      ],
+      "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+      "population": {
+        "kind": "uniform_service",
+        "reference_transfer": "explicit_assumption_requires_separate_b_review",
+        "selection": "ordinary User service accounts with SPNs; excludes Computer, gMSA, dMSA and krbtgt; mixture is conditional on successful TGS acquisition and exact history",
+        "generated_stratum": {
+          "generation": "independent_uniform_characters_no_side_information",
+          "alphabet_size": 94,
+          "length": 14,
+          "basis": "Declared 94 printable ASCII symbols, unbiased independent generation; this exact generator is a scenario assumption, not a claim about Microsoft gMSA or SEAMLESS.",
+          "post_history_uniformity_assumption": {
+            "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+            "posterior_law": "uniform_on_full_declared_space",
+            "password_correlated_side_information": "assumed_absent",
+            "password_dependent_account_selection": "assumed_absent",
+            "known_rejected_candidates": "assumed_absent",
+            "basis_class": "declared_scenario_assumption_pending_b_review",
+            "assumption_reference": "kerberoast-uniform-random14-bounded1e9-v1/generated-post-history-uniformity",
+            "bindings_required": [
+              "exact_acquired_material_lineage",
+              "exact_ordered_successful_work_identity_prefix",
+              "password_correlated_information_history",
+              "account_selection_rule",
+              "candidate_rejection_history"
+            ],
+            "refusal_examples": [
+              "known password prefix/partial secret",
+              "secret reuse information from another successful recovery",
+              "password-dependent account selection",
+              "prior failed guesses on this secret",
+              "missing or unknown conditional posterior"
+            ]
+          }
+        }
+      },
+      "required_new_runtime_metadata": [
+        "population_profile_id",
+        "population_assumption_reference",
+        "guess_strategy_and_rank_unit_reference",
+        "compatible_material_or_declared_etype",
+        "reserved_generation_and_verification_work_floor",
+        "event_budget_remaining",
+        "exact_ordered_successful_work_identity_prefix"
+      ],
+      "b_decisions_required": [
+        "Uniform generated-stratum distribution must hold after acquisition and exact full successful history; generation uniformity alone is insufficient. Review history/selection/side information before binding.",
+        "exact random14 generation regime and absence of side information",
+        "mode/material/budget/history scope",
+        "analytical conditional upper bound; not P=0 or immunity",
+        "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+      ],
+      "activation_or_winrm_history_reuse_authorized": false,
+      "deployment_role": "reference_scenario_not_default_baseline",
+      "profile_version": "1.1.0"
+    }
+  ],
+  "binding_contract": {
+    "existing_native_resolver_only": true,
+    "research_script_emits_native_rating_records": false,
+    "required_exact_scope": [
+      "snapshot_id",
+      "scenario_id/version",
+      "actor",
+      "source",
+      "target",
+      "authentication_context",
+      "material lineage/digest or exact declared acquired-material regime",
+      "method/etype/verifier version",
+      "population profile and conditional selection",
+      "guess-strategy/rank-unit assumptions",
+      "resource context",
+      "budget/horizon/retry/remaining-work state",
+      "full ordered successful work-unit prefix",
+      "generated-stratum post-history uniformity assumption and reference",
+      "password-correlated side information/account-selection/candidate-rejection history",
+      "mode-specific floor and cap feasibility/resource evidence"
+    ],
+    "known_false_veto": true,
+    "unknown_must_have_explicit_applicable_assumption": true,
+    "no_q_from_recovery_success_true": true,
+    "no_shared_budget_renewal": true,
+    "new_method_and_recovery_metadata_required": true,
+    "downstream_activation_and_execution_adoption_separate": true,
+    "release_must_pin_all_inputs_and_actual_b_reference": true
+  },
+  "limitations": [
+    "No source sampled SEAMLESS passwords; no acquired ciphertext, cracking experiment, production replay or calibrated enterprise risk probability.",
+    "The target CDF envelope, service mixture, manual-service transfer, rank-unit mapping and 95% conditional completion floor are explicit unadopted scenario assumptions. Primary sources do not validate these transfers or chosen weights.",
+    "Printed rounding allowance is not a statistical confidence interval, sampling-error bound or transfer-error bound.",
+    "Actual natural-password snapshot-only cases stay UNRATED_NO_BASIS until an explicit appropriate population and compatible work model is reviewed.",
+    "Recovery numeric review cannot authorize request/activation/WinRM intervals on roasting histories. Current reset-history adoption is insufficient.",
+    "No changes to structural edges, semantic prerequisites, known-FALSE/unknown behavior, immutable historical artifacts or B-owned search/UI/consumer.",
+    "No measured full-path/production coverage gain claimed; B release and frozen-cohort replay remain required.",
+    "All profiles are reference scenarios, not a selected SEAMLESS product baseline. Choosing a supported deployment population requires a separate explicit applicability decision; source endpoints or the illustrative service mixture alone do not establish representativeness.",
+    "A uniform generator does not imply a uniform posterior after acquisition/full history. The declared posterior assumption requires separate B review and exact history/information/selection checks before any native binding.",
+    "Wide-cap upper is a hypothetical loose mathematical enclosure, not demonstrated achievable work in the 20h deadline. Separate mode-specific resource evidence is required before operational interpretation or numeric adoption."
+  ],
+  "deployment_role": "reference_scenario_not_default_baseline",
+  "product_baseline_selected": false,
+  "version": "1.1.0",
+  "supersedes_unadopted_proposal_head": "2ca2e66d0dd7ff7856f2e84bd64608f1199a3dee"
+}

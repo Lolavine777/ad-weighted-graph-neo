@@ -1,0 +1,261 @@
+{
+  "actor_capability": "X has only declared AS-REP request capability initially; activation and host administration require preceding generated effects",
+  "author": "TTS A / Lolavine777 / Nguyen Dang Long; AI-assisted proposal",
+  "baseline_revision": "da21fbb545061c56c6dfff6ac489e7794a53ec73",
+  "basis_id": "asrep-expert-v2",
+  "budget": {
+    "max_expansions": 1000,
+    "max_paths": 10,
+    "max_steps": 6
+  },
+  "control_scope": "same X/V_A/C0 locator identities, authentication_context=X, intra_forest; no reset, RBCD, stolen token, or preexisting usable V_A",
+  "events": [
+    {
+      "actor": "X",
+      "blocker_if_rejected": "No scoped expert elicitation of AS-REP request/response/parser reliability for this actor and policy; protocol specifications alone cannot supply a percentage.",
+      "canonical_class": "asrep_material_request",
+      "derivation": "New AI-assisted operational judgment for compatible AS-REP material acquisition, not transferred from reset-derived credential activation. Under stable reachable KDC and supported request/parser, propose 1%-10% residual whole-event failure allowance for request/response timeout, resource contention and material parsing within three requests/10 minutes. These allowances require B numeric adoption; specifications support event semantics only.",
+      "event": "Obtain valid compatible encrypted AS-REP material within three requests and ten minutes.",
+      "history": [],
+      "lower": "9/10",
+      "method": "ASRepTarget",
+      "numeric_source": "new_event_specific_expert_scenario_proposal",
+      "source": "X",
+      "target": "V_A",
+      "technique": "asrep_request",
+      "uncertainty": "unelicited expert scenario proposal, epistemic residual-workflow allowance; not empirical or a statistical confidence interval",
+      "upper": "99/100"
+    },
+    {
+      "actor": "X",
+      "blocker_if_rejected": "Real V_A password distribution/rank, AS-REP etype and achieved distinct-verification count are absent. Cannot transfer this interval to the original unmeasured-budget or a natural password population.",
+      "canonical_class": "asrep_password_recovery",
+      "derivation": "q=P(password rank is covered AND verifier completes and validates by deadline | acquisition, F/S, full history). A cap alone gives no completed-compute floor and unknown natural-password rank supplies no success mass. q is absent. uniform24 arithmetic remains an archived counterfactual fixture, never a natural-password estimate.",
+      "event": "Recover and validate the password from E1 material before the one-job 20h deadline and guess cap.",
+      "history": [
+        "asrep_request"
+      ],
+      "lower": null,
+      "method": "offline-asrep-etype23-rank-unknown-v2",
+      "numeric_disposition": "UNRATED_NO_BASIS",
+      "numeric_source": "none",
+      "source": "X",
+      "target": "V_A",
+      "technique": "recover_asrep_secret",
+      "uncertainty": "scenario model and compute envelope; rank is stochastic within the declared population, with no inference from recovery_success=True",
+      "upper": null
+    },
+    {
+      "actor": "V_A",
+      "blocker_if_rejected": "No accepted equivalence of recovered-secret authentication with the historical reset-derived context, especially secret age/account policy after offline delay.",
+      "canonical_class": "recovered_identity_activation",
+      "derivation": "Proposed transfer of the reviewed reset-derived Kerberos activation interval only after E1/E2 succeeded and the scenario declares unchanged valid password/account policy. Recovery lineage differs from reset lineage; the full new history is a separate explicit case. Password validity gates do not erase residual exchange/policy uncertainty.",
+      "event": "Validate the recovered password and establish usable_identity(V_A,X) within three exchanges and ten minutes.",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "history_applicability": "Only exact E1/E2 success, unchanged account/password validity over the offline delay, supported Kerberos context and no reset/RBCD/session lineage. Historical interval is pending equivalence, not authority for this history.",
+      "lower": "3/4",
+      "method": "RecoveredSecret",
+      "numeric_source": "historical_activation_proposed_equivalence_only",
+      "source": "V_A",
+      "target": "X",
+      "technique": "activate_recovered_identity",
+      "uncertainty": "epistemic expert transfer; no new independent elicitation or empirical calibration",
+      "upper": "49/50"
+    },
+    {
+      "actor": "V_A",
+      "blocker_if_rejected": "No accepted concrete terminal transport/policy equivalence and no independent conditional operational reliability judgment for the post-recovery history.",
+      "canonical_class": "host_admin_execution",
+      "derivation": "Proposed transfer of the historical WinRM terminal interval to the same DC typed consequence, with an explicit WinRM scenario policy. The generated semantic method remains AdminTo. Generic unspecified admin_channel, RDP/session, DA membership or a different resource cannot borrow it. Full recovery/activation history and 24h horizon must be accepted separately.",
+      "event": "Establish admin_control(C0) through the declared authenticated administration channel within three attempts and thirty minutes.",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret",
+        "activate_recovered_identity"
+      ],
+      "history_applicability": "Only exact E1/E2/E3 success, WinRM policy for this DC and 24h horizon; generic AdminTo does not establish WinRM transport. Every prior active unit binds in order.",
+      "lower": "1/2",
+      "method": "AdminTo",
+      "numeric_source": "historical_winrm_proposed_equivalence_only",
+      "source": "V_A",
+      "target": "C0",
+      "technique": "obtain_admin_execution_on_host",
+      "uncertainty": "epistemic expert transport/history transfer; no observed WinRM or exploit success",
+      "upper": "9/10"
+    }
+  ],
+  "horizon": "24h",
+  "human_numeric_elicitation_completed": false,
+  "independent_b_review": false,
+  "locators": {
+    "C0": "#/computers/0",
+    "G_DA": "#/groups/40",
+    "V_A": "#/users/1700",
+    "X": "#/computers/1"
+  },
+  "native_basis_category": "scenario_assumption",
+  "numeric_basis_class": "estimated_expert_scenario",
+  "policy_id": "asrep-rank-unknown-bounded-24h-v2",
+  "program": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "obtain_admin_execution_on_host"
+  ],
+  "recovery_metadata": {
+    "budget": "one-worker;cap-68719476736-distinct-verifications;20h;no-compute-floor;no-restart",
+    "horizon": "24h",
+    "method": "offline-asrep-etype23-rank-unknown-v2"
+  },
+  "refusal": [
+    "pending numeric review",
+    "original week4 scenario",
+    "different snapshot/source/actor/target/auth context",
+    "different ordered successful history",
+    "different recovery method/etype/population/compute floor/cap",
+    "different policy/horizon/retry/deadline",
+    "missing or contradictory context/provenance",
+    "known FALSE veto",
+    "unknown without applicable declared assumption",
+    "weaker or different typed goal",
+    "prototype empirical evidence",
+    "missing numeric event"
+  ],
+  "retry_policy": {
+    "by_technique": {
+      "activate_recovered_identity": {
+        "deadline_minutes": 10,
+        "max_attempts": 3
+      },
+      "asrep_request": {
+        "deadline_minutes": 10,
+        "max_attempts": 3
+      },
+      "obtain_admin_execution_on_host": {
+        "deadline_minutes": 30,
+        "max_attempts": 3
+      },
+      "recover_asrep_secret": {
+        "deadline_minutes": 1200,
+        "max_jobs": 1,
+        "max_verified_guesses": 68719476736,
+        "min_verified_guesses": null
+      }
+    },
+    "campaign_deadline_hours": 24,
+    "policy_id": "asrep-rank-unknown-bounded-24h-v2",
+    "retry_dependence": "bounds cover the whole bounded event; never compute 1-(1-q)^3 or assume independent retries",
+    "stop": "first validated event success, authoritative denial, event deadline, campaign deadline, or compute cap; no budget renewal",
+    "transport": "terminal AdminTo executed through the historical authenticated WinRM administration scenario; additional policy declaration, not observed transport"
+  },
+  "review_decisions_required": [
+    "new request event residual-failure judgment",
+    "activation and terminal transport full-history equivalence",
+    "recovery rank/population plus completed compute evidence before proposing bounds",
+    "C=3 and typed High applicability in new scenario",
+    "actual B review/adoption and public output basis metadata"
+  ],
+  "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/264",
+  "reviewer": "nairyuuu",
+  "scenario_id": "week5-seamless-asrep-rank-unknown-v2",
+  "scenario_version": "2.0.0",
+  "schema_version": "asrep-expert-proposal/2.0.0",
+  "semantic_assumptions": [
+    [
+      "network_kdc_reachable",
+      "X",
+      "V_A"
+    ],
+    [
+      "asrep_request_accepted",
+      "X",
+      "V_A"
+    ],
+    [
+      "recovery_success",
+      "X",
+      "V_A"
+    ],
+    [
+      "secret_valid",
+      "V_A",
+      "X"
+    ],
+    [
+      "network_kdc_reachable",
+      "V_A",
+      "X"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "X"
+    ],
+    [
+      "admin_channel",
+      "V_A",
+      "C0"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "C0"
+    ]
+  ],
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "sources": [
+    {
+      "id": "historical-expert",
+      "path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+      "supports": "previously human-adopted AI-assisted scenario exchange and WinRM intervals, not new full-history applicability"
+    },
+    {
+      "id": "historical-policy",
+      "path": "docs/research/ratings/week3-closeout/source-inputs/execution-policy.json",
+      "supports": "bounded retry/deadline definition, not retry independence"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "ms-kile",
+      "supports": "AS exchanges and password-based authentication mechanics only; no numeric q",
+      "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-kile/ae60c948-fda8-45c2-b1d1-a71b484dd1f7"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "hashcat",
+      "supports": "etype23 AS-REP verifier format/mode 18200, no cracking throughput or password coverage",
+      "url": "https://hashcat.net/wiki/doku.php?id=example_hashes"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "password-heterogeneity",
+      "supports": "password guessing success depends on population and side information; paper rates are not transferred to SEAMLESS",
+      "url": "https://www.usenix.org/conference/usenixsecurity24/presentation/xiu"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "benchmark-author-report",
+      "supports": "author-reported hashcat v6.2.6 RTX 4090 mode18200 benchmark, 3564.1 MH/s; scale sanity check only, not achieved distinct guesses or password coverage",
+      "url": "https://gist.github.com/Chick3nman/32e662a5bb63bc4f51b847bb422222fd"
+    }
+  ],
+  "status": "proposed_pending_b_review",
+  "supersedes": {
+    "basis": "asrep-expert-v1",
+    "disposition": "uniform24 retained for arithmetic regression only; operational transfers were never adopted"
+  },
+  "target_population": {
+    "class": "natural_password_rank_unknown",
+    "compute_cap": 68719476736,
+    "compute_floor": null,
+    "compute_semantics": "hard stop after 20h or 2^36 distinct verified candidates; cap is policy, never achieved coverage",
+    "distribution_evidence": "no representative password-rank evidence; no positive quantitative recovery bound",
+    "material": "etype23 AS-REP compatibility must be separately declared and verified",
+    "population_size": null,
+    "rank_distribution": "unknown conditional on acquisition and the full exact context",
+    "worker": "one reserved worker, hardware/driver/hashcat version not observed"
+  }
+}

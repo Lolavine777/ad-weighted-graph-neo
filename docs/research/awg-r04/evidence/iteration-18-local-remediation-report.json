@@ -1,0 +1,2222 @@
+{
+  "schema_version": "1.1.0",
+  "request_id": "guided-mvp:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "comparison_scope_digest": "sha256:db1f631a5812c4f8ca6cbf74f837a9ab9f6187db371be7fc93fc21e8bd81bb72",
+  "overlay_digest": "sha256:86cc3941b4a9e1fa3a94839b494f7c096b6d20fa49053f97e6b481c278b770ef",
+  "overlay_disposition": "applied",
+  "counterfactual_origin": "declared_intervention_not_observation",
+  "baseline_input_digest_after": "sha256:279a8b5925b16c328f4a2c88bee693e402f9a4c75f651763622b455bbefd2c9e",
+  "program_identity_version": "semantic-program/1",
+  "declared_source_ids": [
+    "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+    "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+  ],
+  "declared_goal_ids": [
+    "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+  ],
+  "cells": [
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+      "before": {
+        "run_id": "guided-mvp-remediation/0",
+        "cell_ref": "sha256:ed334a4ce1cabf1b2e978c54863faf139f011ef1f2fa4f86419d0f74acd68d22",
+        "query_digest": "sha256:13249f9f5cdf859fce268834497c42c3c87601dfcb6129f3b698be29479769fd",
+        "reachability": "reachable",
+        "complete": false,
+        "truncated": true,
+        "unresolved_feasibility": true,
+        "program_count": 1,
+        "route_count": 1,
+        "witness_program_ids": [
+          "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+        ],
+        "route_ids": [
+          "sha256:439c655cab385049fd9d63fe50342c679bff65d540329ce3f6561e24ab4a2813"
+        ],
+        "trace_refs": [
+          {
+            "program_id": "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6",
+            "route_id": "sha256:439c655cab385049fd9d63fe50342c679bff65d540329ce3f6561e24ab4a2813",
+            "semantic_program": [
+              {
+                "technique_id": "scenario_reset_password",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "computer_actor_authenticated",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:b2eb692ac8df551b1ba290a20ad08bd9270a28a26c5b91795c8459d8058a0a69"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:6a65e50708701f40745d1161f4485cd822a3ecd0b4e5685b97bd98bcc509a226"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:b0ac8de4b7b119dfcaf199137fca07a2138f9a874094300c8a271545bc81710d"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:701d3edf80feb7bcc3c34b3fba13630247d0a4402e2387858b82abe6aafa5a6d"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "target_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:de33afeea4094f6564d99f219f911cf74461100b25dea8f26cf8e6dd06727276"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "password_policy_accepts",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:e224c1a09fdcb30a302214ba0da4fb482c538b8da454476a4844de803b59c1ba"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "directory_write_allowed",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:c5a523d527da8690ee055a0023243cea04ded5de2689f93c855a019362347e52"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_rpc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:0d41ecd9bdf6f3638fd4f6455bff0a0ef6b2c94c742a681aa0041c906a19c110"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b"
+                  }
+                ],
+                "producer_action_indices": []
+              },
+              {
+                "technique_id": "acquire_reset_identity",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "reset_password_control",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:b86f64e1245fa5048c15c8bedddad6230a2b5bf4275b4d6aa9f4d18f36f89297"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_context_matches",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:c941230abccd57a52430a0d67b5d777ea9ae7af2edd4ccd2ad61905884ff7373"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:48ab328cdeec6f1145fb5e4ef4f4d54517105d97068ce9510538f5e0e1e737c7"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_kdc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:a21db87e7aaa6b1bc79585f57aff3a20fb6f780cf1b4690f7afb8e943f2c52f2"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_accepted",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:ca16ca48c4665ddafc2315024ba0b84608f1a59a23fc8829bd741e1028c7cf2b"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:ff8024d569b347858bfef571945e3c2a41145d1b71bc1a9083d5561b3438a7c3"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ]
+              },
+              {
+                "technique_id": "propagate_group_entitlement",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f1a82354a91adc205494a98363653c8d2dacbb6410ee6ed8df09870a0249f97b"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:228586719bccb8d64a6ec3085454d41c42bed0171ed68664e059db844d78cb18"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:54b4daae64d62305d795f53544b967909b201b0fb87e368010e92a9ffc223915"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "security_group",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:9b55c67457d2506407feba3260872144b80cbd253948d76c66a1cd76f27f650e"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "membership_usable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:1436891d723cd70314924c594aac9a18a9c2a8fab92affb6b9fe904c46ed3118"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:45c697a18d5d37712f0a6797cb4c5807f5ad99a32416fa76abddfb98d3569024"
+                  }
+                ],
+                "producer_action_indices": [
+                  1
+                ]
+              }
+            ],
+            "trace_ref": "artifact:sha256:7ef901f3d0002a351d7c7ef7c9245034a512cfdf06cc0c1c6e7783d61d156215"
+          }
+        ],
+        "scope_proof_ref": "artifact:sha256:7d97e61aad86222d5d35abc458dbdd34c4de9e647075d2292ffb28b467c3ef56",
+        "search_diagnostics": [
+          "NATIVE_UNKNOWN_FEASIBILITY"
+        ]
+      },
+      "after": {
+        "run_id": "after-1de14f5143db46a896f78349bf285ceb",
+        "cell_ref": "sha256:ed334a4ce1cabf1b2e978c54863faf139f011ef1f2fa4f86419d0f74acd68d22",
+        "query_digest": "sha256:5421f0f48a191a3a68d6714815764473ded5891fff9c56c9c1500705dd0b583f",
+        "reachability": "reachable",
+        "complete": false,
+        "truncated": true,
+        "unresolved_feasibility": true,
+        "program_count": 1,
+        "route_count": 1,
+        "witness_program_ids": [
+          "sha256:8622188189dcf233d5c191b5287b9dfb2f60009798b543276d3e4403ecc20644"
+        ],
+        "route_ids": [
+          "sha256:25a48e680e72c4feb8c4db3d2dd38b5621f1d126f9fe15cfce488f9d484ccfd3"
+        ],
+        "trace_refs": [
+          {
+            "program_id": "sha256:8622188189dcf233d5c191b5287b9dfb2f60009798b543276d3e4403ecc20644",
+            "route_id": "sha256:25a48e680e72c4feb8c4db3d2dd38b5621f1d126f9fe15cfce488f9d484ccfd3",
+            "semantic_program": [
+              {
+                "technique_id": "scenario_reset_password",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "computer_actor_authenticated",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:02b8bc1175b6e1a743bb4076f19430afe256e7172efa6c1ab14b7cc265c6d8dc"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:5157ca9d0e1e9f8ec1dd7e2a9f349536527e1c01bebe5dfd967c49919944433e"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:594935ad2c396e310755ef22bff9ea3be6aab4a613931fd8a75913fcfc5f92e3"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:567ad471174fb4cadab1a48402651748fb32fdb812578509fd256ce6e45db194"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "target_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:11040796ed5073038ce1d8abf65e8f4f456a369bafc20eb13e0dd42438536690"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "password_policy_accepts",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:b4b3a991c4417de4da20b5f10793ff446d917044e02dcb020e318585f8f8a0db"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "directory_write_allowed",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:cdc781e957e7a28114a7d171e3ce9809dfd9c41af0b78d25919e1be30a2a8d14"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_rpc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:5644116b14448464b47228d5783faebe3aeeead86ff608253bf802f350553847"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:e36bb57084d444502f3ff581bcaee51880ef5f48ee37742e3c85d6071f046e6c"
+                  }
+                ],
+                "producer_action_indices": []
+              },
+              {
+                "technique_id": "acquire_reset_identity",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "reset_password_control",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:4ed89c41f205aeb25cba33e2e4a88056b420d2c5affb08062659f24acde777d3"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_context_matches",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:c6bea33b5c5785a9cc891a551639e6b182bd158fd3357a05e1614b14313f699a"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:25c9a8c9cf5de03555a397ef066fd7f49fe80925fec9adee6ddea51071ebc7af"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_kdc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:62b8267c9dd41187eba70d5026ddc63fd1bff103d9c0581121887f25e9be5e8d"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_accepted",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:a7b6f3a393778cdcb867ca71d08ed0613546620eedc106ed8b09c3dbd035931e"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:386d2cd2619d7fac05d204e16d74a9d20aa4fe89a8b52a5aad03fdc9364252df"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ]
+              },
+              {
+                "technique_id": "propagate_group_entitlement",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                  "policy_reference": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f5c96e1224ed7c8eeb852c4979747441d48a0c53efa7758545b965e57a29bb56"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2cb2973a5e3c8d980cbb85b3b9660dbd2a105fbda9072b457cb9309ac0b24aa5"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:87354013ce84daace6fe2b5c316fd2e0119e8b92e5f04709a046f1b0c8060233"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "security_group",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:904719fb21e5871e1773e95a4b716fd7d223828a3f56e1a49f32c31069436f7b"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "membership_usable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:68f2df4e3c2fc48ea7688d2261d2fedf3ed4ae2b927cf8cb6eec003622cbec13"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:041828a304142e2785f426de3f87eddc51f2bed271881635f518eccea8ca385f"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:f13366c0de9ee2b1ff88b820aea892264b063b02f48a79a54cfb49794b3c327c"
+                  }
+                ],
+                "producer_action_indices": [
+                  1
+                ]
+              }
+            ],
+            "trace_ref": "artifact:sha256:487c4ff1db3a534e1eca8a036c1e140a4afadeae607b518b25805561a5e934b5"
+          }
+        ],
+        "scope_proof_ref": "artifact:sha256:027bec4c5c2ceef4db8f41944495f7b7b4f7dff44e480a839445bc64510ce25a",
+        "search_diagnostics": [
+          "NATIVE_UNKNOWN_FEASIBILITY"
+        ],
+        "rediscovery": {
+          "status": "truncated",
+          "run_id": "after-1de14f5143db46a896f78349bf285ceb",
+          "proof_ref": "artifact:sha256:027bec4c5c2ceef4db8f41944495f7b7b4f7dff44e480a839445bc64510ce25a"
+        }
+      },
+      "affected": true,
+      "affected_program_ids": [
+        "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+      ],
+      "cut_program_ids": [
+        "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+      ],
+      "cut_route_ids": [
+        "sha256:439c655cab385049fd9d63fe50342c679bff65d540329ce3f6561e24ab4a2813"
+      ],
+      "replay_failures": [
+        {
+          "program_id": "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6",
+          "intervention_ids": [
+            "inventory-0ecdacec7b37-0"
+          ],
+          "trace_ref": "artifact:sha256:b1a40c1ff0051d390b1478a0fe8f1ee0e396afb01d4e4c551811081dbb743a76#/cells/0/programs/0",
+          "decision_ref": "artifact:sha256:b1a40c1ff0051d390b1478a0fe8f1ee0e396afb01d4e4c551811081dbb743a76#/cells/0/programs/0/steps/2/decisions"
+        }
+      ],
+      "bypass_program_ids": [
+        "sha256:8622188189dcf233d5c191b5287b9dfb2f60009798b543276d3e4403ecc20644"
+      ],
+      "new_program_ids": [
+        "sha256:8622188189dcf233d5c191b5287b9dfb2f60009798b543276d3e4403ecc20644"
+      ],
+      "disconnected": false,
+      "effort": {
+        "status": "incumbent",
+        "before": 1,
+        "after": 1,
+        "delta": null,
+        "unit": "native_engine_effort_score",
+        "basis_refs": [
+          "sha256:209b4331d7de5d5be935523be52716eb7e1d63e26695c75a7c3395c80ecd125f"
+        ],
+        "proof_refs": []
+      },
+      "conditional_p": {
+        "status": "incomparable",
+        "before_interval": null,
+        "after_interval": null,
+        "delta_interval": null,
+        "before_program_id": null,
+        "after_program_id": null,
+        "comparison_scope_digest": null,
+        "basis_refs": [],
+        "interpretation": "conditional_single_program_not_campaign"
+      }
+    },
+    {
+      "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+      "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+      "before": {
+        "run_id": "guided-mvp-remediation/1",
+        "cell_ref": "sha256:effae186a96280cde41a0228a056b9128216fbfc41d06f53d3885c19bd5ad1f9",
+        "query_digest": "sha256:5a930fe8789402b50918e582ebb257ec9db5087c1dc2f6ee353c0529490277d9",
+        "reachability": "reachable",
+        "complete": false,
+        "truncated": true,
+        "unresolved_feasibility": true,
+        "program_count": 1,
+        "route_count": 1,
+        "witness_program_ids": [
+          "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+        ],
+        "route_ids": [
+          "sha256:8f2dab7725b4792e27e0d99d87d005a74e0f3e54c6be0f74ce54817521d73c55"
+        ],
+        "trace_refs": [
+          {
+            "program_id": "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29",
+            "route_id": "sha256:8f2dab7725b4792e27e0d99d87d005a74e0f3e54c6be0f74ce54817521d73c55",
+            "semantic_program": [
+              {
+                "technique_id": "scenario_reset_password",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:d0a3c83de0e67d130e5ab88943a4a48db043b6e0b04622c2c8be7a119922366f"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:4467cf6af46d156bfb927f54e355f2e1e18102cce49005f36354aeb2fa687ec2"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:c1d15aeb8edd028bb3ef8a5668f0ff35c5f28babe5fa95cc78528628f364a314"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "target_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:4ba1bdff7b5822bad87fb3232bdb3a94d401bbb629be5ba3ed0b34e2c43883dd"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "password_policy_accepts",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:65a47a829162b1732a70494bb217b72673a4d28ccefc90da3bcb4cc347f2ec18"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "directory_write_allowed",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:f48dbe722fe15f7ea537fc71c8364a1fc4422561d4bf0b287f82793254c745dd"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_rpc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:530b170ac6db16d61ad99327fc14af9865e7a34487adbea6428be3d755852f95"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:b804ee10836b9aca20d1d287341030754c474478200e0946b9b1a2f5e1755db1"
+                  }
+                ],
+                "producer_action_indices": []
+              },
+              {
+                "technique_id": "acquire_reset_identity",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "reset_password_control",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:091c12c6b42b1c5fec21f2e155dc66e8b5dede569ea025321801bdc08c91cf21"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_context_matches",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:9fc6975b0b8ea23d429298010f33bbd07aebab2d973ecce27e62a0edd0017e07"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:d0238ddc9dc6dc4c3e1027f6b76ad6c083f3d61300a70cc1eab8723b30cfa210"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_kdc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:a21db87e7aaa6b1bc79585f57aff3a20fb6f780cf1b4690f7afb8e943f2c52f2"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_accepted",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:ca16ca48c4665ddafc2315024ba0b84608f1a59a23fc8829bd741e1028c7cf2b"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:623ef22b6cff64ba0f243dca93538dcabf93bbe4c3aea197c97d7390c0bae3fd"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ]
+              },
+              {
+                "technique_id": "propagate_group_entitlement",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:8b12d9afd5354cbb0459ba6d43239652d16708184ef77866b93298ac3a7b0312"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:c2228efaf801b1905fc767bf6f3e394188b4dc455a68bb19d0451e54fbe30c08"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:e7f0d7735a54db480339c978fbe5c49b04fd06855f10203f5b2edf0959803fc7"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "security_group",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:9b55c67457d2506407feba3260872144b80cbd253948d76c66a1cd76f27f650e"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "membership_usable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:1436891d723cd70314924c594aac9a18a9c2a8fab92affb6b9fe904c46ed3118"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:25a8a70584cf89b60ba1f88273b1a0f7b3cf94c6e1d4ff2096a81aa23c929af5"
+                  }
+                ],
+                "producer_action_indices": [
+                  1
+                ]
+              }
+            ],
+            "trace_ref": "artifact:sha256:fcc79ba5a032876bd591d84f7c686323a293169e151f83cc1a8672f161463343"
+          }
+        ],
+        "scope_proof_ref": "artifact:sha256:32e2e52f7ca127e2cce8009609af8a5f3148dc453dd843944ff507257f30fde4",
+        "search_diagnostics": [
+          "NATIVE_UNKNOWN_FEASIBILITY"
+        ]
+      },
+      "after": {
+        "run_id": "after-7b976ef2092443f19f46c3d26f49f0cd",
+        "cell_ref": "sha256:effae186a96280cde41a0228a056b9128216fbfc41d06f53d3885c19bd5ad1f9",
+        "query_digest": "sha256:cdfa2c3a1ad8e0cb22d8499e4592a08438192d0dfb4b40356d00aefeb565df60",
+        "reachability": "reachable",
+        "complete": false,
+        "truncated": true,
+        "unresolved_feasibility": true,
+        "program_count": 1,
+        "route_count": 1,
+        "witness_program_ids": [
+          "sha256:99643140cdafdd569d447d3d7a52e83f41547fab3711849a619f76016c7e59bb"
+        ],
+        "route_ids": [
+          "sha256:2ee35c9b5a674d609d880c50d33ce7195b25ec8d05244ceddd2dc47b9390cafd"
+        ],
+        "trace_refs": [
+          {
+            "program_id": "sha256:99643140cdafdd569d447d3d7a52e83f41547fab3711849a619f76016c7e59bb",
+            "route_id": "sha256:2ee35c9b5a674d609d880c50d33ce7195b25ec8d05244ceddd2dc47b9390cafd",
+            "semantic_program": [
+              {
+                "technique_id": "scenario_reset_password",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:96c5f0f233e9348a29c8a946b7d1f84f39b71f396c6b77cf13618c70d12acffd"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:77ccfbbf2a27f9ef72be21ee13cceb10b1bc9b02a5e7953c47785192a833708b"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:a6bae4cd668109fdf22867152ecdcc241e64fa3355bd334d35a0940ef09ecaac"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "target_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:858e4a9c08fae6d90675eaa9e8d64c16aa0d1a0bc07f5f28b0632d66f77bc162"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "password_policy_accepts",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:3a325ecc73ca90af245a1a082d54f2a4128a4f2a418c040ac39a55e14cb6079d"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "directory_write_allowed",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:ee9cde008d74b9ebcc53cea0d35f8c6928c71827f221546f78102e5bab134aaf"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_rpc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:0b11a5bcbe8602fd806bd288fbc9bec32b49a9e75885daf220d24ab723870ce4"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659"
+                  }
+                ],
+                "producer_action_indices": []
+              },
+              {
+                "technique_id": "acquire_reset_identity",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "reset_password_control",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:55c5f2f97f8ca6f6a9608da887f23d323a1991cb6df209d8d42457008de3d70f"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_context_matches",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:ccdd52ae1bd671301755a9b039fd87ac08b4c178a4e5baaa8be8e3ecc51969cb"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:260aeef7fceddf19c7edf69447d2f33a7b734f686d797b74847961757f68c168"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "network_kdc_reachable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:62b8267c9dd41187eba70d5026ddc63fd1bff103d9c0581121887f25e9be5e8d"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "authentication_accepted",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:a7b6f3a393778cdcb867ca71d08ed0613546620eedc106ed8b09c3dbd035931e"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:fc348000573218dd19098296d5302ac94ff30afe0d32879ec14a2965ff06c2c3"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ]
+              },
+              {
+                "technique_id": "propagate_group_entitlement",
+                "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "participants": {},
+                "context": {
+                  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+                  "resource_context": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                  "policy_reference": "batch-cell:sha256:3f251bd8f39e7c5071b4c686281652276e522518e4ab3e0f9df340b6cd7e13b5",
+                  "method": null,
+                  "budget": null,
+                  "horizon": null
+                },
+                "prerequisites": [
+                  {
+                    "predicate": "actor_controlled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:1a02cb8c3baae99334986b8ae00797ae6a3eaec0a992698b51b292aa8a92c2c5"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "source_authorized",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "technical_rule",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:422b70d2b23b911deb65b2b753088269a2b709ae8b45c66a238410952a298223"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "actor_enabled",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "observed_evidence",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                      },
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "sha256:0d501bfd3de889ed3daf012491cb89b016b2fe1989773ba71127805a456c8daf"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "security_group",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:904719fb21e5871e1773e95a4b716fd7d223828a3f56e1a49f32c31069436f7b"
+                      }
+                    ]
+                  },
+                  {
+                    "predicate": "membership_usable",
+                    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                    "origin": "declared_assumption",
+                    "satisfied": true,
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                      },
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                      },
+                      {
+                        "kind": "artifact",
+                        "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                      },
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "sha256:68f2df4e3c2fc48ea7688d2261d2fedf3ed4ae2b927cf8cb6eec003622cbec13"
+                      }
+                    ]
+                  }
+                ],
+                "evidence_bindings": [
+                  {
+                    "kind": "initial_state",
+                    "reference": "sha256:a96223b3bc27c846b5fc4b97a84638034bdb95f3d020cea2971755b90cd68f68"
+                  },
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:9b377f2ac99b0de11eb6cfb05fb2b199d5d887102b4096c5009423c7f608093d"
+                  },
+                  {
+                    "kind": "artifact",
+                    "reference": "sha256:2fa8a00acc2e2a28eae1f2d7cfa4fbabedf8787897dcd3e5938c6b2d02059e29"
+                  }
+                ],
+                "producer_action_indices": [
+                  1
+                ]
+              }
+            ],
+            "trace_ref": "artifact:sha256:ddb5f7cd64d3a139c8b9632dedd58d690bfd5defc3bc6b6dc580602004a8a11a"
+          }
+        ],
+        "scope_proof_ref": "artifact:sha256:a64943be3ea1c24d347ca338232ed91dc4470572f78bce63c4f0c3957927ca2b",
+        "search_diagnostics": [
+          "NATIVE_UNKNOWN_FEASIBILITY"
+        ],
+        "rediscovery": {
+          "status": "truncated",
+          "run_id": "after-7b976ef2092443f19f46c3d26f49f0cd",
+          "proof_ref": "artifact:sha256:a64943be3ea1c24d347ca338232ed91dc4470572f78bce63c4f0c3957927ca2b"
+        }
+      },
+      "affected": true,
+      "affected_program_ids": [
+        "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+      ],
+      "cut_program_ids": [
+        "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+      ],
+      "cut_route_ids": [
+        "sha256:8f2dab7725b4792e27e0d99d87d005a74e0f3e54c6be0f74ce54817521d73c55"
+      ],
+      "replay_failures": [
+        {
+          "program_id": "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29",
+          "intervention_ids": [
+            "inventory-0ecdacec7b37-0"
+          ],
+          "trace_ref": "artifact:sha256:b1a40c1ff0051d390b1478a0fe8f1ee0e396afb01d4e4c551811081dbb743a76#/cells/1/programs/0",
+          "decision_ref": "artifact:sha256:b1a40c1ff0051d390b1478a0fe8f1ee0e396afb01d4e4c551811081dbb743a76#/cells/1/programs/0/steps/2/decisions"
+        }
+      ],
+      "bypass_program_ids": [
+        "sha256:99643140cdafdd569d447d3d7a52e83f41547fab3711849a619f76016c7e59bb"
+      ],
+      "new_program_ids": [
+        "sha256:99643140cdafdd569d447d3d7a52e83f41547fab3711849a619f76016c7e59bb"
+      ],
+      "disconnected": false,
+      "effort": {
+        "status": "incumbent",
+        "before": 1,
+        "after": 1,
+        "delta": null,
+        "unit": "native_engine_effort_score",
+        "basis_refs": [
+          "sha256:5023fae1d971244fddd9f044cee915fcc2479c1a73fa0caa5a4c9bcefac43739"
+        ],
+        "proof_refs": []
+      },
+      "conditional_p": {
+        "status": "incomparable",
+        "before_interval": null,
+        "after_interval": null,
+        "delta_interval": null,
+        "before_program_id": null,
+        "after_program_id": null,
+        "comparison_scope_digest": null,
+        "basis_refs": [],
+        "interpretation": "conditional_single_program_not_campaign"
+      }
+    }
+  ],
+  "summary": {
+    "requested_pairs": 2,
+    "evaluated_pairs": 2,
+    "unsupported_pairs": 0,
+    "unknown_pairs": 0,
+    "truncated_pairs": 2,
+    "affected_sources": [
+      "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+    ],
+    "exposed_sources_before": [
+      "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+    ],
+    "exposed_sources_after": [
+      "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+    ],
+    "fully_disconnected_sources": [],
+    "goals_still_reachable": [
+      "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+    ],
+    "proven_disconnected_pairs": [],
+    "programs_cut": {
+      "numerator": 2,
+      "denominator": 2,
+      "percent": 100.0,
+      "scope": "observed_corpus_only"
+    },
+    "routes_cut": {
+      "numerator": 2,
+      "denominator": 2,
+      "percent": 100.0,
+      "scope": "observed_corpus_only"
+    },
+    "pairs_disconnected": {
+      "numerator": 0,
+      "denominator": 2,
+      "percent": 0.0,
+      "scope": "observed_corpus_only"
+    },
+    "limitations": [
+      "Declared finite scope; no global choke-point or campaign probability claim.",
+      "Returned-path inventory is observed-corpus only; defender costs are unrated.",
+      "Old packets are refused; fresh automatic C only; P/I comparison remains pending.",
+      "Transport evaluated_pairs counts represented cells; analytics counts execution."
+    ]
+  }
+}

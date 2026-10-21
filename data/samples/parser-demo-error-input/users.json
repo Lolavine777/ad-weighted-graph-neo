@@ -1,0 +1,16 @@
+{
+  "meta": {"type": "users"},
+  "users": [
+    {
+      "ObjectIdentifier": "S-1-5-21-4100-4200-4300-1101",
+      "Properties": {"name": "demo-valid-before@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"}
+    },
+    {
+      "Properties": {"name": "demo-malformed@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"}
+    },
+    {
+      "ObjectIdentifier": "S-1-5-21-4100-4200-4300-1102",
+      "Properties": {"name": "demo-valid-after@LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST"}
+    }
+  ]
+}

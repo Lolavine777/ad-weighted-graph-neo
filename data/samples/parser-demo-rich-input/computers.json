@@ -1,0 +1,17 @@
+{
+  "meta": {"type": "computers"},
+  "computers": [
+    {
+      "ObjectIdentifier": "S-1-5-21-4100-4200-4300-3101",
+      "Properties": {"name": "DEMO-WS01.LAB.EXAMPLE.TEST", "domain": "LAB.EXAMPLE.TEST", "host_guid": "A1B2C3D4-1111-4222-8333-ABCDEF012345"},
+      "LocalGroups": [
+        {
+          "ObjectIdentifier": "S-1-5-32-544",
+          "Results": [{"ObjectIdentifier": "S-1-5-21-4100-4200-4300-2102"}]
+        }
+      ],
+      "RemoteDesktopUsers": [{"MemberId": "S-1-5-21-4100-4200-4300-1101"}],
+      "Sessions": [{"UserSID": "S-1-5-21-4100-4200-4300-1102", "LogonType": 2}]
+    }
+  ]
+}

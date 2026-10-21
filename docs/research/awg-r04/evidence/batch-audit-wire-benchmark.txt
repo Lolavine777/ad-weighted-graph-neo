@@ -1,0 +1,161 @@
+"""Measure frozen exposure CLIs; compare complete decisions and binding integrity.
+
+Only standard-library parent/comparator code. Each measured CLI and each parity
+comparison has a fresh process; large parsed packages cannot pollute child RSS.
+"""
+import argparse
+import hashlib
+import json
+import os
+import statistics
+import subprocess
+import sys
+from pathlib import Path
+
+MEASURE = r'''
+import json,os,subprocess,sys,time
+from pathlib import Path
+command,cwd,log,stats=json.loads(sys.argv[1])
+with open(log,'w') as stream:
+ start=time.perf_counter();p=subprocess.Popen(command,cwd=cwd,stdout=stream,stderr=subprocess.STDOUT)
+ _,status,r=os.wait4(p.pid,0);elapsed=time.perf_counter()-start;p.returncode=os.waitstatus_to_exitcode(status)
+Path(stats).write_text(json.dumps({'returncode':p.returncode,'wall_seconds':elapsed,'user_seconds':r.ru_utime,'system_seconds':r.ru_stime,'peak_rss_KiB':r.ru_maxrss}))
+sys.exit(p.returncode)
+'''
+
+def sha(raw):
+    return 'sha256:'+hashlib.sha256(raw).hexdigest()
+
+def cd(value):
+    return sha(json.dumps(value,sort_keys=True,ensure_ascii=False,separators=(',',':'),allow_nan=False).encode())
+
+def pin(path):
+    h=hashlib.sha256()
+    with path.open('rb') as f:
+        for chunk in iter(lambda:f.read(1024*1024),b''):h.update(chunk)
+    return {'path':str(path),'bytes':path.stat().st_size,'sha256':'sha256:'+h.hexdigest()}
+
+def read(path):
+    return json.loads(path.read_text())
+
+def git(repo,*args):
+    return subprocess.check_output(['git',*args],cwd=repo,text=True).strip()
+
+def result_normalize(result,repo):
+    rep=result['reproducibility'];inputs=rep['inputs'];runtime=rep['runtime']
+    assert inputs['scenario_policy'] if 'scenario_policy' in inputs else True
+    for p,h in inputs['source_pins'].items():assert pin(repo/p)['sha256']==h,p
+    scope={
+        'request':inputs['request'],'graph':inputs['graph_digest'],'source_pins':inputs['source_pins'],
+        'allowed_techniques':inputs['allowed_techniques'],'runtime_facts':inputs['runtime_facts'],
+        'per_query_seconds':inputs['per_query_seconds'],'python':runtime['python'],
+        'execution_version':inputs['execution_version'],
+        **{k:inputs[k] for k in ('scenario_policy','effort_profile') if k in inputs}}
+    assert cd(scope)==inputs['scope_digest'],'scope digest integrity'
+    original_scope=inputs['scope_digest']
+    req=inputs['request'];traces=inputs['public_queries']
+    assert len(result['source_goal_matrix'])==1 and len(traces)==3
+    assert result['summary']['declared_cells']==result['summary']['evaluated_cells']==3
+    goals={g['goal_id']:g for g in req['target_manifest']['targets']}
+    cells=[]
+    for sid,row in result['source_goal_matrix'].items():
+        for gid,cell in row.items():
+            ref=cd([sid,gid]);trace=traces[ref]
+            notes=[d for d in cell['diagnostics'] if d.get('code')=='PUBLIC_QUERY_TRACE']
+            assert len(notes)==1 and notes[0]['sha256']==cd(trace),'trace digest integrity'
+            assert trace['guarantees']['is_minimum_proven_over_scope'] is False
+            assert trace['guarantees']['is_no_path_proven_over_scope'] is False
+            if goals[gid]['target_node_id'].endswith('-512'):
+                assert cell['final_goal_reached'] and cell['min_effort']==1
+                assert cell['min_effort_path']['steps']==['scenario_reset_password','acquire_reset_identity','propagate_group_entitlement']
+                assert cell['likelihood_status']=='unrated'
+            cells.append({'source_id':sid,'goal_id':gid,'target':goals[gid]['target_node_id'],
+                'status':cell['status'],'reached':cell['final_goal_reached'],'C':cell['min_effort'],
+                'expansions':cell['expansions'],'paths':len(trace['result']['paths']),
+                'attempts':len(trace['result']['attempts']),'guarantees':trace['guarantees']})
+    physical={'revision':rep.pop('revision'),'scope_digest':inputs.pop('scope_digest'),
+        'query_cli_pin':inputs['source_pins'].pop('src/engine/query_cli.py')}
+    runtime.pop('elapsed_seconds')
+    return cells,physical,original_scope,req['common_budget']
+
+def checkpoint_normalize(checkpoint,scope,budget):
+    assert checkpoint['scope_digest']==scope
+    for ref,packet in checkpoint['cells'].items():
+        payload=packet['payload']
+        assert packet['sha256']==cd(payload),'checkpoint payload integrity'
+        assert payload['fingerprint']==cd({'scope':scope,'cell':ref,'budget':budget})
+        payload.pop('fingerprint');packet.pop('sha256')
+    checkpoint.pop('scope_digest')
+
+def compare(left,right,before,after,destination):
+    # Independent byte/graph/source bindings are checked before normalization.
+    results=[];physical=[];cells=[]
+    for folder,repo in ((left,before),(right,after)):
+        result=read(folder/'result.json')
+        rows,meta,scope,budget=result_normalize(result,repo)
+        checkpoint=read(folder/'checkpoint.json');checkpoint_normalize(checkpoint,scope,budget)
+        summary=read(folder/'summary.json')
+        assert summary['result']['sha256']==pin(folder/'result.json')['sha256']
+        summary['result'].pop('sha256');summary.pop('elapsed_seconds');summary.pop('phase_seconds')
+        results.append((result,checkpoint,summary));physical.append(meta);cells.append(rows)
+    assert results[0]==results[1],'full result/checkpoint/summary parity'
+    for name in ('request.json','selection.json','inventory.json','overview.md'):
+        assert (left/name).read_bytes()==(right/name).read_bytes(),name
+    result={'full_parity':True,'cells':cells[1],'physical_bindings':physical,
+        'normalization':['reproducibility.revision','reproducibility.runtime.elapsed_seconds',
+        'reproducibility.inputs.source_pins.src/engine/query_cli.py',
+        'reproducibility.inputs.scope_digest (independently recomputed)',
+        'checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)',
+        'summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)']}
+    destination.write_text(json.dumps(result,indent=2)+'\n')
+
+def main():
+    p=argparse.ArgumentParser(description=__doc__)
+    p.add_argument('--before',type=Path,required=True);p.add_argument('--after',type=Path,required=True)
+    p.add_argument('--snapshot',type=Path,required=True);p.add_argument('--assumptions',type=Path,required=True)
+    p.add_argument('--raw',type=Path,required=True);p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--compare',nargs=3,type=Path)
+    a=p.parse_args()
+    if a.compare:
+        compare(*a.compare[:2],a.before,a.after,a.compare[2]);return
+    assert hasattr(os,'wait4')
+    for repo in (a.before,a.after):assert git(repo,'status','--porcelain')==''
+    a.output.mkdir(parents=True,exist_ok=False)
+    manifest=read(a.after/'data/samples/manifests/seamless-raw-v1.json')
+    for f in manifest['files']:
+        data=pin(a.raw/f['relative_path']);assert data['bytes']==f['size_bytes'] and data['sha256']=='sha256:'+f['sha256']
+    rows=[];anchor=None;anchor_repo=None
+    base_args=[sys.executable,str(Path(__file__).resolve()),'--before',str(a.before),'--after',str(a.after),
+        '--snapshot',str(a.snapshot),'--assumptions',str(a.assumptions),'--raw',str(a.raw),'--output',str(a.output)]
+    domain='S-1-5-21-1271839998-3495686680-2211690266'
+    for i,mode in enumerate(('before','after','after','before','before','after'),1):
+        repo=a.before if mode=='before' else a.after;folder=a.output/f'{i:02d}-{mode}'
+        cmd=[sys.executable,'-m','scripts.exposure','--snapshot',str(a.snapshot),'--source',domain+'-1395',
+            '--authentication-context',domain+'-1000','--user-profile','user_usable_identity',
+            '--evaluation-mode','scenario','--assumptions',str(a.assumptions),
+            '--effort-profile','reset-activation-c-v1','--max-sources','0','--max-targets','3',
+            '--max-paths','10','--max-steps','4','--max-expansions','10000',
+            '--max-cells','3','--global-max-expansions','30000',
+            '--technique','scenario_reset_password','--technique','acquire_reset_identity',
+            '--technique','propagate_group_entitlement','--output-dir',str(folder)]
+        log=a.output/f'{i:02d}-{mode}.log';stats=a.output/f'{i:02d}-{mode}.stats.json'
+        subprocess.run([sys.executable,'-c',MEASURE,json.dumps([cmd,str(repo),str(log),str(stats)])],check=True)
+        if anchor is None:anchor,anchor_repo=folder,repo
+        parity=a.output/f'{i:02d}-{mode}.parity.json'
+        compare_args=base_args.copy();compare_args[compare_args.index('--after')+1]=str(repo)
+        compare_args[compare_args.index('--before')+1]=str(anchor_repo)
+        subprocess.run([*compare_args,'--compare',str(anchor),str(folder),str(parity)],check=True)
+        row={'index':i,'mode':mode,'command':cmd,'cwd':str(repo),'revision':git(repo,'rev-parse','HEAD'),
+            'measurement':read(stats),'summary':read(folder/'summary.json'),'parity':read(parity),
+            'artifacts':[pin(folder/name) for name in ('result.json','checkpoint.json','summary.json','request.json','inventory.json','selection.json','overview.md')]}
+        rows.append(row);(a.output/'progress.json').write_text(json.dumps(rows,indent=2)+'\n')
+        print(json.dumps({'index':i,'mode':mode,**row['measurement']}),flush=True)
+    medians={mode:{k:statistics.median(r['measurement'][k] for r in rows if r['mode']==mode)
+        for k in ('wall_seconds','user_seconds','system_seconds','peak_rss_KiB')} for mode in ('before','after')}
+    result={'version':'batch-audit-benchmark/1','revisions':{m:git(r,'rev-parse','HEAD') for m,r in [('before',a.before),('after',a.after)]},
+        'harness':pin(Path(__file__).resolve()),'snapshot':pin(a.snapshot),'assumptions':pin(a.assumptions),
+        'raw_manifest':manifest,'trials':rows,'medians':medians,'all_full_packages_equal':True,
+        'scope':'One initially usable powerful-ACL User, three automatic important goals, three techniques and seven assumptions. Sequential per-goal planner, not shared traversal. Fresh supervisor; native load/inventory/search/audit/checkpoint/serialization included. Parent parity excluded. Three trials/setting, one workload; no confidence interval or full-domain claim.'}
+    (a.output/'summary.json').write_text(json.dumps(result,indent=2)+'\n');print(json.dumps(medians))
+
+if __name__=='__main__':main()

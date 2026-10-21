@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Independent Expected Oracles for Week 5 #268 Acceptance Cases",
+  "description": "Frozen independently-derived oracle expectations for contract verification before B implementation.",
+  "cases": {
+    "case_a_leaked_password_vs_usable_identity": {
+      "case_id": "ORACLE-CASE-A",
+      "description": "User leaked password requires activation transition; cannot perform actions before activation. Usable identity can immediately execute actions.",
+      "password_profile": {
+        "initial_state": {
+          "control": [],
+          "usable_identity": [],
+          "recovered_secret_count": 1,
+          "known_identity": ["S-1-5-21-1000-2000-3000-1102"]
+        },
+        "requires_technique": "activate_recovered_identity",
+        "expected_first_step": "activate_recovered_identity",
+        "required_authentication_context_kind": "Computer",
+        "missing_context_error_code": "MISSING_AUTHENTICATION_CONTEXT",
+        "invalid_context_error_code": "INVALID_AUTHENTICATION_CONTEXT",
+        "unresolved_context_status": "indeterminate",
+        "missing_kdc_expected_status": "indeterminate",
+        "disabled_account_expected_status": "blocked",
+        "expected_success_steps_to_da": 2
+      },
+      "usable_identity_profile": {
+        "initial_state": {
+          "control": ["S-1-5-21-1000-2000-3000-1101"],
+          "usable_identity": [["S-1-5-21-1000-2000-3000-1101", "S-1-5-21-1000-2000-3000-1101"]],
+          "recovered_secret_count": 0
+        },
+        "requires_technique": null,
+        "expected_first_step": "propagate_group_entitlement",
+        "expected_success_steps_to_da": 1
+      }
+    },
+    "case_b_destination_discovery_mode": {
+      "case_id": "ORACLE-CASE-B",
+      "description": "When target is unspecified (discovery mode), system discovers all configured reachable targets in manifest rather than requiring manual target.",
+      "source_foothold": "S-1-5-21-1000-2000-3000-1101",
+      "expected_discovered_targets": [
+        "goal-synthetic-da",
+        "goal-synthetic-c0-host"
+      ],
+      "drilldown_filter_supported": true
+    },
+    "case_c_da_checkpoint_vs_host_admin": {
+      "case_id": "ORACLE-CASE-C",
+      "description": "Distinguish achieving Domain Admin membership checkpoint from host administrative compromise on a DC or server.",
+      "conditions": {
+        "membership_valid": true,
+        "admin_channel_to_host": false
+      },
+      "expected_checkpoint_reached": true,
+      "expected_final_goal_reached": false,
+      "expected_status": "checkpoint_reached_final_goal_blocked",
+      "impact_rated": false
+    },
+    "case_d_source_node_eligibility": {
+      "case_id": "ORACLE-CASE-D",
+      "description": "Verify User and Computer nodes are eligible footholds; Group, Domain, OU are rejected with explicit unsupported error.",
+      "eligible_kinds": ["User", "Computer"],
+      "ineligible_kinds": ["Group", "Domain", "OU", "OrganizationalUnit", "GPO", "Container"],
+      "expected_ineligible_status": "unsupported_source",
+      "expected_error_code": "UNSUPPORTED_FOOTHOLD_KIND"
+    },
+    "case_e_multi_source_isolation": {
+      "case_id": "ORACLE-CASE-E",
+      "description": "Multiple sources evaluated in the same batch run execute in strict isolation without sharing recovered credentials or host control.",
+      "sources": [
+        "src-alice-usable",
+        "src-bob-password"
+      ],
+      "state_carryover_permitted": false,
+      "expected_source_results_independent": true
+    },
+    "case_f_missing_likelihood_unrated": {
+      "case_id": "ORACLE-CASE-F",
+      "description": "Missing probability basis leaves likelihood unrated; Min-Effort and Impact still resolve; path is NOT treated as safe or zero.",
+      "expected_likelihood_status": "unrated",
+      "expected_likelihood_interval": null,
+      "min_effort_evaluates": true,
+      "treated_as_zero": false
+    },
+    "case_g_known_false_veto": {
+      "case_id": "ORACLE-CASE-G",
+      "description": "Authoritative known-false facts veto declared assumptions, resulting in blocked status.",
+      "declared_assumption_value": true,
+      "observed_evidence_value": false,
+      "expected_verdict": "blocked",
+      "assumption_rejection_reason": "known_false_veto"
+    },
+    "case_h_truncated_search_budget": {
+      "case_id": "ORACLE-CASE-H",
+      "description": "Search truncated by budget caps reports truncated=True and cannot claim global minimum.",
+      "budget_cap": {"max_steps": 1},
+      "expected_truncated": true,
+      "expected_truncation_reason": "step_limit_reached",
+      "is_minimum_proven_over_scope": false
+    },
+    "case_i_shared_work_deduplication_and_ties": {
+      "case_id": "ORACLE-CASE-I",
+      "description": "Alternative paths with identical effort are recorded as ties with deterministic tie-breaking.",
+      "expected_tie_count_recorded": true,
+      "tie_breaker_order": ["impact", "min_effort", "likelihood_lower", "tier_0_count", "steps", "source_id"]
+    }
+  }
+}

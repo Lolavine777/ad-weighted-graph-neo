@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "contract_version": "1.3.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:af3d9edfb915bb5ad66cf246804e7ccb850598fe13227f3573aa7c21e25db505",
+    "created_at": "2026-10-05T00:00:00Z",
+    "code_version": "synthetic-golden/1.0.0",
+    "synthetic": true
+  },
+  "nodes": [
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-Host",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "kind": "Computer",
+      "label": "SYNTHETIC-OtherHost",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-Alice",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "User",
+      "label": "SYNTHETIC-Bob",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "Group",
+      "label": "SYNTHETIC-Helpdesk",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "Group",
+      "label": "SYNTHETIC-Operators",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "Group",
+      "label": "SYNTHETIC-Admins",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:248d6c2ed9ad8c19d7f8363985e9693628d1b43a5a4fc0cca2e255b975c61255",
+      "source": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/session-material",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    }
+  ],
+  "assessments": []
+}

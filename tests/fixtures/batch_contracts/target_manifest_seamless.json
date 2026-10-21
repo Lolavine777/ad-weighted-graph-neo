@@ -1,0 +1,106 @@
+{
+  "schema_version": "target-manifest/1.0.0",
+  "manifest_id": "target-manifest-seamless-v1",
+  "version": "1.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "domain_sid": "S-1-5-21-1271839998-3495686680-2211690266",
+  "description": "Snapshot-pinned target manifest for SEAMLESS environment with verified raw locators.",
+  "default_discovery_goals": [
+    "goal-seamless-da-entitlement",
+    "goal-seamless-ea-entitlement",
+    "goal-seamless-dc-admin"
+  ],
+  "targets": [
+    {
+      "goal_id": "goal-seamless-da-entitlement",
+      "category": "tier_0_identity",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_node_kind": "Group",
+      "display_name": "Domain Admins (SEAMLESS)",
+      "technical_consequence": "domain_wide_credential_and_administrative_entitlement",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "admin_entitlement",
+      "provenance_locator": "20210920185958_groups.json#/groups/40",
+      "required_state": {
+        "effective_member": [
+          [
+            "__RESOLVED_ACTOR__",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ]
+        ]
+      },
+      "checkpoint_goal": null,
+      "description": "Attacker achieves active usable identity with effective membership in Domain Admins."
+    },
+    {
+      "goal_id": "goal-seamless-ea-entitlement",
+      "category": "tier_0_identity",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_node_kind": "Group",
+      "display_name": "Enterprise Admins (SEAMLESS)",
+      "technical_consequence": "forest_wide_full_administrative_control",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "admin_entitlement",
+      "provenance_locator": "20210920185958_groups.json#/groups/18",
+      "required_state": {
+        "effective_member": [
+          [
+            "__RESOLVED_ACTOR__",
+            "S-1-5-21-1271839998-3495686680-2211690266-519"
+          ]
+        ]
+      },
+      "checkpoint_goal": null,
+      "description": "Attacker achieves active usable identity with effective membership in Enterprise Admins."
+    },
+    {
+      "goal_id": "goal-seamless-dc-admin",
+      "category": "tier_0_host",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_node_kind": "Computer",
+      "display_name": "Primary Domain Controller (badblood.seamless.local)",
+      "technical_consequence": "terminal_compromise_dc_host_and_active_directory_database",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "host_admin_execution",
+      "provenance_locator": "20210920185958_computers.json#/computers/0",
+      "required_state": {
+        "admin_control": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        ]
+      },
+      "checkpoint_goal": {
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "required_state": {
+          "effective_member": [
+            [
+              "__RESOLVED_ACTOR__",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ]
+          ]
+        }
+      },
+      "description": "Administrative code execution on Domain Controller host with NTDS access."
+    },
+    {
+      "goal_id": "goal-seamless-dc-session",
+      "category": "tier_0_host",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_node_kind": "Computer",
+      "display_name": "Domain Controller Remote Session (badblood.seamless.local)",
+      "technical_consequence": "dc_interactive_session_or_remote_command_execution",
+      "impact_rating": "High",
+      "required_control_level": "remote_command",
+      "provenance_locator": "20210920185958_computers.json#/computers/0",
+      "required_state": {
+        "remote_command_execution": [
+          [
+            "__RESOLVED_ACTOR__",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ]
+        ]
+      },
+      "checkpoint_goal": null,
+      "description": "Non-administrative remote command execution or interactive logon on DC."
+    }
+  ]
+}

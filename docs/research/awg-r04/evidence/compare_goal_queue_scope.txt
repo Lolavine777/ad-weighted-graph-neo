@@ -1,0 +1,36 @@
+"""Extract one complete native query from lossless gzip and compare experiment scopes."""
+import copy
+import gzip
+import hashlib
+import json
+from pathlib import Path
+
+root=Path(__file__).resolve().parent;repo=root/'repo'
+p=json.loads((repo/'reports/generated/awg-r04-goal-queue-v1/projection.json').read_text())
+goal=p['request']['target_goal_ids'][0];source=p['request']['sources'][0]['source_id']
+canon=lambda x:'sha256:'+hashlib.sha256(json.dumps(x,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+key=canon([source,goal]);marker=json.dumps(key)+':{"query":'
+with gzip.open(repo/'reports/generated/awg-r04-global-policy-v1/after/result.json.gz','rt',encoding='utf-8') as f:
+ buf=''
+ while True:
+  chunk=f.read(1048576);assert chunk,'query marker not found';buf+=chunk
+  index=buf.find(marker)
+  if index>=0:buf=buf[index+len(marker):];break
+  buf=buf[-len(marker):]
+ decoder=json.JSONDecoder()
+ while True:
+  try:q,_=decoder.raw_decode(buf);break
+  except json.JSONDecodeError:
+   chunk=f.read(1048576);assert chunk,'query truncated';buf+=chunk
+
+def normalized(query):
+ query=copy.deepcopy(query);scenario=query.pop('scenario_reference');assert scenario.startswith('batch-cell:sha256:')
+ rating=query.pop('rating_resolution');assert rating['scope']['scenario_id']==scenario
+ for record in rating['registries']['effort']['data']:assert record['applicability']['scopes']==[scenario]
+ return query
+assert q==p['query']
+a,b=normalized(q),normalized(p['query'])
+diff=[k for k in set(a)|set(b) if a.get(k)!=b.get(k)]
+assert not diff,diff
+out={'entire_public_query_equal':True,'same_entire_public_query_except_verified_rating_and_scenario_binding':True,'normalized_query_sha256':canon(a),'scope':'Entire public query equal, including source, exact initial state/context, target/semantic goal, techniques, budgets, all assumptions/policy metadata, effort profile metadata, scenario reference and rating resolution. Secondary normalization validates the same binding too.','incumbent_query_sha256':canon(q),'prototype_query_sha256':canon(p['query'])}
+(root/'goal-queue-scope-comparison.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out))

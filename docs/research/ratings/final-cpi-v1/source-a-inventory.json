@@ -1,0 +1,98 @@
+{
+  "actions": [
+    {
+      "action_id": "action_reset_lidia",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "method": "GenericAll",
+      "requires": [],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "technique_id": "scenario_reset_password",
+      "terminal": false
+    },
+    {
+      "action_id": "action_activate_lidia",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "method": "AuthenticationControl",
+      "requires": [
+        "action_reset_lidia"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "technique_id": "acquire_reset_identity",
+      "terminal": false
+    },
+    {
+      "action_id": "action_winrm_badblood_lidia",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "method": "DeclaredHostAdmin",
+      "requires": [
+        "action_activate_lidia"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "technique_id": "scenario_winrm_admin",
+      "terminal": true
+    },
+    {
+      "action_id": "action_reset_josefa",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "method": "GenericAll",
+      "requires": [],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "technique_id": "scenario_reset_password",
+      "terminal": false
+    },
+    {
+      "action_id": "action_activate_josefa",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "method": "AuthenticationControl",
+      "requires": [
+        "action_reset_josefa"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "technique_id": "acquire_reset_identity",
+      "terminal": false
+    },
+    {
+      "action_id": "action_reset_ollie",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "method": "GenericAll",
+      "requires": [
+        "action_activate_josefa"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "technique_id": "scenario_reset_password",
+      "terminal": false
+    },
+    {
+      "action_id": "action_activate_ollie",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "method": "AuthenticationControl",
+      "requires": [
+        "action_reset_ollie"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "technique_id": "acquire_reset_identity",
+      "terminal": false
+    },
+    {
+      "action_id": "action_winrm_badblood_ollie",
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "method": "DeclaredHostAdmin",
+      "requires": [
+        "action_activate_ollie"
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "technique_id": "scenario_winrm_admin",
+      "terminal": true
+    }
+  ],
+  "origin": "historical declarative action identities, not generated path output",
+  "version": "1.0.0"
+}

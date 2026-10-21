@@ -1,0 +1,48 @@
+{
+  "parent": "996ee35d154051abee4eb3c940c91264b68cb5fb",
+  "scope": "Fix #296 R1/R2, no whole-suite or full-SEAMLESS benchmark claim",
+  "python": "3.14.8",
+  "source_sha256": {
+    "src/engine/graph.py": "9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+    "src/engine/ranking/orchestration.py": "b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+    "src/engine/semantics/credentials.py": "51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+    "tests/test_prepared_graph_binding.py": "0976c441b56b84d1d24f43c27c6335c95e8cde76efb4c5ac2dda6fb5ee0b70e1"
+  },
+  "pytest": {
+    "tests": 428,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "f1": {
+    "cases": 78,
+    "mismatches": [],
+    "valid_witnesses": 99,
+    "native_output_parity_with_parent": true,
+    "shared_work_min_C": 5
+  },
+  "negative_controls": {
+    "repo": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+    "valid_control": {
+      "adapted": 1,
+      "rejected": 0
+    },
+    "digest_really_changed": true,
+    "direct_binding_validation": "snapshot facts do not match canonical graph",
+    "stale_facts_public_api": {
+      "adapted": 0,
+      "rejected": 1
+    },
+    "disabled_graph_without_prepared": "semantic replay disagrees with generated transition",
+    "disabled_graph_with_foreign_prepared": "prepared graph does not match replay graph and snapshot facts"
+  },
+  "raw": {
+    "source_commit": "3febc4089421725f9527c187f78d064ad09d5158",
+    "archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "file_count": 6,
+    "total_bytes": 11371828,
+    "manifest_errors": []
+  },
+  "reproduce": "python -m pytest -q tests/test_prepared_graph_binding.py tests/test_contract_reuse.py tests/test_catalog_reuse.py tests/test_search_actor_scheduling.py tests/test_query_cli.py tests/test_attack_semantics_transitions.py tests/test_engine.py tests/test_rbcd.py tests/test_asrep.py tests/test_kerberoasting.py tests/test_top_k_search.py tests/test_exploration.py tests/test_week4_min_effort_search.py tests/test_graph_lineage.py"
+}

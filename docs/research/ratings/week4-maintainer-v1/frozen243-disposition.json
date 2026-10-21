@@ -1,0 +1,269 @@
+{
+  "disposition_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+  "effort": [
+    {
+      "applicability": {
+        "boundaries": [
+          "intra_forest"
+        ],
+        "methods": [
+          "ASRepTarget"
+        ],
+        "scopes": [
+          "week4-seamless-v1"
+        ],
+        "snapshot_ids": [
+          "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+        ],
+        "techniques": [
+          "asrep_request"
+        ],
+        "work_classes": [
+          "active_work"
+        ],
+        "work_unit_digests": [
+          "sha256:88098709c1578a0d4cd9a1379738917f7fc0e1ba5a4f3e8c2b22f4c09e6443c5"
+        ]
+      },
+      "basis_category": "scenario_assumption",
+      "class_id": "maintainer-frozen243-class_asrep_request",
+      "computed_cost": 0,
+      "description": "Issuing AS-REQ for accounts with DoNotRequirePreAuth set to obtain encrypted AS-REP response.",
+      "disposition": "rated",
+      "formula": "base",
+      "name": "AS-REP Roasting Request",
+      "notes": "A maintainer weekend disposition / self-verification; no independent B review; exact frozen context only.",
+      "provenance_digest": "sha256:e6d522c6973a3204693fceaa6356e0e0148c56166dbeac3cf5c0ea8968106d21",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+      "review_status": "accepted",
+      "t1": 1,
+      "t2": 1,
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null
+    },
+    {
+      "applicability": {
+        "boundaries": [
+          "intra_forest"
+        ],
+        "methods": [
+          "offline-password-prediction"
+        ],
+        "scopes": [
+          "week4-seamless-v1"
+        ],
+        "snapshot_ids": [
+          "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+        ],
+        "techniques": [
+          "recover_asrep_secret"
+        ],
+        "work_classes": [
+          "active_work"
+        ],
+        "work_unit_digests": [
+          "sha256:41b384adf2966c223c8a545840c244360d578d1f23ffbdcdeda3eedd5372a91c"
+        ]
+      },
+      "basis_category": "scenario_assumption",
+      "class_id": "maintainer-frozen243-class_asrep_offline_crack",
+      "computed_cost": 2,
+      "description": "Offline password cracking of recovered AS-REP encrypted timestamp using dictionary and rule attacks.",
+      "disposition": "rated",
+      "formula": "base",
+      "name": "AS-REP Offline Secret Recovery",
+      "notes": "A maintainer weekend disposition / self-verification; no independent B review; exact frozen context only.",
+      "provenance_digest": "sha256:639d7bb6c777a14428b90fb2bff519f9edc9ca7cd88a88f83ebe343c072a9c1e",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+      "review_status": "accepted",
+      "t1": 2,
+      "t2": 2,
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null
+    },
+    {
+      "applicability": {
+        "boundaries": [
+          "intra_forest"
+        ],
+        "methods": [
+          "RecoveredSecret"
+        ],
+        "scopes": [
+          "week4-seamless-v1"
+        ],
+        "snapshot_ids": [
+          "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+        ],
+        "techniques": [
+          "activate_recovered_identity"
+        ],
+        "work_classes": [
+          "active_work"
+        ],
+        "work_unit_digests": [
+          "sha256:8f8cd175f0b90438373e3579521f4aca38bfb222e7ad83ec08d327e3d2d1e4e5"
+        ]
+      },
+      "basis_category": "scenario_assumption",
+      "class_id": "maintainer-frozen243-class_kerberos_identity_activation",
+      "computed_cost": 0,
+      "description": "Activating and verifying recovered password or ticket secret into an authenticated execution session.",
+      "disposition": "rated",
+      "formula": "base",
+      "name": "Kerberos Recovered Identity Activation",
+      "notes": "A maintainer weekend disposition / self-verification; no independent B review; exact frozen context only.",
+      "provenance_digest": "sha256:5e6fbdb8f93670c29a1de035ff5cafa714fd4088b58068eac2ce2d633f4fbd3d",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+      "review_status": "accepted",
+      "t1": 1,
+      "t2": 1,
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null
+    },
+    {
+      "applicability": {
+        "boundaries": [
+          "intra_forest"
+        ],
+        "methods": [
+          "AdminTo"
+        ],
+        "scopes": [
+          "week4-seamless-v1"
+        ],
+        "snapshot_ids": [
+          "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+        ],
+        "techniques": [
+          "obtain_admin_execution_on_host"
+        ],
+        "work_classes": [
+          "active_work"
+        ],
+        "work_unit_digests": [
+          "sha256:346b033b0bdabb1610176f59e12437999e031fecf6d1d7df0a52e9606d03acb9"
+        ]
+      },
+      "basis_category": "scenario_assumption",
+      "class_id": "maintainer-frozen243-class_host_admin_channel",
+      "computed_cost": 1,
+      "description": "Accepted semantic admin_channel abstraction; transport unspecified.",
+      "disposition": "rated",
+      "formula": "base",
+      "name": "Host administration via declared admin channel",
+      "notes": "A maintainer weekend disposition / self-verification; no independent B review; exact frozen context only.",
+      "provenance_digest": "sha256:a70a448635fc521460f862ef1fe27cef96de1cc0b31797d5498ea6c04afbb07d",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+      "review_status": "accepted",
+      "t1": 1,
+      "t2": 2,
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null
+    }
+  ],
+  "impact": {
+    "author": "Lolavine777 (TTS A)",
+    "created_at": "2026-10-11T09:12:30Z",
+    "description": "A maintainer exact frozen same-asset typed consequence adoption; broad registry unchanged.",
+    "evidence_class": "scenario_assumption",
+    "mappings": [
+      {
+        "affected_business_services": [
+          "identity",
+          "authentication",
+          "access_control"
+        ],
+        "applicability": {
+          "boundary": "intra_forest",
+          "goal_id": "admin_control(C0)",
+          "horizon_policy": "independent_of_recovery_horizon",
+          "scenario_id": [
+            "week4-seamless-v1"
+          ],
+          "semantic_goal": {
+            "kind": "required_state",
+            "required_state": {
+              "admin_control": [
+                "S-1-5-21-1271839998-3495686680-2211690266-1000"
+              ]
+            },
+            "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "version": "semantic-goal/1.0.0"
+          },
+          "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+        },
+        "consequence_rating": "High",
+        "consequence_semantics": "Administrative control of the BADBLOOD domain controller allows tampering with directory identity data and access control across the domain, directly threatening confidentiality, integrity, and availability of identity, authentication, and access control services.",
+        "destination_event": "admin_execution_on_C",
+        "directionality": "directional",
+        "mapping_id": "maintainer-frozen243-exact-admin-v1",
+        "provenance": {
+          "adopted_by": "Owner A",
+          "disposition_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+          "independent_b_review": false,
+          "review_role": "A maintainer weekend disposition / self-verification"
+        },
+        "rationale": "Proposed equality of the explicit terminal admin_control(C0) consequence with historical admin_control_badblood on the same asset. No claim about secret theft, DA membership, or execution transport.",
+        "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+        "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+        "source_event": "terminal_compromise_seamless_dc",
+        "source_rating_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+        "source_rating_version": "1.0.0",
+        "source_release_canonical_digest": "sha256:8af324ca79e8f21d9c250d7c4a901f69ac4f41720070cd1c28464fa8e64bdb18",
+        "status": "reviewed",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "target_asset_label": "BADBLOOD DC01$ (C0 / #/computers/0)"
+      }
+    ],
+    "registry_id": "maintainer-frozen243-exact-impact-v1",
+    "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/251#issuecomment-6107466502",
+    "reviewer": null,
+    "schema_version": "1.0.0",
+    "status": "accepted",
+    "version": "1.0.0"
+  },
+  "independent_b_review": false,
+  "limits": [
+    "Exact canonical work-identity digests and snapshot only",
+    "P remains missing, no q values adopted",
+    "Terminal High applies only to same BADBLOOD asset and exact typed admin_control goal",
+    "No broad class or mapping activation",
+    "No empirical probability claim"
+  ],
+  "oracle": {
+    "impact": "High",
+    "numeric_requests": {
+      "C": {
+        "rated": 4,
+        "required": 4
+      },
+      "I": {
+        "rated": 1,
+        "required": 1
+      },
+      "P": {
+        "rated": 0,
+        "required": 4
+      }
+    },
+    "pareto_frontier": [],
+    "path_effort": 3,
+    "program": [
+      "asrep_request",
+      "recover_asrep_secret",
+      "activate_recovered_identity",
+      "obtain_admin_execution_on_host"
+    ],
+    "unit_costs": [
+      0,
+      2,
+      0,
+      1
+    ]
+  },
+  "role": "A maintainer weekend disposition / self-verification",
+  "scenario_id": "week4-seamless-v1",
+  "schema_version": "week4-maintainer-disposition/1.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+}

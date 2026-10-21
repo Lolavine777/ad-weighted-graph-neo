@@ -1,0 +1,641 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "contract_version": "1.0.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "created_at": "2026-09-21T00:00:00Z",
+    "code_version": "synthetic-fixture/1.0",
+    "description": "Invented normalized M1 graph covering all eight edge kinds; not collector output or AD evidence."
+  },
+  "assessments": [],
+  "nodes": [
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-FOOTHOLD",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "User",
+      "label": "SYNTHETIC-HELPDESK-USER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1103",
+      "kind": "User",
+      "label": "SYNTHETIC-TIER1-USER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1104",
+      "kind": "User",
+      "label": "SYNTHETIC-SERVICE-USER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1105",
+      "kind": "User",
+      "label": "SYNTHETIC-DISABLED-USER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": false
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1106",
+      "kind": "User",
+      "label": "SYNTHETIC-ISOLATED-USER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "kind": "Computer",
+      "label": "SYNTHETIC-WORKSTATION",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-APP-SERVER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "kind": "Computer",
+      "label": "SYNTHETIC-FILE-SERVER",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000004",
+      "kind": "Computer",
+      "label": "SYNTHETIC-DC",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "Group",
+      "label": "SYNTHETIC-HELPDESK",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 0
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "Group",
+      "label": "SYNTHETIC-OPERATORS",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 0
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "Group",
+      "label": "SYNTHETIC-NESTED-A",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 0
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2104",
+      "kind": "Group",
+      "label": "SYNTHETIC-NESTED-B",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 0
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-512",
+      "kind": "Group",
+      "label": "SYNTHETIC-DOMAIN-ADMINS",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 1
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "kind": "Domain",
+      "label": "SYNTHETIC-DOMAIN",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false
+    },
+    {
+      "id": "30000000-0000-4000-8000-000000000001",
+      "kind": "OU",
+      "label": "SYNTHETIC-SERVERS-OU",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false
+    },
+    {
+      "id": "40000000-0000-4000-8000-000000000001",
+      "kind": "GPO",
+      "label": "SYNTHETIC-SERVER-POLICY",
+      "domain": "M1.EXAMPLE.TEST",
+      "is_boundary": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:u1:g1",
+          "attribute": "synthetic:MemberOf"
+        },
+        {
+          "raw_file": "synthetic://m1-secondary-observation.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:05:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:u1:g1:second-observation",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:0979b6d15965f59a29499cf5ea06ea40cdbc2543ce8e5686e9c04467a48da1bd",
+      "source": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:u2:g1",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:8e4fd73674094c3a9d7990900c9b6514ab8577eed5d68fa1c79e2012ca2ea7fc",
+      "source": "S-1-5-21-1000-2000-3000-1103",
+      "target": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:u3:g2",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:78e13ec9bebb497d058289ccf8f9c7145624ddaff049702441733b8deb372df6",
+      "source": "S-1-5-21-1000-2000-3000-1104",
+      "target": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:u4:g2",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:1d7a5e9b2879d9479f13ef786f593234e37273f1e0d550675bd4d36c8d9fc29b",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:g1:g3",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:f5c7d961871b114cd789149ac6c2fee452ec082ce77c81da9d8aa54ecdbca28a",
+      "source": "S-1-5-21-1000-2000-3000-2103",
+      "target": "S-1-5-21-1000-2000-3000-2104",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:g3:g4",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:699ca91edad67f6307c7552b647e3bad923082eb4e48ac8e064e3c80144f39ba",
+      "source": "S-1-5-21-1000-2000-3000-2104",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:g4:g3",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:0986f1236c53d7f5a7fe9fefe50402b8d3346e56e0c20ec3f13ab6c2cac7698d",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "MemberOf:g2:g5",
+          "attribute": "synthetic:MemberOf"
+        }
+      ]
+    },
+    {
+      "id": "sha256:61bd6c86af78c7370f54d2c653eabaa2fed818e54c858b31d36f33d437db7839",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "AdminTo:g1:c1",
+          "attribute": "synthetic:AdminTo"
+        }
+      ]
+    },
+    {
+      "id": "sha256:1ec7291f19478cc706ae9419680094a76910d17ee526f62f363a4fa777aab7d6",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "AdminTo:g2:c2",
+          "attribute": "synthetic:AdminTo"
+        }
+      ]
+    },
+    {
+      "id": "sha256:26859e5777e00917d9b6b59ce3fe9f33ae02802e2ae094bcf65d897e50efbac0",
+      "source": "S-1-5-21-1000-2000-3000-512",
+      "target": "10000000-0000-4000-8000-000000000004",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "AdminTo:g5:c4",
+          "attribute": "synthetic:AdminTo"
+        }
+      ]
+    },
+    {
+      "id": "sha256:1a3c5bf4b1329b57fd6525782ea7cb86b2fb7d3acecf7067aca3a069314bf40d",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "kind": "CanRDP",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanRDP:g1:c1",
+          "attribute": "synthetic:CanRDP"
+        }
+      ]
+    },
+    {
+      "id": "sha256:b011c52285abd9b802866580aaea9a1404e01f0db7920a5fa69b59a7de51f79d",
+      "source": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000003",
+      "kind": "CanRDP",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanRDP:u2:c3",
+          "attribute": "synthetic:CanRDP"
+        }
+      ]
+    },
+    {
+      "id": "sha256:588f4d7143a99ba2a16fb8cca3ad97071ef058e7dfa4b2092912088e436232fa",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "kind": "CanRDP",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanRDP:g2:c2",
+          "attribute": "synthetic:CanRDP"
+        }
+      ]
+    },
+    {
+      "id": "sha256:16d0d89d7ad8a4364d757916156206c7316e269dfae3234a1540f388847c2bad",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "kind": "CanPSRemote",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanPSRemote:g1:c1",
+          "attribute": "synthetic:CanPSRemote"
+        }
+      ]
+    },
+    {
+      "id": "sha256:a87eab21e0b706c2da1e9760f3c1aa0b8b4e3bca84a13b469850702ede206ca5",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "10000000-0000-4000-8000-000000000003",
+      "kind": "CanPSRemote",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanPSRemote:g2:c3",
+          "attribute": "synthetic:CanPSRemote"
+        }
+      ]
+    },
+    {
+      "id": "sha256:5a53538e33893ad758f6c65ed69b4e23e4c1d91632882a52a6e022e6186bd90a",
+      "source": "10000000-0000-4000-8000-000000000002",
+      "target": "10000000-0000-4000-8000-000000000003",
+      "kind": "CanPSRemote",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "CanPSRemote:c2:c3",
+          "attribute": "synthetic:CanPSRemote"
+        }
+      ]
+    },
+    {
+      "id": "sha256:d5eed8af3b682d379ce40771ae852739a8a4c8927430a0039cd146eb18464840",
+      "source": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "HasSession:c1:u2",
+          "attribute": "synthetic:HasSession"
+        }
+      ]
+    },
+    {
+      "id": "sha256:f7bc61a941ecc549d4b43601a6fd9b20bf1ecc9517fd120d5aff9503b3e71582",
+      "source": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1103",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "HasSession:c2:u3",
+          "attribute": "synthetic:HasSession"
+        }
+      ]
+    },
+    {
+      "id": "sha256:522e67241fc5134b9cdba98ce9f89e06389a3e37bb9e38969cd7b973db30c4c8",
+      "source": "10000000-0000-4000-8000-000000000003",
+      "target": "S-1-5-21-1000-2000-3000-1104",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "HasSession:c3:u4",
+          "attribute": "synthetic:HasSession"
+        }
+      ]
+    },
+    {
+      "id": "sha256:f3e6332135012c6b045a720b28360c4a8ff7b9847d7808efdff8795d230e8256",
+      "source": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-1104",
+      "kind": "GenericAll",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "GenericAll:u2:u4",
+          "attribute": "synthetic:GenericAll"
+        }
+      ]
+    },
+    {
+      "id": "sha256:23aa9fc00e70b13f53de18eb7531ff06750d2ce78cc8c59e6ab248324f6a287a",
+      "source": "S-1-5-21-1000-2000-3000-1103",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "kind": "GenericAll",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "GenericAll:u3:g5",
+          "attribute": "synthetic:GenericAll"
+        }
+      ]
+    },
+    {
+      "id": "sha256:95c8eb33267a9277a908c7354390bccafe7517088e2dd8c993a6d365fa6bc13e",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "30000000-0000-4000-8000-000000000001",
+      "kind": "GenericAll",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "GenericAll:g2:o",
+          "attribute": "synthetic:GenericAll"
+        }
+      ]
+    },
+    {
+      "id": "sha256:29d8ae9dcc6ec554f41b9a6588f1f67f9810f105bd99267923e75f56624a7ea4",
+      "source": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-1104",
+      "kind": "WriteDacl",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "WriteDacl:u2:u4",
+          "attribute": "synthetic:WriteDacl"
+        }
+      ]
+    },
+    {
+      "id": "sha256:d2e844a477cfebe1cab50fee212fead987128c5447e5ead2882479ff99741050",
+      "source": "S-1-5-21-1000-2000-3000-1103",
+      "target": "40000000-0000-4000-8000-000000000001",
+      "kind": "WriteDacl",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "WriteDacl:u3:p",
+          "attribute": "synthetic:WriteDacl"
+        }
+      ]
+    },
+    {
+      "id": "sha256:191dd31afa097ea5e145c788829edd86afec74d3be98a105a40a4be749d40022",
+      "source": "S-1-5-21-1000-2000-3000-512",
+      "target": "20000000-0000-4000-8000-000000000001",
+      "kind": "WriteDacl",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "WriteDacl:g5:d",
+          "attribute": "synthetic:WriteDacl"
+        }
+      ]
+    },
+    {
+      "id": "sha256:5dbc26cd192c71d76f37aa8b1733477d2f2f2a4c39497d29f06b49fed69352d7",
+      "source": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-1105",
+      "kind": "ForceChangePassword",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "ForceChangePassword:u2:u5",
+          "attribute": "synthetic:ForceChangePassword"
+        }
+      ]
+    },
+    {
+      "id": "sha256:8bc08e005a6401dd0aaea5bb9393263bda53b36e4baae64b97d11255be283c51",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "S-1-5-21-1000-2000-3000-1104",
+      "kind": "ForceChangePassword",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://m1-fixtures.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-16T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "ForceChangePassword:g1:u4",
+          "attribute": "synthetic:ForceChangePassword"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+{
+  "classes": {
+    "asrep_material_request": {
+      "cost": 0,
+      "lower": "9/10",
+      "t1": 1,
+      "t2": 1,
+      "upper": "99/100"
+    },
+    "asrep_password_recovery": {
+      "cost": 2,
+      "lower": null,
+      "t1": 2,
+      "t2": 2,
+      "upper": null
+    },
+    "directory_password_reset": {
+      "cost": 1,
+      "lower": "3/5",
+      "t1": 1,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "grant_generic_all": {
+      "cost": 2,
+      "lower": "7/10",
+      "t1": 2,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "grant_write_dacl": {
+      "cost": 1,
+      "lower": "7/10",
+      "t1": 1,
+      "t2": 2,
+      "upper": "49/50"
+    },
+    "group_membership_mutation": {
+      "cost": 1,
+      "lower": "4/5",
+      "t1": 1,
+      "t2": 2,
+      "upper": "49/50"
+    },
+    "host_admin_execution": {
+      "cost": 1,
+      "lower": "3/5",
+      "t1": 1,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "kerberoast_material_request": {
+      "cost": 1,
+      "lower": "17/20",
+      "t1": 1,
+      "t2": 2,
+      "upper": "49/50"
+    },
+    "kerberoast_password_recovery": {
+      "cost": 3,
+      "lower": null,
+      "t1": 2,
+      "t2": 3,
+      "upper": null
+    },
+    "rbcd_admin_execution": {
+      "cost": 2,
+      "lower": "3/5",
+      "t1": 2,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "rbcd_descriptor_mutation": {
+      "cost": 2,
+      "lower": "4/5",
+      "t1": 2,
+      "t2": 2,
+      "upper": "99/100"
+    },
+    "rbcd_secret_acquisition": {
+      "cost": 1,
+      "lower": "7/10",
+      "t1": 1,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "rbcd_service_delegation": {
+      "cost": 2,
+      "lower": "3/5",
+      "t1": 2,
+      "t2": 2,
+      "upper": "9/10"
+    },
+    "rbcd_service_preparation": {
+      "cost": 2,
+      "lower": "4/5",
+      "t1": 2,
+      "t2": 2,
+      "upper": "49/50"
+    },
+    "rdp_interactive_session": {
+      "cost": 1,
+      "lower": "3/5",
+      "t1": 1,
+      "t2": 2,
+      "upper": "19/20"
+    },
+    "recovered_identity_activation": {
+      "cost": 0,
+      "lower": "3/4",
+      "t1": 1,
+      "t2": 1,
+      "upper": "49/50"
+    },
+    "reset_identity_activation": {
+      "cost": 0,
+      "lower": "3/4",
+      "t1": 1,
+      "t2": 1,
+      "upper": "49/50"
+    },
+    "session_credential_material": {
+      "cost": 3,
+      "lower": "1/4",
+      "t1": 2,
+      "t2": 3,
+      "upper": "4/5"
+    },
+    "winrm_admin_execution": {
+      "cost": 1,
+      "lower": "1/2",
+      "t1": 1,
+      "t2": 2,
+      "upper": "9/10"
+    },
+    "winrm_command_session": {
+      "cost": 1,
+      "lower": "7/10",
+      "t1": 1,
+      "t2": 2,
+      "upper": "19/20"
+    }
+  },
+  "context_domains": {
+    "acl-group-all-generator": {
+      "C_inventory_digest": "sha256:27338183afdb4c3d15c931c01e4c46023f31e4c07dd092b3808af9fe45dc18d3",
+      "P_prefix_inventory_digest": "sha256:cd92da7a95a41ab29be586bdc1b9337cbdf8f2155f43dd959eb72130603d2a4c",
+      "scope_digest": "sha256:bd60109b0e7f95b8d0b4323efc75405381e76bab96c55d89a31980388e899a65",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "acl-group-host": {
+      "C_inventory_digest": "sha256:deb28f3d8c870020101335d531848c33fbc74f91b81bb97edd057956e3554f03",
+      "P_prefix_inventory_digest": "sha256:760f279ac935c72e1ce9cf6339c1e0f4b54fd7cd42300f39e3e459f2b9fa922a",
+      "scope_digest": "sha256:8c9f9844480a427c7a5e949818fad263c98ed64beec4098481a92dd3e9c1a3e5",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "acl-group-projection": {
+      "C_inventory_digest": "sha256:465992dc424fd5dfaeb76e90edbe6965d4b46cb399fa9cf3e4f326ff4cb54811",
+      "P_prefix_inventory_digest": "sha256:05f316aa76e6ede3a96d1cba8db4817af3044b82377c7b31602093774143e8a3",
+      "scope_digest": "sha256:3c6905ebd7c7925011121f7abc7f71ffd880ab7736b0190e20452e662c87d47b",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "asrep-natural-password": {
+      "C_inventory_digest": "sha256:cbef36d74514a960d0777b38d8a54e290e1af4b370cdf70a099e213912cb43ab",
+      "P_prefix_inventory_digest": "sha256:ddb2e46118c672363b1d7d5e7a7b14dcd9fc2ad2c0ff23bf421e1805a7772db5",
+      "scope_digest": "sha256:368de7e5034f25e6c5107f0056bfadb29f36f91ad7c329ee88f78fdc868cce64",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "asrep_password_recovery-widecap2p36-reference-v1": {
+      "C_inventory_digest": "sha256:35545c67250a740b55042452b504cec22c3c4a2a376ec0fa246f32dff731028e",
+      "P_prefix_inventory_digest": "sha256:c341155bf8a963d87cde64204ed4f18de8ee7f6b9f4650e581b85debd193005e",
+      "scope_digest": "sha256:c23dc160ae8607246e3976405fc6cccff6138ea0debcf96d1434b70ccaa4a8a6",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "josefa-full-generator": {
+      "C_inventory_digest": "sha256:61785f79d710c90152e68a8e5c720c3d94b383a47ce6dd21175fdcad09aba121",
+      "P_prefix_inventory_digest": "sha256:7eaa1eddaba261a23ad327a59f574725c0217ffeeb2ff4b8fbe4c9c95dd69b62",
+      "scope_digest": "sha256:f76689491f9a5b285b44229c4d046abba4eed189eeb658efa00c9db4aeb640fb",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "kerberoast-identity": {
+      "C_inventory_digest": "sha256:8cd286b25cb6b7d6ac40d22a989a27304df35c932306f6fe528997e5f9e27124",
+      "P_prefix_inventory_digest": "sha256:2f93ac4929cefd138d31b27d2e26c34e2aa8a049c480494dbeff8ad5f500c0ba",
+      "scope_digest": "sha256:040fe2b40fc0ea1bbfdd5e14e0d69072b2744769ad389d0de92b578605a694fa",
+      "typed_goal_digest": "sha256:92b3d0a07413ca0cea55eca3fd350fa4885500822d6982aa2c7be33af35d9a15"
+    },
+    "kerberoast-material": {
+      "C_inventory_digest": "sha256:db56932be5a1e3544f974f1893f0998f7645c9ce43bda6bc488a6ab9e7e4df2c",
+      "P_prefix_inventory_digest": "sha256:808a174e7f5313620957217721dcad0898c18e7f8bac7bec1b08a8015e87d1ea",
+      "scope_digest": "sha256:72045f9d625931abf74340177d00299a69e44202716040a4ea80fdbb8c2ba31b",
+      "typed_goal_digest": "sha256:98be36ff93a46b5a7cf13e1410719bba079ebedc08eab51a7bceb048731e52a4"
+    },
+    "kerberoast_password_recovery-widecap2p36-reference-v1": {
+      "C_inventory_digest": "sha256:ed022295105b699b0b33e463499470a459dbf14607ed54e9f7413aebc2ce3166",
+      "P_prefix_inventory_digest": "sha256:1f307b11e4972ab0e91e47724d3105a34a336974cd5fa9f5f6841d306f123f91",
+      "scope_digest": "sha256:736895e0ed81fc2dcf02045fe44c32f3530bfce27024f1052e1529be7a724d04",
+      "typed_goal_digest": "sha256:92b3d0a07413ca0cea55eca3fd350fa4885500822d6982aa2c7be33af35d9a15"
+    },
+    "lidia-full-generator": {
+      "C_inventory_digest": "sha256:a409d6a77fac642219ef68427eb71b11166ff3138dc583ae9210893c31a61c13",
+      "P_prefix_inventory_digest": "sha256:81e249455e2d2cf9768c96705ac40787a3950b53e8fda248dd77f03bd58c2598",
+      "scope_digest": "sha256:68daf152c8dc0a37c629fb2e4581924b4d4abedef229d75b424cbeeaef44d8fd",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "rbcd-scoped": {
+      "C_inventory_digest": "sha256:9c73255c58678425fb34bad9c21442327f0ffcf56b9760c3b4c2c87c4df7a89e",
+      "P_prefix_inventory_digest": "sha256:2d1193087c3e106aa35203b16bfb83fedcb4eec6491398126715339b5c68f29e",
+      "scope_digest": "sha256:8e0cfdb7fa1d4c7673cd0b1cfda747bed5b1fdaf67a35f23b4f19b0dadb434d8",
+      "typed_goal_digest": "sha256:8bfcb5bfda97b045e5518751695742e481db3a09aaa1aa5a5eda6cb42766e292"
+    },
+    "rbcd-unassumed": {
+      "C_inventory_digest": "sha256:3f073757e99cf68274d7fdae33eddb932a209f5c765ab482f46f721f56ac9b7e",
+      "P_prefix_inventory_digest": "sha256:466a2701df4927543e8a1e61d51811270b4a83f95dff5fec76cc6c8257787144",
+      "scope_digest": "sha256:5a5ade02a6d2603fbd8f81342de01041e6c45bdb718473751fc2aacdcc8582bc",
+      "typed_goal_digest": "sha256:8bfcb5bfda97b045e5518751695742e481db3a09aaa1aa5a5eda6cb42766e292"
+    },
+    "source-a-full-generator": {
+      "C_inventory_digest": "sha256:e6ea540e67274563fd72585e054d245b82fa9105d650c250e0dfbe48d9901a14",
+      "P_prefix_inventory_digest": "sha256:afc8af4a86d3b718dfe766a438fba832b4b92fd765628dab58996baad4b1a25b",
+      "scope_digest": "sha256:83e89b93a987d2ee79204246d6cd04d54e989ceda9de7ea19eeb61330a9cc6c5",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "source-a-full-raw-four": {
+      "C_inventory_digest": "sha256:12fe827b0b4e7e369e7f899b9bf860a8f6208dca96708049ae9292ddc1a6d06b",
+      "P_prefix_inventory_digest": "sha256:57d7e72c98a7c3541c9354a0ac14410a1f28e41909611f48f88c0919cb61aa50",
+      "scope_digest": "sha256:75d0ffe9dd80f5a2243a4697e42a1365da8c89516ae81ca39a2d5bfa5e629852",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "source-a-projection": {
+      "C_inventory_digest": "sha256:dc63239e5279971db2324c1937f88edbeb27ee1eaf512c49bbc94af614d727fa",
+      "P_prefix_inventory_digest": "sha256:f4205c026fe70fcf9153d8d9a24fc94f45c55b1505473d617534c46ab8b23583",
+      "scope_digest": "sha256:c9a6d65370c08663fe430a96b9183cd09dc82d36e512e656ec8b279120a520e2",
+      "typed_goal_digest": "sha256:042b21ada32a8b44901be35926bd728d70f438239d3d11df6de6b4a4330d54f3"
+    },
+    "winrm-command": {
+      "C_inventory_digest": "sha256:c280da27fd72ecdac14ccf44b2107f3b340a589ba94b71dc992efe878a6a0a78",
+      "P_prefix_inventory_digest": "sha256:b6c1c19be7f6ef88493d7ec83b95067260c7cff2c96c4c809186b26675987911",
+      "scope_digest": "sha256:d9e4f74a5f7e3a8455a5bc41a84883c3aaf3ef78edc15f34ef6a0207f1707f5b",
+      "typed_goal_digest": "sha256:e90895adb15891b63714a13936c3f0cd4fde9504bef4b01a34d9d171f04c59a6"
+    }
+  },
+  "history_decision": {
+    "decision": "adopt",
+    "rationale": "Only rederived exact finite ordered successful histories; stable no-depletion distinct-work model, no retries uplift, secret invalidation or unsupported lineage transfer."
+  },
+  "input_signature": "sha256:af7295e402ca069331894c43b96980906c28a6d20dc0d43860596b42a6390a07",
+  "limitations": [
+    "Frozen unknown-population/no-floor recovery controls have no P basis; approval cannot manufacture it.",
+    "Selected recovery models are conditional planning scenarios, not measured population, verifier throughput or cap attainment.",
+    "No new raw RDP/HasSession relationships, global search optimum or empirical probability calibration.",
+    "Delegated human adoption is distinct from posted B code review, merge and issue closure."
+  ],
+  "prior_B_context_decision": "https://github.com/nairyuuu/ad-weighted-graph/pull/271#issuecomment-6163909537",
+  "query_pins": {
+    "acl-group-all-generator": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+    "acl-group-host": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+    "acl-group-projection": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+    "asrep-natural-password": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+    "asrep_password_recovery-widecap2p36-reference-v1": "sha256:74dc4ebce555d6915ab3e5d95530760a89aefe120b1bd9a3c0abf08a4a33697e",
+    "josefa-full-generator": "sha256:9132e57b8dae53242e5658c3fdb8d5740e9140deb0626e4aad53278a3b677da3",
+    "kerberoast-identity": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+    "kerberoast-material": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+    "kerberoast_password_recovery-widecap2p36-reference-v1": "sha256:6728994299100e855fffb789e92275fba5db87d2b8c28de17ac176c6c680a562",
+    "lidia-full-generator": "sha256:9aa0ffcaca2ac0bf3380821c7e478f2201b28b3889ff1731717713ab1eb16dfe",
+    "rbcd-scoped": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+    "rbcd-unassumed": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+    "source-a-full-generator": "sha256:07f8f6ad30ebe216dffd40e954d10480c1c9e3e9d69ede692416cb5806cf05fd",
+    "source-a-full-raw-four": "sha256:3341a37ad2ead8c6a5d150fd699da341fb2b93a810331a0c53226e75e1c7f2e6",
+    "source-a-projection": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129",
+    "winrm-command": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5"
+  },
+  "raw_identity": {
+    "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+    "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+  },
+  "recovery_models": {
+    "asrep_password_recovery-widecap2p36-reference-v1": {
+      "P": [
+        "1387/40000",
+        "611/2000"
+      ],
+      "declaration": {
+        "authority": "https://github.com/nairyuuu/ad-weighted-graph/issues/267#issuecomment-6166280449",
+        "compatible_material_or_declared_etype": {
+          "actual_material_observed": false,
+          "etype": 23,
+          "hashcat_mode": 18200,
+          "material": "AS-REP",
+          "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut",
+          "reserved_worker_compatibility_observed": false
+        },
+        "conditioning_binding": "exact native P inventory; acquisition and outcome work identities",
+        "deployment_role": "explicit_declared_scenario_not_snapshot_baseline",
+        "event_budget_remaining_seconds": 72000,
+        "floor": 1000000000,
+        "model_inputs": {
+          "docs/research/ratings/offline-recovery-v1/scenarios.proposed.json": "a142863a268ac18ea72bd80ba1fe74218d9f62596136252f2ae8b615776a7cb3",
+          "docs/research/ratings/offline-recovery-v1/sources.json": "3837fade855c6b972634b15ab35906b56f61af75df1540197f120fdcbc0ef624",
+          "scripts/research/offline_recovery_scenarios.py": "e9b9cecaa9726ac5ab45b2cfc7c1cc51614fdbe71fd621a5059527f531cfb78f"
+        },
+        "population": {
+          "kind": "human_reference_envelope",
+          "rank_assumption": "Conditional target rank CDF lies between the three public-attacker Table 6 reference curves at the stated anchor points. Includes policy, language/time/cohort, preauth selection and published-guess-to-distinct-verification transfer; not inferred from snapshot.",
+          "reference_transfer": "explicit_assumption_requires_separate_b_review",
+          "selection": "human-created comp8-like ordinary User; after acquisition and all prior successful events; no known password reuse, reset-derived chosen secret, targeted side information or managed generation"
+        },
+        "population_observed": false,
+        "profile": {
+          "activation_or_winrm_history_reuse_authorized": false,
+          "b_decisions_required": [
+            "conditional population/rank-envelope and guess-unit transfer",
+            "mode-specific conditional work completion and reserved floor",
+            "exact history/material/resource/budget scope",
+            "numeric endpoints/uncertainty label in a new adopted release",
+            "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+          ],
+          "budget": {
+            "cap_feasibility": {
+              "attainment_evidence": "not_demonstrated",
+              "cap_role": "maximum_stop_limit_not_achieved_work",
+              "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+              "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+            },
+            "deadline_seconds": 72000,
+            "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+            "jobs": 1,
+            "max_complete_distinct_verifications": 68719476736,
+            "min_complete_distinct_verifications_on_no_hit": 1000000000,
+            "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+            "reuse_budget_for_second_event": false,
+            "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+            "work_unit": "distinct_complete_verification"
+          },
+          "class_id": "asrep_password_recovery",
+          "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+          "completion_given_floor_rank": [
+            "19/20",
+            "1"
+          ],
+          "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+          "deployment_role": "reference_scenario_not_default_baseline",
+          "horizon_seconds": 86400,
+          "numeric_basis_class": "estimated_expert_scenario",
+          "population": {
+            "kind": "human_reference_envelope",
+            "rank_assumption": "Conditional target rank CDF lies between the three public-attacker Table 6 reference curves at the stated anchor points. Includes policy, language/time/cohort, preauth selection and published-guess-to-distinct-verification transfer; not inferred from snapshot.",
+            "reference_transfer": "explicit_assumption_requires_separate_b_review",
+            "selection": "human-created comp8-like ordinary User; after acquisition and all prior successful events; no known password reuse, reset-derived chosen secret, targeted side information or managed generation"
+          },
+          "profile_id": "asrep_password_recovery-widecap2p36-reference-v1",
+          "profile_version": "1.1.0",
+          "required_new_runtime_metadata": [
+            "population_profile_id",
+            "population_assumption_reference",
+            "guess_strategy_and_rank_unit_reference",
+            "compatible_material_or_declared_etype",
+            "reserved_generation_and_verification_work_floor",
+            "event_budget_remaining",
+            "exact_ordered_successful_work_identity_prefix"
+          ],
+          "status": "proposed_pending_b_review",
+          "target_success_event": "validated_password_for_acquired_material",
+          "technique_id": "recover_asrep_secret",
+          "verifier": {
+            "actual_material_observed": false,
+            "etype": 23,
+            "hashcat_mode": 18200,
+            "material": "AS-REP",
+            "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut",
+            "reserved_worker_compatibility_observed": false
+          }
+        },
+        "profile_id": "asrep_password_recovery-widecap2p36-reference-v1",
+        "reserved_generation_and_verification_work_floor": 1000000000,
+        "resource_attainment_observed": false,
+        "resource_scope": {
+          "attainment_evidence": "not_demonstrated",
+          "cap_exhaustion_rate_requirement": "1073741824/1125",
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "floor_rate_requirement": "125000/9",
+          "rate_unit": "complete_distinct_verifications_per_second_including_generation",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "upper_role": "hypothetical_loose_wide_cap_enclosure"
+        },
+        "source_revision": "ccd15fa1678540900491fc55e056af34b8ac1d8c"
+      },
+      "profile_digest": "sha256:f3fc0cd0b5880b24226cc3d298f04ceecd318466bfbf7f326e075a627c9f0e2a"
+    },
+    "kerberoast_password_recovery-widecap2p36-reference-v1": {
+      "P": [
+        "1387/160000",
+        "156823528560664795491907459/1026667944750669637337476000"
+      ],
+      "declaration": {
+        "authority": "https://github.com/nairyuuu/ad-weighted-graph/issues/267#issuecomment-6166280449",
+        "compatible_material_or_declared_etype": {
+          "actual_material_observed": false,
+          "etype": 23,
+          "hashcat_mode": 13100,
+          "material": "TGS",
+          "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut",
+          "reserved_worker_compatibility_observed": false
+        },
+        "conditioning_binding": "exact native P inventory; acquisition and outcome work identities",
+        "deployment_role": "explicit_declared_scenario_not_snapshot_baseline",
+        "event_budget_remaining_seconds": 72000,
+        "floor": 1000000000,
+        "model_inputs": {
+          "docs/research/ratings/offline-recovery-v1/scenarios.proposed.json": "a142863a268ac18ea72bd80ba1fe74218d9f62596136252f2ae8b615776a7cb3",
+          "docs/research/ratings/offline-recovery-v1/sources.json": "3837fade855c6b972634b15ab35906b56f61af75df1540197f120fdcbc0ef624",
+          "scripts/research/offline_recovery_scenarios.py": "e9b9cecaa9726ac5ab45b2cfc7c1cc51614fdbe71fd621a5059527f531cfb78f"
+        },
+        "population": {
+          "generated_stratum": {
+            "alphabet_size": 94,
+            "basis": "Declared 94 printable ASCII symbols, unbiased independent generation; this exact generator is a scenario assumption, not a claim about Microsoft gMSA or SEAMLESS.",
+            "generation": "independent_uniform_characters_no_side_information",
+            "length": 14,
+            "post_history_uniformity_assumption": {
+              "assumption_reference": "kerberoast_password_recovery-widecap2p36-reference-v1/generated-post-history-uniformity",
+              "basis_class": "declared_scenario_assumption_pending_b_review",
+              "bindings_required": [
+                "exact_acquired_material_lineage",
+                "exact_ordered_successful_work_identity_prefix",
+                "password_correlated_information_history",
+                "account_selection_rule",
+                "candidate_rejection_history"
+              ],
+              "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+              "known_rejected_candidates": "assumed_absent",
+              "password_correlated_side_information": "assumed_absent",
+              "password_dependent_account_selection": "assumed_absent",
+              "posterior_law": "uniform_on_full_declared_space",
+              "refusal_examples": [
+                "known password prefix/partial secret",
+                "secret reuse information from another successful recovery",
+                "password-dependent account selection",
+                "prior failed guesses on this secret",
+                "missing or unknown conditional posterior"
+              ]
+            }
+          },
+          "kind": "service_conditional_mixture",
+          "manual_rank_assumption": "Manual service-operator choices are assumed bounded by the reference human rank envelope as a separately reviewed service-specific transfer. The paper contains no service-account sample; AS-REP adoption cannot authorize this assumption.",
+          "manual_weight_given_history": [
+            "1/4",
+            "1/2"
+          ],
+          "reference_transfer": "explicit_assumption_requires_separate_b_review",
+          "selection": "ordinary User service accounts with SPNs; excludes Computer, gMSA, dMSA and krbtgt; mixture is conditional on successful TGS acquisition and exact history",
+          "weight_basis": "Declared planning regime, not observed enterprise prevalence or expert elicitation: 25–50% human-set comp8-like secrets, remainder generated by the exact random14 regime. B may reject this regime; changing weights changes profile/version."
+        },
+        "population_observed": false,
+        "profile": {
+          "activation_or_winrm_history_reuse_authorized": false,
+          "b_decisions_required": [
+            "Uniform generated-stratum distribution must hold after acquisition and exact full successful history; generation uniformity alone is insufficient. Review history/selection/side information before binding.",
+            "service-specific post-acquisition mixture weight and manual-rank transfer; no AS-REP q copy",
+            "conditional population/rank-envelope and guess-unit transfer",
+            "mode-specific conditional work completion and reserved floor",
+            "exact history/material/resource/budget scope",
+            "numeric endpoints/uncertainty label in a new adopted release",
+            "Mode-specific resource feasibility evidence before operationally interpreting/adopting the cap upper; floor commitment does not establish wide-cap attainment."
+          ],
+          "budget": {
+            "cap_feasibility": {
+              "attainment_evidence": "not_demonstrated",
+              "cap_role": "maximum_stop_limit_not_achieved_work",
+              "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+              "review_question": "Wide-cap upper is a hypothetical/loose mathematical enclosure. Reserved floor does not demonstrate cap exhaustion. Mode-specific generation/verification resources, remaining budget and deadline require separate evidence before operational interpretation or adoption."
+            },
+            "deadline_seconds": 72000,
+            "floor_meaning": "committed no-hit prefix capacity when workflow functions correctly; cancellation/failure is included only once in conditional completion, never reported as achieved work",
+            "jobs": 1,
+            "max_complete_distinct_verifications": 68719476736,
+            "min_complete_distinct_verifications_on_no_hit": 1000000000,
+            "nominal_generation_and_verification_rate_requirement": "125000/9 complete distinct verifications per second over a reserved 72000-second job; scenario requirement, not measured hardware throughput",
+            "reuse_budget_for_second_event": false,
+            "stop": "first validated match, deadline, authoritative cancellation or cap; no restart",
+            "work_unit": "distinct_complete_verification"
+          },
+          "class_id": "kerberoast_password_recovery",
+          "completion_basis": "AI-assisted proposed conditional allowance: <=5% probability of incorrect/cancelled/incomplete verifier procedure for rank<=1e9 after reserving compatible generation+verification resources for one 20h job. This is unmeasured and requires separate B endorsement for each material/mode/history.",
+          "completion_given_floor_rank": [
+            "19/20",
+            "1"
+          ],
+          "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+          "deployment_role": "reference_scenario_not_default_baseline",
+          "horizon_seconds": 86400,
+          "numeric_basis_class": "estimated_expert_scenario",
+          "population": {
+            "generated_stratum": {
+              "alphabet_size": 94,
+              "basis": "Declared 94 printable ASCII symbols, unbiased independent generation; this exact generator is a scenario assumption, not a claim about Microsoft gMSA or SEAMLESS.",
+              "generation": "independent_uniform_characters_no_side_information",
+              "length": 14,
+              "post_history_uniformity_assumption": {
+                "assumption_reference": "kerberoast_password_recovery-widecap2p36-reference-v1/generated-post-history-uniformity",
+                "basis_class": "declared_scenario_assumption_pending_b_review",
+                "bindings_required": [
+                  "exact_acquired_material_lineage",
+                  "exact_ordered_successful_work_identity_prefix",
+                  "password_correlated_information_history",
+                  "account_selection_rule",
+                  "candidate_rejection_history"
+                ],
+                "conditioning": "acquisition_succeeded_and_exact_full_successful_history",
+                "known_rejected_candidates": "assumed_absent",
+                "password_correlated_side_information": "assumed_absent",
+                "password_dependent_account_selection": "assumed_absent",
+                "posterior_law": "uniform_on_full_declared_space",
+                "refusal_examples": [
+                  "known password prefix/partial secret",
+                  "secret reuse information from another successful recovery",
+                  "password-dependent account selection",
+                  "prior failed guesses on this secret",
+                  "missing or unknown conditional posterior"
+                ]
+              }
+            },
+            "kind": "service_conditional_mixture",
+            "manual_rank_assumption": "Manual service-operator choices are assumed bounded by the reference human rank envelope as a separately reviewed service-specific transfer. The paper contains no service-account sample; AS-REP adoption cannot authorize this assumption.",
+            "manual_weight_given_history": [
+              "1/4",
+              "1/2"
+            ],
+            "reference_transfer": "explicit_assumption_requires_separate_b_review",
+            "selection": "ordinary User service accounts with SPNs; excludes Computer, gMSA, dMSA and krbtgt; mixture is conditional on successful TGS acquisition and exact history",
+            "weight_basis": "Declared planning regime, not observed enterprise prevalence or expert elicitation: 25–50% human-set comp8-like secrets, remainder generated by the exact random14 regime. B may reject this regime; changing weights changes profile/version."
+          },
+          "profile_id": "kerberoast_password_recovery-widecap2p36-reference-v1",
+          "profile_version": "1.1.0",
+          "required_new_runtime_metadata": [
+            "population_profile_id",
+            "population_assumption_reference",
+            "guess_strategy_and_rank_unit_reference",
+            "compatible_material_or_declared_etype",
+            "reserved_generation_and_verification_work_floor",
+            "event_budget_remaining",
+            "exact_ordered_successful_work_identity_prefix"
+          ],
+          "status": "proposed_pending_b_review",
+          "target_success_event": "validated_password_for_acquired_material",
+          "technique_id": "recover_ticket_secret",
+          "verifier": {
+            "actual_material_observed": false,
+            "etype": 23,
+            "hashcat_mode": 13100,
+            "material": "TGS",
+            "oracle_scope": "correct exact-password verification; no key leakage, key collision or cryptanalytic shortcut",
+            "reserved_worker_compatibility_observed": false
+          }
+        },
+        "profile_id": "kerberoast_password_recovery-widecap2p36-reference-v1",
+        "reserved_generation_and_verification_work_floor": 1000000000,
+        "resource_attainment_observed": false,
+        "resource_scope": {
+          "attainment_evidence": "not_demonstrated",
+          "cap_exhaustion_rate_requirement": "1073741824/1125",
+          "cap_role": "maximum_stop_limit_not_achieved_work",
+          "floor_rate_requirement": "125000/9",
+          "rate_unit": "complete_distinct_verifications_per_second_including_generation",
+          "requires_separate_resource_evidence_before_operational_use_or_adoption": true,
+          "upper_role": "hypothetical_loose_wide_cap_enclosure"
+        },
+        "source_revision": "ccd15fa1678540900491fc55e056af34b8ac1d8c"
+      },
+      "profile_digest": "sha256:c555122016bb42e877ee1b73013ef558c6e334f6a39de39fe34168a739e20cc9"
+    }
+  },
+  "release_id": "final-cpi-wave2-delegated-v5",
+  "review": {
+    "authority": "explicit human-user instruction, recorded by A; not a posted B review",
+    "confirmation": "Use the existing #281 declared scenario models; approve all existing supported proposals and exact contexts/histories in B's absence. Preserve frozen controls, no invented probabilities, measured resource claims or weakened semantic gates.",
+    "delegated_for": "nairyuuu",
+    "purpose": "numeric_context_history_adoption",
+    "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267#issuecomment-6166280449",
+    "reviewed_at": "2026-10-14T10:28:15Z",
+    "reviewer": "Lolavine777"
+  },
+  "status": "adopted",
+  "version": "final-cpi-delegated-release/5.0.0"
+}

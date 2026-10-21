@@ -1,0 +1,174 @@
+{
+  "version": "awg-r04-source-compatibility/1.0.0",
+  "kind": "runtime source compatibility, not new numeric approval",
+  "baseline_executable": "ca3eceef5c8db8ffc8efda38f122afbdb048f582; production sources unchanged during stable core; docs-only ITERATION-4.md dirty",
+  "core_command": "python -m pytest -q --tb=short --ignore-glob='tests/test_final_cpi*' --durations=15",
+  "core_terminal": {
+    "failed": 14,
+    "passed": 3145,
+    "skipped": 11,
+    "subtests_passed": 88,
+    "seconds": 1450.49
+  },
+  "core_junit": {
+    "sha256": "sha256:3a33be6135269b07856057f4347e08c353d96223598dc07c2eaec22217590e63",
+    "bytes": 464188,
+    "suite_attributes": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "14",
+      "skipped": "11",
+      "tests": "3258",
+      "time": "1450.400",
+      "timestamp": "2026-10-17T18:55:02.084584-04:00",
+      "hostname": "a2e5f66bb802"
+    },
+    "projection": "Failures and suite attributes only; complete local JUnit retained, no full passing-case trace duplication."
+  },
+  "core_failures": [
+    {
+      "test": "tests.test_likelihood_catalog_v1::test_catalog_package_verifies_without_running_candidate_search",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_likelihood_catalog_v1.py:43: in test_catalog_package_verifies_without_running_candidate_search\n    report = verify_package(ROOT)\n             ^^^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_likelihood_catalog_v1::test_generated_min_effort_matches_frozen_oracle_and_pending_gates",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_likelihood_catalog_v1.py:54: in test_generated_min_effort_matches_frozen_oracle_and_pending_gates\n    result = probe_min_effort()\n             ^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_demo_probe.py:64: in probe_min_effort\n    verify_package()\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_likelihood_catalog_v1::test_private_generated_programs_preserve_independent_oracles[source_a]",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_likelihood_catalog_v1.py:147: in test_private_generated_programs_preserve_independent_oracles\n    report = probe_source_a(raw_dir)\n             ^^^^^^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_demo_probe.py:203: in probe_source_a\n    verify_package()\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_likelihood_catalog_v1::test_private_generated_programs_preserve_independent_oracles[frozen_243]",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_likelihood_catalog_v1.py:152: in test_private_generated_programs_preserve_independent_oracles\n    report = probe_frozen_243(raw_dir)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_demo_probe.py:357: in probe_frozen_243\n    verify_package()\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_likelihood_catalog_v1::test_proposed_provider_records_preserve_pending_and_match_merged_api",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_likelihood_catalog_v1.py:205: in test_proposed_provider_records_preserve_pending_and_match_merged_api\n    records = likelihood_catalog.proposed_provider_records()\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_catalog.py:449: in proposed_provider_records\n    verify_package(root)\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_rating_source_successors::test_source_successors_preserve_all_asrep_frozen_history",
+      "message": "ValueError: authoritative source drift: src/engine/query.py",
+      "details": "tests/test_rating_source_successors.py:18: in test_source_successors_preserve_all_asrep_frozen_history\n    assert verify_likelihood()[\"numeric_activated\"] == 0\n           ^^^^^^^^^^^^^^^^^^^\nscripts/research/likelihood_catalog.py:371: in verify_package\n    _require(actual == expected, f\"authoritative source drift: {name}\")\nscripts/research/likelihood_catalog.py:55: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_scenario_rating_pack::test_manifest_and_pending_numeric_governance",
+      "message": "ValueError: authoritative source pin drift: src/engine/query.py",
+      "details": "tests/test_scenario_rating_pack.py:34: in test_manifest_and_pending_numeric_governance\n    assert verify_package()[\"verified\"]\n           ^^^^^^^^^^^^^^^^\nscripts/research/scenario_rating_pack.py:273: in verify_package\n    _require(actual == expected, f\"authoritative source pin drift: {name}\")\nscripts/research/scenario_rating_pack.py:29: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source pin drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_scenario_rating_pack::test_public_automatic_review_simulation_matches_frozen_oracle",
+      "message": "ValueError: authoritative source pin drift: src/engine/query.py",
+      "details": "tests/test_scenario_rating_pack.py:47: in test_public_automatic_review_simulation_matches_frozen_oracle\n    report = run_scenario_probe()\n             ^^^^^^^^^^^^^^^^^^^^\nscripts/research/scenario_rating_pack.py:323: in run_scenario_probe\n    verify_package(root)\nscripts/research/scenario_rating_pack.py:273: in verify_package\n    _require(actual == expected, f\"authoritative source pin drift: {name}\")\nscripts/research/scenario_rating_pack.py:29: in _require\n    raise ValueError(detail)\nE   ValueError: authoritative source pin drift: src/engine/query.py"
+    },
+    {
+      "test": "tests.test_week4_acceptance_checkout_bytes::test_acceptance_pins_survive_autocrlf_checkout",
+      "message": "AssertionError: src/engine/__init__.py\nassert '78208f2c7c6f...27a8a8cde87de' == 'a31d9a3fe957...d8586f31d9269'\n  \n  - a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269\n  + 78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "details": "tests/test_week4_acceptance_checkout_bytes.py:37: in test_acceptance_pins_survive_autocrlf_checkout\n    assert hashlib.sha256((tmp_path / name).read_bytes()).hexdigest() == digest, name\nE   AssertionError: src/engine/__init__.py\nE   assert '78208f2c7c6f...27a8a8cde87de' == 'a31d9a3fe957...d8586f31d9269'\nE     \nE     - a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269\nE     + 78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de"
+    },
+    {
+      "test": "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_file_pins",
+      "message": "AssertionError: src/engine/__init__.py\nassert '78208f2c7c6f...27a8a8cde87de' == 'a31d9a3fe957...d8586f31d9269'\n  \n  - a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269\n  + 78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "details": "tests/test_week4_acceptance_manifest.py:52: in test_week4_acceptance_manifest_file_pins\n    assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == digest, name\nE   AssertionError: src/engine/__init__.py\nE   assert '78208f2c7c6f...27a8a8cde87de' == 'a31d9a3fe957...d8586f31d9269'\nE     \nE     - a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269\nE     + 78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de"
+    },
+    {
+      "test": "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_semantic_reproduction",
+      "message": "AssertionError: assert 'sha256:8db8a...eccf4241d96f7' == 'sha256:5e06d...4b19cb5b50f64'\n  \n  - sha256:5e06d52049f99bcc1c5bdb682781e198284624caaadfd556d574b19cb5b50f64\n  + sha256:8db8af7d0481e14741e44ff9895e018c63e43d1ddab64c10fdceccf4241d96f7",
+      "details": "tests/test_week4_acceptance_manifest.py:116: in test_week4_acceptance_manifest_semantic_reproduction\n    assert compute_digest(normalize_prerequisite_observation(semantic_payload(observed))) == (\nE   AssertionError: assert 'sha256:8db8a...eccf4241d96f7' == 'sha256:5e06d...4b19cb5b50f64'\nE     \nE     - sha256:5e06d52049f99bcc1c5bdb682781e198284624caaadfd556d574b19cb5b50f64\nE     + sha256:8db8af7d0481e14741e44ff9895e018c63e43d1ddab64c10fdceccf4241d96f7"
+    },
+    {
+      "test": "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_independent_verdicts",
+      "message": "AssertionError: assert {'total_cases...ount': 1, ...} == {'total_cases...ount': 0, ...}\n  \n  Omitting 5 identical items, use -vv to show\n  Differing items:\n  {'pass_count': 35} != {'pass_count': 36}\n  {'unexpected_failure_count': 1} != {'unexpected_failure_count': 0}\n  Use -v to get more diff",
+      "details": "tests/test_week4_acceptance_manifest.py:133: in test_week4_acceptance_manifest_independent_verdicts\n    assert result[\"summary\"] == {\nE   AssertionError: assert {'total_cases...ount': 1, ...} == {'total_cases...ount': 0, ...}\nE     \nE     Omitting 5 identical items, use -vv to show\nE     Differing items:\nE     {'pass_count': 35} != {'pass_count': 36}\nE     {'unexpected_failure_count': 1} != {'unexpected_failure_count': 0}\nE     Use -v to get more diff"
+    },
+    {
+      "test": "tests.test_week4_acceptance_review_regressions::test_baseline_mutation_is_unexpected_failure",
+      "message": "assert 2 == 1",
+      "details": "tests/test_week4_acceptance_review_regressions.py:49: in test_baseline_mutation_is_unexpected_failure\n    assert result[\"summary\"][\"unexpected_failure_count\"] == 1\nE   assert 2 == 1"
+    },
+    {
+      "test": "tests.test_week4_acceptance_review_regressions::test_demo_commands_and_claims_smoke",
+      "message": "AssertionError: SEMANTIC DETERMINISM VERIFIED: sha256:7d082a4a77788fc850f2a4b23026af88cdc2323479eac6d3168484346f15730d\n  {\"blocked_run_count\": 0, \"known_defect_count\": 0, \"not_executed_count\": 2, \"pass_count\": 35, \"pending_count\": 0, \"total_cases\": 38, \"unexpected_failure_count\": 1}\n  \nassert 1 == 0\n +  where 1 = CompletedProcess(args=['bash', '-e', '-c', '/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python scripts/research/...cuted_count\": 2, \"pass_count\": 35, \"pending_count\": 0, \"total_cases\": 38, \"unexpected_failure_count\": 1}\\n', stderr='').returncode",
+      "details": "tests/test_week4_acceptance_review_regressions.py:169: in test_demo_commands_and_claims_smoke\n    assert result.returncode == 0, result.stdout + result.stderr\nE   AssertionError: SEMANTIC DETERMINISM VERIFIED: sha256:7d082a4a77788fc850f2a4b23026af88cdc2323479eac6d3168484346f15730d\nE     {\"blocked_run_count\": 0, \"known_defect_count\": 0, \"not_executed_count\": 2, \"pass_count\": 35, \"pending_count\": 0, \"total_cases\": 38, \"unexpected_failure_count\": 1}\nE     \nE   assert 1 == 0\nE    +  where 1 = CompletedProcess(args=['bash', '-e', '-c', '/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python scripts/research/...cuted_count\": 2, \"pass_count\": 35, \"pending_count\": 0, \"total_cases\": 38, \"unexpected_failure_count\": 1}\\n', stderr='').returncode"
+    }
+  ],
+  "frozen_history_unchanged": {
+    "docs/research/ratings/likelihood-v1/README.md": "sha256:7d3a85e00f52434d5c7a713a78dd777aa45ec0adc60d07ef307f3406bf885f0f",
+    "docs/research/ratings/likelihood-v1/bindings.json": "sha256:d5c7c778cf9294b955da2e1807022b3c6437789079d431207f6e6b7eea818a5d",
+    "docs/research/ratings/likelihood-v1/catalog.json": "sha256:30d67534d867bf397cacf6bfd1286cf823ba89d5ee859363d2874a5059b17cd8",
+    "docs/research/ratings/likelihood-v1/manifest.json": "sha256:0d4d70bdeaab7d1403e1f680904caca2b1609693dc838f8eedadc201acf6321c",
+    "docs/research/ratings/likelihood-v1/min-effort-input.json": "sha256:70d0d4480df583e844c728ba34a96880d784949c3b5b45005557211476df2181",
+    "docs/research/ratings/likelihood-v1/oracles.json": "sha256:f4add5e7af3978c9a3313a6b8ee6dc4cf732aecd9e14ca37b1cb3d75b71e96b4",
+    "docs/research/ratings/likelihood-v1/release-dispositions.json": "sha256:d5c6b4d67bac224405e12766b771ac2ab19838a27ff434974619d2dfcede7b9e",
+    "docs/research/ratings/likelihood-v1/source-manifest-v2.json": "sha256:bc5cbfd84bc3481908f0be9007fd08c540294bd8609abb959f69d721425be393",
+    "docs/research/ratings/likelihood-v1/source-manifest-v3.json": "sha256:5324a7f3d262cd6e6e8252189bc48f4915dcfc2b1c448b2b626d568677861a99",
+    "docs/research/ratings/likelihood-v1/source-manifest-v4.json": "sha256:60a604dbc3c59b38c3558dd68b9b8ebf3c7a963f19f2c71342d0ee73428a31ef",
+    "docs/research/ratings/likelihood-v1/source-manifest-v5.json": "sha256:d1b8ee6098f89e1c7c12c529c840fe9e09c73efe1871794218fa9c5b27094320",
+    "docs/research/ratings/likelihood-v1/source-manifest-v6.json": "sha256:12178c5cc2fe17f8705888574062fcd6551c819f3ee0d278eced85aefb0f3ab0",
+    "docs/research/ratings/likelihood-v1/source-manifest-v7.json": "sha256:a912bdb498d618c2a2612e5b82a2e1fc6486e3c6268e836bc63afe757c728560",
+    "docs/research/ratings/likelihood-v1/source-manifest-v8.json": "sha256:2f858b024bb4cd80ce369ae0568e383602fcfc3886c430d6ee20671391f676b1",
+    "docs/research/ratings/likelihood-v1/source-manifest-v9.json": "sha256:1e8ded3af6017d0c38e06d43b6ccb71266f652fbf4e6eef3c8ec2c2105ee29ca",
+    "docs/research/ratings/likelihood-v1/verification.md": "sha256:f57ebc55a237386c4666419336189a6ddd4d3b86c7415aab88d55dcd299c2d33",
+    "docs/research/ratings/scenario-basis-v1/README.md": "sha256:3ab96d85d02ebc9f14e540a13c0be180ebd3a81108a40fd34700dd333f6e6518",
+    "docs/research/ratings/scenario-basis-v1/automatic-query.json": "sha256:ab9aa8e73ad5c7f09b1e1c893e2539b71866df37299ad22543ce1e22c005dcb2",
+    "docs/research/ratings/scenario-basis-v1/coverage-matrix.json": "sha256:6b8144f2bc25188997d5378259c6739e15f8f3ccefca07b9e6b4bf47ec100a98",
+    "docs/research/ratings/scenario-basis-v1/manifest.json": "sha256:0f35d28a7e883be6fa97320fffd97fc6332c7381dd736a2ab35c2018938d5603",
+    "docs/research/ratings/scenario-basis-v1/oracles.json": "sha256:a4b38d0961fd4523fcee6acf988d26a5a63d034331ad917c678ac590658e4d35",
+    "docs/research/ratings/scenario-basis-v1/scenario-rating-pack.json": "sha256:c3f6f033aedfb0ec2d4376dc0195206363d0ddf25f2ec2bb74f1c26a13a2f15f",
+    "docs/research/ratings/scenario-basis-v1/source-a-basis.json": "sha256:df24d93726a6fa72ad04700752ef318849852693d45000dcc1e0121ab53986b9",
+    "docs/research/ratings/scenario-basis-v1/source-a-graph.json": "sha256:ded70c9658332b71906fc14523b38ca2b1354da69576e73ecea14a837c7fa9ab",
+    "docs/research/ratings/scenario-basis-v1/source-a-oracles.json": "sha256:4ffec98f3c0bf9797c9eb1288e0092e7c655c5dc49bbe8fc720e010cb1d1b944",
+    "docs/research/ratings/scenario-basis-v1/source-a-query.json": "sha256:2c64fef9d2f14312f30c249ab811e191c3103569661dd87bc0be3473d4e7a85f",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v10.json": "sha256:28c44930381beb785d8ccb21ddc9aee1528a831d118a5ec074936c6075d51b1a",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v2.json": "sha256:9a9d9ee0d1e609898c4f2e2044c1a37a4090e52326c8cf12e3dc6e5676685b85",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v3.json": "sha256:7fb7dfd20e886e5ab0e6befc7810b6b67972ffeb1d83e8d625e28c2d0dd7b59f",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v4.json": "sha256:7f6f56d301e52b5d83dc71599e090b1e64bb08c45c5d57ecc863e5e017e8d97d",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v5.json": "sha256:68b8f58032b15135a5e15313d324e215d60604189a2c8ecf8a2237eb6f4f037a",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v6.json": "sha256:0dce98c24a041fb174139a294d9c9d3648fa4d97c433cbe806b5225cfcceb4da",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v7.json": "sha256:9e15d2fa917beade48855fb2bb2fd1a0d6f8e6beb9a6c372751059c9523bc15d",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v8.json": "sha256:98f2315379e6c942ddb8dc297fcb93959ff70e427ce09cbb30a0052811a7cef0",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v9.json": "sha256:0728730d2a1af24bbed2f5efdd16a22978f901f9ed566ab7cc602283861aeb5b"
+  },
+  "new_source_manifests": {
+    "docs/research/ratings/likelihood-v1/source-manifest-v10.json": "sha256:049655e1e99cfd3934354dcf598623273648ef92ff8ba9c1b54272507d72a370",
+    "docs/research/ratings/scenario-basis-v1/source-manifest-v11.json": "sha256:4b2093da6bdfd7dd182a1b5a7a0d3ea3fb8f186265adeb6b111e75e967212750"
+  },
+  "post_compatibility_verifiers": {
+    "likelihood": {
+      "active_actions": 22,
+      "passive_actions": 1,
+      "dispositions": {
+        "REQUIRES_CONTEXT": 11,
+        "UNRATED_NO_BASIS": 11,
+        "NO_Q_EVENT": 1
+      },
+      "numeric_activated": 0,
+      "pending_bindings": 8,
+      "C_release_recommendations": {
+        "HOLD_UNRATED": 11,
+        "ACCEPT_SCOPED": 10,
+        "KEEP_OUT_OF_SCOPE": 1,
+        "KEEP_UNRATED": 1
+      },
+      "status": "proposed_pending_b_review"
+    },
+    "scenario": {
+      "verified": true,
+      "status": "proposed_pending_b_review",
+      "files_verified": 9,
+      "source_pins_verified": 32
+    }
+  },
+  "post_compatibility_tests": {
+    "passed": 113,
+    "deselected": 4,
+    "seconds": 100.4,
+    "scope": "likelihood/scenario/source successor, new identity goal, binding and remediation reuse; four heavy API-CLI cases had passed in the stable core, not rerun here"
+  },
+  "week4_acceptance": "Fresh v6 clean-checkout capture is pending; old v5 and cases-v3 must remain byte-identical. Current dirty case differs only in clean_tracked_source, plus explicitly normalized raw prerequisite observation."
+}

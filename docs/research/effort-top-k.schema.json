@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "objective",
+    "requested_k",
+    "returned_count",
+    "program_identity_policy",
+    "tie_policy",
+    "programs",
+    "boundary_ties",
+    "coverage",
+    "guarantee"
+  ],
+  "properties": {
+    "version": {
+      "const": "effort-top-k/1.0.0"
+    },
+    "objective": {
+      "const": "unique_active_work_unit_effort_C"
+    },
+    "requested_k": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "returned_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "program_identity_policy": {
+      "const": "attack-program-identity/1"
+    },
+    "tie_policy": {
+      "const": "effort_then_canonical_program_key/1"
+    },
+    "programs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "duplicate_candidate_ids",
+          "program_id",
+          "program_key",
+          "effort",
+          "work_unit_ids",
+          "work_unit_ledger",
+          "likelihood_interval",
+          "impact",
+          "disposition"
+        ],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "pattern": "^generated_[0-9]{4,}$"
+          },
+          "duplicate_candidate_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^generated_[0-9]{4,}$"
+            }
+          },
+          "program_id": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{64}$"
+          },
+          "program_key": {
+            "type": "string"
+          },
+          "effort": {
+            "type": "number",
+            "minimum": 0
+          },
+          "work_unit_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "uniqueItems": true
+          },
+          "work_unit_ledger": {
+            "type": "object"
+          },
+          "likelihood_interval": {
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "impact": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "assessed",
+              "semantic_initial_goal_zero_work"
+            ]
+          }
+        }
+      }
+    },
+    "boundary_ties": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "effort",
+        "observed_count",
+        "omitted_count",
+        "complete"
+      ],
+      "properties": {
+        "effort": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "observed_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "omitted_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "generated_count",
+        "assessed_count",
+        "eligible_distinct_count",
+        "duplicate_count",
+        "exclusions",
+        "search_complete",
+        "truncated",
+        "truncation_reason",
+        "caps",
+        "assessment_search_metadata",
+        "bound_count",
+        "effort_rated_count"
+      ],
+      "properties": {
+        "generated_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assessed_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "eligible_distinct_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicate_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "exclusions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "candidate_id",
+              "reason"
+            ],
+            "properties": {
+              "candidate_id": {
+                "type": "string",
+                "pattern": "^generated_[0-9]{4,}$"
+              },
+              "reason": {
+                "enum": [
+                  "unassessed_or_rejected",
+                  "assessment_infeasible",
+                  "effort_unrated"
+                ]
+              },
+              "diagnostic": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "unrated_work_units": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "search_complete": {
+          "type": "boolean"
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "truncation_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "caps": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "max_paths",
+            "max_steps",
+            "max_expansions"
+          ],
+          "properties": {
+            "max_paths": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_steps": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_expansions": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "assessment_search_metadata": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "bound_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "effort_rated_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "guarantee": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "is_k_best_proven",
+        "fewer_than_k_proven",
+        "no_path_proven",
+        "reasons",
+        "scope"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "exact_k_best_within_scope",
+            "best_in_eligible_subset"
+          ]
+        },
+        "is_k_best_proven": {
+          "type": "boolean"
+        },
+        "fewer_than_k_proven": {
+          "type": "boolean"
+        },
+        "no_path_proven": {
+          "type": "boolean"
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "search_incomplete",
+              "indeterminate_transitions",
+              "assessment_incomplete",
+              "binding_or_assessment_gap",
+              "effort_rating_gap"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "scope": {
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "is_k_best_proven": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "kind": {
+                "const": "exact_k_best_within_scope"
+              },
+              "reasons": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "kind": {
+                "const": "best_in_eligible_subset"
+              },
+              "fewer_than_k_proven": {
+                "const": false
+              },
+              "reasons": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

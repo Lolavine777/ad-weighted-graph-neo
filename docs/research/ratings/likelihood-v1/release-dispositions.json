@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "numeric_activation_permitted": false,
+  "C": [
+    {
+      "class_id": "class_ad_dacl_mutation",
+      "source_class_digest": "sha256:e8f4158e1f0d5356c1586dd72a1b5f149675451d6910bf1573898c3fe259a68e",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_ad_group_membership_add",
+      "source_class_digest": "sha256:b5f1da16d03e25b53149133270ac40dc2329e0a1bb50365bc0acd4325093a580",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_ad_password_reset_samr",
+      "source_class_digest": "sha256:f35e7490983246c2649815254df6813ec4722d5b325f184c6c4261467cf195bf",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Source-A exact reset bindings C=1; generic reset only under explicit same work/API rubric, not P equivalence.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_asrep_offline_crack",
+      "source_class_digest": "sha256:2fa00b41f443df10a4fb2e36e1e5117edaeef7fa8808d354eb7eed3a631e05be",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Frozen #243 declared tool/work rubric T1=2,T2=2,C=2 only, not timing/compute measurement. Preserve unmeasured-budget and unrated P.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_asrep_request",
+      "source_class_digest": "sha256:253342cd8408c7c5d42023590755f9706b2afd9d9d8ed97d443b06870309f4ee",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 1,
+        "formula": "base",
+        "computed_cost": 0
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Frozen #243 single standard request T1=1,T2=1,C=0; active q event persists.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_cross_forest_trust_hop",
+      "source_class_digest": "sha256:e906253cf0e522c86b45b1c0d89938c4ddbd5fc254ed8662631a5fed05cb9e9e",
+      "proposed_rubric": {
+        "t1": 0,
+        "t2": 0,
+        "formula": "base",
+        "computed_cost": null
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "KEEP_OUT_OF_SCOPE",
+      "rationale": "Not a current generated owner; retain boundary refusal and exclude from denominator.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_direct_host_admin_execution",
+      "source_class_digest": "sha256:7b14a23869b93a70c709d31895cc5bc02314205883c0763fa3cb3c6616e5188d",
+      "proposed_rubric": {
+        "t1": 3,
+        "t2": 3,
+        "formula": "base",
+        "computed_cost": 4
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Synthetic-a2 declared tooling/friction T1=3,T2=3 only; direct source alone cannot establish EDR friction outside that synthetic scenario.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_host_admin_channel",
+      "source_class_digest": "sha256:ada61260d1bacf21a1246632e9fdd90376ea5579e67a9ffdcc025b212d753eb2",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Frozen #243 channel-unspecified operation C=1; no inferred WinRM/EDR, scope exact frozen four-step program.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_inherited_host_admin_execution",
+      "source_class_digest": "sha256:ae192d2b6fecda108c15589f4d886107401aac517e7a0bfc6f4ca85040488ebb",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Synthetic-a2 declared tooling/friction T1=1,T2=2 only; group inheritance is passive and does not establish a universal lower cost.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_kerberoast_offline_crack",
+      "source_class_digest": "sha256:2a9c9bd4e7b12bf838066cd00123709d50806df25fd1a8d4af9b88629743e15b",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_kerberoast_request",
+      "source_class_digest": "sha256:1c2d25d92cfd8ba4830a848f2efbb36824eda45ae5ac30213f64d1b67cb1ced3",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 1,
+        "formula": "base",
+        "computed_cost": 0
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_kerberos_identity_activation",
+      "source_class_digest": "sha256:915b09f4c316ed4cbe30b9566d854c63d183aecc81c8783f13f489c6312ee6d6",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 1,
+        "formula": "base",
+        "computed_cost": 0
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Frozen #243 password-form activation T1=1,T2=1,C=0; prior recovery work excluded.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_kerberos_ticket_acquisition",
+      "source_class_digest": "sha256:eb3094b1756d0a1ce312d6a2c7e58b6df2393f0dc94480300fbe70a2ec6e4519",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 1,
+        "formula": "base",
+        "computed_cost": 0
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Source-A exact reset-derived ticket activation C=0; excludes password recovery.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_lsass_credential_dump",
+      "source_class_digest": "sha256:e57b857a325f316c14aacdec070a28a7d18c4adb207b1547282a272015a26d2d",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Generic session credential_material does not prove LSASS method or password form. Require extraction mechanism, protection and session context before accepting this class.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rbcd_acquire_secret",
+      "source_class_digest": "sha256:dc49c03f783f252af12214a36e96bfdb8d555a811dcae3864cab80a79cd8831b",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Correct work description to resetting the existing User binding principal; no computer-account creation or MAQ work. Review exact RBCD binding before accepting rubric.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rbcd_configure_descriptor",
+      "source_class_digest": "sha256:d6d9709fdbb30f76cf8152534246a0adda30c9ac1027053c9ec22edaf21fe66b",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rbcd_delegate_service",
+      "source_class_digest": "sha256:8380074e77a2b8816d8e28e917c94889cb20cd01caa8336b2e8969cea647fadf",
+      "proposed_rubric": {
+        "t1": 2,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 2
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rbcd_prepare_service",
+      "source_class_digest": "sha256:d01fc9d98f070af8da4830eee62d2f90bd41c199757b2a062cc3191221c2b2cd",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 1,
+        "formula": "base",
+        "computed_cost": 0
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Correct work description to key derivation and service authentication with an existing SPN; generator does not register an SPN. Review full binding/resource work before rubric acceptance.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rbcd_service_admin",
+      "source_class_digest": "sha256:cd5ded012631f340e56ced66c5e7a209ec89257da9fe374bf7c0c7e56c7625f2",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_rdp_remote_interactive",
+      "source_class_digest": "sha256:614471c8344b6182e04f18ca5c02750143b5631dc67ea128ff7bbadc8da616d2",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "HOLD_UNRATED",
+      "rationale": "Mechanism is supported, but current broad wildcard method/scope lacks a release-specific work and friction assessment. Request scoped scenario review; no automatic acceptance from source catalog.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_shared_auth_preparation",
+      "source_class_digest": "sha256:3d2b7c1eb369dea4d4827141139deca9ceec553551ee589973ee2857e0f76a81",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Synthetic-a2 only: persistent preparation C=1 once per canonical actor/host/auth/resource/policy work identity; not an extra #243 or Source-A operation.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_unconstrained_delegation_abuse",
+      "source_class_digest": "sha256:d17239c6a0010d6a6d4dc022c8cf73ebe214109adf223082f935d989e31c8e43",
+      "proposed_rubric": {
+        "t1": 0,
+        "t2": 0,
+        "formula": "base",
+        "computed_cost": null
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "KEEP_UNRATED",
+      "rationale": "Not a current generated owner; retain no-basis disposition and exclude from denominator.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    },
+    {
+      "class_id": "class_winrm_host_admin",
+      "source_class_digest": "sha256:5a54e46bff9e2fb04b3d67c42a2b9dc0068cf20d106e9157510bb241a1e88da6",
+      "proposed_rubric": {
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1
+      },
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "rationale": "Source-A exact WinRM administrative execution C=1; CanPSRemote is command execution and requires privilege/work separation before reuse.",
+      "activation_scope": "Only exact demo recipe and context stated in rationale; never promote whole wildcard source class.",
+      "required_b_decision": "Accept or reject this scope/rubric and attach exact-head review reference."
+    }
+  ],
+  "I": [
+    {
+      "decision_id": "source-a-same-event",
+      "status": "proposed_pending_b_review",
+      "recommendation": "RETAIN_ACCEPTED_SOURCE",
+      "source_record_digest": "sha256:eb699cd0d4696161a57c1b8b2a1960120c6127df817f9c1997e317199f22b2e5",
+      "event": "terminal_compromise_seamless_dc",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "consequence_rating": "High",
+      "scope": {
+        "goal_id": "terminal_compromise_seamless_dc",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "rationale": "Same canonical asset, exact terminal_compromise_seamless_dc event and required admin_control_badblood predicate; no event equivalence is needed in the accepted #181 comparison. Expanded resolver/API scope still needs B review."
+    },
+    {
+      "decision_id": "frozen-243-directional-equivalence",
+      "status": "proposed_pending_b_review",
+      "recommendation": "ACCEPT_SCOPED",
+      "source_mapping_id": "eq-seamless-frozen-admin-execution-004",
+      "source_mapping_digest": "sha256:98d4e80fc0108494ac3d7041f4efb2cd398c7d7d7f75f3ca366b67fd58d6e98c",
+      "consequence_rating": "High",
+      "rationale": "Exact same asset C0, admin_execution_on_C event and admin_control(C0) goal with admin predicate. Directional mapping only; recovery horizon independent of consequence. No implication from DA membership, material recovery, member-host admin or generic terminal_compromise."
+    }
+  ],
+  "rejected_impact_generalizations": [
+    "unqualified terminal_compromise equivalence",
+    "Domain Admin membership implies target control",
+    "same technique or same DC label implies business impact",
+    "transitive equivalence across assets/events"
+  ],
+  "B_activation_procedure": "Record per-scope B decision with reviewed reference and pinned provenance; compile only accepted subsets through existing providers under #250. Pending records stay nonnumeric."
+}

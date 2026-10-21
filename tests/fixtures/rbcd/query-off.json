@@ -1,0 +1,449 @@
+{
+  "source_foothold": "10000000-0000-4000-8000-000000000001",
+  "initial_actor": "S-1-5-21-1000-2000-3000-1580",
+  "initial_state": {
+    "control": [],
+    "usable_identity": [
+      [
+        "S-1-5-21-1000-2000-3000-1580",
+        "10000000-0000-4000-8000-000000000001"
+      ]
+    ],
+    "known_identity": [
+      "S-1-5-21-1000-2000-3000-2075",
+      "S-1-5-21-1000-2000-3000-917"
+    ]
+  },
+  "authentication_context": "10000000-0000-4000-8000-000000000001",
+  "target": "10000000-0000-4000-8000-000000000027",
+  "target_goal": {
+    "target": "10000000-0000-4000-8000-000000000027",
+    "required_state": {
+      "admin_control": [
+        "10000000-0000-4000-8000-000000000027"
+      ]
+    }
+  },
+  "rbcd_bindings": [
+    {
+      "controller": "S-1-5-21-1000-2000-3000-1580",
+      "principal": "S-1-5-21-1000-2000-3000-2075",
+      "impersonated": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "authentication_context": "10000000-0000-4000-8000-000000000001",
+      "service_context": "10000000-0000-4000-8000-000000000027",
+      "service": "winrm",
+      "spn": "http/computer27.example.test"
+    }
+  ],
+  "assumptions": [
+    {
+      "predicate": "effective_reset_right",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "password_policy_accepts",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "secret_valid",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "key_derivation_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "key_encryption_compatible",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "service_authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "S-1-5-21-1000-2000-3000-2075",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "effective_descriptor_write",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "target_spn_binding",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "delegation_policy_allows",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "s4u_request_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1580",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "target_spn_binding",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_winrm_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "service_winrm_running",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "endpoint_authorized",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "winrm_authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "admin_execution_context",
+      "subject": "S-1-5-21-1000-2000-3000-917",
+      "target": "10000000-0000-4000-8000-000000000027",
+      "value": true,
+      "scope": "synthetic-229/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://229/outcomes",
+      "assumption_metadata": {
+        "controller": "S-1-5-21-1000-2000-3000-1580",
+        "principal": "S-1-5-21-1000-2000-3000-2075",
+        "impersonated": "S-1-5-21-1000-2000-3000-917",
+        "target": "10000000-0000-4000-8000-000000000027",
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "service_context": "10000000-0000-4000-8000-000000000027",
+        "service": "winrm",
+        "spn": "http/computer27.example.test",
+        "declared_by": "synthetic-fixture"
+      }
+    }
+  ],
+  "allowed_techniques": [],
+  "budget": {
+    "max_paths": 50,
+    "max_steps": 10,
+    "max_expansions": 5000
+  },
+  "scenario_reference": "synthetic-229",
+  "ranking_query_id": "query-229"
+}

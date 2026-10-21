@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "database": "BloodHound Legacy 4.0.3 / Neo4j 4.1.13 retained clean run",
+  "read_only": true,
+  "queries": {
+    "runtime": "CALL dbms.components() YIELD name, versions, edition RETURN name, versions, edition",
+    "nodes_by_labels": "MATCH (n) RETURN labels(n) AS labels, count(n) AS count ORDER BY labels",
+    "relationships_by_kind": "MATCH ()-[r]->() RETURN type(r) AS kind, count(r) AS stored_count ORDER BY kind",
+    "all_nodes": "MATCH (n) RETURN n.objectid AS objectid, labels(n) AS labels ORDER BY objectid",
+    "all_relationships": "MATCH (s)-[r]->(t) RETURN s.objectid AS source, type(r) AS kind, t.objectid AS target, r.isacl AS isacl ORDER BY source, kind, target, isacl",
+    "multiplicity": "MATCH (s)-[r]->(t) WITH s.objectid AS source, type(r) AS kind, t.objectid AS target, count(r) AS stored_count RETURN source, kind, target, stored_count ORDER BY source, kind, target",
+    "memberof": "MATCH (s)-[r:MemberOf]->(t) RETURN s.objectid AS source, t.objectid AS target, r.isacl AS isacl ORDER BY source, target, isacl",
+    "genericall": "MATCH (s)-[r:GenericAll]->(t) RETURN s.objectid AS source, t.objectid AS target, r.isacl AS isacl ORDER BY source, target, isacl",
+    "boundary_principals": "MATCH (n) WHERE n.objectid IN $objectids OPTIONAL MATCH (n)-[r]->(t) RETURN n.objectid AS objectid, labels(n) AS labels, type(r) AS kind, t.objectid AS target ORDER BY objectid, kind, target",
+    "exact_identity": "MATCH (n {objectid: $objectid}) RETURN n.objectid AS objectid, labels(n) AS labels, n.name AS name"
+  }
+}

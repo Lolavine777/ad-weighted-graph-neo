@@ -1,0 +1,500 @@
+{
+  "schema_version": "1.0.0",
+  "pack_id": "scenario-basis-pack-v1",
+  "version": "1.1.0",
+  "status": "proposed_pending_b_review",
+  "author": "Lolavine777 (Owner A)",
+  "requested_reviewer": "nairyuuu (Owner B)",
+  "created_at": "2026-10-10T10:00:00Z",
+  "governance": {
+    "review_reference": "docs/research/ratings/scenario-basis-v1/README.md",
+    "evidence_class": "synthetic_test_only",
+    "uncertainty_label": "uncalibrated_algorithm_fixture",
+    "numeric_activation_permitted": false,
+    "rationale": "Exact integration and interval-arithmetic fixture only. No elicited or measured numeric calibration. B review required; no production activation."
+  },
+  "scenario_profile": {
+    "scenario_id": "w4-two-routes-exact",
+    "scenario_version": "1.0.0",
+    "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+    "graph_fixture": "tests/fixtures/attack_scenarios/graphs/two-routes.json",
+    "work_boundary": "intra_forest",
+    "evaluation_mode": "scenario",
+    "operational_horizon": "fixed_snapshot_window",
+    "active_work_budget": 10,
+    "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+    "target_asset_id": "10000000-0000-4000-8000-000000000002",
+    "target_goal": {
+      "goal_id": "admin_host_c0",
+      "description": "Administrative execution on Host C0",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "success_event": "admin_execution_on_host_c0",
+      "required_predicates": [
+        "admin_control_host"
+      ]
+    },
+    "assumptions_ledger": {
+      "observed_facts": [
+        {
+          "predicate": "actor_controlled_alice",
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/alice"
+        }
+      ],
+      "declared_assumptions": [
+        {
+          "predicate": "admin_channel",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Reachability assumption: network transport allows admin connection from Alice to Host",
+          "provenance_reference": "synthetic://golden/two-routes/facts/admin_channel",
+          "origin": "declared_assumption",
+          "scope": "w4-two-routes-exact:fixed_snapshot_window"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Authentication capability assumption: Alice identity accepted by host authentication endpoint",
+          "provenance_reference": "synthetic://golden/two-routes/facts/auth",
+          "origin": "declared_assumption",
+          "scope": "w4-two-routes-exact:fixed_snapshot_window"
+        },
+        {
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "rationale": "Group structure assumption: Admins target is a security group",
+          "provenance_reference": "synthetic://golden/two-routes/facts/sec_group",
+          "origin": "declared_assumption",
+          "scope": "w4-two-routes-exact:fixed_snapshot_window"
+        },
+        {
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "rationale": "Token capability assumption: MemberOf Admins entitlement is usable in access token",
+          "provenance_reference": "synthetic://golden/two-routes/facts/membership_usable",
+          "origin": "declared_assumption",
+          "scope": "w4-two-routes-exact:fixed_snapshot_window"
+        }
+      ],
+      "falsified_facts": []
+    },
+    "retry_policy": {
+      "max_attempts": 3,
+      "timeout_seconds": 120
+    },
+    "facts_ledger": {
+      "predicate_layers": {
+        "actor_controlled_alice": 3,
+        "admin_channel_alice_host": 3,
+        "authentication_accepted_alice_host": 3,
+        "security_group_admins": 3,
+        "membership_usable_alice_admins": 3,
+        "effective_member_alice_admins": 3,
+        "admin_control_host": 3
+      },
+      "observed_facts": [
+        {
+          "predicate": "actor_controlled_alice",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/alice"
+        }
+      ],
+      "assumed_facts": [
+        {
+          "predicate": "admin_channel_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Reachability assumption: network transport allows admin connection from Alice to Host"
+        },
+        {
+          "predicate": "authentication_accepted_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Authentication capability assumption: Alice identity accepted by host authentication endpoint"
+        },
+        {
+          "predicate": "security_group_admins",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Group structure assumption: Admins target is a security group"
+        },
+        {
+          "predicate": "membership_usable_alice_admins",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Token capability assumption: MemberOf Admins entitlement is usable in access token"
+        }
+      ],
+      "false_facts": [],
+      "unknown_facts": []
+    }
+  },
+  "effort_basis": {
+    "status": "proposed_pending_b_review",
+    "classes": [
+      {
+        "class_id": "class_shared_auth_preparation",
+        "name": "Shared Authentication Context Preparation",
+        "description": "Establish shared authentication context for Alice towards Host C0",
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1,
+        "disposition": "rated",
+        "basis_category": "synthetic_test_only",
+        "review_status": "pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#effort-classes",
+        "applicability": {
+          "techniques": [
+            "auth_context"
+          ],
+          "methods": [
+            "AdminTo"
+          ],
+          "boundaries": [
+            "intra_forest"
+          ],
+          "work_classes": [
+            "shared_preparation"
+          ],
+          "scopes": [
+            "w4-two-routes-exact"
+          ],
+          "source_ids": [
+            "S-1-5-21-1000-2000-3000-1101"
+          ]
+        },
+        "notes": "Uncalibrated algorithm fixture: one common rubric point for execution or preparation; not a measured operational effort baseline."
+      },
+      {
+        "class_id": "class_direct_host_admin_execution",
+        "name": "Direct Host Administrative Execution",
+        "description": "Direct administrative execution on Host C0 after authentication context",
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1,
+        "disposition": "rated",
+        "basis_category": "synthetic_test_only",
+        "review_status": "pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#effort-classes",
+        "applicability": {
+          "techniques": [
+            "obtain_admin_execution_on_host"
+          ],
+          "methods": [
+            "AdminTo"
+          ],
+          "boundaries": [
+            "intra_forest"
+          ],
+          "work_classes": [
+            "active_work"
+          ],
+          "scopes": [
+            "w4-two-routes-exact"
+          ],
+          "source_ids": [
+            "S-1-5-21-1000-2000-3000-1101"
+          ]
+        },
+        "notes": "Uncalibrated algorithm fixture: one common rubric point for execution or preparation; not a measured operational effort baseline."
+      },
+      {
+        "class_id": "class_inherited_host_admin_execution",
+        "name": "Inherited Host Administrative Execution via Admins Group",
+        "description": "Inherited administrator execution on Host C0 via group membership",
+        "t1": 1,
+        "t2": 2,
+        "formula": "base",
+        "computed_cost": 1,
+        "disposition": "rated",
+        "basis_category": "synthetic_test_only",
+        "review_status": "pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#effort-classes",
+        "applicability": {
+          "techniques": [
+            "obtain_admin_execution_on_host"
+          ],
+          "methods": [
+            "AdminTo"
+          ],
+          "boundaries": [
+            "intra_forest"
+          ],
+          "work_classes": [
+            "active_work"
+          ],
+          "scopes": [
+            "w4-two-routes-exact"
+          ],
+          "source_ids": [
+            "S-1-5-21-1000-2000-3000-2103"
+          ]
+        },
+        "notes": "Uncalibrated algorithm fixture: one common rubric point for execution or preparation; not a measured operational effort baseline."
+      }
+    ],
+    "deduplication_rules": "Each path includes auth_context once; identical actor/target/method/auth/resource/policy/scenario contexts share one global ledger identity. Different authorization sources do not duplicate preparation.",
+    "passive_work_rules": "propagate_group_entitlement is NO_Q_EVENT and creates 0 active work units with 0 computed cost."
+  },
+  "likelihood_basis": {
+    "status": "proposed_pending_b_review",
+    "records": [
+      {
+        "record_id": "rec-p-two-routes-auth-prep-001",
+        "canonical_class": "shared_auth_preparation",
+        "outcome_technique": "auth_context",
+        "ordered_work_prefix": [
+          "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "source_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "method": "AdminTo",
+        "auth_context": null,
+        "resource_context": null,
+        "boundary": "intra_forest",
+        "scope": "w4-two-routes-exact",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "budget": 10,
+        "horizon": "fixed_snapshot_window",
+        "policy_id": null,
+        "proposed_interval": [
+          "4/5",
+          "9/10"
+        ],
+        "evidence_class": "synthetic_test_only",
+        "uncertainty_label": "uncalibrated_algorithm_fixture",
+        "rationale": "Uncalibrated exact-arithmetic fixture, not an enterprise success estimate. Preparation retains the historical synthetic A2 [4/5,9/10].",
+        "sensitivity": "No calibrated sensitivity. Changing method, snapshot, scope, auth/resource context, history, horizon or retry policy invalidates this exact fixture.",
+        "retry_policy": {
+          "max_attempts": 3,
+          "timeout_seconds": 120
+        },
+        "review_status": "proposed_pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#likelihood-records",
+        "review_disposition": "pending",
+        "reviewer": "nairyuuu",
+        "non_applicability": [
+          "production calibration",
+          "different method/snapshot/scenario/history/context",
+          "business risk prediction"
+        ]
+      },
+      {
+        "record_id": "rec-p-two-routes-direct-admin-002",
+        "canonical_class": "host_admin_execution",
+        "outcome_technique": "obtain_admin_execution_on_host",
+        "ordered_work_prefix": [
+          "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0",
+          "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-094f05fcaede34c33cb58ec8164c44b6c4026e626f0549dd07f8fdf5c1bca9ff:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-094f05fcaede34c33cb58ec8164c44b6c4026e626f0549dd07f8fdf5c1bca9ff:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0"
+        ],
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "source_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "method": "AdminTo",
+        "auth_context": null,
+        "resource_context": null,
+        "boundary": "intra_forest",
+        "scope": "w4-two-routes-exact",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "budget": 10,
+        "horizon": "fixed_snapshot_window",
+        "policy_id": null,
+        "proposed_interval": [
+          "1/2",
+          "3/4"
+        ],
+        "evidence_class": "synthetic_test_only",
+        "uncertainty_label": "uncalibrated_algorithm_fixture",
+        "rationale": "Equivalent direct/inherited AdminTo execution uses the same synthetic [1/2,3/4] interval. Actor, host, method, auth/resource context and retry policy are identical; source authorization provenance alone supplies no numeric discriminator. Bounds exercise interval products; no empirical or expert calibration is claimed.",
+        "sensitivity": "No calibrated sensitivity. Changing method, snapshot, scope, auth/resource context, history, horizon or retry policy invalidates this exact fixture.",
+        "retry_policy": {
+          "max_attempts": 3,
+          "timeout_seconds": 120
+        },
+        "review_status": "proposed_pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#likelihood-records",
+        "review_disposition": "pending",
+        "reviewer": "nairyuuu",
+        "non_applicability": [
+          "production calibration",
+          "different method/snapshot/scenario/history/context",
+          "business risk prediction"
+        ]
+      },
+      {
+        "record_id": "rec-p-two-routes-inherited-admin-003",
+        "canonical_class": "host_admin_execution",
+        "outcome_technique": "obtain_admin_execution_on_host",
+        "ordered_work_prefix": [
+          "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0",
+          "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-86f7bff6fca02a088129b0d673d6fac1c90716bc0d8e0ff36df071769fe918b0:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-86f7bff6fca02a088129b0d673d6fac1c90716bc0d8e0ff36df071769fe918b0:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "auth_context:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-7a607431c114f06a97d315e0f9a4f00239d857b5050b39a79ed0f660629ccd2c:intra_forest:1.0.0"
+        ],
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "source_id": "S-1-5-21-1000-2000-3000-2103",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "method": "AdminTo",
+        "auth_context": null,
+        "resource_context": null,
+        "boundary": "intra_forest",
+        "scope": "w4-two-routes-exact",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "budget": 10,
+        "horizon": "fixed_snapshot_window",
+        "policy_id": null,
+        "proposed_interval": [
+          "1/2",
+          "3/4"
+        ],
+        "evidence_class": "synthetic_test_only",
+        "uncertainty_label": "uncalibrated_algorithm_fixture",
+        "rationale": "Equivalent direct/inherited AdminTo execution uses the same synthetic [1/2,3/4] interval. Actor, host, method, auth/resource context and retry policy are identical; source authorization provenance alone supplies no numeric discriminator. Bounds exercise interval products; no empirical or expert calibration is claimed.",
+        "sensitivity": "No calibrated sensitivity. Changing method, snapshot, scope, auth/resource context, history, horizon or retry policy invalidates this exact fixture.",
+        "retry_policy": {
+          "max_attempts": 3,
+          "timeout_seconds": 120
+        },
+        "review_status": "proposed_pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#likelihood-records",
+        "review_disposition": "pending",
+        "reviewer": "nairyuuu",
+        "non_applicability": [
+          "production calibration",
+          "different method/snapshot/scenario/history/context",
+          "business risk prediction"
+        ]
+      }
+    ]
+  },
+  "impact_basis": {
+    "status": "proposed_pending_b_review",
+    "mappings": [
+      {
+        "mapping_id": "eq-synthetic-host-admin-control-001",
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "target_asset_label": "SYNTHETIC-Host (C0 / computers/2)",
+        "source_event": "admin_execution_on_host_c0",
+        "destination_event": "admin_control",
+        "consequence_rating": "High",
+        "consequence_semantics": "Administrative control over Host C0 compromises host-level applications, processes, and resident credentials, directly threatening confidentiality, integrity, and availability of host services.",
+        "affected_business_services": [
+          "synthetic_host_service"
+        ],
+        "applicability": {
+          "semantic_goal": {
+            "version": "semantic-goal/1.0.0",
+            "kind": "required_state",
+            "target_asset_id": "10000000-0000-4000-8000-000000000002",
+            "required_state": {
+              "admin_control": [
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            }
+          },
+          "goal_id": "admin_host_c0",
+          "scenario_id": [
+            "w4-two-routes-exact"
+          ],
+          "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+          "boundary": "intra_forest",
+          "horizon_policy": "independent_of_recovery_horizon"
+        },
+        "directionality": "symmetric",
+        "rationale": "Bounded synthetic technical taxonomy: exact host admin_control maps to High for this synthetic departmental host; no domain control or general business-impact claim.",
+        "status": "proposed_pending_b_review",
+        "review_reference": "docs/research/ratings/scenario-basis-v1/README.md#impact-basis",
+        "provenance": {
+          "proposed_by": "Lolavine777",
+          "requested_reviewer": "nairyuuu",
+          "review_disposition": "pending"
+        },
+        "source_release_canonical_digest": "sha256:255f10f2728422240f5fed1e9338c5360f75f9cde4513e44631f99e346d6e079",
+        "evidence_class": "synthetic_test_only"
+      }
+    ],
+    "source_packet": {
+      "target_impact_assessments": {
+        "10000000-0000-4000-8000-000000000002": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "rating_status": "rated",
+          "consequence_rating": "High",
+          "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+          "affected_business_services": [
+            "synthetic_host_service"
+          ]
+        }
+      }
+    }
+  },
+  "negative_guardrails": {
+    "authoritative_false_veto": {
+      "rule": "Authoritative FALSE runtime facts veto candidate path generation at the semantic engine layer.",
+      "test_reference": "tests/test_scenario_rating_pack.py#test_authoritative_false_veto"
+    },
+    "consequence_spoof_rejection": {
+      "rule": "Unprivileged session goals or different asset targets cannot reuse host administrative High consequence.",
+      "test_reference": "tests/test_scenario_rating_pack.py#test_impact_exact_typed_goal_refused"
+    },
+    "assumption_anti_inference": {
+      "rule": "Boolean runtime assumptions (value=True) declare search preconditions only; they never infer q=1 or substitute for likelihood records.",
+      "test_reference": "tests/test_scenario_rating_pack.py#test_missing_registry_never_silently_rates"
+    },
+    "prototype_quarantine": {
+      "rule": "Research estimator prototype #238 data remains quarantined from production ranking.",
+      "test_reference": "tests/test_public_rating_integration.py#test_prototype_refusal_halts_before_available_scenario_basis"
+    },
+    "production_non_activation": {
+      "rule": "Production resolver providers refuse proposed_pending_b_review records until formal B sign-off.",
+      "test_reference": "tests/test_scenario_rating_pack.py#test_pending_pack_refused_by_real_automatic_providers"
+    }
+  },
+  "work_basis": {
+    "status": "synthetic_structural_fixture",
+    "numeric_basis": false,
+    "review_scope": "Native structural decomposition protocol from merged #258 shared-preparation regression; not B acceptance of scenario calibration or preparation necessity.",
+    "rules": [
+      {
+        "techniques": [
+          "obtain_admin_execution_on_host"
+        ],
+        "method": "AdminTo",
+        "preparation_technique": "auth_context",
+        "review_status": "accepted",
+        "review_reference": "tests/test_public_rating_integration.py#rated_case (merged PR #258 structural synthetic work rule)",
+        "basis_category": "synthetic_test_only",
+        "scenario_id": "w4-two-routes-exact",
+        "boundary": "intra_forest"
+      }
+    ]
+  }
+}

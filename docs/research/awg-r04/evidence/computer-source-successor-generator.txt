@@ -1,0 +1,20 @@
+"""Append one source-only likelihood successor; retain all historical/numeric files."""
+import hashlib
+import json
+from pathlib import Path
+
+root = Path(__file__).resolve().parents[4]
+parent = root / 'docs/research/ratings/likelihood-v1'
+previous = parent / 'source-manifest-v11.json'
+destination = parent / 'source-manifest-v12.json'
+if destination.exists():
+    raise ValueError('Preserve published source successor')
+data = json.loads(previous.read_text())
+data['schema_version'] = '1.10.0'
+data['previous_source_manifest_sha256'] = 'sha256:' + hashlib.sha256(previous.read_bytes()).hexdigest()
+data['source_pins'] = {
+    name: 'sha256:' + hashlib.sha256((root / name).read_bytes()).hexdigest()
+    for name in sorted(data['source_pins'])
+}
+destination.write_text(json.dumps(data, sort_keys=True, indent=2) + '\n')
+print(destination.relative_to(root))

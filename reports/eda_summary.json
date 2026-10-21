@@ -1,0 +1,3581 @@
+{
+  "SEAMLESS": {
+    "schema_version": 3,
+    "raw_node_counts": {
+      "User": 2493,
+      "Group": 550,
+      "Computer": 100,
+      "OU": 223,
+      "GPO": 2,
+      "Domain": 1
+    },
+    "reconciled_node_counts": {
+      "User": 2493,
+      "Group": 549,
+      "Computer": 100,
+      "OU": 223,
+      "GPO": 2,
+      "Domain": 1
+    },
+    "node_counts": {
+      "User": 2493,
+      "Group": 549,
+      "Computer": 100,
+      "OU": 223,
+      "GPO": 2,
+      "Domain": 1
+    },
+    "total_raw_records": 3369,
+    "total_nodes": 3368,
+    "dropped_duplicate_records": 1,
+    "node_count_reconciliation_note": "Parsed 3369 raw records yielding 3368 unique nodes; 1 duplicate record(s) deduplicated by ObjectIdentifier.",
+    "edge_counts": {
+      "Owner": 3363,
+      "GenericAll": 37208,
+      "WriteDacl": 3397,
+      "WriteOwner": 3397,
+      "ExtendedRight": 2504,
+      "GenericWrite": 3171,
+      "MemberOf": 13324,
+      "AdminTo": 5,
+      "CanPSRemote": 2
+    },
+    "total_edges": 66371,
+    "simple_edges": 53751,
+    "edge_to_node_ratio": 19.71,
+    "graph_density": 0.004734,
+    "multiedge_density": 0.005853,
+    "density_metrics": {
+      "canonical_directed_simple_density": 0.004734,
+      "multigraph_edge_intensity": 0.005853,
+      "simple_edges_numerator": 53751,
+      "simple_graph_nodes": 3370,
+      "simple_possible_pairs_denominator": 11353530,
+      "multigraph_edges_numerator": 66371,
+      "snapshot_unique_nodes": 3368,
+      "snapshot_possible_pairs_denominator": 11340056,
+      "formula": "E / (V * (V - 1))"
+    },
+    "normalized_ratios": {
+      "privileged_principal_ratio": 0.0041,
+      "acl_density": 0.7107,
+      "session_density": 0.0,
+      "session_density_status": "unobserved_in_snapshot",
+      "details": {
+        "privileged_principal_ratio": {
+          "numerator": 13,
+          "denominator": 3142,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.0041
+        },
+        "acl_density": {
+          "numerator": 47173,
+          "denominator": 66371,
+          "formula": "acl_edges / total_edges",
+          "value": 0.7107
+        },
+        "session_density": {
+          "numerator": 0,
+          "unique_computers": 100,
+          "unique_users": 2493,
+          "denominator": 249300,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.0,
+          "status": "unobserved_in_snapshot"
+        }
+      }
+    },
+    "degree_stats": {
+      "in_degree_max": 63,
+      "in_degree_mean": 19.69,
+      "in_degree_median": 17.0,
+      "out_degree_max": 12383,
+      "out_degree_mean": 19.69,
+      "out_degree_median": 4.0
+    },
+    "group_nesting": {
+      "max_depth": 5,
+      "avg_depth": 1.62,
+      "distribution": {
+        "1": 75,
+        "2": 24,
+        "4": 6,
+        "3": 12,
+        "5": 2
+      }
+    },
+    "ou_hierarchy": {
+      "total_ous": 218,
+      "max_depth": 3,
+      "root_ous": 5
+    },
+    "privilege_distribution": {
+      "user_admincount": 2,
+      "group_admincount": 11,
+      "group_highvalue": 8,
+      "user_with_spn": 51
+    },
+    "missingness": {
+      "user_null_lastlogon_rate": 99.96,
+      "comp_empty_or_unobserved_sessions_rate": 100.0,
+      "comp_empty_or_unobserved_localadmins_rate": 99.0
+    },
+    "host_access_semantics": {
+      "raw_primitives": {
+        "RemoteDesktopUsers_raw_memberships": {
+          "report_name": "Remote Desktop Users membership",
+          "raw_field": "Computer.RemoteDesktopUsers[]",
+          "total_hosts": 100,
+          "field_present_hosts": 100,
+          "field_missing_hosts": 0,
+          "empty_array_hosts": 99,
+          "hosts_with_positive_observation": 1,
+          "empty_or_unobserved_hosts": 99,
+          "raw_observation_count": 3,
+          "field_presence_rate": 100.0,
+          "positive_observation_rate": 1.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "status": "positive_observation_and_unknown_coverage",
+          "note": "3 raw Remote Desktop Users membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+        },
+        "LocalAdmins_raw_memberships": {
+          "report_name": "local Administrators membership",
+          "raw_field": "Computer.LocalAdmins[]",
+          "total_hosts": 100,
+          "field_present_hosts": 100,
+          "field_missing_hosts": 0,
+          "empty_array_hosts": 99,
+          "hosts_with_positive_observation": 1,
+          "empty_or_unobserved_hosts": 99,
+          "raw_observation_count": 5,
+          "field_presence_rate": 100.0,
+          "positive_observation_rate": 1.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "status": "positive_observation_and_unknown_coverage",
+          "note": "5 raw local Administrators membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+        },
+        "PSRemoteUsers_raw_memberships": {
+          "report_name": "Remote Management Users membership",
+          "raw_field": "Computer.PSRemoteUsers[]",
+          "total_hosts": 100,
+          "field_present_hosts": 100,
+          "field_missing_hosts": 0,
+          "empty_array_hosts": 99,
+          "hosts_with_positive_observation": 1,
+          "empty_or_unobserved_hosts": 99,
+          "raw_observation_count": 2,
+          "field_presence_rate": 100.0,
+          "positive_observation_rate": 1.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "status": "positive_observation_and_unknown_coverage",
+          "note": "2 raw Remote Management Users membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+        },
+        "Sessions_raw_observations": {
+          "report_name": "session",
+          "raw_field": "Computer.Sessions[]",
+          "total_hosts": 100,
+          "field_present_hosts": 100,
+          "field_missing_hosts": 0,
+          "empty_array_hosts": 100,
+          "hosts_with_positive_observation": 0,
+          "empty_or_unobserved_hosts": 100,
+          "raw_observation_count": 0,
+          "field_presence_rate": 100.0,
+          "positive_observation_rate": 0.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "status": "empty_or_unobserved_with_unknown_coverage",
+          "note": "0 raw session observation(s) were present on 0/100 hosts. The remaining 100/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+        }
+      },
+      "effective_relationships": {
+        "CanRDP": {
+          "relationship": "CanRDP",
+          "status": "unknown",
+          "verified_effective_edges_count": null,
+          "materialized_edges_count": 0,
+          "unknown_hosts": 100,
+          "required_primitives": [
+            "effective Remote Desktop Users membership",
+            "SeRemoteInteractiveLogonRight",
+            "SeDenyRemoteInteractiveLogonRight"
+          ],
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "raw_primitive_key": "RemoteDesktopUsers_raw_memberships",
+          "note": "3 raw RDU membership observation(s) are reported separately. SEAMLESS does not provide sufficient UserRights and completeness evidence, so verified effective CanRDP cannot be measured or materialized; canonical relationship absence cannot be concluded."
+        }
+      }
+    },
+    "sample_control_path": {
+      "description": "Multi-hop administrative control reachability path through permissions and group memberships, NOT an executed attack claim.",
+      "hops": 11,
+      "path": [
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1275",
+          "source_name": "ARMAND_ROSE@SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3634",
+          "target_name": "EA-NELIAZUL1-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3634",
+          "source_name": "EA-NELIAZUL1-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4068",
+          "target_name": "MA-BIDEZARRA-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4068",
+          "source_name": "MA-BIDEZARRA-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "GenericAll",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3893",
+          "target_name": "CR-SESTOSANT-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3893",
+          "source_name": "CR-SESTOSANT-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "GenericAll",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4119",
+          "target_name": "GOOWCTRX1000000.SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4119",
+          "source_name": "GOOWCTRX1000000.SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3963",
+          "target_name": "LE-AZK-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3963",
+          "source_name": "LE-AZK-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3656",
+          "target_name": "JO-SAM-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3656",
+          "source_name": "JO-SAM-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3664",
+          "target_name": "TA-154-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3664",
+          "source_name": "TA-154-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "GenericAll",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+          "target_name": "ITSWLPT1000001.SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+          "source_name": "ITSWLPT1000001.SEAMLESS.INTERNAL",
+          "relationship": "GenericAll",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+          "target_name": "DA-130-DISTLIST1@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+          "source_name": "DA-130-DISTLIST1@SEAMLESS.INTERNAL",
+          "relationship": "GenericAll",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target_name": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "source_name": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+          "relationship": "MemberOf",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL"
+        }
+      ]
+    },
+    "attack_surface_eda": {
+      "connectivity": {
+        "graph_density": 0.004734,
+        "wcc": {
+          "count": 1,
+          "giant_component_size": 3370,
+          "giant_component_ratio": 100.0
+        },
+        "scc": {
+          "count": 2197,
+          "giant_component_size": 1172,
+          "giant_component_ratio": 34.78
+        },
+        "clustering_coefficient": 0.6231,
+        "diameter": {
+          "value": 4,
+          "note": "diameter of giant component (undirected projection); directed graph diameter is infinite due to sink nodes"
+        },
+        "node_roles": {
+          "isolated": {
+            "count": 0,
+            "percentage": 0.0
+          },
+          "source": {
+            "count": 2,
+            "percentage": 0.06
+          },
+          "sink": {
+            "count": 1159,
+            "percentage": 34.39
+          },
+          "transit": {
+            "count": 2209,
+            "percentage": 65.55
+          }
+        }
+      },
+      "reachability": {
+        "target_sids": [
+          "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "SEAMLESS.INTERNAL-S-1-5-32-544",
+          "S-1-5-21-1271839998-3495686680-2211690266-519"
+        ],
+        "reachable_count": 1170,
+        "reachable_principal_count": 1170,
+        "reachable_graph_nodes_count": 1170,
+        "non_target_graph_nodes_count": 3367,
+        "total_graph_nodes_count": 3370,
+        "reachable_non_target_principal_percentage": 37.25,
+        "reachable_graph_nodes_percentage": 34.75,
+        "reachable_non_target_graph_nodes_percentage": 34.75,
+        "reachable_all_graph_nodes_percentage": 34.72,
+        "by_class": {
+          "User": {
+            "count": 1085,
+            "total": 2493,
+            "percentage": 43.52,
+            "avg_tier0_targets_reachable": 1.31
+          },
+          "Group": {
+            "count": 70,
+            "total": 551,
+            "percentage": 12.7,
+            "avg_tier0_targets_reachable": 0.39
+          },
+          "Computer": {
+            "count": 15,
+            "total": 100,
+            "percentage": 15.0,
+            "avg_tier0_targets_reachable": 0.45
+          }
+        },
+        "shortest_hop_distribution": {
+          "histogram": {
+            "1": 7,
+            "2": 15,
+            "3": 219,
+            "4": 367,
+            "5": 318,
+            "6": 178,
+            "7": 28,
+            "8": 4,
+            "9": 11,
+            "10": 13,
+            "11": 10
+          },
+          "min": 1,
+          "max": 11,
+          "median": 4.0,
+          "mean": 4.6,
+          "quantiles": {
+            "p25": 4.0,
+            "p50": 4.0,
+            "p75": 5.0,
+            "p90": 6.0,
+            "p95": 7.0
+          }
+        }
+      },
+      "privilege_concentration": {
+        "metric_scope": "Dual-scope analysis: raw_out_degree measures overall connectivity; privileged_control_edges measures administrative control concentration strictly on AdminTo, GenericAll, WriteDacl, ForceChangePassword, CanRDP, and CanPSRemote.",
+        "gini_coefficients": {
+          "out_degree": 0.8944,
+          "in_degree": 0.2117,
+          "total_degree": 0.5159,
+          "privileged_control_out_degree": 0.9939
+        },
+        "top_shares": {
+          "top_1_percent": {
+            "node_count": 33,
+            "edge_count": 50285,
+            "share_percentage": 75.76
+          },
+          "top_5_percent": {
+            "node_count": 168,
+            "edge_count": 54045,
+            "share_percentage": 81.43
+          }
+        },
+        "privileged_control_concentration": {
+          "total_control_edges": 40612,
+          "top_1_percent_share": 93.06,
+          "top_5_percent_share": 100.0,
+          "gini": 0.9939
+        },
+        "top_10_hubs": [
+          {
+            "id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+            "name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 12383,
+            "in_degree": 15
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 6753,
+            "in_degree": 15
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+            "name": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 3409,
+            "in_degree": 40
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+            "name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 3400,
+            "in_degree": 11
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "name": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer",
+            "out_degree": 3365,
+            "in_degree": 16
+          },
+          {
+            "id": "SEAMLESS.INTERNAL-S-1-5-32-548",
+            "name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 3125,
+            "in_degree": 13
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+            "name": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 2537,
+            "in_degree": 35
+          },
+          {
+            "id": "SEAMLESS.INTERNAL-S-1-5-32-554",
+            "name": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 2526,
+            "in_degree": 15
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "name": "OLA_CARSON@SEAMLESS.INTERNAL",
+            "kind": "User",
+            "out_degree": 2524,
+            "in_degree": 15
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3970",
+            "name": "RO-194-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "out_degree": 2505,
+            "in_degree": 37
+          }
+        ],
+        "top_10_targets": [
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3668",
+            "name": "GE-HER-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 63,
+            "out_degree": 3
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3843",
+            "name": "AL-ESTELA123-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 56,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3997",
+            "name": "AL-LOS-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 55,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3649",
+            "name": "JO-ELCHILEAN-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 53,
+            "out_degree": 59
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3937",
+            "name": "JA-LUCIADIAZ-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 53,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3646",
+            "name": "AL-306-ADMINGROUP1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 52,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3673",
+            "name": "HE-BAC-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 52,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3773",
+            "name": "BE-MAX-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 52,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3865",
+            "name": "LA-BEB-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 52,
+            "out_degree": 0
+          },
+          {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-3879",
+            "name": "MA-MRANIMATI-DISTLIST1@SEAMLESS.INTERNAL",
+            "kind": "Group",
+            "in_degree": 52,
+            "out_degree": 3
+          }
+        ],
+        "lorenz_curve": [
+          {
+            "percentile": 0,
+            "cumulative_share": 0.0
+          },
+          {
+            "percentile": 10,
+            "cumulative_share": 0.0
+          },
+          {
+            "percentile": 20,
+            "cumulative_share": 0.0
+          },
+          {
+            "percentile": 30,
+            "cumulative_share": 0.0
+          },
+          {
+            "percentile": 40,
+            "cumulative_share": 0.53
+          },
+          {
+            "percentile": 50,
+            "cumulative_share": 1.97
+          },
+          {
+            "percentile": 60,
+            "cumulative_share": 4.21
+          },
+          {
+            "percentile": 70,
+            "cumulative_share": 7.25
+          },
+          {
+            "percentile": 80,
+            "cumulative_share": 11.1
+          },
+          {
+            "percentile": 90,
+            "cumulative_share": 15.85
+          },
+          {
+            "percentile": 100,
+            "cumulative_share": 100.0
+          }
+        ],
+        "degree_distribution": "heavy-tailed / highly concentrated synthetic enterprise-scale benchmark",
+        "description": "Distribution exhibits heavy-tailed skew and extreme administrative hub concentration without claiming a mathematically verified scale-free power-law."
+      },
+      "relationship_mixing": [
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericAll",
+          "target_kind": "User",
+          "count": 22118,
+          "percentage": 33.32
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "MemberOf",
+          "target_kind": "Group",
+          "count": 12986,
+          "percentage": 19.57
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "GenericAll",
+          "target_kind": "User",
+          "count": 4662,
+          "percentage": 7.02
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericAll",
+          "target_kind": "Group",
+          "count": 3626,
+          "percentage": 5.46
+        },
+        {
+          "source_kind": "Computer",
+          "edge_kind": "GenericAll",
+          "target_kind": "User",
+          "count": 3007,
+          "percentage": 4.53
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "User",
+          "count": 2497,
+          "percentage": 3.76
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "User",
+          "count": 2497,
+          "percentage": 3.76
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "ExtendedRight",
+          "target_kind": "User",
+          "count": 2497,
+          "percentage": 3.76
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericWrite",
+          "target_kind": "User",
+          "count": 2497,
+          "percentage": 3.76
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "User",
+          "count": 2493,
+          "percentage": 3.76
+        },
+        {
+          "source_kind": "Computer",
+          "edge_kind": "GenericAll",
+          "target_kind": "Group",
+          "count": 1184,
+          "percentage": 1.78
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericAll",
+          "target_kind": "OU",
+          "count": 717,
+          "percentage": 1.08
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "Group",
+          "count": 568,
+          "percentage": 0.86
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "Group",
+          "count": 568,
+          "percentage": 0.86
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericWrite",
+          "target_kind": "Group",
+          "count": 568,
+          "percentage": 0.86
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "Group",
+          "count": 544,
+          "percentage": 0.82
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericAll",
+          "target_kind": "Computer",
+          "count": 527,
+          "percentage": 0.79
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "GenericAll",
+          "target_kind": "Group",
+          "count": 459,
+          "percentage": 0.69
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "GenericAll",
+          "target_kind": "Computer",
+          "count": 347,
+          "percentage": 0.52
+        },
+        {
+          "source_kind": "Computer",
+          "edge_kind": "GenericAll",
+          "target_kind": "Computer",
+          "count": 312,
+          "percentage": 0.47
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "MemberOf",
+          "target_kind": "Group",
+          "count": 295,
+          "percentage": 0.44
+        },
+        {
+          "source_kind": "Computer",
+          "edge_kind": "GenericAll",
+          "target_kind": "OU",
+          "count": 227,
+          "percentage": 0.34
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "OU",
+          "count": 224,
+          "percentage": 0.34
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "OU",
+          "count": 224,
+          "percentage": 0.34
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "OU",
+          "count": 223,
+          "percentage": 0.34
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "Computer",
+          "count": 100,
+          "percentage": 0.15
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "Computer",
+          "count": 100,
+          "percentage": 0.15
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "Computer",
+          "count": 100,
+          "percentage": 0.15
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericWrite",
+          "target_kind": "Computer",
+          "count": 100,
+          "percentage": 0.15
+        },
+        {
+          "source_kind": "Computer",
+          "edge_kind": "MemberOf",
+          "target_kind": "Group",
+          "count": 43,
+          "percentage": 0.06
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "GenericAll",
+          "target_kind": "OU",
+          "count": 21,
+          "percentage": 0.03
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "ExtendedRight",
+          "target_kind": "Domain",
+          "count": 7,
+          "percentage": 0.01
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "GPO",
+          "count": 6,
+          "percentage": 0.01
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "GPO",
+          "count": 6,
+          "percentage": 0.01
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericWrite",
+          "target_kind": "GPO",
+          "count": 6,
+          "percentage": 0.01
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "AdminTo",
+          "target_kind": "Computer",
+          "count": 3,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "User",
+          "edge_kind": "CanPSRemote",
+          "target_kind": "Computer",
+          "count": 2,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "AdminTo",
+          "target_kind": "Computer",
+          "count": 2,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "GPO",
+          "count": 2,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteDacl",
+          "target_kind": "Domain",
+          "count": 2,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "WriteOwner",
+          "target_kind": "Domain",
+          "count": 2,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "GenericAll",
+          "target_kind": "Domain",
+          "count": 1,
+          "percentage": 0.0
+        },
+        {
+          "source_kind": "Group",
+          "edge_kind": "Owner",
+          "target_kind": "Domain",
+          "count": 1,
+          "percentage": 0.0
+        }
+      ],
+      "group_nesting_pathology": {
+        "is_dag": true,
+        "cycles_count": 0,
+        "cycles": [],
+        "branching_factor": {
+          "out_degree_child_to_parents": {
+            "max": 5,
+            "mean": 0.54,
+            "median": 0,
+            "distribution": {
+              "0": 432,
+              "1": 7,
+              "2": 55,
+              "3": 53,
+              "4": 1,
+              "5": 3
+            }
+          },
+          "in_degree_parent_from_children": {
+            "max": 7,
+            "mean": 0.54,
+            "median": 0,
+            "distribution": {
+              "0": 328,
+              "1": 167,
+              "2": 45,
+              "3": 9,
+              "4": 1,
+              "7": 1
+            }
+          }
+        },
+        "depth_stats": {
+          "computation_method": "longest_nesting_chain_dag_dp",
+          "max_depth": 5,
+          "avg_depth": 1.62,
+          "distribution": {
+            "1": 75,
+            "2": 24,
+            "3": 12,
+            "4": 6,
+            "5": 2
+          },
+          "total_nested_groups": 119
+        }
+      },
+      "path_redundancy": [
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1275",
+          "source_name": "ARMAND_ROSE@SEAMLESS.INTERNAL",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "shortest_hops": 11,
+          "node_disjoint_paths_count": 1,
+          "edge_disjoint_paths_count": 1,
+          "alternative_paths_sample_count": 20,
+          "cutoff_hops": 12,
+          "capped_at": 20,
+          "truncated": true,
+          "description": "Alternative paths search within shortest_hops + 1 cutoff capped at 20 (>= 20 paths exist)."
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "source_name": "OLA_CARSON@SEAMLESS.INTERNAL",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "shortest_hops": 2,
+          "node_disjoint_paths_count": 5,
+          "edge_disjoint_paths_count": 6,
+          "alternative_paths_sample_count": 7,
+          "cutoff_hops": 3,
+          "capped_at": 20,
+          "truncated": false,
+          "description": "Alternative paths search within shortest_hops + 1 cutoff capped at 20 (>= 20 paths exist)."
+        },
+        {
+          "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1104",
+          "source_name": "CONSTANCE_ESTRADA@SEAMLESS.INTERNAL",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "shortest_hops": 5,
+          "node_disjoint_paths_count": 1,
+          "edge_disjoint_paths_count": 1,
+          "alternative_paths_sample_count": 19,
+          "cutoff_hops": 6,
+          "capped_at": 20,
+          "truncated": false,
+          "description": "Alternative paths search within shortest_hops + 1 cutoff capped at 20 (>= 20 paths exist)."
+        }
+      ],
+      "structural_outliers": {
+        "boundary_note": "Structural topological anomalies only; does not imply malicious activity.",
+        "out_degree": {
+          "metric": "out_degree",
+          "p99_threshold": 100.62,
+          "p99_outlier_count": 34,
+          "p99_outliers": [
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+              "name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 12383,
+              "value": 12383
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 6753,
+              "value": 6753
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+              "name": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3409,
+              "value": 3409
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+              "name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3400,
+              "value": 3400
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "name": "FINWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 3365,
+              "value": 3365
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-548",
+              "name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3125,
+              "value": 3125
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+              "name": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2537,
+              "value": 2537
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-554",
+              "name": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2526,
+              "value": 2526
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "name": "OLA_CARSON@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 2524,
+              "value": 2524
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3970",
+              "name": "RO-194-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2505,
+              "value": 2505
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+              "name": "SA-TERRY1800-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2494,
+              "value": 2494
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3483",
+              "name": "ASHLEY_COX@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 706,
+              "value": 706
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+              "name": "ITSWLPT1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 629,
+              "value": 629
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3862",
+              "name": "44-HU1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 565,
+              "value": 565
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4086",
+              "name": "JA-8.32668E1-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 537,
+              "value": 537
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3714",
+              "name": "KO-609661116-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 270,
+              "value": 270
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2679",
+              "name": "RUSSELL_NICHOLS@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 234,
+              "value": 234
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2474",
+              "name": "DELIA_BUCKLEY@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 214,
+              "value": 214
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4141",
+              "name": "HREWAPPS1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 205,
+              "value": 205
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3647",
+              "name": "TA-CHE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4085",
+              "name": "JO-WIS-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1572",
+              "name": "BUFORD_TORRES@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 162,
+              "value": 162
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3962",
+              "name": "ME-DEAA12078-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 155,
+              "value": 155
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+              "name": "DA-130-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 153,
+              "value": 153
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2456",
+              "name": "MARIETTA_STEELE@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 146,
+              "value": 146
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2127",
+              "name": "DOMINICK_JUAREZ@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 143,
+              "value": 143
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3718",
+              "name": "MA-FUERTEVEN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 136,
+              "value": 136
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3527",
+              "name": "JACOB_BLANCHARD@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 123,
+              "value": 123
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1199",
+              "name": "ADAN_SNIDER@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 114,
+              "value": 114
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4155",
+              "name": "TSTWLPT1000000.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 113,
+              "value": 113
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3753",
+              "name": "DA-031284CHA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 107,
+              "value": 107
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3664",
+              "name": "TA-154-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 106,
+              "value": 106
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+              "name": "TSTWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 104,
+              "value": 104
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3624",
+              "name": "RI-ASP-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 102,
+              "value": 102
+            }
+          ],
+          "iqr_threshold": 20.0,
+          "iqr_outlier_count": 87,
+          "top_iqr_outliers": [
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+              "name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 12383,
+              "value": 12383
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 6753,
+              "value": 6753
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+              "name": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3409,
+              "value": 3409
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+              "name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3400,
+              "value": 3400
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "name": "FINWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 3365,
+              "value": 3365
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-548",
+              "name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3125,
+              "value": 3125
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+              "name": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2537,
+              "value": 2537
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-554",
+              "name": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2526,
+              "value": 2526
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "name": "OLA_CARSON@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 2524,
+              "value": 2524
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3970",
+              "name": "RO-194-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2505,
+              "value": 2505
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+              "name": "SA-TERRY1800-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2494,
+              "value": 2494
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3483",
+              "name": "ASHLEY_COX@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 706,
+              "value": 706
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+              "name": "ITSWLPT1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 629,
+              "value": 629
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3862",
+              "name": "44-HU1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 565,
+              "value": 565
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4086",
+              "name": "JA-8.32668E1-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 537,
+              "value": 537
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3714",
+              "name": "KO-609661116-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 270,
+              "value": 270
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2679",
+              "name": "RUSSELL_NICHOLS@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 234,
+              "value": 234
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2474",
+              "name": "DELIA_BUCKLEY@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 214,
+              "value": 214
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4141",
+              "name": "HREWAPPS1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 205,
+              "value": 205
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3647",
+              "name": "TA-CHE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            }
+          ]
+        },
+        "in_degree": {
+          "metric": "in_degree",
+          "p99_threshold": 48.31,
+          "p99_outlier_count": 34,
+          "p99_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3668",
+              "name": "GE-HER-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 63,
+              "value": 63
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3843",
+              "name": "AL-ESTELA123-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 56,
+              "value": 56
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3997",
+              "name": "AL-LOS-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 55,
+              "value": 55
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3649",
+              "name": "JO-ELCHILEAN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 53,
+              "value": 53
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3937",
+              "name": "JA-LUCIADIAZ-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 53,
+              "value": 53
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3646",
+              "name": "AL-306-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3673",
+              "name": "HE-BAC-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3773",
+              "name": "BE-MAX-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3865",
+              "name": "LA-BEB-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3879",
+              "name": "MA-MRANIMATI-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3934",
+              "name": "RE-ESTEFANIA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4045",
+              "name": "HO-ORA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3595",
+              "name": "BE-HERMOSA07-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3632",
+              "name": "DA-LAM-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3821",
+              "name": "23-PRE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3857",
+              "name": "BR-PAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3873",
+              "name": "JI-06671818G-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3977",
+              "name": "RO-677-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4015",
+              "name": "VE-1.20883E1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4076",
+              "name": "BR-CONFORAMA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3639",
+              "name": "RO-103-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3893",
+              "name": "CR-SESTOSANT-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3968",
+              "name": "ER-ESC-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3974",
+              "name": "PO-DARCKNESS-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4048",
+              "name": "KI--DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4071",
+              "name": "WE-FLAVIO007-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 50,
+              "value": 50
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3641",
+              "name": "KE-687-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3708",
+              "name": "GA-AGUILUCHO-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3719",
+              "name": "BR-KONTRABAN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3721",
+              "name": "LO-RIGOBERTO-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3748",
+              "name": "GR-926588456-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3753",
+              "name": "DA-031284CHA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3784",
+              "name": "LI-ALBERTORU-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4020",
+              "name": "DE-DAN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 49,
+              "value": 49
+            }
+          ],
+          "iqr_threshold": 23.5,
+          "iqr_outlier_count": 498,
+          "top_iqr_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3668",
+              "name": "GE-HER-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 63,
+              "value": 63
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3843",
+              "name": "AL-ESTELA123-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 56,
+              "value": 56
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3997",
+              "name": "AL-LOS-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 55,
+              "value": 55
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3649",
+              "name": "JO-ELCHILEAN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 53,
+              "value": 53
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3937",
+              "name": "JA-LUCIADIAZ-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 53,
+              "value": 53
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3646",
+              "name": "AL-306-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3673",
+              "name": "HE-BAC-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3773",
+              "name": "BE-MAX-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3865",
+              "name": "LA-BEB-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3879",
+              "name": "MA-MRANIMATI-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3934",
+              "name": "RE-ESTEFANIA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4045",
+              "name": "HO-ORA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 52,
+              "value": 52
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3595",
+              "name": "BE-HERMOSA07-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3632",
+              "name": "DA-LAM-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3821",
+              "name": "23-PRE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3857",
+              "name": "BR-PAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3873",
+              "name": "JI-06671818G-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3977",
+              "name": "RO-677-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4015",
+              "name": "VE-1.20883E1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4076",
+              "name": "BR-CONFORAMA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 51,
+              "value": 51
+            }
+          ]
+        },
+        "privilege_count": {
+          "metric": "privilege_count",
+          "p99_threshold": 100.62,
+          "p99_outlier_count": 34,
+          "p99_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+              "name": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3406,
+              "value": 3406
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3368,
+              "value": 3368
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+              "name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3366,
+              "value": 3366
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+              "name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3363,
+              "value": 3363
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "name": "FINWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 3363,
+              "value": 3363
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-548",
+              "name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3125,
+              "value": 3125
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+              "name": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2537,
+              "value": 2537
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-554",
+              "name": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2526,
+              "value": 2526
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "name": "OLA_CARSON@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 2522,
+              "value": 2522
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3970",
+              "name": "RO-194-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2505,
+              "value": 2505
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+              "name": "SA-TERRY1800-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2494,
+              "value": 2494
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3483",
+              "name": "ASHLEY_COX@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 699,
+              "value": 699
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+              "name": "ITSWLPT1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 629,
+              "value": 629
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3862",
+              "name": "44-HU1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 562,
+              "value": 562
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4086",
+              "name": "JA-8.32668E1-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 535,
+              "value": 535
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3714",
+              "name": "KO-609661116-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 270,
+              "value": 270
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2679",
+              "name": "RUSSELL_NICHOLS@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 225,
+              "value": 225
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2474",
+              "name": "DELIA_BUCKLEY@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 209,
+              "value": 209
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4141",
+              "name": "HREWAPPS1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 205,
+              "value": 205
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3647",
+              "name": "TA-CHE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4085",
+              "name": "JO-WIS-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1572",
+              "name": "BUFORD_TORRES@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 161,
+              "value": 161
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3962",
+              "name": "ME-DEAA12078-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 155,
+              "value": 155
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3677",
+              "name": "DA-130-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 153,
+              "value": 153
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2456",
+              "name": "MARIETTA_STEELE@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 146,
+              "value": 146
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2127",
+              "name": "DOMINICK_JUAREZ@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 141,
+              "value": 141
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3718",
+              "name": "MA-FUERTEVEN-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 136,
+              "value": 136
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3527",
+              "name": "JACOB_BLANCHARD@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 118,
+              "value": 118
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4155",
+              "name": "TSTWLPT1000000.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 113,
+              "value": 113
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3753",
+              "name": "DA-031284CHA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 107,
+              "value": 107
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1199",
+              "name": "ADAN_SNIDER@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 105,
+              "value": 105
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3664",
+              "name": "TA-154-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 104,
+              "value": 104
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+              "name": "TSTWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 104,
+              "value": 104
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3624",
+              "name": "RI-ASP-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 102,
+              "value": 102
+            }
+          ],
+          "iqr_threshold": 0.0,
+          "iqr_outlier_count": 116,
+          "top_iqr_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+              "name": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3406,
+              "value": 3406
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3368,
+              "value": 3368
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+              "name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3366,
+              "value": 3366
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+              "name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3363,
+              "value": 3363
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "name": "FINWVIR1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 3363,
+              "value": 3363
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-548",
+              "name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 3125,
+              "value": 3125
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+              "name": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2537,
+              "value": 2537
+            },
+            {
+              "id": "SEAMLESS.INTERNAL-S-1-5-32-554",
+              "name": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2526,
+              "value": 2526
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "name": "OLA_CARSON@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 2522,
+              "value": 2522
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3970",
+              "name": "RO-194-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2505,
+              "value": 2505
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+              "name": "SA-TERRY1800-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 2494,
+              "value": 2494
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3483",
+              "name": "ASHLEY_COX@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 699,
+              "value": 699
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4186",
+              "name": "ITSWLPT1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 629,
+              "value": 629
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3862",
+              "name": "44-HU1-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 562,
+              "value": 562
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4086",
+              "name": "JA-8.32668E1-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 535,
+              "value": 535
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3714",
+              "name": "KO-609661116-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 270,
+              "value": 270
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2679",
+              "name": "RUSSELL_NICHOLS@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 225,
+              "value": 225
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-2474",
+              "name": "DELIA_BUCKLEY@SEAMLESS.INTERNAL",
+              "kind": "User",
+              "degree": 209,
+              "value": 209
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-4141",
+              "name": "HREWAPPS1000001.SEAMLESS.INTERNAL",
+              "kind": "Computer",
+              "degree": 205,
+              "value": 205
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3647",
+              "name": "TA-CHE-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 171,
+              "value": 171
+            }
+          ]
+        },
+        "nesting_behavior": {
+          "metric": "group_member_count",
+          "p99_threshold": 39.0,
+          "p99_outlier_count": 4,
+          "p99_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3668",
+              "name": "GE-HER-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 46,
+              "value": 46
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3997",
+              "name": "AL-LOS-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 41,
+              "value": 41
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3646",
+              "name": "AL-306-ADMINGROUP1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 40,
+              "value": 40
+            },
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3843",
+              "name": "AL-ESTELA123-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 40,
+              "value": 40
+            }
+          ],
+          "iqr_threshold": 41.0,
+          "iqr_outlier_count": 1,
+          "top_iqr_outliers": [
+            {
+              "id": "S-1-5-21-1271839998-3495686680-2211690266-3668",
+              "name": "GE-HER-DISTLIST1@SEAMLESS.INTERNAL",
+              "kind": "Group",
+              "degree": 46,
+              "value": 46
+            }
+          ]
+        },
+        "session_count": {
+          "status": "not_measurable_from_snapshot",
+          "reason": "Session data is unpopulated on endpoints (100% missing); dynamic sessions are not measurable from this static directory snapshot."
+        }
+      }
+    },
+    "data_quality_audit": {
+      "record_counts": {
+        "User": 2493,
+        "Group": 549,
+        "Computer": 100,
+        "OU": 223,
+        "GPO": 2,
+        "Domain": 1,
+        "total": 3368
+      },
+      "valid_parsed": 3368,
+      "unique_nodes_materialized": 3368,
+      "dropped_records": 1,
+      "malformed_records": 0,
+      "duplicate_detection": {
+        "duplicate_ObjectIdentifiers": 1
+      },
+      "referential_integrity": {
+        "total_edge_references": 66374,
+        "collected_entity_resolutions": {
+          "count": 66372,
+          "denominator": 66374,
+          "percentage": 99.997,
+          "description": "References resolved directly to collected first-class snapshot principals"
+        },
+        "boundary_stub_resolutions": {
+          "count": 2,
+          "denominator": 66374,
+          "percentage": 0.003,
+          "description": "References resolved to external well-known boundary nodes (INTERACTIVE, IUSR)",
+          "principals": [
+            "SEAMLESS.INTERNAL-S-1-5-17",
+            "SEAMLESS.INTERNAL-S-1-5-4"
+          ]
+        },
+        "unresolved_dangling_references": {
+          "count": 0,
+          "denominator": 66374,
+          "percentage": 0.0,
+          "description": "Dangling references failing resolution"
+        },
+        "internal_references": 66372,
+        "referenced_well_known_external": 2,
+        "dangling_references": 0,
+        "integrity_percentage": 100.0,
+        "external_principals": [
+          "SEAMLESS.INTERNAL-S-1-5-17",
+          "SEAMLESS.INTERNAL-S-1-5-4"
+        ]
+      },
+      "missingness_taxonomy": {
+        "operatingSystem": {
+          "observed": 1,
+          "missing": 99,
+          "total": 100,
+          "percentage_missing": 99.0,
+          "classification": "empty or absent in snapshot; cause not established by field alone"
+        },
+        "haslaps": {
+          "observed_false": 100,
+          "observed_true": 0,
+          "missing_or_absent": 0,
+          "total": 100,
+          "percentage_observed_false": 100.0,
+          "classification": "collector observed false; deployment state not independently established"
+        },
+        "lastLogonTimestamp_User": {
+          "observed_positive": 1,
+          "missing": 2492,
+          "total": 2493,
+          "percentage_missing": 99.96,
+          "classification": "zero or absent in snapshot; logon activity unknown"
+        },
+        "lastLogonTimestamp_Computer": {
+          "observed_positive": 1,
+          "missing": 99,
+          "total": 100,
+          "percentage_missing": 99.0,
+          "classification": "zero or absent in snapshot; logon activity unknown"
+        },
+        "servicePrincipalNames": {
+          "with_spn": 51,
+          "without_spn": 2442,
+          "total": 2493,
+          "percentage_with": 2.05,
+          "percentage_without": 97.95,
+          "classification": "SPN presence only; does not establish attack applicability"
+        },
+        "Sessions": {
+          "populated": 0,
+          "empty_or_unobserved": 100,
+          "total": 100,
+          "percentage_empty_or_unobserved": 100.0,
+          "classification": "empty/unobserved; collection completeness not measurable"
+        },
+        "LocalAdmins": {
+          "populated": 1,
+          "empty_or_unobserved": 99,
+          "total": 100,
+          "percentage_empty_or_unobserved": 99.0,
+          "classification": "empty/unobserved; collection completeness not measurable"
+        }
+      },
+      "host_access_semantics": {
+        "raw_primitives": {
+          "RemoteDesktopUsers_raw_memberships": {
+            "report_name": "Remote Desktop Users membership",
+            "raw_field": "Computer.RemoteDesktopUsers[]",
+            "total_hosts": 100,
+            "field_present_hosts": 100,
+            "field_missing_hosts": 0,
+            "empty_array_hosts": 99,
+            "hosts_with_positive_observation": 1,
+            "empty_or_unobserved_hosts": 99,
+            "raw_observation_count": 3,
+            "field_presence_rate": 100.0,
+            "positive_observation_rate": 1.0,
+            "unknown_rate": "not_measurable_from_snapshot",
+            "collection_completeness_status": "not_measurable_from_snapshot",
+            "status": "positive_observation_and_unknown_coverage",
+            "note": "3 raw Remote Desktop Users membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+          },
+          "LocalAdmins_raw_memberships": {
+            "report_name": "local Administrators membership",
+            "raw_field": "Computer.LocalAdmins[]",
+            "total_hosts": 100,
+            "field_present_hosts": 100,
+            "field_missing_hosts": 0,
+            "empty_array_hosts": 99,
+            "hosts_with_positive_observation": 1,
+            "empty_or_unobserved_hosts": 99,
+            "raw_observation_count": 5,
+            "field_presence_rate": 100.0,
+            "positive_observation_rate": 1.0,
+            "unknown_rate": "not_measurable_from_snapshot",
+            "collection_completeness_status": "not_measurable_from_snapshot",
+            "status": "positive_observation_and_unknown_coverage",
+            "note": "5 raw local Administrators membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+          },
+          "PSRemoteUsers_raw_memberships": {
+            "report_name": "Remote Management Users membership",
+            "raw_field": "Computer.PSRemoteUsers[]",
+            "total_hosts": 100,
+            "field_present_hosts": 100,
+            "field_missing_hosts": 0,
+            "empty_array_hosts": 99,
+            "hosts_with_positive_observation": 1,
+            "empty_or_unobserved_hosts": 99,
+            "raw_observation_count": 2,
+            "field_presence_rate": 100.0,
+            "positive_observation_rate": 1.0,
+            "unknown_rate": "not_measurable_from_snapshot",
+            "collection_completeness_status": "not_measurable_from_snapshot",
+            "status": "positive_observation_and_unknown_coverage",
+            "note": "2 raw Remote Management Users membership observation(s) were present on 1/100 hosts. The remaining 99/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+          },
+          "Sessions_raw_observations": {
+            "report_name": "session",
+            "raw_field": "Computer.Sessions[]",
+            "total_hosts": 100,
+            "field_present_hosts": 100,
+            "field_missing_hosts": 0,
+            "empty_array_hosts": 100,
+            "hosts_with_positive_observation": 0,
+            "empty_or_unobserved_hosts": 100,
+            "raw_observation_count": 0,
+            "field_presence_rate": 100.0,
+            "positive_observation_rate": 0.0,
+            "unknown_rate": "not_measurable_from_snapshot",
+            "collection_completeness_status": "not_measurable_from_snapshot",
+            "status": "empty_or_unobserved_with_unknown_coverage",
+            "note": "0 raw session observation(s) were present on 0/100 hosts. The remaining 100/100 hosts are empty or unobserved; collection completeness is not measurable from this snapshot, so canonical relationship absence cannot be concluded."
+          }
+        },
+        "effective_relationships": {
+          "CanRDP": {
+            "relationship": "CanRDP",
+            "status": "unknown",
+            "verified_effective_edges_count": null,
+            "materialized_edges_count": 0,
+            "unknown_hosts": 100,
+            "required_primitives": [
+              "effective Remote Desktop Users membership",
+              "SeRemoteInteractiveLogonRight",
+              "SeDenyRemoteInteractiveLogonRight"
+            ],
+            "collection_completeness_status": "not_measurable_from_snapshot",
+            "raw_primitive_key": "RemoteDesktopUsers_raw_memberships",
+            "note": "3 raw RDU membership observation(s) are reported separately. SEAMLESS does not provide sufficient UserRights and completeness evidence, so verified effective CanRDP cannot be measured or materialized; canonical relationship absence cannot be concluded."
+          }
+        }
+      },
+      "unknown_rate_by_edge_type": {
+        "MemberOf": {
+          "collection_surface": "directory_ldap",
+          "source_entity_type": "Group",
+          "total_source_entities": 549,
+          "entities_with_field_present": 549,
+          "field_presence_rate": 100.0,
+          "source_entities_with_observed_evidence": 545,
+          "source_entities_without_observed_evidence": 4,
+          "positive_raw_evidence_rate": 99.27,
+          "raw_nonobservation_rate": 0.73,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "extracted_edges_count": 13324,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "directory_observed",
+          "note": "545/549 groups have raw member references (13324 references extracted); 4/549 groups have empty or unobserved Members arrays. Collection completeness and canonical relationship absence cannot be established from this snapshot."
+        },
+        "AdminTo": {
+          "collection_surface": "endpoint_rpc_sam",
+          "source_entity_type": "Computer",
+          "total_source_entities": 100,
+          "raw_primitive_key": "LocalAdmins_raw_memberships",
+          "entities_with_field_present": 100,
+          "field_presence_rate": 100.0,
+          "source_entities_with_positive_evidence": 1,
+          "source_entities_empty_or_unobserved": 99,
+          "positive_evidence_rate": 1.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "extracted_edges_count": 5,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "endpoint_partially_observed",
+          "note": "5 positive host-bound LocalAdmins raw membership observation(s) were found on 1/100 computers. The remaining 99/100 hosts are empty or unobserved; canonical AdminTo absence cannot be concluded."
+        },
+        "CanRDP": {
+          "measurement": "verified_effective_relationship",
+          "collection_surface": "endpoint_rpc_sam_and_user_rights",
+          "source_entity_type": "Computer",
+          "total_source_entities": 100,
+          "raw_primitive_key": "RemoteDesktopUsers_raw_memberships",
+          "raw_observation_count": 3,
+          "verified_effective_edges_count": null,
+          "materialized_edges_count": 0,
+          "unknown_source_entities": 100,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "unknown_not_materialized",
+          "note": "3 raw RDU membership observation(s) are reported separately. SEAMLESS does not provide sufficient UserRights and completeness evidence, so verified effective CanRDP cannot be measured or materialized; canonical relationship absence cannot be concluded."
+        },
+        "CanPSRemote": {
+          "collection_surface": "endpoint_rpc_sam",
+          "source_entity_type": "Computer",
+          "total_source_entities": 100,
+          "raw_primitive_key": "PSRemoteUsers_raw_memberships",
+          "entities_with_field_present": 100,
+          "field_presence_rate": 100.0,
+          "source_entities_with_positive_evidence": 1,
+          "source_entities_empty_or_unobserved": 99,
+          "positive_evidence_rate": 1.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "modeled_structural_edges_count": 2,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "endpoint_partially_observed",
+          "note": "2 positive Remote Management Users membership observation(s) were found on 1/100 computers. Empty or unobserved hosts remain unknown; WinRM availability and endpoint ACL authorization are runtime/endpoint predicates."
+        },
+        "HasSession": {
+          "collection_surface": "endpoint_net_session_enum",
+          "source_entity_type": "Computer",
+          "total_source_entities": 100,
+          "raw_primitive_key": "Sessions_raw_observations",
+          "entities_with_positive_observation": 0,
+          "entities_empty_or_unobserved": 100,
+          "field_presence_rate": 100.0,
+          "positive_observation_rate": 0.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "observed_session_edges_count": 0,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "session_unobserved",
+          "note": "0 session observation(s) were present. Empty or unobserved on 100/100 computers; collection completeness is not measurable, so session absence cannot be concluded."
+        },
+        "GenericAll": {
+          "collection_surface": "directory_dacl",
+          "source_entity_type": "All AD Objects",
+          "total_source_entities": 3368,
+          "entities_with_field_present": 3368,
+          "field_presence_rate": 100.0,
+          "source_entities_with_observed_evidence": 3350,
+          "source_entities_without_observed_evidence": 18,
+          "positive_raw_evidence_rate": 99.47,
+          "raw_nonobservation_rate": 0.53,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "extracted_edges_count": 37208,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "directory_observed",
+          "note": "3350/3368 objects have explicit GenericAll ACE observations (37208 raw entries); 18/3368 have no such observed entry. Collection completeness and canonical relationship absence are unverified."
+        },
+        "WriteDacl": {
+          "collection_surface": "directory_dacl",
+          "source_entity_type": "All AD Objects",
+          "total_source_entities": 3368,
+          "entities_with_field_present": 3368,
+          "field_presence_rate": 100.0,
+          "source_entities_with_observed_evidence": 3365,
+          "source_entities_without_observed_evidence": 3,
+          "positive_raw_evidence_rate": 99.91,
+          "raw_nonobservation_rate": 0.09,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "extracted_edges_count": 3397,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "directory_observed",
+          "note": "3365/3368 objects have explicit WriteDacl ACE observations (3397 raw entries); 3/3368 have no such observed entry. Collection completeness and canonical relationship absence are unverified."
+        },
+        "ForceChangePassword": {
+          "collection_surface": "directory_dacl",
+          "source_entity_type": "All AD Objects",
+          "total_source_entities": 3368,
+          "entities_with_field_present": 3368,
+          "field_presence_rate": 100.0,
+          "source_entities_with_observed_evidence": 0,
+          "source_entities_without_observed_evidence": 3368,
+          "positive_raw_evidence_rate": 0.0,
+          "raw_nonobservation_rate": 100.0,
+          "unknown_rate": "not_measurable_from_snapshot",
+          "unknown_or_unobserved_rate": "not_measurable_from_snapshot",
+          "extracted_edges_count": 0,
+          "collection_completeness_status": "not_measurable_from_snapshot",
+          "collection_completeness_note": "Snapshot schema lacks collection-result/error metadata (.errors); true collection completeness or access-denied rate cannot be established from JSON alone.",
+          "status": "directory_raw_evidence_unobserved",
+          "note": "0 explicit ForceChangePassword RightName entries observed across 3368 objects. ExtendedRight interpretation and collection completeness remain unverified; canonical absence cannot be concluded."
+        }
+      },
+      "collector_error_and_access_denied": {
+        "status": "not_measurable_from_snapshot",
+        "reason": "Raw BloodHound snapshot contains only successfully parsed JSON object envelopes without collector error logs (.errors) or access-denied telemetry metadata.",
+        "limitation_note": "Cannot assert 100% observability or complete absence of blind spots; access-denied rate is unmeasured in this static snapshot."
+      },
+      "missingness_concentration": {
+        "boundary_note": "Rates describe raw field non-population in this snapshot, not collection completeness, endpoint state, or canonical relationship absence.",
+        "by_tier_and_role": {
+          "domain_controllers": {
+            "total": 1,
+            "os_missing_rate": 0.0,
+            "localadmins_missing_rate": 0.0,
+            "lastlogon_missing_rate": 0.0
+          },
+          "workstations": {
+            "total": 99,
+            "os_missing_rate": 100.0,
+            "localadmins_missing_rate": 100.0,
+            "lastlogon_missing_rate": 100.0
+          },
+          "concentration_finding": "Raw operatingSystem and LocalAdmins non-population is concentrated in non-DC workstations; the Domain Controller has populated raw values. Collection completeness is not established."
+        },
+        "by_privilege_level": {
+          "privileged_users_admincount_true": {
+            "total": 2,
+            "lastlogon_missing": 1,
+            "lastlogon_missing_rate": 50.0
+          },
+          "standard_users_admincount_false": {
+            "total": 2491,
+            "lastlogon_missing": 2491,
+            "lastlogon_missing_rate": 100.0
+          },
+          "concentration_finding": "User lastLogonTimestamp is zero or absent on most recorded accounts; one administrative user has a positive value. This does not establish whether other accounts logged on."
+        },
+        "by_ou": {
+          "distinct_parent_ous_count": 79,
+          "top_ous_by_computer_count": [
+            {
+              "ou": "OU=Groups,OU=AWS,OU=Tier 1",
+              "computer_count": 3,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=ServiceAccounts,OU=ITS,OU=Tier 2",
+              "computer_count": 3,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Devices,OU=HRE,OU=Stage",
+              "computer_count": 3,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Domain Controllers",
+              "computer_count": 2,
+              "os_missing_rate": 50.0,
+              "localadmins_missing_rate": 50.0
+            },
+            {
+              "ou": "OU=Test,OU=AWS,OU=Stage",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Devices,OU=BDE,OU=Tier 1",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=TST,OU=Stage",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Groups,OU=OGC,OU=Tier 1",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Groups,OU=FIN,OU=Tier 1",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            },
+            {
+              "ou": "OU=Test,OU=FIN,OU=Tier 1",
+              "computer_count": 2,
+              "os_missing_rate": 100.0,
+              "localadmins_missing_rate": 100.0
+            }
+          ],
+          "domain_controllers_ou": {
+            "ou": "OU=Domain Controllers",
+            "computer_count": 2,
+            "populated_computers": 1,
+            "unpopulated_computers": 1,
+            "operating_system_missing_rate": 50.0,
+            "local_admins_missing_rate": 50.0,
+            "members": [
+              {
+                "name": "BADBLOOD.SEAMLESS.INTERNAL",
+                "has_operatingsystem": true,
+                "local_admins_count": 5
+              },
+              {
+                "name": "HREWLPT1000001.SEAMLESS.INTERNAL",
+                "has_operatingsystem": false,
+                "local_admins_count": 0
+              }
+            ]
+          },
+          "non_dc_workstation_ous_summary": {
+            "distinct_ous_count": 78,
+            "total_computers": 98,
+            "operating_system_missing_rate": 100.0,
+            "local_admins_missing_rate": 100.0
+          },
+          "concentration_finding": "Analyzed 79 distinct parent OUs containing computers: OU=Domain Controllers contains 2 computers and 1 without a populated operatingSystem value; the other 78 parent OUs contain 98 computers, of which 98 lack a populated operatingSystem value. These are raw field observations, not collection completeness findings."
+        }
+      }
+    },
+    "provenance_metadata": {
+      "dataset_id": "seamless-v1",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "schema_version": 1,
+      "files": [
+        {
+          "relative_path": "20210920185958_computers.json",
+          "sha256": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+          "size_bytes": 303149
+        },
+        {
+          "relative_path": "20210920185958_domains.json",
+          "sha256": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+          "size_bytes": 3032
+        },
+        {
+          "relative_path": "20210920185958_gpos.json",
+          "sha256": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+          "size_bytes": 3946
+        },
+        {
+          "relative_path": "20210920185958_groups.json",
+          "sha256": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+          "size_bytes": 2410332
+        },
+        {
+          "relative_path": "20210920185958_ous.json",
+          "sha256": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+          "size_bytes": 475300
+        },
+        {
+          "relative_path": "20210920185958_users.json",
+          "sha256": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa",
+          "size_bytes": 8176069
+        }
+      ],
+      "analyzed_population": {
+        "total_raw_records": 3369,
+        "unique_snapshot_nodes": 3368,
+        "materialized_graph_nodes": 3370
+      },
+      "analysis_code_revision": {
+        "generator_sha256": "f31b8d285e196c42844972b3f78e44d06611070a8fc505428915c6ce946610e5",
+        "git_commit": "63db38b",
+        "git_dirty": false
+      }
+    }
+  },
+  "telemetry": {
+    "total_events": 4633,
+    "unique_computers": 19,
+    "unique_users": 35,
+    "temporal_span": {
+      "earliest": "2017-06-09 19:21:26",
+      "latest": "2021-06-09 05:18:11"
+    },
+    "upstream_tactic_annotations": {
+      "source_field": "EVTX_Tactic",
+      "status": "upstream_annotation_not_windows_ground_truth",
+      "distribution": {
+        "Lateral Movement": 1288,
+        "Privilege Escalation": 1088,
+        "Execution": 533,
+        "Command and Control": 432,
+        "Defense Evasion": 431,
+        "Persistence": 411,
+        "Credential Access": 283,
+        "Discovery": 167
+      }
+    },
+    "corpus_event_id_distribution": {
+      "5145": 950,
+      "1": 843,
+      "7": 613,
+      "11": 185,
+      "1040": 178,
+      "1042": 173,
+      "13": 162,
+      "3": 153,
+      "10": 140,
+      "4663": 115,
+      "8": 101,
+      "5156": 92,
+      "12": 80,
+      "4624": 69,
+      "1155": 64,
+      "258": 64,
+      "1136": 64,
+      "18": 46,
+      "5": 43,
+      "5136": 42,
+      "4688": 35,
+      "4662": 33,
+      "261": 25,
+      "104": 23,
+      "131": 22,
+      "1102": 21,
+      "4661": 20,
+      "17": 16,
+      "5158": 14,
+      "33205": 13,
+      "4672": 12,
+      "1149": 11,
+      "18456": 10,
+      "4776": 10,
+      "4768": 9,
+      "168": 9,
+      "68": 9,
+      "6": 8,
+      "4719": 8,
+      "15457": 8,
+      "4648": 7,
+      "500": 7,
+      "4826": 6,
+      "7036": 6,
+      "5140": 6,
+      "4738": 5,
+      "4702": 5,
+      "4742": 5,
+      "4985": 4,
+      "10016": 4,
+      "7045": 4,
+      "18454": 4,
+      "4": 3,
+      "4104": 3,
+      "2": 3,
+      "4698": 3,
+      "4699": 3,
+      "59": 3,
+      "60": 3,
+      "169": 3,
+      "193": 3,
+      "20": 3,
+      "21": 3,
+      "23": 3,
+      "16": 2,
+      "327": 2,
+      "4771": 2,
+      "3001": 2,
+      "4720": 2,
+      "4798": 2,
+      "4732": 2,
+      "19": 2,
+      "4611": 2,
+      "4673": 2,
+      "4794": 1,
+      "4625": 1,
+      "4656": 1,
+      "326": 1,
+      "325": 1,
+      "40961": 1,
+      "53504": 1,
+      "40962": 1,
+      "4724": 1,
+      "5805": 1,
+      "4799": 1,
+      "209": 1,
+      "91": 1,
+      "15281": 1,
+      "5142": 1,
+      "4634": 1,
+      "4765": 1,
+      "4658": 1,
+      "15": 1,
+      "22": 1,
+      "4703": 1
+    },
+    "top_event_ids": {
+      "5145": 950,
+      "1": 843,
+      "7": 613,
+      "11": 185,
+      "1040": 178,
+      "1042": 173,
+      "13": 162,
+      "3": 153,
+      "10": 140,
+      "4663": 115,
+      "8": 101,
+      "5156": 92,
+      "12": 80,
+      "4624": 69,
+      "1155": 64
+    },
+    "telemetry_evidence_inventory": {
+      "scope": "corpus_statistics_only",
+      "semantic_catalog": "configs/attack_semantics.yml",
+      "event_id_qualification": "not_assessed",
+      "attack_or_relationship_attribution": "not_assessed",
+      "boundary_note": "EventID counts are independent corpus row frequencies, not attack counts, structural relationships, or ExpectedTelemetry satisfaction. Provider, channel, event-specific qualifiers, identity, environment, and time correlation are not assessed here."
+    },
+    "population_provenance": {
+      "measured_events": 4633,
+      "distinct_upstream_tactic_labels": 8,
+      "external_corpus_claim": {
+        "claimed_events": 6432,
+        "claimed_tactics": 11,
+        "status": "external_unverified_claim",
+        "note": "6,432 events and 11 tactics are external project claims from EVTX-ATTACK-SAMPLES literature, not measured in the verified local snapshot."
+      }
+    },
+    "provenance_metadata": {
+      "dataset_id": "telemetry-raw-v1",
+      "snapshot_id": "sha256:4203d3f13e42aa7a84f32762b78bfe87267f66318267a7cf80b9f23c620cc9c1",
+      "schema_version": 1,
+      "files": [
+        {
+          "relative_path": "evtx_data.csv",
+          "sha256": "9220b0725221244a6b61dff8dabbf382831c0fcc2ad9d261ae60cb1f2b082fff",
+          "size_bytes": 4262506
+        }
+      ],
+      "analyzed_population": {
+        "measured_events": 4633,
+        "distinct_upstream_tactic_labels": 8,
+        "temporal_span": {
+          "earliest": "2017-06-09 19:21:26",
+          "latest": "2021-06-09 05:18:11"
+        }
+      },
+      "analysis_code_revision": {
+        "generator_sha256": "f31b8d285e196c42844972b3f78e44d06611070a8fc505428915c6ce946610e5",
+        "git_commit": "63db38b",
+        "git_dirty": false
+      }
+    }
+  },
+  "NORTH": {
+    "schema_version": 4,
+    "raw_node_counts": {
+      "AIACA": 1,
+      "CertTemplate": 33,
+      "Computer": 2,
+      "Container": 203,
+      "Domain": 1,
+      "EnterpriseCA": 1,
+      "GPO": 3,
+      "Group": 84,
+      "NTAuthStore": 1,
+      "OU": 1,
+      "RootCA": 1,
+      "User": 16
+    },
+    "reconciled_node_counts": {
+      "AIACA": 1,
+      "CertTemplate": 33,
+      "Computer": 2,
+      "Container": 203,
+      "Domain": 1,
+      "EnterpriseCA": 1,
+      "GPO": 3,
+      "Group": 57,
+      "NTAuthStore": 1,
+      "OU": 1,
+      "RootCA": 1,
+      "User": 16
+    },
+    "duplicate_records_by_kind": {
+      "AIACA": 0,
+      "CertTemplate": 0,
+      "Computer": 0,
+      "Container": 0,
+      "Domain": 0,
+      "EnterpriseCA": 0,
+      "GPO": 0,
+      "Group": 27,
+      "NTAuthStore": 0,
+      "OU": 0,
+      "RootCA": 0,
+      "User": 0
+    },
+    "node_counts": {
+      "AIACA": 1,
+      "CertTemplate": 33,
+      "Computer": 2,
+      "Container": 203,
+      "Domain": 1,
+      "EnterpriseCA": 1,
+      "GPO": 3,
+      "Group": 57,
+      "NTAuthStore": 1,
+      "OU": 1,
+      "RootCA": 1,
+      "User": 16
+    },
+    "total_raw_records": 347,
+    "total_nodes": 320,
+    "dropped_duplicate_records": 27,
+    "node_count_reconciliation_note": "Parsed 347 raw records yielding 320 unique nodes; 27 duplicate record(s) deduplicated by ObjectIdentifier.",
+    "edge_counts": {
+      "Owns": 308,
+      "GenericAll": 383,
+      "WriteDacl": 573,
+      "WriteOwner": 573,
+      "Enroll": 88,
+      "AdminTo": 7,
+      "HasSession": 9,
+      "AddKeyCredentialLink": 24,
+      "GenericWrite": 103,
+      "AllExtendedRights": 30,
+      "GetChanges": 3,
+      "GetChangesInFilteredSet": 2,
+      "GetChangesAll": 2,
+      "ManageCA": 3,
+      "ManageCertificates": 2,
+      "MemberOf": 42
+    },
+    "total_edges": 2152,
+    "simple_edges": 861,
+    "edge_to_node_ratio": 6.72,
+    "graph_density": 0.008435,
+    "multiedge_density": 0.021082,
+    "density_metrics": {
+      "canonical_directed_simple_density": 0.008435,
+      "multigraph_edge_intensity": 0.021082,
+      "simple_edges_numerator": 861,
+      "total_edges_numerator": 2152,
+      "unique_nodes": 320,
+      "possible_pairs_denominator": 102080,
+      "formula": "E / (V * (V - 1))"
+    },
+    "normalized_ratios": {
+      "privileged_principal_ratio": 0.2,
+      "acl_density": 0.9298,
+      "session_density": 0.28125,
+      "session_density_status": "measured",
+      "details": {
+        "privileged_principal_ratio": {
+          "numerator": 15,
+          "denominator": 75,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.2
+        },
+        "acl_density": {
+          "numerator": 2001,
+          "denominator": 2152,
+          "formula": "acl_edges / total_edges",
+          "value": 0.9298
+        },
+        "session_density": {
+          "numerator": 9,
+          "unique_computers": 2,
+          "unique_users": 16,
+          "denominator": 32,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.28125,
+          "status": "measured"
+        }
+      }
+    },
+    "group_nesting": {
+      "max_depth": 1,
+      "avg_depth": 1.0
+    },
+    "privilege_distribution": {
+      "user_admincount": 6,
+      "group_admincount": 9,
+      "group_highvalue": 0
+    },
+    "raw_host_access_counts": {
+      "RemoteDesktopUsers_raw_memberships": 1,
+      "CanRDP_verified_effective_edges": null,
+      "CanRDP_status": "unknown_without_complete_UserRights_evidence"
+    },
+    "host_access_semantics": {
+      "raw_primitive_key": "RemoteDesktopUsers_raw_memberships",
+      "verified_relationship": "CanRDP",
+      "verified_relationship_status": "unknown",
+      "collection_completeness_status": "not_measurable_from_historical_report",
+      "note": "Historical CanRDP counts were produced from raw Remote Desktop Users membership; they are retained only as raw RDU observations because UserRights allow/deny and collection completeness evidence are unavailable."
+    },
+    "preservation_metadata": {
+      "status": "preserved_historical",
+      "source": {
+        "kind": "git_ref",
+        "git_ref": "275a721",
+        "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+        "relative_path": "reports/eda_summary.json",
+        "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+      }
+    }
+  },
+  "ad_sampledata": {
+    "schema_version": 4,
+    "raw_node_counts": {
+      "AIACA": 6,
+      "CertTemplate": 106,
+      "Computer": 34,
+      "Container": 1121,
+      "Domain": 3,
+      "EnterpriseCA": 4,
+      "GPO": 32,
+      "Group": 285,
+      "NTAuthStore": 2,
+      "OU": 20,
+      "RootCA": 5,
+      "User": 100
+    },
+    "reconciled_node_counts": {
+      "AIACA": 6,
+      "CertTemplate": 106,
+      "Computer": 34,
+      "Container": 939,
+      "Domain": 3,
+      "EnterpriseCA": 4,
+      "GPO": 32,
+      "Group": 219,
+      "NTAuthStore": 2,
+      "OU": 20,
+      "RootCA": 5,
+      "User": 99
+    },
+    "duplicate_records_by_kind": {
+      "AIACA": 0,
+      "CertTemplate": 0,
+      "Computer": 0,
+      "Container": 182,
+      "Domain": 0,
+      "EnterpriseCA": 0,
+      "GPO": 0,
+      "Group": 66,
+      "NTAuthStore": 0,
+      "OU": 0,
+      "RootCA": 0,
+      "User": 1
+    },
+    "node_counts": {
+      "AIACA": 6,
+      "CertTemplate": 106,
+      "Computer": 34,
+      "Container": 939,
+      "Domain": 3,
+      "EnterpriseCA": 4,
+      "GPO": 32,
+      "Group": 219,
+      "NTAuthStore": 2,
+      "OU": 20,
+      "RootCA": 5,
+      "User": 99
+    },
+    "total_raw_records": 1718,
+    "total_nodes": 1469,
+    "dropped_duplicate_records": 249,
+    "node_count_reconciliation_note": "Parsed 1718 raw records yielding 1469 unique nodes; 249 duplicate record(s) deduplicated by ObjectIdentifier.",
+    "edge_counts": {
+      "Owns": 1442,
+      "GenericAll": 3315,
+      "WriteDacl": 2236,
+      "WriteOwner": 2202,
+      "Enroll": 303,
+      "AllExtendedRights": 187,
+      "WritePKINameFlag": 2,
+      "WritePKIEnrollmentFlag": 2,
+      "AdminTo": 13,
+      "HasSession": 60,
+      "GenericWrite": 591,
+      "AddAllowedToAct": 1,
+      "AddKeyCredentialLink": 180,
+      "WriteAccountRestrictions": 5,
+      "ReadLAPSPassword": 1,
+      "GetChanges": 11,
+      "GetChangesInFilteredSet": 6,
+      "GetChangesAll": 8,
+      "ManageCA": 12,
+      "ManageCertificates": 8,
+      "MemberOf": 161,
+      "AddMember": 96,
+      "AddSelf": 1,
+      "ReadGMSAPassword": 7,
+      "ForceChangePassword": 52
+    },
+    "total_edges": 10902,
+    "simple_edges": 5719,
+    "edge_to_node_ratio": 7.42,
+    "graph_density": 0.002652,
+    "multiedge_density": 0.005055,
+    "density_metrics": {
+      "canonical_directed_simple_density": 0.002652,
+      "multigraph_edge_intensity": 0.005055,
+      "simple_edges_numerator": 5719,
+      "total_edges_numerator": 10902,
+      "unique_nodes": 1469,
+      "possible_pairs_denominator": 2156492,
+      "formula": "E / (V * (V - 1))"
+    },
+    "normalized_ratios": {
+      "privileged_principal_ratio": 0.2358,
+      "acl_density": 0.948,
+      "session_density": 0.017825,
+      "session_density_status": "measured",
+      "details": {
+        "privileged_principal_ratio": {
+          "numerator": 83,
+          "denominator": 352,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.2358
+        },
+        "acl_density": {
+          "numerator": 10335,
+          "denominator": 10902,
+          "formula": "acl_edges / total_edges",
+          "value": 0.948
+        },
+        "session_density": {
+          "numerator": 60,
+          "unique_computers": 34,
+          "unique_users": 99,
+          "denominator": 3366,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.017825,
+          "status": "measured"
+        }
+      }
+    },
+    "group_nesting": {
+      "max_depth": 3,
+      "avg_depth": 1.09
+    },
+    "privilege_distribution": {
+      "user_admincount": 40,
+      "group_admincount": 43,
+      "group_highvalue": 0
+    },
+    "raw_host_access_counts": {
+      "RemoteDesktopUsers_raw_memberships": 1,
+      "CanRDP_verified_effective_edges": null,
+      "CanRDP_status": "unknown_without_complete_UserRights_evidence"
+    },
+    "host_access_semantics": {
+      "raw_primitive_key": "RemoteDesktopUsers_raw_memberships",
+      "verified_relationship": "CanRDP",
+      "verified_relationship_status": "unknown",
+      "collection_completeness_status": "not_measurable_from_historical_report",
+      "note": "Historical CanRDP counts were produced from raw Remote Desktop Users membership; they are retained only as raw RDU observations because UserRights allow/deny and collection completeness evidence are unavailable."
+    },
+    "preservation_metadata": {
+      "status": "preserved_historical",
+      "source": {
+        "kind": "git_ref",
+        "git_ref": "275a721",
+        "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+        "relative_path": "reports/eda_summary.json",
+        "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+      }
+    }
+  },
+  "collector_bias_comparison": {
+    "Total_SharpHound_edges": 2137,
+    "Total_BloodHound.py_edges": 742,
+    "Common_edges": 733,
+    "Union_edges": 2146,
+    "Overall_Jaccard_Similarity": 0.3416,
+    "Per_edge_kind_breakdown": {
+      "AddKeyCredentialLink": {
+        "SharpHound": 24,
+        "BloodHound.py": 24,
+        "Common": 24,
+        "Union": 24,
+        "Jaccard": 1.0
+      },
+      "AdminTo": {
+        "SharpHound": 7,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 7,
+        "Jaccard": 0.0
+      },
+      "AllExtendedRights": {
+        "SharpHound": 30,
+        "BloodHound.py": 30,
+        "Common": 30,
+        "Union": 30,
+        "Jaccard": 1.0
+      },
+      "Enroll": {
+        "SharpHound": 88,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 88,
+        "Jaccard": 0.0
+      },
+      "GenericAll": {
+        "SharpHound": 378,
+        "BloodHound.py": 177,
+        "Common": 176,
+        "Union": 379,
+        "Jaccard": 0.4644
+      },
+      "GenericWrite": {
+        "SharpHound": 103,
+        "BloodHound.py": 103,
+        "Common": 103,
+        "Union": 103,
+        "Jaccard": 1.0
+      },
+      "GetChanges": {
+        "SharpHound": 3,
+        "BloodHound.py": 3,
+        "Common": 2,
+        "Union": 4,
+        "Jaccard": 0.5
+      },
+      "GetChangesAll": {
+        "SharpHound": 2,
+        "BloodHound.py": 2,
+        "Common": 2,
+        "Union": 2,
+        "Jaccard": 1.0
+      },
+      "GetChangesInFilteredSet": {
+        "SharpHound": 2,
+        "BloodHound.py": 2,
+        "Common": 1,
+        "Union": 3,
+        "Jaccard": 0.3333
+      },
+      "HasSession": {
+        "SharpHound": 4,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 4,
+        "Jaccard": 0.0
+      },
+      "ManageCA": {
+        "SharpHound": 3,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 3,
+        "Jaccard": 0.0
+      },
+      "ManageCertificates": {
+        "SharpHound": 2,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 2,
+        "Jaccard": 0.0
+      },
+      "MemberOf": {
+        "SharpHound": 42,
+        "BloodHound.py": 42,
+        "Common": 41,
+        "Union": 43,
+        "Jaccard": 0.9535
+      },
+      "Owns": {
+        "SharpHound": 308,
+        "BloodHound.py": 87,
+        "Common": 86,
+        "Union": 309,
+        "Jaccard": 0.2783
+      },
+      "WriteDacl": {
+        "SharpHound": 570,
+        "BloodHound.py": 136,
+        "Common": 134,
+        "Union": 572,
+        "Jaccard": 0.2343
+      },
+      "WriteOwner": {
+        "SharpHound": 570,
+        "BloodHound.py": 136,
+        "Common": 134,
+        "Union": 572,
+        "Jaccard": 0.2343
+      },
+      "RemoteDesktopUsers_raw_memberships": {
+        "SharpHound": 1,
+        "BloodHound.py": 0,
+        "Common": 0,
+        "Union": 1,
+        "Jaccard": 0.0
+      }
+    },
+    "Discrepancy_analysis": "SharpHound collects local admin RPC/SAM and AD CS evidence (AdminTo, RemoteDesktopUsers_raw_memberships, Enroll), while BloodHound.py primarily performs standard LDAP queries. The raw RDU bucket is not verified CanRDP without UserRights allow/deny evidence.",
+    "semantic_note": "RemoteDesktopUsers_raw_memberships is raw RDU evidence only; it is not verified CanRDP.",
+    "preservation_metadata": {
+      "status": "preserved_historical",
+      "source": {
+        "kind": "git_ref",
+        "git_ref": "275a721",
+        "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+        "relative_path": "reports/eda_summary.json",
+        "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+      }
+    }
+  },
+  "cross_dataset_normalized_comparison": {
+    "SEAMLESS": {
+      "total_raw_records": 3369,
+      "total_nodes": 3368,
+      "total_edges": 66371,
+      "simple_edges": 53751,
+      "edge_to_node_ratio": 19.71,
+      "graph_density": 0.004734,
+      "multiedge_density": 0.005853,
+      "density_metrics": {
+        "canonical_directed_simple_density": 0.004734,
+        "multigraph_edge_intensity": 0.005853,
+        "simple_edges_numerator": 53751,
+        "simple_graph_nodes": 3370,
+        "simple_possible_pairs_denominator": 11353530,
+        "multigraph_edges_numerator": 66371,
+        "snapshot_unique_nodes": 3368,
+        "snapshot_possible_pairs_denominator": 11340056,
+        "formula": "E / (V * (V - 1))"
+      },
+      "privileged_principal_ratio": 0.0041,
+      "acl_density": 0.7107,
+      "session_density": 0.0,
+      "session_density_status": "unobserved_in_snapshot",
+      "normalized_ratios_details": {
+        "privileged_principal_ratio": {
+          "numerator": 13,
+          "denominator": 3142,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.0041
+        },
+        "acl_density": {
+          "numerator": 47173,
+          "denominator": 66371,
+          "formula": "acl_edges / total_edges",
+          "value": 0.7107
+        },
+        "session_density": {
+          "numerator": 0,
+          "unique_computers": 100,
+          "unique_users": 2493,
+          "denominator": 249300,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.0,
+          "status": "unobserved_in_snapshot"
+        }
+      }
+    },
+    "NORTH": {
+      "total_raw_records": 347,
+      "total_nodes": 320,
+      "total_edges": 2152,
+      "simple_edges": 861,
+      "edge_to_node_ratio": 6.72,
+      "graph_density": 0.008435,
+      "multiedge_density": 0.021082,
+      "density_metrics": {
+        "canonical_directed_simple_density": 0.008435,
+        "multigraph_edge_intensity": 0.021082,
+        "simple_edges_numerator": 861,
+        "total_edges_numerator": 2152,
+        "unique_nodes": 320,
+        "possible_pairs_denominator": 102080,
+        "formula": "E / (V * (V - 1))"
+      },
+      "privileged_principal_ratio": 0.2,
+      "acl_density": 0.9298,
+      "session_density": 0.28125,
+      "session_density_status": "measured",
+      "normalized_ratios_details": {
+        "privileged_principal_ratio": {
+          "numerator": 15,
+          "denominator": 75,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.2
+        },
+        "acl_density": {
+          "numerator": 2001,
+          "denominator": 2152,
+          "formula": "acl_edges / total_edges",
+          "value": 0.9298
+        },
+        "session_density": {
+          "numerator": 9,
+          "unique_computers": 2,
+          "unique_users": 16,
+          "denominator": 32,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.28125,
+          "status": "measured"
+        }
+      }
+    },
+    "ad_sampledata": {
+      "total_raw_records": 1718,
+      "total_nodes": 1469,
+      "total_edges": 10902,
+      "simple_edges": 5719,
+      "edge_to_node_ratio": 7.42,
+      "graph_density": 0.002652,
+      "multiedge_density": 0.005055,
+      "density_metrics": {
+        "canonical_directed_simple_density": 0.002652,
+        "multigraph_edge_intensity": 0.005055,
+        "simple_edges_numerator": 5719,
+        "total_edges_numerator": 10902,
+        "unique_nodes": 1469,
+        "possible_pairs_denominator": 2156492,
+        "formula": "E / (V * (V - 1))"
+      },
+      "privileged_principal_ratio": 0.2358,
+      "acl_density": 0.948,
+      "session_density": 0.017825,
+      "session_density_status": "measured",
+      "normalized_ratios_details": {
+        "privileged_principal_ratio": {
+          "numerator": 83,
+          "denominator": 352,
+          "formula": "privileged_principals / total_principals",
+          "value": 0.2358
+        },
+        "acl_density": {
+          "numerator": 10335,
+          "denominator": 10902,
+          "formula": "acl_edges / total_edges",
+          "value": 0.948
+        },
+        "session_density": {
+          "numerator": 60,
+          "unique_computers": 34,
+          "unique_users": 99,
+          "denominator": 3366,
+          "formula": "session_edges / (unique_computers * unique_users)",
+          "value": 0.017825,
+          "status": "measured"
+        }
+      }
+    }
+  },
+  "report_provenance": {
+    "mode": "scoped_preservation",
+    "generator_revision": {
+      "generator_sha256": "f31b8d285e196c42844972b3f78e44d06611070a8fc505428915c6ce946610e5",
+      "git_commit": "63db38b",
+      "git_dirty": false
+    },
+    "sections": {
+      "SEAMLESS": {
+        "status": "generated_current"
+      },
+      "telemetry": {
+        "status": "generated_current"
+      },
+      "NORTH": {
+        "status": "preserved_historical",
+        "source": {
+          "kind": "git_ref",
+          "git_ref": "275a721",
+          "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+          "relative_path": "reports/eda_summary.json",
+          "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+        }
+      },
+      "ad_sampledata": {
+        "status": "preserved_historical",
+        "source": {
+          "kind": "git_ref",
+          "git_ref": "275a721",
+          "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+          "relative_path": "reports/eda_summary.json",
+          "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+        }
+      },
+      "collector_bias_comparison": {
+        "status": "preserved_historical",
+        "source": {
+          "kind": "git_ref",
+          "git_ref": "275a721",
+          "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+          "relative_path": "reports/eda_summary.json",
+          "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+        }
+      },
+      "cross_dataset_normalized_comparison": {
+        "status": "derived_from_assembled_sections"
+      }
+    },
+    "preservation": {
+      "status": "scoped_preservation",
+      "source": {
+        "kind": "git_ref",
+        "git_ref": "275a721",
+        "git_commit": "275a72171c88305d70feef8e6bccd8f19e737106",
+        "relative_path": "reports/eda_summary.json",
+        "sha256": "76f6faf78d4cd1cf8d5531073cfd25f6226eee0b157c85c634e350b5885b771a"
+      },
+      "preserved_sections": [
+        "NORTH",
+        "ad_sampledata",
+        "collector_bias_comparison"
+      ]
+    }
+  }
+}

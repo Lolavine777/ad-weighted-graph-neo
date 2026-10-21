@@ -1,0 +1,237 @@
+{
+  "source_foothold": "10000000-0000-4000-8000-000000000001",
+  "initial_actor": "S-1-5-21-1000-2000-3000-1101",
+  "initial_state": {
+    "control": [
+      "10000000-0000-4000-8000-000000000001"
+    ],
+    "known_identity": [
+      "S-1-5-21-1000-2000-3000-1102"
+    ],
+    "usable_identity": [
+      [
+        "S-1-5-21-1000-2000-3000-1101",
+        "10000000-0000-4000-8000-000000000001"
+      ]
+    ]
+  },
+  "authentication_context": "10000000-0000-4000-8000-000000000001",
+  "target": "10000000-0000-4000-8000-000000000002",
+  "target_goal": {
+    "target": "10000000-0000-4000-8000-000000000002",
+    "required_state": {
+      "admin_control": [
+        "10000000-0000-4000-8000-000000000002"
+      ]
+    }
+  },
+  "checkpoint_goal": {
+    "target": "S-1-5-21-1000-2000-3000-512",
+    "required_state": {
+      "effective_member": [
+        [
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      ]
+    }
+  },
+  "assumptions": [
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-1102",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "service_ticket_request_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-1102",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "kerberos_authentication_usable",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "recovery_success",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-1102",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture",
+        "method": "synthetic-offline-password",
+        "budget": "fixture-budget",
+        "horizon": "fixed-snapshot-window"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "secret_valid",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_winrm_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "service_winrm_running",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "winrm_authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "endpoint_authorized",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "admin_execution_context",
+      "subject": "S-1-5-21-1000-2000-3000-1102",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "host_admin_mapping",
+      "subject": "S-1-5-21-1000-2000-3000-512",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-216/H0",
+      "rationale": "Synthetic declared outcome; no measured success",
+      "provenance_reference": "synthetic://216/outcomes",
+      "assumption_metadata": {
+        "declared_by": "synthetic-fixture"
+      }
+    }
+  ],
+  "allowed_techniques": [
+    "activate_recovered_identity",
+    "kerberoast_request",
+    "propagate_group_entitlement",
+    "recover_ticket_secret",
+    "scenario_winrm_admin"
+  ],
+  "budget": {
+    "max_paths": 50,
+    "max_steps": 9,
+    "max_expansions": 5000
+  },
+  "scenario_reference": "synthetic-216"
+}

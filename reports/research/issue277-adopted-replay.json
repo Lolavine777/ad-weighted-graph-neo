@@ -1,0 +1,2222 @@
+{
+  "execution_python": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+  "groups": {
+    "original": {
+      "all_completed_query_counts": {
+        "C_rated": 48,
+        "I_rated": 48,
+        "P_rated": 48,
+        "Pareto_eligible": 48,
+        "conditioned_feasible": 50,
+        "fully_rated": 48,
+        "valid_generated": 50
+      },
+      "cases": [
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 24,
+              "I_rated": 24,
+              "P_rated": 24,
+              "Pareto_eligible": 24,
+              "conditioned_feasible": 24,
+              "fully_rated": 24,
+              "valid_generated": 24
+            },
+            "coverage_digest": "sha256:a6b26cc59aaeaa05f4a4cb1fc370a91327e8a0c1bc992f118c2f22e030de79fc",
+            "expansions": 193,
+            "frontier": [
+              "generated_0001",
+              "generated_0002",
+              "generated_0003",
+              "generated_0004",
+              "generated_0005",
+              "generated_0006",
+              "generated_0007",
+              "generated_0008",
+              "generated_0009",
+              "generated_0010",
+              "generated_0011",
+              "generated_0012",
+              "generated_0013",
+              "generated_0014",
+              "generated_0015",
+              "generated_0016",
+              "generated_0017",
+              "generated_0018",
+              "generated_0019",
+              "generated_0020",
+              "generated_0021",
+              "generated_0022",
+              "generated_0023",
+              "generated_0024"
+            ],
+            "gaps": [],
+            "min_effort": 2,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 24,
+              "reset_identity_activation": 24,
+              "winrm_admin_execution": 24
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 312,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 24,
+              "fully_rated": 0,
+              "valid_generated": 24
+            },
+            "coverage_digest": "sha256:73b3735adcc6b85c69f588449b47c3eb5fc5855d08f59093f3e30255ed901dc2",
+            "expansions": 193,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 8,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 46,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 24,
+              "reset_identity_activation": 24,
+              "winrm_admin_execution": 24
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 16,
+            "is_full_raw": false,
+            "nodes": 7,
+            "sha256": "sha256:04119351d1cb6b9bd594993d141f840604bfe5f5257fd7f8d2b8cbf1423017d9"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 24,
+            "worked_programs": [
+              {
+                "C": 2,
+                "I": "High",
+                "P": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0002",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0003",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0004",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0005",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-projection.query.json --graph /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-projection.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": true,
+            "native_transports": [
+              {
+                "bytes": 20875107,
+                "native_file_sha256": "8c3fae8f41b192ca7e13767caf01a488ccec64f466be52c62872bd5b7399a02c"
+              },
+              {
+                "bytes": 20875107,
+                "native_file_sha256": "2cc1838eb7418a9f4fb3bf1ac71ec98bcaefaf34da417cac38818d7e4c4b30b6"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129",
+          "query_consumed_digest": "sha256:596db8589ccbe5727f1bb20b1e18d81898b550e56e9b456c86733b6fa9370f8e",
+          "query_id": "source-a-projection",
+          "sensitivity": {
+            "authority": "synthetic_test_only controls; changed questions are not an adopted release",
+            "baseline": {
+              "B_goal_contract_gap": false,
+              "counts": {
+                "C_rated": 24,
+                "I_rated": 24,
+                "P_rated": 24,
+                "Pareto_eligible": 24,
+                "conditioned_feasible": 24,
+                "fully_rated": 24,
+                "valid_generated": 24
+              },
+              "coverage_digest": "sha256:93ecd11fd44f68b5c661afc723881487c485ac4cf6c767c1d372bf007feb05fe",
+              "expansions": 193,
+              "frontier": [
+                "generated_0001",
+                "generated_0002",
+                "generated_0003",
+                "generated_0004",
+                "generated_0005",
+                "generated_0006",
+                "generated_0007",
+                "generated_0008",
+                "generated_0009",
+                "generated_0010",
+                "generated_0011",
+                "generated_0012",
+                "generated_0013",
+                "generated_0014",
+                "generated_0015",
+                "generated_0016",
+                "generated_0017",
+                "generated_0018",
+                "generated_0019",
+                "generated_0020",
+                "generated_0021",
+                "generated_0022",
+                "generated_0023",
+                "generated_0024"
+              ],
+              "gaps": [],
+              "min_effort": 2,
+              "paths_by_action_family_nonexclusive": {
+                "directory_password_reset": 24,
+                "reset_identity_activation": 24,
+                "winrm_admin_execution": 24
+              },
+              "status": "success",
+              "truncated": false,
+              "truncation_reason": null,
+              "unreturned_goal_state_success_events": []
+            },
+            "frontier_changed_with_bounds": false,
+            "scope": "query-local frontier/profile controls only; no B-owned source aggregation or remediation counterfactual claim",
+            "variants": {
+              "authoritative_false_terminal": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:5e881d4669d3d5f652cd99dfd56b521eb0af344cbac65ebd4fab1d66f9512682",
+                "expansions": 193,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "indeterminate",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              },
+              "missing_terminal_declaration": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:5e881d4669d3d5f652cd99dfd56b521eb0af344cbac65ebd4fab1d66f9512682",
+                "expansions": 193,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "indeterminate",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              },
+              "step_cap": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:65feebcbb0c07ad265f1a348851ba4dff55f7df6927dd7768f74fb7409abc6f1",
+                "expansions": 6,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "truncated",
+                "truncated": true,
+                "truncation_reason": "step_limit_reached",
+                "unreturned_goal_state_success_events": []
+              },
+              "widened_bounds_test_only": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 24,
+                  "I_rated": 24,
+                  "P_rated": 24,
+                  "Pareto_eligible": 24,
+                  "conditioned_feasible": 24,
+                  "fully_rated": 24,
+                  "valid_generated": 24
+                },
+                "coverage_digest": "sha256:893ccc73f00945a22dd864527ed2011454357b85bb8cfbbe0330231a2b2070c0",
+                "expansions": 193,
+                "frontier": [
+                  "generated_0001",
+                  "generated_0002",
+                  "generated_0003",
+                  "generated_0004",
+                  "generated_0005",
+                  "generated_0006",
+                  "generated_0007",
+                  "generated_0008",
+                  "generated_0009",
+                  "generated_0010",
+                  "generated_0011",
+                  "generated_0012",
+                  "generated_0013",
+                  "generated_0014",
+                  "generated_0015",
+                  "generated_0016",
+                  "generated_0017",
+                  "generated_0018",
+                  "generated_0019",
+                  "generated_0020",
+                  "generated_0021",
+                  "generated_0022",
+                  "generated_0023",
+                  "generated_0024"
+                ],
+                "gaps": [],
+                "min_effort": 2,
+                "paths_by_action_family_nonexclusive": {
+                  "directory_password_reset": 24,
+                  "reset_identity_activation": 24,
+                  "winrm_admin_execution": 24
+                },
+                "status": "success",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              }
+            }
+          },
+          "source_profile": "historical_source_a",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 23,
+              "I_rated": 23,
+              "P_rated": 23,
+              "Pareto_eligible": 23,
+              "conditioned_feasible": 23,
+              "fully_rated": 23,
+              "valid_generated": 23
+            },
+            "coverage_digest": "sha256:d3d047e00cd7472c0cccd9687e56a259e03b621860cdc4bab0712610e3f343c5",
+            "expansions": 60000,
+            "frontier": [
+              "generated_0001",
+              "generated_0002",
+              "generated_0003",
+              "generated_0004",
+              "generated_0005",
+              "generated_0006",
+              "generated_0007",
+              "generated_0008",
+              "generated_0009",
+              "generated_0010",
+              "generated_0011",
+              "generated_0012",
+              "generated_0013",
+              "generated_0014",
+              "generated_0015",
+              "generated_0016",
+              "generated_0017",
+              "generated_0018",
+              "generated_0019",
+              "generated_0020",
+              "generated_0021",
+              "generated_0022",
+              "generated_0023"
+            ],
+            "gaps": [],
+            "min_effort": 2,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 23,
+              "reset_identity_activation": 23,
+              "winrm_admin_execution": 23
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 297,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 23,
+              "fully_rated": 0,
+              "valid_generated": 23
+            },
+            "coverage_digest": "sha256:ccc8b2d8c0a5da30ff7d265b107f5791a0f07325e63efb50e94ac1c54f6f32c8",
+            "expansions": 60000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 8,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 46,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 23,
+              "reset_identity_activation": 23,
+              "winrm_admin_execution": 23
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 23,
+            "worked_programs": [
+              {
+                "C": 2,
+                "I": "High",
+                "P": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0002",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0003",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0004",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0005",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-full-raw-four.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-full-raw-four.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 755434944,
+                "native_file_sha256": "e8160018ffda04c8a487ac5e12a6b3eabc14fd313b7f289befbae269afd870fd"
+              },
+              {
+                "bytes": 755434943,
+                "native_file_sha256": "cc526c88840bb53c04d860f681f895e9ccfd642b07a45845f4ffc98996679af2"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:3341a37ad2ead8c6a5d150fd699da341fb2b93a810331a0c53226e75e1c7f2e6",
+          "query_consumed_digest": "sha256:9ea9bf0da493014e1fbec1a2be60b8ba3f744fd268e8b4e232852ee6210a820a",
+          "query_id": "source-a-full-raw-four",
+          "source_profile": "historical_source_a",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:98fe4705b1814d6c40f322057a7b1b4fc83fa3c7311a2e1f2540bacb2a5139b6",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:1a0120c3a828f189d79fb21dfc14eddac2217dbca3d1187328d9fdbc2cb90ba9",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.source-a-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 27972811,
+                "native_file_sha256": "4c148c133795397e84c3ceaa68ce979279358ac5bbe85049fa83aa1597afdb95"
+              },
+              {
+                "bytes": 27972873,
+                "native_file_sha256": "2bc137d5513c726291be0e9b678a7ca4708fd72f7e60ec1bd0e7ab2daa667903"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:07f8f6ad30ebe216dffd40e954d10480c1c9e3e9d69ede692416cb5806cf05fd",
+          "query_consumed_digest": "sha256:792b96eb045e7f1416b4d462e6c94b228e34a3114463c31c7f6a54338d9640bd",
+          "query_id": "source-a-full-generator",
+          "source_profile": "historical_source_a",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 1,
+              "I_rated": 1,
+              "P_rated": 1,
+              "Pareto_eligible": 1,
+              "conditioned_feasible": 1,
+              "fully_rated": 1,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:86f157b7039021faa7229bb476a43c543097ca643fd591c36934bec3322694c5",
+            "expansions": 2000,
+            "frontier": [
+              "generated_0001"
+            ],
+            "gaps": [],
+            "min_effort": 1,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_admin_execution": 1
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 3,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:e713e296d2e189107bd5fa05c555dad1eefca0aad1a3438b9f041846c2f639c0",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_admin_execution": 1
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 1,
+            "worked_programs": [
+              {
+                "C": 1,
+                "I": "High",
+                "P": [
+                  "1/2",
+                  "9/10"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.lidia-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.lidia-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 28545516,
+                "native_file_sha256": "5f9fd86e20370f4709d36e0fcc7d3ac6efd2aa33a4a277c0a9c3ff695f002575"
+              },
+              {
+                "bytes": 28545517,
+                "native_file_sha256": "8daba6cf061b007498deea226189e266bb70c1cae7f16407a3a603aff1e50140"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:9aa0ffcaca2ac0bf3380821c7e478f2201b28b3889ff1731717713ab1eb16dfe",
+          "query_consumed_digest": "sha256:e1c949541644f7723f58538dad87ed05ea24561b372eb11979f3c883e0bdd6c9",
+          "query_id": "lidia-full-generator",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:5c3cbb8930027690caca55395e15a90a029287afe29490f58693cac7ac690874",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:5b583e78f39092bf9335f48ea2d64fba6cebc9fa0ad56682f55be2c7b656c824",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.josefa-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.josefa-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 30167627,
+                "native_file_sha256": "63968e6342a33e68f01ca498be06669333489421610a5962bf11dcd2c79c1424"
+              },
+              {
+                "bytes": 30167628,
+                "native_file_sha256": "d5b3403be9a4dbe0c0d2cc7163e0ea2793117edb08fd5573f14844ccbf643b7c"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:9132e57b8dae53242e5658c3fdb8d5740e9140deb0626e4aad53278a3b677da3",
+          "query_consumed_digest": "sha256:ceb04415364c75c69ef85a3817b3d554d5108f43ad076987ac0b2721963635ee",
+          "query_id": "josefa-full-generator",
+          "source_profile": "historical_josefa_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:35959d4e4d7d233a5f985a2f8228066be515fc2303b1aa3c8f7f9a8d91c6912f",
+            "expansions": 4,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 4,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "asrep_material_request": 1,
+              "asrep_password_recovery": 1,
+              "host_admin_execution": 1,
+              "recovered_identity_activation": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:35959d4e4d7d233a5f985a2f8228066be515fc2303b1aa3c8f7f9a8d91c6912f",
+            "expansions": 4,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 4,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "asrep_material_request": 1,
+              "asrep_password_recovery": 1,
+              "host_admin_execution": 1,
+              "recovered_identity_activation": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.asrep-natural-password.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.asrep-natural-password.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9832514,
+                "native_file_sha256": "7f773f7b9496084302e1c4be975843ec8dbecdabaafb947d2852b285f7f375bf"
+              },
+              {
+                "bytes": 9832514,
+                "native_file_sha256": "52dc821e462d74a3ea3ad24540aae848112872ffa4ff3b52c815bf7bd9fb6205"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+          "query_consumed_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+          "query_id": "asrep-natural-password",
+          "source_profile": "frozen_X_request_capability",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:75c6ff8e58fc78c3b4f85ff43aae95d6803d25780db320e432d021ae2dee4863",
+            "expansions": 1,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "kerberoast_material_request": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:75c6ff8e58fc78c3b4f85ff43aae95d6803d25780db320e432d021ae2dee4863",
+            "expansions": 1,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "kerberoast_material_request": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "ticket_material",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.kerberoast-material.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.kerberoast-material.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9120412,
+                "native_file_sha256": "80c508887875a2d3914826c3a4a9e757864dde8aa9fd0fa79d68fa06f5448f9c"
+              },
+              {
+                "bytes": 9120412,
+                "native_file_sha256": "aed7e69bc9759e45f5597982fcdbb60960a45930c4d8878fa294241ec34ab69c"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+          "query_consumed_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+          "query_id": "kerberoast-material",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": true,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:65ffe3df4c19641f5bae2efbd7697403d289b24366cf1f9230d986f6a287435d",
+            "expansions": 3,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "no_path",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": [
+              "activate_recovered_identity"
+            ]
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": true,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:65ffe3df4c19641f5bae2efbd7697403d289b24366cf1f9230d986f6a287435d",
+            "expansions": 3,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "no_path",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": [
+              "activate_recovered_identity"
+            ]
+          },
+          "goal": "usable_identity",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.kerberoast-identity.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/original.kerberoast-identity.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 8939888,
+                "native_file_sha256": "2190737342471daf2b504fb6d31957093c6c880f95c4b91fa11961764ae8aec4"
+              },
+              {
+                "bytes": 8939888,
+                "native_file_sha256": "049373cb6adcf2f6fc08f63b6fc364fd41f1f3883e562c58f5ccde30676bcabf"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+          "query_consumed_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+          "query_id": "kerberoast-identity",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        }
+      ],
+      "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+      "complete_replay": true,
+      "denominator_unit": "query-program occurrences in the frozen cohort; predeclared projection/raw overlap retained, never interpreted as independent unique attacks; CLI repeats are verification only and are never added to the denominator",
+      "full_generator_coverage_established": false,
+      "manifest_verified_full_raw_completed_query_counts": {
+        "C_rated": 24,
+        "I_rated": 24,
+        "P_rated": 24,
+        "Pareto_eligible": 24,
+        "conditioned_feasible": 26,
+        "fully_rated": 24,
+        "valid_generated": 26
+      },
+      "meets_80_percent_on_complete_supported_returned_sample": true,
+      "missing_queries": [],
+      "supported_completed_query_counts": {
+        "C_rated": 48,
+        "I_rated": 48,
+        "P_rated": 48,
+        "Pareto_eligible": 48,
+        "conditioned_feasible": 50,
+        "fully_rated": 48,
+        "valid_generated": 50
+      },
+      "supported_returned_sample_full_fraction": "24/25",
+      "truncated_query_count": 4,
+      "unrated_query_count": 2
+    },
+    "supplementary": {
+      "all_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 109,
+        "fully_rated": 0,
+        "valid_generated": 109
+      },
+      "cases": [
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:8a22231a7a5e3c7f7265ec92d73cc5e6049fc85dd53f07ee52bd5da1b5a852d9",
+            "expansions": 2,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "indeterminate",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:8a22231a7a5e3c7f7265ec92d73cc5e6049fc85dd53f07ee52bd5da1b5a852d9",
+            "expansions": 2,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "indeterminate",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.rbcd-unassumed.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.rbcd-unassumed.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 8905845,
+                "native_file_sha256": "3da7ae993aa24001f54da888b7f79e0986de2e527dee5e194a409fede23a34d3"
+              },
+              {
+                "bytes": 8905845,
+                "native_file_sha256": "ef3c500bb792e482c4c68bbd8fba52526cba34306b7d9110e01fe4bae26d10c3"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+          "query_consumed_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+          "query_id": "rbcd-unassumed",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:18faf4e4c6b857dd106c1e8dfc07a161ba1f7b3d7dc114be15487132deab42be",
+            "expansions": 14,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 5,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 14,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "rbcd_admin_execution": 3,
+              "rbcd_descriptor_mutation": 3,
+              "rbcd_secret_acquisition": 3,
+              "rbcd_service_delegation": 3,
+              "rbcd_service_preparation": 3
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:18faf4e4c6b857dd106c1e8dfc07a161ba1f7b3d7dc114be15487132deab42be",
+            "expansions": 14,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 5,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 14,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "rbcd_admin_execution": 3,
+              "rbcd_descriptor_mutation": 3,
+              "rbcd_secret_acquisition": 3,
+              "rbcd_service_delegation": 3,
+              "rbcd_service_preparation": 3
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.rbcd-scoped.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.rbcd-scoped.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 15502243,
+                "native_file_sha256": "649314d4c41828bedbf04decdebf267fa4c2123713eaf430161c691b8a10e243"
+              },
+              {
+                "bytes": 15502243,
+                "native_file_sha256": "5413003a3bf4e5d1015ddca53dd3709173b3e75331617decc301a96c619f9d26"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+          "query_consumed_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+          "query_id": "rbcd-scoped",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:6bd329c4d9a53e3da536aa0e3255d7b78f34df11ff03f7679659ab3fb61fcada",
+            "expansions": 5000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 2,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 1,
+              "host_admin_execution": 3
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:6bd329c4d9a53e3da536aa0e3255d7b78f34df11ff03f7679659ab3fb61fcada",
+            "expansions": 5000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 2,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 1,
+              "host_admin_execution": 3
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-host.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-host.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 53621925,
+                "native_file_sha256": "1ce212a88abb9bf0ba1ed5e0560db56ed4c660dde4eb7be9666134ea4516f2f6"
+              },
+              {
+                "bytes": 53621924,
+                "native_file_sha256": "c5a26b5c553ec9717d02f9261511fcfb7dadbe648745b38e25e5234c9ddd6eb4"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+          "query_consumed_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+          "query_id": "acl-group-host",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 100,
+              "fully_rated": 0,
+              "valid_generated": 100
+            },
+            "coverage_digest": "sha256:d1f053b3f1423ab78264457030fe618f41f441e513e0ab9d719ab788b14ce9e9",
+            "expansions": 478,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 7,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 49,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 98,
+              "grant_write_dacl": 86,
+              "group_membership_mutation": 95,
+              "host_admin_execution": 100
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "path_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 100,
+              "fully_rated": 0,
+              "valid_generated": 100
+            },
+            "coverage_digest": "sha256:d1f053b3f1423ab78264457030fe618f41f441e513e0ab9d719ab788b14ce9e9",
+            "expansions": 478,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 7,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 49,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 98,
+              "grant_write_dacl": 86,
+              "group_membership_mutation": 95,
+              "host_admin_execution": 100
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "path_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 12,
+            "is_full_raw": false,
+            "nodes": 4,
+            "sha256": "sha256:fa6a40862f60a258ef7aec102d81c06c1c10ffd2fc800d76be62cdfc1fe5365d"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-projection.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-projection.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 73053388,
+                "native_file_sha256": "835852a4df84249ab4c5646f90202538cb9147cfe5d8e00ad9ed218dd2349247"
+              },
+              {
+                "bytes": 73053388,
+                "native_file_sha256": "c96c67d13936fb8f41bf91c1bf418dc5382568e56fba5d0bae91f2daa8069f82"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+          "query_consumed_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+          "query_id": "acl-group-projection",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 2,
+              "fully_rated": 0,
+              "valid_generated": 2
+            },
+            "coverage_digest": "sha256:644f474b3c0ba4f4bf098a9d7c830976c6e0241740138f8f6f82ce5d5f713ca8",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "host_admin_execution": 2
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 2,
+              "fully_rated": 0,
+              "valid_generated": 2
+            },
+            "coverage_digest": "sha256:644f474b3c0ba4f4bf098a9d7c830976c6e0241740138f8f6f82ce5d5f713ca8",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "host_admin_execution": 2
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-all-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.acl-group-all-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 26891378,
+                "native_file_sha256": "20cd42898725bb26a1e798e38ab1a014e7b2308035dd4ed954f23bbb7379541f"
+              },
+              {
+                "bytes": 26891378,
+                "native_file_sha256": "b1b79da14adfb8ecabb011052db11ee0f45e94cd0039705a7d63172df100008d"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+          "query_consumed_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+          "query_id": "acl-group-all-generator",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:81ddf7bd99501360e93c4479a898bd5ed7ea1116b096b7a01fd72a9ff3f55ff7",
+            "expansions": 6,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_command_session": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:81ddf7bd99501360e93c4479a898bd5ed7ea1116b096b7a01fd72a9ff3f55ff7",
+            "expansions": 6,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_command_session": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "goal": "remote_command_execution",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.winrm-command.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption/supplementary.winrm-command.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9042883,
+                "native_file_sha256": "fef67d1a52fce9946d7fdf091732daf52681a76d03956fb973a38f3c5234e54f"
+              },
+              {
+                "bytes": 9042883,
+                "native_file_sha256": "47d5fb651e4f4478c42d8ca31743d63b367899c93135daa68fb2341528f78726"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+          "query_consumed_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+          "query_id": "winrm-command",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        }
+      ],
+      "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+      "complete_replay": true,
+      "denominator_unit": "query-program occurrences in the frozen cohort; predeclared projection/raw overlap retained, never interpreted as independent unique attacks; CLI repeats are verification only and are never added to the denominator",
+      "full_generator_coverage_established": false,
+      "manifest_verified_full_raw_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 9,
+        "fully_rated": 0,
+        "valid_generated": 9
+      },
+      "meets_80_percent_on_complete_supported_returned_sample": false,
+      "missing_queries": [],
+      "supported_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 7,
+        "fully_rated": 0,
+        "valid_generated": 7
+      },
+      "supported_returned_sample_full_fraction": "0",
+      "truncated_query_count": 3,
+      "unrated_query_count": 5
+    }
+  },
+  "limitations": [
+    "First-wave expert scenario adoption, not empirical calibration.",
+    "Original and supplementary cohorts are separate; no denominator pooling.",
+    "Supplementary context/query pins were not adopted; pending remains pending.",
+    "Truncated returned samples are not full generator/global-optimum coverage.",
+    "Query-local sensitivity only; source/batch/chokepoint sensitivity not established.",
+    "Partial connector-materialized checkout; no full repository test claim."
+  ],
+  "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+  "review": {
+    "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+    "purpose": "numeric_context_history_adoption",
+    "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+    "reviewed_at": "2026-10-13T04:30:57Z",
+    "reviewer": "nairyuuu"
+  },
+  "reviewed_proposal_head": "365a5f628d0750db055026c5fcdfe13bea93f121",
+  "version": "final-cpi-actual-adoption-replay/1.0.0"
+}

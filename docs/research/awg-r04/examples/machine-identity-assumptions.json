@@ -1,0 +1,93 @@
+[
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "password_policy_accepts",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "directory_write_allowed",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "network_rpc_reachable",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "network_kdc_reachable",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "authentication_accepted",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "security_group",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "declared_by": "security_analyst"
+    },
+    "origin": "declared_assumption",
+    "predicate": "membership_usable",
+    "provenance_reference": "scenario://awg-r04/computer-boundary",
+    "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+    "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "value": true
+  }
+]

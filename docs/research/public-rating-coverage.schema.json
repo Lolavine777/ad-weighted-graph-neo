@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Public rating coverage extension of Rating Resolver Contract 1.0.0",
+  "type": "object",
+  "required": ["coverage_version", "public_coverage_version", "mode", "policy", "configuration_digest", "registries", "semantic_search", "binding", "numeric_requests", "denominators", "candidate_summaries", "candidates", "unresolved_gaps", "providers_attempted", "providers_configured", "aggregate_summary"],
+  "properties": {
+    "coverage_version": {"const": "1.0.0"},
+    "public_coverage_version": {"enum": ["public-rating-coverage/1.0.0", "public-rating-coverage/1.1.0"]},
+    "semantic_goal": {
+      "type": "object", "required": ["descriptor", "sha256"],
+      "properties": {
+        "descriptor": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/semanticGoal"}]},
+        "sha256": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
+    "scenario_authority": {
+      "type": "object", "required": ["semantic_reference", "rating_reference", "status", "missing_reference_is_wildcard"],
+      "properties": {
+        "semantic_reference": {"type": ["string", "null"]},
+        "rating_reference": {"type": "string"},
+        "status": {"enum": ["matched", "absent"]},
+        "missing_reference_is_wildcard": {"const": false}
+      }
+    },
+    "mode": {"const": "automatic"},
+    "policy": {"enum": ["production", "synthetic_test_only"]},
+    "configuration_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "registries": {"type": "object"},
+    "semantic_search": {
+      "type": "object",
+      "required": ["complete", "is_truncated", "termination", "completeness_scope", "caps_applied", "allowed_techniques", "numeric_completeness_implies_search_completeness"],
+      "properties": {
+        "complete": {"type": "boolean"}, "is_truncated": {"type": "boolean"},
+        "numeric_completeness_implies_search_completeness": {"const": false}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "required": ["generated_candidates", "materialized_candidates", "generated_steps", "materialized_steps", "canonical_work_units", "passive_steps", "actions", "shared_preparation_units", "canonical_rejections", "canonical_admitted_candidates", "zero_action_initial_goal"],
+      "properties": {
+        "actions": {"type": "array"},
+        "canonical_rejections": {"type": "object", "description": "Per-candidate adapter/validator rejection diagnostics; numeric provider refusals are not binding rejections."},
+        "canonical_admitted_candidates": {"type": "integer", "minimum": 0, "description": "Envelopes admitted by the canonical validator, including numerically unrated assessments; zero for empty/initial-goal search."}
+      }
+    },
+    "numeric_requests": {
+      "type": "object", "required": ["C", "P", "I"], "additionalProperties": false,
+      "properties": {"C": {"$ref": "#/$defs/count"}, "P": {"$ref": "#/$defs/count"}, "I": {"$ref": "#/$defs/count"}}
+    },
+    "denominators": {"type": "object"},
+    "candidate_summaries": {"type": "object", "additionalProperties": {
+      "type": "object", "required": ["c_complete", "p_complete", "i_complete", "semantic_status", "numeric_complete"],
+      "properties": {"numeric_complete": {"type": "boolean"}, "semantic_status": {"type": "string"}}
+    }},
+    "candidates": {"type": "object", "additionalProperties": {
+      "type": "object", "required": ["candidate_id", "effort", "likelihood", "impact"],
+      "properties": {
+        "effort": {"type": "object", "required": ["total_units", "rated_units", "unrated_units", "units", "gaps"]},
+        "likelihood": {"type": "object", "required": ["total_prefixes", "rated_prefixes", "unrated_prefixes", "prefixes", "gaps"]},
+        "impact": {"$ref": "#/$defs/resolution"}
+      }
+    }},
+    "unresolved_gaps": {"type": "array", "items": {"$ref": "#/$defs/resolution"}},
+    "providers_attempted": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "providers_configured": {"type": "array"},
+    "aggregate_summary": {"type": "object"}
+  },
+  "allOf": [{
+    "if": {"properties": {"public_coverage_version": {"const": "public-rating-coverage/1.1.0"}}},
+    "then": {"required": ["semantic_goal", "scenario_authority"]}
+  }],
+  "$defs": {
+    "semanticGoal": {
+      "oneOf": [
+        {"$ref": "#/$defs/requiredStateGoal"},
+        {"$ref": "#/$defs/usableIdentityEntitlementGoal"}
+      ]
+    },
+    "usableIdentityEntitlementGoal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "kind", "target_asset_id", "authentication_context"],
+      "properties": {
+        "version": {"const": "semantic-goal/1.1.0"},
+        "kind": {"const": "usable_identity_entitlement"},
+        "target_asset_id": {"type": "string", "minLength": 1},
+        "authentication_context": {"type": "string", "minLength": 1}
+      }
+    },
+    "requiredStateGoal": {
+      "type": "object", "additionalProperties": false,
+      "required": ["version", "kind", "target_asset_id", "required_state"],
+      "properties": {
+        "version": {"const": "semantic-goal/1.0.0"},
+        "kind": {"const": "required_state"},
+        "target_asset_id": {"type": "string", "minLength": 1},
+        "required_state": {"type": "object", "minProperties": 1,
+          "additionalProperties": {"type": "array", "minItems": 1, "uniqueItems": true}}
+      }
+    },
+    "count": {"type": "object", "required": ["required", "rated"], "additionalProperties": false,
+      "properties": {"required": {"type": "integer", "minimum": 0}, "rated": {"type": "integer", "minimum": 0}}},
+    "resolution": {"type": "object", "required": ["disposition", "reason_code", "provider_trace"],
+      "properties": {"disposition": {"enum": ["rated", "unrated", "unsupported", "refused", "conflicting"]}, "reason_code": {"type": "string"}, "provider_trace": {"type": "array"}}}
+  }
+}

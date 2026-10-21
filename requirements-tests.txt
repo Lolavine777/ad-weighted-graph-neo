@@ -1,0 +1,3 @@
+# Current test environment; keep the accepted Week 3 dependency file byte-stable.
+-r requirements-dev.txt
+jsonschema==4.26.0

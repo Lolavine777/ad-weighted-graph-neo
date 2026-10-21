@@ -1,0 +1,75 @@
+{
+  "source": "#218 section 4, independent oracle for RBCD",
+  "programs": [
+    [
+      "rbcd_acquire_secret",
+      "rbcd_prepare_service",
+      "rbcd_configure_descriptor",
+      "rbcd_delegate_service",
+      "rbcd_service_admin"
+    ],
+    [
+      "rbcd_acquire_secret",
+      "rbcd_configure_descriptor",
+      "rbcd_prepare_service",
+      "rbcd_delegate_service",
+      "rbcd_service_admin"
+    ],
+    [
+      "rbcd_configure_descriptor",
+      "rbcd_acquire_secret",
+      "rbcd_prepare_service",
+      "rbcd_delegate_service",
+      "rbcd_service_admin"
+    ]
+  ],
+  "reuse_program": [
+    "rbcd_configure_descriptor",
+    "rbcd_delegate_service",
+    "rbcd_service_admin"
+  ],
+  "states": [
+    [],
+    [
+      "reset_M"
+    ],
+    [
+      "descriptor_M_C_R"
+    ],
+    [
+      "reset_M",
+      "service_M"
+    ],
+    [
+      "reset_M",
+      "descriptor_M_C_R"
+    ],
+    [
+      "reset_M",
+      "service_M",
+      "descriptor_M_C_R"
+    ],
+    [
+      "reset_M",
+      "service_M",
+      "descriptor_M_C_R",
+      "delegated_P_C_R"
+    ],
+    [
+      "reset_M",
+      "service_M",
+      "descriptor_M_C_R",
+      "delegated_P_C_R",
+      "admin_C_R"
+    ]
+  ],
+  "cutoffs": {
+    "effective_reset_right": "R-RESET-F",
+    "effective_descriptor_write": "R-WRITE-F",
+    "has_spn": "R-SPN-F",
+    "secret_valid": "R-KEY-U",
+    "delegation_policy_allows": "R-POLICY-F",
+    "s4u_request_accepted": "R-DELEGATE-U",
+    "admin_execution_context": "R-ASSET-F"
+  }
+}

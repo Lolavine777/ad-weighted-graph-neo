@@ -1,0 +1,99 @@
+"""Sequential, same-snapshot policy sensitivity; not a speedup benchmark.
+
+Run from repo with its Python: python PATH --repo . --output-base NEW_DIRECTORY
+All captures use identical source/goal inventory, techniques and logical caps.
+The executable CLI writes full public queries, witnesses and checkpoint pins.
+No policy rules, costs or success oracle are duplicated here.
+"""
+
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+import time
+from collections import Counter
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument("--repo", type=Path, required=True)
+p.add_argument("--output-base", type=Path, required=True)
+a = p.parse_args()
+repo = a.repo.resolve()
+base = a.output_base.resolve()
+if base.exists():
+    raise ValueError("Preserve previous captures; choose a new namespace")
+base.mkdir(parents=True)
+domain = "S-1-5-21-1271839998-3495686680-2211690266"
+user, host = domain + "-2799", domain + "-1000"
+snapshot = repo / "data/processed/awg-r04/pilot-v2/snapshot.json"
+sha = lambda raw: "sha256:" + hashlib.sha256(raw).hexdigest()
+manifest = json.loads((repo / "data/samples/manifests/seamless-raw-v1.json").read_text())
+for entry in manifest["files"]:
+    raw = (repo / "data/raw/SEAMLESS" / entry["relative_path"]).read_bytes()
+    assert len(raw) == entry["size_bytes"] and sha(raw) == "sha256:" + entry["sha256"]
+assert sha(snapshot.read_bytes()) == "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+false = base / "observed-false.json"
+false.write_text(json.dumps([{
+    "predicate": "admin_channel", "subject": user, "target": host,
+    "value": False, "origin": "observed_evidence",
+    "provenance_reference": "synthetic://policy-sensitivity/explicit-negative-control",
+    "rationale": "Injected negative control, not a SEAMLESS observation",
+}]) + "\n")
+command = [sys.executable, "-m", "scripts.exposure", "--snapshot", str(snapshot),
+           "--source", user, "--authentication-context", host,
+           "--user-profile", "user_usable_identity", "--max-sources", "0", "--max-targets", "0",
+           "--max-paths", "5", "--max-steps", "4", "--max-expansions", "100",
+           "--max-cells", "100", "--global-max-expansions", "10000",
+           "--technique", "propagate_group_entitlement", "--technique", "obtain_admin_execution_on_host"]
+cases = [
+    ("evidence-only", ["--evaluation-mode", "evidence_only"]),
+    ("standard", ["--evaluation-mode", "scenario", "--scenario-policy", "seamless-standard-v1"]),
+    ("explicit-four", ["--evaluation-mode", "scenario", "--assumptions",
+                       str(repo / "docs/research/awg-r04/evidence/exposure-user-assumptions.json")]),
+    ("standard-false", ["--evaluation-mode", "scenario", "--scenario-policy", "seamless-standard-v1",
+                        "--runtime-facts", str(false)]),
+]
+measured = {"revision": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip(),
+            "harness_sha256": sha(Path(__file__).read_bytes()), "cases": {}}
+for name, extra in cases:
+    output = base / name
+    cli = command + extra + ["--output-dir", str(output)]
+    started = time.perf_counter()
+    with (base / (name + ".log")).open("w") as log:
+        completed = subprocess.run(cli, cwd=repo, stdout=log, stderr=subprocess.STDOUT)
+    elapsed = time.perf_counter() - started
+    assert completed.returncode == 0, (name, completed.returncode)
+    result = json.loads((output / "result.json").read_text())
+    request = json.loads((output / "request.json").read_text())
+    summary = json.loads((output / "summary.json").read_text())
+    assert summary["batch"]["evaluated_cells"] == 12 and summary["batch"]["not_run_cells_count"] == 0
+    assert not summary["batch"]["effort_rated_cells"] and not summary["batch"]["likelihood_rated_cells"]
+    goals = {g["goal_id"]: g for g in request["target_manifest"]["targets"]}
+    queries = result["reproducibility"]["inputs"]["public_queries"]
+    cells = [{"goal": goals[gid], "cell": cell}
+             for row in result["source_goal_matrix"].values() for gid, cell in row.items()]
+    counts = Counter(f["predicate"] for t in queries.values() for f in t["query"]["assumptions"])
+    measured["cases"][name] = {
+        "command": cli, "process_elapsed_seconds": elapsed, "summary": summary,
+        "source_pins": result["reproducibility"]["inputs"]["source_pins"],
+        "goals_and_cells": cells,
+        "query_audit": {ref: {"target": t["query"]["target"],
+                             "policy": t["query"].get("scenario_policy_metadata"),
+                             "assumptions": t["query"]["assumptions"],
+                             "runtime_facts": t["query"]["runtime_facts"],
+                             "guarantees": t["guarantees"],
+                             "attempt_count": len(t["result"]["attempts"]),
+                             "path_count": len(t["result"]["paths"])} for ref,t in queries.items()},
+        "assumption_occurrences_by_predicate": dict(counts),
+        "local_artifacts": [{"path": str(output / f), "bytes": (output / f).stat().st_size,
+                             "sha256": sha((output / f).read_bytes())}
+                            for f in ("inventory.json", "request.json", "result.json", "summary.json",
+                                      "overview.md", "checkpoint.json")],
+    }
+    (base / "measurement.json").write_text(json.dumps(measured, ensure_ascii=False, sort_keys=True, indent=2) + "\n")
+    print(json.dumps({"case": name, "seconds": elapsed, "status": summary["batch"]["status_counts"],
+                      "assumption_occurrences": sum(counts.values())}), flush=True)
+assert len({json.dumps(c["source_pins"], sort_keys=True) for c in measured["cases"].values()}) == 1
+assert len({json.dumps([c["goal"] for c in case["goals_and_cells"]], sort_keys=True)
+            for case in measured["cases"].values()}) == 1

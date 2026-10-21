@@ -1,0 +1,317 @@
+{
+  "catalog_id": "ad-remediation/1.0.0",
+  "entries": [
+    {
+      "defender_cost": null,
+      "id": "acl-revoke",
+      "intervention": "Revoke the selected effective right on the target, including every contributing ACE and inheritance origin.",
+      "layer": "relationship",
+      "limitations": [
+        "Removing one ACE is insufficient when another grant or group remains.",
+        "Derived rights can be recreated by other retained rights; rerun from the initial state."
+      ],
+      "predicates": [
+        "source_authorized"
+      ],
+      "relationships": [
+        "GenericAll",
+        "WriteDacl",
+        "ForceChangePassword"
+      ],
+      "required_evidence": [
+        "canonical edge ID",
+        "all provenance occurrences",
+        "effective authorization verification"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/ad/how-access-control-works-in-active-directory-domain-services"
+      ],
+      "techniques": [
+        "genericall_reset_password",
+        "genericall_add_member",
+        "genericall_grant_write_dacl",
+        "grant_new_object_right",
+        "reset_target_password",
+        "scenario_reset_password"
+      ],
+      "title": "Revoke effective object control"
+    },
+    {
+      "defender_cost": null,
+      "id": "admin-revoke",
+      "intervention": "Remove effective host administrative authorization for the selected principal.",
+      "layer": "relationship",
+      "limitations": [
+        "AdminTo is not proof of a specific remote protocol.",
+        "Existing initial admin_control is outside this intervention."
+      ],
+      "predicates": [
+        "source_authorized"
+      ],
+      "relationships": [
+        "AdminTo"
+      ],
+      "required_evidence": [
+        "AdminTo edge and complete provenance",
+        "local/group/GPO authorization origin"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/ad/how-access-control-works-in-active-directory-domain-services"
+      ],
+      "techniques": [
+        "obtain_admin_execution_on_host"
+      ],
+      "title": "Remove effective host administration"
+    },
+    {
+      "defender_cost": null,
+      "id": "admin-channel",
+      "intervention": "Deny the modeled privileged execution channel for the exact actor and host.",
+      "layer": "runtime",
+      "limitations": [
+        "The abstract gate cannot be labeled WinRM-only or RDP-only.",
+        "Separate runtime bindings are needed for each affected actor."
+      ],
+      "predicates": [
+        "admin_channel"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "query decision tuple",
+        "verified channel policy or declared counterfactual rationale"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/ad/how-access-control-works-in-active-directory-domain-services"
+      ],
+      "techniques": [
+        "obtain_admin_execution_on_host"
+      ],
+      "title": "Restrict privileged execution channel"
+    },
+    {
+      "defender_cost": null,
+      "id": "group-membership",
+      "intervention": "Remove exact membership, recompute nested entitlement from initial state after declared token refresh.",
+      "layer": "relationship",
+      "limitations": [
+        "Already effective initial token membership is not revoked automatically.",
+        "Membership additions can restore a route if modification rights remain."
+      ],
+      "predicates": [
+        "membership_usable"
+      ],
+      "relationships": [
+        "MemberOf"
+      ],
+      "required_evidence": [
+        "MemberOf edge and group/member record",
+        "scope and token-refresh policy"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/ad/how-access-control-works-in-active-directory-domain-services"
+      ],
+      "techniques": [
+        "propagate_group_entitlement"
+      ],
+      "title": "Remove security group entitlement"
+    },
+    {
+      "defender_cost": null,
+      "id": "asrep-preauth",
+      "intervention": "Clear DONT_REQ_PREAUTH for the User; effective counterfactual dontreqpreauth=false.",
+      "layer": "snapshot_fact",
+      "limitations": [
+        "Existing AS-REP material or recovered passwords in the initial state survive.",
+        "Runtime facts cannot override this snapshot gate."
+      ],
+      "predicates": [
+        "dontreqpreauth"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "known SnapshotFact value true",
+        "Properties.dontreqpreauth provenance"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/troubleshoot/windows-server/active-directory/useraccountcontrol-manipulate-account-properties"
+      ],
+      "techniques": [
+        "asrep_request"
+      ],
+      "title": "Require Kerberos preauthentication"
+    },
+    {
+      "defender_cost": null,
+      "id": "kerberoast-spn",
+      "intervention": "Remove all relevant servicePrincipalName registrations only for a genuinely decommissioned service; effective has_spn=false and service_principal_names=[].",
+      "layer": "snapshot_fact",
+      "limitations": [
+        "Deleting a required SPN can break a service and is not the default roasting fix.",
+        "Partial SPN removal may leave an opportunity; existing tickets survive."
+      ],
+      "predicates": [
+        "has_spn",
+        "service_principal_names"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "known SPN list and has_spn evidence",
+        "service ownership and decommission approval rationale"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/entra/architecture/service-accounts-group-managed"
+      ],
+      "techniques": [
+        "kerberoast_request",
+        "rbcd_prepare_service"
+      ],
+      "title": "Decommission an unnecessary service registration"
+    },
+    {
+      "defender_cost": null,
+      "id": "secret-hardening",
+      "intervention": "Use stronger managed secrets where supported; rerate exact recovery method/budget/horizon.",
+      "layer": "advisory",
+      "limitations": [
+        "Hardening alone cannot prove recovery_success=false or P=0.",
+        "No numeric adoption is performed in this package."
+      ],
+      "predicates": [
+        "recovery_success"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "account/service ownership",
+        "reviewed recovery basis in new context"
+      ],
+      "support": "requires_new_basis",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/entra/architecture/service-accounts-group-managed"
+      ],
+      "techniques": [
+        "recover_ticket_secret",
+        "recover_asrep_secret"
+      ],
+      "title": "Strengthen or manage service/account secrets"
+    },
+    {
+      "defender_cost": null,
+      "id": "rbcd-write",
+      "intervention": "Deny exact descriptor write on the resource account after verifying effective rights.",
+      "layer": "runtime",
+      "limitations": [
+        "Removing only the current delegation descriptor is ineffective if the attacker can write it again.",
+        "Canonical M1 does not expose a dedicated descriptor-write edge; do not invent one.",
+        "Current RBCD exact-right gate consumes observed GenericAll only; WriteDacl-derived rights are not supported by that gate."
+      ],
+      "predicates": [
+        "effective_descriptor_write"
+      ],
+      "relationships": [
+        "GenericAll"
+      ],
+      "required_evidence": [
+        "delegation binding selector",
+        "effective write decision",
+        "resource-account ACL lineage"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/ps-remoting-second-hop"
+      ],
+      "techniques": [
+        "rbcd_configure_descriptor"
+      ],
+      "title": "Revoke effective RBCD descriptor write"
+    },
+    {
+      "defender_cost": null,
+      "id": "rbcd-policy",
+      "intervention": "Deny the bound service/impersonated identity/resource delegation policy.",
+      "layer": "runtime",
+      "limitations": [
+        "Cleanup of PrincipalsAllowedToDelegateToAccount must also address write-back authority.",
+        "Preexisting delegated contexts require separate lifecycle modeling."
+      ],
+      "predicates": [
+        "delegation_policy_allows"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "binding_id and participants",
+        "delegation policy evidence or conditional declaration"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/ps-remoting-second-hop"
+      ],
+      "techniques": [
+        "rbcd_delegate_service"
+      ],
+      "title": "Restrict delegated service authorization"
+    },
+    {
+      "defender_cost": null,
+      "id": "session-end",
+      "intervention": "End the exact user session on its observed source host, making session_present=false.",
+      "layer": "runtime",
+      "limitations": [
+        "Static observation remains unchanged.",
+        "Already acquired credential_material survives and is not currently a password activation producer."
+      ],
+      "predicates": [
+        "session_present"
+      ],
+      "relationships": [
+        "HasSession"
+      ],
+      "required_evidence": [
+        "HasSession provenance",
+        "host,user tuple and evaluation window"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-how-it-works"
+      ],
+      "techniques": [
+        "recover_session_credential_material"
+      ],
+      "title": "End the relevant privileged session"
+    },
+    {
+      "defender_cost": null,
+      "id": "session-protect",
+      "intervention": "Establish protection sufficient for the modeled useful material and set credential_accessible=false only with scoped validation.",
+      "layer": "runtime",
+      "limitations": [
+        "Credential Guard is not a universal boolean cure: service tickets and some credential forms are outside its protection.",
+        "No automatic protection or material-reuse claim."
+      ],
+      "predicates": [
+        "credential_accessible"
+      ],
+      "relationships": [],
+      "required_evidence": [
+        "host,user material/protection verification",
+        "decision scope"
+      ],
+      "support": "executable_semantics",
+      "technical_references": [
+        "https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-how-it-works"
+      ],
+      "techniques": [
+        "recover_session_credential_material"
+      ],
+      "title": "Prevent access to useful session credential material"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "semantic_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+  "status": "proposed_pending_B_review"
+}

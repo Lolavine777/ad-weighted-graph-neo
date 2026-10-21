@@ -1,0 +1,402 @@
+{
+  "$id": "request-v1.1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baseline_run_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "catalog_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "catalog_id": {
+      "const": "ad-remediation/1.0.0"
+    },
+    "conflict_policy": {
+      "const": "reject_duplicate_or_conflicting_keys"
+    },
+    "edits": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "catalog_entry_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "edge_id": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "edit_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "effective_right_verified": {
+                "const": true
+              },
+              "evidence_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "kind": {
+                "const": "deny_relationship"
+              },
+              "provenance_digest": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "relationship": {
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "enum": [
+                      "AdminTo",
+                      "MemberOf",
+                      "GenericAll",
+                      "WriteDacl",
+                      "ForceChangePassword"
+                    ]
+                  },
+                  "source": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "target": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "source",
+                  "kind",
+                  "target"
+                ],
+                "type": "object"
+              }
+            },
+            "required": [
+              "edit_id",
+              "catalog_entry_id",
+              "evidence_refs",
+              "rationale",
+              "kind",
+              "edge_id",
+              "relationship",
+              "provenance_digest",
+              "effective_right_verified"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "after": {
+                "const": false
+              },
+              "catalog_entry_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "declaration": {
+                "const": "counterfactual_intervention"
+              },
+              "edit_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "evidence_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "expected_before": {
+                "enum": [
+                  true,
+                  false,
+                  null
+                ]
+              },
+              "key": {
+                "additionalProperties": false,
+                "properties": {
+                  "authentication_context": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "binding_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "predicate": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "subject": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "target": {
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "predicate",
+                  "subject",
+                  "target",
+                  "authentication_context",
+                  "binding_id"
+                ],
+                "type": "object"
+              },
+              "kind": {
+                "const": "runtime_fact_replace"
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "edit_id",
+              "catalog_entry_id",
+              "evidence_refs",
+              "rationale",
+              "kind",
+              "key",
+              "expected_before",
+              "after",
+              "declaration"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "after": {
+                "oneOf": [
+                  {
+                    "const": false
+                  },
+                  {
+                    "maxItems": 0,
+                    "type": "array"
+                  }
+                ]
+              },
+              "catalog_entry_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "declaration": {
+                "const": "counterfactual_intervention"
+              },
+              "edit_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "evidence_digest": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "evidence_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array"
+              },
+              "expected_before": {
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "items": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "minItems": 1,
+                    "type": "array"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "snapshot_fact_replace"
+              },
+              "name": {
+                "enum": [
+                  "dontreqpreauth",
+                  "has_spn",
+                  "service_principal_names"
+                ]
+              },
+              "rationale": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "subject": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "edit_id",
+              "catalog_entry_id",
+              "evidence_refs",
+              "rationale",
+              "kind",
+              "subject",
+              "name",
+              "expected_before",
+              "after",
+              "evidence_digest",
+              "declaration"
+            ],
+            "type": "object"
+          }
+        ]
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "initial_state_policy": {
+      "const": "rebuild_same_declared_foothold"
+    },
+    "missing_evidence_policy": {
+      "const": "unresolved_no_effect_claim"
+    },
+    "request_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.1.0"
+    },
+    "scope": {
+      "additionalProperties": false,
+      "properties": {
+        "engine_revision": {
+          "pattern": "^[0-9a-f]{40}$",
+          "type": "string"
+        },
+        "evaluation_mode": {
+          "enum": [
+            "scenario",
+            "evidence_only"
+          ]
+        },
+        "goal_manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "graph_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "program_identity_version": {
+          "const": "semantic-program/1"
+        },
+        "query_profile_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rating_inputs_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "route_identity_version": {
+          "const": "ordered-observed-edges/1"
+        },
+        "search_budget": {
+          "additionalProperties": false,
+          "properties": {
+            "max_expansions": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "max_paths": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "max_steps": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "max_paths",
+            "max_steps",
+            "max_expansions"
+          ],
+          "type": "object"
+        },
+        "semantic_catalog_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "snapshot_facts_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "snapshot_id": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "snapshot_id",
+        "graph_digest",
+        "snapshot_facts_digest",
+        "source_manifest_digest",
+        "goal_manifest_digest",
+        "query_profile_digest",
+        "rating_inputs_digest",
+        "semantic_catalog_digest",
+        "engine_revision",
+        "evaluation_mode",
+        "search_budget",
+        "program_identity_version",
+        "route_identity_version"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "catalog_id",
+    "catalog_digest",
+    "baseline_run_id",
+    "scope",
+    "edits",
+    "initial_state_policy",
+    "conflict_policy",
+    "missing_evidence_policy"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,70 @@
+{
+  "code_revision": "ebffa1e6687b78030ea37b0f94602f38be45f4e6",
+  "backend_SEAMLESS_acceptance": "PASS within declared scopes and budgets",
+  "ui_acceptance": "PENDING #279; HTTP/UI/live comparison not implemented here",
+  "matrix": [
+    {
+      "check": "final_repository_quality",
+      "expected": "all applicable local quality/config checks pass",
+      "observed": "Ruff lint/format all 461 files, yamllint, contract, repository checks for 732 files, Compose config PASS",
+      "status": "PASS",
+      "evidence": "python -m ruff check .; python -m ruff format --check .; python -m yamllint .; python scripts/check_contract.py; python scripts/check_repository.py; docker compose --env-file .env.example --profile graph config --quiet (NEO4J_PASSWORD=ci-validation-placeholder)"
+    },
+    {
+      "check": "final_real_SEAMLESS",
+      "expected": "all 24 scoped backend acceptance checks pass on final code revision",
+      "observed": "24 PASS in 225.526s; RAW/none/drop recovery unresolved; full proposals conditional success; B truncated",
+      "status": "PASS",
+      "evidence": "issue287-guided-exploration-acceptance-v2.json"
+    },
+    {
+      "check": "requested_focused_tests",
+      "expected": "exploration, engine and AS-REP tests pass",
+      "observed": "96 passed in 21.24s",
+      "status": "PASS",
+      "evidence": "python -m pytest tests/test_exploration.py tests/test_engine.py tests/test_asrep.py -q"
+    },
+    {
+      "check": "optional_data_regressions_first_code_revision",
+      "expected": "privacy guard, absent dataset BLOCKED, actual SEAMLESS acceptance pass",
+      "observed": "3 passed in 245.01s on c85a77a; final revision rerun separately through the same runner CLI",
+      "status": "PASS",
+      "evidence": "issue287-guided-exploration-acceptance.json; local reports/generated/issue287/pytest-final"
+    },
+    {
+      "check": "expanded_full_suite_before_fix",
+      "expected": "no failures",
+      "observed": "2830 passed, 5 failed, 54 skipped, 48 subtests passed in 876.53s; historical pin-set mismatch plus dirty-checkout cascades",
+      "status": "FAIL",
+      "evidence": "local reports/generated/issue287/full-suite-tail.txt; worklog"
+    },
+    {
+      "check": "affected_regressions_after_fix",
+      "expected": "manifest semantics/pins, historical integrity, checkout bytes, mutation and demo smoke pass",
+      "observed": "7 passed in 323.94s on clean tracked checkout; no full-suite rerun claim",
+      "status": "PASS",
+      "evidence": "python -m pytest tests/test_week4_acceptance_manifest.py tests/test_week4_acceptance_checkout_bytes.py tests/test_week4_acceptance_review_regressions.py::test_baseline_mutation_is_unexpected_failure tests/test_week4_acceptance_review_regressions.py::test_demo_commands_and_claims_smoke -q --tb=short"
+    },
+    {
+      "check": "synthetic_Week4_versioned_evidence",
+      "expected": "current source pinned without changing historical evidence or normative oracles",
+      "observed": "36 PASS, 0 unexpected failures; 1 manual not executed and 1 default-checkout raw prerequisite blocked; these are not SEAMLESS acceptance",
+      "status": "PASS",
+      "evidence": "week4-guided-exploration-acceptance-manifest-v3.json"
+    },
+    {
+      "check": "raw_integrity_and_publication_privacy",
+      "expected": "unchanged raw; official verifier clean before/after; no private identifiers in new reports",
+      "observed": "6 raw SHA-256 unchanged; 0 exact private canonical ID/label/domain matches in final SEAMLESS and Week4 summaries",
+      "status": "PASS",
+      "evidence": "issue287-guided-exploration-acceptance-v2.json; historical v2 SHA-256 1623c1c9e505550374402fdd5714de0a0eebb3a63d75eab0c825e19de3269dd9"
+    }
+  ],
+  "limits": [
+    "Initial full-suite failure is preserved; affected tests passed after the minimal gate fix. A complete post-fix full-suite run is not claimed.",
+    "No evaluator/search/scoring code changed. New versioned Week4 evidence preserves strict pins and frozen semantic assertions.",
+    "Real SEAMLESS graph/query/template/state traces remain local. Synthetic Week4 observations and isolated runtime veto controls are distinct from real RAW evidence.",
+    "No manual remote CI activation/rerun, approval, merge or closing #224.",
+    "No numeric adoption, global optimum, all-source coverage or reviewed case B scenario template. Maintainer scenario adoption and UI integration remain pending."
+  ]
+}

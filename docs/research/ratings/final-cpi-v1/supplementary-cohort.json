@@ -1,0 +1,93 @@
+{
+  "absence_controls": [
+    "HasSession raw edges = 0",
+    "CanRDP raw edges = 0",
+    "ForceChangePassword raw edges = 0; no fabricated techniques/edges",
+    "direct enabled User GenericAll -> AdminTo Group pattern = 0; ACL-derived group mutation tested separately"
+  ],
+  "assumptions": "only named runtime/account/token/service conditions with declared_assumption origin; static known-false remains veto; no observed edge insertion",
+  "baseline_revision": "da21fbb545061c56c6dfff6ac489e7794a53ec73",
+  "denominator": "all returned valid/conditioned-feasible programs per supplementary query; no pooling into original 50-program denominator",
+  "limitations": [
+    "not statistically representative of all sources or complete generator coverage",
+    "RBCD HTTP target-SPN binding is declared scenario metadata, not an observed SPN proof",
+    "narrow technique scopes and full-generator control separately reported",
+    "B numeric adoption absent; synthetic wiring cannot satisfy production gate",
+    "source ranking/remediation sensitivity remain B-owned"
+  ],
+  "original_cohort": "cohort.json; immutable 8-query results stay separate",
+  "original_freeze_revision": "4452ca1f25a637b484193a3dc5d6272163d546af",
+  "pre_search_static_audit": {
+    "CanPSRemote_enabled_User_candidates": 2,
+    "acl_group_selector_candidates": 8,
+    "first_acl_binding_digest": "sha256:436628bf991559cf444865d8d0656d3f095b2e15f66caa687886c5ac0d311ecf"
+  },
+  "profile": "profile.json; unchanged pending proposal",
+  "projection_policy": "keep exact observed nodes/edges and non-traversable assessments whose endpoints are all included; filter fact subjects to retained Users and rebind graph digest, preserving fact evidence",
+  "queries": [
+    {
+      "budget": {
+        "max_expansions": 5000,
+        "max_paths": 50,
+        "max_steps": 6
+      },
+      "id": "rbcd-unassumed",
+      "selection": "existing rbcd_inputs.seamless_inputs reviewed locators; unchanged RAW unresolved runtime gates",
+      "supported": false
+    },
+    {
+      "budget": {
+        "max_expansions": 5000,
+        "max_paths": 50,
+        "max_steps": 6
+      },
+      "id": "rbcd-scoped",
+      "selection": "same reviewed RBCD binding; build_assumed_query exact metadata; five native owners",
+      "supported": true
+    },
+    {
+      "budget": {
+        "max_expansions": 5000,
+        "max_paths": 100,
+        "max_steps": 8
+      },
+      "id": "acl-group-host",
+      "selection": "lexicographically first (AdminTo source Group, Computer, WriteDacl source Group, enabled MemberOf User); User has no direct observed MemberOf target Group; no replacement on failed applicability",
+      "supported": true
+    },
+    {
+      "budget": {
+        "max_expansions": 5000,
+        "max_paths": 100,
+        "max_steps": 8
+      },
+      "id": "acl-group-projection",
+      "selection": "same frozen ACL/group binding and facts; induced nodes from initial actor/auth/target and declared fact subjects/targets; retain every observed edge among them; diagnostic class exposure, outside raw supported denominator",
+      "supported": false
+    },
+    {
+      "budget": {
+        "max_expansions": 2000,
+        "max_paths": 100,
+        "max_steps": 8
+      },
+      "id": "acl-group-all-generator",
+      "selection": "same frozen ACL/group actor/goal/facts; all 23 owners; no replacement",
+      "supported": false
+    },
+    {
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 50,
+        "max_steps": 4
+      },
+      "id": "winrm-command",
+      "selection": "lexicographically first (enabled User, Computer) observed CanPSRemote edge; typed remote_command_execution, no admin inference",
+      "supported": true
+    }
+  ],
+  "selection": "declared structural selectors or existing reviewed RBCD locators before generated/ranked run; never rating-based selection",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+  "version": "1.1.0-supplement"
+}

@@ -1,0 +1,609 @@
+{
+  "accepted_reconciliation": {
+    "closure_url": "https://github.com/nairyuuu/ad-weighted-graph/issues/47#issuecomment-6008006657",
+    "comparator_verdict": "NOT_MEASURABLE",
+    "cross_reproduction_closure_url": "https://github.com/nairyuuu/ad-weighted-graph/issues/196#issuecomment-6008002642",
+    "evidence_artifact_byte_pins": {
+      "reports/research/issue-196-final-cross-reproduction.json": "5554aebc55883f523f8c0dfc23c204a4bf9f47dbbaaa59e2fb75b805526b7aef",
+      "reports/research/issue-196-ttsa-clean-reproduction.json": "9c2529fb619a2c6f2a4f7787bc4b2a51fce3303baba1e5b016e5a77575616c49"
+    },
+    "expected_comparator_exit_code": 2,
+    "fresh_legacy_replay_on_final_revision": {
+      "base_develop_revision": "8535d44771ec9ec1960b4e883103f83654cc1d4f",
+      "canonical_graph_digest": "c10c45a1c60e722404f921e8e559de3e8fe79efe5baf11b95bee9f1e5c8cc09d",
+      "comparator_cli_exit_code": 2,
+      "comparator_cli_verdict": "NOT_MEASURABLE",
+      "comparator_gate_expected_exit_code": 2,
+      "comparator_gate_verdict": "NOT_MEASURABLE",
+      "executed": true,
+      "executed_by": "TTS B (@nairyuuu)",
+      "execution_date": "2026-10-06",
+      "harness_status": "PASS",
+      "measured_revision": "891bda0001b9958e712cff54045f651273b43fd0",
+      "per_slice_results_match_accepted_196": true,
+      "report_file_sha256": "161ef577c259ab5caaaf604e6a0f3879507262f8d1cb1f699116036ff0f70933",
+      "runtime": {
+        "implementation": "CPython",
+        "machine": "AMD64",
+        "platform": "win32",
+        "python": "3.14.7"
+      }
+    },
+    "m1_exact_sets": {
+      "legacy": {
+        "count": 56353,
+        "digest": "ceec36987eabcfb407640a1bf58c1a66746983b7f565e9a99a9b0f2d30b00617"
+      },
+      "legacy_only": {
+        "count": 3,
+        "digest": "96374bfbb5637ffdebf124a4a9553d362f2029d3b1d54221cf235d65fc41eda5"
+      },
+      "matching": {
+        "count": 56350,
+        "digest": "9ce763488163d010749eea1a7054a9cd8e3ca7ec1b3a81a100386c93322ed8b1"
+      },
+      "project": {
+        "count": 56367,
+        "digest": "0b0c82d6007157e229d5e2f44ded352e2a2c1167f3373dd898380b32e875b48d"
+      },
+      "project_only": {
+        "count": 17,
+        "digest": "74f00d529cf0ace296cbdeca15af00d295eeb5ac8833e639f926e5a3c06b0f92"
+      }
+    },
+    "measured_revisions": [
+      "cc5f971435dc7d14476d6055024f441e398a4ff8",
+      "8535d44771ec9ec1960b4e883103f83654cc1d4f"
+    ],
+    "new_legacy_run_on_measured_revision": true,
+    "private_external_inputs": {
+      "identity-mapping.json": {
+        "classification": "external_input",
+        "digest": "202a91b951ff9292f57eeb535c65f02bb7063f5c28a6b27589acdc4ae45c570b",
+        "matches_accepted": true
+      },
+      "legacy-comparison.json": {
+        "classification": "external_input",
+        "digest": "7e170793f88abf39fc927b503aa60a26d6c8480e1a838be76da2840019e4f97d",
+        "matches_accepted": true
+      },
+      "legacy-nodes.json": {
+        "classification": "external_input",
+        "digest": "ed4a6aa7775a4bfb5994875243eaf11588cf03cf4301acc1f23ce62fae11839c",
+        "matches_accepted": true
+      },
+      "legacy-relationships.json": {
+        "classification": "external_input",
+        "digest": "4071dd8747a18aef4f30b074eeac163cbc7454cfe42a234367e81f8c488cdbf6",
+        "matches_accepted": true
+      },
+      "newingestion.js": {
+        "classification": "external_input",
+        "digest": "01e969d83e87217318603887c7f5818a82bc044eead26502f0daf78ac55cad3b",
+        "matches_accepted": true
+      },
+      "time-policy.json": {
+        "classification": "external_input",
+        "digest": "3540afa5ff3f4affd9deddd75f3da43409c5885af4ab9b7b2d17a97aac3a2e7b",
+        "matches_accepted": true
+      }
+    },
+    "source_equality_verified": true,
+    "unchanged_runtime_source_scopes": [
+      "src",
+      "configs",
+      "requirements.txt",
+      "requirements-dev.txt",
+      "docs/research/ratings/week3-closeout",
+      "tests/fixtures/ranking/week3_acceptance_cases.json",
+      "scripts/research/week3_engine_acceptance.py",
+      "scripts/reconcile_graph_baseline.py",
+      "scripts/research/reconcile_seamless_legacy.py",
+      "scripts/research/export_legacy_reconciliation_baseline.py"
+    ]
+  },
+  "commands": {
+    "comparator_cli": [
+      ".venv/bin/python",
+      "scripts/reconcile_graph_baseline.py",
+      "--candidate",
+      ".cache/week3-final-legacy-replay/project-comparison.json",
+      "--baseline",
+      ".cache/issue196-prerequisites/legacy-comparison.json",
+      "--mapping",
+      ".cache/issue196-prerequisites/identity-mapping.json",
+      "--summary"
+    ],
+    "legacy_final_replay": [
+      ".venv/bin/python",
+      "scripts/research/reproduce_legacy_reconciliation.py",
+      "--raw-root",
+      "data/raw/SEAMLESS",
+      "--manifest",
+      "data/samples/manifests/seamless-raw-v1.json",
+      "--prerequisites-dir",
+      ".cache/issue196-prerequisites",
+      "--work-dir",
+      ".cache/week3-final-legacy-replay",
+      "--report-output",
+      ".cache/week3-final-legacy-replay/reproduction-report.json"
+    ],
+    "raw_e2e": [
+      ".venv/bin/python",
+      "scripts/research/week3_engine_acceptance.py",
+      "--case-id",
+      "<case_id>",
+      "--raw-dir",
+      "data/raw/SEAMLESS",
+      "--manifest-dir",
+      "data/samples/manifests",
+      "--profile",
+      "unit",
+      "--created-at",
+      "2026-10-01T00:00:00Z",
+      "--time-policy",
+      ".cache/week3-closeout-891bda0/time-policy.json",
+      "--require-complete",
+      "--output",
+      ".cache/week3-closeout-891bda0/run<run>-<case_id>.json"
+    ]
+  },
+  "current_graph": {
+    "assessments": {
+      "unknown": 3
+    },
+    "canonical_digest": "sha256:c10c45a1c60e722404f921e8e559de3e8fe79efe5baf11b95bee9f1e5c8cc09d",
+    "cli_file_sha256": "c10c45a1c60e722404f921e8e559de3e8fe79efe5baf11b95bee9f1e5c8cc09d",
+    "edges": 56367,
+    "nodes": 3370
+  },
+  "date": "2026-10-06",
+  "execution_boundary": {
+    "checkout_clean_at_start": true,
+    "documentation_edits_during_runs": true,
+    "fresh_ignored_outputs": true,
+    "independent_B_reproduction_in_this_turn": true,
+    "legacy_private_inputs_available_in_this_turn": true,
+    "runtime_and_parser_sources_unchanged": true
+  },
+  "file_byte_pins": {
+    "configs/attack_semantics.yml": "4257f5f0e9d1a6a925d550c73ff5538a56283a3c63a5de77f496834c70aa070d",
+    "configs/contract.yml": "f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "data/samples/manifests/seamless-raw-v1.json": "a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+    "docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md": "9f635b850d36c0eb6c015589fb83fb604b89c2696b505ba30729d8b1a6809c3b",
+    "docs/research/evidence-rating-governance.md": "c49bb094f297fed710a3a704c42598a5c6fbc1e1ee80f39b38b71a66c74df380",
+    "docs/research/path-ranking-interface-specification.md": "f7dfbf8497f7e535c6a5adfac7126e544b766e55400eb87a98a88c47ba659237",
+    "docs/research/ratings/week3-closeout/parameter-decisions-final.json": "e6707c2ae60be777e3855f79e152d18b3a8b09d6de730e6f91c818464cc21ba2",
+    "docs/research/ratings/week3-closeout/reviewed-release.json": "5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+    "docs/research/ratings/week3-closeout/search-integration-plan.json": "c26d18918fc6ce62bda98cb20f4da3be786ca1ee5f42fa82dc0e035b82be7f86",
+    "docs/research/ratings/week3-closeout/semantic-bridge-plan.json": "56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390",
+    "docs/research/ratings/week3-closeout/validation-summary.json": "ab938207f974015a19bf82149ec8532315c193ef2f6ab3cf11e5cd151394bee9",
+    "docs/research/seamless-legacy-403-comparison-contract.md": "6a0bce271788560f3b9b32f5a15b824d6db17a874f95bb8a38b968f1714f2ac6",
+    "docs/research/week3-rating-requirement-disposition.md": "26981c73912e49eb32759a9c2880f583b18181a4737c44ced15353bdf1b5842a",
+    "requirements-dev.txt": "77b0803fae9921f6d018a6c999a3008ae7873bae7d130da32947e128507e09e8",
+    "requirements.txt": "8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "scripts/research/reproduce_legacy_reconciliation.py": "57de62a3119dbc1aa081d78631402b12dca2e5bfca7a283d649674f1f29f9b12",
+    "scripts/research/week3_engine_acceptance.py": "137aedb58e28b4728658a1372de03d60913526b8922fe8c2c819813ec027895b",
+    "tests/fixtures/ranking/week3_acceptance_cases.json": "6c6b2c591007c4de7f6f7fdba39ed01242356fd9d66313d4a53033bc1ce20152"
+  },
+  "limitations": [
+    "Bounded/truncated search; no global optimum or global absence proof",
+    "Full Legacy comparator remains NOT_MEASURABLE / exit 2; no full BloodHound or CE parity",
+    "Human-reviewed AI-assisted scenario parameters; no independent-rating reliability or empirical calibration",
+    "Legacy exports retained as pinned external prerequisites; historical import errors/rejections/duration unknown",
+    "Accepted #196 A/B measured revisions are historical executions, not fresh Legacy runs on current SHA"
+  ],
+  "measured_revision": "891bda0001b9958e712cff54045f651273b43fd0",
+  "measured_tree": "d8d7bdff5e95722cb6434f944de15f6963f4c78a",
+  "package_acceptance": {
+    "accepted_by": "TTS B (@nairyuuu)",
+    "evidence_url": "https://github.com/nairyuuu/ad-weighted-graph/pull/202#issuecomment-6008927093",
+    "measured_revision": "891bda0001b9958e712cff54045f651273b43fd0",
+    "merge_review_boundary": "Technical acceptance is complete; B requested current-state documentation repairs before approving PR merge",
+    "package_head_revision": "3c3566769432ed3b6fb5e36ac0284cc69306920c",
+    "verdict": "technically_accepted_by_B"
+  },
+  "package_verdict": "accepted_by_B",
+  "plan_canonical_digest": "sha256:2fc93a877235f0703d8f0341e15062047e4df15011214330ab601a566a671e5a",
+  "raw_e2e_cases": [
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-a-positive",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 2,
+      "expansions": 60000,
+      "file_sha256": "092d905c94c4a8b43d24d02a557c5bfb72ff43f51e2a88d0dcfdd2ad119315d4",
+      "fresh_runs": 2,
+      "frontier_size": 2,
+      "generated_paths": 23,
+      "is_truncated": true,
+      "minimum_effort_value": 2,
+      "ranking_truncation_reasons": [
+        "expansion_limit_reached",
+        "work_budget_exceeded"
+      ],
+      "report_canonical_digest": "sha256:f94a688a8b3a6ed53eab8365b671aabfb4f142a6bbc8093c17da388054266928",
+      "status": "passed",
+      "truncation_reason": "expansion_limit_reached"
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-a-known-false",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 1,
+      "expansions": 2901,
+      "file_sha256": "dd0cd8f101b5322dc33ab802e11fa375ecc02c157ecf6cf8269ea814f0353949",
+      "fresh_runs": 2,
+      "frontier_size": 1,
+      "generated_paths": 1,
+      "is_truncated": false,
+      "minimum_effort_value": 3,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:1f0fcaefe552cc26d056c7ce0b3cd9308d83cbffbd70308a0e84ba32ff15bae1",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-a-runtime-unknown",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 1,
+      "expansions": 2901,
+      "file_sha256": "1e2d2ba8ffa68b50e00f06404f1c6c20f6c5e8fa6c18937228e25741ec6e1625",
+      "fresh_runs": 2,
+      "frontier_size": 1,
+      "generated_paths": 1,
+      "is_truncated": false,
+      "minimum_effort_value": 3,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:86fb5845ac18c5695890ab29b7a99881e4b9e68664ed044a7562849df16c8136",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-a-structural-missing",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 1,
+      "expansions": 2901,
+      "file_sha256": "b16de3cf7fe9f42b498cd801e6c107e8d206a95c0a701dbcfe36ff39dec08b34",
+      "fresh_runs": 2,
+      "frontier_size": 1,
+      "generated_paths": 1,
+      "is_truncated": false,
+      "minimum_effort_value": 3,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:a2dbfd129230bc82b9847fff9697f99391e1fbb87dc42c7e40abe66da0d10e2d",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-a-telemetry-missing",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 1,
+      "expansions": 2901,
+      "file_sha256": "e37ca0682bb6d13395de776d57f2c3c0637061a0052cd553cbbecae2d08d229a",
+      "fresh_runs": 2,
+      "frontier_size": 1,
+      "generated_paths": 1,
+      "is_truncated": false,
+      "minimum_effort_value": 3,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:ebf9278a8249e0a2d9112787116116278b966a8785184fbff3364860d180e3ea",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-b-positive",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 1,
+      "expansions": 7599,
+      "file_sha256": "0fe48c26abc0737b10705e6b553383c1911f79035f861d4706b388c1958014b8",
+      "fresh_runs": 2,
+      "frontier_size": 1,
+      "generated_paths": 1,
+      "is_truncated": false,
+      "minimum_effort_value": 2,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:be530ca88234911219114c67105fad494f0e067f7066c8567b3798355b13e728",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-b-known-false",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 0,
+      "expansions": 2494,
+      "file_sha256": "0bb2ee95b0c7859fbad4ef80b79c49573307ae07ec059dccda467b0573755ea7",
+      "fresh_runs": 2,
+      "frontier_size": 0,
+      "generated_paths": 0,
+      "is_truncated": false,
+      "minimum_effort_value": null,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:40f084d75d3efa08d82e170015bcb52d95886bfd847df4817c820575c3cead7d",
+      "status": "passed",
+      "truncation_reason": null
+    },
+    {
+      "byte_identical": true,
+      "case_id": "w3-source-b-runtime-unknown",
+      "checks": {
+        "candidate_metrics_matched": true,
+        "designated_negative_decision_verified": true,
+        "empty_frontier_verified": true,
+        "frontier_verified": true,
+        "min_effort_verified": true
+      },
+      "eligible_candidates": 0,
+      "expansions": 2494,
+      "file_sha256": "7a0ab4b702f74651d896318bbce267538792cc2670a53514476fdc795dc33554",
+      "fresh_runs": 2,
+      "frontier_size": 0,
+      "generated_paths": 0,
+      "is_truncated": false,
+      "minimum_effort_value": null,
+      "ranking_truncation_reasons": [],
+      "report_canonical_digest": "sha256:cc81970fff55625f13b8d6d6444b8bd790ae50c4ad0cf8d703f961a6cf04c8c8",
+      "status": "passed",
+      "truncation_reason": null
+    }
+  ],
+  "release_canonical_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+  "release_validation": {
+    "content_digest": "sha256:4906ed68baae9ee86db297dae71cf70e1a39520c828cdce0a6c31f877d3bc834",
+    "exit_code": 0,
+    "file_sha256": "99ea60c98a4d1ed06e7feb8d436135d3298b458c26ea3fee4a213049fb4ec912",
+    "probes": 21,
+    "query_outcomes": 24
+  },
+  "remaining_gates": [
+    "Merge #202 after B rereview of current-state documentation repairs and successful required checks on the updated head",
+    "Re-fetch live merged state; close #48, scoped #143/#42, then #158 using accepted closure evidence",
+    "Final release review #186 on latest develop: full release diff/data policy, exact-head CI/branch policy and A/B approval",
+    "Promote develop to main by merge commit if final release reviews and required checks pass"
+  ],
+  "role": "TTS A",
+  "runtime": {
+    "dependencies": {
+      "PyYAML": "6.0.3",
+      "Pygments": "2.21.0",
+      "iniconfig": "2.3.0",
+      "networkx": "3.7",
+      "packaging": "26.3",
+      "pathspec": "1.1.1",
+      "pluggy": "1.6.0",
+      "pytest": "9.1.1",
+      "ruff": "0.16.8",
+      "yamllint": "1.38.0"
+    },
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "python": "3.14.2",
+    "system": "Linux"
+  },
+  "schema_version": 1,
+  "scope": "Week 3/M2 closeout only; Week 4 #192/#200 excluded",
+  "search_caps": {
+    "max_active_work_budget": 6,
+    "max_candidates": 25,
+    "max_expansions": 60000,
+    "max_steps": 10,
+    "timeout_ms": null
+  },
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "synthetic_cli_checks": {
+    "fail_fast": {
+      "command": [
+        "-m",
+        "src.parser.cli",
+        "--manifest-dir",
+        "data/samples/manifests",
+        "--time-policy",
+        "data/samples/parser-demo/time-policy.json",
+        "--created-at",
+        "2026-09-25T00:00:00Z",
+        "--summary",
+        "--snapshot-id",
+        "sha256:b7ac113cf44525d3c638eb8a29dc219257a142a8d2c0debb4764d580c7a9183c",
+        "--raw-dir",
+        "data/samples/parser-demo-error-input",
+        "--error-policy",
+        "fail_fast",
+        "--output",
+        ".cache/week3-closeout-891bda0/synthetic-fail_fast.json"
+      ],
+      "exit_code": 1,
+      "output_exists": false
+    },
+    "happy": {
+      "assessments": 1,
+      "command": [
+        "-m",
+        "src.parser.cli",
+        "--manifest-dir",
+        "data/samples/manifests",
+        "--time-policy",
+        "data/samples/parser-demo/time-policy.json",
+        "--created-at",
+        "2026-09-25T00:00:00Z",
+        "--summary",
+        "--snapshot-id",
+        "sha256:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4",
+        "--raw-dir",
+        "data/samples/parser-demo-rich-input",
+        "--error-policy",
+        "fail_fast",
+        "--output",
+        ".cache/week3-closeout-891bda0/synthetic-happy.json"
+      ],
+      "edges": 10,
+      "exit_code": 0,
+      "file_sha256": "5812782095d1971b28ef0ec0c07e65bdd3c4d2910392c2fa8280b1b7d76c51f4",
+      "nodes": 6,
+      "output_exists": true
+    },
+    "log_warning": {
+      "assessments": 0,
+      "command": [
+        "-m",
+        "src.parser.cli",
+        "--manifest-dir",
+        "data/samples/manifests",
+        "--time-policy",
+        "data/samples/parser-demo/time-policy.json",
+        "--created-at",
+        "2026-09-25T00:00:00Z",
+        "--summary",
+        "--snapshot-id",
+        "sha256:b7ac113cf44525d3c638eb8a29dc219257a142a8d2c0debb4764d580c7a9183c",
+        "--raw-dir",
+        "data/samples/parser-demo-error-input",
+        "--error-policy",
+        "log_warning",
+        "--output",
+        ".cache/week3-closeout-891bda0/synthetic-log_warning.json"
+      ],
+      "edges": 0,
+      "exit_code": 0,
+      "file_sha256": "d0ba5dc6bd9b13e8772066dc411ecbe06548085ac6041f4f369e7f087f7b236a",
+      "nodes": 2,
+      "output_exists": true
+    },
+    "skip_record": {
+      "assessments": 0,
+      "command": [
+        "-m",
+        "src.parser.cli",
+        "--manifest-dir",
+        "data/samples/manifests",
+        "--time-policy",
+        "data/samples/parser-demo/time-policy.json",
+        "--created-at",
+        "2026-09-25T00:00:00Z",
+        "--summary",
+        "--snapshot-id",
+        "sha256:b7ac113cf44525d3c638eb8a29dc219257a142a8d2c0debb4764d580c7a9183c",
+        "--raw-dir",
+        "data/samples/parser-demo-error-input",
+        "--error-policy",
+        "skip_record",
+        "--output",
+        ".cache/week3-closeout-891bda0/synthetic-skip_record.json"
+      ],
+      "edges": 0,
+      "exit_code": 0,
+      "file_sha256": "d0ba5dc6bd9b13e8772066dc411ecbe06548085ac6041f4f369e7f087f7b236a",
+      "nodes": 2,
+      "output_exists": true
+    },
+    "tamper": {
+      "command": [
+        "-m",
+        "src.parser.cli",
+        "--manifest-dir",
+        "data/samples/manifests",
+        "--time-policy",
+        "data/samples/parser-demo/time-policy.json",
+        "--created-at",
+        "2026-09-25T00:00:00Z",
+        "--summary",
+        "--snapshot-id",
+        "sha256:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4",
+        "--raw-dir",
+        ".cache/week3-closeout-891bda0/tamper-input",
+        "--error-policy",
+        "fail_fast",
+        "--output",
+        ".cache/week3-closeout-891bda0/synthetic-tamper.json"
+      ],
+      "exit_code": 1,
+      "output_exists": false
+    }
+  },
+  "time_policy": {
+    "collection_time": "unknown",
+    "sha256": "3540afa5ff3f4affd9deddd75f3da43409c5885af4ab9b7b2d17a97aac3a2e7b",
+    "status": "assumed",
+    "timestamp": "2026-10-01T00:00:00Z"
+  },
+  "verification": {
+    "compose_config": "passed",
+    "contract_check": "passed",
+    "diff_check": "passed",
+    "exact_closeout_PR_head_CI": "success",
+    "exact_closeout_PR_head_CI_evidence": {
+      "branch_policy_url": "https://github.com/nairyuuu/ad-weighted-graph/actions/runs/37410384144",
+      "checks": {
+        "compose": "success",
+        "main-source": "success",
+        "quality": "success",
+        "tests (ubuntu-latest)": "success",
+        "tests (windows-latest)": "success"
+      },
+      "ci_url": "https://github.com/nairyuuu/ad-weighted-graph/actions/runs/37410384187",
+      "head_revision": "3c3566769432ed3b6fb5e36ac0284cc69306920c",
+      "revision_boundary": "Verified package head at B acceptance; subsequent documentation heads require their own PR checks and rereview before merge; measured runtime revision remains 891bda0001b9958e712cff54045f651273b43fd0"
+    },
+    "pytest": "1820 passed, 2 skipped, 48 subtests passed (Windows; Linux: 1821 passed, 1 skipped, 48 subtests)",
+    "repository_check": "passed",
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "yamllint": "passed"
+  },
+  "versions": {
+    "comparison_contract": "seamless-legacy-403-m1-common-v1",
+    "graph_contract": "1.3.0",
+    "model": "ADR-0013 accepted scoped #165",
+    "profile": "unit",
+    "ranking_interface": "1.0.0",
+    "reviewed_release": "1.0.0",
+    "scenario": "1.1.0",
+    "semantic_catalog": "0.3"
+  }
+}

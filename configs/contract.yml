@@ -1,0 +1,210 @@
+# Official structural graph contract for Milestone M2.
+# The structural graph is independent of the EDA and Identity–Asset ontologies.
+version: "1.3.0"
+status: accepted
+compatibility:
+  previous_versions: ["1.0.0", "1.1.0", "1.2.0"]
+  migration: >-
+    Contract 1.0.0 graphs remain loadable when they contain only the original direct-edge
+    fields; they cannot represent derivation. Contract 1.1.0 graphs remain loadable with
+    valid derivation format 1.1.0 and its complete CanRDP path conditions for RDU membership,
+    the effective allow right, and known absence of the effective deny right. The pre-review
+    derivation format 1.0.0 is not accepted; regenerate such draft derived graphs from source
+    evidence instead of upgrading incomplete paths. For 1.0.0 and 1.1.0, a provenance
+    timestamp without timestamp_status means unknown_legacy and is never inferred to be
+    observed. Contract 1.2.0 preserves derivation unchanged and adds required per-record
+    timestamp status plus an optional supplied time-provenance reason. Contract 1.3.0
+    preserves all prior IDs and adds explicitly tagged Domain-SID-scoped namespace IDs.
+graph:
+  directed: true
+  multigraph: true
+  top_level_required: [metadata, nodes, edges, assessments]
+  top_level_optional: []
+schema:
+  metadata:
+    required: [contract_version, weight_profile, snapshot_id, created_at, code_version]
+    optional: [synthetic, description]
+    field_types:
+      contract_version: nonempty_string
+      weight_profile: weight_profile
+      snapshot_id: snapshot_id
+      created_at: utc_timestamp
+      code_version: nonempty_string
+      synthetic: boolean
+      description: nonempty_string
+    snapshot_id_pattern: '^sha256:[0-9a-f]{64}$'
+    timestamp_pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'
+  node_required: [id, kind, label, domain, is_boundary]
+  node_optional: [enabled, admincount, distinguishedname]
+  edge_required: [id, source, target, kind, weight, provenance]
+  edge_optional: [derivation]
+  assessment_required: [id, status, reason, provenance]
+  assessment_optional: [subject, target, kind, record_id]
+  assessment_statuses: [unknown, inferred, rejected]
+  canonical_id:
+    strategy: sid_then_scoped_sid_then_guid
+    description: >-
+      Use an object's canonical SID when the SID is globally unambiguous; otherwise use a
+      scoped SID with a stable domain or host identity. Domain scope uses an observed object
+      GUID when present, otherwise an authoritative observed AD Domain SID. Host scope still
+      requires a stable host GUID. Existing GUID-scoped IDs remain unchanged; Domain-SID
+      scope uses the explicit form domain:sid:<domain-sid>:<sid>. Namespace-relative SIDs
+      must be scoped. A missing stable scope rejects the record; it never falls back to a
+      label, a distinguished name, or a random UUID. All GUIDs are lowercase in graph JSON.
+    scope_kinds: [domain, host]
+    sid_pattern: '^S-1-(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*)){1,15}$'
+    guid_pattern: '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'
+    scoped_sid_pattern: "^(?:(?:domain|host):[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-\
+      [0-9a-f]{4}-[0-9a-f]{12}:S-1-(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*)){1,15}|\
+      domain:sid:S-1-5-21-(?:0|[1-9][0-9]*)-(?:0|[1-9][0-9]*)-(?:0|[1-9][0-9]*):\
+      S-1-(?:0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*)){1,15})$"
+    scope_required_sid_pattern: '^S-1-5-(?:18|19|20|32-(?:0|[1-9][0-9]*))$'
+  boundary:
+    description: >-
+      A boundary/stub node represents an object or domain referenced by the snapshot but
+      not fully collected. It keeps a structural node kind and sets is_boundary to true;
+      Identity and Asset are never used as node kinds. Foreign security principals use
+      User or Group with the external domain in domain and a stable scoped canonical ID.
+    allowed_kinds: [Domain, User, Group, Computer]
+    required_fields: [domain, is_boundary]
+  node_field_types:
+    id: canonical_id
+    kind: node_kind
+    label: nonempty_string
+    enabled: boolean
+    admincount: boolean_or_integer
+    distinguishedname: nonempty_string
+    domain: nonempty_string
+    is_boundary: boolean
+  edge_id:
+    strategy: sha256_json_array
+    inputs: [source, target, kind]
+    description: >-
+      Hash the canonical source ID, canonical target ID, and edge kind as a compact JSON
+      array. Identical logical edges share an ID and aggregate all audit evidence in provenance.
+    pattern: '^sha256:[0-9a-f]{64}$'
+  edge_field_types:
+    id: canonical_edge_id
+    source: canonical_node_id
+    target: canonical_node_id
+    kind: edge_kind
+    weight: positive_number
+    provenance: positive_provenance_records
+    derivation: derived_lineage
+  derivation:
+    version: "1.1.0"
+    kinds: [nested_membership, gpo_resultant, host_access]
+    derived_edge_kinds: [AdminTo, CanRDP, CanPSRemote]
+    direct_only_edge_kinds: [MemberOf, GenericAll, WriteDacl, ForceChangePassword, HasSession]
+    multiple_paths: preserve_all_sorted_deduplicated
+    path_required: [steps]
+    path_optional: [conditions]
+    condition_required: [predicate, evidence_refs]
+    condition_predicates: [rdu_membership, allow_right, deny_absent]
+    required_conditions:
+      CanRDP: [rdu_membership, allow_right, deny_absent]
+    step_required: [order, operation, evidence_refs]
+    step_optional: [source, target]
+    operations:
+      - effective_membership
+      - host_local_membership
+      - effective_right
+      - gpo_setting
+      - active_link
+      - target_scope
+      - security_filtering
+      - wmi_filtering
+      - inheritance_and_order
+      - client_side_extension
+      - resultant_host_state
+    nested_operations: [effective_membership, host_local_membership, effective_right]
+    nested_sequence_rules:
+      AdminTo: membership_chain_then_host_local
+      CanRDP: complete_path_plus_rdu_allow_and_deny_absence_conditions
+      CanPSRemote: membership_chain_then_host_local
+    gpo_operations:
+      - gpo_setting
+      - active_link
+      - target_scope
+      - security_filtering
+      - wmi_filtering
+      - inheritance_and_order
+      - client_side_extension
+      - resultant_host_state
+    non_node_targets: [SeRemoteInteractiveLogonRight, SeDenyRemoteInteractiveLogonRight]
+    evidence_ref_pattern: '^sha256:[0-9a-f]{64}$'
+  provenance:
+    required: [raw_file, collector, timestamp, evidence_type, timestamp_status]
+    optional: [record_id, attribute, time_provenance_reason]
+    evidence_types: [positive, unknown, inferred, rejected]
+    edge_evidence_type: positive
+    timestamp_pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'
+    timestamp_statuses: [observed, assumed, derived, externally_evidenced, unknown_legacy]
+    reason_required_statuses: [derived, externally_evidenced]
+  raw_provenance:
+    required: [raw_file, collector, timestamp]
+    # Raw-only collector envelope version; never copied to canonical edge provenance.
+    optional:
+      [record_id, attribute, snapshot_id, record_locator, time_provenance, time_provenance_reason, schema_version]
+    timestamp_pattern: '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$'
+  assessment_field_types:
+    id: nonempty_string
+    status: assessment_status
+    reason: nonempty_string
+    subject: canonical_node_id
+    target: canonical_node_id
+    kind: edge_kind
+    record_id: nonempty_string
+    provenance: assessment_provenance_records
+node_kinds: [User, Computer, Group, Domain, OU, GPO]
+edge_kinds:
+  - MemberOf
+  - AdminTo
+  - GenericAll
+  - WriteDacl
+  - ForceChangePassword
+  - CanRDP
+  - CanPSRemote
+  - HasSession
+paths:
+  raw: data/raw
+  processed: data/processed
+  samples: data/samples
+default_profile: unit
+profiles:
+  unit:
+    description: Synthetic baseline; every traversable edge has unit cost.
+    production_ready: false
+    weights:
+      MemberOf: 1.0
+      AdminTo: 1.0
+      GenericAll: 1.0
+      WriteDacl: 1.0
+      ForceChangePassword: 1.0
+      CanRDP: 1.0
+      CanPSRemote: 1.0
+      HasSession: 1.0
+  illustrative:
+    description: Arbitrary costs for tests only; requires research before real analysis.
+    production_ready: false
+    weights:
+      MemberOf: 1.0
+      AdminTo: 2.0
+      GenericAll: 5.0
+      WriteDacl: 4.0
+      ForceChangePassword: 3.0
+      CanRDP: 2.0
+      CanPSRemote: 2.0
+      HasSession: 1.0
+  maut_v1:
+    description: 4D MAUT weighting model based on CVSS exploitability and APT detection penalty.
+    production_ready: false
+    weights:
+      MemberOf: 1.0
+      AdminTo: 1.65
+      GenericAll: 1.85
+      WriteDacl: 2.25
+      ForceChangePassword: 2.25
+      CanPSRemote: 2.25
+      CanRDP: 2.4
+      HasSession: 3.55

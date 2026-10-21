@@ -1,0 +1,93 @@
+{
+  "all_14_prior_failed_node_ids_have_passing_rerun": true,
+  "clean_capture_revision": "b2db836bdc784473556678dfe99e5f30805130dd",
+  "closed_node_ids": [
+    "tests.test_likelihood_catalog_v1::test_catalog_package_verifies_without_running_candidate_search",
+    "tests.test_likelihood_catalog_v1::test_generated_min_effort_matches_frozen_oracle_and_pending_gates",
+    "tests.test_likelihood_catalog_v1::test_private_generated_programs_preserve_independent_oracles[source_a]",
+    "tests.test_likelihood_catalog_v1::test_private_generated_programs_preserve_independent_oracles[frozen_243]",
+    "tests.test_likelihood_catalog_v1::test_proposed_provider_records_preserve_pending_and_match_merged_api",
+    "tests.test_rating_source_successors::test_source_successors_preserve_all_asrep_frozen_history",
+    "tests.test_scenario_rating_pack::test_manifest_and_pending_numeric_governance",
+    "tests.test_scenario_rating_pack::test_public_automatic_review_simulation_matches_frozen_oracle",
+    "tests.test_week4_acceptance_checkout_bytes::test_acceptance_pins_survive_autocrlf_checkout",
+    "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_file_pins",
+    "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_semantic_reproduction",
+    "tests.test_week4_acceptance_manifest::test_week4_acceptance_manifest_independent_verdicts",
+    "tests.test_week4_acceptance_review_regressions::test_baseline_mutation_is_unexpected_failure",
+    "tests.test_week4_acceptance_review_regressions::test_demo_commands_and_claims_smoke"
+  ],
+  "executed_revision": "633bfaf6d5cc8d3dc1c610e4d39abfff3e92b353",
+  "limitations": [
+    "Targeted closure of all observed failures; no new whole-suite PASS claim.",
+    "Counts from earlier overlapping suites must not be added.",
+    "Full raw opt-in follow-up is separate; two old Week4 NOT EXECUTED are not relabeled.",
+    "Historical R03 archive is inaccessible in this materialization; link check still reports it.",
+    "193 final-CPI tests not all rerun; only one completed fresh numeric projected case, not 16-case acceptance."
+  ],
+  "local_full_artifacts": {
+    "compat-after.xml": {
+      "bytes": 16872,
+      "sha256": "sha256:d3c8b002f72976671737dcf1c3f931e873f0d3b7bd7519f0529adde6341a0800"
+    },
+    "core-after-reuse.xml": {
+      "bytes": 464188,
+      "sha256": "sha256:3a33be6135269b07856057f4347e08c353d96223598dc07c2eaec22217590e63"
+    },
+    "direct-raw-audit-first.json": {
+      "bytes": 35383,
+      "sha256": "sha256:5113c3519dfb3001d1a6386b95915029b4929f1bab013ab9859d3f3a2223ba64"
+    },
+    "week4-acceptance-after.xml": {
+      "bytes": 2263,
+      "sha256": "sha256:deda92c87ddcfda92d76cd651cf3bcf1c9eeae8f942fe153a040483cfc436127"
+    }
+  },
+  "native_acceptance": {
+    "determinism": "two complete executions agree",
+    "failures": 0,
+    "full_capture_retained": true,
+    "normalized_payload_equal_to_frozen_v3": true,
+    "not_executed": 2,
+    "passed": 36,
+    "public_manifest": "reports/research/week4-guided-exploration-acceptance-manifest-v6.json",
+    "public_manifest_sha256": "sha256:eb919132cabcaf9c974bd6bfcb6dcb1938bb5ec74f992cced2984ce540d84548",
+    "semantic_payload_equal_to_full_capture": true,
+    "semantic_sha256": "sha256:e4f9a3f1779753650a45dbf4c671c8cf68363e100c4a9bc861850a0cb2cbbbec"
+  },
+  "oracle_development_note": {
+    "explanation": "Experimental oracle initially treated unprefixed builtin SIDs as globally unique. All 19 candidates reference S-1-5-32-581/582, whose canonical IDs are domain-scoped per contract 1.3. Corrected only oracle endpoint scoping using independently collected raw Domain SID; final audit has zero failures. Not a confirmed parser defect. First failed report retained locally and hashed above.",
+    "first_direct_raw_audit_missing_edges": 19
+  },
+  "prior_core": {
+    "excluded": "193 final-CPI tests",
+    "failed": 14,
+    "passed": 3145,
+    "skipped": 11,
+    "subtests_passed": 88
+  },
+  "schema_version": "awg-r04-compatibility-closeout/1.0",
+  "targeted_reruns": [
+    {
+      "deselected": 4,
+      "evidence": "iteration-4-compatibility.xml",
+      "modules": "likelihood, scenario, source-successor, binding, reuse, identity goal",
+      "passed": 113,
+      "seconds": 100.387
+    },
+    {
+      "checkout": "clean published 633bfaf6, no tracked-file/HEAD changes during execution",
+      "errors": 0,
+      "evidence": "iteration-4-week4.xml",
+      "failures": 0,
+      "modules": [
+        "tests/test_week4_acceptance_checkout_bytes.py",
+        "tests/test_week4_acceptance_manifest.py",
+        "tests/test_week4_acceptance_review_regressions.py"
+      ],
+      "passed": 15,
+      "seconds": 52.239,
+      "skipped": 0
+    }
+  ]
+}

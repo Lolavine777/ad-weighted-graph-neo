@@ -1,0 +1,1055 @@
+{
+  "status": "PASS",
+  "graph_metadata": {
+    "code_version": "4822e95045e7ebbe99316ddb56ac1b1d4e2dc30f",
+    "contract_version": "1.3.0",
+    "created_at": "2026-10-01T00:00:00Z",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "weight_profile": "unit"
+  },
+  "graph_digest": "sha256:5781a365b3a44c57bc2b30f11a98d1f60242ca515ceca411e9c6e34cefd5518a",
+  "collection_time_policy": {
+    "timestamp": "2021-09-20T18:59:58Z",
+    "status": "assumed",
+    "reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time."
+  },
+  "python_version": "3.14.2",
+  "installed_versions": {
+    "networkx": "3.7",
+    "PyYAML": "6.0.3",
+    "pytest": "9.1.1",
+    "ruff": "0.16.7",
+    "yamllint": "1.38.0"
+  },
+  "governance_version": "1.0.0 (Proposed)",
+  "packet_code_revision": "91b43eb0b580cfd856eb3153acf56e0f23c163fb",
+  "packet_inputs_committed": true,
+  "input_digests": {
+    "tests/fixtures/ranking/seamless_query_input.json": "sha256:bc91817c0494bee2294081ccfa30fee35ed544fbb6fc105fd53365847d4a5c4b",
+    "tests/fixtures/ranking/seamless_source_b_query_input.json": "sha256:ccc2b86520f2025699e499bea93e82424bbf2f42efb2e788d2d5a8e60c0a9d69",
+    "tests/fixtures/ranking/seamless_time_policy.json": "sha256:0dff9f0d84078ad39d304cc8807d7c91fc35a680cf5bfe008e4a65ab2acacc0a",
+    "tests/fixtures/ranking/seamless_rater_1.json": "sha256:b409a2fff62f3036a1970eecdef5c8d886fa02aa190de338c8d7ad0435ef1e66",
+    "tests/fixtures/ranking/seamless_rater_2.json": "sha256:26bb9b58a3db12afa7386c114f4dca564c51f0987b7495344ade91308b32c3bf",
+    "tests/fixtures/ranking/seamless_expected_diagnostics.json": "sha256:4617da33bec736e2ccecc6999e49508ff7e3ff20d108d71252cb14a975dbc75e",
+    "tests/fixtures/ranking/seamless_source_b_expected_diagnostics.json": "sha256:a5680ca6681ad460fb6e94ad6c9ed9f8809b7fb458050816b716095d2cd33181",
+    "tests/fixtures/ranking/seamless_predicate_bindings.json": "sha256:3e6cc0b39dbdb4bbb2e7bfcad41e20d233963b512fb788af52c31934e93e100f",
+    "data/samples/manifests/seamless-raw-v1.json": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+    "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "configs/attack_semantics.yml": "sha256:563df62900e33443a418502006963b6de5960fbf4056b804cc6e79a449ce157e",
+    "docs/research/evidence-rating-governance.md": "sha256:05f21e1fe671daa85e56241766000d233bd3d1015f926ab3c196ba6fd13afa6a",
+    "scripts/research/path_ranking_wire_adapter.py": "sha256:309008a0f8ad2e912aab5f16e5099e8344cd91a294ec9c53782f71a3e971fa6a",
+    "scripts/research/seamless_packet_evidence.py": "sha256:8d83775b529d9533a82005aea5b0c654878528a77ee153d107cc027bbb0dd24d",
+    "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "requirements-dev.txt": "sha256:77b0803fae9921f6d018a6c999a3008ae7873bae7d130da32947e128507e09e8",
+    "tests/test_seamless_packet.py": "sha256:8374efad2809394e00d1444e9a6aee3a40fb23f1f2b2c500f87b0108aadf3954",
+    "docs/research/path-ranking-interface-specification.md": "sha256:a8d67a8acabaccf67cac267dd4ecc0ba62bf831236246e1f7d50531714f579a8"
+  },
+  "verified_raw_file_count": 6,
+  "verified_observed_locators": 14,
+  "canonical_counts": {
+    "nodes": 3370,
+    "edges": 53774,
+    "assessments": 3
+  },
+  "executed_reproduction_commands": [
+    ".venv/bin/python scripts/snapshot_manifest.py verify data/raw/SEAMLESS data/samples/manifests/seamless-raw-v1.json",
+    "At graph code pin: .venv/bin/python -m src.parser.cli --snapshot-id sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812 --raw-dir data/raw/SEAMLESS --profile unit --error-policy fail_fast --time-policy tests/fixtures/ranking/seamless_time_policy.json --created-at 2026-10-01T00:00:00Z --output data/processed/pr159-canonical-graph.json --summary",
+    ".venv/bin/python -m scripts.research.seamless_packet_evidence --graph data/processed/pr159-canonical-graph.json --raw-dir data/raw/SEAMLESS --output reports/generated/pr159-packet-evidence.json",
+    ".venv/bin/python -m pytest tests/test_seamless_packet.py tests/test_path_ranking_interface.py -q"
+  ],
+  "routes": [
+    {
+      "route_id": "route_seamless_01",
+      "edge_count": 3,
+      "canonical_segments_verified": true
+    },
+    {
+      "route_id": "route_seamless_02",
+      "edge_count": 5,
+      "canonical_segments_verified": true
+    },
+    {
+      "route_id": "route_seamless_source_b_01",
+      "edge_count": 3,
+      "canonical_segments_verified": true
+    }
+  ],
+  "scenario_cases": {
+    "query-seamless-host-to-dc-v1": [
+      {
+        "case_id": "positive_under_proposed_assumptions",
+        "input_classification": "scenario_assumptions",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "evidence_only",
+        "input_classification": "evidence_only",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:admin_execution_context_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:admin_execution_context_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:admin_execution_context_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:admin_execution_context_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:authentication_accepted_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:authentication_accepted_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:authentication_accepted_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:authentication_accepted_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:da_host_admin_mapping",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:da_host_admin_mapping",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:directory_write_allowed_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:directory_write_allowed_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:directory_write_allowed_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:directory_write_allowed_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:directory_write_allowed_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:directory_write_allowed_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:endpoint_authorized_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:endpoint_authorized_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:endpoint_authorized_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:endpoint_authorized_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:foothold_controlled_tstwvir",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:foothold_controlled_tstwvir",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:membership_security_group_usable_josefa_vajer",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:membership_security_group_usable_josefa_vajer",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:membership_security_group_usable_lidia_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:membership_security_group_usable_lidia_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:membership_security_group_usable_ollie_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:membership_security_group_usable_ollie_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_kdc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_kdc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_rpc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_rpc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_winrm_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_winrm_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:password_policy_accepts_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:password_policy_accepts_josefa",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:password_policy_accepts_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:password_policy_accepts_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:password_policy_accepts_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:password_policy_accepts_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:service_winrm_running",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:service_winrm_running",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:winrm_authentication_accepted_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "blocked",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:winrm_authentication_accepted_lidia",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "unknown",
+          "cand_seamless_02_alt_vajer_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:winrm_authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:winrm_authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_01_direct_lidia": "feasible",
+          "cand_seamless_02_alt_vajer_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      }
+    ],
+    "query-seamless-source-b-to-dc-v1": [
+      {
+        "case_id": "positive_under_proposed_assumptions",
+        "input_classification": "scenario_assumptions",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "feasible"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "feasible"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "evidence_only",
+        "input_classification": "evidence_only",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:admin_execution_context_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:admin_execution_context_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:da_host_admin_mapping",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:da_host_admin_mapping",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:directory_write_allowed_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:directory_write_allowed_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:endpoint_authorized_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:endpoint_authorized_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:foothold_controlled_finwvir",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:foothold_controlled_finwvir",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:membership_security_group_usable_ollie_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:membership_security_group_usable_ollie_da",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_kdc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_kdc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_rpc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_rpc_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:network_winrm_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:network_winrm_reachable",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:password_policy_accepts_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:password_policy_accepts_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:service_winrm_running",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:service_winrm_running",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_false:winrm_authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "blocked"
+        },
+        "verdict": "PASS"
+      },
+      {
+        "case_id": "required_unknown:winrm_authentication_accepted_ollie",
+        "input_classification": "synthetic_negative",
+        "expected": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "actual": {
+          "cand_seamless_source_b_01_ollie": "unknown"
+        },
+        "verdict": "PASS"
+      }
+    ]
+  },
+  "synthetic_one_target_kappa": {
+    "kappa": null,
+    "status": "degenerate_zero_variance",
+    "observed_agreement": 1.0,
+    "confusion_matrix": {
+      "Critical": {
+        "Critical": 1
+      }
+    },
+    "small_sample_size_warning": true
+  },
+  "ratings_status": "pending_independent_ratings",
+  "assumption_review_status": "pending_B_review",
+  "coverage": "Three explicitly supplied structural routes in two separate queries; no search completeness claim."
+}

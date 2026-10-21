@@ -1,0 +1,46 @@
+{
+  "baseline_run_id": "finite-before",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "catalog_id": "ad-remediation/1.0.0",
+  "conflict_policy": "reject_duplicate_or_conflicting_keys",
+  "edits": [
+    {
+      "after": false,
+      "catalog_entry_id": "asrep-preauth",
+      "declaration": "counterfactual_intervention",
+      "edit_id": "require-preauth",
+      "evidence_digest": "sha256:59bfaa3f05b9c32673fd2dfc5e5411f2dd204e1357381ac53478213d1f7b8243",
+      "evidence_refs": [
+        "synthetic://228/snapshot#/User/S-1-5-21-1000-2000-3000-1700/Properties/dontreqpreauth"
+      ],
+      "expected_before": true,
+      "kind": "snapshot_fact_replace",
+      "name": "dontreqpreauth",
+      "rationale": "Require preauthentication in a separate effective view",
+      "subject": "S-1-5-21-1000-2000-3000-1700"
+    }
+  ],
+  "initial_state_policy": "rebuild_same_declared_foothold",
+  "missing_evidence_policy": "unresolved_no_effect_claim",
+  "request_id": "finite-preauth",
+  "schema_version": "1.1.0",
+  "scope": {
+    "engine_revision": "7368cac505b3d19331cb8a688114107e91134f25",
+    "evaluation_mode": "scenario",
+    "goal_manifest_digest": "sha256:0aefdd2334ca5114583ba89d528907292b9e208c766467e8ee6ebfc3c08730f3",
+    "graph_digest": "sha256:b2d94c77096ac1fda604d839780275942d231f5e39421175a94f9a4d971ba991",
+    "program_identity_version": "semantic-program/1",
+    "query_profile_digest": "sha256:f8894df0d5d2bb6256551d2b07773a2e0fb785d1997a2a740dfd98bf1d6930e0",
+    "rating_inputs_digest": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "route_identity_version": "ordered-observed-edges/1",
+    "search_budget": {
+      "max_expansions": 1000,
+      "max_paths": 100,
+      "max_steps": 6
+    },
+    "semantic_catalog_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "snapshot_facts_digest": "sha256:9b027e42a5f32139a8e041d3db57a64329a12cd9396b60203b169cba5f2d49a4",
+    "snapshot_id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "source_manifest_digest": "sha256:3cb0f4b409868f80e53b4bcfaba7e991fe89eec958e61e986873fd25c93d21ee"
+  }
+}

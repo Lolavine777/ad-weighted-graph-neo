@@ -1,0 +1,192 @@
+{
+  "acceptance_runner": {
+    "deterministic": true,
+    "independent_expected_fields_changed": false,
+    "semantic_digest": "sha256:eda886e4c90e8c3720b0f2f211f80daa2f8f21ca27984ac2947016cdf0babd69",
+    "source_pin": "97aa41b153317080ef4969226312d25989026c4f",
+    "summary": {
+      "blocked_run_count": 1,
+      "known_defect_count": 0,
+      "not_executed_count": 1,
+      "pass_count": 35,
+      "pending_count": 1,
+      "total_cases": 38,
+      "unexpected_failure_count": 0
+    }
+  },
+  "artifact_transport_normalization": "CRLF to LF only; parsed semantic/runtime payload unchanged",
+  "base": "d96f3f67d44cd0c37ed8715c4ff58fbd22609ad1",
+  "byte_identical": false,
+  "catalog": "0.5",
+  "evidence": "synthetic_prediction_only",
+  "execution_source_bytes_match_git_pin": true,
+  "human_domain_mapping_review": "pending @Lolavine777 via #206",
+  "independent_cross_run_acceptance": "pending #208",
+  "input_digests": {
+    "graph_input": {
+      "reference": "tests/fixtures/asrep/snapshot.json",
+      "sha256": "sha256:f2feab1d92c2f8a3745eb8e67dbd8edf798e5ab4fad914ebd07a7f7db1e08c62"
+    },
+    "query": {
+      "reference": "tests/fixtures/asrep/query.json",
+      "sha256": "sha256:76927bfacc9aa40e6c0800dfc0a1760efacb40e64f3eeb7ac2ce2e7074d93790"
+    }
+  },
+  "oracle_file_sha256": "sha256:a23343ca83b9587dfb2e13a0f456e7250981b8a34a2be4163bfce0778ae08847",
+  "ordering_equal": true,
+  "private_seamless": {
+    "actual_run": false,
+    "disposition": "pending_missing_authorized_manifest_verified_inputs",
+    "observed_exploit_success": false,
+    "prerequisite_guard_exit_code": 2
+  },
+  "python": "3.14.7",
+  "ratings": {
+    "active_work_units": 4,
+    "effort": "unrated",
+    "impact": "unrated",
+    "likelihood": "unrated",
+    "passive_membership_work_units": 0
+  },
+  "result_schema": "week4-query-result/0.2.0",
+  "review_fixes": [
+    "canonical target_enabled conservative request boundary",
+    "declared initial state remains assumed",
+    "preserve #216 metadata",
+    "integrate #231 and refresh scoped AS-REP acceptance"
+  ],
+  "runs": [
+    {
+      "bytes": 490380,
+      "checkpoint_reached": true,
+      "complete": true,
+      "effective_config_sha256": "sha256:7e30831fea01168c823fae6ccabbe6694938cc4fa12b68b5778462b947c0c45f",
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_rated_subset"
+      },
+      "exit_code": 0,
+      "file": "run-1.json",
+      "final_goal_reached": true,
+      "original_transport_bytes": 497917,
+      "original_transport_sha256": "sha256:4f7a3366450cddfbb392ef69c4c7a27328a0a421145b240a2a12e1ec3da54370",
+      "programs": [
+        [
+          "asrep_request",
+          "recover_asrep_secret",
+          "activate_recovered_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      ],
+      "semantic_sha256": "sha256:7031099ab1dfc5d238b92a6d0899ea95ea542b289e9343b6574edc91e9fa5244",
+      "sha256": "sha256:60344f976811b4ea62817d951dfe7e0f2a939642d96f72e5da42a41085457aa7",
+      "status": "success",
+      "truncated": false
+    },
+    {
+      "bytes": 490378,
+      "checkpoint_reached": true,
+      "complete": true,
+      "effective_config_sha256": "sha256:7e30831fea01168c823fae6ccabbe6694938cc4fa12b68b5778462b947c0c45f",
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "best_in_rated_subset"
+      },
+      "exit_code": 0,
+      "file": "run-2.json",
+      "final_goal_reached": true,
+      "original_transport_bytes": 497915,
+      "original_transport_sha256": "sha256:38f96c7a5099212d386e5dc01762ba20956f0a21932f5fd3a98c1ab81757faba",
+      "programs": [
+        [
+          "asrep_request",
+          "recover_asrep_secret",
+          "activate_recovered_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      ],
+      "semantic_sha256": "sha256:7031099ab1dfc5d238b92a6d0899ea95ea542b289e9343b6574edc91e9fa5244",
+      "sha256": "sha256:cc87a349232319c72433e25d6b85986ac351d2e559b6273380ee4d1caac48cfd",
+      "status": "success",
+      "truncated": false
+    },
+    {
+      "bytes": 60489,
+      "checkpoint_reached": false,
+      "complete": true,
+      "effective_config_sha256": "sha256:2e84c74068339a46454fdce7fb1623442d4febad3e734cc0578e6ab4c7980a9d",
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": true,
+        "optimization_scope": "exhaustive_within_scope"
+      },
+      "exit_code": 0,
+      "file": "off.json",
+      "final_goal_reached": false,
+      "original_transport_bytes": 61901,
+      "original_transport_sha256": "sha256:e240bd5e51683b6512795c4995141413f3aa1790c37df4c9936d0a711ec58a07",
+      "programs": [],
+      "semantic_sha256": "sha256:f5427f34f0ebe4344a554466fe44e5542d633c975366dfcd7de4e4176afc4e33",
+      "sha256": "sha256:ab131f81030372b02f0c36c076861708a2166455f28c63dcc75dff9dcf28c755",
+      "status": "no_path",
+      "truncated": false
+    },
+    {
+      "bytes": 34788,
+      "checkpoint_reached": false,
+      "complete": true,
+      "effective_config_sha256": "sha256:a75e6720b3027ef7471f57725e24789645b0d6742387292728b434ff4d6f809a",
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "exhaustive_within_scope"
+      },
+      "exit_code": 0,
+      "file": "unresolved.json",
+      "final_goal_reached": false,
+      "original_transport_bytes": 35632,
+      "original_transport_sha256": "sha256:21d87420276776245dbf7eb9614802ce897c7c0c2778780c8d68c9dee7d710e8",
+      "programs": [],
+      "semantic_sha256": "sha256:6aac8f1bcf66f5132b206c5a0d0c1bc78e409a965215c010e319b384eb0d81a2",
+      "sha256": "sha256:337e8b8039b516faee6929a9af904437041e044af0c8193fe935ff05d357c6b1",
+      "status": "indeterminate",
+      "truncated": false
+    }
+  ],
+  "runtime_compared": false,
+  "same_input_except_technique_scope": true,
+  "schema": "asrep-228-reproduction/1",
+  "semantic_equal": true,
+  "source_pin": "97aa41b153317080ef4969226312d25989026c4f",
+  "supersedes_source_pin": "1753a4e83dd1554e9266b1fa3cd1575935e8670f",
+  "validation": {
+    "asrep_cases": 51,
+    "focused_regressions": {
+      "passed": 143,
+      "seconds": 29.73
+    },
+    "full_suite": {
+      "ci_ubuntu": {
+        "head": "f81d739e402fd46e29d4d17cea512fab73844746",
+        "passed": 2127,
+        "seconds": 331.17,
+        "skipped": 10,
+        "url": "https://github.com/nairyuuu/ad-weighted-graph/actions/runs/37747943290/job/113214053286"
+      },
+      "windows_and_local_final_result_reference": "PR #234 verification; checked after this artifact update"
+    },
+    "quality": [
+      "ruff check PASS",
+      "ruff format --check PASS",
+      "yamllint PASS",
+      "check_repository PASS",
+      "check_contract PASS",
+      "compose config PASS",
+      "git diff --check PASS"
+    ]
+  }
+}

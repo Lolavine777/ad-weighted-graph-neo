@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Batch Query Request Specification (Issue #268)",
+  "description": "Batch execution contract for evaluating multiple attack footholds independently without cross-source contamination.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "batch_id",
+    "snapshot_id",
+    "sources",
+    "target_manifest"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "batch-query-request/1.0.0",
+        "batch-query-request/1.1.0"
+      ]
+    },
+    "batch_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evaluation_mode": {
+      "enum": [
+        "scenario",
+        "evidence_only"
+      ],
+      "default": "scenario"
+    },
+    "prioritization_policy": {
+      "enum": [
+        "min_effort_impact_pareto"
+      ],
+      "default": "min_effort_impact_pareto"
+    },
+    "common_budget": {
+      "type": "object",
+      "required": [
+        "max_paths",
+        "max_steps",
+        "max_expansions"
+      ],
+      "properties": {
+        "max_paths": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_expansions": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "target_goal_ids": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "description": "Specific list of goal IDs to evaluate. When null or empty, system operates in default destination discovery mode.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "target_manifest": {
+      "type": "object"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/batchSourceItem"
+      }
+    },
+    "rating_resolution": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "description": "Optional rating resolution configuration (registries, policy, scope) for evaluating numeric effort and likelihood."
+    }
+  },
+  "$defs": {
+    "batchSourceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "node_id",
+        "node_kind",
+        "profile_kind"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "node_kind": {
+          "enum": [
+            "User",
+            "Computer",
+            "Group",
+            "Domain",
+            "OU",
+            "OrganizationalUnit",
+            "GPO",
+            "Container"
+          ]
+        },
+        "profile_kind": {
+          "enum": [
+            "user_leaked_password",
+            "user_usable_identity",
+            "computer_control_admin",
+            "computer_control_user",
+            "computer_usable_identity",
+            "unsupported"
+          ]
+        },
+        "authentication_context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "custom_budget": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "max_paths": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_steps": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "max_expansions": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "identity_provenance_reference": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S",
+          "description": "Analyst declaration reference for a usable machine identity, not observed authentication proof."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "profile_kind": {
+                "const": "computer_usable_identity"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "authentication_context",
+              "identity_provenance_reference"
+            ],
+            "properties": {
+              "node_kind": {
+                "const": "Computer"
+              },
+              "authentication_context": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "identity_provenance_reference": false
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "batch-query-request/1.0.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "sources": {
+            "items": {
+              "properties": {
+                "profile_kind": {
+                  "enum": [
+                    "user_leaked_password",
+                    "user_usable_identity",
+                    "computer_control_admin",
+                    "computer_control_user",
+                    "unsupported"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

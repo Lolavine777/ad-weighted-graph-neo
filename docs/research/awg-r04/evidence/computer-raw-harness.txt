@@ -1,0 +1,94 @@
+"""Bounded full-snapshot regression; no AD operations and no inferred credentials."""
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--snapshot', type=Path, required=True)
+p.add_argument('--raw', type=Path, required=True)
+p.add_argument('--reference-query', type=Path, required=True)
+p.add_argument('--manifest', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+a = p.parse_args()
+assert not a.output.exists(), 'Preserve prior experiment'
+a.output.mkdir(parents=True)
+repo = a.repo.resolve()
+sys.path.insert(0, str(repo))
+from src.engine.graph import EngineGraph
+from src.engine.query_cli import execute, wire
+from src.engine.semantics import evaluator
+from scripts.research.source_goal_batch import create_foothold_profile
+
+assert Path(evaluator.__file__).resolve().is_relative_to(repo)
+sha = lambda b: 'sha256:' + hashlib.sha256(b).hexdigest()
+pin = lambda p: {'path': str(p.resolve()), 'bytes': p.stat().st_size, 'sha256': sha(p.read_bytes())}
+manifest = json.loads(a.manifest.read_text())
+for entry in manifest['files']:
+    b = (a.raw / entry['relative_path']).read_bytes()
+    assert len(b) == entry['size_bytes'] and sha(b) == 'sha256:' + entry['sha256']
+graph = EngineGraph.from_snapshot(a.snapshot.read_bytes())
+source = 'S-1-5-21-1271839998-3495686680-2211690266-4157'
+reference = json.loads(a.reference_query.read_text())
+old_source = reference['initial_actor']
+old_context = reference['authentication_context']
+target_user = next(f['target'] for f in reference['assumptions'] if f['predicate'] == 'password_policy_accepts')
+assert any(e['kind'] == 'GenericAll' for e in graph.edges_between(source, target_user))
+assert any(e['kind'] == 'MemberOf' for e in graph.edges_between(target_user, reference['target']))
+assumptions = []
+for f in reference['assumptions']:
+    f = dict(f)
+    for key in ['subject', 'target', 'scope']:
+        f[key] = source if f[key] in {old_source, old_context} else f[key]
+    f['rationale'] = 'Explicit synthetic runtime gate on public raw snapshot, not observed success'
+    f['provenance_reference'] = 'scenario://awg-r04/computer-boundary'
+    assumptions.append(f)
+rows = []
+for name, profile_kind, explicit_identity in [
+    ('local_shell', 'computer_control_user', False),
+    ('local_admin', 'computer_control_admin', False),
+    ('explicit_machine_identity', 'computer_control_user', True),
+]:
+    profile = create_foothold_profile(node_id=source, node_kind='Computer', profile_type=profile_kind)
+    initial = wire(profile.initial_attack_state)
+    if explicit_identity:
+        initial['usable_identity'] = [[source, source]]
+    query = {
+        'source_foothold': source, 'initial_actor': source, 'initial_state': initial,
+        'authentication_context': source, 'target': reference['target'],
+        'target_goal': {'target': reference['target'], 'kind': 'usable_identity_entitlement'},
+        'evaluation_mode': 'scenario', 'assumptions': assumptions,
+        'allowed_techniques': ['scenario_reset_password', 'acquire_reset_identity', 'propagate_group_entitlement'],
+        'budget': {'max_paths': 1, 'max_steps': 3, 'max_expansions': 10000},
+        'scenario_reference': 'awg-r04-computer-boundary',
+    }
+    qpath = a.output / (name + '-query.json')
+    qpath.write_text(json.dumps(query, sort_keys=True, indent=2) + '\n')
+    result = execute(query, graph)
+    path = a.output / (name + '-result.json')
+    path.write_text(json.dumps(result, ensure_ascii=False, sort_keys=True, separators=(',', ':')) + '\n')
+    rows.append({
+        'case': name, 'expected_goal_from_finite_oracle': explicit_identity,
+        'status': result['status'], 'goal_reached': result['final_goal_reached'],
+        'matches_expected_goal': result['final_goal_reached'] == explicit_identity,
+        'guarantees': result['engine_reported_guarantees'],
+        'search': {k: result[k] for k in ['expansions', 'caps', 'complete', 'truncated', 'truncation_reason']},
+        'paths': result['candidates'],
+        'query': query, 'query_pin': pin(qpath), 'result_pin': pin(path),
+        'source_profile': profile.to_dict(),
+    })
+    print(json.dumps({k: rows[-1][k] for k in ['case', 'status', 'goal_reached', 'matches_expected_goal']}), flush=True)
+    del result
+summary = {
+    'schema_version': 'awg-r04-raw-computer-regression/1',
+    'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
+    'tracked_status': subprocess.check_output(['git', 'status', '--porcelain', '-uno'], cwd=repo, text=True),
+    'source_pins': {str(p.relative_to(repo)): sha(p.read_bytes()) for p in sorted((repo / 'src').rglob('*.py'))},
+    'snapshot': pin(a.snapshot), 'manifest': pin(a.manifest),
+    'raw_verified': len(manifest['files']), 'rows': rows,
+    'limitations': ['One actual source-goal pair, three capability declarations; not domain coverage.', 'Seven runtime facts are scenario assumptions, not observations.', 'Local admin/SYSTEM profile remains conservative until a separate machine identity is declared.', 'No cost basis, minimum C, probability, real AD execution, or remediation-reduction claim.'],
+}
+(a.output / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, sort_keys=True, indent=2) + '\n')

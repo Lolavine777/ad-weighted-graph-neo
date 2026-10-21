@@ -1,0 +1,1268 @@
+{
+  "cases": [
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 0,
+          "fully_rated": 0,
+          "valid_generated": 0
+        },
+        "coverage_digest": "sha256:8a22231a7a5e3c7f7265ec92d73cc5e6049fc85dd53f07ee52bd5da1b5a852d9",
+        "expansions": 2,
+        "frontier": [],
+        "gaps": [],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {},
+        "status": "indeterminate",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 56367,
+        "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "is_full_raw": true,
+        "nodes": 3370
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 0,
+        "worked_programs": []
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/rbcd-unassumed.pending.query.json --snapshot ./reports/generated/issue267-supplement/rbcd-unassumed.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 8905342,
+              "native_file_sha256": "0e1fdef8bd888a409d8130c5c37c25024f7f63049cc2e348312ae07a74a20dcd"
+            },
+            {
+              "bytes": 8905342,
+              "native_file_sha256": "d48b368a8b23941f62bc7efe7e04d8e9aa4fae1ce706d0ccd1547a18279f8c0e"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/rbcd-unassumed.wiring.query.json --snapshot ./reports/generated/issue267-supplement/rbcd-unassumed.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 8904685,
+              "native_file_sha256": "4f02da504ea3155590f54878139ff873f3a69a682b2f6f36aeedd87590dacf05"
+            },
+            {
+              "bytes": 8904685,
+              "native_file_sha256": "38187081329b82794244ee0bd867f5b1aca98e8711acf4ab464a05b2e60c97bf"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "rbcd-unassumed",
+      "selection": {
+        "binding_digest": "sha256:704a7c1a680624f29626e0f33ad32713236195f891ad383670befc2b7e480ad4",
+        "exact_reset_and_descriptor_edges": true,
+        "inventory_digest": "sha256:8b1174c98e539b1b90326ae93fd0214edf3727fd82dc2ee28e5336ff17bfc59d",
+        "locators": {
+          "C_R": "#/computers/27",
+          "M": "#/users/2075",
+          "P": "#/users/917",
+          "U_R": "#/users/1580"
+        },
+        "target_spn": "declared scenario HTTP binding, not observed target SPN"
+      },
+      "supported_cohort": false,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 0,
+          "fully_rated": 0,
+          "valid_generated": 0
+        },
+        "coverage_digest": "sha256:0de539909c4c96a17b0bbba6daaac6ec6fec7ef152d91177c8ed56e6cb709f74",
+        "expansions": 2,
+        "frontier": [],
+        "gaps": [],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {},
+        "status": "indeterminate",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      }
+    },
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 3,
+          "fully_rated": 0,
+          "valid_generated": 3
+        },
+        "coverage_digest": "sha256:18faf4e4c6b857dd106c1e8dfc07a161ba1f7b3d7dc114be15487132deab42be",
+        "expansions": 14,
+        "frontier": [],
+        "gaps": [
+          {
+            "count": 5,
+            "dimension": "C",
+            "reason": "missing_evidence"
+          },
+          {
+            "count": 1,
+            "dimension": "I",
+            "reason": "prerequisite_gate_refusal"
+          },
+          {
+            "count": 14,
+            "dimension": "P",
+            "reason": "prerequisite_gate_refusal"
+          }
+        ],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {
+          "rbcd_admin_execution": 3,
+          "rbcd_descriptor_mutation": 3,
+          "rbcd_secret_acquisition": 3,
+          "rbcd_service_delegation": 3,
+          "rbcd_service_preparation": 3
+        },
+        "status": "success",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 56367,
+        "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "is_full_raw": true,
+        "nodes": 3370
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 3,
+        "worked_programs": [
+          {
+            "C": 9,
+            "I": "High",
+            "P": [
+              "504/3125",
+              "15760899/20000000"
+            ],
+            "candidate": "generated_0001",
+            "program": [
+              "rbcd_configure_descriptor",
+              "rbcd_acquire_secret",
+              "rbcd_prepare_service",
+              "rbcd_delegate_service",
+              "rbcd_service_admin"
+            ]
+          },
+          {
+            "C": 9,
+            "I": "High",
+            "P": [
+              "504/3125",
+              "15760899/20000000"
+            ],
+            "candidate": "generated_0002",
+            "program": [
+              "rbcd_acquire_secret",
+              "rbcd_configure_descriptor",
+              "rbcd_prepare_service",
+              "rbcd_delegate_service",
+              "rbcd_service_admin"
+            ]
+          },
+          {
+            "C": 9,
+            "I": "High",
+            "P": [
+              "504/3125",
+              "15760899/20000000"
+            ],
+            "candidate": "generated_0003",
+            "program": [
+              "rbcd_acquire_secret",
+              "rbcd_prepare_service",
+              "rbcd_configure_descriptor",
+              "rbcd_delegate_service",
+              "rbcd_service_admin"
+            ]
+          }
+        ]
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/rbcd-scoped.pending.query.json --snapshot ./reports/generated/issue267-supplement/rbcd-scoped.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 15501742,
+              "native_file_sha256": "a98c0c87ab4607fd35e0e55d854ff7789dc7d857ed299815719eacd90d4d2d78"
+            },
+            {
+              "bytes": 15501740,
+              "native_file_sha256": "e9538749ee43acf99aabcb97a66ad5464386c12ed4cc69f6a4b31da38065f453"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/rbcd-scoped.wiring.query.json --snapshot ./reports/generated/issue267-supplement/rbcd-scoped.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": true,
+          "native_transports": [
+            {
+              "bytes": 14860353,
+              "native_file_sha256": "036975db38edf768994555a00adefbed59d659a7a236fdfa50103ece4880c725"
+            },
+            {
+              "bytes": 14860354,
+              "native_file_sha256": "920e31a965cfb6afbf31b109b13bcd7a5d96ebfb29c32c617bac37aa55ada531"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "rbcd-scoped",
+      "selection": {
+        "binding_digest": "sha256:704a7c1a680624f29626e0f33ad32713236195f891ad383670befc2b7e480ad4",
+        "exact_reset_and_descriptor_edges": true,
+        "inventory_digest": "sha256:8b1174c98e539b1b90326ae93fd0214edf3727fd82dc2ee28e5336ff17bfc59d",
+        "locators": {
+          "C_R": "#/computers/27",
+          "M": "#/users/2075",
+          "P": "#/users/917",
+          "U_R": "#/users/1580"
+        },
+        "target_spn": "declared scenario HTTP binding, not observed target SPN"
+      },
+      "supported_cohort": true,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 3,
+          "I_rated": 3,
+          "P_rated": 3,
+          "Pareto_eligible": 3,
+          "conditioned_feasible": 3,
+          "fully_rated": 3,
+          "valid_generated": 3
+        },
+        "coverage_digest": "sha256:c19b42280159a1160d1b5c813aeed4d84dcdb7ed61622ce47c620f786f730299",
+        "expansions": 14,
+        "frontier": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003"
+        ],
+        "gaps": [],
+        "min_effort": 9,
+        "paths_by_action_family_nonexclusive": {
+          "rbcd_admin_execution": 3,
+          "rbcd_descriptor_mutation": 3,
+          "rbcd_secret_acquisition": 3,
+          "rbcd_service_delegation": 3,
+          "rbcd_service_preparation": 3
+        },
+        "status": "success",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      }
+    },
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 3,
+          "fully_rated": 0,
+          "valid_generated": 3
+        },
+        "coverage_digest": "sha256:6bd329c4d9a53e3da536aa0e3255d7b78f34df11ff03f7679659ab3fb61fcada",
+        "expansions": 5000,
+        "frontier": [],
+        "gaps": [
+          {
+            "count": 2,
+            "dimension": "C",
+            "reason": "missing_evidence"
+          },
+          {
+            "count": 1,
+            "dimension": "I",
+            "reason": "prerequisite_gate_refusal"
+          },
+          {
+            "count": 3,
+            "dimension": "P",
+            "reason": "prerequisite_gate_refusal"
+          }
+        ],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {
+          "grant_generic_all": 1,
+          "host_admin_execution": 3
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 56367,
+        "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "is_full_raw": true,
+        "nodes": 3370
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 3,
+        "worked_programs": [
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0001",
+            "program": [
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0002",
+            "program": [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 3,
+            "I": "High",
+            "P": [
+              "21/50",
+              "361/400"
+            ],
+            "candidate": "generated_0003",
+            "program": [
+              "propagate_group_entitlement",
+              "grant_new_object_right",
+              "obtain_admin_execution_on_host"
+            ]
+          }
+        ]
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-host.pending.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-host.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 53621423,
+              "native_file_sha256": "e407ec88b02ee5fd1b2ea671ebf651732c389c1e97dca43c49a0943a3955574d"
+            },
+            {
+              "bytes": 53621423,
+              "native_file_sha256": "1631d37171f6ab57a075a6afae6439ce36f139094eff7ebab9f02b8702a2df61"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-host.wiring.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-host.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 53447749,
+              "native_file_sha256": "127614da9b19c02fcdb03d1cbae861690ecd4aacc98d5fbc1bd5ccb290c35d35"
+            },
+            {
+              "bytes": 53447749,
+              "native_file_sha256": "a44b4b0b7cb7dd0d12d2284afd126bdb7973897ca883830de7f62d373fd06103"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "acl-group-host",
+      "selection": {
+        "binding_digest": "sha256:436628bf991559cf444865d8d0656d3f095b2e15f66caa687886c5ac0d311ecf",
+        "declared_terminal_sources": 2,
+        "inventory_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "observed_permission_sources": {
+          "GenericAll": 0,
+          "WriteDacl": 2
+        },
+        "selector_candidates": 8
+      },
+      "supported_cohort": true,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 3,
+          "I_rated": 3,
+          "P_rated": 3,
+          "Pareto_eligible": 3,
+          "conditioned_feasible": 3,
+          "fully_rated": 3,
+          "valid_generated": 3
+        },
+        "coverage_digest": "sha256:835639d407fe8ba2c2b1bebf3c5d68d0405204e3ae25b3442bc7c99fadf42bd5",
+        "expansions": 5000,
+        "frontier": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003"
+        ],
+        "gaps": [],
+        "min_effort": 1,
+        "paths_by_action_family_nonexclusive": {
+          "grant_generic_all": 1,
+          "host_admin_execution": 3
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "unreturned_goal_state_success_events": []
+      }
+    },
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 100,
+          "fully_rated": 0,
+          "valid_generated": 100
+        },
+        "coverage_digest": "sha256:d1f053b3f1423ab78264457030fe618f41f441e513e0ab9d719ab788b14ce9e9",
+        "expansions": 478,
+        "frontier": [],
+        "gaps": [
+          {
+            "count": 7,
+            "dimension": "C",
+            "reason": "missing_evidence"
+          },
+          {
+            "count": 1,
+            "dimension": "I",
+            "reason": "prerequisite_gate_refusal"
+          },
+          {
+            "count": 49,
+            "dimension": "P",
+            "reason": "prerequisite_gate_refusal"
+          }
+        ],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {
+          "grant_generic_all": 98,
+          "grant_write_dacl": 86,
+          "group_membership_mutation": 95,
+          "host_admin_execution": 100
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 12,
+        "graph_sha256": "sha256:fa6a40862f60a258ef7aec102d81c06c1c10ffd2fc800d76be62cdfc1fe5365d",
+        "is_full_raw": false,
+        "nodes": 4
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 100,
+        "worked_programs": [
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0001",
+            "program": [
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0002",
+            "program": [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 3,
+            "I": "High",
+            "P": [
+              "21/50",
+              "361/400"
+            ],
+            "candidate": "generated_0003",
+            "program": [
+              "propagate_group_entitlement",
+              "grant_new_object_right",
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 4,
+            "I": "High",
+            "P": [
+              "42/125",
+              "17689/20000"
+            ],
+            "candidate": "generated_0004",
+            "program": [
+              "propagate_group_entitlement",
+              "grant_new_object_right",
+              "genericall_add_member",
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 4,
+            "I": "High",
+            "P": [
+              "147/500",
+              "17689/20000"
+            ],
+            "candidate": "generated_0005",
+            "program": [
+              "propagate_group_entitlement",
+              "grant_new_object_right",
+              "genericall_grant_write_dacl",
+              "obtain_admin_execution_on_host"
+            ]
+          }
+        ]
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-projection.pending.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-projection.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 73052886,
+              "native_file_sha256": "7712794cd3a529f56ac4f7bb1c4f22ae9b724c69266a654e90fb468d452b40f6"
+            },
+            {
+              "bytes": 73052885,
+              "native_file_sha256": "cb640bf782f7664573989bac19cc3cfe07e643315ab91c82dfd782df559695b0"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-projection.wiring.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-projection.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 58501531,
+              "native_file_sha256": "9ca9acf87b7b5f481dc5b93330ebc4e034ebe479440e63f0b22af326ab4d25a4"
+            },
+            {
+              "bytes": 58501531,
+              "native_file_sha256": "a4d3341a756cd1ea14710760d1ab16ee4b44383df5297b1bd2aa8ca1213501c6"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "acl-group-projection",
+      "selection": {
+        "binding_digest": "sha256:436628bf991559cf444865d8d0656d3f095b2e15f66caa687886c5ac0d311ecf",
+        "declared_terminal_sources": 2,
+        "inventory_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "observed_permission_sources": {
+          "GenericAll": 0,
+          "WriteDacl": 2
+        },
+        "selector_candidates": 8
+      },
+      "supported_cohort": false,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 100,
+          "I_rated": 100,
+          "P_rated": 100,
+          "Pareto_eligible": 100,
+          "conditioned_feasible": 100,
+          "fully_rated": 100,
+          "valid_generated": 100
+        },
+        "coverage_digest": "sha256:0932d1ab9524a98207a72458457230da88514bb5ea03412d2eadeffdbbd211b5",
+        "expansions": 478,
+        "frontier": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003",
+          "generated_0004",
+          "generated_0005",
+          "generated_0006",
+          "generated_0007",
+          "generated_0008",
+          "generated_0009",
+          "generated_0010",
+          "generated_0011",
+          "generated_0012",
+          "generated_0013",
+          "generated_0014",
+          "generated_0015",
+          "generated_0016",
+          "generated_0017",
+          "generated_0018",
+          "generated_0019",
+          "generated_0020",
+          "generated_0021",
+          "generated_0022",
+          "generated_0023",
+          "generated_0024",
+          "generated_0025",
+          "generated_0026",
+          "generated_0027",
+          "generated_0028",
+          "generated_0029",
+          "generated_0030",
+          "generated_0031",
+          "generated_0032",
+          "generated_0033",
+          "generated_0034",
+          "generated_0035",
+          "generated_0036",
+          "generated_0037",
+          "generated_0038",
+          "generated_0039",
+          "generated_0040",
+          "generated_0041",
+          "generated_0042",
+          "generated_0043",
+          "generated_0044",
+          "generated_0045",
+          "generated_0046",
+          "generated_0047",
+          "generated_0048",
+          "generated_0049",
+          "generated_0050",
+          "generated_0051",
+          "generated_0052",
+          "generated_0053",
+          "generated_0054",
+          "generated_0055",
+          "generated_0056",
+          "generated_0057",
+          "generated_0058",
+          "generated_0059",
+          "generated_0060",
+          "generated_0061",
+          "generated_0062",
+          "generated_0063",
+          "generated_0064",
+          "generated_0065",
+          "generated_0066",
+          "generated_0067",
+          "generated_0068",
+          "generated_0069",
+          "generated_0070",
+          "generated_0071",
+          "generated_0072",
+          "generated_0073",
+          "generated_0074",
+          "generated_0075",
+          "generated_0076",
+          "generated_0077",
+          "generated_0078",
+          "generated_0079",
+          "generated_0080",
+          "generated_0081",
+          "generated_0082",
+          "generated_0083",
+          "generated_0084",
+          "generated_0085",
+          "generated_0086",
+          "generated_0087",
+          "generated_0088",
+          "generated_0089",
+          "generated_0090",
+          "generated_0091",
+          "generated_0092",
+          "generated_0093",
+          "generated_0094",
+          "generated_0095",
+          "generated_0096",
+          "generated_0097",
+          "generated_0098",
+          "generated_0099",
+          "generated_0100"
+        ],
+        "gaps": [],
+        "min_effort": 1,
+        "paths_by_action_family_nonexclusive": {
+          "grant_generic_all": 98,
+          "grant_write_dacl": 86,
+          "group_membership_mutation": 95,
+          "host_admin_execution": 100
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "unreturned_goal_state_success_events": []
+      }
+    },
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 2,
+          "fully_rated": 0,
+          "valid_generated": 2
+        },
+        "coverage_digest": "sha256:644f474b3c0ba4f4bf098a9d7c830976c6e0241740138f8f6f82ce5d5f713ca8",
+        "expansions": 2000,
+        "frontier": [],
+        "gaps": [
+          {
+            "count": 1,
+            "dimension": "C",
+            "reason": "missing_evidence"
+          },
+          {
+            "count": 1,
+            "dimension": "I",
+            "reason": "prerequisite_gate_refusal"
+          },
+          {
+            "count": 1,
+            "dimension": "P",
+            "reason": "prerequisite_gate_refusal"
+          }
+        ],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {
+          "host_admin_execution": 2
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 56367,
+        "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "is_full_raw": true,
+        "nodes": 3370
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 2,
+        "worked_programs": [
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0001",
+            "program": [
+              "obtain_admin_execution_on_host"
+            ]
+          },
+          {
+            "C": 1,
+            "I": "High",
+            "P": [
+              "3/5",
+              "19/20"
+            ],
+            "candidate": "generated_0002",
+            "program": [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ]
+          }
+        ]
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-all-generator.pending.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-all-generator.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 26890876,
+              "native_file_sha256": "d00afa465ca1b03777956fc33763cc7759f6d58fcdd246c7019bcdabba44b008"
+            },
+            {
+              "bytes": 26890877,
+              "native_file_sha256": "687b4660344e961507bd2168c0f8e2bafdabd0501ec8d61cce7a870e347b02e3"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/acl-group-all-generator.wiring.query.json --snapshot ./reports/generated/issue267-supplement/acl-group-all-generator.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 26800644,
+              "native_file_sha256": "23514fc5be4c9be81e2e0891f54eb84871efeb6d640ebbe445d4ec8c4e3115f8"
+            },
+            {
+              "bytes": 26800644,
+              "native_file_sha256": "b29d49abeccf7aee8321a2b65c4d0ba670ae2120d2be71252c4dfc1130fb47a9"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "acl-group-all-generator",
+      "selection": {
+        "binding_digest": "sha256:436628bf991559cf444865d8d0656d3f095b2e15f66caa687886c5ac0d311ecf",
+        "declared_terminal_sources": 2,
+        "inventory_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "observed_permission_sources": {
+          "GenericAll": 0,
+          "WriteDacl": 2
+        },
+        "selector_candidates": 8
+      },
+      "supported_cohort": false,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 2,
+          "I_rated": 2,
+          "P_rated": 2,
+          "Pareto_eligible": 2,
+          "conditioned_feasible": 2,
+          "fully_rated": 2,
+          "valid_generated": 2
+        },
+        "coverage_digest": "sha256:6c42748a26ad05cf9a2076f7175297ddc2c79d175a3e46df2cc7b49a1406d6a7",
+        "expansions": 2000,
+        "frontier": [
+          "generated_0001",
+          "generated_0002"
+        ],
+        "gaps": [],
+        "min_effort": 1,
+        "paths_by_action_family_nonexclusive": {
+          "host_admin_execution": 2
+        },
+        "status": "success",
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "unreturned_goal_state_success_events": []
+      }
+    },
+    {
+      "accepted": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 0,
+          "I_rated": 0,
+          "P_rated": 0,
+          "Pareto_eligible": 0,
+          "conditioned_feasible": 1,
+          "fully_rated": 0,
+          "valid_generated": 1
+        },
+        "coverage_digest": "sha256:81ddf7bd99501360e93c4479a898bd5ed7ea1116b096b7a01fd72a9ff3f55ff7",
+        "expansions": 6,
+        "frontier": [],
+        "gaps": [
+          {
+            "count": 1,
+            "dimension": "C",
+            "reason": "missing_evidence"
+          },
+          {
+            "count": 1,
+            "dimension": "I",
+            "reason": "prerequisite_gate_refusal"
+          },
+          {
+            "count": 1,
+            "dimension": "P",
+            "reason": "prerequisite_gate_refusal"
+          }
+        ],
+        "min_effort": null,
+        "paths_by_action_family_nonexclusive": {
+          "winrm_command_session": 1
+        },
+        "status": "success",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      },
+      "graph_scope": {
+        "edges": 56367,
+        "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "is_full_raw": true,
+        "nodes": 3370
+      },
+      "independent_oracle": {
+        "checked_eligible_candidates": 1,
+        "worked_programs": [
+          {
+            "C": 1,
+            "I": "Medium",
+            "P": [
+              "7/10",
+              "19/20"
+            ],
+            "candidate": "generated_0001",
+            "program": [
+              "open_winrm_remote_session"
+            ]
+          }
+        ]
+      },
+      "public_verification": {
+        "pending": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/winrm-command.pending.query.json --snapshot ./reports/generated/issue267-supplement/winrm-command.pending.graph.json --label seamless --prerequisite ./data/samples/manifests/seamless-raw-v1.json",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": false,
+          "native_transports": [
+            {
+              "bytes": 9042379,
+              "native_file_sha256": "65b58da8c91c7baea3622d810c19e36dbf505d321884ff2afce1cf7547382cb2"
+            },
+            {
+              "bytes": 9042380,
+              "native_file_sha256": "6b799922e1bde83243b90fb1d4504fb0ae50d73f9790dad64bc0c3280fe653dc"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        },
+        "synthetic": {
+          "API_CLI_semantic_ranking_coverage_programs_equal": true,
+          "command": "./.venv/bin/python -m src.engine.query_cli --query ./reports/generated/issue267-supplement/winrm-command.wiring.query.json --snapshot ./reports/generated/issue267-supplement/winrm-command.wiring.graph.json --label synthetic",
+          "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+          "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+          "minimum_proven": true,
+          "native_transports": [
+            {
+              "bytes": 8983610,
+              "native_file_sha256": "247b496f020a840ef2e372196f02bb7199468ace4b71615ce36ff8591e3ca1df"
+            },
+            {
+              "bytes": 8983610,
+              "native_file_sha256": "91bc627a197213619fde6802b500a92ffb484605a47592757c56803b95311ce4"
+            }
+          ],
+          "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+          "orchestration_search_ranking_programs_equal": true,
+          "two_CLI_exit_codes": [
+            0,
+            0
+          ],
+          "two_process_equal": true
+        }
+      },
+      "query_id": "winrm-command",
+      "selection": {
+        "binding_digest": "sha256:edacd365591f2717eca6c08bad02c2a1b7656d81b9ae8efe7cba29ec332ed0cf",
+        "inventory_digest": "sha256:68ce8120d9eebf20ef0663ffa505d2c5e2084dcb8f3a8d05fc9d1835d8f5d6ca",
+        "selector_candidates": 2
+      },
+      "supported_cohort": true,
+      "synthetic_potential": {
+        "B_goal_contract_gap": false,
+        "counts": {
+          "C_rated": 1,
+          "I_rated": 1,
+          "P_rated": 1,
+          "Pareto_eligible": 1,
+          "conditioned_feasible": 1,
+          "fully_rated": 1,
+          "valid_generated": 1
+        },
+        "coverage_digest": "sha256:28f7863843b0e948954ce5072b1ab800a90064fb6ebcd80d918188919838fceb",
+        "expansions": 6,
+        "frontier": [
+          "generated_0001"
+        ],
+        "gaps": [],
+        "min_effort": 1,
+        "paths_by_action_family_nonexclusive": {
+          "winrm_command_session": 1
+        },
+        "status": "success",
+        "truncated": false,
+        "truncation_reason": null,
+        "unreturned_goal_state_success_events": []
+      }
+    }
+  ],
+  "class_exposure": {
+    "combined_diagnostic_goal_path_classes": [
+      "asrep_material_request",
+      "asrep_password_recovery",
+      "directory_password_reset",
+      "grant_generic_all",
+      "grant_write_dacl",
+      "group_membership_mutation",
+      "host_admin_execution",
+      "kerberoast_material_request",
+      "rbcd_admin_execution",
+      "rbcd_descriptor_mutation",
+      "rbcd_secret_acquisition",
+      "rbcd_service_delegation",
+      "rbcd_service_preparation",
+      "recovered_identity_activation",
+      "reset_identity_activation",
+      "winrm_admin_execution",
+      "winrm_command_session"
+    ],
+    "meaning": "class occurrence in native returned goal-reaching programs; includes unrated recovery; not numeric adoption or population-wide coverage",
+    "original_goal_path_classes": [
+      "asrep_material_request",
+      "asrep_password_recovery",
+      "directory_password_reset",
+      "host_admin_execution",
+      "kerberoast_material_request",
+      "recovered_identity_activation",
+      "reset_identity_activation",
+      "winrm_admin_execution"
+    ],
+    "raw_goal_path_classes": [
+      "asrep_material_request",
+      "asrep_password_recovery",
+      "directory_password_reset",
+      "grant_generic_all",
+      "host_admin_execution",
+      "kerberoast_material_request",
+      "rbcd_admin_execution",
+      "rbcd_descriptor_mutation",
+      "rbcd_secret_acquisition",
+      "rbcd_service_delegation",
+      "rbcd_service_preparation",
+      "recovered_identity_activation",
+      "reset_identity_activation",
+      "winrm_admin_execution",
+      "winrm_command_session"
+    ],
+    "supplementary_goal_path_classes": [
+      "grant_generic_all",
+      "grant_write_dacl",
+      "group_membership_mutation",
+      "host_admin_execution",
+      "rbcd_admin_execution",
+      "rbcd_descriptor_mutation",
+      "rbcd_secret_acquisition",
+      "rbcd_service_delegation",
+      "rbcd_service_preparation",
+      "winrm_command_session"
+    ],
+    "total_active_classes": 20
+  },
+  "cohort_sha256": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+  "full_raw_graph": {
+    "edges": 56367,
+    "graph_sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+    "nodes": 3370
+  },
+  "historical_files_byte_preserved": 47,
+  "limits": [
+    "not statistically representative of all sources or complete generator coverage",
+    "RBCD HTTP target-SPN binding is declared scenario metadata, not an observed SPN proof",
+    "narrow technique scopes and full-generator control separately reported",
+    "B numeric adoption absent; synthetic wiring cannot satisfy production gate",
+    "source ranking/remediation sensitivity remain B-owned"
+  ],
+  "local_full_suite": {
+    "command": ".venv/bin/python -m pytest -q",
+    "passed": 2626,
+    "seconds": "523.10",
+    "skipped": 9,
+    "subtests": 48
+  },
+  "numeric_adoption": false,
+  "original_cohort_unchanged": true,
+  "original_freeze_revision": "4452ca1f25a637b484193a3dc5d6272163d546af",
+  "profile_sha256": "sha256:0a07821f77987dadc487ebafc3de09a82a4761b9e6eaad51c63b9b35da26b3ae",
+  "raw_structural_edge_counts": {
+    "AdminTo": 9,
+    "CanPSRemote": 2,
+    "GenericAll": 37044,
+    "MemberOf": 15917,
+    "WriteDacl": 3395
+  },
+  "related_pr_state": {
+    "asrep_verifier_followup_272": "draft/unmerged",
+    "original_266": "merged externally at 5a2615c through 7368cac; no numeric adoption inferred",
+    "taxonomy_271": "draft/unmerged"
+  },
+  "review_corrections": {
+    "API_CLI": "full selected semantic outcomes, caps/guarantees, Min-Effort, ranking, coverage and programs",
+    "constraints_version": "1.1.0",
+    "earlier_broad_equality_flags_superseded": true,
+    "numeric_adoption": false,
+    "orchestration": "search completeness/truncation/reason/expansions, programs and ranking only"
+  },
+  "revision": "0ef3ffd2f52859916d78d0b1070ab15c8df7a28d",
+  "successful_native_CLI_processes": 24,
+  "supported_supplement_counts": {
+    "accepted": {
+      "C_rated": 0,
+      "I_rated": 0,
+      "P_rated": 0,
+      "Pareto_eligible": 0,
+      "conditioned_feasible": 7,
+      "fully_rated": 0,
+      "valid_generated": 7
+    },
+    "synthetic_potential": {
+      "C_rated": 7,
+      "I_rated": 7,
+      "P_rated": 7,
+      "Pareto_eligible": 7,
+      "conditioned_feasible": 7,
+      "fully_rated": 7,
+      "valid_generated": 7
+    }
+  },
+  "version": "1.1.0-supplement"
+}

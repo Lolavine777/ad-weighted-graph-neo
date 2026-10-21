@@ -1,0 +1,1147 @@
+{
+  "initial_actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "initial_state": {
+    "control": [
+      "S-1-5-21-1271839998-3495686680-2211690266-4131"
+    ]
+  },
+  "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "target_goal": {
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "required_state": {
+      "admin_control": [
+        "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      ]
+    }
+  },
+  "runtime_facts": [
+    {
+      "predicate": "network_rpc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "Authenticated password-reset directory channel is reachable from Source A during 24h, including any protocol-specific secure transport; ports alone do not prove write success.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_rpc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_rpc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "password_policy_accepts",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The proposed replacement password satisfies the effective password policy at the write time.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/password_policy_accepts_lidia",
+      "assumption_metadata": {
+        "release_predicate": "password_policy_accepts_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/directory_write_allowed_lidia",
+      "assumption_metadata": {
+        "release_predicate": "directory_write_allowed_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The domain KDC is reachable with valid naming/time/protocol context during the horizon.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_kdc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_kdc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/authentication_accepted_lidia",
+      "assumption_metadata": {
+        "release_predicate": "authentication_accepted_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_lidia_da",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_lidia_da",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_lidia_da",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_lidia_da",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_winrm_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected WinRM transport is reachable from the foothold during 24h.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_winrm_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_winrm_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "service_winrm_running",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected WinRM listener is available during 24h; OS defaults do not establish observed service state.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/service_winrm_running",
+      "assumption_metadata": {
+        "release_predicate": "service_winrm_running",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "host_admin_mapping",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The domain default DA-to-host-Administrators mapping on the DC remains usable in this scenario; this is a proposed technical-rule condition, not inferred from the AD computer GenericAll ACE.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/da_host_admin_mapping",
+      "assumption_metadata": {
+        "release_predicate": "da_host_admin_mapping",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "winrm_authentication_accepted",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The target WinRM service accepts this actor's authentication with the selected service identity/transport.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/winrm_authentication_accepted_lidia",
+      "assumption_metadata": {
+        "release_predicate": "winrm_authentication_accepted_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "endpoint_authorized",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected Microsoft.PowerShell endpoint permits this actor's administrative token; endpoint ACL and logon controls allow it.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/endpoint_authorized_lidia",
+      "assumption_metadata": {
+        "release_predicate": "endpoint_authorized_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "admin_execution_context",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected endpoint runs commands in this actor's unrestricted elevated administrative context, without JEA or a reduced RunAs identity; endpoint access alone is insufficient.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/admin_execution_context_lidia",
+      "assumption_metadata": {
+        "release_predicate": "admin_execution_context_lidia",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_rpc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "Authenticated password-reset directory channel is reachable from Source A during 24h, including any protocol-specific secure transport; ports alone do not prove write success.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_rpc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_rpc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "password_policy_accepts",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The proposed replacement password satisfies the effective password policy at the write time.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/password_policy_accepts_josefa",
+      "assumption_metadata": {
+        "release_predicate": "password_policy_accepts_josefa",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/directory_write_allowed_josefa",
+      "assumption_metadata": {
+        "release_predicate": "directory_write_allowed_josefa",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The domain KDC is reachable with valid naming/time/protocol context during the horizon.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_kdc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_kdc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/authentication_accepted_josefa",
+      "assumption_metadata": {
+        "release_predicate": "authentication_accepted_josefa",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_josefa_vajer",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_josefa_vajer",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_josefa_vajer",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_josefa_vajer",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_rpc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "Authenticated password-reset directory channel is reachable from Source A during 24h, including any protocol-specific secure transport; ports alone do not prove write success.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_rpc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_rpc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "password_policy_accepts",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The proposed replacement password satisfies the effective password policy at the write time.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/password_policy_accepts_ollie",
+      "assumption_metadata": {
+        "release_predicate": "password_policy_accepts_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/directory_write_allowed_ollie",
+      "assumption_metadata": {
+        "release_predicate": "directory_write_allowed_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The domain KDC is reachable with valid naming/time/protocol context during the horizon.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_kdc_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_kdc_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/authentication_accepted_ollie",
+      "assumption_metadata": {
+        "release_predicate": "authentication_accepted_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_ollie_da",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_ollie_da",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/membership_security_group_usable_ollie_da",
+      "assumption_metadata": {
+        "release_predicate": "membership_security_group_usable_ollie_da",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "network_winrm_reachable",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected WinRM transport is reachable from the foothold during 24h.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/network_winrm_reachable",
+      "assumption_metadata": {
+        "release_predicate": "network_winrm_reachable",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "service_winrm_running",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected WinRM listener is available during 24h; OS defaults do not establish observed service state.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/service_winrm_running",
+      "assumption_metadata": {
+        "release_predicate": "service_winrm_running",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "winrm_authentication_accepted",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The target WinRM service accepts this actor's authentication with the selected service identity/transport.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/winrm_authentication_accepted_ollie",
+      "assumption_metadata": {
+        "release_predicate": "winrm_authentication_accepted_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "endpoint_authorized",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected Microsoft.PowerShell endpoint permits this actor's administrative token; endpoint ACL and logon controls allow it.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/endpoint_authorized_ollie",
+      "assumption_metadata": {
+        "release_predicate": "endpoint_authorized_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    },
+    {
+      "predicate": "admin_execution_context",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "w4-source-a-bounded-v1",
+      "rationale": "The selected endpoint runs commands in this actor's unrestricted elevated administrative context, without JEA or a reduced RunAs identity; endpoint access alone is insufficient.",
+      "provenance_reference": "scenario://pr260/source-a-transfer/admin_execution_context_ollie",
+      "assumption_metadata": {
+        "release_predicate": "admin_execution_context_ollie",
+        "declared_by": "PR260 Owner A; proposed transfer of historical Source A context"
+      }
+    }
+  ],
+  "scenario_reference": "w4-source-a-bounded-v1",
+  "evaluation_mode": "scenario",
+  "allowed_techniques": [
+    "acquire_reset_identity",
+    "propagate_group_entitlement",
+    "scenario_reset_password",
+    "scenario_winrm_admin"
+  ],
+  "budget": {
+    "max_paths": 1000,
+    "max_steps": 10,
+    "max_expansions": 60000
+  },
+  "rating_resolution": {
+    "version": "public-rating-resolution/1.1.0",
+    "mode": "automatic",
+    "policy": "production",
+    "scope": {
+      "query_id": "query-w4-source-a-bounded-v1",
+      "scenario_id": "w4-source-a-bounded-v1",
+      "scenario_version": "1.0.0",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "work_boundary": "intra_forest",
+      "horizon": "24h",
+      "active_work_budget": 10,
+      "evaluation_mode": "scenario",
+      "target_goal": {
+        "goal_id": "bounded_source_a_admin_dc",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "admin_control_dc"
+      },
+      "policy_id": "week3-seamless-bounded-retry",
+      "retry_policy": {
+        "policy_id": "week3-seamless-bounded-retry",
+        "version": "1.0.0",
+        "by_mechanism": {
+          "reset_password": {
+            "max_attempts": 3,
+            "deadline_minutes": 15
+          },
+          "acquire_ticket": {
+            "max_attempts": 3,
+            "deadline_minutes": 10
+          },
+          "remote_exec_winrm": {
+            "max_attempts": 3,
+            "deadline_minutes": 30
+          }
+        }
+      }
+    },
+    "registries": {
+      "effort": {
+        "version": "1.0.0",
+        "sha256": "sha256:267180ab96be92cae2035f4092609469e22f4e47165041c4d782f81d2509f8fa",
+        "data": [
+          {
+            "class_id": "source-a-scenario_reset_password",
+            "name": "scenario_reset_password",
+            "description": "Pending exact Source A historical rubric transfer",
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1,
+            "disposition": "rated",
+            "basis_category": "scenario_assumption",
+            "review_status": "pending_b_review",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "notes": "Dùng API/công cụ tiêu chuẩn để thiết lập kết nối được xác thực, chọn mật khẩu phù hợp chính sách, gửi yêu cầu đặt lại và kiểm tra phản hồi. Điểm ma sát 2 đánh giá quy trình quản lý các thao tác này trong kịch bản; không phải số đo thời gian thực nghiệm. Chưa tính bước xin vé Kerberos.",
+            "provenance_digest": "sha256:ec610d7393cf635f6a1a95244b674ae826e811399c388839f2519afe88a51439",
+            "applicability": {
+              "techniques": [
+                "scenario_reset_password"
+              ],
+              "methods": [
+                "GenericAll"
+              ],
+              "boundaries": [
+                "intra_forest"
+              ],
+              "work_classes": [
+                "active_work"
+              ],
+              "scopes": [
+                "w4-source-a-bounded-v1"
+              ],
+              "source_ids": [
+                "S-1-5-21-1271839998-3495686680-2211690266-3790",
+                "S-1-5-21-1271839998-3495686680-2211690266-4131"
+              ],
+              "required_auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            }
+          },
+          {
+            "class_id": "source-a-acquire_reset_identity",
+            "name": "acquire_reset_identity",
+            "description": "Pending exact Source A historical rubric transfer",
+            "t1": 1,
+            "t2": 1,
+            "formula": "base",
+            "computed_cost": 0,
+            "disposition": "rated",
+            "basis_category": "scenario_assumption",
+            "review_status": "pending_b_review",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "notes": "Dùng cơ chế Kerberos tiêu chuẩn với mật khẩu đã có; công cụ tự động xử lý trao đổi xác thực trong kịch bản. C=0 là bậc thấp nhất của rubric, không phải không có thao tác hay bảo đảm thành công.",
+            "provenance_digest": "sha256:728283f6e1c164423ce05e59fbef8d4f714f6295f86d67344708f8382b7e20e9",
+            "applicability": {
+              "techniques": [
+                "acquire_reset_identity"
+              ],
+              "methods": [
+                "AuthenticationControl"
+              ],
+              "boundaries": [
+                "intra_forest"
+              ],
+              "work_classes": [
+                "active_work"
+              ],
+              "scopes": [
+                "w4-source-a-bounded-v1"
+              ],
+              "source_ids": [
+                "S-1-5-21-1271839998-3495686680-2211690266-1766",
+                "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "S-1-5-21-1271839998-3495686680-2211690266-3398"
+              ],
+              "required_auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            }
+          },
+          {
+            "class_id": "source-a-scenario_winrm_admin",
+            "name": "scenario_winrm_admin",
+            "description": "Pending exact Source A historical rubric transfer",
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1,
+            "disposition": "rated",
+            "basis_category": "scenario_assumption",
+            "review_status": "pending_b_review",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "notes": "Dùng PowerShell/WinRM tiêu chuẩn để thiết lập phiên từ xa, gửi lệnh và kiểm tra kết quả cùng quyền thực thi quản trị. Đơn vị công việc gộp mở phiên và xác nhận thực thi, không tính thành hai đơn vị.",
+            "provenance_digest": "sha256:6da4462112ffc702a447043e16ef5ff8a334dbeef8d657a6aa5ae8e365abf8ed",
+            "applicability": {
+              "techniques": [
+                "scenario_winrm_admin"
+              ],
+              "methods": [
+                "DeclaredHostAdmin"
+              ],
+              "boundaries": [
+                "intra_forest"
+              ],
+              "work_classes": [
+                "active_work"
+              ],
+              "scopes": [
+                "w4-source-a-bounded-v1"
+              ],
+              "source_ids": [
+                "S-1-5-21-1271839998-3495686680-2211690266-512"
+              ],
+              "required_auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            }
+          }
+        ]
+      },
+      "likelihood": {
+        "version": "1.0.0",
+        "sha256": "sha256:a40cec651009fc917ad22f8e2b63caff99acf649ca013fc42d5701f6082ea07e",
+        "data": [
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+            "outcome_technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "method": "GenericAll",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/5",
+            "upper": "19/20",
+            "basis_category": "scenario_assumption",
+            "rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:fc5fd847405b5c29b9ba43ee9cc7411bea6fdf81c5e23c66f1efb2e18e8beffb",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-516a98ce2736ac5f727068c3abb3ed52d84832951acff96e1f80bd97081566db:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-516a98ce2736ac5f727068c3abb3ed52d84832951acff96e1f80bd97081566db:intra_forest:1.0.0",
+            "outcome_technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "method": "AuthenticationControl",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/4",
+            "upper": "49/50",
+            "basis_category": "scenario_assumption",
+            "rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:4b8e724530739b39d62bf70ab49ef78b78bd6b0d87329e6f15ea8c1c4755a2cb",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-516a98ce2736ac5f727068c3abb3ed52d84832951acff96e1f80bd97081566db:intra_forest:1.0.0",
+              "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6c98e9d18241ee1bd56f0584831a484fff166813e4cd1c9b50085735d1ab356f:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6c98e9d18241ee1bd56f0584831a484fff166813e4cd1c9b50085735d1ab356f:intra_forest:1.0.0",
+            "outcome_technique": "scenario_winrm_admin",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "method": "DeclaredHostAdmin",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "1/2",
+            "upper": "9/10",
+            "basis_category": "scenario_assumption",
+            "rationale": "Sau prior events/closure thành công và endpoint authorization/context đã khai báo, outcome cần phiên remote và thực thi quản trị hoàn tất. Khoảng rộng phản ánh bất định xử lý, cấp phát tài nguyên và session quotas chưa đo. Không tái tính reachability/listener/DA mapping/endpoint authorization đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 30 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:c7973a4d6b929eacad05d9a6ab7c9489e1557bbd5a07f12059beb8b49d11a3c7",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+            "outcome_technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+            "method": "GenericAll",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/5",
+            "upper": "19/20",
+            "basis_category": "scenario_assumption",
+            "rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:6420810c846fa9ca67bfb2065f45ebd75ddb8b4ab71dd2cf216695f329ffd606",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6294cdc28604ac71550d5b42803eb2185839e802d9a7d94418d01bd8fa2fce00:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6294cdc28604ac71550d5b42803eb2185839e802d9a7d94418d01bd8fa2fce00:intra_forest:1.0.0",
+            "outcome_technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "method": "AuthenticationControl",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/4",
+            "upper": "49/50",
+            "basis_category": "scenario_assumption",
+            "rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:08f3983e3f8f4140943f0a6491e573cc76471385c5c7c8c5a9592cfc6ea8f7af",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6294cdc28604ac71550d5b42803eb2185839e802d9a7d94418d01bd8fa2fce00:intra_forest:1.0.0",
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-89eb535fb79188cfea68ea88ba63f03a088dd639eb81337c91d4d6d9b672ae4b:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-89eb535fb79188cfea68ea88ba63f03a088dd639eb81337c91d4d6d9b672ae4b:intra_forest:1.0.0",
+            "outcome_technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "method": "GenericAll",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/5",
+            "upper": "19/20",
+            "basis_category": "scenario_assumption",
+            "rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:b3862d5e3815fd8a3d088f57fd9b32c69fb60969ff168c0b026323cc9ceb8f16",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6294cdc28604ac71550d5b42803eb2185839e802d9a7d94418d01bd8fa2fce00:intra_forest:1.0.0",
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-89eb535fb79188cfea68ea88ba63f03a088dd639eb81337c91d4d6d9b672ae4b:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-99d66c4ba85a92372d01602e3000cc4b02cbdc963d6254deabaa1f5f16f34636:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-99d66c4ba85a92372d01602e3000cc4b02cbdc963d6254deabaa1f5f16f34636:intra_forest:1.0.0",
+            "outcome_technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "method": "AuthenticationControl",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "3/4",
+            "upper": "49/50",
+            "basis_category": "scenario_assumption",
+            "rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:51c9c482bc4125190e8b64037fa50482dd20c3263559d643510e8f365c12a4ea",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          },
+          {
+            "version": "1.0.0",
+            "scenario_id": "w4-source-a-bounded-v1",
+            "scenario_version": "1.0.0",
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "ordered_work_prefix": [
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-3a303c7d875965d25b08b395b6a6f1f0eede445265d90d0f2cb0d627529307ed:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6294cdc28604ac71550d5b42803eb2185839e802d9a7d94418d01bd8fa2fce00:intra_forest:1.0.0",
+              "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-89eb535fb79188cfea68ea88ba63f03a088dd639eb81337c91d4d6d9b672ae4b:intra_forest:1.0.0",
+              "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-99d66c4ba85a92372d01602e3000cc4b02cbdc963d6254deabaa1f5f16f34636:intra_forest:1.0.0",
+              "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6c98e9d18241ee1bd56f0584831a484fff166813e4cd1c9b50085735d1ab356f:intra_forest:1.0.0"
+            ],
+            "outcome_work_unit_id": "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-6c98e9d18241ee1bd56f0584831a484fff166813e4cd1c9b50085735d1ab356f:intra_forest:1.0.0",
+            "outcome_technique": "scenario_winrm_admin",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "method": "DeclaredHostAdmin",
+            "budget": 10,
+            "horizon": "24h",
+            "boundary": "intra_forest",
+            "scope": "w4-source-a-bounded-v1",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "resource_context": null,
+            "policy_id": "week3-seamless-bounded-retry",
+            "disposition": "unrated",
+            "review_status": "pending_b_review",
+            "lower": "1/2",
+            "upper": "9/10",
+            "basis_category": "scenario_assumption",
+            "rationale": "Sau prior events/closure thành công và endpoint authorization/context đã khai báo, outcome cần phiên remote và thực thi quản trị hoàn tất. Khoảng rộng phản ánh bất định xử lý, cấp phát tài nguyên và session quotas chưa đo. Không tái tính reachability/listener/DA mapping/endpoint authorization đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 30 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events. Pending native transfer: Same named actor/target, initial foothold, exact ordered operations, declared prerequisites, 24h and per-mechanism bounded retries. Native technique/method/context identities and 10 semantic-step search cap replace historical work IDs and 6-active-unit envelope; this equivalence requires B review. No interval extrapolation to interleavings or new histories.",
+            "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+            "provenance_digest": "sha256:720c7abfe7243eb0159687953c57751ff32fb59dbb4d7a4d374a0049494a6a65",
+            "applicable_queries": [
+              "query-w4-source-a-bounded-v1"
+            ],
+            "retry_policy": {
+              "policy_id": "week3-seamless-bounded-retry",
+              "version": "1.0.0",
+              "by_mechanism": {
+                "reset_password": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 15
+                },
+                "acquire_ticket": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 10
+                },
+                "remote_exec_winrm": {
+                  "max_attempts": 3,
+                  "deadline_minutes": 30
+                }
+              }
+            }
+          }
+        ]
+      },
+      "impact": {
+        "version": "1.0.0",
+        "sha256": "sha256:d31da347563c2d1187d0a8b0ce4016f74d9338f1e326c9defde8d60167071757",
+        "data": {
+          "version": "1.0.0",
+          "registry_id": "w4-source-a-bounded-v1",
+          "mappings": [
+            {
+              "mapping_id": "source-a-exact-admin-goal",
+              "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+              "source_event": "terminal_compromise_seamless_dc",
+              "destination_event": "admin_control_dc",
+              "consequence_rating": "High",
+              "directionality": "directional",
+              "status": "proposed_pending_b_review",
+              "evidence_class": "scenario_assumption",
+              "review_reference": "docs/research/ratings/scenario-basis-v1/source-a-basis.json",
+              "source_release_canonical_digest": "sha256:ffbcf0b94a5c523c695019d8ec3442b41f20ea875d5ee677dac9aef7400635c0",
+              "rationale": "Same explicit administrative control of BADBLOOD DC supporting identity/authentication/access-control services in the historical assumed enterprise. High retained; no Critical SLA or single-DC assumption. Native exact typed goal mapping pending B.",
+              "applicability": {
+                "semantic_goal": {
+                  "version": "semantic-goal/1.0.0",
+                  "kind": "required_state",
+                  "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+                  "required_state": {
+                    "admin_control": [
+                      "S-1-5-21-1271839998-3495686680-2211690266-1000"
+                    ]
+                  }
+                },
+                "goal_id": "bounded_source_a_admin_dc",
+                "scenario_id": "w4-source-a-bounded-v1",
+                "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+                "boundary": "intra_forest",
+                "operational_horizon": "24h"
+              }
+            }
+          ]
+        }
+      },
+      "impact_source": {
+        "version": "1.0.0",
+        "sha256": "sha256:ffbcf0b94a5c523c695019d8ec3442b41f20ea875d5ee677dac9aef7400635c0",
+        "data": {
+          "target_impact_assessments": {
+            "S-1-5-21-1271839998-3495686680-2211690266-1000": {
+              "record_type": "impact_rating",
+              "evaluator": "Lolavine777",
+              "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+              "success_event": "terminal_compromise_seamless_dc",
+              "consequence_rating": "High",
+              "business_rationale": "Thực thi lệnh với quyền quản trị trên BADBLOOD tạo khả năng can thiệp vào dữ liệu định danh và kiểm soát truy cập của miền, gây nguy cơ tổn hại lớn tới tính bảo mật, tính toàn vẹn và khả năng hoạt động của các dịch vụ phụ thuộc. Đánh giá áp dụng cho bối cảnh doanh nghiệp giả định; dữ liệu chưa mô tả đầy đủ hậu quả nghiệp vụ để xác lập mức Critical.",
+              "affected_business_services": [
+                "identity",
+                "authentication",
+                "access_control"
+              ],
+              "rating_status": "rated",
+              "source_references": [
+                "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+              ],
+              "missing_basis_reasons": [],
+              "reviewed_disposition": {
+                "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+                "pair_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+                "rationale": "A/B cùng chọn High cho hậu quả kiểm soát quản trị tài sản đích trong doanh nghiệp giả định; chưa đủ thông tin nghiệp vụ để nâng Critical.",
+                "resolution": "Không có bất đồng nhãn nguồn. Giữ business rationale và phạm vi; không suy consequence trực tiếp từ nhãn DC/Tier0."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

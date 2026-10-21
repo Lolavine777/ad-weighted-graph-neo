@@ -1,0 +1,61 @@
+{
+  "acceptance_byte_pins_equal_to_current_files": true,
+  "acceptance_manifest": {
+    "bytes": 331231,
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v9.json",
+    "sha256": "sha256:90be6f244fc3c7fb87659c91149752033ee1ef835ce2476b8996f9a2bc2f623e"
+  },
+  "checks": {
+    "contract": "PASS; 2 synthetic fixtures",
+    "repository_links": {
+      "only_failure": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip",
+      "status": "FAIL_known_inaccessible_historical_artifact"
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "PASS; 575 files formatted"
+  },
+  "final_tests": {
+    "artifact": {
+      "bytes": 26885,
+      "path": "docs/research/awg-r04/evidence/iteration-7-final-clean.xml",
+      "sha256": "sha256:caad16a9697fcc5d6fdf866dcaead6dfdc63614cd4a98c804a6a11eae8114f42"
+    },
+    "per_module": {
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_exposure": 18,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_reset_effort": 21,
+      "tests.test_source_goal_batch_runner": 50,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_review_regressions": 10
+    },
+    "suite": {
+      "errors": "0",
+      "failures": "0",
+      "hostname": "403d5e0687a2",
+      "name": "pytest",
+      "skipped": "0",
+      "tests": "182",
+      "time": "86.669",
+      "timestamp": "2026-10-18T12:21:50.480455+02:00"
+    }
+  },
+  "job_state": "All iteration7 native capture, full-snapshot pilot/legacy/exposure and final tests completed. No worker pending.",
+  "native_code_revision": "143dc5d833e20270a1b343124df11b95fab3f506",
+  "native_source_pins_equal_to_captured_pilot": true,
+  "next_action": "Measure full-audit baseline versus bounded/spooled attempt-audit prototype on the same exact rated query; preserve full decisions, Unknown/provenance and R1/R2/R3. No production AND-OR pilot before profiling justifies it.",
+  "prior_machine_evidence": {
+    "bytes": 79073,
+    "path": "docs/research/awg-r04/evidence/iteration-7-effort.json",
+    "sha256": "sha256:c58bfa9359041af64ed6d383d6501c6ec92be82ef32f5dafb2631549a9fc1147"
+  },
+  "publication": "Subsequent publication changes documentation/evidence only; feature branch ref update remains leased, main/develop unchanged.",
+  "schema_version": "awg-r04-reset-effort-closeout/1",
+  "test_scope": "Selected integration/CLI/batch/worker/resume, independent C-only oracle, binding/reuse, historical C release/source authority and three Week4 modules. Overlaps earlier suites; no whole-suite completion claim.",
+  "validated_clean_revision": "7fae1ba1355f4f627e4a8cd4f5a50d4296bd2070"
+}

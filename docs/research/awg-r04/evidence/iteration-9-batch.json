@@ -1,0 +1,3390 @@
+{
+  "acceptance_manifest": {
+    "bytes": 331497,
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v11.json",
+    "sha256": "sha256:5d273d2f7a95d265d6f6912a283422f689b4774735128da7adfb559f565ff513"
+  },
+  "generator": {
+    "bytes": 4360,
+    "path": "docs/research/awg-r04/evidence/iteration-9-evidence-generator.txt",
+    "sha256": "sha256:a24f265d53f12e2417bea4bbf50ecb3f0c2b273517f2f1f59ff7d4763dbc3ce4"
+  },
+  "implementation": [
+    {
+      "bytes": 33506,
+      "path": "src/engine/batch.py",
+      "sha256": "sha256:72b269bc830f40069d33b76e4e0085418c13274d7aeef197c1a61d7bbfe35957"
+    },
+    {
+      "bytes": 31836,
+      "path": "tests/test_source_goal_batch_runner.py",
+      "sha256": "sha256:a8b206dc2d54156fdd605164a58654d01b0edab535a39407624abb2900085675"
+    }
+  ],
+  "limits": [
+    "Experiments have different baselines/time windows; do not multiply or merge their timing gains.",
+    "Wire:3trials/setting. Writer:2trials/setting. Shared OS cache, no concurrent profiler/tests, no statistical confidence interval.",
+    "One powerful-ACL initially usable User x3automatic important goals, not multi-source/domain-wide/all-catalog completion.",
+    "27,490 expansions/attempts per run, one C1success/two truncated-incomplete, P/Iunrated and all native minimum/no-path proofs False.",
+    "Full native packages/checkpoints retained locally with hashes. Projection is not the full audit.",
+    "No live AD actions, invented probabilities, search pruning, shared traversal or scoring/authority changes."
+  ],
+  "native_code_revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+  "profile": {
+    "artifacts": [
+      {
+        "bytes": 540082,
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/batch-audit-before.pstats",
+        "sha256": "sha256:d55bbc3469c2be895f2168a5780574a0807bc029c6a5a625930b8aed762d2b5d"
+      },
+      {
+        "bytes": 5208,
+        "path": "reports/generated/awg-r04-batch-audit-profile-v1/summary.json",
+        "sha256": "sha256:552e06f7af4e55636fb057fd5b36fa6e1008763f589cebeea7695934aba80f57"
+      },
+      {
+        "bytes": 476356987,
+        "path": "reports/generated/awg-r04-batch-audit-profile-v1/result.json",
+        "sha256": "sha256:982c56128c322a8d37bf5e5667b6479c903f1e79562d1d80bc9a0319e648800d"
+      },
+      {
+        "bytes": 126209561,
+        "path": "reports/generated/awg-r04-batch-audit-profile-v1/checkpoint.json",
+        "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+      }
+    ],
+    "command": [
+      "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+      "-m",
+      "cProfile",
+      "-o",
+      "/workspace/scratch/b1f06964c680/awg-r04/batch-audit-before.pstats",
+      "-m",
+      "scripts.exposure",
+      "--snapshot",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+      "--source",
+      "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "--authentication-context",
+      "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "--user-profile",
+      "user_usable_identity",
+      "--evaluation-mode",
+      "scenario",
+      "--assumptions",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+      "--effort-profile",
+      "reset-activation-c-v1",
+      "--max-sources",
+      "0",
+      "--max-targets",
+      "3",
+      "--max-paths",
+      "10",
+      "--max-steps",
+      "4",
+      "--max-expansions",
+      "10000",
+      "--max-cells",
+      "3",
+      "--global-max-expansions",
+      "30000",
+      "--technique",
+      "scenario_reset_password",
+      "--technique",
+      "acquire_reset_identity",
+      "--technique",
+      "propagate_group_entitlement",
+      "--output-dir",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-profile-v1"
+    ],
+    "measurements": {
+      "selected": [
+        {
+          "calls": 2,
+          "cumulative_seconds": 0.001313995,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 1161,
+          "name": "to_dict",
+          "self_seconds": 7.783800000000001e-05
+        },
+        {
+          "calls": 10,
+          "cumulative_seconds": 0.0016925070000000002,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 851,
+          "name": "to_dict",
+          "self_seconds": 0.001654517
+        },
+        {
+          "calls": 5,
+          "cumulative_seconds": 0.00011790800000000001,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 627,
+          "name": "to_dict",
+          "self_seconds": 4.0019000000000004e-05
+        },
+        {
+          "calls": 2,
+          "cumulative_seconds": 7.966e-05,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 1125,
+          "name": "to_dict",
+          "self_seconds": 7.966e-05
+        },
+        {
+          "calls": 18,
+          "cumulative_seconds": 9.2862e-05,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 531,
+          "name": "to_dict",
+          "self_seconds": 5.9367e-05
+        },
+        {
+          "calls": 3,
+          "cumulative_seconds": 9.442200000000001e-05,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 773,
+          "name": "to_dict",
+          "self_seconds": 2.1773e-05
+        },
+        {
+          "calls": 7,
+          "cumulative_seconds": 1.1597000000000001e-05,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/scripts/research/source_goal_batch.py",
+          "line": 695,
+          "name": "to_dict",
+          "self_seconds": 1.1597000000000001e-05
+        },
+        {
+          "calls": 3,
+          "cumulative_seconds": 3.1486812250000002,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/search.py",
+          "line": 351,
+          "name": "generate_attack_paths",
+          "self_seconds": 0.302413302
+        },
+        {
+          "calls": 1,
+          "cumulative_seconds": 45.316927423,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/batch.py",
+          "line": 414,
+          "name": "run_source_goal_batch",
+          "self_seconds": 0.043173602000000005
+        },
+        {
+          "calls": 7349327,
+          "cumulative_seconds": 21.226544255,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/query_cli.py",
+          "line": 33,
+          "name": "wire",
+          "self_seconds": 8.347039915
+        },
+        {
+          "calls": 2,
+          "cumulative_seconds": 1.796669013,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/ranking/resolution_service.py",
+          "line": 403,
+          "name": "resolve_generated_rating_inputs",
+          "self_seconds": 0.022055304
+        },
+        {
+          "calls": 4,
+          "cumulative_seconds": 7.152e-06,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/ranking/resolver.py",
+          "line": 270,
+          "name": "to_dict",
+          "self_seconds": 7.152e-06
+        },
+        {
+          "calls": 6,
+          "cumulative_seconds": 6.54e-06,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/ranking/resolver.py",
+          "line": 224,
+          "name": "to_dict",
+          "self_seconds": 6.54e-06
+        },
+        {
+          "calls": 4,
+          "cumulative_seconds": 3.0540000000000003e-06,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/ranking/resolver.py",
+          "line": 310,
+          "name": "to_dict",
+          "self_seconds": 3.0540000000000003e-06
+        },
+        {
+          "calls": 6,
+          "cumulative_seconds": 6.902e-06,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/query.py",
+          "line": 213,
+          "name": "to_dict",
+          "self_seconds": 6.902e-06
+        },
+        {
+          "calls": 6,
+          "cumulative_seconds": 6.79369137,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/batch.py",
+          "line": 405,
+          "name": "_atomic_json",
+          "self_seconds": 1.9734680370000002
+        },
+        {
+          "calls": 2,
+          "cumulative_seconds": 4.027475949,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/batch.py",
+          "line": 151,
+          "name": "_graph_identity",
+          "self_seconds": 5.3053e-05
+        },
+        {
+          "calls": 1,
+          "cumulative_seconds": 0.000471472,
+          "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/query.py",
+          "line": 172,
+          "name": "to_dict",
+          "self_seconds": 2.2145000000000002e-05
+        }
+      ],
+      "total_calls": 130595289,
+      "total_seconds": 62.038072461999874
+    },
+    "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+    "warning": "Cumulative timings overlap and are instrumented; no wall-speedup inference from their sums/ratios."
+  },
+  "raw_manifest": {
+    "collected_at": null,
+    "collector": {
+      "name": "sharphound",
+      "version": null
+    },
+    "dataset_id": "seamless-v1",
+    "files": [
+      {
+        "relative_path": "20210920185958_computers.json",
+        "sha256": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+        "size_bytes": 303149
+      },
+      {
+        "relative_path": "20210920185958_domains.json",
+        "sha256": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+        "size_bytes": 3032
+      },
+      {
+        "relative_path": "20210920185958_gpos.json",
+        "sha256": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+        "size_bytes": 3946
+      },
+      {
+        "relative_path": "20210920185958_groups.json",
+        "sha256": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+        "size_bytes": 2410332
+      },
+      {
+        "relative_path": "20210920185958_ous.json",
+        "sha256": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+        "size_bytes": 475300
+      },
+      {
+        "relative_path": "20210920185958_users.json",
+        "sha256": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa",
+        "size_bytes": 8176069
+      }
+    ],
+    "schema_version": 1,
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "summary": {
+      "file_count": 6,
+      "total_size_bytes": 11371828
+    }
+  },
+  "schema_version": "awg-r04-batch-audit-experiments/1",
+  "selected_tests": {
+    "artifact": {
+      "bytes": 16498,
+      "path": "docs/research/awg-r04/evidence/iteration-9-selected.xml",
+      "sha256": "sha256:7f96186e2880a5913a5005c5377b56af783b450c6d1c71ab9e446dc252befd7a"
+    },
+    "suite": {
+      "errors": "0",
+      "failures": "0",
+      "hostname": "403d5e0687a2",
+      "name": "pytest",
+      "skipped": "0",
+      "tests": "109",
+      "time": "10.868",
+      "timestamp": "2026-10-18T13:33:41.995458+02:00"
+    }
+  },
+  "wire_transfer": {
+    "all_full_packages_equal": true,
+    "assumptions": {
+      "bytes": 2761,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+      "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+    },
+    "harness": {
+      "bytes": 10381,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/benchmark_batch_audit.py",
+      "sha256": "sha256:e4cebe0db6bdd67db2a7ef0631aded8b4c14156e87b31a669df16daf0cc91606"
+    },
+    "medians": {
+      "after": {
+        "peak_rss_KiB": 2786428,
+        "system_seconds": 3.5810839999999997,
+        "user_seconds": 29.475622,
+        "wall_seconds": 33.183445110999855
+      },
+      "before": {
+        "peak_rss_KiB": 2786472,
+        "system_seconds": 3.485781,
+        "user_seconds": 31.935325,
+        "wall_seconds": 35.44200819699927
+      }
+    },
+    "raw_manifest": {
+      "collected_at": null,
+      "collector": {
+        "name": "sharphound",
+        "version": null
+      },
+      "dataset_id": "seamless-v1",
+      "files": [
+        {
+          "relative_path": "20210920185958_computers.json",
+          "sha256": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+          "size_bytes": 303149
+        },
+        {
+          "relative_path": "20210920185958_domains.json",
+          "sha256": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+          "size_bytes": 3032
+        },
+        {
+          "relative_path": "20210920185958_gpos.json",
+          "sha256": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+          "size_bytes": 3946
+        },
+        {
+          "relative_path": "20210920185958_groups.json",
+          "sha256": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+          "size_bytes": 2410332
+        },
+        {
+          "relative_path": "20210920185958_ous.json",
+          "sha256": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+          "size_bytes": 475300
+        },
+        {
+          "relative_path": "20210920185958_users.json",
+          "sha256": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa",
+          "size_bytes": 8176069
+        }
+      ],
+      "schema_version": 1,
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "summary": {
+        "file_count": 6,
+        "total_size_bytes": 11371828
+      }
+    },
+    "revisions": {
+      "after": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+      "before": "2708100b83549dc606d610de2c0b20e19130209d"
+    },
+    "scope": "One initially usable powerful-ACL User, three automatic important goals, three techniques and seven assumptions. Sequential per-goal planner, not shared traversal. Fresh supervisor; native load/inventory/search/audit/checkpoint/serialization included. Parent parity excluded. Three trials/setting, one workload; no confidence interval or full-domain claim.",
+    "snapshot": {
+      "bytes": 48326845,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+      "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+    },
+    "trials": [
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/result.json",
+            "sha256": "sha256:63f3202dd060d7ac42c5934f5c9113738feead2f6a93e7019c7219e99537958a"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/checkpoint.json",
+            "sha256": "sha256:a6b1c154849ac601d6bffc11b37aae46b5d258b1fcdeeed66940981dd415dc0f"
+          },
+          {
+            "bytes": 5207,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/summary.json",
+            "sha256": "sha256:cf387326bfd38d8821d9547bc96413fbec9e36d84fd72a36b036924d0b9a804b"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/01-before"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/baseline-270",
+        "index": 1,
+        "measurement": {
+          "peak_rss_KiB": 2786548,
+          "returncode": 0,
+          "system_seconds": 4.766604,
+          "user_seconds": 32.276673,
+          "wall_seconds": 37.0665376070001
+        },
+        "mode": "before",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            }
+          ]
+        },
+        "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 36.338903893999486,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 24.79690446100085,
+            "compile_and_write_request": 0.6086874699994951,
+            "inventory": 1.8333516740003688,
+            "load_and_validate_graph": 2.84062190899931,
+            "serialize_full_result": 5.82929901999978
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:63f3202dd060d7ac42c5934f5c9113738feead2f6a93e7019c7219e99537958a"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/result.json",
+            "sha256": "sha256:254edd0e818a502e55ace440103a96caa4683707026b08a43f5be58328d3c3a0"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/checkpoint.json",
+            "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+          },
+          {
+            "bytes": 5209,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/summary.json",
+            "sha256": "sha256:3ce3d8ff18af05bf493ff20491bdd3352da045f8ee420a091e8fdd7fb6859279"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/02-after"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+        "index": 2,
+        "measurement": {
+          "peak_rss_KiB": 2786428,
+          "returncode": 0,
+          "system_seconds": 3.698702,
+          "user_seconds": 29.475622,
+          "wall_seconds": 33.183445110999855
+        },
+        "mode": "after",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            }
+          ]
+        },
+        "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 32.3096723030003,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 21.951691872999618,
+            "compile_and_write_request": 0.5976781959998334,
+            "inventory": 1.7672533720005958,
+            "load_and_validate_graph": 2.9817949749995023,
+            "serialize_full_result": 4.576326955000695
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:254edd0e818a502e55ace440103a96caa4683707026b08a43f5be58328d3c3a0"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/result.json",
+            "sha256": "sha256:9b6f354fe314d8ee0100b5856b97d19db9336d20ba9651fd5d2ba91542dd7421"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/checkpoint.json",
+            "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+          },
+          {
+            "bytes": 5210,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/summary.json",
+            "sha256": "sha256:aa74d52e2bbb89595380c6206600d5e154d29f83c3d61c6efba7558b7b9c4ed3"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/03-after"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+        "index": 3,
+        "measurement": {
+          "peak_rss_KiB": 2788496,
+          "returncode": 0,
+          "system_seconds": 2.72411,
+          "user_seconds": 28.193406,
+          "wall_seconds": 30.93578608400003
+        },
+        "mode": "after",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            }
+          ]
+        },
+        "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 30.194749281999975,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 20.597065883999676,
+            "compile_and_write_request": 0.5592622280000796,
+            "inventory": 1.5114740400003939,
+            "load_and_validate_graph": 2.736235108999608,
+            "serialize_full_result": 4.249482666000404
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:9b6f354fe314d8ee0100b5856b97d19db9336d20ba9651fd5d2ba91542dd7421"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/result.json",
+            "sha256": "sha256:6fc27c9f52d853678e10319a3061f62e2df3226f7447a83ad67b76fbe2c3e1a0"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/checkpoint.json",
+            "sha256": "sha256:a6b1c154849ac601d6bffc11b37aae46b5d258b1fcdeeed66940981dd415dc0f"
+          },
+          {
+            "bytes": 5210,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/summary.json",
+            "sha256": "sha256:791b2364d1dbf8fc0a4630ba69d70b5afcf3aa1cac408f44bf1583ac4ec43f04"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/04-before"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/baseline-270",
+        "index": 4,
+        "measurement": {
+          "peak_rss_KiB": 2784344,
+          "returncode": 0,
+          "system_seconds": 3.00258,
+          "user_seconds": 30.215165,
+          "wall_seconds": 33.24405480599944
+        },
+        "mode": "before",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            }
+          ]
+        },
+        "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 32.52111475699985,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 22.805911387999913,
+            "compile_and_write_request": 0.6914040400006343,
+            "inventory": 1.8057118209999317,
+            "load_and_validate_graph": 2.6412577979999696,
+            "serialize_full_result": 4.065727455999877
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:6fc27c9f52d853678e10319a3061f62e2df3226f7447a83ad67b76fbe2c3e1a0"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/result.json",
+            "sha256": "sha256:7a49a1261075471b13395e83ff1404fe7c87eeab6c8ab8f81cf1b020471de9d3"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/checkpoint.json",
+            "sha256": "sha256:a6b1c154849ac601d6bffc11b37aae46b5d258b1fcdeeed66940981dd415dc0f"
+          },
+          {
+            "bytes": 5209,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/summary.json",
+            "sha256": "sha256:7a873d28283d8520aa5147f0f45a0e296a98a9c2fdbd84250e79f050f2af4cb6"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/05-before"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/baseline-270",
+        "index": 5,
+        "measurement": {
+          "peak_rss_KiB": 2786472,
+          "returncode": 0,
+          "system_seconds": 3.485781,
+          "user_seconds": 31.935325,
+          "wall_seconds": 35.44200819699927
+        },
+        "mode": "before",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            }
+          ]
+        },
+        "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 34.63632169599987,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 22.586247516000185,
+            "compile_and_write_request": 0.6946385580004062,
+            "inventory": 1.5097023389998867,
+            "load_and_validate_graph": 3.045671756000047,
+            "serialize_full_result": 6.300844678999965
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:7a49a1261075471b13395e83ff1404fe7c87eeab6c8ab8f81cf1b020471de9d3"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/result.json",
+            "sha256": "sha256:f8ca8a8eb32d5464e3db478f24bc92a224c90043d9a9030fb447213db08a4294"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/checkpoint.json",
+            "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+          },
+          {
+            "bytes": 5208,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/summary.json",
+            "sha256": "sha256:bcfb29a380d4a77402e053388918b084d685bd6851bcf399b0efa271b38fe79c"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-audit-v1/06-after"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+        "index": 6,
+        "measurement": {
+          "peak_rss_KiB": 2786332,
+          "returncode": 0,
+          "system_seconds": 3.5810839999999997,
+          "user_seconds": 30.511187,
+          "wall_seconds": 34.13639835399954
+        },
+        "mode": "after",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/query_cli.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "query_cli_pin": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+              "revision": "2708100b83549dc606d610de2c0b20e19130209d",
+              "scope_digest": "sha256:0aa112f103a7904c13102033003d8edf9a8bb602cbc2792877885724027e09c1"
+            },
+            {
+              "query_cli_pin": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            }
+          ]
+        },
+        "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 33.36431022099987,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 23.299796958000115,
+            "compile_and_write_request": 0.65211108099993,
+            "inventory": 1.6556492439995054,
+            "load_and_validate_graph": 2.9822253290003573,
+            "serialize_full_result": 4.332278970000516
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:f8ca8a8eb32d5464e3db478f24bc92a224c90043d9a9030fb447213db08a4294"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      }
+    ],
+    "version": "batch-audit-benchmark/1"
+  },
+  "writer_memory": {
+    "all_full_packages_equal": true,
+    "assumptions": {
+      "bytes": 2761,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+      "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+    },
+    "harness": {
+      "bytes": 10350,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/benchmark_batch_writer.py",
+      "sha256": "sha256:f62d49b38f33060f6d36c0eac70bd8a8e3dc597f976836ab0495a505619ef21e"
+    },
+    "medians": {
+      "after": {
+        "peak_rss_KiB": 2321284.0,
+        "system_seconds": 1.849404,
+        "user_seconds": 27.5824025,
+        "wall_seconds": 29.55705422550045
+      },
+      "before": {
+        "peak_rss_KiB": 2787308.0,
+        "system_seconds": 2.363805,
+        "user_seconds": 27.2299625,
+        "wall_seconds": 29.61208803699992
+      }
+    },
+    "raw_manifest": {
+      "collected_at": null,
+      "collector": {
+        "name": "sharphound",
+        "version": null
+      },
+      "dataset_id": "seamless-v1",
+      "files": [
+        {
+          "relative_path": "20210920185958_computers.json",
+          "sha256": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+          "size_bytes": 303149
+        },
+        {
+          "relative_path": "20210920185958_domains.json",
+          "sha256": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+          "size_bytes": 3032
+        },
+        {
+          "relative_path": "20210920185958_gpos.json",
+          "sha256": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+          "size_bytes": 3946
+        },
+        {
+          "relative_path": "20210920185958_groups.json",
+          "sha256": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+          "size_bytes": 2410332
+        },
+        {
+          "relative_path": "20210920185958_ous.json",
+          "sha256": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+          "size_bytes": 475300
+        },
+        {
+          "relative_path": "20210920185958_users.json",
+          "sha256": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa",
+          "size_bytes": 8176069
+        }
+      ],
+      "schema_version": 1,
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "summary": {
+        "file_count": 6,
+        "total_size_bytes": 11371828
+      }
+    },
+    "revisions": {
+      "after": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+      "before": "668bf5f6cb70c5c14397b11967adb920d0e15278"
+    },
+    "scope": "One initially usable powerful-ACL User, three automatic important goals, three techniques and seven assumptions. Sequential per-goal planner, not shared traversal. Fresh supervisor; native load/inventory/search/audit/checkpoint/serialization included. Parent parity excluded. Two trials/setting, one workload; no confidence interval or full-domain claim.",
+    "snapshot": {
+      "bytes": 48326845,
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+      "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+    },
+    "trials": [
+      {
+        "artifacts": [
+          {
+            "bytes": 476356987,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/result.json",
+            "sha256": "sha256:522f93752bf841fc48e18ed8ff76c186d004b1b972ca554a7bb9588148578cf4"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/checkpoint.json",
+            "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+          },
+          {
+            "bytes": 5209,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/summary.json",
+            "sha256": "sha256:855abb3726d4f4d187e15a35ec7ac6e0ac7bffe5f0e6744922eee21491df0584"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/01-before"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/baseline-668",
+        "index": 1,
+        "measurement": {
+          "peak_rss_KiB": 2787224,
+          "returncode": 0,
+          "system_seconds": 2.970498,
+          "user_seconds": 26.731804,
+          "wall_seconds": 29.717098936000184
+        },
+        "mode": "before",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/batch.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            },
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            }
+          ]
+        },
+        "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 28.91500442100005,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 19.821559914999852,
+            "compile_and_write_request": 0.5742888479999237,
+            "inventory": 1.3795629200003532,
+            "load_and_validate_graph": 2.497045375000198,
+            "serialize_full_result": 4.211100806000104
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:522f93752bf841fc48e18ed8ff76c186d004b1b972ca554a7bb9588148578cf4"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/result.json",
+            "sha256": "sha256:c8551057e468674043fb0b7f9a762642a25ebd9a7705e758b8d0d2094d596dd4"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/checkpoint.json",
+            "sha256": "sha256:430f9c6fac83dec502a1188887da29271e4eb6c247f4255f957ed5b353be474f"
+          },
+          {
+            "bytes": 5207,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/summary.json",
+            "sha256": "sha256:dc4bc3d02333f04a4a845c62ea88a452fcb619f03a2205937c0ac45ad950332e"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/02-after"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+        "index": 2,
+        "measurement": {
+          "peak_rss_KiB": 2321320,
+          "returncode": 0,
+          "system_seconds": 2.177897,
+          "user_seconds": 27.166124,
+          "wall_seconds": 29.55249904700031
+        },
+        "mode": "after",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/batch.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            },
+            {
+              "batch_pin": "sha256:72b269bc830f40069d33b76e4e0085418c13274d7aeef197c1a61d7bbfe35957",
+              "revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+              "scope_digest": "sha256:aa168ccf188b7010f0b4087b67463e244aafa4dd619471d36c34c987322d036e"
+            }
+          ]
+        },
+        "revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 28.749006318999818,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 20.1045119219998,
+            "compile_and_write_request": 0.56560563200037,
+            "inventory": 1.5990132669994637,
+            "load_and_validate_graph": 2.750047792999794,
+            "serialize_full_result": 3.2412366200005636
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:c8551057e468674043fb0b7f9a762642a25ebd9a7705e758b8d0d2094d596dd4"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/result.json",
+            "sha256": "sha256:f8abfd119102f98ffa789794e646c2d92435627d02a8b9a86bcb9e28d53de88c"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/checkpoint.json",
+            "sha256": "sha256:430f9c6fac83dec502a1188887da29271e4eb6c247f4255f957ed5b353be474f"
+          },
+          {
+            "bytes": 5209,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/summary.json",
+            "sha256": "sha256:ff762c3df1fc3b5e513c0472e2e38bc04a24f485d90cefc5af5acc171516cbe5"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/03-after"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+        "index": 3,
+        "measurement": {
+          "peak_rss_KiB": 2321248,
+          "returncode": 0,
+          "system_seconds": 1.520911,
+          "user_seconds": 27.998681,
+          "wall_seconds": 29.561609404000592
+        },
+        "mode": "after",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/batch.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            },
+            {
+              "batch_pin": "sha256:72b269bc830f40069d33b76e4e0085418c13274d7aeef197c1a61d7bbfe35957",
+              "revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+              "scope_digest": "sha256:aa168ccf188b7010f0b4087b67463e244aafa4dd619471d36c34c987322d036e"
+            }
+          ]
+        },
+        "revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 28.852043381999465,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 20.65737041200009,
+            "compile_and_write_request": 0.6385511929993299,
+            "inventory": 1.7718870110002172,
+            "load_and_validate_graph": 2.745450659999733,
+            "serialize_full_result": 2.588164905000667
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:f8abfd119102f98ffa789794e646c2d92435627d02a8b9a86bcb9e28d53de88c"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      },
+      {
+        "artifacts": [
+          {
+            "bytes": 476356988,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/result.json",
+            "sha256": "sha256:0a184faf60b3d9ae560d93f72af29de3338ae584d4019992ff800e8c7cebd28d"
+          },
+          {
+            "bytes": 126209561,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/checkpoint.json",
+            "sha256": "sha256:336b0093a5adf80332e3125c5c7cd20ae92c97c37dbdfbe88b77006481f7cb7d"
+          },
+          {
+            "bytes": 5209,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/summary.json",
+            "sha256": "sha256:cccaece8d300be34b49017eb9c184ced51d58881a39f12b3a13c2dda5e929895"
+          },
+          {
+            "bytes": 6880,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/request.json",
+            "sha256": "sha256:67d375187944df528bcca7c6a7d270c6f6e0950ba0392059b35949b6fa9aca1e"
+          },
+          {
+            "bytes": 515606,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/inventory.json",
+            "sha256": "sha256:052ac82e9d4da32fa075f8109f8a321b42718caa995db7dc7bc77f6927ff0a0c"
+          },
+          {
+            "bytes": 481,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/selection.json",
+            "sha256": "sha256:91b5a97a1e187bc83cfa643fef2e6fd1e0505cde51df9537037e94a9d9b6a0a1"
+          },
+          {
+            "bytes": 1700,
+            "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before/overview.md",
+            "sha256": "sha256:074af93d7585a362f0c89426909b5b89d4671f4d4776d3f403160e42268bdbd8"
+          }
+        ],
+        "command": [
+          "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+          "-m",
+          "scripts.exposure",
+          "--snapshot",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+          "--source",
+          "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "--authentication-context",
+          "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "--user-profile",
+          "user_usable_identity",
+          "--evaluation-mode",
+          "scenario",
+          "--assumptions",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+          "--effort-profile",
+          "reset-activation-c-v1",
+          "--max-sources",
+          "0",
+          "--max-targets",
+          "3",
+          "--max-paths",
+          "10",
+          "--max-steps",
+          "4",
+          "--max-expansions",
+          "10000",
+          "--max-cells",
+          "3",
+          "--global-max-expansions",
+          "30000",
+          "--technique",
+          "scenario_reset_password",
+          "--technique",
+          "acquire_reset_identity",
+          "--technique",
+          "propagate_group_entitlement",
+          "--output-dir",
+          "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-batch-writer-v1/04-before"
+        ],
+        "cwd": "/workspace/scratch/b1f06964c680/awg-r04/baseline-668",
+        "index": 4,
+        "measurement": {
+          "peak_rss_KiB": 2787392,
+          "returncode": 0,
+          "system_seconds": 1.757112,
+          "user_seconds": 27.728121,
+          "wall_seconds": 29.50707713799966
+        },
+        "mode": "before",
+        "parity": {
+          "cells": [
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            },
+            {
+              "C": 1.0,
+              "attempts": 7490,
+              "expansions": 7490,
+              "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 1,
+              "reached": true,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "complete_success",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            {
+              "C": null,
+              "attempts": 10000,
+              "expansions": 10000,
+              "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+              "guarantees": {
+                "is_minimum_proven_over_scope": false,
+                "is_no_path_proven_over_scope": false
+              },
+              "paths": 0,
+              "reached": false,
+              "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+              "status": "truncated_incomplete",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          ],
+          "full_parity": true,
+          "normalization": [
+            "reproducibility.revision",
+            "reproducibility.runtime.elapsed_seconds",
+            "reproducibility.inputs.source_pins.src/engine/batch.py",
+            "reproducibility.inputs.scope_digest (independently recomputed)",
+            "checkpoint.scope_digest; cell fingerprint/payload sha256 (independently verified)",
+            "summary.elapsed_seconds/phase_seconds; summary.result.sha256 (actual bytes verified)"
+          ],
+          "physical_bindings": [
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            },
+            {
+              "batch_pin": "sha256:fc5d898dbc55601d70376b9ebe185e003a683e8b3357bd5856a1575edd3069bf",
+              "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+              "scope_digest": "sha256:cacbf8d9344251b548cdb49869551b5b391a69f4ffc6acb55faebc2981b4b9b3"
+            }
+          ]
+        },
+        "revision": "668bf5f6cb70c5c14397b11967adb920d0e15278",
+        "summary": {
+          "batch": {
+            "declared_cells": 3,
+            "effort_rated_cells": 1,
+            "evaluated_cells": 3,
+            "likelihood_rated_cells": 0,
+            "not_run_cells_count": 0,
+            "policy": "min_effort_impact_pareto",
+            "sources_reaching_tier_0": 1,
+            "status_counts": {
+              "complete_success": 1,
+              "truncated_incomplete": 2
+            },
+            "successful_cells": 1,
+            "successful_sources": 1,
+            "supported_sources": 1,
+            "total_sources": 1,
+            "unsupported_sources": 0
+          },
+          "effort_profile": {
+            "classes": {
+              "acquire_reset_identity": {
+                "cost": 0,
+                "method": "AuthenticationControl",
+                "name": "reset_identity_activation",
+                "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+                "t1": 1,
+                "t2": 1
+              },
+              "scenario_reset_password": {
+                "cost": 1,
+                "method": "GenericAll",
+                "name": "directory_password_reset",
+                "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+                "t1": 1,
+                "t2": 2
+              }
+            },
+            "dimension": "C",
+            "excluded": [
+              "P",
+              "I",
+              "password recovery",
+              "inherited/group ACL reset work",
+              "retries",
+              "existing source membership route",
+              "pre-seeded second usable identity/context"
+            ],
+            "historical_numeric_authority": {
+              "dimension": "C",
+              "review": {
+                "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+                "purpose": "numeric_context_history_adoption",
+                "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+                "reviewed_at": "2026-10-13T04:30:57Z",
+                "reviewer": "nairyuuu"
+              }
+            },
+            "profile_id": "reset-activation-c-v1",
+            "scope_adoption": {
+              "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+              "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+              "status": "explicit_opt_in_solo_fork_scenario"
+            },
+            "sources": {
+              "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+                "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+              },
+              "docs/research/ratings/final-cpi-v1/profile.json": {
+                "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+              }
+            },
+            "version": "1.0.0"
+          },
+          "elapsed_seconds": 28.77886287199999,
+          "evaluation_mode": "scenario",
+          "execution_budget": {
+            "max_cells": 3,
+            "max_expansions": 30000,
+            "max_seconds": null,
+            "per_query_seconds": null
+          },
+          "impact": "Unknown unless separately bound by an applicable numeric registry",
+          "implementation_sha256": "sha256:8f551c9cedb0ce41d4eb6596261529034f82be8a2f444c601e41915576fc5837",
+          "input_files": {
+            "assumptions": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/assumptions.json",
+              "sha256": "sha256:beca0f492cfb48c75a9d5bf2b31c8991f834501c4f8138d0df376a3e84e2ceab"
+            },
+            "snapshot": {
+              "reference": "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+              "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+            }
+          },
+          "phase_seconds": {
+            "batch_search_and_audit": 20.37782594300006,
+            "compile_and_write_request": 0.6001886429994556,
+            "inventory": 1.656572495000546,
+            "load_and_validate_graph": 2.6601433069999985,
+            "serialize_full_result": 3.0471042409999427
+          },
+          "result": {
+            "path": "result.json",
+            "sha256": "sha256:0a184faf60b3d9ae560d93f72af29de3338ae584d4019992ff800e8c7cebd28d"
+          },
+          "resume": {
+            "enabled": false,
+            "previous_artifacts": []
+          },
+          "scenario_policy": null,
+          "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+          "selection": {
+            "all_inventory_pairs_selected": false,
+            "eligible_sources": 2590,
+            "eligible_targets": 12,
+            "inventory_pairs_outside_selected_cohort": 31077,
+            "max_sources": 0,
+            "max_targets": 3,
+            "potential_pairs": 31080,
+            "selected_pairs": 3,
+            "selected_sources": 1,
+            "selected_targets": 3,
+            "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+            "source_selector": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395"
+            ]
+          },
+          "version": "exposure-inventory/1.0.0"
+        }
+      }
+    ],
+    "version": "batch-audit-benchmark/2"
+  }
+}

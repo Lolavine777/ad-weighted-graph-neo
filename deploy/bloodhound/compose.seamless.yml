@@ -1,0 +1,51 @@
+name: awg-r04-ce-v1
+
+services:
+  app-db:
+    image: postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685
+    environment:
+      POSTGRES_USER: bloodhound
+      POSTGRES_PASSWORD: bloodhoundcommunityedition
+      POSTGRES_DB: bloodhound
+    volumes:
+      - seamless-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U bloodhound -d bloodhound]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  graph-db:
+    image: neo4j:4.4.42@sha256:73b5a47eb9952f47fcc42fcc80bdd6bd0d6b71eea9a1a345c216675498c790e4
+    environment:
+      NEO4J_AUTH: neo4j/bloodhoundcommunityedition
+    ports:
+      - "127.0.0.1:17474:7474"
+      - "127.0.0.1:17687:7687"
+    volumes:
+      - seamless-neo4j:/data
+    healthcheck:
+      test: [CMD-SHELL, "wget -O /dev/null -q http://localhost:7474 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  bloodhound:
+    image: specterops/bloodhound:9.8.0@sha256:88aeb60228d8ad09a8ac1cdcea8218b4aabe3d9ac642f2f66d50a6b144f4d301
+    environment:
+      bhe_database_connection: user=bloodhound password=bloodhoundcommunityedition dbname=bloodhound host=app-db
+      bhe_neo4j_connection: neo4j://neo4j:bloodhoundcommunityedition@graph-db:7687/
+      bhe_graph_driver: neo4j
+      bhe_recreate_default_admin: "false"
+    ports:
+      - "127.0.0.1:18080:8080"
+    depends_on:
+      app-db:
+        condition: service_healthy
+      graph-db:
+        condition: service_healthy
+
+volumes:
+  seamless-postgres:
+  seamless-neo4j:

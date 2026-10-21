@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "contract_version": "1.0.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "created_at": "2026-09-21T00:00:00Z",
+    "code_version": "synthetic-fixture/1.0",
+    "description": "Invented graph topology for configuration tests, not AD evidence."
+  },
+  "nodes": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "kind": "Computer",
+      "label": "SYNTHETIC-PC",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true,
+      "admincount": 0,
+      "distinguishedname": "CN=SYNTHETIC-PC,OU=Computers,DC=example,DC=test"
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-ISOLATED",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "kind": "Computer",
+      "label": "Synthetic foreign context",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "kind": "Domain",
+      "label": "ALPHA.EXAMPLE",
+      "domain": "ALPHA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000002",
+      "kind": "Domain",
+      "label": "BETA.EXAMPLE",
+      "domain": "BETA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-USER",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true,
+      "admincount": false,
+      "distinguishedname": "CN=SYNTHETIC-USER,OU=Users,DC=example,DC=test"
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "User",
+      "label": "Synthetic unrelated User",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true,
+      "admincount": false,
+      "distinguishedname": "CN=SYNTHETIC-USER,OU=Users,DC=example,DC=test"
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-512",
+      "kind": "Group",
+      "label": "SYNTHETIC-TARGET",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 1,
+      "distinguishedname": "CN=SYNTHETIC-TARGET,OU=Groups,DC=example,DC=test"
+    },
+    {
+      "id": "domain:20000000-0000-4000-8000-000000000001:S-1-5-32-544",
+      "kind": "Group",
+      "label": "ALPHA-ADMINISTRATORS",
+      "domain": "ALPHA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "domain:20000000-0000-4000-8000-000000000002:S-1-5-32-544",
+      "kind": "Group",
+      "label": "BETA-ADMINISTRATORS",
+      "domain": "BETA.EXAMPLE",
+      "is_boundary": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:a6322c83be8382a98ecafd76db66488901b8340412973d845ef3c9b4e62b61ad",
+      "source": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://engine-test",
+          "collector": "engine-test",
+          "timestamp": "2026-09-29T00:00:00Z",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:dc95e8a04f6093fdabbb42eba0532ac13dd7b297078fce8d3b60c62d966c4b60",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://engine-test",
+          "collector": "engine-test",
+          "timestamp": "2026-09-29T00:00:00Z",
+          "evidence_type": "positive"
+        }
+      ]
+    }
+  ],
+  "assessments": []
+}

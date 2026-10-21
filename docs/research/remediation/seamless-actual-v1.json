@@ -1,0 +1,69 @@
+{
+  "admin_support": [
+    {
+      "attribute": "LocalAdmins[]"
+    },
+    {
+      "attribute": "Members[]"
+    }
+  ],
+  "cases": {
+    "admin_channel_deny": {
+      "complete": true,
+      "expansions": 4,
+      "programs": 0,
+      "status": "blocked",
+      "truncated": false
+    },
+    "before": {
+      "complete": true,
+      "expansions": 4,
+      "programs": 1,
+      "status": "success",
+      "truncated": false
+    },
+    "membership_only": {
+      "complete": true,
+      "expansions": 4,
+      "programs": 1,
+      "status": "success",
+      "truncated": false
+    },
+    "missing_recovery": {
+      "complete": true,
+      "expansions": 2,
+      "programs": 0,
+      "status": "indeterminate",
+      "truncated": false
+    },
+    "step_cap": {
+      "complete": false,
+      "expansions": 3,
+      "programs": 0,
+      "status": "truncated",
+      "truncated": true
+    }
+  },
+  "edges": 56367,
+  "engine_revision": "7368cac505b3d19331cb8a688114107e91134f25",
+  "evidence_ids": {
+    "V_A_AdminTo_C0": "sha256:c65db35acbdfdba6d8895faee771e5ceb0c5a8568849d4e0ae84897e30bb73f3",
+    "V_A_preauth": "20210920185958_users.json#/users/1700/Properties/dontreqpreauth"
+  },
+  "limitations": [
+    "Conditional prediction; no observed attack or deployed remediation",
+    "No counterfactual snapshot-fact or ACL executor yet",
+    "No full-snapshot batch or DA/EA reachability claim",
+    "No C/P adoption or risk reduction claim",
+    "Missing recovery and step cap cannot prove disconnection"
+  ],
+  "nodes": 3370,
+  "preauth_evidence_count": 1,
+  "raw_graph_unchanged": true,
+  "raw_manifest_sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+  "schema_version": "1.0.0",
+  "scope": "one source X, one host goal C0, four-technique allow-list, eight explicit assumptions",
+  "semantic_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "verified_raw_files": 6
+}

@@ -1,0 +1,606 @@
+{
+  "schema_version": "1.3.0",
+  "release_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+  "semantic_catalog_version": "0.3",
+  "purpose": "Final #155 real-search acceptance integrating accepted #181 semantic bridge and evidence views for Week 3. All reviewed actions mapped to catalog transitions; missing cases mapped with verified counterfactual evidence views.",
+  "sources": {
+    "source_a": {
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "budget": {
+        "max_paths": 25,
+        "max_steps": 10,
+        "max_expansions": 60000
+      },
+      "semantic_catalog": [
+        "acquire_reset_identity",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "scenario_winrm_admin"
+      ],
+      "runtime_fact_bindings": [
+        {
+          "release_predicate": "network_rpc_reachable",
+          "semantic_predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398"
+        },
+        {
+          "release_predicate": "password_policy_accepts_lidia",
+          "semantic_predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398"
+        },
+        {
+          "release_predicate": "directory_write_allowed_lidia",
+          "semantic_predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398"
+        },
+        {
+          "release_predicate": "network_kdc_reachable",
+          "semantic_predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "authentication_accepted_lidia",
+          "semantic_predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_lidia_da",
+          "semantic_predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_lidia_da",
+          "semantic_predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "network_winrm_reachable",
+          "semantic_predicate": "network_winrm_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "service_winrm_running",
+          "semantic_predicate": "service_winrm_running",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "da_host_admin_mapping",
+          "semantic_predicate": "host_admin_mapping",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "winrm_authentication_accepted_lidia",
+          "semantic_predicate": "winrm_authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "endpoint_authorized_lidia",
+          "semantic_predicate": "endpoint_authorized",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "admin_execution_context_lidia",
+          "semantic_predicate": "admin_execution_context",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "network_rpc_reachable",
+          "semantic_predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1766"
+        },
+        {
+          "release_predicate": "password_policy_accepts_josefa",
+          "semantic_predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1766"
+        },
+        {
+          "release_predicate": "directory_write_allowed_josefa",
+          "semantic_predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1766"
+        },
+        {
+          "release_predicate": "network_kdc_reachable",
+          "semantic_predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "authentication_accepted_josefa",
+          "semantic_predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_josefa_vajer",
+          "semantic_predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3790"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_josefa_vajer",
+          "semantic_predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3790"
+        },
+        {
+          "release_predicate": "network_rpc_reachable",
+          "semantic_predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "password_policy_accepts_ollie",
+          "semantic_predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "directory_write_allowed_ollie",
+          "semantic_predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "network_kdc_reachable",
+          "semantic_predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "authentication_accepted_ollie",
+          "semantic_predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_ollie_da",
+          "semantic_predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_ollie_da",
+          "semantic_predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "network_winrm_reachable",
+          "semantic_predicate": "network_winrm_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "service_winrm_running",
+          "semantic_predicate": "service_winrm_running",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "winrm_authentication_accepted_ollie",
+          "semantic_predicate": "winrm_authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "endpoint_authorized_ollie",
+          "semantic_predicate": "endpoint_authorized",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "admin_execution_context_ollie",
+          "semantic_predicate": "admin_execution_context",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "action_semantic_owners": {
+        "action_reset_lidia": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_reset_password"
+        },
+        "action_activate_lidia": {
+          "status": "catalog_transition",
+          "technique_id": "acquire_reset_identity"
+        },
+        "action_closure_lidia_da": {
+          "status": "catalog_transition",
+          "technique_id": "propagate_group_entitlement"
+        },
+        "action_winrm_badblood_lidia": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_winrm_admin"
+        },
+        "action_reset_josefa": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_reset_password"
+        },
+        "action_activate_josefa": {
+          "status": "catalog_transition",
+          "technique_id": "acquire_reset_identity"
+        },
+        "action_closure_josefa_vajer": {
+          "status": "catalog_transition",
+          "technique_id": "propagate_group_entitlement"
+        },
+        "action_reset_ollie": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_reset_password"
+        },
+        "action_activate_ollie": {
+          "status": "catalog_transition",
+          "technique_id": "acquire_reset_identity"
+        },
+        "action_closure_ollie_da": {
+          "status": "catalog_transition",
+          "technique_id": "propagate_group_entitlement"
+        },
+        "action_winrm_badblood_ollie": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_winrm_admin"
+        }
+      },
+      "transition_action_bindings": [
+        {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "action_id": "action_reset_lidia"
+        },
+        {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_activate_lidia"
+        },
+        {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "action_id": "action_closure_lidia_da"
+        },
+        {
+          "technique_id": "scenario_winrm_admin",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_winrm_badblood_lidia"
+        },
+        {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "action_id": "action_reset_josefa"
+        },
+        {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_activate_josefa"
+        },
+        {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+          "action_id": "action_closure_josefa_vajer"
+        },
+        {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "action_id": "action_reset_ollie"
+        },
+        {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_activate_ollie"
+        },
+        {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "action_id": "action_closure_ollie_da"
+        },
+        {
+          "technique_id": "scenario_winrm_admin",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_winrm_badblood_ollie"
+        }
+      ],
+      "terminal_success_state": {
+        "required_query_predicate": "admin_control_badblood",
+        "state_field": "admin_control",
+        "contains_target": true
+      },
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    "source_b": {
+      "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "budget": {
+        "max_paths": 25,
+        "max_steps": 10,
+        "max_expansions": 60000
+      },
+      "semantic_catalog": [
+        "acquire_reset_identity",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "scenario_winrm_admin"
+      ],
+      "runtime_fact_bindings": [
+        {
+          "release_predicate": "network_rpc_reachable",
+          "semantic_predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "password_policy_accepts_ollie",
+          "semantic_predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "directory_write_allowed_ollie",
+          "semantic_predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        {
+          "release_predicate": "network_kdc_reachable",
+          "semantic_predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "authentication_accepted_ollie",
+          "semantic_predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_ollie_da",
+          "semantic_predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "membership_security_group_usable_ollie_da",
+          "semantic_predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        },
+        {
+          "release_predicate": "network_winrm_reachable",
+          "semantic_predicate": "network_winrm_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "service_winrm_running",
+          "semantic_predicate": "service_winrm_running",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "da_host_admin_mapping",
+          "semantic_predicate": "host_admin_mapping",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "winrm_authentication_accepted_ollie",
+          "semantic_predicate": "winrm_authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "endpoint_authorized_ollie",
+          "semantic_predicate": "endpoint_authorized",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "release_predicate": "admin_execution_context_ollie",
+          "semantic_predicate": "admin_execution_context",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "action_semantic_owners": {
+        "action_reset_ollie_from_b": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_reset_password"
+        },
+        "action_activate_ollie": {
+          "status": "catalog_transition",
+          "technique_id": "acquire_reset_identity"
+        },
+        "action_closure_ollie_da": {
+          "status": "catalog_transition",
+          "technique_id": "propagate_group_entitlement"
+        },
+        "action_winrm_badblood_ollie": {
+          "status": "catalog_transition",
+          "technique_id": "scenario_winrm_admin"
+        }
+      },
+      "transition_action_bindings": [
+        {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "action_id": "action_reset_ollie_from_b"
+        },
+        {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_activate_ollie"
+        },
+        {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "action_id": "action_closure_ollie_da"
+        },
+        {
+          "technique_id": "scenario_winrm_admin",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "action_id": "action_winrm_badblood_ollie"
+        }
+      ],
+      "terminal_success_state": {
+        "required_query_predicate": "admin_control_badblood",
+        "state_field": "admin_control",
+        "contains_target": true
+      },
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    }
+  },
+  "acceptance_manifest": {
+    "path": "tests/fixtures/ranking/week3_acceptance_cases.json",
+    "source_revision": "6d06dc7bb9352db568eb7dc6deb92285a8d32489",
+    "source_pr": 178,
+    "blob_sha": "fa60208cfd4d9621f2ee22edc3489eb960a6a686",
+    "canonical_digest": "sha256:73048e3f93be293556e65dc0e8c950255d7b77b9194b150f86b85b6cfc254c28"
+  },
+  "cases": {
+    "w3-source-a-positive": {
+      "source": "source_a",
+      "kind": "positive",
+      "search_binding_status": "mapped",
+      "runtime_fact_overrides": []
+    },
+    "w3-source-a-known-false": {
+      "source": "source_a",
+      "kind": "known_false",
+      "search_binding_status": "mapped",
+      "predicate_name": "directory_write_allowed_lidia",
+      "runtime_fact_overrides": [
+        {
+          "release_predicate": "directory_write_allowed_lidia",
+          "truth_value": false,
+          "origin": "blocked_evidence",
+          "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto."
+        }
+      ]
+    },
+    "w3-source-a-runtime-unknown": {
+      "source": "source_a",
+      "kind": "runtime_unknown",
+      "search_binding_status": "mapped",
+      "predicate_name": "directory_write_allowed_lidia",
+      "runtime_fact_overrides": [
+        {
+          "release_predicate": "directory_write_allowed_lidia",
+          "truth_value": null,
+          "origin": "unknown",
+          "rationale": "Remove runtime assumption; explicitly unknown without telemetry."
+        }
+      ]
+    },
+    "w3-source-a-structural-missing": {
+      "source": "source_a",
+      "kind": "structural_missing",
+      "search_binding_status": "mapped",
+      "predicate_name": "genericall_tstwvir_lidia",
+      "evidence_view": {
+        "kind": "withhold_structural_provenance",
+        "edge_id": "sha256:add3ecb3858d5426d003da9ecdba89274ea02d5c7d9e99e3e10ece6a5d077932",
+        "locator": "20210920185958_users.json#/users/2310/Aces/3",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "relationship": "GenericAll",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3398"
+      }
+    },
+    "w3-source-a-telemetry-missing": {
+      "source": "source_a",
+      "kind": "telemetry_missing",
+      "search_binding_status": "mapped",
+      "predicate_name": "enabled_lidia",
+      "evidence_view": {
+        "kind": "withhold_enabled_observation",
+        "node_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "locator": "20210920185958_users.json#/users/2310/Properties/enabled"
+      }
+    },
+    "w3-source-b-positive": {
+      "source": "source_b",
+      "kind": "positive",
+      "search_binding_status": "mapped",
+      "runtime_fact_overrides": []
+    },
+    "w3-source-b-known-false": {
+      "source": "source_b",
+      "kind": "known_false",
+      "search_binding_status": "mapped",
+      "predicate_name": "directory_write_allowed_ollie",
+      "runtime_fact_overrides": [
+        {
+          "release_predicate": "directory_write_allowed_ollie",
+          "truth_value": false,
+          "origin": "blocked_evidence",
+          "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto."
+        }
+      ]
+    },
+    "w3-source-b-runtime-unknown": {
+      "source": "source_b",
+      "kind": "runtime_unknown",
+      "search_binding_status": "mapped",
+      "predicate_name": "directory_write_allowed_ollie",
+      "runtime_fact_overrides": [
+        {
+          "release_predicate": "directory_write_allowed_ollie",
+          "truth_value": null,
+          "origin": "unknown",
+          "rationale": "Remove runtime assumption; explicitly unknown without telemetry."
+        }
+      ]
+    }
+  },
+  "semantic_bridge": {
+    "plan_path": "docs/research/ratings/week3-closeout/semantic-bridge-plan.json",
+    "documentation_path": "docs/research/week3-semantic-bridge.md",
+    "accepted_pr": 181,
+    "merged_revision": "8a1ce0c28b7491fa2266314c56bbb03035bf1ab7",
+    "scope": "Week 3 semantic bridge and evidence views accepted under PR #181; no rating or structural contract drift."
+  }
+}

@@ -1,0 +1,177 @@
+{
+  "batch_id": "auto-exposure",
+  "common_budget": {
+    "max_expansions": 10000,
+    "max_paths": 1,
+    "max_steps": 3
+  },
+  "evaluation_mode": "scenario",
+  "prioritization_policy": "min_effort_impact_pareto",
+  "schema_version": "batch-query-request/1.1.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "sources": [
+    {
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "custom_budget": null,
+      "declared_assumptions": [
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "password_policy_accepts",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "directory_write_allowed",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "network_rpc_reachable",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "network_kdc_reachable",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "authentication_accepted",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "security_group",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "value": true
+        },
+        {
+          "assumption_metadata": {
+            "declared_by": "security_analyst"
+          },
+          "origin": "declared_assumption",
+          "predicate": "membership_usable",
+          "provenance_reference": "scenario://awg-r04/computer-boundary",
+          "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+          "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "value": true
+        }
+      ],
+      "description": "Independent declared compromise scenario; not observed compromise",
+      "identity_provenance_reference": "scenario://awg-r04/machine-identity/FINWVIR-4157",
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "node_kind": "Computer",
+      "profile_kind": "computer_usable_identity",
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e"
+    }
+  ],
+  "target_goal_ids": null,
+  "target_manifest": {
+    "default_discovery_goals": [],
+    "description": "Snapshot-derived technical candidates; impact remains Unknown",
+    "domain_sid": "S-1-5-21-1271839998-3495686680-2211690266",
+    "manifest_id": "auto-exposure-targets",
+    "schema_version": "target-manifest/1.2.0",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "targets": [
+      {
+        "category": "tier_0_host",
+        "checkpoint_goal": null,
+        "description": "Automatically selected technical goal; business impact is unreviewed.",
+        "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+        "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+        "impact_rating": "Unknown",
+        "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "required_control_level": "host_admin_execution",
+        "required_state": {
+          "admin_control": [
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ]
+        },
+        "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "target_node_kind": "Computer",
+        "technical_consequence": "host_admin_execution"
+      },
+      {
+        "category": "tier_0_identity",
+        "checkpoint_goal": null,
+        "description": "Automatically selected technical goal; business impact is unreviewed.",
+        "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "goal_kind": "usable_identity_entitlement",
+        "impact_rating": "Unknown",
+        "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+        "required_control_level": "admin_entitlement",
+        "required_state": {},
+        "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target_node_kind": "Group",
+        "technical_consequence": "attacker_usable_group_entitlement"
+      },
+      {
+        "category": "tier_0_identity",
+        "checkpoint_goal": null,
+        "description": "Automatically selected technical goal; business impact is unreviewed.",
+        "display_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+        "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+        "goal_kind": "usable_identity_entitlement",
+        "impact_rating": "Unknown",
+        "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-519",
+        "required_control_level": "admin_entitlement",
+        "required_state": {},
+        "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "target_node_kind": "Group",
+        "technical_consequence": "attacker_usable_group_entitlement"
+      }
+    ],
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "python": "3.14.7",
+  "catalog": "0.6",
+  "result_schema": "week4-query-result/0.2.0",
+  "evidence": "synthetic_prediction_only",
+  "ordering_equal": true,
+  "byte_identical": false,
+  "artifact_transport_normalization": "CRLF to LF only; parsed semantic/runtime payload unchanged",
+  "human_domain_mapping_review": "pending @Lolavine777 via #206",
+  "independent_cross_run_acceptance": "pending #208",
+  "private_seamless": {
+    "actual_run": false,
+    "disposition": "pending_missing_authorized_manifest_verified_inputs",
+    "observed_exploit_success": false,
+    "prerequisite_guard_exit_code": 2
+  },
+  "ratings": {
+    "active_work_units": 5,
+    "effort": "unrated",
+    "likelihood": "unrated",
+    "impact": "unrated",
+    "passive_membership_work_units": 0
+  },
+  "input_digests": {
+    "graph_input": {
+      "reference": "tests/fixtures/rbcd/snapshot.json",
+      "sha256": "sha256:5c9f400ab0a79bacd44a55fa87a73bd29a6fd530472ec3c4b8db94f3cc8ee005"
+    },
+    "query": {
+      "reference": "tests/fixtures/rbcd/query.json",
+      "sha256": "sha256:636acd87179a917fcefc6fb93f8c01aa58c603686f6c9f5615d5a86ae2dd945a"
+    }
+  },
+  "oracle_file_sha256": "sha256:b04e9454d3eefe6b1fbd1683eaaebcb5eba480db594fb82d2b8c413483fc0b71",
+  "runs": [
+    {
+      "file": "run-1.json",
+      "exit_code": 0,
+      "bytes": 2741113,
+      "sha256": "sha256:4c60ff7ef49e59391650aebbca13b50f82c108ac314b5874694156532ed2a11a",
+      "original_transport_bytes": 2759707,
+      "original_transport_sha256": "sha256:f1acebed027e65f3a853028637ba156c1dbff8973443dde0dd148668106fee60",
+      "semantic_sha256": "sha256:8cbe84fd19d74d402eeb2a6af114a877a29aac567e71e13157adbc2a7d9f1792",
+      "effective_config_sha256": "sha256:4e464c6f84d6b7ce2eec81293ca3afe0f83ed43c299c101de7e94a532564f760",
+      "status": "success",
+      "final_goal_reached": true,
+      "checkpoint_reached": false,
+      "complete": true,
+      "truncated": false,
+      "programs": [
+        [
+          "rbcd_configure_descriptor",
+          "rbcd_acquire_secret",
+          "rbcd_prepare_service",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ],
+        [
+          "rbcd_acquire_secret",
+          "rbcd_configure_descriptor",
+          "rbcd_prepare_service",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ],
+        [
+          "rbcd_acquire_secret",
+          "rbcd_prepare_service",
+          "rbcd_configure_descriptor",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ]
+      ],
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "budget_bounded"
+      }
+    },
+    {
+      "file": "run-2.json",
+      "exit_code": 0,
+      "bytes": 2741113,
+      "sha256": "sha256:a2bb287f6c7ae63ce94a235c7bf4115a1ace1bd61a6cfb9fd039ec2eb52e8e03",
+      "original_transport_bytes": 2759707,
+      "original_transport_sha256": "sha256:d873cf41cf31f1482874d8c758d2261f0e0319da2b886cd21835d5cbf254a65e",
+      "semantic_sha256": "sha256:8cbe84fd19d74d402eeb2a6af114a877a29aac567e71e13157adbc2a7d9f1792",
+      "effective_config_sha256": "sha256:4e464c6f84d6b7ce2eec81293ca3afe0f83ed43c299c101de7e94a532564f760",
+      "status": "success",
+      "final_goal_reached": true,
+      "checkpoint_reached": false,
+      "complete": true,
+      "truncated": false,
+      "programs": [
+        [
+          "rbcd_configure_descriptor",
+          "rbcd_acquire_secret",
+          "rbcd_prepare_service",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ],
+        [
+          "rbcd_acquire_secret",
+          "rbcd_configure_descriptor",
+          "rbcd_prepare_service",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ],
+        [
+          "rbcd_acquire_secret",
+          "rbcd_prepare_service",
+          "rbcd_configure_descriptor",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ]
+      ],
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "budget_bounded"
+      }
+    },
+    {
+      "file": "off.json",
+      "exit_code": 0,
+      "bytes": 65021,
+      "sha256": "sha256:177ee614200b0f6019682813adc0c832d59b89af44620e7049e206000e3ddb01",
+      "original_transport_bytes": 66361,
+      "original_transport_sha256": "sha256:7b275fd935a7b157ade0f2fdd2b84e1edfb83d584a0b8212010480e3722af335",
+      "semantic_sha256": "sha256:c1898fe106ecee86bdc6cacda9485e9b69514ea91e39f554a42c8033a1fca75a",
+      "effective_config_sha256": "sha256:86e0f469186da4e83e20168d874ff2092ca613789533e2fe09bb0fb556ce6e5b",
+      "status": "no_path",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "complete": true,
+      "truncated": false,
+      "programs": [],
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": true,
+        "optimization_scope": "exhaustive_within_scope"
+      }
+    },
+    {
+      "file": "unresolved.json",
+      "exit_code": 0,
+      "bytes": 50270,
+      "sha256": "sha256:36b146a0979b217ba7ed165c5df8ed3a261d05873fcedf89bd7765499f7658de",
+      "original_transport_bytes": 51458,
+      "original_transport_sha256": "sha256:504c9b6df6ded1debe88744f16a412d42600c14c342e643cda73e3c7e7abf4eb",
+      "semantic_sha256": "sha256:8ec34616ca6e077cae97c7645565a959a0c3cbbd386f0305119356696f09ba15",
+      "effective_config_sha256": "sha256:6847967516559910bd818e782423e27f3dde55b15102335c42d3289238f8078b",
+      "status": "indeterminate",
+      "final_goal_reached": false,
+      "checkpoint_reached": false,
+      "complete": true,
+      "truncated": false,
+      "programs": [],
+      "engine_reported_guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "exhaustive_within_scope"
+      }
+    }
+  ]
+}

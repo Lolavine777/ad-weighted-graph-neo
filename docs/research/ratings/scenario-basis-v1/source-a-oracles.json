@@ -1,0 +1,524 @@
+{
+  "status": "proposed_pending_b_review",
+  "numeric_approval": false,
+  "review_simulation": true,
+  "basis_frozen_commit": "ce6434b",
+  "basis_canonical_digest": "sha256:fd709b190fc3d388f61a38cab93100f9786332e667d9b8178914dd4aeefb5ac1",
+  "search_complete": true,
+  "scope": "Declared 7-node projection and four-technique catalog; not whole-snapshot ranking.",
+  "paths_generated": 24,
+  "numeric_requests": {
+    "C": {
+      "required": 8,
+      "rated": 8
+    },
+    "P": {
+      "required": 46,
+      "rated": 8
+    },
+    "I": {
+      "required": 1,
+      "rated": 1
+    }
+  },
+  "fully_rated_paths": 2,
+  "p_unrated_paths": 22,
+  "min_effort_value": 2,
+  "min_effort_ties": [
+    "generated_0001"
+  ],
+  "pareto_frontier": [
+    "generated_0001",
+    "generated_0006"
+  ],
+  "dominated": [],
+  "programs": [
+    {
+      "candidate_id": "generated_0001",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 2,
+      "P": [
+        "9/40",
+        "8379/10000"
+      ],
+      "I": "High",
+      "numeric_complete": true
+    },
+    {
+      "candidate_id": "generated_0002",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0003",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0004",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0005",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0006",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 3,
+      "P": [
+        "81/800",
+        "7800849/10000000"
+      ],
+      "I": "High",
+      "numeric_complete": true
+    },
+    {
+      "candidate_id": "generated_0007",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0008",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 3,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0009",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0010",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0011",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0012",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0013",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0014",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0015",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0016",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0017",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0018",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0019",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0020",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0021",
+      "generated_actions": [
+        "action_reset_josefa",
+        "action_reset_lidia",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0022",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0023",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    },
+    {
+      "candidate_id": "generated_0024",
+      "generated_actions": [
+        "action_reset_lidia",
+        "action_reset_josefa",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "C": 4,
+      "P": null,
+      "I": "High",
+      "numeric_complete": false
+    }
+  ],
+  "exact_products": {
+    "generated_0001": {
+      "q_intervals": [
+        [
+          "3/5",
+          "19/20"
+        ],
+        [
+          "3/4",
+          "49/50"
+        ],
+        [
+          "1/2",
+          "9/10"
+        ]
+      ],
+      "P": [
+        "9/40",
+        "8379/10000"
+      ]
+    },
+    "generated_0006": {
+      "q_intervals": [
+        [
+          "3/5",
+          "19/20"
+        ],
+        [
+          "3/4",
+          "49/50"
+        ],
+        [
+          "3/5",
+          "19/20"
+        ],
+        [
+          "3/4",
+          "49/50"
+        ],
+        [
+          "1/2",
+          "9/10"
+        ]
+      ],
+      "P": [
+        "81/800",
+        "7800849/10000000"
+      ]
+    }
+  },
+  "coverage": {
+    "c_complete_paths": 24,
+    "i_complete_paths": 24,
+    "unique_unrated_p_prefixes": 38,
+    "active_techniques_in_catalog": 22,
+    "covered_active_techniques": 3,
+    "outside_case_active_techniques": 19,
+    "canonical_admitted_candidates": 24,
+    "canonical_rejections": 0,
+    "passive_steps": 49,
+    "active_steps": 144,
+    "canonical_work_units": 8,
+    "shared_preparation_units": 0
+  },
+  "remaining_b_review": [
+    "Historical-to-native operation and budget equivalence",
+    "Per-unit rubric and overlap for all 8 units",
+    "All 8 full-history P transfers and bounded retry judgments",
+    "Exact typed I goal and historical business context",
+    "Projection scope and independent reproduction",
+    "22 interleaving paths have no reviewed P; no whole-snapshot Pareto or completed Week4 acceptance claim"
+  ]
+}

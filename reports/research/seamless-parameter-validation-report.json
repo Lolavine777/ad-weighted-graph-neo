@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0.0",
+  "input_file": "tests/fixtures/ranking/seamless_parameter_bundle.json",
+  "bundle_file": "tests/fixtures/ranking/seamless_parameter_bundle.json",
+  "bundle_validation": {
+    "status": "PASS",
+    "bundle_id": "bundle-seamless-host-to-dc-v1",
+    "bundle_version": "1.0.0",
+    "bundle_digest": "sha256:0a137817d33c7f22884ca06a19039b10bf75b39bd470a25b73ce5cb40ee58246",
+    "scenario_id": "scenario-seamless-host-to-dc",
+    "scenario_version": "1.1.0",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "work_units_count": 9,
+    "conditional_bounds_count": 11,
+    "assumed_facts_count": 26,
+    "observed_facts_count": 14,
+    "candidates_count": 3,
+    "governance_status": "pending_independent_human_ratings",
+    "source_a_traces": {
+      "status": "PASS",
+      "cand_1": {
+        "likelihood_interval": [
+          "42/125",
+          "171/250"
+        ],
+        "effort": 2,
+        "impact": "High"
+      },
+      "cand_2": {
+        "likelihood_interval": [
+          "126/625",
+          "55233/100000"
+        ],
+        "effort": 3,
+        "impact": "High"
+      },
+      "pareto_frontier": [
+        "cand_seamless_01_direct_lidia",
+        "cand_seamless_02_alt_vajer_ollie"
+      ],
+      "min_effort_to_da": {
+        "best_candidate_id": "cand_seamless_01_direct_lidia",
+        "minimum_effort_value": 2
+      }
+    },
+    "source_b_traces": {
+      "status": "PASS",
+      "cand_b": {
+        "likelihood_interval": [
+          "42/125",
+          "171/250"
+        ],
+        "effort": 2,
+        "impact": "High"
+      },
+      "pareto_frontier": [
+        "cand_seamless_source_b_01_ollie"
+      ],
+      "min_effort_to_da": {
+        "best_candidate_id": "cand_seamless_source_b_01_ollie",
+        "minimum_effort_value": 2
+      }
+    }
+  },
+  "calculation_traces": {
+    "status": "PASS",
+    "cand_1": {
+      "likelihood_interval": [
+        "42/125",
+        "171/250"
+      ],
+      "effort": 2,
+      "impact": "High"
+    },
+    "cand_2": {
+      "likelihood_interval": [
+        "126/625",
+        "55233/100000"
+      ],
+      "effort": 3,
+      "impact": "High"
+    },
+    "pareto_frontier": [
+      "cand_seamless_01_direct_lidia",
+      "cand_seamless_02_alt_vajer_ollie"
+    ],
+    "min_effort_to_da": {
+      "best_candidate_id": "cand_seamless_01_direct_lidia",
+      "minimum_effort_value": 2
+    }
+  },
+  "sensitivity_analysis": {
+    "neighborhood_sensitivity": {
+      "effort_friction_increase": {
+        "description": "Increase friction T2 from 2 to 3 for reset_lidia and winrm_dc_lidia. Candidate 1 effort jumps from 2 to 4 while Candidate 2 stays 3.",
+        "input_changes": {
+          "reset_lidia": {
+            "t2": "2 -> 3",
+            "cost": "1 -> 2"
+          },
+          "winrm_dc_lidia": {
+            "t2": "2 -> 3",
+            "cost": "1 -> 2"
+          }
+        },
+        "outputs": {
+          "cand_1_effort": 4,
+          "cand_2_effort": 3,
+          "min_effort_best_candidate": "cand_seamless_02_alt_vajer_ollie",
+          "minimum_effort_value": 3,
+          "pareto_frontier": [
+            "cand_seamless_01_direct_lidia",
+            "cand_seamless_02_alt_vajer_ollie"
+          ]
+        },
+        "diagnostics": "Min-Effort-to-DA flips winner from Candidate 1 to Candidate 2; Pareto frontier remains incomparable because likelihood intervals still overlap.",
+        "status": "PASS"
+      },
+      "strictly_nested_bounds_narrowing": {
+        "description": "Cand 1 bounds strictly narrowed inside proposed intervals: q1=[17/20, 9/10] in [7/10, 9/10], q2=[9/10, 19/20] in [4/5, 19/20], q3=[3/4, 4/5] in [3/5, 4/5].",
+        "input_changes": {
+          "cand_1_q1": "[17/20, 9/10] (nested subset)",
+          "cand_1_q2": "[9/10, 19/20] (nested subset)",
+          "cand_1_q3": "[3/4, 4/5] (nested subset)"
+        },
+        "outputs": {
+          "cand_1_interval": [
+            "459/800",
+            "171/250"
+          ],
+          "cand_2_interval": [
+            "126/625",
+            "55233/100000"
+          ],
+          "pareto_frontier": [
+            "cand_seamless_01_direct_lidia"
+          ]
+        },
+        "diagnostics": "Cand 1 lower bound 459/800 (0.57375) strictly exceeds Cand 2 upper bound 55233/100000 (0.55233); strict Pareto dominance achieved and frontier collapses to Cand 1.",
+        "status": "PASS"
+      },
+      "bounds_overlap_margin_sweep": {
+        "description": "Dual analysis: (a) Single-variable analytic margin gap separating Candidate 1 lower bound (0.336) from Candidate 2 upper bound (0.55233); (b) Executed multi-scenario sweep where Candidate 2 upper bounds are reduced by 10% across all 5 steps.",
+        "overlap_margin_gap": 0.21633,
+        "analytic_single_variable_gap": {
+          "overlap_margin_gap": 0.21633,
+          "required_l1_increase_percentage": "+64.4%",
+          "diagnostics": "Overlap gap is 0.21633 (+64.4% increase of l1 required to break overlap if u2 is held fixed)."
+        },
+        "executed_multi_scenario_sweep": {
+          "description": "Candidate 2 upper bounds reduced by 10% (x 9/10) across all 5 steps.",
+          "input_changes": {
+            "q1_upper": "9/10 * 9/10 = 81/100",
+            "q2_upper": "19/20 * 9/10 = 171/200",
+            "q3_upper": "17/20 * 9/10 = 153/200",
+            "q4_upper": "19/20 * 9/10 = 171/200",
+            "q5_upper": "4/5 * 9/10 = 18/25"
+          },
+          "outputs": {
+            "cand_1_interval": [
+              "42/125",
+              "171/250"
+            ],
+            "cand_2_interval": [
+              "126/625",
+              "3261453417/10000000000"
+            ],
+            "cand_2_u2_float": 0.3261453417,
+            "cand_1_l1_float": 0.336,
+            "frontier_transition": {
+              "before": [
+                "cand_seamless_01_direct_lidia",
+                "cand_seamless_02_alt_vajer_ollie"
+              ],
+              "after": [
+                "cand_seamless_01_direct_lidia"
+              ]
+            }
+          },
+          "diagnostics": "When Candidate 2 upper bounds are reduced by 10% compound across 5 steps, u2 drops to 3261453417/10000000000 (0.3261453417) < l1 (0.336). The Pareto frontier collapses from incomparable to single-winner ['cand_seamless_01_direct_lidia']."
+        },
+        "status": "PASS"
+      }
+    },
+    "conformance_probes": {
+      "point_likelihood_tie_break": {
+        "description": "Exact point likelihood equality [3/10, 3/10]; Cand 1 wins tie-break by lower effort (2 < 3).",
+        "frontier": [
+          "cand_seamless_01_direct_lidia"
+        ],
+        "status": "PASS"
+      },
+      "target_impact_critical_shift": {
+        "description": "Target DC consequence rating shifted to Critical for both candidates; frontier preserved with both candidates eligible.",
+        "frontier": [
+          "cand_seamless_01_direct_lidia",
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "status": "PASS"
+      },
+      "target_impact_unrated_fail_closed": {
+        "description": "Unrated target consequence rating triggers fail-closed; both candidates excluded from eligible set and frontier is empty.",
+        "frontier": [],
+        "diagnostics_count": 2,
+        "status": "PASS"
+      },
+      "required_predicate_known_false_veto": {
+        "description": "Required predicate endpoint_authorized_lidia marked false; Cand 1 partitioned to diagnostics with status 'blocked'; Cand 2 sole frontier.",
+        "frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "diagnostics_status": "blocked",
+        "status": "PASS"
+      },
+      "irrelevant_predicate_false_noop": {
+        "description": "Irrelevant predicate marked false in facts ledger; neither candidate requires it, so neither candidate is blocked.",
+        "frontier": [
+          "cand_seamless_01_direct_lidia",
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "status": "PASS"
+      },
+      "required_predicate_unknown_gating": {
+        "description": "Required predicate winrm_authentication_accepted_lidia omitted / unknown; Cand 1 partitioned to diagnostics with status 'unknown'; Cand 2 sole frontier.",
+        "frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "diagnostics_status": "unknown",
+        "status": "PASS"
+      }
+    }
+  }
+}

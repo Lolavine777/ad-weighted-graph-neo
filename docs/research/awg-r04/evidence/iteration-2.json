@@ -1,0 +1,1049 @@
+{
+  "baseline_revision": "025489a8a4486ff87c3e3142ffbfaa47675f961b",
+  "code_sha256": {
+    "scripts/download_seamless.py": "90d4a80f791c1fe2195f1dbeaf67d6984f3ab6dfbed169d916e28e00b8ef0f7a",
+    "scripts/research/benchmark_discovery.py": "e96d3120f3aecf88aa3bdbdd0f885168845cb0a7631bc5794b08968547efa9be",
+    "scripts/research/remediation_runner.py": "d7580b0f8b9fa1bcd015fec74e5415b8bf2e449c4bcabd2dc67a4020d9a149d0",
+    "src/engine/batch_cli.py": "aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+    "src/engine/query.py": "d8e69015f432919a4b0f086d22121c24587209c06734f695a3e464dcd5f2eedb",
+    "src/engine/remediation_runner.py": "1d6bcb594465a8c2992095e37b4c6363f6bae10cfa4c1ee2f76ba23f026ce442",
+    "src/engine/search.py": "ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+    "tests/test_batch_cli_source.py": "af87270405a6485a5b60a57ffe207d05e677282d75583e52fdaa9625f40780fa",
+    "tests/test_download_seamless.py": "0e515dff18bebb5a6588f5af0c5e54bebae1d5b9d3874914900f8f889d47daec",
+    "tests/test_remediation_discovery.py": "1246f23ac456a4ee94d11eaf8878b39f76143f07c8c76f59da2eeea4821ac311",
+    "tests/test_search_prepared_reuse.py": "9a72dc6cd5ba91ef488eca9e98aa70872f7e38c43fee9a0670f6db9f6a6a37e7"
+  },
+  "download_from_pinned_public_url": {
+    "archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+    "file_count": 6,
+    "raw_bytes": 11371828,
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "source_url": "https://raw.githubusercontent.com/mike-nolan-councilman/Bloodhound_Data/3febc4089421725f9527c187f78d064ad09d5158/20210920185958_BloodHound.zip",
+    "status": "installed_verified"
+  },
+  "execution_state": "tracked implementation changes and new files listed by SHA-256; no claim that baseline SHA alone contains these changes",
+  "f1": {
+    "alternatives_scope": "Identical manually grounded finite actions; no production grounding, no calibrated C/P/I, AND-OR is reachability only.",
+    "group_count": 12,
+    "mismatches": [],
+    "variant_count": 78
+  },
+  "finite_remediation": {
+    "budgets": {
+      "max_cells": null,
+      "max_expansions": null,
+      "max_seconds": null,
+      "per_query_seconds": null
+    },
+    "comparisons": [
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 2
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "direct-admin",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 2,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 2
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 2
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:435451f04f7d104000b174c87d371ba876c64e74a3bab0ebabee95b3a1b9043c",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 2,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 2
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1,
+            "reachable": 1
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:68f56c38fe4172ad4dfa8a4b4ef2c640767b97162824cb0ac021e9c709b015a5",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 1,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 3,
+          "percent": 75.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 1
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1,
+            "reachable": 1
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:775057915749ddab13f0c664d8721442e00e73bcb1910b55341ef244530990a1",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 1,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 1,
+          "percent": 25.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 3
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 2
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:7c92303597510022d59e5b66796dfd06c21d5a7917547f69453e299d4cdc3b46",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 2,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 2
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 2
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:ae37fa0f91713ea88cc6e336bf276b49f6008d7a02f7cbd209b2f8068cfce192",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 2,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 2
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 2
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1,
+            "reachable": 1
+          },
+          "before": {
+            "reachable": 2
+          }
+        },
+        "declared_pairs": 2,
+        "intervention": "discovered:sha256:ae5df129de465d34b568e1a56b3089f3d612ad9f04b62946eb5191477e056385",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 2,
+          "numerator": 1,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 4,
+          "numerator": 2,
+          "percent": 50.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 2
+        },
+        "remaining_bypasses": 2
+      }
+    ],
+    "discovery": {
+      "effectiveness_policy": "native_counterfactual_replay_and_rediscovery",
+      "eligible_candidates": 8,
+      "evaluated_candidates": 6,
+      "limit": 6,
+      "not_selected_candidates": 2,
+      "optimal_intervention_claim": false,
+      "request_ids": [
+        "discovered:sha256:68f56c38fe4172ad4dfa8a4b4ef2c640767b97162824cb0ac021e9c709b015a5",
+        "discovered:sha256:435451f04f7d104000b174c87d371ba876c64e74a3bab0ebabee95b3a1b9043c",
+        "discovered:sha256:7c92303597510022d59e5b66796dfd06c21d5a7917547f69453e299d4cdc3b46",
+        "discovered:sha256:ae37fa0f91713ea88cc6e336bf276b49f6008d7a02f7cbd209b2f8068cfce192",
+        "discovered:sha256:ae5df129de465d34b568e1a56b3089f3d612ad9f04b62946eb5191477e056385",
+        "discovered:sha256:775057915749ddab13f0c664d8721442e00e73bcb1910b55341ef244530990a1"
+      ],
+      "scope": "supported candidates in observed baseline corpus only",
+      "selection_policy": "observed_binding_coverage_then_candidate_id"
+    },
+    "inventory_candidates": 8,
+    "process_peak_rss_bytes": 52883456,
+    "runtime_seconds": 2.0857137379998676,
+    "schema_version": "remediation-study-summary/1",
+    "scope": "bounded declared cohorts; not a full-source scan",
+    "verified_raw_files": null
+  },
+  "full_graph": {
+    "edges": 56367,
+    "graph_build_seconds": 13.21601664800005,
+    "graph_digest": "sha256:d6d4c92ef01d302a6bcc30ecd18ecc638a89df9c62d54f3e6b68d42f257981e0",
+    "initial_actor": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "nodes": 3370,
+    "query_target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "source": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+  },
+  "full_seamless_batch_pilot": {
+    "allowed_techniques": [
+      "activate_recovered_identity",
+      "propagate_group_entitlement",
+      "obtain_admin_execution_on_host",
+      "scenario_winrm_admin"
+    ],
+    "caps": {
+      "max_expansions": 100,
+      "max_paths": 10,
+      "max_steps": 6
+    },
+    "evidence_only": {
+      "summary": {
+        "declared_cells": 15,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 15,
+        "likelihood_rated_cells": 0,
+        "not_run_cells": [],
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 1,
+        "status_counts": {
+          "complete_success": 1,
+          "indeterminate": 11,
+          "unsupported_source": 3
+        },
+        "successful_cells": 1,
+        "successful_sources": 1,
+        "supported_sources": 4,
+        "total_sources": 5,
+        "unsupported_sources": 1
+      }
+    },
+    "goal_ids": [
+      "goal-seamless-da-entitlement",
+      "goal-seamless-ea-entitlement",
+      "goal-seamless-dc-admin"
+    ],
+    "graph_edges": 56367,
+    "graph_nodes": 3370,
+    "graph_scope": "full manifest-verified snapshot",
+    "kinds": [
+      "User",
+      "User",
+      "Computer",
+      "Computer",
+      "Group"
+    ],
+    "limitations": [
+      "Pilot source set only",
+      "Four declared techniques",
+      "Caps may truncate",
+      "Scenario assumptions are predicted outcomes, not observations",
+      "No production numeric adoption, full-source exposure, scalability or Top-K claim"
+    ],
+    "numeric_adoption": "none; no proposed registries loaded",
+    "profiles": [
+      "user_leaked_password",
+      "user_usable_identity",
+      "computer_control_admin",
+      "computer_control_user",
+      "unsupported"
+    ],
+    "raw_locators": {
+      "C0": "#/computers/0",
+      "G_DA": "#/groups/40",
+      "V_A": "#/users/1700"
+    },
+    "raw_manifest_digest": "sha256:bcba779c6b18e0c5fe9e04e8684195034aad5acf30017e4d068816438fb3c66b",
+    "raw_verified_before_and_after": true,
+    "request_digest": "sha256:531bbd675369627df4319805349afcd3ed084dc4e393d0e1b24c2d6f2a2cffee",
+    "revision": "025489a8a4486ff87c3e3142ffbfaa47675f961b",
+    "runtime": {
+      "evidence_only_seconds": 23.691180264000195,
+      "process_peak_rss_bytes": 527253504,
+      "python": "3.14.8",
+      "scenario_seconds": 24.50672338900017,
+      "total_seconds": 64.1978304180002
+    },
+    "scenario": {
+      "rows": [
+        {
+          "cells": {
+            "goal-seamless-da-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": 0.0,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "computer-admin"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "computer-user"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "group-unsupported"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 19,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin": {
+              "checkpoint_reached": true,
+              "expansions": 100,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_success",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            },
+            "goal-seamless-ea-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 100,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_incomplete",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            }
+          },
+          "source_id": "user-identity"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 30,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin": {
+              "checkpoint_reached": true,
+              "expansions": 100,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_success",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            },
+            "goal-seamless-ea-entitlement": {
+              "checkpoint_reached": false,
+              "expansions": 100,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_incomplete",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            }
+          },
+          "source_id": "user-password"
+        }
+      ],
+      "summary": {
+        "declared_cells": 15,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 15,
+        "likelihood_rated_cells": 0,
+        "not_run_cells": [],
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 3,
+        "status_counts": {
+          "complete_success": 3,
+          "indeterminate": 5,
+          "truncated_incomplete": 2,
+          "truncated_success": 2,
+          "unsupported_source": 3
+        },
+        "successful_cells": 5,
+        "successful_sources": 3,
+        "supported_sources": 4,
+        "total_sources": 5,
+        "unsupported_sources": 1
+      }
+    },
+    "scope_digest": "sha256:3b9ba7a87c16a33291c1559d23c271785d9abcfe7e194313d6ed8691fc0ca52c",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+      "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+      "docs/research/target-manifest.schema.json": "sha256:a6c12b86f9ad9930abfe0dc823bac8d3a90061fe9258b490fb91d439265486ae",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:34303050dc50e7d3324b8ab9a79ca86d324efa1609890395656639912edd02de",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:b97908acb6b5e4594de0b37e99886d528e5674272045e706eb028fed5f221d6a",
+      "src/engine/batch_cli.py": "sha256:8aa092cc3ab18a22326fa46b142ab37c20e6d8ee3cd4b8f89cc55aba76182282",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:c177862e043070a1fce20df0e2da71378069771a0429939cb83ab491037d887f",
+      "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:6f9d94de67c310033563ac62b0a63a9f319cc608674812931d8bfcf386d55818",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/resolution_service.py": "sha256:33d7f084dcb5f6b24d26442fca4581faebdfec05da199467dd6a263c27b4fb6c",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:4a31399ad008b66ff15f941d89059138805244dd5ffe4932bdd279cd14de37d6",
+      "src/engine/remediation.py": "sha256:b6aef7caac73161acbe80c25f9ffd320f4c250fce52200f414ca27f51e7dff75",
+      "src/engine/remediation_runner.py": "sha256:3b5c6f29e1cf2e8777941560c4a18bf72e7f122235a699d442f9ec0eca2cafc9",
+      "src/engine/search.py": "sha256:f0f4fcef751d72df9b025113edb9ea26d0e87221c0268b0e77ddcbe886a1df3c",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:751530033903a12c47d715c6f82ebed7b2c45ca6e932f7ea9490cf3886cca903",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "source_scope": "five independently compromised profile scenarios; not all sources",
+    "version": "issue275-pilot-evidence/1.0.0"
+  },
+  "full_seamless_remediation": {
+    "budgets": {
+      "max_cells": null,
+      "max_expansions": null,
+      "max_seconds": null,
+      "per_query_seconds": null
+    },
+    "comparisons": [
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "discovered:sha256:03d45c3db05b0204b3bf0c1363c6c422bf68a4d059bed49ebef54c5311c0ee00",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "discovered:sha256:8960e01f10e4a86e068ff24d6b926dd3c74a2dec0f0f2f99833d1ac091160520",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "discovered:sha256:d39c6357cf96f57b9e7c09786e93a24ab312b006d6b9be4afc5a4a3b4e566944",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "ineffective-membership-retained-bypass",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 1
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "unknown": 1
+          },
+          "before": {
+            "unknown": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "missing-recovery-control",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "programs_cut": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "shared-channel",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "truncated": 1
+          },
+          "before": {
+            "truncated": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "step-cap-control",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "programs_cut": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "truncated": 1
+        },
+        "remaining_bypasses": 0
+      }
+    ],
+    "discovery": {
+      "effectiveness_policy": "native_counterfactual_replay_and_rediscovery",
+      "eligible_candidates": 3,
+      "evaluated_candidates": 3,
+      "limit": 6,
+      "not_selected_candidates": 0,
+      "optimal_intervention_claim": false,
+      "request_ids": [
+        "discovered:sha256:03d45c3db05b0204b3bf0c1363c6c422bf68a4d059bed49ebef54c5311c0ee00",
+        "discovered:sha256:8960e01f10e4a86e068ff24d6b926dd3c74a2dec0f0f2f99833d1ac091160520",
+        "discovered:sha256:d39c6357cf96f57b9e7c09786e93a24ab312b006d6b9be4afc5a4a3b4e566944"
+      ],
+      "scope": "supported candidates in observed baseline corpus only",
+      "selection_policy": "observed_binding_coverage_then_candidate_id"
+    },
+    "inventory_candidates": 4,
+    "process_peak_rss_bytes": 608985088,
+    "runtime_seconds": 327.43978670900015,
+    "schema_version": "remediation-study-summary/1",
+    "scope": "bounded declared cohorts; not a full-source scan",
+    "verified_raw_files": 6
+  },
+  "known_remaining": [
+    "Full local suite and source-attestation checks",
+    "Profile counterfactual analysis separately: measured full raw remediation still takes 327 seconds",
+    "Generalized C/P coverage is not established by an intentionally unrated pilot",
+    "Full BloodHound head-to-head is not reproduced; Docker is unavailable"
+  ],
+  "not_changed": [
+    "semantic rules and attack-state effects",
+    "scoped numeric registries/historical source manifests",
+    "main/develop branches"
+  ],
+  "preparation_benchmark": {
+    "after_profile_nested_inclusive": {
+      "PreparedSemanticGraph.__init__": {
+        "calls": 1,
+        "seconds": 0.23581853299992872
+      }
+    },
+    "after_seconds": [
+      0.7055160999998407,
+      0.5050815350000448,
+      0.5124101889996382,
+      0.5359665909995783
+    ],
+    "before_profile_nested_inclusive": {
+      "EngineGraph.to_canonical": {
+        "calls": 6,
+        "seconds": 8.463892296999802
+      },
+      "PreparedSemanticGraph.__init__": {
+        "calls": 3,
+        "seconds": 6.234339858000112
+      },
+      "SnapshotFacts.validate_binding": {
+        "calls": 3,
+        "seconds": 0.9508147199999257
+      }
+    },
+    "before_seconds": [
+      5.608937745000276,
+      5.355135781000172,
+      5.796218832999784,
+      5.822831019000205
+    ],
+    "complete_trace_parity": true,
+    "limitations": [
+      "Tiny source/goal/technique/budget cohort on one machine",
+      "No speedup claim for full raw build, remediation, calibrated ranking, all sources or large-budget enumeration",
+      "Nested inclusive profile phases must not be added"
+    ],
+    "method": "same Python/snapshot/request, fresh processes, sequential baseline then optimized; one first use plus three warm calls; setup separate; one User x three goals; no Python test/remediation process running concurrently in the final comparison",
+    "trace_sha256": {
+      "goal-seamless-da-entitlement": "c825614473c6e4c6366cfc3e3a8022007648fb074184a09d577cbf5cf7f18819",
+      "goal-seamless-dc-admin": "19c3827908cb974950648fb8986e6aab6d1621e239878d894422470605fb8291",
+      "goal-seamless-ea-entitlement": "f499356caa0427f0f10695ba42b6e11c0ff61b28fc829b9ebc6ac2cd8232831a"
+    },
+    "warm_median_after": 0.5124101889996382,
+    "warm_median_before": 5.796218832999784,
+    "warm_ratio": 11.31167755332023
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "raw_archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+  "selected_tests": {
+    "batch_and_single_source_cli": {
+      "errors": 0,
+      "failed": 0,
+      "junit_complete": true,
+      "passed": 51,
+      "skipped": 0
+    },
+    "preparation_and_binding": {
+      "failed": 0,
+      "passed": 80
+    },
+    "remediation": {
+      "passed": 47,
+      "skip_reason": "opt-in raw CLI test; equivalent actual full raw command executed separately",
+      "skipped": 1
+    },
+    "whole_suite": "pending complete local materialization/reproduction; initial missing-file failures are setup errors, not regression claims"
+  },
+  "version": "awg-r04-iteration/2"
+}

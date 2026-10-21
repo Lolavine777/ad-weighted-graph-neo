@@ -1,0 +1,5 @@
+{
+  "timestamp": "2021-09-20T18:59:58Z",
+  "status": "assumed",
+  "reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time."
+}

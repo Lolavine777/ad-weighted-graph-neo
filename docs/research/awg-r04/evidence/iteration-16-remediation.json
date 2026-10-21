@@ -1,0 +1,755 @@
+{
+  "version": "awg-r04-guided-remediation/1",
+  "revision": "09686f1c66944b7c5fa51c77f29a785535729632",
+  "prior_capture_revision": "29e52c4c3939b278537a53b61fc021cc65829b9d",
+  "prior_queries_exact_sha256": {
+    "sha256:ed334a4ce1cabf1b2e978c54863faf139f011ef1f2fa4f86419d0f74acd68d22": "sha256:a59cc4c6c6c9675d2dce9b1aa19651bdb6db72131792b85dc26d76108ff22fcb",
+    "sha256:effae186a96280cde41a0228a056b9128216fbfc41d06f53d3885c19bd5ad1f9": "sha256:35c9fdfe642e22056d106b7e3d8b1ae377c1c1f999e8c84f878b88d65f5d2ad4"
+  },
+  "harness_sha256": "cc04963cb22564e81b541ff1ac795c30e806ffad105aef1967aac59efbfcd91b",
+  "selection": {
+    "policy": "Supported relationship edits only, descending native observed binding coverage, stable candidate_id; not effectiveness or defender cost",
+    "selected": {
+      "candidate_id": "sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+      "catalog_entry_id": "group-membership",
+      "technical_edits": [
+        {
+          "edit_id": "inventory-0ecdacec7b37-0",
+          "catalog_entry_id": "group-membership",
+          "rationale": "Observed-scope counterfactual candidate; validate operational prerequisites separately.",
+          "kind": "deny_relationship",
+          "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+          "relationship": {
+            "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "kind": "MemberOf",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+          },
+          "provenance_digest": "sha256:2fee941e3d7c6504de0973cd01158de3f45d505c0862cf067838c4d725cf646a",
+          "effective_right_verified": true,
+          "evidence_refs": [
+            "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+          ]
+        }
+      ],
+      "status": "supported",
+      "reason": "Observed native support; exact before evidence must revalidate.",
+      "required_evidence": [
+        "MemberOf edge and group/member record",
+        "scope and token-refresh policy"
+      ],
+      "support_scope": "native_declared_model_not_live_AD",
+      "prerequisites": [
+        "actor_controlled",
+        "actor_enabled",
+        "membership_usable",
+        "security_group",
+        "source_authorized"
+      ],
+      "observed_bindings": [
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "program_id": "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+        },
+        {
+          "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "program_id": "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+        }
+      ]
+    },
+    "all_inventory_candidates": 4,
+    "supported_relationship_candidates": 1
+  },
+  "request": {
+    "schema_version": "1.1.0",
+    "request_id": "guided-mvp:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+    "catalog_id": "ad-remediation/1.0.0",
+    "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+    "baseline_run_id": "guided-mvp-remediation",
+    "scope": {
+      "engine_revision": "09686f1c66944b7c5fa51c77f29a785535729632",
+      "evaluation_mode": "scenario",
+      "goal_manifest_digest": "sha256:a0bdead93610b56c085578722a986a7f95d49992a463ec9d735a7abf0ea09c34",
+      "graph_digest": "sha256:f51ea7ee89e8400186f584e0b225597a437e88ec64961080190cf2e437737623",
+      "program_identity_version": "semantic-program/1",
+      "query_profile_digest": "sha256:35732f4dec796b5b06e2f33de8f257cc61b5e6bd66614fc6a4ee9ad907517ab6",
+      "rating_inputs_digest": "sha256:06338efb9c849ec93ac7cd15c830b1b7e6b98b35f1636a719e1e3cdf03642c2d",
+      "route_identity_version": "ordered-observed-edges/1",
+      "search_budget": {
+        "max_expansions": 6000,
+        "max_paths": 1,
+        "max_steps": 3
+      },
+      "semantic_catalog_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "snapshot_facts_digest": "sha256:1361aaa56d98aedba94a1c317195bf9b32f440175cd14d51a1157ac438baa26c",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "source_manifest_digest": "sha256:fec2ce19555128289130609393059957dcd66fc6ef051bb7071107a4fbbafb8f"
+    },
+    "edits": [
+      {
+        "catalog_entry_id": "group-membership",
+        "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+        "edit_id": "inventory-0ecdacec7b37-0",
+        "effective_right_verified": true,
+        "evidence_refs": [
+          "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+        ],
+        "kind": "deny_relationship",
+        "provenance_digest": "sha256:2fee941e3d7c6504de0973cd01158de3f45d505c0862cf067838c4d725cf646a",
+        "rationale": "Observed-scope counterfactual candidate; validate operational prerequisites separately.",
+        "relationship": {
+          "kind": "MemberOf",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        }
+      }
+    ],
+    "initial_state_policy": "rebuild_same_declared_foothold",
+    "conflict_policy": "reject_duplicate_or_conflicting_keys",
+    "missing_evidence_policy": "unresolved_no_effect_claim"
+  },
+  "analytics": {
+    "declared_pairs": 2,
+    "configured_goals": [
+      "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+    ],
+    "after_evaluated_pairs": 2,
+    "after_not_run_pairs": 0,
+    "rediscovery_status_counts": {
+      "truncated": 2
+    },
+    "coverage": {
+      "before": {
+        "truncated": 2
+      },
+      "after": {
+        "truncated": 2
+      }
+    },
+    "unresolved_feasibility_counts": {
+      "before": 2,
+      "after": 2
+    },
+    "complete_discovery_counts": {
+      "before": 0,
+      "after": 0
+    },
+    "unknown_replay_programs": 0,
+    "retained_after_programs": 0,
+    "new_after_programs": 2,
+    "numeric_comparison": {
+      "effort_status_counts": {
+        "incumbent": 2
+      },
+      "probability": "pending_reviewed_cross_intervention_comparability",
+      "defender_cost": null,
+      "operational_impact": null,
+      "impact_comparison": null
+    },
+    "priority_policy": "defensive-complete-scope-first/2"
+  },
+  "ranking": [
+    {
+      "rank": 1,
+      "intervention": "guided-mvp:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+      "policy": "defensive-complete-scope-first/2",
+      "quantities": {
+        "incomplete_observations": 4,
+        "proven_disconnected_pairs": 0,
+        "unresolved_after_pairs": 0,
+        "remaining_exposed_sources": 2,
+        "observed_programs_cut": 2
+      },
+      "configured_goals": [
+        "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+      ],
+      "rationale": "Prefer complete evidence, then more proven disconnections, fewer unresolved after pairs, fewer exposed sources, more observed cuts; tie by intervention ID.",
+      "defender_cost": null,
+      "operational_impact": null
+    }
+  ],
+  "execution": {
+    "started_at": "2026-10-19T07:39:22.249331+00:00",
+    "elapsed_seconds": 214.78378907800015,
+    "after_executed_cells": 2,
+    "cache_audit_reexecuted_cells": 0,
+    "new_after_expansions": 9992,
+    "charged_expansion_budget": 9992,
+    "unknown_expansion_accounting": "Failed workers charged their full reserved cap.",
+    "budget": {
+      "max_cells": 2,
+      "max_expansions": 24000,
+      "max_seconds": null,
+      "per_query_seconds": null
+    },
+    "python": "3.14.8",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+      "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+      "docs/research/remediation/catalog-v1.json": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+      "docs/research/remediation/request-v1.1.schema.json": "sha256:566badf7a4f0cf1f256ec703f2482ceed89c2c3929328ff136f498d4b6e78005",
+      "docs/research/remediation/result-v1.1.schema.json": "sha256:cee9fccc2901fcaffcd388e889a0d15c5f502bd0e77811dfb110d711bf11a1e4",
+      "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/remediation_acceptance.py": "sha256:27d749a6efbdd9b8983c1a1ae4c8a46849b72d16e3bb1877f139008b41c0ef9d",
+      "scripts/research/remediation_runner.py": "sha256:d7580b0f8b9fa1bcd015fec74e5415b8bf2e449c4bcabd2dc67a4020d9a149d0",
+      "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:995dd7b5acbd7cdb2a9d03afcdf8644ddd0fa1d47f7c33442d9be55b3265cdce",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:7c144e74a55e1bb931ea03480806fc4c56054317bee025659d65489e622de91b",
+      "src/engine/query_cli.py": "sha256:9a8a36e1f7b9b3647022f6fcb6204d642c32c4db335c0f32bd8c0d638096c873",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+      "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+      "src/engine/search.py": "sha256:899109dc546ad762c0de4fff8acf0222176406cecae52593c1e66a6f4a122df9",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:e4452c578021349b1e7aa0664dbf842036b37e9d97b8d483df367e70881cd86c",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    }
+  },
+  "phase_seconds": {
+    "setup_inventory": 62.972061522999866,
+    "native_remediation_including_verifier": 214.96672312300007
+  },
+  "raw_graph_unchanged": true,
+  "limits": "Two declared independent compromises to one DA Group goal, same exact prior queries/caps/three techniques. Complete native package verifier runs in run_remediation. No optimal fix, domain-wide gain, live AD change, statistical speedup or calibrated P claim.",
+  "audit": {
+    "uncompressed_bytes": 375800973,
+    "uncompressed_sha256": "13a648a98aa1151709b589b98139dd797a10fb46fa38df35fd34c75250fbabc7",
+    "gzip_bytes": 10622371
+  },
+  "report": {
+    "summary": {
+      "requested_pairs": 2,
+      "evaluated_pairs": 2,
+      "unsupported_pairs": 0,
+      "unknown_pairs": 0,
+      "truncated_pairs": 2,
+      "affected_sources": [
+        "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+      ],
+      "exposed_sources_before": [
+        "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+      ],
+      "exposed_sources_after": [
+        "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098"
+      ],
+      "fully_disconnected_sources": [],
+      "goals_still_reachable": [
+        "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+      ],
+      "proven_disconnected_pairs": [],
+      "programs_cut": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0,
+        "scope": "observed_corpus_only"
+      },
+      "routes_cut": {
+        "numerator": 2,
+        "denominator": 2,
+        "percent": 100.0,
+        "scope": "observed_corpus_only"
+      },
+      "pairs_disconnected": {
+        "numerator": 0,
+        "denominator": 2,
+        "percent": 0.0,
+        "scope": "observed_corpus_only"
+      },
+      "limitations": [
+        "Declared finite scope; no global choke-point or campaign probability claim.",
+        "Returned-path inventory is observed-corpus only; defender costs are unrated.",
+        "Old packets are refused; fresh automatic C only; P/I comparison remains pending.",
+        "Transport evaluated_pairs counts represented cells; analytics counts execution."
+      ]
+    },
+    "cells": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "before": {
+          "reachability": "reachable",
+          "program_count": 1,
+          "truncated": true,
+          "complete": false
+        },
+        "after": {
+          "reachability": "reachable",
+          "program_count": 1,
+          "truncated": true,
+          "complete": false,
+          "rediscovery": {
+            "status": "truncated",
+            "run_id": "after-3a90b321012945efbc3b4c83962d5db3",
+            "proof_ref": "artifact:sha256:282116dff6d8b2ce5142b98d13666227cf2afee05b456930ff829ccae2e9d000"
+          }
+        },
+        "cut_program_ids": [
+          "sha256:394c0cefabb323974ddf1e2bd5628a61b7ec309191033809a6279eb71aeaf3c6"
+        ],
+        "new_program_ids": [
+          "sha256:8622188189dcf233d5c191b5287b9dfb2f60009798b543276d3e4403ecc20644"
+        ],
+        "effort": {
+          "status": "incumbent",
+          "before": 1,
+          "after": 1,
+          "delta": null,
+          "unit": "native_engine_effort_score",
+          "basis_refs": [
+            "sha256:209b4331d7de5d5be935523be52716eb7e1d63e26695c75a7c3395c80ecd125f"
+          ],
+          "proof_refs": []
+        }
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "before": {
+          "reachability": "reachable",
+          "program_count": 1,
+          "truncated": true,
+          "complete": false
+        },
+        "after": {
+          "reachability": "reachable",
+          "program_count": 1,
+          "truncated": true,
+          "complete": false,
+          "rediscovery": {
+            "status": "truncated",
+            "run_id": "after-97b3f758b2de4ff9bd203fab3dd2a6da",
+            "proof_ref": "artifact:sha256:89d20273e9d1e0a8111d9a57278142fcf84dfdb88e462491a488e0bb0f292095"
+          }
+        },
+        "cut_program_ids": [
+          "sha256:8524cc9a2e55e02e2406cbec70ab6f8360d291e1940ae657b4c5e549ca209d29"
+        ],
+        "new_program_ids": [
+          "sha256:99643140cdafdd569d447d3d7a52e83f41547fab3711849a619f76016c7e59bb"
+        ],
+        "effort": {
+          "status": "incumbent",
+          "before": 1,
+          "after": 1,
+          "delta": null,
+          "unit": "native_engine_effort_score",
+          "basis_refs": [
+            "sha256:5023fae1d971244fddd9f044cee915fcc2479c1a73fa0caa5a4c9bcefac43739"
+          ],
+          "proof_refs": []
+        }
+      }
+    ]
+  },
+  "raw_oracle": {
+    "version": "awg-r04-remediation-raw-oracle/1",
+    "raw_files_manifest_verified": 6,
+    "edited_membership": {
+      "kind": "MemberOf",
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "raw_support": {
+        "file": "20210920185958_groups.json",
+        "pointer": "/groups/40/Members/3"
+      }
+    },
+    "native_witnesses_checked": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "side": "before",
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "actual_actor_labels": [
+          "FINWVIR1000001.SEAMLESS.INTERNAL",
+          "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "OLLIE_LONG@SEAMLESS.INTERNAL"
+        ],
+        "owner_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+        "source_label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "goal_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "GenericAll": {
+          "file": "20210920185958_users.json",
+          "pointer": "/users/917/Aces/11",
+          "IsInherited": true
+        },
+        "MemberOf": {
+          "file": "20210920185958_groups.json",
+          "pointer": "/groups/40/Members/3"
+        },
+        "independent_unique_reset_work_count": 1
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "side": "after",
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "actual_actor_labels": [
+          "FINWVIR1000001.SEAMLESS.INTERNAL",
+          "DENA_WILLIAM@SEAMLESS.INTERNAL",
+          "DENA_WILLIAM@SEAMLESS.INTERNAL"
+        ],
+        "owner_label": "DENA_WILLIAM@SEAMLESS.INTERNAL",
+        "source_label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "goal_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "GenericAll": {
+          "file": "20210920185958_users.json",
+          "pointer": "/users/1700/Aces/11",
+          "IsInherited": true
+        },
+        "MemberOf": {
+          "file": "20210920185958_groups.json",
+          "pointer": "/groups/40/Members/2"
+        },
+        "independent_unique_reset_work_count": 1
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "side": "before",
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "actual_actor_labels": [
+          "OLA_CARSON@SEAMLESS.INTERNAL",
+          "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "OLLIE_LONG@SEAMLESS.INTERNAL"
+        ],
+        "owner_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+        "source_label": "OLA_CARSON@SEAMLESS.INTERNAL",
+        "goal_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "GenericAll": {
+          "file": "20210920185958_users.json",
+          "pointer": "/users/917/Aces/6",
+          "IsInherited": true
+        },
+        "MemberOf": {
+          "file": "20210920185958_groups.json",
+          "pointer": "/groups/40/Members/3"
+        },
+        "independent_unique_reset_work_count": 1
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "side": "after",
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "actual_actor_labels": [
+          "OLA_CARSON@SEAMLESS.INTERNAL",
+          "DENA_WILLIAM@SEAMLESS.INTERNAL",
+          "DENA_WILLIAM@SEAMLESS.INTERNAL"
+        ],
+        "owner_label": "DENA_WILLIAM@SEAMLESS.INTERNAL",
+        "source_label": "OLA_CARSON@SEAMLESS.INTERNAL",
+        "goal_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "GenericAll": {
+          "file": "20210920185958_users.json",
+          "pointer": "/users/1700/Aces/6",
+          "IsInherited": true
+        },
+        "MemberOf": {
+          "file": "20210920185958_groups.json",
+          "pointer": "/groups/40/Members/2"
+        },
+        "independent_unique_reset_work_count": 1
+      }
+    ],
+    "conditioned_projection_results": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "side": "before",
+        "direct_conditioned_routes": 4,
+        "BFS": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "weighted_Dijkstra": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "projection_min_C": 1,
+        "projection_lower_bound": "Every path in this explicitly two-edge projection requires one reset1/activation0; no initial DA membership or other initial identity is admitted.",
+        "example_raw_support": {
+          "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "GenericAll": {
+            "file": "20210920185958_users.json",
+            "pointer": "/users/917/Aces/11",
+            "IsInherited": true
+          },
+          "MemberOf": {
+            "file": "20210920185958_groups.json",
+            "pointer": "/groups/40/Members/3"
+          }
+        }
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "side": "after",
+        "direct_conditioned_routes": 3,
+        "BFS": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "weighted_Dijkstra": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "projection_min_C": 1,
+        "projection_lower_bound": "Every path in this explicitly two-edge projection requires one reset1/activation0; no initial DA membership or other initial identity is admitted.",
+        "example_raw_support": {
+          "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "GenericAll": {
+            "file": "20210920185958_users.json",
+            "pointer": "/users/1700/Aces/11",
+            "IsInherited": true
+          },
+          "MemberOf": {
+            "file": "20210920185958_groups.json",
+            "pointer": "/groups/40/Members/2"
+          }
+        }
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "side": "before",
+        "direct_conditioned_routes": 4,
+        "BFS": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "weighted_Dijkstra": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "projection_min_C": 1,
+        "projection_lower_bound": "Every path in this explicitly two-edge projection requires one reset1/activation0; no initial DA membership or other initial identity is admitted.",
+        "example_raw_support": {
+          "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "GenericAll": {
+            "file": "20210920185958_users.json",
+            "pointer": "/users/917/Aces/6",
+            "IsInherited": true
+          },
+          "MemberOf": {
+            "file": "20210920185958_groups.json",
+            "pointer": "/groups/40/Members/3"
+          }
+        }
+      },
+      {
+        "source_id": "source-user-1fa651fe0a703570a9c8254aefd7654c445738f635851d9ae19715d741c81098",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "side": "after",
+        "direct_conditioned_routes": 3,
+        "BFS": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "weighted_Dijkstra": {
+          "path": [
+            "S-1-5-21-1271839998-3495686680-2211690266-1395",
+            "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "S-1-5-21-1271839998-3495686680-2211690266-512"
+          ],
+          "hops": 2,
+          "C": 1
+        },
+        "projection_min_C": 1,
+        "projection_lower_bound": "Every path in this explicitly two-edge projection requires one reset1/activation0; no initial DA membership or other initial identity is admitted.",
+        "example_raw_support": {
+          "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+          "GenericAll": {
+            "file": "20210920185958_users.json",
+            "pointer": "/users/1700/Aces/6",
+            "IsInherited": true
+          },
+          "MemberOf": {
+            "file": "20210920185958_groups.json",
+            "pointer": "/groups/40/Members/2"
+          }
+        }
+      }
+    ],
+    "projection_definition": "Only observed direct GenericAll(source, enabled User), bundled reset+activation C1, followed by direct User membership in this DA Group C0. Runtime gates and usable source/context are conditioned on the declared scenario. No inferred/group ACLs, credential cracking, nested membership or host control.",
+    "independence": "Python stdlib reads raw records/locators and manifest, implements standalone BFS/Dijkstra and counts reset operations; no AWG source imported.",
+    "limits": [
+      "Projection minimum is not a full-native minimum proof; native proof flags stay unchanged.",
+      "This restricted additive case can be solved by a simple weighted graph; not evidence AWG is faster or required for it.",
+      "A bypass proves continued exposure in the scenario, not that the edit has no security value elsewhere.",
+      "No timing comparison between this reduced projection and the full audited native pipeline."
+    ]
+  },
+  "defender_outcome": {
+    "intervention": "guided-mvp:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+    "edits": [
+      "Loại quan hệ MemberOf: OLLIE_LONG@SEAMLESS.INTERNAL → DOMAIN ADMINS@SEAMLESS.INTERNAL"
+    ],
+    "programs_cut": {
+      "numerator": 2,
+      "denominator": 2,
+      "percent": 100.0,
+      "scope": "observed_corpus_only"
+    },
+    "pairs_disconnected": {
+      "numerator": 0,
+      "denominator": 2,
+      "percent": 0.0,
+      "scope": "observed_corpus_only"
+    },
+    "reachable_before": 2,
+    "reachable_after": 2,
+    "unresolved_after": 0,
+    "new_after_programs": 2
+  },
+  "capture_integrity": {
+    "full_gzip_crc_and_uncompressed_bytes_sha256_verified": true,
+    "all75native_source_pins_equal_current": true,
+    "source_files_changed_after_capture": [
+      "scripts/exposure.py",
+      "scripts/defender_brief.py",
+      "tests/test_defender_brief.py"
+    ],
+    "none_of_changed_files_is_in_native75or_acceptance127pins": true,
+    "raw_manifest_verified": 6,
+    "queries_exactly_match_prior_capture": true
+  },
+  "artifacts": {
+    "projection.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/projection.json",
+      "bytes": 128121,
+      "sha256": "b9d6e6b44134c197cd32b04a68cb572e052724126fbc5cbc6a1c62cebd4f84c3"
+    },
+    "report.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/report.json",
+      "bytes": 106467,
+      "sha256": "b93e9660f06a56d7e3a2e35a7d3aa391e62ab83eaf00c4e3b960eb1e3e60658c"
+    },
+    "inventory.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/inventory.json",
+      "bytes": 8621,
+      "sha256": "edc430920b88b28104a3ba1d3debb8487e4ce0548b660f95247c2fb6c2718938"
+    },
+    "request.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/request.json",
+      "bytes": 2453,
+      "sha256": "72dacf6aca5172d04106e4e04ed0d1cae245e0712e8105bd04904b75f63da51f"
+    },
+    "raw-oracle.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/raw-oracle.json",
+      "bytes": 10906,
+      "sha256": "743f8c90ddb18c9cb8b69065e2e7ce0fccc65d202c0fff9e4f3b235840f52f41"
+    },
+    "lossless-storage-index.json": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/lossless-storage-index.json",
+      "bytes": 1483,
+      "sha256": "0d7e2367f1640c81a33dd70e8d8336fbb5b11462fd68359e30647fef1f156196"
+    },
+    "package.json.gz": {
+      "path": "reports/generated/awg-r04-guided-remediation-v1/package.json.gz",
+      "bytes": 10622371,
+      "sha256": "8f50c290ad931e2c385acfa78c90de061fa7ea3837c918f634acdd2a0517984a"
+    }
+  }
+}

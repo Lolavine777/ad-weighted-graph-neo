@@ -1,0 +1,131 @@
+"""Project exact local captures without relabeling native evidence."""
+import argparse
+import hashlib
+import json
+import shutil
+import xml.etree.ElementTree as ET
+from collections import Counter
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument("--repo", type=Path, required=True)
+p.add_argument("--execution-root", type=Path, required=True)
+a = p.parse_args()
+ROOT = a.execution_root.resolve()
+REPO = a.repo.resolve()
+OUT = REPO / "docs/research/awg-r04/evidence"
+sha = lambda b: "sha256:" + hashlib.sha256(b).hexdigest()
+
+def read(path):
+    return json.loads(path.read_text())
+
+def pin(path):
+    return {"path": str(path.relative_to(REPO)) if path.is_relative_to(REPO) else str(path),
+            "bytes": path.stat().st_size, "sha256": sha(path.read_bytes())}
+
+def counts(values):
+    return dict(sorted(Counter(values).items()))
+
+def capture(folder):
+    result = read(folder / "result.json")
+    request = read(folder / "request.json")
+    summary = read(folder / "summary.json")
+    audit = {}
+    unique_assumptions = set()
+    for ref, trace in result["reproducibility"]["inputs"]["public_queries"].items():
+        query = trace["query"]
+        assumptions = query["assumptions"]
+        unique_assumptions.update((f["predicate"], f["subject"], f["target"], f["value"]) for f in assumptions)
+        policy = query.get("scenario_policy_metadata") or {}
+        audit[ref] = {
+            "target": query["target"], "actor": query["initial_actor"],
+            "authentication_context": query["authentication_context"],
+            "assumptions_count": len(assumptions),
+            "assumption_predicates": counts(f["predicate"] for f in assumptions),
+            "full_assumptions_digest": sha(json.dumps(assumptions, sort_keys=True, separators=(",", ":")).encode()),
+            "profile_digest": policy.get("profile_digest"),
+            "rejected_count": policy.get("rejected_count", 0),
+            "rejected_reasons": counts(r["reason"] for r in policy.get("rejected_assumptions", [])),
+            "guarantees": trace["guarantees"], "caps": trace["result"]["caps"],
+            "expansions": trace["result"]["expansions"],
+            "path_count": len(trace["result"]["paths"]),
+            "attempt_count": len(trace["result"]["attempts"]),
+        }
+    cells = []
+    goals = {g["goal_id"]:g for g in request["target_manifest"]["targets"]}
+    sources = {s["source_id"]:s for s in request["sources"]}
+    for sid,row in result["source_goal_matrix"].items():
+        for gid,cell in row.items():
+            cells.append({"source": sources[sid], "goal": goals[gid],
+                          "cell": {k:cell[k] for k in ("status", "final_goal_reached", "truncated",
+                               "truncation_reason", "expansions", "min_effort", "min_effort_path",
+                               "likelihood_status", "priority_class") if k in cell}})
+    return {"summary": summary, "native_runtime": result["reproducibility"]["runtime"],
+            "inputs": {k:v for k,v in result["reproducibility"]["inputs"].items() if k not in ("public_queries", "request")},
+            "query_audit": audit, "cells": cells,
+            "unique_assumption_keys": sorted(unique_assumptions),
+            "full_local_artifacts": [pin(folder/p) for p in ("inventory.json", "request.json", "result.json", "summary.json", "overview.md", "checkpoint.json")],
+            "projection_omissions": "Full assumptions/rejections, attempts, ordered witnesses and source-priority rows remain in the hashed native result. One complete compiled query is published separately. This is not a full result package."}
+
+destination = OUT / "iteration-6-policy.json"
+assert not destination.exists(), "Never overwrite published evidence"
+measurement = read(REPO / "reports/generated/awg-r04-policy-v1/measurement.json")
+names = ("evidence-only", "standard", "explicit-four", "standard-false")
+cases = {name:capture(REPO / "reports/generated/awg-r04-policy-v1" / name) for name in names}
+for name in names:
+    cases[name]["command"] = measurement["cases"][name]["command"]
+    cases[name]["process_elapsed_seconds"] = measurement["cases"][name]["process_elapsed_seconds"]
+assert cases["evidence-only"]["summary"]["batch"]["status_counts"] == {"indeterminate":12}
+assert cases["standard"]["summary"]["batch"]["successful_cells"] == 3
+assert cases["standard-false"]["summary"]["batch"]["successful_cells"] == 2
+assert cases["explicit-four"]["summary"]["batch"]["successful_cells"] == 2
+assert len({json.dumps(c["inputs"]["source_pins"],sort_keys=True) for c in cases.values()}) == 1
+standard = read(REPO / "reports/generated/awg-r04-policy-v1/standard/result.json")
+host = "S-1-5-21-1271839998-3495686680-2211690266-1000"
+query = next(t["query"] for t in standard["reproducibility"]["inputs"]["public_queries"].values() if t["query"]["target"] == host)
+query_path = OUT / "iteration-6-compiled-query.json"
+assert not query_path.exists()
+query_path.write_text(json.dumps(query, ensure_ascii=False, sort_keys=True, indent=2)+"\n")
+system = capture(REPO / "reports/generated/awg-r04-policy-system-v1")
+inventory = read(REPO / "reports/generated/awg-r04-policy-system-v1/intervention-inventory.json")
+system["intervention_inventory"] = inventory
+system["remediation_package"] = pin(REPO / "reports/generated/awg-r04-policy-system-v1/intervention-0.json")
+system_package = read(REPO / "reports/generated/awg-r04-policy-system-v1/intervention-0.json")
+system["remediation_report_summary"] = system_package["report"]["summary"]
+system["remediation_cells"] = [{k:cell[k] for k in ("source_id", "goal_id", "before", "after", "disconnected")}
+                               for cell in system_package["report"]["cells"]]
+profile_folder = REPO / "reports/generated/awg-r04-policy-profile-v1"
+profile = read(ROOT / "policy-profile-summary.json")
+profile["summary"] = read(profile_folder / "summary.json")
+profile["pstats"] = pin(ROOT / "policy-full-snapshot.pstats")
+profile["package"] = pin(profile_folder / "intervention-0.json")
+test_runs = []
+for source,name in (("policy-selected.xml","iteration-6-selected.xml"),
+                    ("policy-remediation.xml","iteration-6-remediation.xml"),
+                    ("policy-raw.xml","iteration-6-raw.xml")):
+    src = ROOT / source
+    dst = OUT / name
+    assert not dst.exists()
+    shutil.copyfile(src,dst)
+    suite = ET.parse(dst).getroot()[0]
+    assert suite.get("failures") == suite.get("errors") == "0"
+    test_runs.append({"suite":suite.attrib, "artifact":pin(dst)})
+out = {"schema_version":"awg-r04-policy-experiment/1", "native_execution_revision":measurement["revision"],
+       "implementation":[pin(REPO/p) for p in ("scripts/exposure.py", "src/engine/batch.py", "src/engine/remediation_runner.py", "tests/test_batch_scenario_policy.py")],
+       "raw_manifest":read(REPO/"data/samples/manifests/seamless-raw-v1.json"),
+       "snapshot":pin(REPO/"data/processed/awg-r04/pilot-v2/snapshot.json"),
+       "measurement":pin(REPO/"reports/generated/awg-r04-policy-v1/measurement.json"),
+       "harness":pin(OUT/"policy-discovery-experiment.txt"),
+       "evidence_generator":pin(OUT/"iteration-6-evidence-generator.txt"),
+       "cases":cases, "compiled_query":pin(query_path),
+       "multi_source":system, "profile":profile, "test_runs":test_runs,
+       "initial_failures":{"first_attempt_log":pin(ROOT/"policy-first.log"),
+          "integration_failure_log":pin(ROOT/"policy-integration.log"),
+          "classification":"Two test-harness duplicate keyword errors, corrected only in tests. One actual inventory composition defect: generated supported runtime edit rejected by unchanged context guard; fixed by candidate prevalidation, refusals remain visible."},
+       "limits":["No statistical uncertainty or calibrated probabilities inferred.",
+          "DENA already has direct DA membership; the 3 successful goals are conditional entitlement/execution witnesses, not ordinary-user privilege escalation evidence.",
+          "No global optimum, full-domain completion, all-technique coverage or new numerical rating adoption.",
+          "Cumulative profiler times overlap; instrumented output is not compared as a timing improvement.",
+          "Historical 1600 evaluated pairs use another profile/scope; do not add the new 36 as a domain coverage total."]}
+destination.write_text(json.dumps(out,ensure_ascii=False,sort_keys=True,indent=2)+"\n")
+print(json.dumps({"artifact":pin(destination), "tests":[t['suite'] for t in test_runs]}))

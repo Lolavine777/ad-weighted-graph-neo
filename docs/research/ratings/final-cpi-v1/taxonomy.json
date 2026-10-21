@@ -1,0 +1,761 @@
+{
+  "actions": [
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "reset_identity_activation",
+      "active": true,
+      "canonical_class": "reset_identity_activation",
+      "generator_route": "reset_password_control capability producer",
+      "profile_version": "1.0.0",
+      "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+      "relationship": "AuthenticationControl",
+      "required_gates": [
+        "reset_password_control",
+        "authentication_context_matches",
+        "actor_enabled",
+        "network_kdc_reachable",
+        "authentication_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "usable_identity"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "acquire_reset_identity",
+      "work_class": "reset_identity_activation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "recovered_identity_activation",
+      "active": true,
+      "canonical_class": "recovered_identity_activation",
+      "generator_route": "credential artifact producers",
+      "profile_version": "1.0.0",
+      "rationale": "Pending recovered-secret equivalence, with lineage and offline age explicit; unchanged account/password within 24h and exact recovery prefix. Historical reset acceptance alone is insufficient.",
+      "relationship": "RecoveredSecret",
+      "required_gates": [
+        "recovered_password",
+        "authentication_context_matches",
+        "actor_enabled",
+        "secret_valid",
+        "network_kdc_reachable",
+        "authentication_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "usable_identity"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "activate_recovered_identity",
+      "work_class": "recovered_identity_activation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "asrep_material_request",
+      "active": true,
+      "canonical_class": "asrep_material_request",
+      "generator_route": "credential artifact producers",
+      "profile_version": "1.0.0",
+      "rationale": "New AS-REP compatible-material request judgment, three requests/10m; 1%-10% residual timeout/resource/parser whole-event failure allowance. No reset-activation probability transfer.",
+      "relationship": "ASRepTarget",
+      "required_gates": [
+        "known_identity",
+        "asrep_request_capability",
+        "target_enabled",
+        "dontreqpreauth",
+        "network_kdc_reachable",
+        "asrep_request_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "success_effects": [
+        "asrep_material"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "asrep_request",
+      "work_class": "asrep_material_request"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "group_membership_mutation",
+      "active": true,
+      "canonical_class": "group_membership_mutation",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New bounded LDAP group mutation/read-back scenario, three attempts/15m; replication/read-back and token-refresh workflow allowance 2%-20%. Membership mutation does not establish a usable logon token or admin execution.",
+      "relationship": "GenericAll",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "security_group",
+        "membership_change_allowed",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "add_membership"
+      ],
+      "target_kinds": [
+        "Group"
+      ],
+      "technique_id": "genericall_add_member",
+      "work_class": "group_membership_mutation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "grant_write_dacl",
+      "active": true,
+      "canonical_class": "grant_write_dacl",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New bounded ACL write/read-back scenario, three attempts/15m; correct ACE scope/inheritance and round-trip workflow allowance 2%-30%, conditioned on effective write already permitted.",
+      "relationship": "GenericAll",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "grant_write_dacl"
+      ],
+      "target_kinds": [
+        "User",
+        "Group",
+        "Computer",
+        "Domain",
+        "OU",
+        "GPO"
+      ],
+      "technique_id": "genericall_grant_write_dacl",
+      "work_class": "grant_write_dacl"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "directory_password_reset",
+      "active": true,
+      "canonical_class": "directory_password_reset",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+      "relationship": "GenericAll",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "authentication_control"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "genericall_reset_password",
+      "work_class": "directory_password_reset"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "grant_generic_all",
+      "active": true,
+      "canonical_class": "grant_generic_all",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New ACL construction/write/read-back scenario, three attempts/15m; correct principal/ACE ordering/inheritance with 5%-30% residual workflow failure. Grants permission only; no direct host compromise.",
+      "relationship": "WriteDacl",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "grant_generic_all"
+      ],
+      "target_kinds": [
+        "User",
+        "Group",
+        "Computer",
+        "Domain",
+        "OU",
+        "GPO"
+      ],
+      "technique_id": "grant_new_object_right",
+      "work_class": "grant_generic_all"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "kerberoast_material_request",
+      "active": true,
+      "canonical_class": "kerberoast_material_request",
+      "generator_route": "credential artifact producers",
+      "profile_version": "1.0.0",
+      "rationale": "New authenticated TGS service-ticket acquisition judgment, three requests/10m; service naming/referral/material-format workflow adds residual 2%-15% failure allowance. Not AS-REP request or password recovery.",
+      "relationship": "RoastTarget",
+      "required_gates": [
+        "known_identity",
+        "has_spn",
+        "service_principal_names",
+        "kerberos_actor_authenticated",
+        "kerberos_authentication_usable",
+        "network_kdc_reachable",
+        "service_ticket_request_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "success_effects": [
+        "service_ticket_material"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "kerberoast_request",
+      "work_class": "kerberoast_material_request"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "host_admin_execution",
+      "active": true,
+      "canonical_class": "host_admin_execution",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New standard authenticated SMB/RPC administrative execution scenario, three attempts/30m; session allocation, command launch and verification failures. Generic AdminTo alone does not identify transport; selected SMB/RPC policy required.",
+      "relationship": "AdminTo",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "admin_channel",
+        "authentication_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "obtain_admin_execution_on_host",
+      "work_class": "host_admin_execution"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rdp_interactive_session",
+      "active": true,
+      "canonical_class": "rdp_interactive_session",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New RDP logon/session-establishment scenario, three attempts/30m; allocation/quota/interactive-logon completion allowance 5%-40%. NLA/reachability/authorization are preconditions; no admin effect.",
+      "relationship": "CanRDP",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "rdp_available",
+        "authentication_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "interactive_session"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "open_remote_interactive_session",
+      "work_class": "rdp_interactive_session"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "winrm_command_session",
+      "active": true,
+      "canonical_class": "winrm_command_session",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New non-elevated WinRM command-session workflow, three attempts/30m; endpoint allocation and command completion allowance 5%-30%. Does not inherit administrative consequence or elevated WinRM interval.",
+      "relationship": "CanPSRemote",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "winrm_available",
+        "authentication_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "remote_command_execution"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "open_winrm_remote_session",
+      "work_class": "winrm_command_session"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "NO_Q_EVENT",
+      "active": false,
+      "canonical_class": "passive_membership_closure",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "Passive transitive entitlement closure; never group logon, C or q.",
+      "relationship": "MemberOf",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "security_group",
+        "membership_usable"
+      ],
+      "review_disposition": "passive_semantics_existing",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "effective_member"
+      ],
+      "target_kinds": [
+        "Group"
+      ],
+      "technique_id": "propagate_group_entitlement",
+      "work_class": "none"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rbcd_secret_acquisition",
+      "active": true,
+      "canonical_class": "rbcd_secret_acquisition",
+      "generator_route": "RBCD binding producers",
+      "profile_version": "1.0.0",
+      "rationale": "New controlled service-principal secret reset/validation scenario, three attempts/15m; residual reset/verification completion allowance 5%-30%. Known secret lineage differs from natural password cracking.",
+      "relationship": "RBCDReset",
+      "required_gates": [
+        "actor_authenticated",
+        "exact_reset_right",
+        "effective_reset_right",
+        "directory_write_allowed",
+        "password_policy_accepts"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "rbcd_secret"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "rbcd_acquire_secret",
+      "work_class": "rbcd_secret_acquisition"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rbcd_descriptor_mutation",
+      "active": true,
+      "canonical_class": "rbcd_descriptor_mutation",
+      "generator_route": "RBCD binding producers",
+      "profile_version": "1.0.0",
+      "rationale": "New delegation descriptor encoding/write/read-back scenario, three attempts/15m; residual descriptor construction/round-trip allowance 1%-20%; effective rights and target policy separately conditioned.",
+      "relationship": "RBCDConfigure",
+      "required_gates": [
+        "actor_authenticated",
+        "known_identity",
+        "exact_descriptor_right",
+        "effective_descriptor_write",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "rbcd_descriptor"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "rbcd_configure_descriptor",
+      "work_class": "rbcd_descriptor_mutation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rbcd_service_delegation",
+      "active": true,
+      "canonical_class": "rbcd_service_delegation",
+      "generator_route": "RBCD binding producers",
+      "profile_version": "1.0.0",
+      "rationale": "New S4U service delegation scenario, three attempts/15m; ticket/service-name/delegation validation allowance 10%-40% after exact descriptor/service/secret preparation histories. Not a password-guessing event.",
+      "relationship": "RBCDDelegate",
+      "required_gates": [
+        "controlled_service",
+        "rbcd_descriptor",
+        "known_impersonated_identity",
+        "target_spn_binding",
+        "delegation_policy_allows",
+        "network_kdc_reachable",
+        "s4u_request_accepted"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "delegated_context"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "rbcd_delegate_service",
+      "work_class": "rbcd_service_delegation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rbcd_service_preparation",
+      "active": true,
+      "canonical_class": "rbcd_service_preparation",
+      "generator_route": "RBCD binding producers",
+      "profile_version": "1.0.0",
+      "rationale": "New existing owned service-principal SPN/service setup validation scenario, three attempts/15m; setup/verification allowance 2%-20%. No assumption of MachineAccountQuota or arbitrary new computer creation.",
+      "relationship": "RBCDPrepare",
+      "required_gates": [
+        "scoped_password",
+        "has_spn",
+        "service_principal_names",
+        "target_enabled",
+        "secret_valid",
+        "key_derivation_accepted",
+        "key_encryption_compatible",
+        "service_authentication_accepted",
+        "network_kdc_reachable"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "controlled_service"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "rbcd_prepare_service",
+      "work_class": "rbcd_service_preparation"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "rbcd_admin_execution",
+      "active": true,
+      "canonical_class": "rbcd_admin_execution",
+      "generator_route": "RBCD binding producers",
+      "profile_version": "1.0.0",
+      "rationale": "New delegated service-specific elevated execution/verification scenario, three attempts/30m; service ticket placement/command completion allowance 5%-40%. Delegation alone does not prove host-wide administration.",
+      "relationship": "RBCDAsset",
+      "required_gates": [
+        "delegated_context",
+        "target_spn_binding",
+        "target_enabled",
+        "network_winrm_reachable",
+        "service_winrm_running",
+        "endpoint_authorized",
+        "winrm_authentication_accepted",
+        "admin_execution_context"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "rbcd_service_admin",
+      "work_class": "rbcd_admin_execution"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "asrep_password_recovery",
+      "active": true,
+      "canonical_class": "asrep_password_recovery",
+      "generator_route": "credential artifact producers",
+      "profile_version": "1.0.0",
+      "rationale": "Natural-password conditional rank mass and achieved compatible verifier coverage before deadline absent; hard compute cap does not establish success mass. #266 v2 audit applies; no uniform24 production transfer.",
+      "relationship": "ASRepMaterial",
+      "required_gates": [
+        "asrep_material",
+        "recovery_scope",
+        "recovery_success"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "success_effects": [
+        "recovered_secret"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "recover_asrep_secret",
+      "work_class": "asrep_password_recovery"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "session_credential_material",
+      "active": true,
+      "canonical_class": "session_credential_material",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "New accessible fresh HasSession material extraction/validation scenario, one job/30m; residual format, extraction and usable-material completion allowance 20%-75%, beyond separately conditioned host control/freshness/accessibility. This produces material, not identity activation.",
+      "relationship": "HasSession",
+      "required_gates": [
+        "source_admin_control",
+        "session_fresh",
+        "session_present",
+        "credential_accessible"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "Computer"
+      ],
+      "success_effects": [
+        "credential_material"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "recover_session_credential_material",
+      "work_class": "session_credential_material"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "kerberoast_password_recovery",
+      "active": true,
+      "canonical_class": "kerberoast_password_recovery",
+      "generator_route": "credential artifact producers",
+      "profile_version": "1.0.0",
+      "rationale": "TGS etype/service-account password rank and achieved verifier coverage absent; AES and RC4 throughput/secret populations differ. No AS-REP numeric transfer or computer-secret short-password assumption.",
+      "relationship": "TicketMaterial",
+      "required_gates": [
+        "ticket_material",
+        "recovery_scope",
+        "recovery_success"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "success_effects": [
+        "recovered_secret"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "recover_ticket_secret",
+      "work_class": "kerberoast_password_recovery"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "directory_password_reset",
+      "active": true,
+      "canonical_class": "directory_password_reset",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+      "relationship": "ForceChangePassword",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "authentication_control"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "reset_target_password",
+      "work_class": "directory_password_reset"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "directory_password_reset",
+      "active": true,
+      "canonical_class": "directory_password_reset",
+      "generator_route": "structural/branch permission relationships",
+      "profile_version": "1.0.0",
+      "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+      "relationship": "GenericAll",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed",
+        "network_rpc_reachable"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "success_effects": [
+        "authentication_control",
+        "reset_password_control"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "technique_id": "scenario_reset_password",
+      "work_class": "directory_password_reset"
+    },
+    {
+      "I": "typed terminal target consequence, never edge/action severity",
+      "P_class": "winrm_admin_execution",
+      "active": true,
+      "canonical_class": "winrm_admin_execution",
+      "generator_route": "GenericAll Group-to-Computer declared-host mapping",
+      "profile_version": "1.0.0",
+      "rationale": "Historical elevated WinRM workflow given usable identity and unrestricted endpoint; three attempts/30m; session allocation/quota/command-completion uncertainty. Session preparation included in this work unit.",
+      "relationship": "DeclaredHostAdmin",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "actor_authenticated",
+        "host_admin_mapping",
+        "network_winrm_reachable",
+        "service_winrm_running",
+        "winrm_authentication_accepted",
+        "endpoint_authorized",
+        "admin_execution_context",
+        "target_enabled"
+      ],
+      "review_disposition": "pending_B",
+      "source": "configs/attack_semantics.yml + likelihood-v1/catalog.json",
+      "source_kinds": [
+        "Group"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "technique_id": "scenario_winrm_admin",
+      "work_class": "winrm_admin_execution"
+    }
+  ],
+  "active_likelihood_classes": 20,
+  "active_techniques": 22,
+  "passive_techniques": 1,
+  "status": "proposed_pending_b_review",
+  "structural_relationships": [
+    "MemberOf",
+    "AdminTo",
+    "GenericAll",
+    "WriteDacl",
+    "ForceChangePassword",
+    "CanRDP",
+    "CanPSRemote",
+    "HasSession"
+  ],
+  "version": "1.0.0"
+}

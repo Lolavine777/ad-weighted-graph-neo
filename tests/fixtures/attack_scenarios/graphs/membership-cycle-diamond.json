@@ -1,0 +1,167 @@
+{
+  "metadata": {
+    "contract_version": "1.3.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:b99c505d499a355e7bad7a8b16783fd9026df1cfddca199cf7c47018d0679c06",
+    "created_at": "2026-10-05T00:00:00Z",
+    "code_version": "synthetic-golden/1.0.0",
+    "synthetic": true
+  },
+  "nodes": [
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-Host",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "kind": "Computer",
+      "label": "SYNTHETIC-OtherHost",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-Alice",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "User",
+      "label": "SYNTHETIC-Bob",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "Group",
+      "label": "SYNTHETIC-Helpdesk",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "Group",
+      "label": "SYNTHETIC-Operators",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "Group",
+      "label": "SYNTHETIC-Admins",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:09ca2f913d7f64d71657e6888dd7b45bc55a9bd9cf11af492c53238f65916157",
+      "source": "S-1-5-21-1000-2000-3000-2102",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:1d7a5e9b2879d9479f13ef786f593234e37273f1e0d550675bd4d36c8d9fc29b",
+      "source": "S-1-5-21-1000-2000-3000-2101",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:78299df84f1681961fc7964d8d29b6639f3c8e35d655f8f5968cfd9f35fbcdcb",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+      "source": "S-1-5-21-1000-2000-3000-2103",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    },
+    {
+      "id": "sha256:ab256d299af7e93183ba7cd311f1d607a0b39105bef52992ce06914deb28ef2a",
+      "source": "S-1-5-21-1000-2000-3000-2103",
+      "target": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/membership-cycle-diamond",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    }
+  ],
+  "assessments": []
+}

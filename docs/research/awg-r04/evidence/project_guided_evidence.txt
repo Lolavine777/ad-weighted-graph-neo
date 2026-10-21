@@ -1,0 +1,72 @@
+"""Independent capture integrity and matched-input checks; no AWG search/cost reuse."""
+import gzip
+import hashlib
+import json
+import shutil
+import subprocess
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+repo = root / 'repo'
+dest = repo / 'docs/research/awg-r04/evidence'
+sha = lambda b: 'sha256:' + hashlib.sha256(b).hexdigest()
+def pin(p):
+    h = hashlib.sha256()
+    with p.open('rb') as f:
+        while b := f.read(1048576): h.update(b)
+    return {'path': p.relative_to(repo).as_posix(), 'bytes': p.stat().st_size, 'sha256': 'sha256:' + h.hexdigest()}
+runs = []
+requests = []
+for name in ['2x3-fifo', '2x3-goal_guided', '1x12-goal_guided']:
+    folder = repo / 'reports/generated/awg-r04-guided-v1' / name
+    p = json.loads((folder / 'projection.json').read_text())
+    assert p['revision'] == '29e52c4c3939b278537a53b61fc021cc65829b9d'
+    assert p['external_harness_sha256'] == hashlib.sha256((root / 'run_guided_product.py').read_bytes()).hexdigest()
+    requests.append((folder / 'request.json').read_bytes())
+    git = subprocess.Popen(['git', 'cat-file', '--batch'], cwd=repo, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+    for path, h in p['source_pins'].items():
+        git.stdin.write((p['revision'] + ':' + path + '\n').encode()); git.stdin.flush()
+        header = git.stdout.readline().decode().split(); assert header[-1] != 'missing', path
+        b = git.stdout.read(int(header[-1])); assert git.stdout.read(1) == b'\n'
+        assert sha(b) == h, path
+        assert sha((repo / path).read_bytes()) == h, path
+    git.stdin.close(); assert git.wait() == 0
+    h = hashlib.sha256(); n = 0
+    with gzip.open(folder / 'result.json.gz', 'rb') as f:
+        while b := f.read(1048576): h.update(b); n += len(b)
+    assert n == p['audit']['uncompressed_bytes'] and h.hexdigest() == p['audit']['uncompressed_sha256']
+    assert p['native_replays'] == sum(len(r['witnesses']) for r in p['rows'])
+    for r in p['rows']:
+        assert not r['guarantees']['is_minimum_proven_over_scope']
+        assert not r['guarantees']['is_no_path_proven_over_scope']
+        for w in r['witnesses']: assert w['independent_reset_work_count'] == r['C'] == 1
+    p['source_pins_verified_against_capture_git_objects_and_current_bytes'] = True
+    p['audit_gzip_crc_uncompressed_size_and_sha256_verified'] = True
+    p['expansions_total'] = sum(r['expansions'] for r in p['rows'])
+    p['first_witness_elapsed_seconds'] = next((e['elapsed_seconds'] for e in p['events'] if e['reached']), None)
+    p['artifacts'] = {q.name: pin(q) for q in [folder/'request.json', folder/'projection.json', folder/'result.json.gz', folder/'discovery-progress.jsonl']}
+    runs.append(p)
+assert requests[0] == requests[1]
+before = {(r['source_id'], r['goal_id']): r for r in runs[0]['rows']}
+after = {(r['source_id'], r['goal_id']): r for r in runs[1]['rows']}
+assert before.keys() == after.keys()
+for k in before:
+    for field in ['normalized_query_sha256', 'initial_state_sha256', 'assumptions_sha256', 'assumptions_count']:
+        assert before[k][field] == after[k][field], (k, field)
+assert runs[0]['source_pins'] == runs[1]['source_pins'] == runs[2]['source_pins']
+assert runs[0]['summary']['successful_cells'] == 0
+assert runs[1]['summary']['successful_cells'] == 2 and runs[2]['summary']['successful_cells'] == 4
+examples = repo/'docs/research/awg-r04/examples'
+for name in ['defender-brief.md', 'defender-brief.json', 'discovery-progress.jsonl']:
+    shutil.copyfile(repo/'reports/generated/awg-r04-guided-v1/1x12-goal_guided'/name, examples/('guided-'+name))
+shutil.copyfile(root/'run_guided_product.py', dest/'run_guided_product.txt')
+out = {'version':'awg-r04-goal-guided-validation/1', 'runs':runs,
+       'matched_2x3':{'same_request_bytes':True, 'same_70_source_pins':True, 'all_6_query_state_assumption_scopes_equal':True,
+                      'explicit_normalization':'Only requested search_order and its independently validated scenario_reference/rating applicability; no semantic input changes'},
+       'coverage':{'distinct_source_goal_pairs':15, 'explanation':'Machine3 pairs overlap with full Machine12; User3 independent, no union of compromises'},
+       'limits':['One timing per mode, no speedup claim.', '4 group-entitlement witnesses do not prove host/DC control.',
+                 'Per-goal scheduling, not shared multi-goal traversal. Scoped catalog of three techniques.',
+                 'C is ordinal best-found effort, not runtime or global optimum. No new calibrated P/I.',
+                 'No full-domain remediation gain measured in this iteration.']}
+(dest/'iteration-15-guided.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'verified_runs':len(runs),'unique_pairs':15,'witnesses':[r['summary']['successful_cells'] for r in runs],'public_bytes':(dest/'iteration-15-guided.json').stat().st_size}))

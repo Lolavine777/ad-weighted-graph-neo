@@ -1,0 +1,65 @@
+name: CI
+'on':
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version-file: .python-version
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Require Python 3.14
+        run: python -c "import sys; assert sys.version_info[:2] == (3, 14), sys.version"
+      - run: python -m pip install -r requirements-tests.txt
+      - run: python -m ruff check .
+      - run: python -m ruff format --check .
+      - run: python -m yamllint .
+      - run: python scripts/check_repository.py
+  tests:
+    name: tests (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version-file: .python-version
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Require Python 3.14
+        run: python -c "import sys; assert sys.version_info[:2] == (3, 14), sys.version"
+      - run: python -m pip install -r requirements-tests.txt
+      - run: python scripts/check_contract.py
+      - run: python -m pytest
+  compose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Validate Compose without starting services
+        env:
+          NEO4J_PASSWORD: ci-validation-placeholder
+        run: docker compose --env-file .env.example --profile graph config --quiet

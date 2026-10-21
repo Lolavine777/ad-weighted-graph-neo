@@ -1,0 +1,142 @@
+{
+  "baseline_revision": "da21fbb545061c56c6dfff6ac489e7794a53ec73",
+  "denominator": "all returned valid conditioned-feasible generated programs per declared query; no rating-based filtering; truncated counts are lower-bound samples, never full generator coverage",
+  "freeze_before_final_run": true,
+  "limitations": [
+    "predeclared supported cohort is a pilot, not statistical representation of all snapshot sources",
+    "all-source batch/source-risk and remediation counterfactual remain B-owned #265; no fabricated source ranking/chokepoint effect"
+  ],
+  "queries": [
+    {
+      "budget": {
+        "max_expansions": 60000,
+        "max_paths": 1000,
+        "max_steps": 10
+      },
+      "graph": "historical_induced_7_node_16_edge_projection",
+      "id": "source-a-projection",
+      "source": "historical_source_a",
+      "supported_cohort": true,
+      "techniques": "historical_four"
+    },
+    {
+      "budget": {
+        "max_expansions": 60000,
+        "max_paths": 1000,
+        "max_steps": 10
+      },
+      "graph": "manifest_verified_full_raw",
+      "id": "source-a-full-raw-four",
+      "source": "historical_source_a",
+      "supported_cohort": true,
+      "techniques": "historical_four"
+    },
+    {
+      "budget": {
+        "max_expansions": 2000,
+        "max_paths": 250,
+        "max_steps": 10
+      },
+      "graph": "manifest_verified_full_raw",
+      "id": "source-a-full-generator",
+      "source": "historical_source_a",
+      "supported_cohort": false,
+      "techniques": "all_23"
+    },
+    {
+      "budget": {
+        "max_expansions": 2000,
+        "max_paths": 250,
+        "max_steps": 8
+      },
+      "graph": "manifest_verified_full_raw",
+      "id": "lidia-full-generator",
+      "source": "historical_lidia_user",
+      "supported_cohort": true,
+      "techniques": "all_23"
+    },
+    {
+      "budget": {
+        "max_expansions": 2000,
+        "max_paths": 250,
+        "max_steps": 8
+      },
+      "graph": "manifest_verified_full_raw",
+      "id": "josefa-full-generator",
+      "source": "historical_josefa_user",
+      "supported_cohort": true,
+      "techniques": "all_23"
+    },
+    {
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 10,
+        "max_steps": 6
+      },
+      "graph": "manifest_verified_full_raw",
+      "id": "asrep-natural-password",
+      "source": "frozen_X_request_capability",
+      "supported_cohort": true,
+      "techniques": "frozen_asrep_four"
+    },
+    {
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 50,
+        "max_steps": 4
+      },
+      "goal": "ticket_material",
+      "graph": "manifest_verified_full_raw",
+      "id": "kerberoast-material",
+      "source": "historical_lidia_user",
+      "supported_cohort": true,
+      "target_selector": "first enabled SPN-bearing User by canonical ID, selected before generation",
+      "techniques": [
+        "kerberoast_request",
+        "recover_ticket_secret",
+        "activate_recovered_identity"
+      ]
+    },
+    {
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 50,
+        "max_steps": 4
+      },
+      "goal": "usable_identity",
+      "graph": "manifest_verified_full_raw",
+      "id": "kerberoast-identity",
+      "source": "historical_lidia_user",
+      "supported_cohort": true,
+      "target_selector": "same fixed SPN target",
+      "techniques": [
+        "kerberoast_request",
+        "recover_ticket_secret",
+        "activate_recovered_identity"
+      ]
+    }
+  ],
+  "rating_profile": "final-cpi-bounded-domain-v1",
+  "sensitivity": [
+    "widen each expert interval to [0,1] in test-only derivative",
+    "remove runtime declaration",
+    "authoritative false veto",
+    "step cap",
+    "supported four vs entire generator",
+    "source A vs User footholds"
+  ],
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "source_profiles": {
+    "Computer": "historical Source A controlled Computer",
+    "Group": "unsupported as initial login; requires B source contract for controlled entitlement/object capability",
+    "User": "two historical User footholds with usable identity explicitly supplied",
+    "other": "Domain/OU/GPO unsupported initial compromise profiles; reported, not forged"
+  },
+  "target": "same manifest-pinned DC with typed admin_control; material/identity side probes separate",
+  "threshold": "fully_rated/conditioned_feasible >= 4/5; actual accepted and synthetic potential reported separately",
+  "unrepresented": [
+    "RBCD raw compatibility/binding cohort absent; synthetic fixture separately tested",
+    "HasSession extraction and ACL/group mutation need additional raw source/profile cases; taxonomy coverage is not measured path coverage"
+  ],
+  "version": "1.0.0"
+}

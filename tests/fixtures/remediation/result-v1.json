@@ -1,0 +1,295 @@
+{
+  "baseline_input_digest_after": "sha256:73c151a00a0ae3a334b16d2d2ac5eb4b714e10b9239bae391e7a470b7a79e08c",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "cells": [
+    {
+      "affected": true,
+      "affected_program_ids": [
+        "alice-D",
+        "alice-MD",
+        "alice-MI"
+      ],
+      "after": {
+        "cell_ref": "alice/host-admin",
+        "complete": true,
+        "program_count": 0,
+        "query_digest": "sha256:034ea4dfd818954edfa9a59c18b31ac2573506817162a9dac791b4453ec4229c",
+        "reachability": "proven_unreachable",
+        "route_count": 0,
+        "route_ids": [],
+        "run_id": "finite-after",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [
+          "all continuations denied by admin_channel"
+        ],
+        "trace_refs": [],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": []
+      },
+      "before": {
+        "cell_ref": "alice/host-admin",
+        "complete": true,
+        "program_count": 3,
+        "query_digest": "sha256:ac53d6d314803e8d04c86ae7f12da9ce98def6f9d510aa703c6277dfc29ec313",
+        "reachability": "reachable",
+        "route_count": 3,
+        "route_ids": [
+          "route-alice-D",
+          "route-alice-MD",
+          "route-alice-MI"
+        ],
+        "run_id": "finite-before",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [],
+        "trace_refs": [
+          {
+            "program_id": "alice-D",
+            "route_id": "route-alice-D",
+            "trace_ref": "synthetic://269/oracle/alice-D"
+          },
+          {
+            "program_id": "alice-MD",
+            "route_id": "route-alice-MD",
+            "trace_ref": "synthetic://269/oracle/alice-MD"
+          },
+          {
+            "program_id": "alice-MI",
+            "route_id": "route-alice-MI",
+            "trace_ref": "synthetic://269/oracle/alice-MI"
+          }
+        ],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": [
+          "alice-D",
+          "alice-MD",
+          "alice-MI"
+        ]
+      },
+      "bypass_program_ids": [],
+      "conditional_p": {
+        "after_interval": null,
+        "after_program_id": null,
+        "basis_refs": [],
+        "before_interval": null,
+        "before_program_id": null,
+        "comparison_scope_digest": null,
+        "delta_interval": null,
+        "interpretation": "conditional_single_program_not_campaign",
+        "status": "unrated"
+      },
+      "cut_program_ids": [
+        "alice-D",
+        "alice-MD",
+        "alice-MI"
+      ],
+      "cut_route_ids": [
+        "route-alice-D",
+        "route-alice-MD",
+        "route-alice-MI"
+      ],
+      "disconnected": true,
+      "effort": {
+        "after": null,
+        "basis_refs": [],
+        "before": null,
+        "delta": null,
+        "proof_refs": [
+          "synthetic://269/finite-exhaustion"
+        ],
+        "status": "unreachable",
+        "unit": null
+      },
+      "goal_id": "host-admin",
+      "new_program_ids": [],
+      "replay_failures": [
+        {
+          "decision_ref": "synthetic://269/admin_channel/alice/host-admin",
+          "intervention_ids": [
+            "channel-alice"
+          ],
+          "program_id": "alice-D",
+          "trace_ref": "synthetic://269/oracle/alice-D"
+        },
+        {
+          "decision_ref": "synthetic://269/admin_channel/alice/host-admin",
+          "intervention_ids": [
+            "channel-alice"
+          ],
+          "program_id": "alice-MD",
+          "trace_ref": "synthetic://269/oracle/alice-MD"
+        },
+        {
+          "decision_ref": "synthetic://269/admin_channel/alice/host-admin",
+          "intervention_ids": [
+            "channel-alice"
+          ],
+          "program_id": "alice-MI",
+          "trace_ref": "synthetic://269/oracle/alice-MI"
+        }
+      ],
+      "source_id": "alice"
+    },
+    {
+      "affected": true,
+      "affected_program_ids": [
+        "bob-MI"
+      ],
+      "after": {
+        "cell_ref": "bob/host-admin",
+        "complete": true,
+        "program_count": 0,
+        "query_digest": "sha256:dfe0011e85b0b9cbdd712e03e742efdbfbdbf48a483e3506faf6808553f164e5",
+        "reachability": "proven_unreachable",
+        "route_count": 0,
+        "route_ids": [],
+        "run_id": "finite-after",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [
+          "all continuations denied by admin_channel"
+        ],
+        "trace_refs": [],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": []
+      },
+      "before": {
+        "cell_ref": "bob/host-admin",
+        "complete": true,
+        "program_count": 1,
+        "query_digest": "sha256:e91a71117cd98e4425f555dd407bb3eaa9f7b7fd6f058d13a2e6b58483c88705",
+        "reachability": "reachable",
+        "route_count": 1,
+        "route_ids": [
+          "route-bob-MI"
+        ],
+        "run_id": "finite-before",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [],
+        "trace_refs": [
+          {
+            "program_id": "bob-MI",
+            "route_id": "route-bob-MI",
+            "trace_ref": "synthetic://269/oracle/bob-MI"
+          }
+        ],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": [
+          "bob-MI"
+        ]
+      },
+      "bypass_program_ids": [],
+      "conditional_p": {
+        "after_interval": null,
+        "after_program_id": null,
+        "basis_refs": [],
+        "before_interval": null,
+        "before_program_id": null,
+        "comparison_scope_digest": null,
+        "delta_interval": null,
+        "interpretation": "conditional_single_program_not_campaign",
+        "status": "unrated"
+      },
+      "cut_program_ids": [
+        "bob-MI"
+      ],
+      "cut_route_ids": [
+        "route-bob-MI"
+      ],
+      "disconnected": true,
+      "effort": {
+        "after": null,
+        "basis_refs": [],
+        "before": null,
+        "delta": null,
+        "proof_refs": [
+          "synthetic://269/finite-exhaustion"
+        ],
+        "status": "unreachable",
+        "unit": null
+      },
+      "goal_id": "host-admin",
+      "new_program_ids": [],
+      "replay_failures": [
+        {
+          "decision_ref": "synthetic://269/admin_channel/bob/host-admin",
+          "intervention_ids": [
+            "channel-bob"
+          ],
+          "program_id": "bob-MI",
+          "trace_ref": "synthetic://269/oracle/bob-MI"
+        }
+      ],
+      "source_id": "bob"
+    }
+  ],
+  "comparison_scope_digest": "sha256:0ee2957239cbcf1391aee3e944c3f8de40f50dd609b119440ade642de2b2af5c",
+  "counterfactual_origin": "declared_intervention_not_observation",
+  "declared_goal_ids": [
+    "host-admin"
+  ],
+  "declared_source_ids": [
+    "alice",
+    "bob"
+  ],
+  "overlay_digest": "sha256:624bb63bfe5d531b48e3e1f5e25321d5e82ff8f44f4eb0679374bdd822d5d3aa",
+  "overlay_disposition": "applied",
+  "request_id": "finite-common-channel",
+  "schema_version": "1.0.0",
+  "summary": {
+    "affected_sources": [
+      "alice",
+      "bob"
+    ],
+    "evaluated_pairs": 2,
+    "exposed_sources_after": [],
+    "exposed_sources_before": [
+      "alice",
+      "bob"
+    ],
+    "fully_disconnected_sources": [
+      "alice",
+      "bob"
+    ],
+    "goals_still_reachable": [],
+    "limitations": [
+      "Synthetic finite scope, no production rating basis",
+      "Four observed-evidence traces across two cells; four ordered semantic programs",
+      "Existing initial host control and protocols outside the allow-list excluded"
+    ],
+    "pairs_disconnected": {
+      "denominator": 2,
+      "numerator": 2,
+      "percent": 100,
+      "scope": "complete_declared_scope"
+    },
+    "programs_cut": {
+      "denominator": 4,
+      "numerator": 4,
+      "percent": 100,
+      "scope": "complete_declared_scope"
+    },
+    "proven_disconnected_pairs": [
+      {
+        "goal_id": "host-admin",
+        "source_id": "alice"
+      },
+      {
+        "goal_id": "host-admin",
+        "source_id": "bob"
+      }
+    ],
+    "requested_pairs": 2,
+    "routes_cut": {
+      "denominator": 4,
+      "numerator": 4,
+      "percent": 100,
+      "scope": "complete_declared_scope"
+    },
+    "truncated_pairs": 0,
+    "unknown_pairs": 0,
+    "unsupported_pairs": 0
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "schema_version": "awg-r04-session-coverage-closeout/1",
+  "validated_clean_revision": "78ce4ec1aade2a152edd0a4ca33e98fbad015216",
+  "native_semantics_and_finite_capture_revision": "74b4cd044d4296b67458a8ceb516ce2f1aa7ee9f",
+  "broad_checks": {
+    "revision": "d4b8e5733e599a377ff694c519be94ff9f3b3a93",
+    "passed": 647,
+    "skipped": 2,
+    "seconds": "156.38",
+    "skip_reason": "Two opt-in raw tests; both executed and passed in final selected run.",
+    "junit": {
+      "path": "docs/research/awg-r04/evidence/iteration-12-broad-clean.xml",
+      "bytes": 92862,
+      "sha256": "sha256:42fcd83273d0f86b37a970af16ba38d48fab7a143ddda2bd21397f36cd313572"
+    }
+  },
+  "final_checks": {
+    "revision": "78ce4ec1aade2a152edd0a4ca33e98fbad015216",
+    "passed": 216,
+    "skipped": 0,
+    "seconds": "181.50",
+    "per_module": {
+      "tests.test_session_material_boundary": 40,
+      "tests.test_session_coverage_priority": 2,
+      "tests.test_source_goal_batch_contract": 44,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_exposure": 18,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_machine_identity_profile": 35,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_remediation_runner_cli": 1,
+      "tests.test_remediation_contract": 1
+    },
+    "junit": {
+      "path": "docs/research/awg-r04/evidence/iteration-12-final-clean.xml",
+      "bytes": 32013,
+      "sha256": "sha256:0e73819bbeed4bddf5018e739bf5d48f6a29c672d3054ed589db9cc514a017c3"
+    },
+    "raw_opt_in_cases_passed": [
+      "test_manifest_verified_seamless_bounded_pilot",
+      "test_manifest_verified_seamless_runtime_controls"
+    ]
+  },
+  "suite_overlap": "Do not add647, final-selected,216,40 or26 as independent coverage counts.",
+  "mixed_goal_fix": {
+    "module": "scripts/research/source_goal_batch.py",
+    "behavior": "Confirmed host witness keeps impact/priority; another unsupported goal keeps row disposition unsupported_semantics. No safe/no-path implication.",
+    "code": {
+      "path": "scripts/research/source_goal_batch.py",
+      "bytes": 74677,
+      "sha256": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc"
+    },
+    "controls": {
+      "path": "tests/test_session_coverage_priority.py",
+      "bytes": 1950,
+      "sha256": "sha256:36a07cbaeff0728452575768d024a3900e5adcea01bef2ceaed49ccc33f938bf"
+    }
+  },
+  "native_src_unchanged_since_clean_finite_capture": true,
+  "exact_finite_case_module_unchanged": true,
+  "week4_v13_file_pins_equal_current": true,
+  "acceptance": {
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v13.json",
+    "bytes": 331497,
+    "sha256": "sha256:b29df225b9089400114fe51121e222d52a3c390dcd2054ba418e6a1e87b51774"
+  },
+  "source_authorities": "Strict likelihood/scenario v13 chains verified; catalog/numeric/history unchanged.",
+  "current_executable_cli": [
+    {
+      "input": "opaque",
+      "status": "unsupported",
+      "candidates": 0,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "exhaustive_within_scope"
+      },
+      "path": "reports/generated/awg-r04-session-cli-v1/opaque.json",
+      "bytes": 44683,
+      "sha256": "sha256:cb3e2ad75965c0b148af879623195e5ce9177ef1fbf775a3b9bc3b4ac4eb45d0",
+      "published_full_capture": {
+        "path": "docs/research/awg-r04/evidence/iteration-12-cli-opaque.json",
+        "bytes": 44683,
+        "sha256": "sha256:cb3e2ad75965c0b148af879623195e5ce9177ef1fbf775a3b9bc3b4ac4eb45d0"
+      }
+    },
+    {
+      "input": "declared-password",
+      "status": "success",
+      "candidates": 1,
+      "guarantees": {
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false,
+        "optimization_scope": "budget_bounded"
+      },
+      "path": "reports/generated/awg-r04-session-cli-v1/declared-password.json",
+      "bytes": 81715,
+      "sha256": "sha256:66b27c0f7c8dce0b97d8e66baf8f9bbfd27e28a812681cb17af0ca530be82950",
+      "published_full_capture": {
+        "path": "docs/research/awg-r04/evidence/iteration-12-cli-declared-password.json",
+        "bytes": 81715,
+        "sha256": "sha256:66b27c0f7c8dce0b97d8e66baf8f9bbfd27e28a812681cb17af0ca530be82950"
+      }
+    }
+  ],
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "PASS;585files",
+    "contract": "PASS;2syntheticfixtures",
+    "repository_links": "Only known missing historical docs/research/awg-r03-implementation/AWG-R03_Verification.zip"
+  },
+  "scope": "Finite material/activation model; raw tests are existing bounded compatibility projections, not new full-SEAMLESS session coverage or performance evidence. No new C/P/I, globally optimal path, exploitation, accuracy rate or proven remediation gain.",
+  "jobs": "Finite before/after, native Week4 twice, broad/selected/raw/CLI jobs complete; no worker pending.",
+  "next_action": "Typed session recipe requires explicit material type, acquisition host, owner/context and extraction evidence before implementation. FCP composition next; preparation reuse P1. Keep planner, no production AND-OR justified.",
+  "publication": "Closeout descendant is docs/evidence only; lease feature branch from e0345e2, no main/develop/parent ref mutation."
+}

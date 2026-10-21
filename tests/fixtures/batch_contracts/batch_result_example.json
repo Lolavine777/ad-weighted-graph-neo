@@ -1,0 +1,461 @@
+{
+  "schema_version": "batch-query-result/1.0.0",
+  "batch_id": "batch-w5-acceptance-demo-01",
+  "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+  "reproducibility": {
+    "revision": "7220c689cd50ac4da9e82ba902707bb21cb58b8a",
+    "inputs": {
+      "target_manifest": {
+        "manifest_id": "target-manifest-synthetic-v1",
+        "sha256": "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+      }
+    },
+    "runtime": {
+      "python": "3.14.7",
+      "platform": "darwin",
+      "duration_seconds": 0.42
+    }
+  },
+  "summary": {
+    "total_sources": 4,
+    "supported_sources": 3,
+    "unsupported_sources": 1,
+    "successful_sources": 1,
+    "sources_reaching_tier_0": 1,
+    "status_counts": {
+      "complete_success": 2,
+      "no_path": 4,
+      "unsupported_source": 2
+    }
+  },
+  "source_goal_matrix": {
+    "src-alice-usable": {
+      "goal-synthetic-da": {
+        "status": "complete_success",
+        "control_level_attained": "admin_entitlement",
+        "min_effort": null,
+        "min_effort_path": {
+          "cost": null,
+          "steps": [
+            "propagate_group_entitlement"
+          ]
+        },
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": "Catastrophic",
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "optimization_scope": "budget_bounded",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 3,
+        "diagnostics": [
+          {
+            "action": "accepted_assumption",
+            "predicate": "admin_channel",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "authentication_accepted",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "membership_usable",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "security_group",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": true,
+            "scope": "foothold_declaration"
+          }
+        ]
+      },
+      "goal-synthetic-c0-host": {
+        "status": "complete_success",
+        "control_level_attained": "host_admin_execution",
+        "min_effort": null,
+        "min_effort_path": {
+          "cost": null,
+          "steps": [
+            "obtain_admin_execution_on_host"
+          ]
+        },
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": "High",
+        "checkpoint_reached": true,
+        "final_goal_reached": true,
+        "optimization_scope": "budget_bounded",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 4,
+        "diagnostics": [
+          {
+            "action": "accepted_assumption",
+            "predicate": "admin_channel",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "authentication_accepted",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "membership_usable",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "security_group",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": true,
+            "scope": "foothold_declaration"
+          }
+        ]
+      }
+    },
+    "src-bob-password": {
+      "goal-synthetic-da": {
+        "status": "no_path",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": "exhaustive_within_scope",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 1,
+        "diagnostics": [
+          {
+            "action": "accepted_assumption",
+            "predicate": "authentication_accepted",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "network_kdc_reachable",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "secret_valid",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          }
+        ]
+      },
+      "goal-synthetic-c0-host": {
+        "status": "no_path",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": "exhaustive_within_scope",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 1,
+        "diagnostics": [
+          {
+            "action": "accepted_assumption",
+            "predicate": "authentication_accepted",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "network_kdc_reachable",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          },
+          {
+            "action": "accepted_assumption",
+            "predicate": "secret_valid",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": true,
+            "scope": "foothold_declaration"
+          }
+        ]
+      }
+    },
+    "src-otherhost-admin": {
+      "goal-synthetic-da": {
+        "status": "no_path",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": "exhaustive_within_scope",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 0,
+        "diagnostics": []
+      },
+      "goal-synthetic-c0-host": {
+        "status": "no_path",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": "exhaustive_within_scope",
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 0,
+        "diagnostics": []
+      }
+    },
+    "src-helpdesk-group": {
+      "goal-synthetic-da": {
+        "status": "unsupported_source",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": null,
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 0,
+        "diagnostics": [
+          {
+            "code": "UNSUPPORTED_FOOTHOLD_KIND",
+            "message": "Node kind 'Group' cannot serve as an initial attack foothold. Groups, Domains, and OUs are structural containers or authorization boundaries, not execution principals or compromised computing hosts. Attackers must foothold on an eligible User (identity credential) or Computer (host control)."
+          }
+        ]
+      },
+      "goal-synthetic-c0-host": {
+        "status": "unsupported_source",
+        "control_level_attained": "none",
+        "min_effort": null,
+        "min_effort_path": null,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "impact": null,
+        "checkpoint_reached": false,
+        "final_goal_reached": false,
+        "optimization_scope": null,
+        "truncated": false,
+        "truncation_reason": null,
+        "expansions": 0,
+        "diagnostics": [
+          {
+            "code": "UNSUPPORTED_FOOTHOLD_KIND",
+            "message": "Node kind 'Group' cannot serve as an initial attack foothold. Groups, Domains, and OUs are structural containers or authorization boundaries, not execution principals or compromised computing hosts. Attackers must foothold on an eligible User (identity credential) or Computer (host control)."
+          }
+        ]
+      }
+    }
+  },
+  "source_prioritization": [
+    {
+      "rank": 1,
+      "source_id": "src-alice-usable",
+      "node_id": "S-1-5-21-1000-2000-3000-1101",
+      "node_kind": "User",
+      "profile_kind": "user_usable_identity",
+      "highest_impact_reached": "Catastrophic",
+      "min_effort_to_highest_impact": null,
+      "likelihood_to_highest_impact": null,
+      "reachable_goals_count": 2,
+      "reachable_tier_0_goals": [
+        "goal-synthetic-c0-host",
+        "goal-synthetic-da"
+      ],
+      "priority_class": "High",
+      "explainability": "Source src-alice-usable attains Catastrophic impact with unrated effort (unrated likelihood), reaching 2 configured target(s).",
+      "disposition": "complete",
+      "diagnostics": [
+        {
+          "action": "accepted_assumption",
+          "predicate": "admin_channel",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "scope": "foothold_declaration"
+        },
+        {
+          "action": "accepted_assumption",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "scope": "foothold_declaration"
+        },
+        {
+          "action": "accepted_assumption",
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "scope": "foothold_declaration"
+        },
+        {
+          "action": "accepted_assumption",
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "scope": "foothold_declaration"
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "source_id": "src-bob-password",
+      "node_id": "S-1-5-21-1000-2000-3000-1102",
+      "node_kind": "User",
+      "profile_kind": "user_leaked_password",
+      "highest_impact_reached": "None",
+      "min_effort_to_highest_impact": null,
+      "likelihood_to_highest_impact": null,
+      "reachable_goals_count": 0,
+      "reachable_tier_0_goals": [],
+      "priority_class": "None",
+      "explainability": "Source src-bob-password has proven no viable attack path to any configured targets within search budget.",
+      "disposition": "proven_no_path",
+      "diagnostics": [
+        {
+          "action": "accepted_assumption",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "scope": "foothold_declaration"
+        },
+        {
+          "action": "accepted_assumption",
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "scope": "foothold_declaration"
+        },
+        {
+          "action": "accepted_assumption",
+          "predicate": "secret_valid",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "scope": "foothold_declaration"
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "source_id": "src-helpdesk-group",
+      "node_id": "S-1-5-21-1000-2000-3000-2101",
+      "node_kind": "Group",
+      "profile_kind": "unsupported",
+      "highest_impact_reached": "None",
+      "min_effort_to_highest_impact": null,
+      "likelihood_to_highest_impact": null,
+      "reachable_goals_count": 0,
+      "reachable_tier_0_goals": [],
+      "priority_class": "None",
+      "explainability": "Source src-helpdesk-group (Group) is unsupported as an attack foothold (UNSUPPORTED_FOOTHOLD_KIND).",
+      "disposition": "unsupported",
+      "diagnostics": [
+        {
+          "code": "UNSUPPORTED_FOOTHOLD_KIND",
+          "message": "Node kind 'Group' cannot serve as an initial attack foothold. Groups, Domains, and OUs are structural containers or authorization boundaries, not execution principals or compromised computing hosts. Attackers must foothold on an eligible User (identity credential) or Computer (host control)."
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "source_id": "src-otherhost-admin",
+      "node_id": "10000000-0000-4000-8000-000000000003",
+      "node_kind": "Computer",
+      "profile_kind": "computer_control_admin",
+      "highest_impact_reached": "None",
+      "min_effort_to_highest_impact": null,
+      "likelihood_to_highest_impact": null,
+      "reachable_goals_count": 0,
+      "reachable_tier_0_goals": [],
+      "priority_class": "None",
+      "explainability": "Source src-otherhost-admin has proven no viable attack path to any configured targets within search budget.",
+      "disposition": "proven_no_path",
+      "diagnostics": []
+    }
+  ],
+  "tie_breaking_applied": [
+    {
+      "source_a": "src-bob-password",
+      "source_b": "src-helpdesk-group",
+      "matched_criteria": {
+        "impact": "None",
+        "min_effort": null,
+        "likelihood": "unrated"
+      },
+      "tie_breaker_applied": "source_id",
+      "selected_first": "src-bob-password"
+    },
+    {
+      "source_a": "src-helpdesk-group",
+      "source_b": "src-otherhost-admin",
+      "matched_criteria": {
+        "impact": "None",
+        "min_effort": null,
+        "likelihood": "unrated"
+      },
+      "tie_breaker_applied": "source_id",
+      "selected_first": "src-helpdesk-group"
+    }
+  ]
+}

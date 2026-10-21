@@ -1,0 +1,2384 @@
+{
+  "version": "awg-r04-defender-product-evidence/1",
+  "before": {
+    "version": "awg-r04-defender-run-projection/1",
+    "revision": "6cd7247cf17a83e25e12ed906f68221ce9277e24",
+    "all_source_pins_verified_against_git_objects": true,
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+      "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+      "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:58992f19dc729abc510bd12fc70264066fda08d868445889a702176436f8d8cf",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:b2d751ad2a7df3021095ee4cf2456c1b60385888b7c4ef89e4ea239205878685",
+      "src/engine/query_cli.py": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/reset_effort.py": "sha256:46fed609ad9cb8a62d77313f723b2503ce0cf404631abf290c8b1b54d8fdd78f",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+      "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "summary": {
+      "batch": {
+        "declared_cells": 12,
+        "effort_rated_cells": 0,
+        "evaluated_cells": 12,
+        "likelihood_rated_cells": 0,
+        "not_run_cells_count": 0,
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 1,
+        "status_counts": {
+          "truncated_incomplete": 11,
+          "truncated_success": 1
+        },
+        "successful_cells": 1,
+        "successful_sources": 1,
+        "supported_sources": 1,
+        "total_sources": 1,
+        "unsupported_sources": 0
+      },
+      "effort_profile": {
+        "classes": {
+          "acquire_reset_identity": {
+            "cost": 0,
+            "method": "AuthenticationControl",
+            "name": "reset_identity_activation",
+            "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+            "t1": 1,
+            "t2": 1
+          },
+          "scenario_reset_password": {
+            "cost": 1,
+            "method": "GenericAll",
+            "name": "directory_password_reset",
+            "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "dimension": "C",
+        "excluded": [
+          "P",
+          "I",
+          "password recovery",
+          "inherited/group ACL reset work",
+          "retries",
+          "existing source membership route",
+          "pre-seeded second usable identity/context"
+        ],
+        "historical_numeric_authority": {
+          "dimension": "C",
+          "review": {
+            "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+            "purpose": "numeric_context_history_adoption",
+            "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+            "reviewed_at": "2026-10-13T04:30:57Z",
+            "reviewer": "nairyuuu"
+          }
+        },
+        "profile_id": "reset-activation-c-v1",
+        "scope_adoption": {
+          "rationale": "Apply the existing ordinal reset/activation rubric to direct User-owned GenericAll reset work and its reset-owned activation at one Computer context. This new scope is not the historical reviewer's context approval. One successful operation per canonical work unit; retries/time not modeled.",
+          "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+          "status": "explicit_opt_in_solo_fork_scenario"
+        },
+        "sources": {
+          "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+            "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+          },
+          "docs/research/ratings/final-cpi-v1/profile.json": {
+            "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "elapsed_seconds": 69.67324428700022,
+      "evaluation_mode": "scenario",
+      "execution_budget": {
+        "max_cells": 12,
+        "max_expansions": 72000,
+        "max_seconds": null,
+        "per_query_seconds": null
+      },
+      "impact": "Unknown unless separately bound by an applicable numeric registry",
+      "implementation_sha256": "sha256:7bac73c716d835e860e23567b3bccfabb117ac178544224633ddbc2adb330117",
+      "input_files": {
+        "assumptions": {
+          "reference": "docs/research/awg-r04/examples/machine-identity-assumptions.json",
+          "sha256": "sha256:852fc5d05f782c1c7b2e42943f8292346309aafe161510f4cda890cbc76a282b"
+        },
+        "snapshot": {
+          "reference": "data/processed/awg-r04/pilot-v2/snapshot.json",
+          "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+        }
+      },
+      "phase_seconds": {
+        "batch_search_and_audit": 48.95113040000024,
+        "compile_and_write_request": 0.6509958900001038,
+        "inventory": 2.006651834999957,
+        "load_and_validate_graph": 4.486553321999963,
+        "serialize_full_result": 12.201957017999575
+      },
+      "result": {
+        "path": "result.json",
+        "sha256": "sha256:b649582da5ea9e1f94ac9be7736bf9276ce78281c48fcf79d09ed4a1e4da84e3"
+      },
+      "resume": {
+        "enabled": false,
+        "previous_artifacts": []
+      },
+      "scenario_policy": null,
+      "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+      "selection": {
+        "all_inventory_pairs_selected": false,
+        "eligible_sources": 2590,
+        "eligible_targets": 12,
+        "inventory_pairs_outside_selected_cohort": 31068,
+        "max_sources": 0,
+        "max_targets": 0,
+        "potential_pairs": 31080,
+        "selected_pairs": 12,
+        "selected_sources": 1,
+        "selected_targets": 12,
+        "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+        "source_selector": [
+          "S-1-5-21-1271839998-3495686680-2211690266-4157"
+        ]
+      },
+      "version": "exposure-inventory/1.0.0"
+    },
+    "request": {
+      "batch_id": "auto-exposure",
+      "common_budget": {
+        "max_expansions": 6000,
+        "max_paths": 1,
+        "max_steps": 3
+      },
+      "evaluation_mode": "scenario",
+      "prioritization_policy": "min_effort_impact_pareto",
+      "schema_version": "batch-query-request/1.1.0",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "sources": [
+        {
+          "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "custom_budget": null,
+          "declared_assumptions": [
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "password_policy_accepts",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "directory_write_allowed",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "network_rpc_reachable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "network_kdc_reachable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "authentication_accepted",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "security_group",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "membership_usable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "value": true
+            }
+          ],
+          "description": "Independent declared compromise scenario; not observed compromise",
+          "identity_provenance_reference": "scenario://awg-r04/machine-identity/FINWVIR-4157",
+          "node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "node_kind": "Computer",
+          "profile_kind": "computer_usable_identity",
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e"
+        }
+      ],
+      "target_goal_ids": null,
+      "target_manifest": {
+        "default_discovery_goals": [],
+        "description": "Snapshot-derived technical candidates; impact remains Unknown",
+        "domain_sid": "S-1-5-21-1271839998-3495686680-2211690266",
+        "manifest_id": "auto-exposure-targets",
+        "schema_version": "target-manifest/1.2.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "targets": [
+          {
+            "category": "tier_0_host",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "required_control_level": "host_admin_execution",
+            "required_state": {
+              "admin_control": [
+                "S-1-5-21-1271839998-3495686680-2211690266-1000"
+              ]
+            },
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "target_node_kind": "Computer",
+            "technical_consequence": "host_admin_execution"
+          },
+          {
+            "category": "tier_0_identity",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "tier_0_identity",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-519",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "SCHEMA ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-518",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-518",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-516",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "REPLICATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "PRINT OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-521",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "BACKUP OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "SERVER OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          }
+        ],
+        "version": "1.0.0"
+      }
+    },
+    "inventory_without_implementation_pin_sha256": "sha256:4026a6565cc5a2c8d2db2b6bb9c3cd9bbf3d17e19e887175c375881b07904e34",
+    "rows": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+        "target": {
+          "category": "tier_0_host",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "required_control_level": "host_admin_execution",
+          "required_state": {
+            "admin_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            ]
+          },
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "target_node_kind": "Computer",
+          "technical_consequence": "host_admin_execution"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:5e88c577d8cc8eafc791ade786e7d8ac1fd5d8032d369e2442452d2f025387a4",
+        "actual_scenario": "batch-cell:sha256:4fd5a6634fef0e9268c3bc7bc64cbfea89b9a0a21981b3dffd4aa735b6c93c8f",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only usable_identity_entitlement Group goals",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "target": {
+          "category": "tier_0_identity",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_success",
+        "reached": true,
+        "C": null,
+        "P": null,
+        "impact": "Unknown",
+        "expansions": 4996,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:4f09e259a0a1a2ee1af01521ad4f6728f7a8b5e7794fe8e85504a28622d0a179",
+        "actual_scenario": "batch-cell:sha256:28ccfb3db39f63c97990eeee7d167892cab1711a2afff1e8939746dbbf4e56f2",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:8d21f1337fb1d22c16227e4431464d9f10360ae12a356be1656285eb506926a4",
+        "paths_without_verified_scenario_sha256": "sha256:bd76581c6898c008f040aaa4d18c42d3c8ecd4c2ce1777c2645c35699a8948f5",
+        "witness_requests": [
+          [
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "technique_id": "scenario_reset_password"
+            },
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "technique_id": "acquire_reset_identity"
+            },
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "technique_id": "propagate_group_entitlement"
+            }
+          ]
+        ],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+        "target": {
+          "category": "tier_0_identity",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-519",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a0aeeccc3d7c2baf159e328c566d5eee9c7ee91a5b6a6d9335f8f494892c00bc",
+        "actual_scenario": "batch-cell:sha256:1d0fc767305f4596d12fe909348558d677e2602d7ad36d5ad7c7f517771b46d0",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a3501bbfb1f06ea639a215c9ca15743708b6f0b08d807de998ff5fb8f829cf21",
+        "actual_scenario": "batch-cell:sha256:16fd77c4a9bcde3f6938050dd7fa752afb9261ca7e96ce012f33a45cd437580b",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:f2ff94d574bff00261ed9a389ac5ccb847de768d18e7bcae7bf3a2937b6de6b2",
+        "actual_scenario": "batch-cell:sha256:f2361cf3e3cf7a98e3ba240b760963485ac15c896ef586b2f0ca2f856e1eeb05",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "SCHEMA ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-518",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-518",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:7af7334fdf3c7ce71ad01bdc51676e946b810ee60367ac1c63b15de8e669b231",
+        "actual_scenario": "batch-cell:sha256:066078e32216b42adbc206811c3fd690effcccb859f3fd34cd8615b2cbff4f81",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-516",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:e6ca1330d2625ef31dd2e453a9b12b43c1f80562839db9e63fba355fd58f4ede",
+        "actual_scenario": "batch-cell:sha256:404061bbd8946c5fb52fdde1773a9fac57e868eb98e094f5ff334ad6570e740a",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "REPLICATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:d4ec18932aefb7c397f6bc0fc02a65504638508bbab090ecbfd73abb53048117",
+        "actual_scenario": "batch-cell:sha256:7b7043770ef5bdb2f816239933ed55fe8b27d780905a216cbd3e334da94e9cbf",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "PRINT OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a04c1ed6cd0540077ffad9a2d726d18eeeb8dc4fc26883ddc686c5c665a3a071",
+        "actual_scenario": "batch-cell:sha256:2d88f356c6af15ca86b7ae5a51ebc3edbda6f5e5805b59236a34b4e9c04689fc",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-521",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:b07aa2c4a4eaa01f2d9f98c2ddab4fd45b8168e0c87c57628ed1bf4b2dbf8d8b",
+        "actual_scenario": "batch-cell:sha256:9ec3bcfd9d9a485d74536427955582e8ec09602e08b7d874caef67dcd31bcff2",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "BACKUP OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:29c3def46aaa7183400ac3425454f1a4ad859adc1fd8eab22dce1b8a17626ad6",
+        "actual_scenario": "batch-cell:sha256:132cc6906becf570166f43778935bd0c8c7b8c13885513b3c36e3bc3b9c85a59",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "SERVER OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:36a700ffb99f9a6049eeae3235075b8015c33139c6bcfb66854cd15fa184e896",
+        "actual_scenario": "batch-cell:sha256:913bd81f468885c986d76fcbcb01dcb81d04c2475dc953fba4d6587744535248",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:e24d2fd34c9439924e293350616ec27532e81968f2a70eedfa50896ee81f03dd",
+          "profile_id": "reset-activation-c-v1",
+          "reason": "Profile supports only a User controller, not implicit Computer credentials",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      }
+    ],
+    "artifacts": {
+      "result.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/before/result.json",
+        "bytes": 1258866135,
+        "sha256": "sha256:b649582da5ea9e1f94ac9be7736bf9276ce78281c48fcf79d09ed4a1e4da84e3"
+      },
+      "checkpoint.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/before/checkpoint.json",
+        "bytes": 156,
+        "sha256": "sha256:4c5435a051e5a191594a886b778142c8c66f5b1c0c2a85e3b7de87ca47127301"
+      },
+      "summary.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/before/summary.json",
+        "bytes": 5131,
+        "sha256": "sha256:d9e9b6c64805cda0ef9185d48fbc651333fd05fbf08df2fb8d40d81b9fcb2f45"
+      },
+      "overview.md": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/before/overview.md",
+        "bytes": 2241,
+        "sha256": "sha256:bda1d55396ebec508ec09f4bc201233f8680fbb5441b8cd94db60ef0b0a6f10a"
+      }
+    },
+    "normalization": "Only rating_resolution, effort_profile_metadata and the verified per-cell scenario reference are removed from cross-profile query/path comparison. Attempts are hashed whole, unchanged. Different C profiles intentionally have different scenario/work identities.",
+    "limits": "One fixed strong-ACL Computer, seven declared runtime assumptions,12 automatic important goals; not domain-wide/all-technique coverage, calibrated P, speedup or optimum proof."
+  },
+  "after": {
+    "version": "awg-r04-defender-run-projection/1",
+    "revision": "bc8aa99c19eff85df316c11046ae390e33cc2a1c",
+    "all_source_pins_verified_against_git_objects": true,
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+      "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+      "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:58992f19dc729abc510bd12fc70264066fda08d868445889a702176436f8d8cf",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:b2d751ad2a7df3021095ee4cf2456c1b60385888b7c4ef89e4ea239205878685",
+      "src/engine/query_cli.py": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+      "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "summary": {
+      "batch": {
+        "declared_cells": 12,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 12,
+        "likelihood_rated_cells": 0,
+        "not_run_cells_count": 0,
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 1,
+        "status_counts": {
+          "truncated_incomplete": 11,
+          "truncated_success": 1
+        },
+        "successful_cells": 1,
+        "successful_sources": 1,
+        "supported_sources": 1,
+        "total_sources": 1,
+        "unsupported_sources": 0
+      },
+      "defender_brief": {
+        "defender-brief.json": {
+          "path": "defender-brief.json",
+          "sha256": "sha256:ac49043ec7318da4e48abddc21ff29124ec149e2aed7c5d9e92fb7f20c0fdcba"
+        },
+        "defender-brief.md": {
+          "path": "defender-brief.md",
+          "sha256": "sha256:4da0c49cf35e93ea5ec994f548021cc18187024fb3bf384d638f4abf44f08517"
+        }
+      },
+      "effort_profile": {
+        "classes": {
+          "acquire_reset_identity": {
+            "cost": 0,
+            "method": "AuthenticationControl",
+            "name": "reset_identity_activation",
+            "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+            "t1": 1,
+            "t2": 1
+          },
+          "scenario_reset_password": {
+            "cost": 1,
+            "method": "GenericAll",
+            "name": "directory_password_reset",
+            "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "dimension": "C",
+        "excluded": [
+          "P",
+          "I",
+          "password recovery",
+          "retries",
+          "existing source membership route",
+          "pre-seeded second usable identity/context",
+          "group/derived-right reset work",
+          "Computer host control without explicit network identity"
+        ],
+        "historical_numeric_authority": {
+          "dimension": "C",
+          "review": {
+            "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+            "purpose": "numeric_context_history_adoption",
+            "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+            "reviewed_at": "2026-10-13T04:30:57Z",
+            "reviewer": "nairyuuu"
+          }
+        },
+        "profile_id": "reset-activation-c-v2",
+        "scope_adoption": {
+          "rationale": "Apply the same ordinal reset/activation operation rubric to direct User or explicitly usable Computer principals, at one same-domain Computer context. The controller kind changes applicability, not the operation price. This is an opt-in solo-fork scenario estimate, not observed duration or historical reviewer approval of this scope. One successful operation per canonical work unit; retries/time not modeled. Local host control alone is insufficient. An actor-to-User canonical grant may be inherited; effective permission is already a conditioned prerequisite. Group/derived rights remain unpriced.",
+          "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+          "status": "explicit_opt_in_solo_fork_scenario"
+        },
+        "sources": {
+          "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+            "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+          },
+          "docs/research/ratings/final-cpi-v1/profile.json": {
+            "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+          }
+        },
+        "version": "2.0.0"
+      },
+      "elapsed_seconds": 89.61854547400026,
+      "evaluation_mode": "scenario",
+      "execution_budget": {
+        "max_cells": 12,
+        "max_expansions": 72000,
+        "max_seconds": null,
+        "per_query_seconds": null
+      },
+      "impact": "Unknown unless separately bound by an applicable numeric registry",
+      "implementation_sha256": "sha256:71cd850040775c884d03adfb5d6909ed3d83f5c702546cd611d155b5c7534009",
+      "input_files": {
+        "assumptions": {
+          "reference": "docs/research/awg-r04/examples/machine-identity-assumptions.json",
+          "sha256": "sha256:852fc5d05f782c1c7b2e42943f8292346309aafe161510f4cda890cbc76a282b"
+        },
+        "snapshot": {
+          "reference": "data/processed/awg-r04/pilot-v2/snapshot.json",
+          "sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8"
+        }
+      },
+      "phase_seconds": {
+        "batch_search_and_audit": 67.78600480500018,
+        "build_defender_brief": 0.20913297300012346,
+        "compile_and_write_request": 0.6302323139998407,
+        "inventory": 1.6983315390002645,
+        "load_and_validate_graph": 4.279936677000023,
+        "serialize_full_result": 12.948806365999644
+      },
+      "result": {
+        "path": "result.json",
+        "sha256": "sha256:bf81f48029528f07edadd97c162fe8ed8828c5b62b772f979a947ddb20247bd8"
+      },
+      "resume": {
+        "enabled": false,
+        "previous_artifacts": []
+      },
+      "scenario_policy": null,
+      "search_strategy": "Existing per-source/per-goal planner; prepared reuse, not shared traversal",
+      "selection": {
+        "all_inventory_pairs_selected": false,
+        "eligible_sources": 2590,
+        "eligible_targets": 12,
+        "inventory_pairs_outside_selected_cohort": 31068,
+        "max_sources": 0,
+        "max_targets": 0,
+        "potential_pairs": 31080,
+        "selected_pairs": 12,
+        "selected_sources": 1,
+        "selected_targets": 12,
+        "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+        "source_selector": [
+          "S-1-5-21-1271839998-3495686680-2211690266-4157"
+        ]
+      },
+      "version": "exposure-inventory/1.0.0"
+    },
+    "request": {
+      "batch_id": "auto-exposure",
+      "common_budget": {
+        "max_expansions": 6000,
+        "max_paths": 1,
+        "max_steps": 3
+      },
+      "evaluation_mode": "scenario",
+      "prioritization_policy": "min_effort_impact_pareto",
+      "schema_version": "batch-query-request/1.1.0",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "sources": [
+        {
+          "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "custom_budget": null,
+          "declared_assumptions": [
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "password_policy_accepts",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "directory_write_allowed",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "network_rpc_reachable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "network_kdc_reachable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "authentication_accepted",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "security_group",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "value": true
+            },
+            {
+              "assumption_metadata": {
+                "declared_by": "security_analyst"
+              },
+              "origin": "declared_assumption",
+              "predicate": "membership_usable",
+              "provenance_reference": "scenario://awg-r04/computer-boundary",
+              "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+              "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "value": true
+            }
+          ],
+          "description": "Independent declared compromise scenario; not observed compromise",
+          "identity_provenance_reference": "scenario://awg-r04/machine-identity/FINWVIR-4157",
+          "node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "node_kind": "Computer",
+          "profile_kind": "computer_usable_identity",
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e"
+        }
+      ],
+      "target_goal_ids": null,
+      "target_manifest": {
+        "default_discovery_goals": [],
+        "description": "Snapshot-derived technical candidates; impact remains Unknown",
+        "domain_sid": "S-1-5-21-1271839998-3495686680-2211690266",
+        "manifest_id": "auto-exposure-targets",
+        "schema_version": "target-manifest/1.2.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "targets": [
+          {
+            "category": "tier_0_host",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "required_control_level": "host_admin_execution",
+            "required_state": {
+              "admin_control": [
+                "S-1-5-21-1271839998-3495686680-2211690266-1000"
+              ]
+            },
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "target_node_kind": "Computer",
+            "technical_consequence": "host_admin_execution"
+          },
+          {
+            "category": "tier_0_identity",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "tier_0_identity",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-519",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "SCHEMA ADMINS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-518",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-518",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-516",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "REPLICATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "PRINT OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-521",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "BACKUP OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          },
+          {
+            "category": "high_value_asset",
+            "checkpoint_goal": null,
+            "description": "Automatically selected technical goal; business impact is unreviewed.",
+            "display_name": "SERVER OPERATORS@SEAMLESS.INTERNAL",
+            "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+            "goal_kind": "usable_identity_entitlement",
+            "impact_rating": "Unknown",
+            "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+            "required_control_level": "admin_entitlement",
+            "required_state": {},
+            "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+            "target_node_kind": "Group",
+            "technical_consequence": "attacker_usable_group_entitlement"
+          }
+        ],
+        "version": "1.0.0"
+      }
+    },
+    "inventory_without_implementation_pin_sha256": "sha256:4026a6565cc5a2c8d2db2b6bb9c3cd9bbf3d17e19e887175c375881b07904e34",
+    "rows": [
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+        "target": {
+          "category": "tier_0_host",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "required_control_level": "host_admin_execution",
+          "required_state": {
+            "admin_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            ]
+          },
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "target_node_kind": "Computer",
+          "technical_consequence": "host_admin_execution"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:5e88c577d8cc8eafc791ade786e7d8ac1fd5d8032d369e2442452d2f025387a4",
+        "actual_scenario": "batch-cell:sha256:92f35a2b5315f9c7be7dcd0e7ac74f8588761d244235f68630d3a54c9ec44327",
+        "rating_resolution_sha256": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "dimension": "C",
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "reason": "Profile supports only usable_identity_entitlement Group goals",
+          "status": "not_applicable"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+        "target": {
+          "category": "tier_0_identity",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-512",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_success",
+        "reached": true,
+        "C": 1.0,
+        "P": null,
+        "impact": "Unknown",
+        "expansions": 4996,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:4f09e259a0a1a2ee1af01521ad4f6728f7a8b5e7794fe8e85504a28622d0a179",
+        "actual_scenario": "batch-cell:sha256:86ac9a1ec3326863b85f212b6127a4ec55afa05ed76fe2123f0c84baefeb57ef",
+        "rating_resolution_sha256": "sha256:51c24b83d9a81afc5ff4f2ee36553fb3f1b3455c051fc07f738df9ea6a80784e",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:8d21f1337fb1d22c16227e4431464d9f10360ae12a356be1656285eb506926a4",
+        "paths_without_verified_scenario_sha256": "sha256:bd76581c6898c008f040aaa4d18c42d3c8ecd4c2ce1777c2645c35699a8948f5",
+        "witness_requests": [
+          [
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "technique_id": "scenario_reset_password"
+            },
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "technique_id": "acquire_reset_identity"
+            },
+            {
+              "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "technique_id": "propagate_group_entitlement"
+            }
+          ]
+        ],
+        "ledger": [
+          {
+            "technique": "acquire_reset_identity",
+            "actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "source": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "cost": 0,
+            "unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2799:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-da6a8fac848cbf02d1e1f334a5d95e4bb1c9d48f87c173d794f6b01cabcb9117:intra_forest:1.0.0",
+            "numeric_basis_class": "estimated_expert_scenario"
+          },
+          {
+            "technique": "scenario_reset_password",
+            "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "cost": 1,
+            "unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2799:ctx-bc53a6c9fc072de895a07ca67c8d0820bd1b7e0412692f0451b6d35c1185ee5f:intra_forest:1.0.0",
+            "numeric_basis_class": "estimated_expert_scenario"
+          }
+        ]
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+        "target": {
+          "category": "tier_0_identity",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-519",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a0aeeccc3d7c2baf159e328c566d5eee9c7ee91a5b6a6d9335f8f494892c00bc",
+        "actual_scenario": "batch-cell:sha256:47cf0234a9a9bbdffb6cd5d1cb9368bd1734858b454e73dc26fabe39259173e0",
+        "rating_resolution_sha256": "sha256:fdb6e7703362f47e68a0d16fd815ecc729dd7fbf0fdc183667105889263f6718",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a3501bbfb1f06ea639a215c9ca15743708b6f0b08d807de998ff5fb8f829cf21",
+        "actual_scenario": "batch-cell:sha256:e128653b40304ba32f39137a34de5ea19207ca73b3f4c2401c042de16848dd26",
+        "rating_resolution_sha256": "sha256:6a7f59e563a866f7f328632276d728e4f640964bc27eabb9039412afc541f17a",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:f2ff94d574bff00261ed9a389ac5ccb847de768d18e7bcae7bf3a2937b6de6b2",
+        "actual_scenario": "batch-cell:sha256:3cb5d93a1eebde5afbc3e63f7c686dbf8d41a546bd16215be82141d3e3d2ba2e",
+        "rating_resolution_sha256": "sha256:90fc3f81e361c639fad613b710144686460edbd6a7d8742d274c37291b2711d4",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "SCHEMA ADMINS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-518",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-518",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:7af7334fdf3c7ce71ad01bdc51676e946b810ee60367ac1c63b15de8e669b231",
+        "actual_scenario": "batch-cell:sha256:c42cda489b39b55fb72fade74c2e68dc1e0846660e10f2d5d949168d76f8bc9a",
+        "rating_resolution_sha256": "sha256:4c86a627adf370133d23010313a41f1cdd5b6e58439a4d3a9eeda95a0388e6ba",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-516",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:e6ca1330d2625ef31dd2e453a9b12b43c1f80562839db9e63fba355fd58f4ede",
+        "actual_scenario": "batch-cell:sha256:308f1570a25c4cabb89d2df3b5036f32ef0ee00989416206316231c5d4bc391d",
+        "rating_resolution_sha256": "sha256:082e3e8f530e117aa888e70f4837ac380dd5fab5b1b88a57fe78df8860ac62b3",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "REPLICATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:d4ec18932aefb7c397f6bc0fc02a65504638508bbab090ecbfd73abb53048117",
+        "actual_scenario": "batch-cell:sha256:731dd1f9c0304756656f5f539c91267d354e55486fbcfd06e7aafc5a1a638d79",
+        "rating_resolution_sha256": "sha256:9b552553f6c0c32133e166f4d938c24bec2f1c20ef3a977a82112426c53f8598",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "PRINT OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:a04c1ed6cd0540077ffad9a2d726d18eeeb8dc4fc26883ddc686c5c665a3a071",
+        "actual_scenario": "batch-cell:sha256:f3a65477782ec86860289cb09fb303f8d4110be599f0a79f25ddebf5beb42963",
+        "rating_resolution_sha256": "sha256:64dd003009f7ba20f82e9612a8ebbf33f26d97ae7e9f4ba484053416d36a20e3",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:S-1-5-21-1271839998-3495686680-2211690266-521",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:b07aa2c4a4eaa01f2d9f98c2ddab4fd45b8168e0c87c57628ed1bf4b2dbf8d8b",
+        "actual_scenario": "batch-cell:sha256:e1de34167ead9552c3858d0bd7b4c2a156bebae597d77ac3d150ef8741e34eb0",
+        "rating_resolution_sha256": "sha256:de5cd644d0a7752d9cf85e98c6d561bbe629ef055c0742a191937b94d23f7cd9",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "BACKUP OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:29c3def46aaa7183400ac3425454f1a4ad859adc1fd8eab22dce1b8a17626ad6",
+        "actual_scenario": "batch-cell:sha256:04c3d33631e8c063d7b4534208ef16b78d733268509c11784a54d0dd20f34bff",
+        "rating_resolution_sha256": "sha256:63937e6aefbb9e98533a825868cf2876d8c5cb3701b6bf918345f751e4ac994b",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      },
+      {
+        "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+        "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+        "target": {
+          "category": "high_value_asset",
+          "checkpoint_goal": null,
+          "description": "Automatically selected technical goal; business impact is unreviewed.",
+          "display_name": "SERVER OPERATORS@SEAMLESS.INTERNAL",
+          "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+          "goal_kind": "usable_identity_entitlement",
+          "impact_rating": "Unknown",
+          "provenance_locator": "canonical-node:domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+          "required_control_level": "admin_entitlement",
+          "required_state": {},
+          "target_node_id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+          "target_node_kind": "Group",
+          "technical_consequence": "attacker_usable_group_entitlement"
+        },
+        "status": "truncated_incomplete",
+        "reached": false,
+        "C": null,
+        "P": null,
+        "impact": null,
+        "expansions": 6000,
+        "guarantees": {
+          "is_minimum_proven_over_scope": false,
+          "is_no_path_proven_over_scope": false
+        },
+        "query_without_verified_rating_scope_sha256": "sha256:36a700ffb99f9a6049eeae3235075b8015c33139c6bcfb66854cd15fa184e896",
+        "actual_scenario": "batch-cell:sha256:d22a460baef3eae67396ad3c0a79663cce05e417fa329085af687c985f0a451c",
+        "rating_resolution_sha256": "sha256:5fc9391c31336a52aad03ead05bae286f8643e1fe7c3f6f94967b348aacf29bf",
+        "effort_applicability": {
+          "I": "not_evaluated",
+          "P": "not_evaluated",
+          "activation_owners": 2491,
+          "active_classes": 2,
+          "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only",
+          "dimension": "C",
+          "direct_reset_pairs": 2491,
+          "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+          "profile_id": "reset-activation-c-v2",
+          "status": "bound"
+        },
+        "complete_attempts_sha256": "sha256:67463cb80c79008a9ce4aabc3682aad5888118083b84024a54601bdbfc069a22",
+        "paths_without_verified_scenario_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "witness_requests": [],
+        "ledger": []
+      }
+    ],
+    "artifacts": {
+      "result.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/after/result.json",
+        "bytes": 1267224242,
+        "sha256": "sha256:bf81f48029528f07edadd97c162fe8ed8828c5b62b772f979a947ddb20247bd8"
+      },
+      "checkpoint.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/after/checkpoint.json",
+        "bytes": 156,
+        "sha256": "sha256:5edcfe0e068dc648c51eaf84e286d87c84fbd986b840a9be26f0654355ce3909"
+      },
+      "summary.json": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/after/summary.json",
+        "bytes": 5904,
+        "sha256": "sha256:9aa753d2a4ae4e9068ca49b54f8b586fa65b758241df0f194169d0005586cbf8"
+      },
+      "overview.md": {
+        "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-defender-v1/after/overview.md",
+        "bytes": 2232,
+        "sha256": "sha256:7fedbd2fc610d9c8687e96a7d3b2da639bdab49bb32d961520ee5b1017381943"
+      }
+    },
+    "normalization": "Only rating_resolution, effort_profile_metadata and the verified per-cell scenario reference are removed from cross-profile query/path comparison. Attempts are hashed whole, unchanged. Different C profiles intentionally have different scenario/work identities.",
+    "limits": "One fixed strong-ACL Computer, seven declared runtime assumptions,12 automatic important goals; not domain-wide/all-technique coverage, calibrated P, speedup or optimum proof."
+  },
+  "comparison": {
+    "before_revision": "6cd7247cf17a83e25e12ed906f68221ce9277e24",
+    "after_revision": "bc8aa99c19eff85df316c11046ae390e33cc2a1c",
+    "same_request_inventory": true,
+    "all12_complete_attempts_and_witness_states_equal": true,
+    "same_expansions_statuses_and_guarantees": true,
+    "C_changes": [
+      [
+        "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        null,
+        1.0
+      ]
+    ],
+    "normalization": "Only rating_resolution, effort_profile_metadata and the verified per-cell scenario reference are removed from cross-profile query/path comparison. Attempts are hashed whole, unchanged. Different C profiles intentionally have different scenario/work identities."
+  },
+  "raw_independent_oracle": {
+    "method": "stdlib direct raw record lookup, not AWG candidate/graph/cost generation",
+    "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+    "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "ace": [
+      {
+        "PrincipalSID": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "PrincipalType": "Computer",
+        "RightName": "GenericAll",
+        "AceType": "",
+        "IsInherited": true
+      }
+    ],
+    "membership": [
+      {
+        "MemberId": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "MemberType": "User"
+      }
+    ],
+    "inherited_actor_grant_explicitly_in_v2_scope": true
+  },
+  "v1_profile_definition_unchanged": true,
+  "v1_profile_definition_sha256": "sha256:aa2b030a680dc67ad6ded70634483105ab2a00caacca9c67df851b87fca454ef",
+  "product_outputs": {
+    "defender-brief.md": {
+      "path": "docs/research/awg-r04/examples/defender-brief.md",
+      "bytes": 6418,
+      "sha256": "sha256:4da0c49cf35e93ea5ec994f548021cc18187024fb3bf384d638f4abf44f08517"
+    },
+    "defender-brief.json": {
+      "path": "docs/research/awg-r04/examples/defender-brief.json",
+      "bytes": 39312,
+      "sha256": "sha256:ac49043ec7318da4e48abddc21ff29124ec149e2aed7c5d9e92fb7f20c0fdcba"
+    }
+  },
+  "acceptance": {
+    "manifest": {
+      "path": "reports/research/week4-guided-exploration-acceptance-manifest-v14.json",
+      "bytes": 331749,
+      "sha256": "sha256:2d28d61e23cc601249606f34411376aa1a01bfcfee12882871dc0292677c17cc"
+    },
+    "twice_deterministic": true,
+    "summary": {
+      "blocked_run_count": 0,
+      "known_defect_count": 0,
+      "not_executed_count": 2,
+      "pass_count": 36,
+      "pending_count": 0,
+      "total_cases": 38,
+      "unexpected_failure_count": 0
+    },
+    "frozen_semantic_digest": "sha256:e4f9a3f1779753650a45dbf4c671c8cf68363e100c4a9bc861850a0cb2cbbbec"
+  },
+  "selected_tests": {
+    "passed": 97,
+    "seconds": 9.71,
+    "junit": {
+      "path": "docs/research/awg-r04/evidence/iteration-13-selected.xml",
+      "bytes": 14522,
+      "sha256": "sha256:8068602dbae78656743808c9f476dd842de01c72f2f88a4112c954b5499d7794"
+    }
+  },
+  "limits": [
+    "Twelve pairs for one explicit strong-ACL machine identity, not2590sources or all649goals.",
+    "Seven runtime assumptions and the identity are declarations, not observations or P=1.",
+    "Scope is three named reset/activation/membership techniques. DC host takeover needs other techniques; unresolved is not safe.",
+    "C-only scenario scope adoption reuses historical ordinal1/0 prices, not old reviewer approval or calibrated probability. Recorded inherited actor grants condition on effective permission; group/derived rights unpriced.",
+    "One C-rated conditional witness,11truncated incomplete goals, all minimum proofFalse. No new reachable path, globally minimum path or intervention effectiveness claim.",
+    "Phase timings are descriptive single runs with different rating work, not a speed comparison. Readable output does not remove the complete1.267GB audit.",
+    "No production AND-OR, new credential extraction, probability or business-impact assignments."
+  ],
+  "first_attempts": {
+    "defender-first.xml": "37pass/6new-fixture assertions wrong (empty min-effort summary vsNone, singleton path not actually truncated, invalid zero-cell budget); corrected fixtures without changing native gates.",
+    "defender-selected.xml": "94pass/2new tests assumed custom_budget mapping; builder correctly leaves itNone. Corrected test, no production change."
+  }
+}

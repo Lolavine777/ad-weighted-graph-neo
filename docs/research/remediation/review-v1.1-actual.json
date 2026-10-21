@@ -1,0 +1,112 @@
+{
+  "comparison_contract_version": "1.1.0",
+  "implementation_sha256": {
+    "docs/research/remediation/request-v1.1.schema.json": "sha256:566badf7a4f0cf1f256ec703f2482ceed89c2c3929328ff136f498d4b6e78005",
+    "docs/research/remediation/result-v1.1.schema.json": "sha256:cee9fccc2901fcaffcd388e889a0d15c5f502bd0e77811dfb110d711bf11a1e4",
+    "scripts/research/remediation_acceptance.py": "sha256:a344f27095d56712572ef7ee1d36a79148ca888ae8e0a52544399fba776a6a5b",
+    "tests/test_remediation_contract.py": "sha256:6d44db3237d9ec8ab154d5a2b863b0dd36483de2173c7131c9be3518cb9d4fa3",
+    "tests/test_remediation_identity.py": "sha256:415269e6838c12b3e447d621f2cbb71ba2e504ed46dddb7192bc4e721440b755"
+  },
+  "limitations": [
+    "SEAMLESS checks use the unchanged raw-backed reachability oracle; semantic transport examples are synthetic",
+    "No B counterfactual executor/native trace-binding adapter or viewer implemented",
+    "Complete bypass reporting covers declared normalized after witnesses; B must bind full native run and proof artifacts",
+    "Full repository pytest and Compose were not rerun",
+    "B exact-head review and remote CI remain separate gates"
+  ],
+  "local_checks": {
+    "acceptance_and_identity_plus_frozen_pin_tests": {
+      "duration_seconds": 30.2,
+      "passed": 55,
+      "skipped": 0
+    },
+    "canonical_contract_check": "passed",
+    "contract_checker": {
+      "catalog_entries": 11,
+      "oracle_cases": 8,
+      "status": "passed"
+    },
+    "repository_check": "passed",
+    "ruff_format": "passed",
+    "ruff_lint": "passed",
+    "yamllint": "passed"
+  },
+  "preserved_baseline_sha256": {
+    "docs/research/remediation/seamless-actual-v1.json": "sha256:160b641c49c9c094814f3ad9da3062f2805c636703a358aa8c22afc4c3930c8b",
+    "tests/fixtures/remediation/finite-v1.json": "sha256:4aa74568a0542e48fd826d088ae50c39c70dce9d38d261d6a1702c7078e8da57",
+    "tests/fixtures/remediation/graph.json": "sha256:4fdc321850c7e67250fc9614ec51219e6f896afe4aa8fee9dbd9df117c3ef320",
+    "tests/fixtures/remediation/request-v1.json": "sha256:51412c0a4b42d3811d8aaddf8b7754f5b3bcb7786336232bdcc130f0bd87c950",
+    "tests/fixtures/remediation/result-v1.json": "sha256:44cb5db1026800c607e278c96a6308263135f934dd6f8774a8b9fa9be84d4ad1"
+  },
+  "program_identity_version": "semantic-program/1",
+  "reviewed_base": "c9a27172a851696b929ed2cf8347813d3a16cdd2",
+  "seamless": {
+    "admin_support": [
+      {
+        "attribute": "LocalAdmins[]"
+      },
+      {
+        "attribute": "Members[]"
+      }
+    ],
+    "cases": {
+      "admin_channel_deny": {
+        "complete": true,
+        "expansions": 4,
+        "programs": 0,
+        "status": "blocked",
+        "truncated": false
+      },
+      "before": {
+        "complete": true,
+        "expansions": 4,
+        "programs": 1,
+        "status": "success",
+        "truncated": false
+      },
+      "membership_only": {
+        "complete": true,
+        "expansions": 4,
+        "programs": 1,
+        "status": "success",
+        "truncated": false
+      },
+      "missing_recovery": {
+        "complete": true,
+        "expansions": 2,
+        "programs": 0,
+        "status": "indeterminate",
+        "truncated": false
+      },
+      "step_cap": {
+        "complete": false,
+        "expansions": 3,
+        "programs": 0,
+        "status": "truncated",
+        "truncated": true
+      }
+    },
+    "edges": 56367,
+    "engine_revision": "7368cac505b3d19331cb8a688114107e91134f25",
+    "evidence_ids": {
+      "V_A_AdminTo_C0": "sha256:c65db35acbdfdba6d8895faee771e5ceb0c5a8568849d4e0ae84897e30bb73f3",
+      "V_A_preauth": "20210920185958_users.json#/users/1700/Properties/dontreqpreauth"
+    },
+    "limitations": [
+      "Conditional prediction; no observed attack or deployed remediation",
+      "No counterfactual snapshot-fact or ACL executor yet",
+      "No full-snapshot batch or DA/EA reachability claim",
+      "No C/P adoption or risk reduction claim",
+      "Missing recovery and step cap cannot prove disconnection"
+    ],
+    "nodes": 3370,
+    "preauth_evidence_count": 1,
+    "raw_graph_unchanged": true,
+    "raw_manifest_sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+    "schema_version": "1.0.0",
+    "scope": "one source X, one host goal C0, four-technique allow-list, eight explicit assumptions",
+    "semantic_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "verified_raw_files": 6
+  }
+}

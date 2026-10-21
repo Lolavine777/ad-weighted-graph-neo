@@ -1,0 +1,62 @@
+"""Project two separate full batch experiments without relabeling revisions."""
+import argparse
+import hashlib
+import json
+import shutil
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+p=argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo',type=Path,required=True)
+p.add_argument('--execution-root',type=Path,required=True)
+a=p.parse_args();REPO=a.repo.resolve();ROOT=a.execution_root.resolve()
+OUT=REPO/'docs/research/awg-r04/evidence'
+
+def read(path):return json.loads(path.read_text())
+def pin(path):
+    h=hashlib.sha256()
+    with path.open('rb') as f:
+        for block in iter(lambda:f.read(1024*1024),b''):h.update(block)
+    return {'path':str(path.relative_to(REPO)) if path.is_relative_to(REPO) else str(path),
+            'bytes':path.stat().st_size,'sha256':'sha256:'+h.hexdigest()}
+
+wire=read(REPO/'reports/generated/awg-r04-batch-audit-v1/summary.json')
+writer=read(REPO/'reports/generated/awg-r04-batch-writer-v1/summary.json')
+assert wire['revisions']=={'before':'2708100b83549dc606d610de2c0b20e19130209d','after':'668bf5f6cb70c5c14397b11967adb920d0e15278'}
+assert writer['revisions']=={'before':'668bf5f6cb70c5c14397b11967adb920d0e15278','after':'acf4a0fea8c9bee0477110f1f505f33242149f3d'}
+assert wire['all_full_packages_equal'] and writer['all_full_packages_equal']
+assert len(wire['trials'])==6 and len(writer['trials'])==4
+assert all(r['parity']['full_parity'] for run in (wire,writer) for r in run['trials'])
+assert writer['trials'][1]['parity']['physical_bindings'][1]['batch_pin']==pin(REPO/'src/engine/batch.py')['sha256']
+assert wire['trials'][1]['parity']['physical_bindings'][1]['query_cli_pin']==pin(REPO/'src/engine/query_cli.py')['sha256']
+for src,name in ((ROOT/'benchmark_batch_audit.py','batch-audit-wire-benchmark.txt'),
+                 (ROOT/'benchmark_batch_writer.py','batch-audit-writer-benchmark.txt')):
+    assert src.read_bytes()==(OUT/name).read_bytes()
+src=ROOT/'batch-writer-selected.xml';dst=OUT/'iteration-9-selected.xml'
+assert not dst.exists();shutil.copyfile(src,dst)
+suite=ET.parse(dst).getroot()[0]
+assert suite.get('tests')=='109' and suite.get('errors')==suite.get('failures')=='0'
+profile_dir=REPO/'reports/generated/awg-r04-batch-audit-profile-v1'
+data={'schema_version':'awg-r04-batch-audit-experiments/1',
+      'native_code_revision':writer['revisions']['after'],
+      'wire_transfer':wire,'writer_memory':writer,
+      'profile':{'revision':wire['revisions']['after'],
+                 'measurements':read(ROOT/'batch-audit-profile-summary.json'),
+                 'command':read(ROOT/'batch-audit-profile-command.json'),
+                 'artifacts':[pin(ROOT/'batch-audit-before.pstats'),
+                              *[pin(profile_dir/n) for n in ('summary.json','result.json','checkpoint.json')]],
+                 'warning':'Cumulative timings overlap and are instrumented; no wall-speedup inference from their sums/ratios.'},
+      'implementation':[pin(REPO/n) for n in ('src/engine/batch.py','tests/test_source_goal_batch_runner.py')],
+      'selected_tests':{'suite':suite.attrib,'artifact':pin(dst)},
+      'raw_manifest':read(REPO/'data/samples/manifests/seamless-raw-v1.json'),
+      'acceptance_manifest':pin(REPO/'reports/research/week4-guided-exploration-acceptance-manifest-v11.json'),
+      'generator':pin(OUT/'iteration-9-evidence-generator.txt'),
+      'limits':['Experiments have different baselines/time windows; do not multiply or merge their timing gains.',
+                'Wire:3trials/setting. Writer:2trials/setting. Shared OS cache, no concurrent profiler/tests, no statistical confidence interval.',
+                'One powerful-ACL initially usable User x3automatic important goals, not multi-source/domain-wide/all-catalog completion.',
+                '27,490 expansions/attempts per run, one C1success/two truncated-incomplete, P/Iunrated and all native minimum/no-path proofs False.',
+                'Full native packages/checkpoints retained locally with hashes. Projection is not the full audit.',
+                'No live AD actions, invented probabilities, search pruning, shared traversal or scoring/authority changes.']}
+dest=OUT/'iteration-9-batch.json';assert not dest.exists()
+dest.write_text(json.dumps(data,ensure_ascii=False,sort_keys=True,indent=2)+'\n')
+print(json.dumps({'evidence':pin(dest),'tests':suite.attrib}))

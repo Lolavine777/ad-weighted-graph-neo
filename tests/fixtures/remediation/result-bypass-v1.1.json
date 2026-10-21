@@ -1,0 +1,1030 @@
+{
+  "baseline_input_digest_after": "sha256:73c151a00a0ae3a334b16d2d2ac5eb4b714e10b9239bae391e7a470b7a79e08c",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "cells": [
+    {
+      "affected": true,
+      "affected_program_ids": [
+        "alice-MD",
+        "alice-MI"
+      ],
+      "after": {
+        "cell_ref": "alice/host-admin",
+        "complete": true,
+        "program_count": 1,
+        "query_digest": "sha256:17bb0d28b9cd0222c919a811d9bb82a19a7ed93b2fb8434c31e3d7e2d55a1bf3",
+        "reachability": "reachable",
+        "rediscovery": {
+          "proof_ref": "synthetic://269/independent-rediscovery",
+          "run_id": "finite-after",
+          "status": "complete"
+        },
+        "route_count": 1,
+        "route_ids": [
+          "route-alice-D"
+        ],
+        "run_id": "finite-after",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [],
+        "trace_refs": [
+          {
+            "program_id": "alice-D",
+            "route_id": "route-alice-D",
+            "semantic_program": [
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "AdminTo",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "10000000-0000-4000-8000-000000000002"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#admin_channel/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "admin_channel",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#authentication_accepted/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "authentication_accepted",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1101",
+                "target": "10000000-0000-4000-8000-000000000002",
+                "technique_id": "obtain_admin_execution_on_host"
+              }
+            ],
+            "trace_ref": "synthetic://269/oracle/alice-D"
+          }
+        ],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": [
+          "alice-D"
+        ]
+      },
+      "before": {
+        "cell_ref": "alice/host-admin",
+        "complete": true,
+        "program_count": 3,
+        "query_digest": "sha256:e89a1e7a7d5735211aa8a5bb9d546611316d4c4b0e19cbffa8948e08f8b45db5",
+        "reachability": "reachable",
+        "route_count": 3,
+        "route_ids": [
+          "route-alice-D",
+          "route-alice-MD",
+          "route-alice-MI"
+        ],
+        "run_id": "finite-before",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [],
+        "trace_refs": [
+          {
+            "program_id": "alice-D",
+            "route_id": "route-alice-D",
+            "semantic_program": [
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "AdminTo",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "10000000-0000-4000-8000-000000000002"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#admin_channel/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "admin_channel",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#authentication_accepted/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "authentication_accepted",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1101",
+                "target": "10000000-0000-4000-8000-000000000002",
+                "technique_id": "obtain_admin_execution_on_host"
+              }
+            ],
+            "trace_ref": "synthetic://269/oracle/alice-D"
+          },
+          {
+            "program_id": "alice-MD",
+            "route_id": "route-alice-MD",
+            "semantic_program": [
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "MemberOf",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "S-1-5-21-1000-2000-3000-2103"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#security_group/S-1-5-21-1000-2000-3000-1101/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "security_group",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#membership_usable/S-1-5-21-1000-2000-3000-1101/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "membership_usable",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1101",
+                "target": "S-1-5-21-1000-2000-3000-2103",
+                "technique_id": "propagate_group_entitlement"
+              },
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "AdminTo",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "10000000-0000-4000-8000-000000000002"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#admin_channel/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "admin_channel",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#authentication_accepted/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "authentication_accepted",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1101",
+                "target": "10000000-0000-4000-8000-000000000002",
+                "technique_id": "obtain_admin_execution_on_host"
+              }
+            ],
+            "trace_ref": "synthetic://269/oracle/alice-MD"
+          },
+          {
+            "program_id": "alice-MI",
+            "route_id": "route-alice-MI",
+            "semantic_program": [
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "MemberOf",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "S-1-5-21-1000-2000-3000-2103"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#security_group/S-1-5-21-1000-2000-3000-1101/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "security_group",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#membership_usable/S-1-5-21-1000-2000-3000-1101/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "membership_usable",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1101",
+                "target": "S-1-5-21-1000-2000-3000-2103",
+                "technique_id": "propagate_group_entitlement"
+              },
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1101",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "AdminTo",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "10000000-0000-4000-8000-000000000002"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1101"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#admin_channel/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "admin_channel",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#authentication_accepted/S-1-5-21-1000-2000-3000-1101/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "authentication_accepted",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1101",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ],
+                "source": "S-1-5-21-1000-2000-3000-2103",
+                "target": "10000000-0000-4000-8000-000000000002",
+                "technique_id": "obtain_admin_execution_on_host"
+              }
+            ],
+            "trace_ref": "synthetic://269/oracle/alice-MI"
+          }
+        ],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": [
+          "alice-D",
+          "alice-MD",
+          "alice-MI"
+        ]
+      },
+      "bypass_program_ids": [
+        "alice-D"
+      ],
+      "conditional_p": {
+        "after_interval": null,
+        "after_program_id": null,
+        "basis_refs": [],
+        "before_interval": null,
+        "before_program_id": null,
+        "comparison_scope_digest": null,
+        "delta_interval": null,
+        "interpretation": "conditional_single_program_not_campaign",
+        "status": "unrated"
+      },
+      "cut_program_ids": [
+        "alice-MD",
+        "alice-MI"
+      ],
+      "cut_route_ids": [
+        "route-alice-MD",
+        "route-alice-MI"
+      ],
+      "disconnected": false,
+      "effort": {
+        "after": null,
+        "basis_refs": [],
+        "before": null,
+        "delta": null,
+        "proof_refs": [
+          "synthetic://269/finite-exhaustion"
+        ],
+        "status": "unrated",
+        "unit": null
+      },
+      "goal_id": "host-admin",
+      "new_program_ids": [],
+      "replay_failures": [
+        {
+          "decision_ref": "synthetic://269/membership_usable/alice",
+          "intervention_ids": [
+            "membership-alice"
+          ],
+          "program_id": "alice-MD",
+          "trace_ref": "synthetic://269/oracle/alice-MD"
+        },
+        {
+          "decision_ref": "synthetic://269/membership_usable/alice",
+          "intervention_ids": [
+            "membership-alice"
+          ],
+          "program_id": "alice-MI",
+          "trace_ref": "synthetic://269/oracle/alice-MI"
+        }
+      ],
+      "source_id": "alice"
+    },
+    {
+      "affected": true,
+      "affected_program_ids": [
+        "bob-MI"
+      ],
+      "after": {
+        "cell_ref": "bob/host-admin",
+        "complete": true,
+        "program_count": 0,
+        "query_digest": "sha256:71cc4f3cdd0dc913083c7bac405b6970b52ea53e075b68f262d341359f845989",
+        "reachability": "proven_unreachable",
+        "rediscovery": {
+          "proof_ref": "synthetic://269/independent-rediscovery",
+          "run_id": "finite-after",
+          "status": "complete"
+        },
+        "route_count": 0,
+        "route_ids": [],
+        "run_id": "finite-after",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [
+          "all continuations denied by admin_channel"
+        ],
+        "trace_refs": [],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": []
+      },
+      "before": {
+        "cell_ref": "bob/host-admin",
+        "complete": true,
+        "program_count": 1,
+        "query_digest": "sha256:b06870a7c79a3d1f47913f9483a4b7fb84adc8d35e99dace17973da4983cdf66",
+        "reachability": "reachable",
+        "route_count": 1,
+        "route_ids": [
+          "route-bob-MI"
+        ],
+        "run_id": "finite-before",
+        "scope_proof_ref": "synthetic://269/finite-exhaustion",
+        "search_diagnostics": [],
+        "trace_refs": [
+          {
+            "program_id": "bob-MI",
+            "route_id": "route-bob-MI",
+            "semantic_program": [
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1102",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "MemberOf",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "S-1-5-21-1000-2000-3000-2103"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:a4e6a0752667ea39f258d1e01e424e6a831803802b5564f7a0763a3dbced7686"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1102"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:a4e6a0752667ea39f258d1e01e424e6a831803802b5564f7a0763a3dbced7686"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1102"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#security_group/S-1-5-21-1000-2000-3000-1102/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "security_group",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#membership_usable/S-1-5-21-1000-2000-3000-1102/S-1-5-21-1000-2000-3000-2103"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "membership_usable",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "S-1-5-21-1000-2000-3000-2103"
+                  }
+                ],
+                "producer_action_indices": [],
+                "source": "S-1-5-21-1000-2000-3000-1102",
+                "target": "S-1-5-21-1000-2000-3000-2103",
+                "technique_id": "propagate_group_entitlement"
+              },
+              {
+                "actor": "S-1-5-21-1000-2000-3000-1102",
+                "context": {
+                  "authentication_context": null,
+                  "budget": null,
+                  "horizon": "fixed-snapshot-window",
+                  "method": "AdminTo",
+                  "policy_reference": "remediation269-synthetic",
+                  "resource_context": "10000000-0000-4000-8000-000000000002"
+                },
+                "evidence_bindings": [
+                  {
+                    "kind": "canonical_edge",
+                    "reference": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+                  }
+                ],
+                "participants": {},
+                "prerequisites": [
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "initial_state",
+                        "reference": "synthetic://269/initial/S-1-5-21-1000-2000-3000-1102"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "actor_controlled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "canonical_edge",
+                        "reference": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+                      }
+                    ],
+                    "origin": "technical_rule",
+                    "predicate": "source_authorized",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "snapshot_fact",
+                        "reference": "synthetic://269/enabled/S-1-5-21-1000-2000-3000-1102"
+                      }
+                    ],
+                    "origin": "observed_evidence",
+                    "predicate": "actor_enabled",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#admin_channel/S-1-5-21-1000-2000-3000-1102/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "admin_channel",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  },
+                  {
+                    "evidence_bindings": [
+                      {
+                        "kind": "runtime_fact",
+                        "reference": "synthetic://269/assumptions#authentication_accepted/S-1-5-21-1000-2000-3000-1102/10000000-0000-4000-8000-000000000002"
+                      }
+                    ],
+                    "origin": "declared_assumption",
+                    "predicate": "authentication_accepted",
+                    "satisfied": true,
+                    "subject": "S-1-5-21-1000-2000-3000-1102",
+                    "target": "10000000-0000-4000-8000-000000000002"
+                  }
+                ],
+                "producer_action_indices": [
+                  0
+                ],
+                "source": "S-1-5-21-1000-2000-3000-2103",
+                "target": "10000000-0000-4000-8000-000000000002",
+                "technique_id": "obtain_admin_execution_on_host"
+              }
+            ],
+            "trace_ref": "synthetic://269/oracle/bob-MI"
+          }
+        ],
+        "truncated": false,
+        "unresolved_feasibility": false,
+        "witness_program_ids": [
+          "bob-MI"
+        ]
+      },
+      "bypass_program_ids": [],
+      "conditional_p": {
+        "after_interval": null,
+        "after_program_id": null,
+        "basis_refs": [],
+        "before_interval": null,
+        "before_program_id": null,
+        "comparison_scope_digest": null,
+        "delta_interval": null,
+        "interpretation": "conditional_single_program_not_campaign",
+        "status": "unrated"
+      },
+      "cut_program_ids": [
+        "bob-MI"
+      ],
+      "cut_route_ids": [
+        "route-bob-MI"
+      ],
+      "disconnected": true,
+      "effort": {
+        "after": null,
+        "basis_refs": [],
+        "before": null,
+        "delta": null,
+        "proof_refs": [
+          "synthetic://269/finite-exhaustion"
+        ],
+        "status": "unreachable",
+        "unit": null
+      },
+      "goal_id": "host-admin",
+      "new_program_ids": [],
+      "replay_failures": [
+        {
+          "decision_ref": "synthetic://269/membership_usable/bob",
+          "intervention_ids": [
+            "membership-bob"
+          ],
+          "program_id": "bob-MI",
+          "trace_ref": "synthetic://269/oracle/bob-MI"
+        }
+      ],
+      "source_id": "bob"
+    }
+  ],
+  "comparison_scope_digest": "sha256:bddb31f6957ea2670d91f09cfcc8a7e81b04a82b5c7f280edd891093e78423e0",
+  "counterfactual_origin": "declared_intervention_not_observation",
+  "declared_goal_ids": [
+    "host-admin"
+  ],
+  "declared_source_ids": [
+    "alice",
+    "bob"
+  ],
+  "overlay_digest": "sha256:3e662fdea5ed7d15d2b7c43de7a7523ff9ef4d0513bb07b748554e55812a2c99",
+  "overlay_disposition": "applied",
+  "program_identity_version": "semantic-program/1",
+  "request_id": "finite-shared-membership",
+  "schema_version": "1.1.0",
+  "summary": {
+    "affected_sources": [
+      "alice",
+      "bob"
+    ],
+    "evaluated_pairs": 2,
+    "exposed_sources_after": [
+      "alice"
+    ],
+    "exposed_sources_before": [
+      "alice",
+      "bob"
+    ],
+    "fully_disconnected_sources": [
+      "bob"
+    ],
+    "goals_still_reachable": [
+      "host-admin"
+    ],
+    "limitations": [
+      "Synthetic finite scope, no production rating basis",
+      "Four observed-evidence traces across two cells; four ordered semantic programs",
+      "Existing initial host control and protocols outside the allow-list excluded"
+    ],
+    "pairs_disconnected": {
+      "denominator": 2,
+      "numerator": 1,
+      "percent": 50,
+      "scope": "complete_declared_scope"
+    },
+    "programs_cut": {
+      "denominator": 4,
+      "numerator": 3,
+      "percent": 75,
+      "scope": "complete_declared_scope"
+    },
+    "proven_disconnected_pairs": [
+      {
+        "goal_id": "host-admin",
+        "source_id": "bob"
+      }
+    ],
+    "requested_pairs": 2,
+    "routes_cut": {
+      "denominator": 4,
+      "numerator": 3,
+      "percent": 75,
+      "scope": "complete_declared_scope"
+    },
+    "truncated_pairs": 0,
+    "unknown_pairs": 0,
+    "unsupported_pairs": 0
+  }
+}

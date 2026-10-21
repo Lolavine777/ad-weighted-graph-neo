@@ -1,0 +1,751 @@
+{
+  "issue": 139,
+  "dataset_id": "seamless-v1",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "observed_on": "2026-10-01",
+  "project_revision": "8c15993b2ac2ed491eda5dc4655e08e2eb478ec1",
+  "status": "measured",
+  "description": "Đã đo native Legacy ở hai database cũ, đối soát đủ Group identities và hai membership boundary; không kết luận parity toàn graph.",
+  "input_manifest": "data/samples/manifests/seamless-raw-v1.json",
+  "manifest_verification": {
+    "status": "verified",
+    "issues": [],
+    "file_count": 6,
+    "total_size_bytes": 11371828,
+    "input_transformed": false
+  },
+  "scope_sources": {
+    "issues": [
+      139,
+      82,
+      47,
+      48
+    ],
+    "read_on": "2026-10-01",
+    "pr130_head": "32a9b49573b09431ec13f6a6e823923ed366e164",
+    "pr148_head": "5866a00f383c17653eac5643009817ab258f3a2a",
+    "historical_401": "https://github.com/nairyuuu/ad-weighted-graph/issues/139#issuecomment-5882620524"
+  },
+  "legacy_runtime": {
+    "bloodhound_version": "4.0.3",
+    "neo4j_version": "4.1.13",
+    "source_run": "PR #130: initial và clean_database_rerun; truy vấn lại database đang lưu, không import mới.",
+    "source_commit": "b54c418ef83fe5856ae3fe6317a20f2368a6378c",
+    "artifact_digests": {
+      "bloodhound_linux_x64_zip_sha256": "2321bcf59fc695ef50c4c540af7c4f76343e9ea8d1989ed0d30f33b705147d25",
+      "neo4j_image": "neo4j@sha256:1f08dd79d877776e2501ba77d8b4c5354e8953d603fcae31df6b7b2c61685bc0"
+    },
+    "runs": [
+      {
+        "container": "bh-legacy-403-neo4j",
+        "container_id": "c6d35fa9bfbd6b9b67bc4090c943a4090f6c377ec1239307085e44faf2eee865",
+        "image_id": "sha256:1f08dd79d877776e2501ba77d8b4c5354e8953d603fcae31df6b7b2c61685bc0",
+        "created": "2026-09-27T16:30:43.480665505Z"
+      },
+      {
+        "container": "bh-legacy-403-neo4j-rerun",
+        "container_id": "644315813dbf44ba39b8299dee14d0ae8fc6a1d26a4d1d8176a90f81b8bd4ea4",
+        "image_id": "sha256:1f08dd79d877776e2501ba77d8b4c5354e8953d603fcae31df6b7b2c61685bc0",
+        "created": "2026-09-27T16:40:45.293913197Z"
+      }
+    ],
+    "runtime_query_result": [
+      {
+        "name": "Neo4j Kernel",
+        "versions": [
+          "4.1.13"
+        ],
+        "edition": "community"
+      }
+    ]
+  },
+  "raw_observations": {
+    "S-1-5-4": {
+      "raw_file": "20210920185958_groups.json",
+      "raw_locator": "20210920185958_groups.json#/groups/6/Members/3/MemberId",
+      "MemberId": "SEAMLESS.INTERNAL-S-1-5-4",
+      "MemberType": "Group",
+      "first_class_object_count": 0,
+      "parent_objectid": "SEAMLESS.INTERNAL-S-1-5-32-545",
+      "parent_name": "USERS@SEAMLESS.INTERNAL",
+      "parent_distinguishedname": "CN=Users,CN=Builtin,DC=seamless,DC=internal",
+      "parent_locator": "20210920185958_groups.json#/groups/6"
+    },
+    "S-1-5-17": {
+      "raw_file": "20210920185958_groups.json",
+      "raw_locator": "20210920185958_groups.json#/groups/8/Members/1/MemberId",
+      "MemberId": "SEAMLESS.INTERNAL-S-1-5-17",
+      "MemberType": "Group",
+      "first_class_object_count": 0,
+      "parent_objectid": "SEAMLESS.INTERNAL-S-1-5-32-568",
+      "parent_name": "IIS_IUSRS@SEAMLESS.INTERNAL",
+      "parent_distinguishedname": "CN=IIS_IUSRS,CN=Builtin,DC=seamless,DC=internal",
+      "parent_locator": "20210920185958_groups.json#/groups/8"
+    }
+  },
+  "project_observations": {
+    "metadata": {
+      "code_version": "8c15993b2ac2ed491eda5dc4655e08e2eb478ec1",
+      "contract_version": "1.3.0",
+      "created_at": "2026-10-01T00:00:00Z",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "weight_profile": "unit"
+    },
+    "nodes": 3370,
+    "edges": 53774,
+    "nodes_by_kind": {
+      "OU": 223,
+      "GPO": 2,
+      "Group": 551,
+      "Domain": 1,
+      "Computer": 100,
+      "User": 2493
+    },
+    "edges_by_kind": {
+      "GenericAll": 37044,
+      "MemberOf": 13324,
+      "WriteDacl": 3395,
+      "CanPSRemote": 2,
+      "AdminTo": 9
+    },
+    "unknown_assessments": 3,
+    "warnings": 0,
+    "boundary_nodes": [
+      {
+        "domain": "NT AUTHORITY",
+        "id": "S-1-5-17",
+        "is_boundary": true,
+        "kind": "Group",
+        "label": "IUSR"
+      },
+      {
+        "domain": "NT AUTHORITY",
+        "id": "S-1-5-4",
+        "is_boundary": true,
+        "kind": "Group",
+        "label": "INTERACTIVE"
+      }
+    ],
+    "boundary_edges": [
+      {
+        "id": "sha256:4eee7e7329d4152c4474f3ec1d131cb1e34c7d8a634c14c34c6da777533c8516",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "SEAMLESS.INTERNAL-S-1-5-32-545",
+            "time_provenance_reason": "Mốc quy ước để tái lập phép đo #139; manifest không xác định thời gian thu thập, không suy từ tên file hoặc thời gian filesystem.",
+            "timestamp": "2026-10-01T00:00:00Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-4",
+        "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+        "weight": 1.0
+      },
+      {
+        "id": "sha256:56fa22e80f7a76622f1c7a60d1663706e7d59033071feedca0b9c39754bdc2f6",
+        "kind": "MemberOf",
+        "provenance": [
+          {
+            "attribute": "Members[].MemberId",
+            "collector": "sharphound",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+            "record_id": "SEAMLESS.INTERNAL-S-1-5-32-568",
+            "time_provenance_reason": "Mốc quy ước để tái lập phép đo #139; manifest không xác định thời gian thu thập, không suy từ tên file hoặc thời gian filesystem.",
+            "timestamp": "2026-10-01T00:00:00Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "source": "S-1-5-17",
+        "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-568",
+        "weight": 1.0
+      }
+    ],
+    "time_policy": {
+      "timestamp": "2026-10-01T00:00:00Z",
+      "status": "assumed",
+      "reason": "Mốc quy ước để tái lập phép đo #139; manifest không xác định thời gian thu thập, không suy từ tên file hoặc thời gian filesystem."
+    },
+    "neo4j": {
+      "runtime": [
+        {
+          "name": "Neo4j Kernel",
+          "versions": [
+            "2026.08.1"
+          ],
+          "edition": "community"
+        },
+        {
+          "name": "Cypher",
+          "versions": [
+            "5",
+            "25"
+          ],
+          "edition": ""
+        }
+      ],
+      "counts": [
+        {
+          "nodes": 3370,
+          "unique_ids": 3370
+        }
+      ],
+      "types": [
+        {
+          "type": "AdminTo",
+          "count": 9
+        },
+        {
+          "type": "CanPSRemote",
+          "count": 2
+        },
+        {
+          "type": "GenericAll",
+          "count": 37044
+        },
+        {
+          "type": "MemberOf",
+          "count": 13324
+        },
+        {
+          "type": "WriteDacl",
+          "count": 3395
+        }
+      ],
+      "boundary": [
+        {
+          "labels": [
+            "Canonical",
+            "Group"
+          ],
+          "properties": {
+            "is_boundary": true,
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "kind": "Group",
+            "domain": "NT AUTHORITY",
+            "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+            "id": "S-1-5-17",
+            "label": "IUSR"
+          }
+        },
+        {
+          "labels": [
+            "Canonical",
+            "Group"
+          ],
+          "properties": {
+            "is_boundary": true,
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "kind": "Group",
+            "domain": "NT AUTHORITY",
+            "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+            "id": "S-1-5-4",
+            "label": "INTERACTIVE"
+          }
+        }
+      ],
+      "boundary_edges": [
+        {
+          "id": "S-1-5-17",
+          "type": "MemberOf",
+          "source": "S-1-5-17",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-568",
+          "properties": {
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "kind": "MemberOf",
+            "weight": 1.0,
+            "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+            "id": "sha256:56fa22e80f7a76622f1c7a60d1663706e7d59033071feedca0b9c39754bdc2f6",
+            "source": "S-1-5-17",
+            "provenance_json": "[{\"attribute\": \"Members[].MemberId\", \"collector\": \"sharphound\", \"evidence_type\": \"positive\", \"raw_file\": \"snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json\", \"record_id\": \"SEAMLESS.INTERNAL-S-1-5-32-568\", \"time_provenance_reason\": \"M\\u1ed1c quy \\u01b0\\u1edbc \\u0111\\u1ec3 t\\u00e1i l\\u1eadp ph\\u00e9p \\u0111o #139; manifest kh\\u00f4ng x\\u00e1c \\u0111\\u1ecbnh th\\u1eddi gian thu th\\u1eadp, kh\\u00f4ng suy t\\u1eeb t\\u00ean file ho\\u1eb7c th\\u1eddi gian filesystem.\", \"timestamp\": \"2026-10-01T00:00:00Z\", \"timestamp_status\": \"assumed\"}]",
+            "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-568"
+          }
+        },
+        {
+          "id": "S-1-5-4",
+          "type": "MemberOf",
+          "source": "S-1-5-4",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+          "properties": {
+            "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+            "kind": "MemberOf",
+            "weight": 1.0,
+            "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+            "id": "sha256:4eee7e7329d4152c4474f3ec1d131cb1e34c7d8a634c14c34c6da777533c8516",
+            "source": "S-1-5-4",
+            "provenance_json": "[{\"attribute\": \"Members[].MemberId\", \"collector\": \"sharphound\", \"evidence_type\": \"positive\", \"raw_file\": \"snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json\", \"record_id\": \"SEAMLESS.INTERNAL-S-1-5-32-545\", \"time_provenance_reason\": \"M\\u1ed1c quy \\u01b0\\u1edbc \\u0111\\u1ec3 t\\u00e1i l\\u1eadp ph\\u00e9p \\u0111o #139; manifest kh\\u00f4ng x\\u00e1c \\u0111\\u1ecbnh th\\u1eddi gian thu th\\u1eadp, kh\\u00f4ng suy t\\u1eeb t\\u00ean file ho\\u1eb7c th\\u1eddi gian filesystem.\", \"timestamp\": \"2026-10-01T00:00:00Z\", \"timestamp_status\": \"assumed\"}]",
+            "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545"
+          }
+        }
+      ],
+      "digests": [
+        {
+          "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+          "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+          "count": 3370
+        }
+      ],
+      "edge_digests": [
+        {
+          "graph_digest": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+          "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+          "count": 53774
+        }
+      ],
+      "provenance": [
+        {
+          "count": 53774,
+          "with_provenance": 53774
+        }
+      ],
+      "group_set_equal_to_current": true,
+      "import_result": {
+        "assessment_statuses": {
+          "unknown": 3
+        },
+        "assessments_in_graph": 3,
+        "assessments_in_neo4j": 0,
+        "assessments_sha256": "cd1a285802ff98c51df23c2581bb0d6847673c2a74f438cbd2877f4d6377ec16",
+        "boundary_nodes": 2,
+        "contract_version": "1.3.0",
+        "edges": 53774,
+        "edges_by_kind": {
+          "AdminTo": 9,
+          "CanPSRemote": 2,
+          "GenericAll": 37044,
+          "MemberOf": 13324,
+          "WriteDacl": 3395
+        },
+        "graph_sha256": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+        "nodes": 3370,
+        "nodes_by_kind": {
+          "Computer": 100,
+          "Domain": 1,
+          "GPO": 2,
+          "Group": 551,
+          "OU": 223,
+          "User": 2493
+        },
+        "projection": "canonical_nodes_and_edges",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+      },
+      "source": {
+        "container": "issue139-project-neo4j",
+        "container_id": "72ad19cf4b7c172897952bd962756f093f5acfd2cc20a8dd2e7bfae16a14e558",
+        "image_id": "sha256:d8f4c156caa3af76499134947deb11d13042e471d9733060449f2a01eb7a248e",
+        "created": "2026-10-01T08:44:27.156638761Z"
+      }
+    },
+    "previous_default_project_database": "Database project có sẵn không có Canonical nodes khi kiểm tra; phép đo hiện tại dùng container riêng."
+  },
+  "legacy_observations": {
+    "counts": [
+      {
+        "nodes": 3370,
+        "unique_objectids": 3370
+      }
+    ],
+    "labels": [
+      {
+        "labels": [
+          "Base",
+          "Computer"
+        ],
+        "count": 100
+      },
+      {
+        "labels": [
+          "Base",
+          "Domain"
+        ],
+        "count": 1
+      },
+      {
+        "labels": [
+          "Base",
+          "GPO"
+        ],
+        "count": 2
+      },
+      {
+        "labels": [
+          "Base",
+          "Group"
+        ],
+        "count": 551
+      },
+      {
+        "labels": [
+          "Base",
+          "OU"
+        ],
+        "count": 223
+      },
+      {
+        "labels": [
+          "Base",
+          "User"
+        ],
+        "count": 2493
+      }
+    ],
+    "types": [
+      {
+        "type": "AdminTo",
+        "count": 5
+      },
+      {
+        "type": "AllExtendedRights",
+        "count": 2499
+      },
+      {
+        "type": "CanPSRemote",
+        "count": 2
+      },
+      {
+        "type": "CanRDP",
+        "count": 3
+      },
+      {
+        "type": "Contains",
+        "count": 2816
+      },
+      {
+        "type": "ExecuteDCOM",
+        "count": 1
+      },
+      {
+        "type": "GenericAll",
+        "count": 37034
+      },
+      {
+        "type": "GenericWrite",
+        "count": 3166
+      },
+      {
+        "type": "GetChanges",
+        "count": 3
+      },
+      {
+        "type": "GetChangesAll",
+        "count": 2
+      },
+      {
+        "type": "GpLink",
+        "count": 2
+      },
+      {
+        "type": "MemberOf",
+        "count": 15917
+      },
+      {
+        "type": "Owns",
+        "count": 3362
+      },
+      {
+        "type": "WriteDacl",
+        "count": 3392
+      },
+      {
+        "type": "WriteOwner",
+        "count": 3392
+      }
+    ],
+    "principals": {
+      "S-1-5-4": {
+        "exact": [
+          {
+            "labels": [
+              "Base",
+              "Group"
+            ],
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-4",
+            "name": null,
+            "properties": {
+              "objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "labels": [
+              "Base",
+              "Group"
+            ],
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-4",
+            "name": null,
+            "type": "MemberOf",
+            "parent_labels": [
+              "Base",
+              "Group"
+            ],
+            "parent_objectid": "SEAMLESS.INTERNAL-S-1-5-32-545",
+            "parent_name": "USERS@SEAMLESS.INTERNAL",
+            "relationship_properties": {
+              "isacl": false
+            }
+          }
+        ],
+        "incoming": [],
+        "direct": [
+          {
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-4",
+            "type": "MemberOf",
+            "source": "SEAMLESS.INTERNAL-S-1-5-4",
+            "target": "SEAMLESS.INTERNAL-S-1-5-32-545",
+            "other_labels": [
+              "Base",
+              "Group"
+            ],
+            "other_objectid": "SEAMLESS.INTERNAL-S-1-5-32-545",
+            "other_name": "USERS@SEAMLESS.INTERNAL",
+            "relationship_properties": {
+              "isacl": false
+            }
+          }
+        ]
+      },
+      "S-1-5-17": {
+        "exact": [
+          {
+            "labels": [
+              "Base",
+              "Group"
+            ],
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-17",
+            "name": null,
+            "properties": {
+              "objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+            }
+          }
+        ],
+        "outgoing": [
+          {
+            "labels": [
+              "Base",
+              "Group"
+            ],
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-17",
+            "name": null,
+            "type": "MemberOf",
+            "parent_labels": [
+              "Base",
+              "Group"
+            ],
+            "parent_objectid": "SEAMLESS.INTERNAL-S-1-5-32-568",
+            "parent_name": "IIS_IUSRS@SEAMLESS.INTERNAL",
+            "relationship_properties": {
+              "isacl": false
+            }
+          }
+        ],
+        "incoming": [],
+        "direct": [
+          {
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-17",
+            "type": "MemberOf",
+            "source": "SEAMLESS.INTERNAL-S-1-5-17",
+            "target": "SEAMLESS.INTERNAL-S-1-5-32-568",
+            "other_labels": [
+              "Base",
+              "Group"
+            ],
+            "other_objectid": "SEAMLESS.INTERNAL-S-1-5-32-568",
+            "other_name": "IIS_IUSRS@SEAMLESS.INTERNAL",
+            "relationship_properties": {
+              "isacl": false
+            }
+          }
+        ]
+      }
+    },
+    "discovery": {
+      "S-1-5-4": [
+        {
+          "labels": [
+            "Base",
+            "Group"
+          ],
+          "objectid": "SEAMLESS.INTERNAL-S-1-5-4",
+          "name": null,
+          "properties": {
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+          }
+        }
+      ],
+      "S-1-5-17": [
+        {
+          "labels": [
+            "Base",
+            "Group"
+          ],
+          "objectid": "SEAMLESS.INTERNAL-S-1-5-17",
+          "name": null,
+          "properties": {
+            "objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+          }
+        }
+      ]
+    },
+    "initial_principal_results_equal_to_rerun": true,
+    "raw_provenance_status": "not_measurable",
+    "rejected_record_count": null,
+    "import_duration_seconds": null
+  },
+  "identity_mapping": {
+    "status": "measured",
+    "rule": "Mapping được tạo từ cặp raw/adapted records của loader cùng snapshot và canonical normalizer; well-known boundary bổ sung bằng raw occurrence, SID Microsoft và exact Legacy objectid. Không suy scope từ hậu tố.",
+    "exact_string_matches": 517,
+    "domain_sid_scoped_mappings": 29,
+    "qualified_global_sid_mappings": 5,
+    "boundary": {
+      "SEAMLESS.INTERNAL-S-1-5-4": "S-1-5-4",
+      "SEAMLESS.INTERNAL-S-1-5-17": "S-1-5-17"
+    },
+    "full_mapping_storage": ".cache/identity-mapping.json; chỉ local, không commit."
+  },
+  "group_identity_reconciliation": {
+    "status": "measured",
+    "project_collected_count": 549,
+    "project_boundary_count": 2,
+    "project_total_count": 551,
+    "legacy_count": 551,
+    "literal_common_count": 517,
+    "literal_project_only_count": 34,
+    "literal_legacy_only_count": 34,
+    "mapped_common_count": 551,
+    "mapped_common_collected_count": 549,
+    "mapped_common_boundary_count": 2,
+    "project_only": [],
+    "legacy_only": [],
+    "unresolved_mappings": [],
+    "set_digests": {
+      "project_collected": "1ac31dadc6fdf29f754888b4660e1282d80179c7067f697f25c5b702b8b81ff3",
+      "project_boundary": "8cd9493687b4b2a70801460d1fc13767c9a372f219dded52ca1a265165a1ef9b",
+      "project_total": "41d8c593b33785b8024f1d5960fa37284d99d17b22246d0b3ad75e8bbf3cd606",
+      "legacy_stored": "9417099e7a3aa6b4439c58c7c428d6e5f73dac62244461e614227a39f0a45f1d",
+      "legacy_mapped": "41d8c593b33785b8024f1d5960fa37284d99d17b22246d0b3ad75e8bbf3cd606"
+    },
+    "limitation": "Chỉ đối soát identity Group; không chứng minh metadata, ngữ nghĩa membership, độ đầy đủ export hoặc parity của toàn graph.",
+    "raw_group_count": 550,
+    "raw_unique_group_count": 549,
+    "legacy_minus_raw": [
+      "SEAMLESS.INTERNAL-S-1-5-17",
+      "SEAMLESS.INTERNAL-S-1-5-4"
+    ],
+    "raw_minus_legacy": [],
+    "raw_collected_set_sha256": "6558d70de958be9294b683cfe5736fddadb5ee5fe6273337ea4993d1f09831d8",
+    "input_sha256": {
+      "project": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+      "legacy_groups": "98b953bbe516982246587050b8b1762b46074450310d3599e1187ee198739e05",
+      "mapping": "2459f13fce61f875cb29357240fd8f5dcdafed46b41533e77319e736f6866b70"
+    },
+    "duplicate_raw_representations": {
+      "objectid": "SEAMLESS.INTERNAL-S-1-5-32-545",
+      "locators": [
+        "20210920185958_groups.json#/groups/6",
+        "20210920185958_groups.json#/groups/549"
+      ],
+      "member_counts": [
+        4,
+        0
+      ],
+      "duplicate_cause": "unknown",
+      "description": "Hai representation cùng identity; #/groups/549 không chứa occurrence của INTERACTIVE."
+    },
+    "derivation": "550 raw records − 1 representation trùng = 549 collected identities; 549 + 2 materialized placeholders = 551 Legacy Group identities.",
+    "initial_and_rerun_group_set_equal": true
+  },
+  "membership_comparison": {
+    "project_total": 13324,
+    "legacy_total": 15917,
+    "stored_total_difference": 2593,
+    "boundary_project_stored": 2,
+    "boundary_legacy_stored": 2,
+    "boundary_project_unique_triples": 2,
+    "boundary_legacy_unique_triples": 2,
+    "boundary_incoming_count_per_principal": {
+      "S-1-5-4": 0,
+      "S-1-5-17": 0
+    },
+    "boundary_outgoing_count_per_principal": {
+      "S-1-5-4": 1,
+      "S-1-5-17": 1
+    },
+    "boundary_project_only_triples": [],
+    "boundary_legacy_only_triples": [],
+    "boundary_additional_direct_relationships": 0,
+    "boundary_net_contribution_to_count_difference": 0,
+    "legacy_memberof_stored_count": 15917,
+    "legacy_memberof_unique_pairs": 15917,
+    "direct_vs_derived": "Hai cặp tương ứng occurrence Members[]; source 4.0.3 sinh trực tiếp cặp MemberId -> ObjectIdentifier. Database không giữ lịch sử xử lý từng cạnh; chưa nghiệm thu direct/effective semantics của toàn tập 15.917.",
+    "remaining_difference_owner": "#47"
+  },
+  "classifications": {
+    "S-1-5-4": {
+      "classification": "materialized_placeholder",
+      "secondary_classification": "implicit_principal",
+      "definition": "Node phát sinh từ membership reference chưa có first-class raw object, chỉ có objectid trong properties; không suy nó là collected AD Group hoặc có external status được Legacy khai báo.",
+      "evidence": [
+        "raw_observations.S-1-5-4",
+        "legacy_observations.principals.S-1-5-4",
+        "group_identity_reconciliation"
+      ]
+    },
+    "S-1-5-17": {
+      "classification": "materialized_placeholder",
+      "secondary_classification": "implicit_principal",
+      "definition": "Node phát sinh từ membership reference chưa có first-class raw object, chỉ có objectid trong properties; không suy nó là collected AD Group hoặc có external status được Legacy khai báo.",
+      "evidence": [
+        "raw_observations.S-1-5-17",
+        "legacy_observations.principals.S-1-5-17",
+        "group_identity_reconciliation"
+      ]
+    }
+  },
+  "query_package": "reports/research/issue-139-seamless-boundary-legacy-403-queries.json",
+  "local_exports": {
+    "legacy-rerun-observations.json": {
+      "sha256": "0bd12f17eafec74a45b5ce7a780ea277df727eb2d523711d2f270918beb8c46b",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "legacy-initial-observations.json": {
+      "sha256": "a49f05ec72237c7c201b322c03457e16b609a2c3014c9066bad867ee828dccb4",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "legacy-groups.json": {
+      "sha256": "98b953bbe516982246587050b8b1762b46074450310d3599e1187ee198739e05",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "identity-mapping.json": {
+      "sha256": "2459f13fce61f875cb29357240fd8f5dcdafed46b41533e77319e736f6866b70",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "group-comparison.json": {
+      "sha256": "d25c49e4cd2f45b73e8f487d391223fc9aae51d68b8d0e0a4fbfec6ead7bf123",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "project-current.json": {
+      "sha256": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    },
+    "project-current-neo4j-observations.json": {
+      "sha256": "885f4a0f46c8d12a13fb24758d67367569ef9daf9711c9aa942144241e2befef",
+      "description": "Artifact đầy đủ giữ local theo data policy; định dạng wrapper có thể đổi, dùng set_digests cho tái lập tập identity."
+    }
+  },
+  "limitations": [
+    "Legacy không lưu raw_file, JSON pointer hoặc provenance của project; name/domain/is_boundary vắng mặt ở hai placeholders là thiếu dữ liệu, không phải false.",
+    "Source importer giải thích cơ chế phù hợp với observation; không có log tracing từng lần MERGE trong run cũ.",
+    "Chưa đối soát toàn bộ population ngoài Group hoặc toàn bộ directed edge sets; không claim full graph parity hoặc CE parity.",
+    "2.593 MemberOf chênh lệch ngoài hai boundary principals chưa được phân loại; bàn giao #47.",
+    "Thời gian thu thập raw và thời lượng import Legacy chưa biết; collection timestamp của project hiện tại là assumed.",
+    "PR #130 còn mở tại thời điểm đọc; bằng chứng kỹ thuật được tái kiểm tra, trạng thái workflow không đồng nghĩa nghiệm thu #82/#47/#48.",
+    "Không có report 401 ở develop hiện tại; giữ lịch sử bằng link comment gốc, không dựng hoặc đổi nhãn kết quả lịch sử."
+  ]
+}

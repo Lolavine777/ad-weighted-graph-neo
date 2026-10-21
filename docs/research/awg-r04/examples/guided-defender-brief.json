@@ -1,0 +1,1886 @@
+{
+  "version": "defender-brief/1.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "evaluation_mode": "scenario",
+  "sources": [
+    {
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+      "kind": "Computer",
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "profile": "computer_usable_identity",
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "identity_provenance": "scenario://awg-r04/machine-identity/FINWVIR-4157"
+    }
+  ],
+  "coverage": {
+    "selected_pairs": 12,
+    "reported_pairs": 12,
+    "evaluated_pairs": 12,
+    "not_run_pairs": 0,
+    "witness_pairs": 4,
+    "unresolved_pairs": 8,
+    "inventory_pairs_outside_cohort": 31068
+  },
+  "ordering": "Witnesses first; within each technical target tier, comparable rated C then unrated. Technical tiers are not business impact or probability.",
+  "allowed_techniques": [
+    "acquire_reset_identity",
+    "propagate_group_entitlement",
+    "scenario_reset_password"
+  ],
+  "effort_basis": {
+    "profile_id": "reset-activation-c-v2",
+    "version": "2.0.0",
+    "dimension": "C",
+    "scope_adoption": {
+      "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+      "status": "explicit_opt_in_solo_fork_scenario",
+      "rationale": "Apply the same ordinal reset/activation operation rubric to direct User or explicitly usable Computer principals, at one same-domain Computer context. The controller kind changes applicability, not the operation price. This is an opt-in solo-fork scenario estimate, not observed duration or historical reviewer approval of this scope. One successful operation per canonical work unit; retries/time not modeled. Local host control alone is insufficient. An actor-to-User canonical grant may be inherited; effective permission is already a conditioned prerequisite. Group/derived rights remain unpriced."
+    },
+    "historical_numeric_authority": {
+      "dimension": "C",
+      "review": {
+        "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+        "purpose": "numeric_context_history_adoption",
+        "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+        "reviewed_at": "2026-10-13T04:30:57Z",
+        "reviewer": "nairyuuu"
+      }
+    },
+    "sources": {
+      "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+        "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+      },
+      "docs/research/ratings/final-cpi-v1/profile.json": {
+        "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+      }
+    },
+    "classes": {
+      "scenario_reset_password": {
+        "name": "directory_password_reset",
+        "method": "GenericAll",
+        "t1": 1,
+        "t2": 2,
+        "cost": 1,
+        "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned."
+      },
+      "acquire_reset_identity": {
+        "name": "reset_identity_activation",
+        "method": "AuthenticationControl",
+        "t1": 1,
+        "t2": 1,
+        "cost": 0,
+        "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge."
+      }
+    },
+    "excluded": [
+      "P",
+      "I",
+      "password recovery",
+      "retries",
+      "existing source membership route",
+      "pre-seeded second usable identity/context",
+      "group/derived-right reset work",
+      "Computer host control without explicit network identity"
+    ]
+  },
+  "goals": [
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 0,
+      "selection_reason": "well_known_privileged_group_sid",
+      "business_impact": "Unknown",
+      "status": "truncated_success",
+      "reached": true,
+      "C": 1.0,
+      "effort_units": [
+        {
+          "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-b711cdee4efd10d9357bf0980cbbdd76ddf226ad7428d7ee05dbe85b2d02dd2e:intra_forest:1.0.0",
+          "cost": 1,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-b711cdee4efd10d9357bf0980cbbdd76ddf226ad7428d7ee05dbe85b2d02dd2e:intra_forest:1.0.0",
+            "technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "work_class": "active_work",
+            "method": "GenericAll",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:6d68b425dc9690b19628afe4dec1fcb92422fdbc992592e04f26cc356cc58d61",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        },
+        {
+          "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-06feb3a354739f56f6b6c255f4935ba3765111e77fe931ad8595f44939ecad20:intra_forest:1.0.0",
+          "cost": 0,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-06feb3a354739f56f6b6c255f4935ba3765111e77fe931ad8595f44939ecad20:intra_forest:1.0.0",
+            "technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "work_class": "active_work",
+            "method": "AuthenticationControl",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:0191bb2c64daa89c27198b7f47061c93e30083b1b5dc9381e617b720fc20d22e",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:31a73f0497342193baf8f44366fe15a6426eaeacea036c6125bf6a1ad40edb3d",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        }
+      ],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "expansions": 4995,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "technique": "scenario_reset_password",
+          "operation": "Đặt lại mật khẩu của User bằng quyền GenericAll",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "effects": {
+            "authentication_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-2014"
+            ],
+            "reset_password_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-2014"
+            ]
+          },
+          "condition_refs": [
+            "sha256:0d41ecd9bdf6f3638fd4f6455bff0a0ef6b2c94c742a681aa0041c906a19c110",
+            "sha256:c5a523d527da8690ee055a0023243cea04ded5de2689f93c855a019362347e52",
+            "sha256:e224c1a09fdcb30a302214ba0da4fb482c538b8da454476a4844de803b59c1ba"
+          ],
+          "edge_id": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Aces[].PrincipalSID",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "technique": "acquire_reset_identity",
+          "operation": "Dùng danh tính vừa reset tại authentication context",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "effects": {
+            "usable_identity": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "S-1-5-21-1271839998-3495686680-2211690266-4157"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:a21db87e7aaa6b1bc79585f57aff3a20fb6f780cf1b4690f7afb8e943f2c52f2",
+            "sha256:ca16ca48c4665ddafc2315024ba0b84608f1a59a23fc8829bd741e1028c7cf2b"
+          ],
+          "edge_id": null,
+          "derived_from_step": 0,
+          "edge_provenance": []
+        },
+        {
+          "step": 3,
+          "technique": "propagate_group_entitlement",
+          "operation": "Có entitlement của security group với danh tính này",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "kind": "Group"
+          },
+          "effects": {
+            "effective_member": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "S-1-5-21-1271839998-3495686680-2211690266-512"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:1436891d723cd70314924c594aac9a18a9c2a8fab92affb6b9fe904c46ed3118",
+            "sha256:9b55c67457d2506407feba3260872144b80cbd253948d76c66a1cd76f27f650e"
+          ],
+          "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Members[].MemberId",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "ref": "sha256:0d41ecd9bdf6f3638fd4f6455bff0a0ef6b2c94c742a681aa0041c906a19c110",
+          "predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "MS-RPC reachable for SAMR password reset",
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-rpc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:1436891d723cd70314924c594aac9a18a9c2a8fab92affb6b9fe904c46ed3118",
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group membership is incorporated into session token",
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-membership-usable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:9b55c67457d2506407feba3260872144b80cbd253948d76c66a1cd76f27f650e",
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group DOMAIN ADMINS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-security-group",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0",
+            "group_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "group_kind": "security_group",
+            "classification_basis": "well_known_identity_allowlist",
+            "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-512): Domain Admins (MS-SAMR 2.2.1.1.5)"
+          }
+        },
+        {
+          "ref": "sha256:a21db87e7aaa6b1bc79585f57aff3a20fb6f780cf1b4690f7afb8e943f2c52f2",
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "KDC reachable for logon after password reset",
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-kdc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:c5a523d527da8690ee055a0023243cea04ded5de2689f93c855a019362347e52",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Directory modification permitted under GenericAll on User OLLIE_LONG@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-directory-write",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:ca16ca48c4665ddafc2315024ba0b84608f1a59a23fc8829bd741e1028c7cf2b",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Authentication accepted for reset user OLLIE_LONG@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-auth-accepted",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:e224c1a09fdcb30a302214ba0da4fb482c538b8da454476a4844de803b59c1ba",
+          "predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Password reset complies with domain password policy",
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-password-policy-accepts",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        }
+      ],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:ed334a4ce1cabf1b2e978c54863faf139f011ef1f2fa4f86419d0f74acd68d22"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+        "label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": "Unknown",
+      "status": "truncated_success",
+      "reached": true,
+      "C": 1.0,
+      "effort_units": [
+        {
+          "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1116:ctx-84e1bf2606271a32f9e49a3eeb668d86e6cc3901132053d4f56f9037d2145256:intra_forest:1.0.0",
+          "cost": 1,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1116:ctx-84e1bf2606271a32f9e49a3eeb668d86e6cc3901132053d4f56f9037d2145256:intra_forest:1.0.0",
+            "technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "work_class": "active_work",
+            "method": "GenericAll",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:af22a9f0e65439b1ecfcfe517ec107b268c6ab12c3bb18c802322182acb58900",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:392df20deef002a43b079e5ec9de11a072a5789d9bd615f75f2a913ca393cebd",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        },
+        {
+          "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1116:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-06bc46f947b0c85ae03455737b8e7cc579fb3f02589f7d33b39f75b7f8fec281:intra_forest:1.0.0",
+          "cost": 0,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1116:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-06bc46f947b0c85ae03455737b8e7cc579fb3f02589f7d33b39f75b7f8fec281:intra_forest:1.0.0",
+            "technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "work_class": "active_work",
+            "method": "AuthenticationControl",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:af22a9f0e65439b1ecfcfe517ec107b268c6ab12c3bb18c802322182acb58900",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:658a5c9ef3962155d46f99ee586827ecb526fe39be2ffd06dd8fefa3fa99614d",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        }
+      ],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "expansions": 5000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "technique": "scenario_reset_password",
+          "operation": "Đặt lại mật khẩu của User bằng quyền GenericAll",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "effects": {
+            "authentication_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1116"
+            ],
+            "reset_password_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1116"
+            ]
+          },
+          "condition_refs": [
+            "sha256:28d679ccb7f4c8e09bf768401fb3b70efe52d1d22d2870054d24fc69eee3176c",
+            "sha256:4466abbe17c0f6d9148e8d36ddd207b36c316afffc3944f2d7d1b8b9c8314ee1",
+            "sha256:9cb32fe01e5e903307edded89348a9e8dce913ec6d7ea98b5dd7a0d5e1ffe043"
+          ],
+          "edge_id": "sha256:8a6d523233492b3194a854669933e64cb3f36be78ddcfd4e8d05aa82a6c3cd0b",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Aces[].PrincipalSID",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "technique": "acquire_reset_identity",
+          "operation": "Dùng danh tính vừa reset tại authentication context",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "effects": {
+            "usable_identity": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1116",
+                "S-1-5-21-1271839998-3495686680-2211690266-4157"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:53b2962a1ee69c3347dad498dde192892790dbd1642f2a617d1e1d9713f23e28",
+            "sha256:bab91ba628080289d6a7b23f0a0b3a4c66e721b13e8d86694b67587196e0c6de"
+          ],
+          "edge_id": null,
+          "derived_from_step": 0,
+          "edge_provenance": []
+        },
+        {
+          "step": 3,
+          "technique": "propagate_group_entitlement",
+          "operation": "Có entitlement của security group với danh tính này",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+            "label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+            "label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "kind": "Group"
+          },
+          "effects": {
+            "effective_member": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1116",
+                "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:90e51a4a5746d26e65cb1a45a8933a0a2025bd6c163824f757fb88bf2899adad",
+            "sha256:db44eb3d21b8df9e770a7050749c20539c4c189b53cb45b6aee4bbf1d631749c"
+          ],
+          "edge_id": "sha256:431a55990c1e057f77a0c9ec37e65d7d72600c7a7913a73136a1928afa6a3f76",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Members[].MemberId",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+              "record_id": "SEAMLESS.INTERNAL-S-1-5-32-544",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "ref": "sha256:28d679ccb7f4c8e09bf768401fb3b70efe52d1d22d2870054d24fc69eee3176c",
+          "predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Password reset complies with domain password policy",
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-password-policy-accepts",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:4466abbe17c0f6d9148e8d36ddd207b36c316afffc3944f2d7d1b8b9c8314ee1",
+          "predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "MS-RPC reachable for SAMR password reset",
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-rpc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:53b2962a1ee69c3347dad498dde192892790dbd1642f2a617d1e1d9713f23e28",
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "KDC reachable for logon after password reset",
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-kdc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:90e51a4a5746d26e65cb1a45a8933a0a2025bd6c163824f757fb88bf2899adad",
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group ADMINISTRATORS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-security-group",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0",
+            "group_label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "group_kind": "security_group",
+            "classification_basis": "well_known_identity_allowlist",
+            "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544): Administrators (MS-DTYP 2.4.2.4 / MS-SAMR 2.2.1.1.5)"
+          }
+        },
+        {
+          "ref": "sha256:9cb32fe01e5e903307edded89348a9e8dce913ec6d7ea98b5dd7a0d5e1ffe043",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Directory modification permitted under GenericAll on User KATRINA_GREEN@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-directory-write",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:bab91ba628080289d6a7b23f0a0b3a4c66e721b13e8d86694b67587196e0c6de",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Authentication accepted for reset user KATRINA_GREEN@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-auth-accepted",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:db44eb3d21b8df9e770a7050749c20539c4c189b53cb45b6aee4bbf1d631749c",
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group membership is incorporated into session token",
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-membership-usable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        }
+      ],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:ee82c705e8169204ff55f7f2d8730a9d3750783cb3a810c5e3878e953889409f"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+        "label": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": "Unknown",
+      "status": "truncated_success",
+      "reached": true,
+      "C": 1.0,
+      "effort_units": [
+        {
+          "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1690:ctx-177f4e74c188f850ae9c3ad65c42f1d5325781dabb59d6b5772a92180362ec01:intra_forest:1.0.0",
+          "cost": 1,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1690:ctx-177f4e74c188f850ae9c3ad65c42f1d5325781dabb59d6b5772a92180362ec01:intra_forest:1.0.0",
+            "technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "work_class": "active_work",
+            "method": "GenericAll",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:6800f3d5bca7276760b09a68b68a8a03192d8c7a7978fef8825647ce2bc09687",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:3d49fcdbd1dbefcce0a4b5845f3c9408f81ebf0d6058d8db29c99301ec7b0a5a",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        },
+        {
+          "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1690:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-761c8416cbfba89ab761e64e01360b1d25d6b39db9c6f1fdea7de76133c56ff1:intra_forest:1.0.0",
+          "cost": 0,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1690:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-761c8416cbfba89ab761e64e01360b1d25d6b39db9c6f1fdea7de76133c56ff1:intra_forest:1.0.0",
+            "technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "work_class": "active_work",
+            "method": "AuthenticationControl",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:6800f3d5bca7276760b09a68b68a8a03192d8c7a7978fef8825647ce2bc09687",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:768dd27e9f7bfe29bc0901bd207bb68532cd8b54142dec725fc4d244cdd22e3f",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        }
+      ],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "expansions": 5000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "technique": "scenario_reset_password",
+          "operation": "Đặt lại mật khẩu của User bằng quyền GenericAll",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "label": "MICAH_BOLTON@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "effects": {
+            "authentication_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1690"
+            ],
+            "reset_password_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1690"
+            ]
+          },
+          "condition_refs": [
+            "sha256:62e3faab4a53361ab88e9dbf159e4a8f8a7e903788106c763b3ab384da12814c",
+            "sha256:75f50bb88ecbe4a722a4fd5fc75b442647a17bc30b6951dd3f0a3b0dca557217",
+            "sha256:a2bd1e4ab32d9b1bf0e1079c06f5b2592cfd997e6664deb0a6084564779d63b2"
+          ],
+          "edge_id": "sha256:f8b50fc3d5068c5b668d8e9bc1d695489d250bc35051dd60603b6cae7eff2677",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Aces[].PrincipalSID",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "technique": "acquire_reset_identity",
+          "operation": "Dùng danh tính vừa reset tại authentication context",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "label": "MICAH_BOLTON@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "label": "MICAH_BOLTON@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "effects": {
+            "usable_identity": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1690",
+                "S-1-5-21-1271839998-3495686680-2211690266-4157"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:45bf2996ef6e65aa65d6fefa28e2744c53c304e05c8af9f00f1e4f9bc902b332",
+            "sha256:b8ef6ebc03f68ed6ff0140d40c7e8b2f5b4e79ded4313ecffbc9d111e0e680e9"
+          ],
+          "edge_id": null,
+          "derived_from_step": 0,
+          "edge_provenance": []
+        },
+        {
+          "step": 3,
+          "technique": "propagate_group_entitlement",
+          "operation": "Có entitlement của security group với danh tính này",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "label": "MICAH_BOLTON@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+            "label": "MICAH_BOLTON@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+            "label": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "kind": "Group"
+          },
+          "effects": {
+            "effective_member": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1690",
+                "S-1-5-21-1271839998-3495686680-2211690266-516"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:980649250a111ff707f5e6726345d0240f3df1994a02620407237993ec65ac1a",
+            "sha256:fbe5d99ecf237dc4c50b3ec3b86266306f46e6ea65f43c13c3d61f96a7cedab8"
+          ],
+          "edge_id": "sha256:07f179bfd9fb799a6fbf31156f3f2d4a4d8eb7a36d518fae6e665b630e0fd26d",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Members[].MemberId",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-516",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "ref": "sha256:45bf2996ef6e65aa65d6fefa28e2744c53c304e05c8af9f00f1e4f9bc902b332",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Authentication accepted for reset user MICAH_BOLTON@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-auth-accepted",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:62e3faab4a53361ab88e9dbf159e4a8f8a7e903788106c763b3ab384da12814c",
+          "predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Password reset complies with domain password policy",
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-password-policy-accepts",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:75f50bb88ecbe4a722a4fd5fc75b442647a17bc30b6951dd3f0a3b0dca557217",
+          "predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "MS-RPC reachable for SAMR password reset",
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-rpc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:980649250a111ff707f5e6726345d0240f3df1994a02620407237993ec65ac1a",
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-516",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group membership is incorporated into session token",
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-membership-usable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:a2bd1e4ab32d9b1bf0e1079c06f5b2592cfd997e6664deb0a6084564779d63b2",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Directory modification permitted under GenericAll on User MICAH_BOLTON@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-directory-write",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:b8ef6ebc03f68ed6ff0140d40c7e8b2f5b4e79ded4313ecffbc9d111e0e680e9",
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "KDC reachable for logon after password reset",
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-kdc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:fbe5d99ecf237dc4c50b3ec3b86266306f46e6ea65f43c13c3d61f96a7cedab8",
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1690",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-516",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group DOMAIN CONTROLLERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-security-group",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0",
+            "group_label": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "group_kind": "security_group",
+            "classification_basis": "well_known_identity_allowlist",
+            "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-516): Domain Controllers (MS-SAMR 2.2.1.1.5)"
+          }
+        }
+      ],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:c2b8e295f6d51e2b1899940202565891a798dfc43631b5ed4502b0c618662b2b"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+        "label": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": "Unknown",
+      "status": "truncated_success",
+      "reached": true,
+      "C": 1.0,
+      "effort_units": [
+        {
+          "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1387:ctx-16204abecdc7cf9e0ed524d8794f32b5bbcee9b15302b5bdc6e004360e278cab:intra_forest:1.0.0",
+          "cost": 1,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-1387:ctx-16204abecdc7cf9e0ed524d8794f32b5bbcee9b15302b5bdc6e004360e278cab:intra_forest:1.0.0",
+            "technique": "scenario_reset_password",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "work_class": "active_work",
+            "method": "GenericAll",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:9d0dfdda924b360837170e7439fc615448abd516d8932ee2dd144ed28b9c5973",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:1dee9f0f84a621bb939193e2568ca03e5d26dac6250f5b5911f15515caec1541",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        },
+        {
+          "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1387:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-b03d5a27672328312d44bdae47d9f6b4f75cdc5972667efc004cde15803854fa:intra_forest:1.0.0",
+          "cost": 0,
+          "disposition": "rated",
+          "basis_category": "scenario_assumption",
+          "numeric_basis_class": "estimated_expert_scenario",
+          "lookup": {
+            "dimension": "C",
+            "version": "1.0.0",
+            "work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1387:S-1-5-21-1271839998-3495686680-2211690266-4157:ctx-b03d5a27672328312d44bdae47d9f6b4f75cdc5972667efc004cde15803854fa:intra_forest:1.0.0",
+            "technique": "acquire_reset_identity",
+            "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "target_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "work_class": "active_work",
+            "method": "AuthenticationControl",
+            "boundary": "intra_forest",
+            "scope": "batch-cell:sha256:9d0dfdda924b360837170e7439fc615448abd516d8932ee2dd144ed28b9c5973",
+            "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "resource_context": null,
+            "policy_id": "reset-activation-c-v2"
+          },
+          "provenance_digest": "sha256:d71a3c5f02904d6825b66ba78b9a9591600446452dfffa446ec06f2842c186d7",
+          "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297"
+        }
+      ],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "expansions": 4994,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [
+        {
+          "step": 1,
+          "technique": "scenario_reset_password",
+          "operation": "Đặt lại mật khẩu của User bằng quyền GenericAll",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "label": "MARCELLA_PARKER@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "effects": {
+            "authentication_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1387"
+            ],
+            "reset_password_control": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1387"
+            ]
+          },
+          "condition_refs": [
+            "sha256:9d811a7fcb10a890da278e308bb5451d1682cc2886977f047ecd5d66400e80c3",
+            "sha256:d809bcbbb7baa6967907a78089d5e4e04299586a008fb180f395b48e1234fb8e",
+            "sha256:dea23f45d135d3f6b8e64c364a3f51815323dd4445d4bf47b0b99743242520b0"
+          ],
+          "edge_id": "sha256:8b5301a60d6d30ec6abf5c2cf28e759e46e13f35a4a8e725a5e17443f184c36f",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Aces[].PrincipalSID",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        },
+        {
+          "step": 2,
+          "technique": "acquire_reset_identity",
+          "operation": "Dùng danh tính vừa reset tại authentication context",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "label": "MARCELLA_PARKER@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "label": "MARCELLA_PARKER@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+            "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+            "kind": "Computer"
+          },
+          "effects": {
+            "usable_identity": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1387",
+                "S-1-5-21-1271839998-3495686680-2211690266-4157"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:629764b8844630c6333ae30322d730c04c5d65fa3c59d5e7c854c4019f7e4110",
+            "sha256:67c6c2161d8d10e3cd2fcbdea36f5f7fa88bc6df7743724fcab6bb78b19d2e7f"
+          ],
+          "edge_id": null,
+          "derived_from_step": 0,
+          "edge_provenance": []
+        },
+        {
+          "step": 3,
+          "technique": "propagate_group_entitlement",
+          "operation": "Có entitlement của security group với danh tính này",
+          "actor": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "label": "MARCELLA_PARKER@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "right_source": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+            "label": "MARCELLA_PARKER@SEAMLESS.INTERNAL",
+            "kind": "User"
+          },
+          "target": {
+            "id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+            "label": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "kind": "Group"
+          },
+          "effects": {
+            "effective_member": [
+              [
+                "S-1-5-21-1271839998-3495686680-2211690266-1387",
+                "S-1-5-21-1271839998-3495686680-2211690266-521"
+              ]
+            ]
+          },
+          "condition_refs": [
+            "sha256:2358f70d4dc7a5de9c725c0e1511ebf359e2a07d49118d956670095d76e685c2",
+            "sha256:9528e7708b1e027ec4a7f2969756b3b2aa2fb4b3cf0756f2242d5e18bc988943"
+          ],
+          "edge_id": "sha256:b5f4cd5c6bf94b1f000479a4b5dc78b688b318b8d3d4edd6e92fe424ffd9c61d",
+          "derived_from_step": null,
+          "edge_provenance": [
+            {
+              "attribute": "Members[].MemberId",
+              "collector": "sharphound",
+              "evidence_type": "positive",
+              "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+              "record_id": "S-1-5-21-1271839998-3495686680-2211690266-521",
+              "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+              "timestamp": "2021-09-20T18:59:58Z",
+              "timestamp_status": "assumed"
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "ref": "sha256:2358f70d4dc7a5de9c725c0e1511ebf359e2a07d49118d956670095d76e685c2",
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-521",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-security-group",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0",
+            "group_label": "READ-ONLY DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+            "group_kind": "security_group",
+            "classification_basis": "well_known_identity_allowlist",
+            "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-521): Read-only Domain Controllers (MS-SAMR 2.2.1.1.5)"
+          }
+        },
+        {
+          "ref": "sha256:629764b8844630c6333ae30322d730c04c5d65fa3c59d5e7c854c4019f7e4110",
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Authentication accepted for reset user MARCELLA_PARKER@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-auth-accepted",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:67c6c2161d8d10e3cd2fcbdea36f5f7fa88bc6df7743724fcab6bb78b19d2e7f",
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "KDC reachable for logon after password reset",
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-kdc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:9528e7708b1e027ec4a7f2969756b3b2aa2fb4b3cf0756f2242d5e18bc988943",
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-521",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Group membership is incorporated into session token",
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-membership-usable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:9d811a7fcb10a890da278e308bb5451d1682cc2886977f047ecd5d66400e80c3",
+          "predicate": "password_policy_accepts",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Password reset complies with domain password policy",
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-password-policy-accepts",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:d809bcbbb7baa6967907a78089d5e4e04299586a008fb180f395b48e1234fb8e",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "Directory modification permitted under GenericAll on User MARCELLA_PARKER@SEAMLESS.INTERNAL",
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "assumption_metadata": {
+            "rule_id": "rule-typed-directory-write",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        },
+        {
+          "ref": "sha256:dea23f45d135d3f6b8e64c364a3f51815323dd4445d4bf47b0b99743242520b0",
+          "predicate": "network_rpc_reachable",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1387",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "seamless-policy:seamless-standard-v1",
+          "rationale": "MS-RPC reachable for SAMR password reset",
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "assumption_metadata": {
+            "rule_id": "rule-global-rpc-reachable",
+            "profile_id": "seamless-standard-v1",
+            "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+            "policy_version": "1.0.0"
+          }
+        }
+      ],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:1eb567e85a2f8ea1b616647ba8f8409cc15e9d6c231cd5a1152427f2943739e5"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "label": "BADBLOOD.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "technical_priority": 0,
+      "selection_reason": "observed_dc_group_membership",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "not_applicable",
+        "reason": "Profile supports only usable_identity_entitlement Group goals"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:d9473a15fa3dfd064cb7fb5ab1caea57f9f243c73d02350c432ce2d021e78049"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+        "label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 0,
+      "selection_reason": "well_known_privileged_group_sid",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:3988b45c0ecc8e6b50821f0279951ef81959ea9adcedbd71900071c7a9504356"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-548",
+        "label": "ACCOUNT OPERATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": {
+        "technique": "propagate_group_entitlement",
+        "actor": {
+          "id": "S-1-5-21-1271839998-3495686680-2211690266-1327",
+          "label": "BEVERLY_DODSON@SEAMLESS.INTERNAL",
+          "kind": "User"
+        },
+        "unknown": [
+          "security_group",
+          "membership_usable"
+        ],
+        "trace": "result.json#/reproducibility/inputs/public_queries/sha256:6104d7ce69d15656b593d704e617f4e656a5f3126de1d43626aeacd6c8132db8/result/attempts/4989"
+      },
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:6104d7ce69d15656b593d704e617f4e656a5f3126de1d43626aeacd6c8132db8"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+      "goal": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-518",
+        "label": "SCHEMA ADMINS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": null,
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:7cff5a09d778f70e58d5f46c5443154ec6c27aac66337e57445929c075934d14"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-552",
+        "label": "REPLICATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": {
+        "technique": "propagate_group_entitlement",
+        "actor": {
+          "id": "S-1-5-21-1271839998-3495686680-2211690266-1318",
+          "label": "TIM_WEBER@SEAMLESS.INTERNAL",
+          "kind": "User"
+        },
+        "unknown": [
+          "security_group",
+          "membership_usable"
+        ],
+        "trace": "result.json#/reproducibility/inputs/public_queries/sha256:ebd2c6881b2e27240f6d2b8bd1a6c7fbd6844e823f2c72e6fc0006f65920b5b6/result/attempts/4999"
+      },
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:ebd2c6881b2e27240f6d2b8bd1a6c7fbd6844e823f2c72e6fc0006f65920b5b6"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-550",
+        "label": "PRINT OPERATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": {
+        "technique": "propagate_group_entitlement",
+        "actor": {
+          "id": "S-1-5-21-1271839998-3495686680-2211690266-1540",
+          "label": "THELMA_STANLEY@SEAMLESS.INTERNAL",
+          "kind": "User"
+        },
+        "unknown": [
+          "security_group",
+          "membership_usable"
+        ],
+        "trace": "result.json#/reproducibility/inputs/public_queries/sha256:b21f204fd061e885abe5051a3f5efdbdbcf7fac50f8bd604c9b84622e465df97/result/attempts/4992"
+      },
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:b21f204fd061e885abe5051a3f5efdbdbcf7fac50f8bd604c9b84622e465df97"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-551",
+        "label": "BACKUP OPERATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": {
+        "technique": "propagate_group_entitlement",
+        "actor": {
+          "id": "S-1-5-21-1271839998-3495686680-2211690266-2439",
+          "label": "EDWIN_LESTER@SEAMLESS.INTERNAL",
+          "kind": "User"
+        },
+        "unknown": [
+          "security_group",
+          "membership_usable"
+        ],
+        "trace": "result.json#/reproducibility/inputs/public_queries/sha256:42755b2324d16b04a5401669f569b32e1f0fa61e439eb103127d22383f6e8f0b/result/attempts/4989"
+      },
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:42755b2324d16b04a5401669f569b32e1f0fa61e439eb103127d22383f6e8f0b"
+    },
+    {
+      "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+      "source": {
+        "id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "label": "FINWVIR1000001.SEAMLESS.INTERNAL",
+        "kind": "Computer"
+      },
+      "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+      "goal": {
+        "id": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-549",
+        "label": "SERVER OPERATORS@SEAMLESS.INTERNAL",
+        "kind": "Group"
+      },
+      "technical_priority": 1,
+      "selection_reason": "admincount_marker_not_privilege_proof",
+      "business_impact": null,
+      "status": "truncated_incomplete",
+      "reached": false,
+      "C": null,
+      "effort_units": [],
+      "P": null,
+      "minimum_proven": false,
+      "no_path_proven_in_declared_scope": false,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "expansions": 6000,
+      "effort_applicability": {
+        "profile_id": "reset-activation-c-v2",
+        "profile_digest": "sha256:351d336db46340f171e62f76836075e1a57493ebc43df8a4b832762c3f8e0949",
+        "dimension": "C",
+        "P": "not_evaluated",
+        "I": "not_evaluated",
+        "status": "bound",
+        "direct_reset_pairs": 2491,
+        "activation_owners": 2491,
+        "active_classes": 2,
+        "coverage": "Direct initial User/explicit Computer-owned GenericAll reset and owner/context-bound reset activation only"
+      },
+      "steps": [],
+      "conditions": [],
+      "missing_endpoint_evidence_example": {
+        "technique": "propagate_group_entitlement",
+        "actor": {
+          "id": "S-1-5-21-1271839998-3495686680-2211690266-2191",
+          "label": "LATASHA_CARROLL@SEAMLESS.INTERNAL",
+          "kind": "User"
+        },
+        "unknown": [
+          "security_group",
+          "membership_usable"
+        ],
+        "trace": "result.json#/reproducibility/inputs/public_queries/sha256:1e6228d3da5aed1a0b3f068dd96ff8d62f5f75a5ab0f5750827a38be55b61af0/result/attempts/4997"
+      },
+      "trace": "result.json#/reproducibility/inputs/public_queries/sha256:1e6228d3da5aed1a0b3f068dd96ff8d62f5f75a5ab0f5750827a38be55b61af0"
+    }
+  ],
+  "remediation": null,
+  "limits": [
+    "C is conditional ordinal effort, not elapsed time or a measured success rate.",
+    "A witness is conditional on its listed assumptions and initial identity declaration.",
+    "Best found is not minimum unless the native guarantee says so; unrated is not zero.",
+    "Incomplete/unrun/unsupported goals remain inconclusive; not domain-wide coverage.",
+    "An authentication context endpoint does not itself imply host control."
+  ]
+}

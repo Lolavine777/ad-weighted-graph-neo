@@ -1,0 +1,216 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Target Manifest Specification (Issue #268)",
+  "description": "Snapshot-pinned catalog of technical attack goals and high-value Active Directory targets with typed success predicates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "manifest_id",
+    "snapshot_id",
+    "domain_sid",
+    "targets"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "target-manifest/1.0.0",
+        "target-manifest/1.1.0",
+        "target-manifest/1.2.0"
+      ]
+    },
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "snapshot_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "domain_sid": {
+      "type": "string",
+      "pattern": "^S-1-5-21-[0-9]+-[0-9]+-[0-9]+$"
+    },
+    "description": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "default_discovery_goals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/targetGoal"
+      }
+    }
+  },
+  "$defs": {
+    "targetGoal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goal_id",
+        "category",
+        "target_node_id",
+        "target_node_kind",
+        "display_name",
+        "technical_consequence",
+        "impact_rating",
+        "required_control_level",
+        "required_state"
+      ],
+      "properties": {
+        "goal_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "category": {
+          "enum": [
+            "tier_0_identity",
+            "tier_0_host",
+            "tier_1_host",
+            "high_value_asset",
+            "custom"
+          ]
+        },
+        "target_node_id": {
+          "type": "string"
+        },
+        "target_node_kind": {
+          "enum": [
+            "Group",
+            "Computer",
+            "User"
+          ]
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "technical_consequence": {
+          "type": "string"
+        },
+        "impact_rating": {
+          "enum": [
+            "Catastrophic",
+            "High",
+            "Medium",
+            "Low",
+            "Unknown"
+          ]
+        },
+        "required_control_level": {
+          "enum": [
+            "admin_entitlement",
+            "host_admin_execution",
+            "remote_command",
+            "interactive_session",
+            "none"
+          ]
+        },
+        "provenance_locator": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_state": {
+          "type": "object",
+          "description": "Normalized AttackState requirements (e.g. admin_control or effective_member)"
+        },
+        "checkpoint_goal": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "description": "Optional intermediate milestone required before final asset access"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "goal_kind": {
+          "const": "usable_identity_entitlement",
+          "description": "One same usable identity holds target Group membership in the source Computer authentication context. Manifest 1.1.0 required."
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "goal_kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "target_node_kind": {
+                "const": "Group"
+              },
+              "required_control_level": {
+                "const": "admin_entitlement"
+              },
+              "required_state": {
+                "maxProperties": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "enum": ["target-manifest/1.0.0", "target-manifest/1.1.0"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targets": {
+            "items": {
+              "properties": {
+                "impact_rating": {"not": {"const": "Unknown"}}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "target-manifest/1.0.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "targets": {
+            "items": {
+              "not": {
+                "required": [
+                  "goal_kind"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

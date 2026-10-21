@@ -1,0 +1,72 @@
+{
+  "schema_version": "awg-r04-machine-profile-closeout/1",
+  "validated_clean_revision": "7119371ebcd0d47e42922017aece42ffff2a9323",
+  "native_integration_and_fullraw_capture_revision": "4c920a1f0f2997dd4b6f26320fc2819d3ac3a07d",
+  "final_tests": {
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "504",
+      "time": "123.548",
+      "timestamp": "2026-10-18T13:50:21.992109-04:00",
+      "hostname": "e251c95fbf5e"
+    },
+    "console_duration_seconds": "123.56",
+    "per_module": {
+      "tests.test_machine_identity_profile": 35,
+      "tests.test_computer_foothold_boundary": 18,
+      "tests.test_query_cli": 65,
+      "tests.test_reset_effort": 21,
+      "tests.test_exposure": 18,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_source_goal_batch_contract": 44,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_attack_semantics_transitions": 45,
+      "tests.test_engine": 30,
+      "tests.test_asrep": 51,
+      "tests.test_rbcd": 33,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_review_regressions": 10
+    },
+    "artifact": {
+      "path": "docs/research/awg-r04/evidence/iteration-11-final-clean.xml",
+      "bytes": 72440,
+      "sha256": "sha256:f6a12838c4b0324e13fcd1f2768e9a7980b4ae2343650e18e33b37214ab21315"
+    }
+  },
+  "all_captured_source_and_schema_pins_equal_current_files": true,
+  "existing_v12_acceptance_pins_equal_current_files": true,
+  "acceptance_manifest": {
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v12.json",
+    "bytes": 331497,
+    "sha256": "sha256:d7e0705fe2f67ea81ec846f1676ea52243eba132dc306cc37abaca9e2754aaf4"
+  },
+  "no_successor_required": "Native src, catalog, numeric and all acceptance-pinned bytes unchanged; existing Week4 v12 assertions reexecuted in final tests.",
+  "primary_experiment": {
+    "path": "docs/research/awg-r04/evidence/iteration-11-machine-profile.json",
+    "bytes": 110103,
+    "sha256": "sha256:280dc93d66842a0d53e25753091d1f46cab193a65ba2b8dcc692d24e554bc68c"
+  },
+  "fullraw_machine_result_schema_validation": "PASS; actual 361,776,812-byte result validated with batch-query-result schema.",
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "PASS; 581 files formatted",
+    "contract": "PASS; 2 synthetic fixtures",
+    "repository_links": {
+      "status": "FAIL_known_inaccessible_historical_artifact",
+      "only_failure": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip"
+    }
+  },
+  "scope": "Selected checks overlap227 and previous425. Fullraw has three distinct source-goal pairs and two input capability declarations. No whole-suite, global optimum, calibrated probability, speedup or remediation-reduction claim.",
+  "job_state": "All iteration11 fullraw CLI cohorts, native API/replay, selected tests and final clean tests completed; no worker pending.",
+  "next_action": "Finite independent oracle for typed HasSession composition: opaque material vs password, owner/context, host-admin, Unknown/False gates. Public raw has zero Sessions; synthetic first. FCP next, preparation reuse P1; no production AND-OR.",
+  "publication": "Closeout descendant changes docs/evidence only; fresh leased feature-branch push. No main/develop/parent ref change."
+}

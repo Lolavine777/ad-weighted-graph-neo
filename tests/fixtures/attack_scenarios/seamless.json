@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0.0",
+  "case_id": "w3-source-b-positive",
+  "source": "source_b",
+  "accepted_revision": "6fbb410db9b2371fbe6ce3149fe484c2de306da3",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "input_pins": [
+    {
+      "path": "configs/contract.yml",
+      "file_digest": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea"
+    },
+    {
+      "path": "configs/attack_semantics.yml",
+      "file_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241"
+    },
+    {
+      "path": "docs/research/ratings/week3-closeout/semantic-bridge-plan.json",
+      "file_digest": "sha256:56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390"
+    },
+    {
+      "path": "docs/research/ratings/week3-closeout/search-integration-plan.json",
+      "file_digest": "sha256:c26d18918fc6ce62bda98cb20f4da3be786ca1ee5f42fa82dc0e035b82be7f86"
+    },
+    {
+      "path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+      "file_digest": "sha256:5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41"
+    },
+    {
+      "path": "tests/fixtures/ranking/week3_acceptance_cases.json",
+      "file_digest": "sha256:6c6b2c591007c4de7f6f7fdba39ed01242356fd9d66313d4a53033bc1ce20152"
+    },
+    {
+      "path": "data/samples/manifests/seamless-raw-v1.json",
+      "file_digest": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d"
+    }
+  ],
+  "expected_techniques": [
+    "scenario_reset_password",
+    "acquire_reset_identity",
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ],
+  "terminal_predicate": "admin_control(target)",
+  "scope": "reviewed_source_b_programs_in_bounded_search",
+  "graph_digest": "sha256:41fdff96d00562c0ff096efcc1b585c189e707c8b8f61b199b6197bc7feceae0"
+}

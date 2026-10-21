@@ -1,0 +1,642 @@
+{
+  "metadata": {
+    "package_id": "package-week4-synthetic-a2-diagnostics",
+    "version": "1.0.0",
+    "evidence_class": "synthetic_test_only",
+    "description": "Synthetic fixture A2 verifying fail-closed diagnostic partitioning: blocked, unknown, likelihood_unrated, effort_unrated, and impact_unrated."
+  },
+  "query": {
+    "query_metadata": {
+      "query_id": "query-week4-synthetic-a2-diagnostics",
+      "version": "1.0.0",
+      "scenario_id": "w4-two-routes-exact",
+      "scenario_version": "1.0.0",
+      "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+      "evaluation_mode": "scenario",
+      "work_boundary": "synthetic_two_routes",
+      "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+      "target_goal": {
+        "goal_id": "admin_execution_goal",
+        "description": "Administrative control goal",
+        "required_predicates": [
+          "admin_control_host"
+        ]
+      },
+      "horizon": "fixed_snapshot_window",
+      "active_work_budget": 10
+    },
+    "facts_ledger": {
+      "predicate_layers": {
+        "actor_controlled_alice": 3,
+        "admin_channel_alice_host": 3,
+        "authentication_accepted_alice_host": 3,
+        "security_group_admins": 3,
+        "membership_usable_alice_admins": 3,
+        "effective_member_alice_admins": 3,
+        "admin_control_host": 3,
+        "blocked_firewall_host": 3,
+        "unknown_service_health": 3,
+        "target_x_controlled": 3,
+        "runtime_session_alice": 3
+      },
+      "observed_facts": [
+        {
+          "predicate": "actor_controlled_alice",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/alice"
+        },
+        {
+          "predicate": "admin_channel_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/admin_channel"
+        },
+        {
+          "predicate": "authentication_accepted_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/auth"
+        },
+        {
+          "predicate": "security_group_admins",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/sec_group"
+        },
+        {
+          "predicate": "membership_usable_alice_admins",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/membership_usable"
+        },
+        {
+          "predicate": "blocked_firewall_host",
+          "layer": 3,
+          "truth_value": false,
+          "provenance_reference": "synthetic://facts/firewall_blocked"
+        }
+      ],
+      "false_facts": [],
+      "assumed_facts": [
+        {
+          "predicate": "runtime_session_alice",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Declared scenario runtime assumption of active administrative session",
+          "provenance_reference": "synthetic://assumptions/runtime_session_alice"
+        }
+      ],
+      "unknown_facts": [
+        {
+          "predicate": "unknown_service_health",
+          "layer": 3,
+          "reason": "Declared unknown fact without observation"
+        }
+      ]
+    },
+    "target_impact_assessments": {
+      "10000000-0000-4000-8000-000000000002": {
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "success_event": "admin_execution_on_host_c0",
+        "rating_status": "rated",
+        "consequence_rating": "High",
+        "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+        "affected_business_services": [
+          "synthetic_host_service"
+        ],
+        "missing_basis_reasons": []
+      },
+      "10000000-0000-4000-8000-000000000003": {
+        "target_asset_id": "10000000-0000-4000-8000-000000000003",
+        "success_event": "admin_execution_on_otherhost",
+        "rating_status": "unrated",
+        "consequence_rating": null,
+        "business_rationale": null,
+        "affected_business_services": [
+          "synthetic_service_x"
+        ],
+        "missing_basis_reasons": [
+          "no_business_consequence_rationale_available"
+        ]
+      }
+    },
+    "bound_actions": [
+      {
+        "action_id": "action_direct_admin",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "admin_channel_alice_host",
+          "authentication_accepted_alice_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_member_admins",
+        "technique": "propagate_group_entitlement",
+        "technique_name": "propagate_group_entitlement",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "S-1-5-21-1000-2000-3000-2103",
+        "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_alice",
+          "security_group_admins",
+          "membership_usable_alice_admins"
+        ],
+        "adds": [
+          "effective_member_alice_admins"
+        ],
+        "is_passive_closure": true
+      },
+      {
+        "action_id": "action_inherited_admin",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+        "referenced_work_unit_ids": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "effective_member_alice_admins",
+          "admin_channel_alice_host",
+          "authentication_accepted_alice_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_blocked_attempt",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-auth-context"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "blocked_firewall_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_unknown_attempt",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-auth-context"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "unknown_service_health"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_unrated_effort_attempt",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-unrated-friction"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "admin_channel_alice_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_unrated_impact_attempt",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000003",
+        "referenced_work_unit_ids": [
+          "w-auth-otherhost",
+          "w-direct-admin-otherhost"
+        ],
+        "requires": [
+          "actor_controlled_alice"
+        ],
+        "adds": [
+          "target_x_controlled",
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_assumed_gate_attempt",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "runtime_session_alice"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      }
+    ],
+    "work_units_ledger": {
+      "w-auth-context": {
+        "alias": "WU_AUTH_CONTEXT",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Establish shared authentication context for Alice towards Host C0",
+        "technical_source": "synthetic://rubric/w-auth-context",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-direct-admin": {
+        "alias": "WU_DIRECT_ADMIN",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 4,
+        "effort_cost": 4,
+        "rubric_scores": {
+          "t1": 3,
+          "t2": 3,
+          "formula": "base",
+          "computed_cost": 4
+        },
+        "summary": "Direct administrator execution on Host C0 after authentication context",
+        "technical_source": "synthetic://rubric/w-direct-admin",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-inherited-admin": {
+        "alias": "WU_INHERITED_ADMIN",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Inherited administrator execution on Host C0 via group membership",
+        "technical_source": "synthetic://rubric/w-inherited-admin",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-unrated-friction": {
+        "alias": "WU_UNRATED_FRICTION",
+        "rating_status": "unrated",
+        "overlap_state": "independent",
+        "computed_cost": null,
+        "effort_cost": null,
+        "summary": "Work unit without empirical friction data",
+        "technical_source": "synthetic://rubric/w-unrated",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": [
+          "insufficient_empirical_friction_data"
+        ]
+      },
+      "w-auth-otherhost": {
+        "alias": "WU_AUTH_OTHERHOST",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Establish authentication context for Alice towards OtherHost X",
+        "technical_source": "synthetic://rubric/w-auth-otherhost",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-direct-admin-otherhost": {
+        "alias": "WU_DIRECT_ADMIN_OTHERHOST",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 4,
+        "effort_cost": 4,
+        "rubric_scores": {
+          "t1": 3,
+          "t2": 3,
+          "formula": "base",
+          "computed_cost": 4
+        },
+        "summary": "Direct administrator execution on OtherHost X after authentication context",
+        "technical_source": "synthetic://rubric/w-direct-admin-otherhost",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ],
+        "missing_basis_reasons": []
+      }
+    },
+    "conditional_bounds_table": [
+      {
+        "prefix": [
+          "w-auth-context"
+        ],
+        "lower": "1/2",
+        "upper": "1/2",
+        "question_id": "q1",
+        "outcome_action_id": "action_direct_admin",
+        "technical_source": "synthetic://bounds/q1",
+        "basis_category": "synthetic_fixture",
+        "rationale": "auth context",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ]
+      },
+      {
+        "prefix": [
+          "w-auth-otherhost"
+        ],
+        "lower": "1/2",
+        "upper": "1/2",
+        "question_id": "q_auth_otherhost",
+        "outcome_action_id": "action_unrated_impact_attempt",
+        "technical_source": "synthetic://bounds/q_auth_otherhost",
+        "basis_category": "synthetic_fixture",
+        "rationale": "authentication context for otherhost",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ]
+      },
+      {
+        "prefix": [
+          "w-auth-otherhost",
+          "w-direct-admin-otherhost"
+        ],
+        "lower": "1/2",
+        "upper": "1/2",
+        "question_id": "q_admin_otherhost",
+        "outcome_action_id": "action_unrated_impact_attempt",
+        "technical_source": "synthetic://bounds/q_admin_otherhost",
+        "basis_category": "synthetic_fixture",
+        "rationale": "administrative execution on otherhost",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-diagnostics"
+        ]
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_blocked_firewall",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_blocked_attempt"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_blocked",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_unknown_service",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_unknown_attempt"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_unknown",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_missing_likelihood_basis",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_direct_admin"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_missing_likelihood",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_assumed_gate_unrated_basis",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_assumed_gate_attempt"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_assumed_gate",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_unrated_effort",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_unrated_effort_attempt"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_unrated_effort",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_unrated_impact",
+      "target_asset_id": "10000000-0000-4000-8000-000000000003",
+      "bound_action_ids": [
+        "action_unrated_impact_attempt"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_asset_id": "10000000-0000-4000-8000-000000000003"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_unrated_impact",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101"
+          ],
+          "edge_ids": [],
+          "provenance_locators": [],
+          "action_step_indices": [],
+          "semantic_lineage": [
+            {
+              "step_index": 0,
+              "action_id": "action_unrated_impact_attempt",
+              "technique_id": "obtain_admin_execution_on_host",
+              "actor": "S-1-5-21-1000-2000-3000-1101",
+              "source": "S-1-5-21-1000-2000-3000-1101",
+              "target": "10000000-0000-4000-8000-000000000003",
+              "origin": "initial_attack_state",
+              "derived_from_step": null,
+              "status": "applicable"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

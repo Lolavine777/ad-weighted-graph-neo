@@ -1,0 +1,460 @@
+{
+  "metadata": {
+    "code_version": "a8e53b88f7d9566c216039de9c2cd8fb8408832e",
+    "contract_version": "1.3.0",
+    "created_at": "2026-10-08T00:00:00Z",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "weight_profile": "unit"
+  },
+  "nodes": [
+    {
+      "distinguishedname": "CN=BADBLOOD,OU=Domain Controllers,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "enabled": true,
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "is_boundary": false,
+      "kind": "Computer",
+      "label": "BADBLOOD.SEAMLESS.INTERNAL"
+    },
+    {
+      "admincount": false,
+      "distinguishedname": "CN=JOSEFA_GONZALES,OU=SEC,OU=Stage,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "enabled": true,
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "is_boundary": false,
+      "kind": "User",
+      "label": "JOSEFA_GONZALES@SEAMLESS.INTERNAL"
+    },
+    {
+      "admincount": false,
+      "distinguishedname": "CN=OLLIE_LONG,OU=ServiceAccounts,OU=AZR,OU=Tier 1,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "enabled": true,
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "is_boundary": false,
+      "kind": "User",
+      "label": "OLLIE_LONG@SEAMLESS.INTERNAL"
+    },
+    {
+      "admincount": false,
+      "distinguishedname": "CN=LIDIA_ALFORD,OU=Devices,OU=ITS,OU=Tier 1,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "enabled": true,
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "is_boundary": false,
+      "kind": "User",
+      "label": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+    },
+    {
+      "admincount": false,
+      "distinguishedname": "CN=VA-jer-admingroup1,OU=Groups,OU=ITS,OU=Tier 1,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "is_boundary": false,
+      "kind": "Group",
+      "label": "VA-JER-ADMINGROUP1@SEAMLESS.INTERNAL"
+    },
+    {
+      "distinguishedname": "CN=TSTWVIR1000001,OU=ServiceAccounts,OU=AWS,OU=Tier 2,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "enabled": true,
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "is_boundary": false,
+      "kind": "Computer",
+      "label": "TSTWVIR1000001.SEAMLESS.INTERNAL"
+    },
+    {
+      "admincount": true,
+      "distinguishedname": "CN=Domain Admins,CN=Users,DC=seamless,DC=internal",
+      "domain": "SEAMLESS.INTERNAL",
+      "id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "is_boundary": false,
+      "kind": "Group",
+      "label": "DOMAIN ADMINS@SEAMLESS.INTERNAL"
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:062b76d61c3d5698f03aa51a3b26538714d8526d1b4c1ec792ca4fbf16ed0753",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+      "kind": "MemberOf",
+      "provenance": [
+        {
+          "attribute": "Members[].MemberId",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:3b30de3caac96bad3b7b1980c323661cba1cbeccd3c676d20ce2eb15f4a67689",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:3b6bd0959b7a14fa135d6c3b018e1874936deaff84ba273024b0e7f9cc5712f6",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:5073fa4b10f8441f0693f586f7fe28c6d2a414242cb76b1af2341138c0829afc",
+      "kind": "AdminTo",
+      "provenance": [
+        {
+          "attribute": "LocalAdmins[]",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:7135267a8d7123aee9a85e9f8869cb6c1ac6528de18af2a68f5a077441d97d8e",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:810766280627584b3ef81fd9158cb4784e1e7cfdfb0f87f81459a7dec4001591",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "weight": 1.0
+    },
+    {
+      "derivation": {
+        "kind": "nested_membership",
+        "paths": [
+          {
+            "steps": [
+              {
+                "evidence_refs": [
+                  "sha256:c245b33e2c0aa81aa7788bb8c946c4dcbd39a6fbe92bf84cf6464c20d8417251"
+                ],
+                "operation": "effective_membership",
+                "order": 0,
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+              },
+              {
+                "evidence_refs": [
+                  "sha256:b77ba6eaec585dd5ed1049b0595e95fb4a60aae80dcedc0723796e14cb1feba1"
+                ],
+                "operation": "host_local_membership",
+                "order": 1,
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+              }
+            ]
+          }
+        ],
+        "version": "1.1.0"
+      },
+      "id": "sha256:88e2c07055061392dd01cbd968e08274ed97e9cbb85c1f9fc3b36844bb78ffa6",
+      "kind": "AdminTo",
+      "provenance": [
+        {
+          "attribute": "LocalAdmins[]",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[]",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "weight": 1.0
+    },
+    {
+      "derivation": {
+        "kind": "nested_membership",
+        "paths": [
+          {
+            "steps": [
+              {
+                "evidence_refs": [
+                  "sha256:c245b33e2c0aa81aa7788bb8c946c4dcbd39a6fbe92bf84cf6464c20d8417251"
+                ],
+                "operation": "effective_membership",
+                "order": 0,
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+              },
+              {
+                "evidence_refs": [
+                  "sha256:b77ba6eaec585dd5ed1049b0595e95fb4a60aae80dcedc0723796e14cb1feba1"
+                ],
+                "operation": "host_local_membership",
+                "order": 1,
+                "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+                "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+              }
+            ]
+          }
+        ],
+        "version": "1.1.0"
+      },
+      "id": "sha256:99d0e4ba488f0cb1dedad3aed05022813fd2f4c8f48de0c2a03e9c8019c72720",
+      "kind": "AdminTo",
+      "provenance": [
+        {
+          "attribute": "LocalAdmins[]",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[]",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:9cf1b9f823a54889dca74ecfbf706cd946aac639272e6e42f4377aaf5d212dad",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:add3ecb3858d5426d003da9ecdba89274ea02d5c7d9e99e3e10ece6a5d077932",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:da2a06190635e0064b8a3fbea17cb741700d41c9013110330ddea4900f4c4d6f",
+      "kind": "WriteDacl",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:e44b0f47456908b5209f670f2cf0889ae4695e9efd24c82bbda4da1ae043cb48",
+      "kind": "MemberOf",
+      "provenance": [
+        {
+          "attribute": "Members[].MemberId",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:e6e5d605be1a120753808f94017202855a53fdd9a6b9831ac3421d09fbba1538",
+      "kind": "GenericAll",
+      "provenance": [
+        {
+          "attribute": "Aces[].PrincipalSID",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "weight": 1.0
+    },
+    {
+      "id": "sha256:f8b6da6bcbda61ddab0d8184c957e39809ed4e444d5dee181f2309cf0e682173",
+      "kind": "MemberOf",
+      "provenance": [
+        {
+          "attribute": "Members[].MemberId",
+          "collector": "sharphound",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+          "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+          "timestamp": "2021-09-20T18:59:58Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "weight": 1.0
+    }
+  ],
+  "assessments": []
+}

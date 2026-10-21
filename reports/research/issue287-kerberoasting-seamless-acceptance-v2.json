@@ -1,0 +1,316 @@
+{
+  "scenario": "SEAMLESS_Kerberoasting_Realistic_Escalation",
+  "code_revision": "5a923f4e84e09c8dedd9151fa0d5a04f9274bb15",
+  "runtime": {
+    "python": "3.14.7",
+    "platform": "Darwin"
+  },
+  "runner_digest": "7b4a1b074d775e3597fd2c533262e82e4a5ad7567fc3241a3552a81d180433a7",
+  "executable_tree_digest": "sha256:5b73ab2b46dd82fc826fcc6fa00e8e6ca43b1477e06abf2daf073b5b3cbd7ece",
+  "matrix": [
+    {
+      "check": "manifest",
+      "expected": "valid pinned raw snapshot",
+      "observed": "valid pinned raw snapshot",
+      "status": "PASS",
+      "evidence": "manifest verifier"
+    },
+    {
+      "check": "raw_mode",
+      "expected": {
+        "status": "indeterminate",
+        "candidates": 0,
+        "step1_status": "indeterminate",
+        "step2_prefix_status": "indeterminate"
+      },
+      "observed": {
+        "status": "indeterminate",
+        "candidates": 0,
+        "step1_status": "indeterminate",
+        "step2_prefix_status": "indeterminate"
+      },
+      "status": "PASS",
+      "evidence": "raw-result.json; raw-probe-step1.json; raw-probe-step2.json"
+    },
+    {
+      "check": "assumed_search",
+      "expected": {
+        "status": "success",
+        "goal_reached": true,
+        "exact_identity_program_found": true
+      },
+      "observed": {
+        "status": "success",
+        "goal_reached": true,
+        "exact_identity_program_found": true
+      },
+      "status": "PASS",
+      "evidence": "assumed-result.json"
+    },
+    {
+      "check": "assumed_replay",
+      "expected": {
+        "step1": "applicable",
+        "step2": "applicable",
+        "step3": "applicable",
+        "step4": "applicable",
+        "step5": "applicable",
+        "step5b": "applicable",
+        "step6": "applicable",
+        "goal_reached": true
+      },
+      "observed": {
+        "step1": "applicable",
+        "step2": "applicable",
+        "step3": "applicable",
+        "step4": "applicable",
+        "step5": "applicable",
+        "step5b": "applicable",
+        "step6": "applicable",
+        "goal_reached": true
+      },
+      "status": "PASS",
+      "evidence": "assumed-step*.json"
+    },
+    {
+      "check": "drop_recovery_unknown_halt",
+      "expected": {
+        "step2_status": "indeterminate",
+        "step3_suffix_options_count": 0,
+        "step3_prefix_status": "indeterminate",
+        "no_secret": true,
+        "no_suffix_identity": true,
+        "no_recovery_effects": true
+      },
+      "observed": {
+        "step2_status": "indeterminate",
+        "step3_suffix_options_count": 0,
+        "step3_prefix_status": "indeterminate",
+        "no_secret": true,
+        "no_suffix_identity": true,
+        "no_recovery_effects": true
+      },
+      "status": "PASS",
+      "evidence": "drop-recovery-step2.json; drop-recovery-suffix.json"
+    },
+    {
+      "check": "known_false_veto",
+      "expected": {
+        "ledger_veto": true,
+        "prefix_status": "blocked",
+        "suffix_options": 0,
+        "query_blocked_or_indeterminate": true,
+        "candidates": 0,
+        "no_secret": true,
+        "no_suffix_identity": true,
+        "no_recovery_effects": true
+      },
+      "observed": {
+        "ledger_veto": true,
+        "prefix_status": "blocked",
+        "suffix_options": 0,
+        "query_blocked_or_indeterminate": true,
+        "candidates": 0,
+        "no_secret": true,
+        "no_suffix_identity": true,
+        "no_recovery_effects": true
+      },
+      "status": "PASS",
+      "evidence": "veto-proposals.json; veto-probe.json; veto-result.json"
+    },
+    {
+      "check": "numeric_boundary",
+      "expected": [
+        "unrated",
+        "unrated",
+        "unrated"
+      ],
+      "observed": [
+        "unrated",
+        "unrated",
+        "unrated"
+      ],
+      "status": "PASS",
+      "evidence": "raw-result.json; assumed-result.json; veto-result.json"
+    },
+    {
+      "check": "raw_integrity",
+      "expected": true,
+      "observed": true,
+      "status": "PASS",
+      "evidence": "manifest verifier; raw_checksums"
+    }
+  ],
+  "modes": {
+    "raw": {
+      "status": "indeterminate",
+      "candidates": 0,
+      "expansions": 3,
+      "step1_status": "indeterminate",
+      "step2_prefix_status": "indeterminate"
+    },
+    "assumed": {
+      "status": "success",
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "engine_guarantees": {
+        "optimization_scope": "partial_truncated",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "expansions": 5000,
+      "candidates_count": 9,
+      "candidate_sequence_matching_design": [
+        "kerberoast_request",
+        "recover_ticket_secret",
+        "activate_recovered_identity",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "obtain_admin_execution_on_host"
+      ],
+      "all_replay_steps_applicable": true,
+      "optimality_claim": "Not claimed as optimal/minimum. Search truncated at 5000 expansions; candidate matches design sequence within bounded exploration horizon."
+    },
+    "drop_recovery_unknown_halt": {
+      "step2_status": "indeterminate",
+      "step3_suffix_options_count": 0,
+      "step3_prefix_status": "indeterminate"
+    },
+    "known_false_veto": {
+      "rejected_assumptions_count": 1,
+      "rejection_reasons": [
+        "known_false_veto"
+      ],
+      "step3_prefix_status": "blocked",
+      "veto_query_status": "indeterminate"
+    }
+  },
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "foothold": {
+    "account_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+    "account_kind": "User",
+    "admincount": false,
+    "has_spn": false,
+    "memberships": [
+      "DOMAIN USERS@SEAMLESS.INTERNAL"
+    ],
+    "compromise_narrative": "Phishing credential leak; standard authenticated domain employee session",
+    "workstation_context": "AWSWWKS1000000.SEAMLESS.INTERNAL (Member Workstation, no host admin)",
+    "host_control_granted": false
+  },
+  "service_account": {
+    "account_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+    "account_kind": "User",
+    "admincount": false,
+    "has_spn": true,
+    "service_principal_names": [
+      "MSSQL/GOOWWEBS1000000"
+    ],
+    "discovery_method": "LDAP SPN directory enumeration (known_identity declared in initial state)"
+  },
+  "target_asset": {
+    "target_label": "BADBLOOD.SEAMLESS.INTERNAL",
+    "target_kind": "Computer",
+    "typed_goal": "admin_control",
+    "description": "Administrative code execution on Domain Controller host per semantic model"
+  },
+  "reset_identity": {
+    "account_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+    "account_kind": "User"
+  },
+  "executable_identity_chain": [
+    {
+      "technique_id": "kerberoast_request",
+      "actor_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+      "source_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+      "target_label": "AVIS_SWEET@SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "recover_ticket_secret",
+      "actor_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+      "source_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+      "target_label": "AVIS_SWEET@SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "activate_recovered_identity",
+      "actor_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+      "source_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+      "target_label": "AWSWWKS1000000.SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "propagate_group_entitlement",
+      "actor_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+      "source_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+      "target_label": "HO-170-DISTLIST1@SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "scenario_reset_password",
+      "actor_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+      "source_label": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+      "target_label": "KATRINA_GREEN@SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "acquire_reset_identity",
+      "actor_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+      "source_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+      "target_label": "AWSWWKS1000000.SEAMLESS.INTERNAL"
+    },
+    {
+      "technique_id": "obtain_admin_execution_on_host",
+      "actor_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+      "source_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+      "target_label": "BADBLOOD.SEAMLESS.INTERNAL"
+    }
+  ],
+  "group_security_enabled_verification": {
+    "group_label": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+    "raw_dataset_schema_limit": "SharpHound v3 raw data does not collect groupType attribute; properties in raw JSON only include [description, name, objectid, highvalue, admincount, distinguishedname, domain].",
+    "status": "unverified_assumption",
+    "assumption_predicate": "security_group",
+    "rationale": "Declared as security_group=True because in Active Directory only security groups can be security principals in DACLs. If created as a mail-enabled security group, the ACE is valid; if purely a distribution group, DACL rights cannot propagate. This remains an unverified runtime assumption due to dataset schema limits.",
+    "alternative_candidate_note": "SHERRIE_SOTO -> VA-JER-ADMINGROUP1 -> OLLIE_LONG -> BADBLOOD provides an alternative where the group is named ADMINGROUP1, avoiding the distlist naming."
+  },
+  "counts": {
+    "structural_hops": 3,
+    "semantic_actions": 7,
+    "active_actions": 6,
+    "passive_entitlements": 1
+  },
+  "assumptions_count": 16,
+  "scoring": {
+    "effort": "unrated",
+    "likelihood": "unrated",
+    "impact": "unrated"
+  },
+  "raw_checksums": {
+    "20210920185958_computers.json": "238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+    "20210920185958_domains.json": "b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+    "20210920185958_gpos.json": "2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+    "20210920185958_groups.json": "5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+    "20210920185958_ous.json": "f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+    "20210920185958_users.json": "8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa"
+  },
+  "evidence_digests": {
+    "assumed-result.json": "8a12d2e3f9158660930d1c0572503ce9a96c14965ebe3d27b2ba93790e988346",
+    "assumed-step1.json": "9ef5d72ced36c5ae7bcad60552f94da3459108835521fd7499936ff9e83bab63",
+    "assumed-step2.json": "efcf17f18166d99eb5e1561b1656177ce8b4985af99a03d24da93b16628f44e4",
+    "assumed-step3.json": "77255ae934ac0024014a0872d311e622c9edaa70cee3ef9f31914cf5750be701",
+    "assumed-step4.json": "008812c6fde02e725151b6b3d09a5a2ee67f60d6ad43e44f4b61f6296ef18e4e",
+    "assumed-step5.json": "c49390e610a0a661e2ae940575902a1857db45b39c0bcd980711cfeeb00759c4",
+    "assumed-step5b.json": "d188b6eb42b3e8e7b2907e60a35ec3d9beb2417cbb85166de651d9c9731297e9",
+    "assumed-step6.json": "68fd544d7cc6af586486051e62b08d6e9a3fd40ca7250ba995530159a8d49fab",
+    "drop-recovery-step2.json": "352ba607fbb23785aa483b6166523729f3e9c43be580b8209191c02e4c9be77f",
+    "drop-recovery-suffix.json": "80046d468997dbfadbb2fa59fa12b14f198bf84c59ee8fdb7ec32e479865ba55",
+    "proposals.json": "30ce9dee33becb34a59cfd57393a4ca57a407e0aee6c68698c710a12ab0e0e49",
+    "raw-probe-step1.json": "7c5c194b3ae816800353ecb391b1d878ef2770185162ea756fa3e7527f8f5f93",
+    "raw-probe-step2.json": "d083ad21886db0aa7237c1987cda90c97c9d68cc8c56e14c258fd8a99ec7e14e",
+    "raw-result.json": "c9b5f4756a49efd3244e4386f7229bc4d339667f387496fb3f343ec0d819547b",
+    "template.json": "709a59eee72fb71564dae49155a5a771d556d107936306ea5b477632f4660d28",
+    "veto-probe.json": "b631bfb1178f310a5b518822ae8d0f8a9c68d0e6f2bb91029b8eb925cac4d4d7",
+    "veto-proposals.json": "2f86177f8a8d017becada150cf5a9faecad7cdf4c9960bd7aa3c5ceb0daf228a",
+    "veto-result.json": "b9f5229dc7b0e866d994a4800015611b5ceed397e48872ae5ccd147b08ecce20"
+  },
+  "status": "PASS",
+  "elapsed_seconds": 93.701
+}

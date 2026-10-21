@@ -1,0 +1,73 @@
+{
+  "initial_actor": "Alice",
+  "initial_state": {
+    "control": [
+      "Alice"
+    ]
+  },
+  "target": "Host",
+  "target_goal": {
+    "target": "Host",
+    "required_state": {
+      "admin_control": [
+        "Host"
+      ]
+    }
+  },
+  "aliases": {
+    "Alice": "S-1-5-21-1000-2000-3000-1101",
+    "Admins": "S-1-5-21-1000-2000-3000-2103",
+    "Host": "10000000-0000-4000-8000-000000000002"
+  },
+  "runtime_facts": [
+    {
+      "predicate": "admin_channel",
+      "subject": "Alice",
+      "target": "Host",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Frozen synthetic runtime declaration; does not supply q",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "Alice",
+      "target": "Host",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Frozen synthetic runtime declaration; does not supply q",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "security_group",
+      "subject": "Alice",
+      "target": "Admins",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Frozen synthetic runtime declaration; does not supply q",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "Alice",
+      "target": "Admins",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Frozen synthetic runtime declaration; does not supply q",
+      "evidence_ref": "bh-admin"
+    }
+  ],
+  "allowed_techniques": [
+    "propagate_group_entitlement",
+    "obtain_admin_execution_on_host"
+  ],
+  "budget": {
+    "max_paths": 1000,
+    "max_steps": 12,
+    "max_expansions": 100000
+  }
+}

@@ -1,0 +1,118 @@
+"""Project exact iteration7 captures; do not relabel or rewrite native runs."""
+import argparse
+import hashlib
+import json
+import shutil
+import xml.etree.ElementTree as ET
+from collections import Counter
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument("--repo", type=Path, required=True)
+p.add_argument("--execution-root", type=Path, required=True)
+a = p.parse_args()
+REPO, ROOT = a.repo.resolve(), a.execution_root.resolve()
+OUT = REPO / "docs/research/awg-r04/evidence"
+sha = lambda raw: "sha256:" + hashlib.sha256(raw).hexdigest()
+
+def read(path):
+    return json.loads(path.read_text())
+
+def pin(path):
+    return {"path": str(path.relative_to(REPO)) if path.is_relative_to(REPO) else str(path),
+            "bytes": path.stat().st_size, "sha256": sha(path.read_bytes())}
+
+def files(folder):
+    return [pin(p) for p in sorted(folder.iterdir()) if p.is_file()]
+
+def copy(source, name):
+    destination = OUT / name
+    assert not destination.exists(), "Never overwrite published evidence"
+    shutil.copyfile(source, destination)
+    assert source.read_bytes() == destination.read_bytes()
+    return pin(destination)
+
+pilot_dir = REPO / "reports/generated/awg-r04-effort-pilot-v4"
+exposure_dir = REPO / "reports/generated/awg-r04-effort-exposure-v1"
+legacy_dir = REPO / "reports/generated/awg-r04-effort-legacy-v1"
+pilot = read(pilot_dir / "summary.json")
+exposure = read(exposure_dir / "summary.json")
+legacy = read(legacy_dir / "summary.json")
+native = read(exposure_dir / "result.json")
+query = read(pilot_dir / "query-C-only.json")
+request = read(exposure_dir / "request.json")
+assert pilot["revision"] == "143dc5d833e20270a1b343124df11b95fab3f506"
+assert pilot["after"]["paths"] == 1 and pilot["after"]["min_effort"]["minimum_effort_value"] == 1
+assert pilot["after"]["minimum_proven_over_scope"] is False
+assert pilot["before_after_full_path_parity"] and pilot["API_CLI_exact_semantic_parity"]
+assert exposure["batch"]["status_counts"] == {"complete_success": 1, "truncated_incomplete": 1}
+assert exposure["batch"]["effort_rated_cells"] == 1
+assert exposure["batch"]["likelihood_rated_cells"] == 0
+assert native["reproducibility"]["inputs"]["source_pins"] == pilot["source_pins"]
+assert legacy["source_pins"] == pilot["source_pins"]
+for name, digest in pilot["source_pins"].items():
+    assert sha((REPO / name).read_bytes()) == digest, name
+
+goals = {t["goal_id"]: t for t in request["target_manifest"]["targets"]}
+cells = []
+for source, row in native["source_goal_matrix"].items():
+    for goal, cell in row.items():
+        cells.append({"source_id": source, "goal": goals[goal],
+                      "cell": {k: v for k, v in cell.items() if k != "diagnostics"},
+                      "diagnostics_omitted_count": len(cell["diagnostics"])})
+query_audit = []
+for ref, trace in native["reproducibility"]["inputs"]["public_queries"].items():
+    q, r = trace["query"], trace["result"]
+    query_audit.append({"trace_ref": ref, "source": q["initial_actor"], "target": q["target"],
+                        "authentication_context": q["authentication_context"],
+                        "effort_profile_metadata": q["effort_profile_metadata"],
+                        "assumptions": q["assumptions"], "budget": q["budget"],
+                        "allowed_techniques": q["allowed_techniques"],
+                        "guarantees": trace["guarantees"],
+                        "result": {k: r[k] for k in ("complete", "truncated", "expansions", "caps", "status")},
+                        "paths_count": len(r["paths"]), "attempts_count": len(r["attempts"])})
+
+tests = []
+for source, target in (("effort-final-selected.xml", "iteration-7-selected.xml"),
+                       ("effort-oracles.xml", "iteration-7-oracles.xml")):
+    artifact = copy(ROOT / source, target)
+    suite = ET.parse(ROOT / source).getroot()[0]
+    assert suite.get("failures") == suite.get("errors") == "0"
+    tests.append({"artifact": artifact, "suite": suite.attrib,
+                  "per_module": dict(Counter(t.get("classname") for t in suite))})
+assumptions = copy(pilot_dir / "assumptions.json", "iteration-7-assumptions.json")
+unrated_query = copy(pilot_dir / "query-unrated.json", "iteration-7-unrated-query.json")
+out = {
+    "schema_version": "awg-r04-reset-effort-experiment/1",
+    "native_execution_revision": pilot["revision"],
+    "pilot": pilot,
+    "effort_profile": exposure["effort_profile"],
+    "applicability": query["effort_profile_metadata"],
+    "new_scope_vs_old_numbers": "Explicit opt-in solo-fork scenario adoption; historical C numbers are not historical reviewer approval of the new source/goal/context scope. No P/I records are imported.",
+    "exposure": {"summary": exposure, "cells": cells, "query_audit": query_audit,
+                 "runtime": native["reproducibility"]["runtime"],
+                 "full_local_artifacts": files(exposure_dir)},
+    "legacy_goal_comparison": {"summary": legacy, "full_local_artifacts": files(legacy_dir)},
+    "raw_manifest": read(REPO / "data/samples/manifests/seamless-raw-v1.json"),
+    "snapshot": pin(REPO / "data/processed/awg-r04/pilot-v2/snapshot.json"),
+    "acceptance_manifest": pin(REPO / "reports/research/week4-guided-exploration-acceptance-manifest-v9.json"),
+    "test_runs": tests,
+    "assumptions": assumptions, "unrated_query": unrated_query,
+    "implementation": [pin(REPO / name) for name in (
+        "src/engine/ranking/reset_effort.py", "src/engine/batch.py", "scripts/exposure.py",
+        "scripts/research/identity_effort_pilot.py", "scripts/research/compare_identity_goals.py",
+        "tests/test_reset_effort.py")],
+    "evidence_generator": pin(OUT / "iteration-7-evidence-generator.txt"),
+    "initial_runner_errors": {
+        "classification": "Development pilot first omitted required native CLI prerequisites; second compared CLI candidate envelopes without their documented candidate_id. Corrected orchestration only; CLI guards and semantics unchanged. Initial pytest failures were fixture/assertion-shape mistakes, not confirmed engine defects.",
+        "local_logs": [pin(ROOT / n) for n in ("effort-first.log", "effort-pilot-first.log", "effort-pilot-v2.log")],
+        "not_counted_as_final_evidence": ["awg-r04-effort-pilot-first", "awg-r04-effort-pilot-v2", "awg-r04-effort-pilot-v3"]},
+    "projection_omissions": [
+        "Full native attempts/diagnostics, checkpoint and CLI payload remain in hashed local files, not duplicated in Git. Full per-unit ledger for the one C witness is included in pilot.after.ledgers.",
+        "The pilot artifact inventory includes an observed temporary checkpoint spill file; it is not a completed checkpoint or another evaluated run.",
+        "Two test runs overlap and the 166-check run precedes the last oracle-only additions. Neither is a whole-suite pass; final clean validation is published separately.",
+        "Stage wall times are observations of different work/output scopes, not a paired performance improvement experiment."]}
+destination = OUT / "iteration-7-effort.json"
+assert not destination.exists()
+destination.write_text(json.dumps(out, ensure_ascii=False, sort_keys=True, indent=2) + "\n")
+print(json.dumps({"evidence": pin(destination), "tests": [t["suite"] for t in tests]}))

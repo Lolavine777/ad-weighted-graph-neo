@@ -1,0 +1,106 @@
+{
+  "scenario": "SEAMLESS_Kerberoasting_Realistic_Escalation",
+  "code_revision": "b6dcbfebabbc3930a1206d6961089940528d2b09",
+  "runtime": {
+    "python": "3.14.7",
+    "platform": "Windows"
+  },
+  "foothold": {
+    "account_label": "ALEXANDRIA_WALSH@SEAMLESS.INTERNAL",
+    "account_kind": "User",
+    "admincount": false,
+    "has_spn": false,
+    "memberships": [
+      "DOMAIN USERS@SEAMLESS.INTERNAL"
+    ],
+    "compromise_narrative": "Phishing credential leak; standard authenticated domain employee session",
+    "workstation_context": "AWSWWKS1000000.SEAMLESS.INTERNAL (Member Workstation, no host admin)",
+    "host_control_granted": false
+  },
+  "service_account": {
+    "account_label": "AVIS_SWEET@SEAMLESS.INTERNAL",
+    "account_kind": "User",
+    "admincount": false,
+    "has_spn": true,
+    "service_principal_names": [
+      "MSSQL/GOOWWEBS1000000"
+    ],
+    "discovery_method": "LDAP SPN directory enumeration (known_identity declared in initial state)"
+  },
+  "target_asset": {
+    "target_label": "BADBLOOD.SEAMLESS.INTERNAL",
+    "target_kind": "Computer",
+    "typed_goal": "admin_control",
+    "description": "Administrative code execution on Domain Controller host per semantic model"
+  },
+  "group_security_enabled_verification": {
+    "group_label": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+    "group_sid": "S-1-5-21-1271839998-3495686680-2211690266-4038",
+    "raw_dataset_schema_limit": "SharpHound v3 raw data does not collect groupType attribute; properties in raw JSON only include [description, name, objectid, highvalue, admincount, distinguishedname, domain].",
+    "status": "unverified_assumption",
+    "assumption_predicate": "security_group",
+    "rationale": "Declared as security_group=True because in Active Directory only security groups can be security principals in DACLs. If created as a mail-enabled security group, the ACE is valid; if purely a distribution group, DACL rights cannot propagate. This remains an unverified runtime assumption due to dataset schema limits.",
+    "alternative_candidate_note": "SHERRIE_SOTO -> VA-JER-ADMINGROUP1 -> OLLIE_LONG -> BADBLOOD provides an alternative where the group is named ADMINGROUP1, avoiding the distlist naming."
+  },
+  "counts": {
+    "structural_hops": 3,
+    "semantic_actions": 7,
+    "active_actions": 6,
+    "passive_entitlements": 1
+  },
+  "modes": {
+    "raw": {
+      "status": "indeterminate",
+      "candidates": 0,
+      "expansions": 3,
+      "step1_status": "indeterminate",
+      "step2_prefix_status": "indeterminate"
+    },
+    "assumed": {
+      "status": "success",
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "engine_guarantees": {
+        "optimization_scope": "partial_truncated",
+        "is_minimum_proven_over_scope": false,
+        "is_no_path_proven_over_scope": false
+      },
+      "expansions": 5000,
+      "candidates_count": 9,
+      "candidate_sequence_matching_design": [
+        "kerberoast_request",
+        "recover_ticket_secret",
+        "activate_recovered_identity",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "obtain_admin_execution_on_host"
+      ],
+      "all_replay_steps_applicable": true,
+      "optimality_claim": "Not claimed as optimal/minimum. Search truncated at 5000 expansions; candidate matches design sequence within bounded exploration horizon."
+    },
+    "drop_recovery_unknown_halt": {
+      "step2_status": "indeterminate",
+      "step3_suffix_options_count": 0,
+      "step3_prefix_status": "indeterminate",
+      "verdict": "Unknown condition halts prefix without fabricating fake effects"
+    },
+    "known_false_veto": {
+      "rejected_assumptions_count": 1,
+      "rejection_reasons": [
+        "known_false_veto"
+      ],
+      "step3_prefix_status": "blocked",
+      "veto_query_status": "indeterminate",
+      "verdict": "Authoritative False fact triggers ledger veto and blocks execution"
+    }
+  },
+  "assumptions_count": 16,
+  "scoring": {
+    "effort": "unrated",
+    "likelihood": "unrated",
+    "impact": "unrated"
+  },
+  "elapsed_seconds": 146.849,
+  "status": "PASS"
+}

@@ -1,0 +1,55 @@
+{
+  "acceptance_byte_pins_equal_to_current_files": true,
+  "acceptance_manifest": {
+    "bytes": 330605,
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v8.json",
+    "sha256": "sha256:989cac2c3a84077a3fe363c1ebe0fed1b8d253c67abd2dd5d3126cc962cf2b9e"
+  },
+  "checks": {
+    "contract": "PASS; 2 synthetic fixtures",
+    "repository_links": {
+      "only_failure": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip",
+      "status": "FAIL_known_inaccessible_historical_artifact"
+    },
+    "ruff_check": "PASS",
+    "ruff_format": "571 files formatted"
+  },
+  "final_tests": {
+    "artifact": {
+      "bytes": 8715,
+      "path": "docs/research/awg-r04/evidence/iteration-6-final-clean.xml",
+      "sha256": "sha256:d7d076fc0c068b1739b2983e6f894f2a879e6a075f50d138204d5d22e4b182b4"
+    },
+    "per_module": {
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_review_regressions": 10
+    },
+    "suite": {
+      "errors": "0",
+      "failures": "0",
+      "hostname": "3e811f1921ce",
+      "name": "pytest",
+      "skipped": "0",
+      "tests": "55",
+      "time": "58.659",
+      "timestamp": "2026-10-18T15:03:02.577598+09:00"
+    }
+  },
+  "job_state": "All iteration6 experiment/profile/raw/selected/clean jobs completed; no worker pending.",
+  "native_code_revision": "9ce0703388fde6332816708289a5db0d6c47fdc8",
+  "native_source_pins_equal_to_captured_standard_run": true,
+  "next_action": "Pilot exact C-only applicability for a verified generated identity-entitlement goal; separately benchmark immutable evidence fingerprint/extraction reuse without weakening R1/R2/R3 binding guards. No production AND-OR implementation yet.",
+  "prior_machine_evidence": {
+    "bytes": 726097,
+    "path": "docs/research/awg-r04/evidence/iteration-6-policy.json",
+    "sha256": "sha256:cdf18b402c50dcd7915142b8a040f3e94d2dc9057975f5f14ddac8b819d2a36d"
+  },
+  "schema_version": "awg-r04-policy-closeout/1",
+  "test_scope": "Selected suites overlap prior 261/43/raw checks; no whole-suite completion claim. The prior opted-out raw check subsequently passed with explicit raw input flag.",
+  "validated_clean_revision": "bc2c0f3a6abdb25e6db1de4c4e036b196b660870"
+}

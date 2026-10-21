@@ -1,0 +1,62 @@
+"""Run one external finite oracle against an independently selected checkout."""
+import argparse
+import hashlib
+import importlib.util
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--case-module', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+a = p.parse_args()
+assert not a.output.exists(), 'Preserve previous captures'
+repo = a.repo.resolve()
+sys.path[:0] = [str(repo), str(repo / 'tests')]
+spec = importlib.util.spec_from_file_location('session_oracle_cases', a.case_module.resolve())
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+from src.engine import query
+from src.engine.query_cli import wire
+from src.engine.semantics.credentials import replay_path
+assert Path(query.__file__).resolve().is_relative_to(repo)
+pin = lambda path: 'sha256:' + hashlib.sha256(path.read_bytes()).hexdigest()
+rows = []
+for case in module.CASES:
+    graph, public = module.scenario(case)
+    result = query.run_attack_query(public, graph)
+    for path in result.paths:
+        assert replay_path(path, graph) == path.final_state
+    inputs = {'query': wire(public), 'graph': graph.to_canonical()}
+    actual, expected = module.classify(result), module.oracle(case)
+    rows.append({
+        'case': case.name, 'oracle': expected, 'classification': actual,
+        'matches_oracle': actual == expected, 'native_status': result.status,
+        'inputs': inputs,
+        'input_sha256': 'sha256:' + hashlib.sha256(json.dumps(inputs, sort_keys=True).encode()).hexdigest(),
+        'complete': result.complete, 'truncated': result.truncated,
+        'goal_reached': result.final_goal_reached,
+        'minimum_proven': result.is_minimum_proven_over_scope,
+        'no_path_proven_over_scope': result.is_no_path_proven_over_scope,
+        'expansions': result.expansions,
+        'semantic_coverage_gaps': getattr(result, 'semantic_coverage_gaps', ()),
+        'paths': wire(result.paths), 'attempts': wire(result.attempts),
+        'diagnostics': wire(result.diagnostics),
+    })
+data = {
+    'schema_version': 'awg-r04-session-boundary-oracle/1',
+    'revision': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
+    'tracked_changes': subprocess.check_output(['git', 'status', '--porcelain', '-uno'], cwd=repo, text=True),
+    'case_module_sha256': pin(a.case_module), 'harness_sha256': pin(Path(__file__)),
+    'source_pins': {n: pin(repo / n) for n in [
+        'src/engine/query.py', 'src/engine/search.py', 'src/engine/semantics/evaluator.py',
+        'src/engine/semantics/credentials.py', 'configs/attack_semantics.yml']},
+    'rows': rows, 'matches': sum(r['matches_oracle'] for r in rows), 'total': len(rows),
+    'scope': 'Finite two-action closure and independent material declarations. No AD execution, extraction, numeric C/P/I or minimum-cost assertion. Unsupported is a conservative coverage disposition, not proof of an exploitable route.',
+}
+a.output.parent.mkdir(parents=True, exist_ok=True)
+a.output.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({k: data[k] for k in ['revision', 'tracked_changes', 'matches', 'total']}))

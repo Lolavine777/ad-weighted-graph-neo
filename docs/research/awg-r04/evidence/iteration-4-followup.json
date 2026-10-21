@@ -1,0 +1,816 @@
+{
+  "version": "awg-r04-followup-execution/1.0.0",
+  "executable_revision": "ca3eceef5c8db8ffc8efda38f122afbdb048f582",
+  "raw_cli": {
+    "budgets": {
+      "max_cells": null,
+      "max_expansions": null,
+      "max_seconds": null,
+      "per_query_seconds": null
+    },
+    "comparisons": [
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "reachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "ineffective-membership-retained-bypass",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 0,
+          "percent": 0.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 1
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "unknown": 1
+          },
+          "before": {
+            "unknown": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "missing-recovery-control",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "programs_cut": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "proven_unreachable": 1
+          },
+          "before": {
+            "reachable": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "shared-channel",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "programs_cut": {
+          "denominator": 1,
+          "numerator": 1,
+          "percent": 100.0,
+          "scope": "complete_declared_scope"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "complete": 1
+        },
+        "remaining_bypasses": 0
+      },
+      {
+        "C_available_cells": 0,
+        "C_statuses": {
+          "unrated": 1
+        },
+        "P_comparison": "pending",
+        "coverage": {
+          "after": {
+            "truncated": 1
+          },
+          "before": {
+            "truncated": 1
+          }
+        },
+        "declared_pairs": 1,
+        "intervention": "step-cap-control",
+        "new_bypasses": 0,
+        "not_run_pairs": 0,
+        "pairs_disconnected": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "programs_cut": {
+          "denominator": 0,
+          "numerator": 0,
+          "percent": null,
+          "scope": "observed_corpus_only"
+        },
+        "raw_unchanged": true,
+        "rediscovery": {
+          "truncated": 1
+        },
+        "remaining_bypasses": 0
+      }
+    ],
+    "inventory_candidates": 4,
+    "process_peak_rss_bytes": 526422016,
+    "runtime_seconds": 333.2990296180001,
+    "schema_version": "remediation-study-summary/1",
+    "scope": "bounded declared cohorts; not a full-source scan",
+    "verified_raw_files": 6
+  },
+  "raw_cli_validation": "All assertions in test_manifest_verified_seamless_bounded_pilot repeated against standalone result; all four reports passed strict validate_result",
+  "raw_first_pytest_attempt": "1 passed executor, 1 failed CLI; subprocess stderr not included by check=True traceback. Retained separately; root cause not conclusively recovered. Standalone CLI same code on stable HEAD subsequently succeeded.",
+  "numeric_completed_subset": {
+    "checkpoint_sha256": "sha256:f0de5a703a3f5839994e9b5bda5085a1d74686ee894f519d9823e9ec10978077",
+    "checkpoint_bytes": 6242550,
+    "query_id": "source-a-projection",
+    "full_raw": false,
+    "scope": {
+      "adopted_wave2_release_digest": "sha256:af2d62fed6d58a4d388b49c2e529a1579262a4c6132a41c58c5988e0ab412fed",
+      "after_digest": "sha256:600b395f30ee7d940fb7bc5838abbcf739ff8b696efe703051bc2fd979ce7d1c",
+      "before_digest": "sha256:596db8589ccbe5727f1bb20b1e18d81898b550e56e9b456c86733b6fa9370f8e",
+      "case_digest": "sha256:3d8409a98602a0a061fcc5556b6b8a97f7d22f53f3a06d8ad455e841e13fa743",
+      "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+      "delegated_release_digest": "sha256:f180932d25e60108e62a5bee71daeac99f5a0657e13bd73c2fcf5dd9aa250aa0",
+      "executable_checkout": {
+        "revision": "ca3eceef5c8db8ffc8efda38f122afbdb048f582",
+        "tracked_changes": []
+      },
+      "execution_digest": "sha256:05ba02f04421fc0b504fe0873d735c5d9f3d1f7b9512e9d35f41afb042145966",
+      "graph_identity": {
+        "graph_digest": "sha256:04119351d1cb6b9bd594993d141f840604bfe5f5257fd7f8d2b8cbf1423017d9",
+        "snapshot_facts_digest": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+      },
+      "group": "original",
+      "query_digest": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129",
+      "raw_identity": {
+        "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+        "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+      },
+      "version": "final-cpi-delivery-scope/3.0.0",
+      "wave1_release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+      "wave2_release_digest": "sha256:1ede53695c8b7ab28bac520afdef9a46727172fc0ea9ff972aea24c10bea10b6"
+    },
+    "before": {
+      "B_goal_contract_gap": false,
+      "counts": {
+        "C_rated": 330,
+        "I_rated": 330,
+        "P_rated": 330,
+        "Pareto_eligible": 330,
+        "conditioned_feasible": 330,
+        "fully_rated": 330,
+        "valid_generated": 330
+      },
+      "coverage_digest": "sha256:ad0b4b3eebe7d759fb5da21aa1d1955094db1b19fa713dd173a03f23a37d5286",
+      "expansions": 1978,
+      "gaps": [],
+      "min_effort": 2,
+      "paths_by_action_family_nonexclusive": {
+        "directory_password_reset": 330,
+        "reset_identity_activation": 330,
+        "winrm_admin_execution": 330
+      },
+      "status": "success",
+      "truncated": false,
+      "truncation_reason": null,
+      "unreturned_goal_state_success_events": []
+    },
+    "after": {
+      "B_goal_contract_gap": false,
+      "counts": {
+        "C_rated": 330,
+        "I_rated": 330,
+        "P_rated": 330,
+        "Pareto_eligible": 330,
+        "conditioned_feasible": 330,
+        "fully_rated": 330,
+        "valid_generated": 330
+      },
+      "coverage_digest": "sha256:e04b77abc4d588c4310cb823dabda7b0ab6bf108f24ec5315d75352281d9e042",
+      "expansions": 1978,
+      "gaps": [],
+      "min_effort": 2,
+      "paths_by_action_family_nonexclusive": {
+        "directory_password_reset": 330,
+        "reset_identity_activation": 330,
+        "winrm_admin_execution": 330
+      },
+      "status": "success",
+      "truncated": false,
+      "truncation_reason": null,
+      "unreturned_goal_state_success_events": []
+    },
+    "frontier_count_before": 330,
+    "frontier_count_after": 330,
+    "public_verification": {
+      "API_CLI_semantic_ranking_coverage_programs_equal": true,
+      "CLI_timeout_seconds": 1200,
+      "command": "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-numeric-2006/original.source-a-projection.after.query.json --graph /workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-numeric-2006/original.source-a-projection.after.graph.json --label seamless --prerequisite /workspace/scratch/b1f06964c680/awg-r04/repo/data/samples/manifests/seamless-raw-v1.json",
+      "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+      "comparison_version": "final-cpi-public-comparison/2.0.0",
+      "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+      "minimum_proven": false,
+      "native_transports": [
+        {
+          "bytes": 311090080,
+          "native_file_sha256": "c62fca81cace5a0ba5da6fca0f63d2b2f9ce8967c0aa7cb0d721f0d6d9b07404"
+        },
+        {
+          "bytes": 311090079,
+          "native_file_sha256": "d2a3210c432006010a5d0149ca3958fe924bd96af147709637b9d81d5352f396"
+        }
+      ],
+      "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+      "orchestration_search_ranking_programs_equal": true,
+      "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+      "program_summary_scope": "technique names are display summaries only",
+      "two_CLI_exit_codes": [
+        0,
+        0
+      ],
+      "two_process_equal": true
+    },
+    "programs_unchanged": true,
+    "C_units_checked": 2190,
+    "independent_oracle": {
+      "checked_eligible_candidates": 330,
+      "worked_programs": [
+        {
+          "C": 2,
+          "I": "High",
+          "P": [
+            "9/40",
+            "8379/10000"
+          ],
+          "candidate": "generated_0001",
+          "program": [
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        },
+        {
+          "C": 3,
+          "I": "High",
+          "P": [
+            "27/200",
+            "159201/200000"
+          ],
+          "candidate": "generated_0002",
+          "program": [
+            "scenario_reset_password",
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        },
+        {
+          "C": 3,
+          "I": "High",
+          "P": [
+            "27/200",
+            "159201/200000"
+          ],
+          "candidate": "generated_0003",
+          "program": [
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "propagate_group_entitlement",
+            "scenario_reset_password",
+            "scenario_winrm_admin"
+          ]
+        },
+        {
+          "C": 3,
+          "I": "High",
+          "P": [
+            "27/200",
+            "159201/200000"
+          ],
+          "candidate": "generated_0004",
+          "program": [
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "scenario_reset_password",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        },
+        {
+          "C": 3,
+          "I": "High",
+          "P": [
+            "27/200",
+            "159201/200000"
+          ],
+          "candidate": "generated_0005",
+          "program": [
+            "scenario_reset_password",
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        }
+      ]
+    },
+    "rating_bindings_changed": true,
+    "sensitivity": {
+      "authority": "test-only bounds perturbation of applicable production records; no new production approval",
+      "frontier_changed_with_bounds": false,
+      "scope": "query-local frontier/profile controls only; no B-owned source aggregation or remediation counterfactual claim",
+      "variants": {
+        "authoritative_false_terminal": {
+          "B_goal_contract_gap": false,
+          "counts": {
+            "C_rated": 0,
+            "I_rated": 0,
+            "P_rated": 0,
+            "Pareto_eligible": 0,
+            "conditioned_feasible": 0,
+            "fully_rated": 0,
+            "valid_generated": 0
+          },
+          "coverage_digest": "sha256:cfcca3f64b75925dda2e48168d55a99483a6dea0b3fb19a1f49319444e753b2e",
+          "expansions": 1978,
+          "frontier": [],
+          "gaps": [],
+          "min_effort": null,
+          "paths_by_action_family_nonexclusive": {},
+          "status": "indeterminate",
+          "truncated": false,
+          "truncation_reason": null,
+          "unreturned_goal_state_success_events": []
+        },
+        "missing_terminal_declaration": {
+          "B_goal_contract_gap": false,
+          "counts": {
+            "C_rated": 0,
+            "I_rated": 0,
+            "P_rated": 0,
+            "Pareto_eligible": 0,
+            "conditioned_feasible": 0,
+            "fully_rated": 0,
+            "valid_generated": 0
+          },
+          "coverage_digest": "sha256:cfcca3f64b75925dda2e48168d55a99483a6dea0b3fb19a1f49319444e753b2e",
+          "expansions": 1978,
+          "frontier": [],
+          "gaps": [],
+          "min_effort": null,
+          "paths_by_action_family_nonexclusive": {},
+          "status": "indeterminate",
+          "truncated": false,
+          "truncation_reason": null,
+          "unreturned_goal_state_success_events": []
+        },
+        "step_cap": {
+          "B_goal_contract_gap": false,
+          "counts": {
+            "C_rated": 0,
+            "I_rated": 0,
+            "P_rated": 0,
+            "Pareto_eligible": 0,
+            "conditioned_feasible": 0,
+            "fully_rated": 0,
+            "valid_generated": 0
+          },
+          "coverage_digest": "sha256:39a6e55b594a88ee4c27fbe1d16c8ef55864a05255a9cb5fb9e83d7327f6e48f",
+          "expansions": 6,
+          "frontier": [],
+          "gaps": [],
+          "min_effort": null,
+          "paths_by_action_family_nonexclusive": {},
+          "status": "truncated",
+          "truncated": true,
+          "truncation_reason": "step_limit_reached",
+          "unreturned_goal_state_success_events": []
+        },
+        "widened_bounds_test_only": {
+          "B_goal_contract_gap": false,
+          "counts": {
+            "C_rated": 330,
+            "I_rated": 330,
+            "P_rated": 330,
+            "Pareto_eligible": 330,
+            "conditioned_feasible": 330,
+            "fully_rated": 330,
+            "valid_generated": 330
+          },
+          "coverage_digest": "sha256:4f4955bebd211f523b5422eabf44cd43c5f57afe38ce5ab46f4910b99f880048",
+          "expansions": 1978,
+          "frontier": [
+            "generated_0001",
+            "generated_0002",
+            "generated_0003",
+            "generated_0004",
+            "generated_0005",
+            "generated_0006",
+            "generated_0007",
+            "generated_0008",
+            "generated_0009",
+            "generated_0010",
+            "generated_0011",
+            "generated_0012",
+            "generated_0013",
+            "generated_0014",
+            "generated_0015",
+            "generated_0016",
+            "generated_0017",
+            "generated_0018",
+            "generated_0019",
+            "generated_0020",
+            "generated_0021",
+            "generated_0022",
+            "generated_0023",
+            "generated_0024",
+            "generated_0025",
+            "generated_0026",
+            "generated_0027",
+            "generated_0028",
+            "generated_0029",
+            "generated_0030",
+            "generated_0031",
+            "generated_0032",
+            "generated_0033",
+            "generated_0034",
+            "generated_0035",
+            "generated_0036",
+            "generated_0037",
+            "generated_0038",
+            "generated_0039",
+            "generated_0040",
+            "generated_0041",
+            "generated_0042",
+            "generated_0043",
+            "generated_0044",
+            "generated_0045",
+            "generated_0046",
+            "generated_0047",
+            "generated_0048",
+            "generated_0049",
+            "generated_0050",
+            "generated_0051",
+            "generated_0052",
+            "generated_0053",
+            "generated_0054",
+            "generated_0055",
+            "generated_0056",
+            "generated_0057",
+            "generated_0058",
+            "generated_0059",
+            "generated_0060",
+            "generated_0061",
+            "generated_0062",
+            "generated_0063",
+            "generated_0064",
+            "generated_0065",
+            "generated_0066",
+            "generated_0067",
+            "generated_0068",
+            "generated_0069",
+            "generated_0070",
+            "generated_0071",
+            "generated_0072",
+            "generated_0073",
+            "generated_0074",
+            "generated_0075",
+            "generated_0076",
+            "generated_0077",
+            "generated_0078",
+            "generated_0079",
+            "generated_0080",
+            "generated_0081",
+            "generated_0082",
+            "generated_0083",
+            "generated_0084",
+            "generated_0085",
+            "generated_0086",
+            "generated_0087",
+            "generated_0088",
+            "generated_0089",
+            "generated_0090",
+            "generated_0091",
+            "generated_0092",
+            "generated_0093",
+            "generated_0094",
+            "generated_0095",
+            "generated_0096",
+            "generated_0097",
+            "generated_0098",
+            "generated_0099",
+            "generated_0100",
+            "generated_0101",
+            "generated_0102",
+            "generated_0103",
+            "generated_0104",
+            "generated_0105",
+            "generated_0106",
+            "generated_0107",
+            "generated_0108",
+            "generated_0109",
+            "generated_0110",
+            "generated_0111",
+            "generated_0112",
+            "generated_0113",
+            "generated_0114",
+            "generated_0115",
+            "generated_0116",
+            "generated_0117",
+            "generated_0118",
+            "generated_0119",
+            "generated_0120",
+            "generated_0121",
+            "generated_0122",
+            "generated_0123",
+            "generated_0124",
+            "generated_0125",
+            "generated_0126",
+            "generated_0127",
+            "generated_0128",
+            "generated_0129",
+            "generated_0130",
+            "generated_0131",
+            "generated_0132",
+            "generated_0133",
+            "generated_0134",
+            "generated_0135",
+            "generated_0136",
+            "generated_0137",
+            "generated_0138",
+            "generated_0139",
+            "generated_0140",
+            "generated_0141",
+            "generated_0142",
+            "generated_0143",
+            "generated_0144",
+            "generated_0145",
+            "generated_0146",
+            "generated_0147",
+            "generated_0148",
+            "generated_0149",
+            "generated_0150",
+            "generated_0151",
+            "generated_0152",
+            "generated_0153",
+            "generated_0154",
+            "generated_0155",
+            "generated_0156",
+            "generated_0157",
+            "generated_0158",
+            "generated_0159",
+            "generated_0160",
+            "generated_0161",
+            "generated_0162",
+            "generated_0163",
+            "generated_0164",
+            "generated_0165",
+            "generated_0166",
+            "generated_0167",
+            "generated_0168",
+            "generated_0169",
+            "generated_0170",
+            "generated_0171",
+            "generated_0172",
+            "generated_0173",
+            "generated_0174",
+            "generated_0175",
+            "generated_0176",
+            "generated_0177",
+            "generated_0178",
+            "generated_0179",
+            "generated_0180",
+            "generated_0181",
+            "generated_0182",
+            "generated_0183",
+            "generated_0184",
+            "generated_0185",
+            "generated_0186",
+            "generated_0187",
+            "generated_0188",
+            "generated_0189",
+            "generated_0190",
+            "generated_0191",
+            "generated_0192",
+            "generated_0193",
+            "generated_0194",
+            "generated_0195",
+            "generated_0196",
+            "generated_0197",
+            "generated_0198",
+            "generated_0199",
+            "generated_0200",
+            "generated_0201",
+            "generated_0202",
+            "generated_0203",
+            "generated_0204",
+            "generated_0205",
+            "generated_0206",
+            "generated_0207",
+            "generated_0208",
+            "generated_0209",
+            "generated_0210",
+            "generated_0211",
+            "generated_0212",
+            "generated_0213",
+            "generated_0214",
+            "generated_0215",
+            "generated_0216",
+            "generated_0217",
+            "generated_0218",
+            "generated_0219",
+            "generated_0220",
+            "generated_0221",
+            "generated_0222",
+            "generated_0223",
+            "generated_0224",
+            "generated_0225",
+            "generated_0226",
+            "generated_0227",
+            "generated_0228",
+            "generated_0229",
+            "generated_0230",
+            "generated_0231",
+            "generated_0232",
+            "generated_0233",
+            "generated_0234",
+            "generated_0235",
+            "generated_0236",
+            "generated_0237",
+            "generated_0238",
+            "generated_0239",
+            "generated_0240",
+            "generated_0241",
+            "generated_0242",
+            "generated_0243",
+            "generated_0244",
+            "generated_0245",
+            "generated_0246",
+            "generated_0247",
+            "generated_0248",
+            "generated_0249",
+            "generated_0250",
+            "generated_0251",
+            "generated_0252",
+            "generated_0253",
+            "generated_0254",
+            "generated_0255",
+            "generated_0256",
+            "generated_0257",
+            "generated_0258",
+            "generated_0259",
+            "generated_0260",
+            "generated_0261",
+            "generated_0262",
+            "generated_0263",
+            "generated_0264",
+            "generated_0265",
+            "generated_0266",
+            "generated_0267",
+            "generated_0268",
+            "generated_0269",
+            "generated_0270",
+            "generated_0271",
+            "generated_0272",
+            "generated_0273",
+            "generated_0274",
+            "generated_0275",
+            "generated_0276",
+            "generated_0277",
+            "generated_0278",
+            "generated_0279",
+            "generated_0280",
+            "generated_0281",
+            "generated_0282",
+            "generated_0283",
+            "generated_0284",
+            "generated_0285",
+            "generated_0286",
+            "generated_0287",
+            "generated_0288",
+            "generated_0289",
+            "generated_0290",
+            "generated_0291",
+            "generated_0292",
+            "generated_0293",
+            "generated_0294",
+            "generated_0295",
+            "generated_0296",
+            "generated_0297",
+            "generated_0298",
+            "generated_0299",
+            "generated_0300",
+            "generated_0301",
+            "generated_0302",
+            "generated_0303",
+            "generated_0304",
+            "generated_0305",
+            "generated_0306",
+            "generated_0307",
+            "generated_0308",
+            "generated_0309",
+            "generated_0310",
+            "generated_0311",
+            "generated_0312",
+            "generated_0313",
+            "generated_0314",
+            "generated_0315",
+            "generated_0316",
+            "generated_0317",
+            "generated_0318",
+            "generated_0319",
+            "generated_0320",
+            "generated_0321",
+            "generated_0322",
+            "generated_0323",
+            "generated_0324",
+            "generated_0325",
+            "generated_0326",
+            "generated_0327",
+            "generated_0328",
+            "generated_0329",
+            "generated_0330"
+          ],
+          "gaps": [],
+          "min_effort": 2,
+          "paths_by_action_family_nonexclusive": {
+            "directory_password_reset": 330,
+            "reset_identity_activation": 330,
+            "winrm_admin_execution": 330
+          },
+          "status": "success",
+          "truncated": false,
+          "truncation_reason": null,
+          "unreturned_goal_state_success_events": []
+        }
+      }
+    },
+    "omitted_fields": [
+      "blocker_matrix",
+      "family_coverage_nonexclusive",
+      "before.frontier",
+      "after.frontier",
+      "sensitivity.baseline"
+    ]
+  },
+  "numeric_scope_limit": "One completed projected original case, not a complete 16-case/current full-raw numeric acceptance and not the v2 acquired-identity goal. Historical files unchanged.",
+  "serialization_observation": {
+    "normalized_bytes_each": 272633130,
+    "native_bytes": [
+      311090080,
+      311090079
+    ],
+    "parent_observed_peak_rss_kib": 2265988,
+    "rss_source": "/proc/4822/status VmHWM during run; not isolated CLI RSS or before/after benchmark",
+    "interpretation": "Large audit transport is verified; CPU attribution and improvement require a controlled profile, not inferred from volume alone."
+  },
+  "whole_suite": "Capture-time pending status superseded: original full run interrupted after publication/provenance drift; stable core excluding final-CPI completed 14 failed, 3145 passed, 11 skipped, 88 subtests passed. Source-compat delta 113 passed. See iteration-4-compatibility.json; no whole-suite pass claim."
+}

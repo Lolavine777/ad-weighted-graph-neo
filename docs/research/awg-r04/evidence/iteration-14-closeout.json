@@ -1,0 +1,97 @@
+{
+  "version": "awg-r04-global-policy-closeout/1",
+  "validated_clean_revision": "48c3dee6ef693d2f4f2bdc7ba5d625ecc8cf2949",
+  "final_checks": {
+    "revision": "48c3dee6ef693d2f4f2bdc7ba5d625ecc8cf2949",
+    "testsuite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "570",
+      "time": "156.495",
+      "timestamp": "2026-10-18T23:08:45.459331-04:00",
+      "hostname": "8a65a67eb49d"
+    },
+    "modules": {
+      "tests.test_asrep": 51,
+      "tests.test_attack_semantics_transitions": 45,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_computer_foothold_boundary": 18,
+      "tests.test_engine": 30,
+      "tests.test_exposure": 18,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_machine_identity_profile": 35,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_query_cli": 65,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_rbcd": 33,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_reset_effort": 21,
+      "tests.test_source_goal_batch_contract": 44,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_review_regressions": 10,
+      "tests.test_machine_reset_effort": 16,
+      "tests.test_defender_brief": 7,
+      "tests.test_scenario_policy_composition": 7,
+      "tests.test_top_k_search": 36
+    },
+    "junit_sha256": "3d086cec7ba3ae0af6a91b81a4255fa9b933c7e2cadad27a251a50dd4bb09ab5",
+    "python": "3.14.8",
+    "packages": {
+      "networkx": "3.7",
+      "pytest": "9.1.1",
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "ruff": "0.16.8"
+    }
+  },
+  "suite_overlap": "35 first selected and final570 overlap; do not sum. One initial ranking assertion used float instead of rational strings; corrected assertion only, retained first log. Not a full-suite claim.",
+  "native_revision": "e5b63817a6dceacb1d8b803cbcf3dfc66c277849",
+  "baseline_revision": "133517f74459ba6b0f0d505f2ed416f41e40ecf4",
+  "source_pins_equal_current": 70,
+  "acceptance_v15_pins_equal_current": 127,
+  "v14_history_unchanged": true,
+  "production_implementation_bytes_equal_native_capture": true,
+  "strict_source_authorities": "likelihood/scenario v13 verify_package PASS; no numeric/catalog/source-authority change",
+  "week4": "twice36PASS/2NOT_EXECUTED/0FAIL, unchanged frozen semantic digest",
+  "goal_queue_scope_comparison": {
+    "entire_public_query_equal": true,
+    "same_entire_public_query_except_verified_rating_and_scenario_binding": true,
+    "normalized_query_sha256": "sha256:11d152aae02f6f940083e994757aae7cee84183759c696c1fe570939c800de64",
+    "scope": "Entire public query equal, including source, exact initial state/context, target/semantic goal, techniques, budgets, all assumptions/policy metadata, effort profile metadata, scenario reference and rating resolution. Secondary normalization validates the same binding too.",
+    "incumbent_query_sha256": "sha256:513b881939d642805ec654b433a096b8044bacd8f6e89f47d8972324294c1eec",
+    "prototype_query_sha256": "sha256:513b881939d642805ec654b433a096b8044bacd8f6e89f47d8972324294c1eec"
+  },
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "592files unchanged",
+    "contract": "two synthetic fixtures PASS",
+    "repository_links": "only historical missing R03ZIP"
+  },
+  "product_result": "Global-profile indeterminate transitions71916/72000→48/72000; all12 incumbent FIFO cells remain truncated/no witness. Assumptions work; branch scheduling remains the product bottleneck.",
+  "research_probe": "Identical entire public query: external queue finds DA witness C1 at4995exp; incumbent has no witness at6000. One native transition replay pass. Not production, not cost-optimal, no all12 speed claim.",
+  "next_action": {
+    "priority": "P0 opt-in goal-guided witness scheduling, then same-cohort multi-goal evidence",
+    "likely_files": [
+      "src/engine/search.py",
+      "src/engine/query.py",
+      "src/engine/batch.py",
+      "src/engine/query_cli.py",
+      "scripts/exposure.py",
+      "docs/research/batch-query-request.schema.json"
+    ],
+    "required_controls": [
+      "Bind search ordering into query/checkpoint/replay identity; no hidden monkeypatch in production.",
+      "Finite exhausted full-program-set parity with FIFO, alternative routes and actor switching; retain candidates/states.",
+      "Cost/shared-work and Unknown/False/provenance boundaries unchanged; no optimality from hop heuristic.",
+      "Measure oneUser/Computer→12auto goals using same profile/caps; keep cut-programs separate from pair disconnection."
+    ],
+    "stop_condition": "Do not broaden heuristic or replace the planner if finite parity fails or matched workload shows no discovery benefit."
+  },
+  "jobs": "all native fullraw before/after, queue, replay, gzip/independent checks, acceptance and final tests completed",
+  "publication": "Final descendant adds docs/evidence only; leased feature fast-forward. No main/develop/parent ref changes."
+}

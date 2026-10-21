@@ -1,0 +1,160 @@
+{
+  "budgets": {
+    "max_cells": null,
+    "max_expansions": null,
+    "max_seconds": null,
+    "per_query_seconds": null
+  },
+  "comparisons": [
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 1
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "reachable": 1
+        },
+        "before": {
+          "reachable": 1
+        }
+      },
+      "declared_pairs": 1,
+      "intervention": "ineffective-membership-retained-bypass",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 1,
+        "numerator": 0,
+        "percent": 0.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 1,
+        "numerator": 0,
+        "percent": 0.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 1
+      },
+      "remaining_bypasses": 1
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 1
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "unknown": 1
+        },
+        "before": {
+          "unknown": 1
+        }
+      },
+      "declared_pairs": 1,
+      "intervention": "missing-recovery-control",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 0,
+        "numerator": 0,
+        "percent": null,
+        "scope": "observed_corpus_only"
+      },
+      "programs_cut": {
+        "denominator": 0,
+        "numerator": 0,
+        "percent": null,
+        "scope": "observed_corpus_only"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 1
+      },
+      "remaining_bypasses": 0
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 1
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 1
+        },
+        "before": {
+          "reachable": 1
+        }
+      },
+      "declared_pairs": 1,
+      "intervention": "shared-channel",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 1,
+        "numerator": 1,
+        "percent": 100.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 1,
+        "numerator": 1,
+        "percent": 100.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 1
+      },
+      "remaining_bypasses": 0
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 1
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "truncated": 1
+        },
+        "before": {
+          "truncated": 1
+        }
+      },
+      "declared_pairs": 1,
+      "intervention": "step-cap-control",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 0,
+        "numerator": 0,
+        "percent": null,
+        "scope": "observed_corpus_only"
+      },
+      "programs_cut": {
+        "denominator": 0,
+        "numerator": 0,
+        "percent": null,
+        "scope": "observed_corpus_only"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "truncated": 1
+      },
+      "remaining_bypasses": 0
+    }
+  ],
+  "inventory_candidates": 4,
+  "process_peak_rss_bytes": 586801152,
+  "runtime_seconds": 704.5250087000004,
+  "schema_version": "remediation-study-summary/1",
+  "scope": "bounded declared cohorts; not a full-source scan",
+  "verified_raw_files": 6
+}

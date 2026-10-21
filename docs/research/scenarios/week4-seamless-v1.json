@@ -1,0 +1,47 @@
+{
+  "scenario_id": "week4-seamless-v1",
+  "status": "independent expectations frozen before public query execution; pending B review",
+  "revision": "be64798c89235f53c5c205894a7bac0f96437ce4",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "archive_revision": "3febc4089421725f9527c187f78d064ad09d5158",
+  "archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+  "locators": {"X": "#/computers/1", "V_A": "#/users/1700", "G_DA": "#/groups/40", "C0": "#/computers/0"},
+  "source_foothold": "X",
+  "initial_actor": "X",
+  "authentication_context": "X",
+  "initial_state": {"control": [], "known_identity": ["V_A"], "asrep_request_capability": [["X", "X"]]},
+  "target": "C0",
+  "target_goal": {"required_state": {"admin_control": ["C0"]}},
+  "checkpoint_goal": {"required_state": {"effective_member": [["V_A", "G_DA"]]}},
+  "allowed_techniques": ["asrep_request", "recover_asrep_secret", "activate_recovered_identity", "obtain_admin_execution_on_host"],
+  "budget": {"max_paths": 10, "max_steps": 6, "max_expansions": 1000},
+  "evaluation_mode": "scenario",
+  "assumptions": [
+    ["network_kdc_reachable", "X", "V_A"],
+    ["asrep_request_accepted", "X", "V_A"],
+    ["recovery_success", "X", "V_A"],
+    ["secret_valid", "V_A", "X"],
+    ["network_kdc_reachable", "V_A", "X"],
+    ["authentication_accepted", "V_A", "X"],
+    ["admin_channel", "V_A", "C0"],
+    ["authentication_accepted", "V_A", "C0"]
+  ],
+  "assumption_value": true,
+  "declared_by": "Lolavine777",
+  "recovery_metadata": {"method": "offline-password-prediction", "budget": "unmeasured-budget", "horizon": "fixed-snapshot-window"},
+  "expected": {
+    "assumed": {
+      "status": "success", "final_goal_reached": true, "checkpoint_reached": false,
+      "programs": [["asrep_request", "recover_asrep_secret", "activate_recovered_identity", "obtain_admin_execution_on_host"]],
+      "projected_states": [[], ["material"], ["material", "secret"], ["material", "secret", "usable"], ["material", "secret", "usable", "admin"]]
+    },
+    "raw": {"status": "indeterminate", "final_goal_reached": false, "path_count": 0, "maximum_successful_prefix_steps": 0},
+    "missing_recovery": {"status": "indeterminate", "final_goal_reached": false, "path_count": 0, "maximum_successful_prefix_steps": 1},
+    "asset_veto": {"status": "blocked", "final_goal_reached": false, "checkpoint_reached": false, "path_count": 0, "maximum_successful_prefix_steps": 3, "rejected_assumption_reasons": ["known_false_veto"]},
+    "off": {"status": "no_path", "final_goal_reached": false, "path_count": 0},
+    "no_request": {"status": "blocked", "final_goal_reached": false, "path_count": 0},
+    "step_cap": {"status": "truncated", "final_goal_reached": false, "path_count": 0, "truncated": true, "truncation_reason": "step_limit_reached"}
+  },
+  "rating_expectation": {"ranking_disposition": "unrated", "ranking_result": null},
+  "claim_limits": ["prediction conditional on declarations", "no observed exploit", "no numeric rating basis", "no global optimum or K-best claim", "DA checkpoint is optional", "full private mappings and results remain local"]
+}

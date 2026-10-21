@@ -1,0 +1,40 @@
+{
+  "contract_version": "1.1.0",
+  "corrections": [
+    "after.complete iff rediscovery complete with matching after-run/proof",
+    "after.truncated iff rediscovery truncated; other statuses retain incomplete flags",
+    "comparable conditional-P scope digest equals the result scope digest"
+  ],
+  "implementation_sha256": {
+    "scripts/research/remediation_acceptance.py": "sha256:da6d43aa11e2caece2d22ed384d46d24fa5cc8f27494ddff861d7b6a7e1d5ed8",
+    "tests/test_remediation_identity.py": "sha256:2cc15e8271c8d47c63f5b7efd0900477af2f65d3894a43ed191b71f486d6f92d"
+  },
+  "limitations": [
+    "No B counterfactual executor/native proof binding implemented",
+    "Full repository pytest and Compose not rerun",
+    "B exact-head Round 3 approval and remote CI remain separate gates"
+  ],
+  "preserved": [
+    "All fixtures and schemas unchanged from reviewed head",
+    "Raw graph, src/, configs/ and frozen reports unchanged",
+    "No new numeric P values or adoption; existing synthetic issue250 intervals used only for scope-validation controls"
+  ],
+  "reviewed_head": "1880550face7c7c1c6f80a82c27e383c507cd138",
+  "verification": {
+    "advisory_review": "no remaining must-fix",
+    "canonical_contract_check": "passed",
+    "contract_checker": {
+      "catalog_entries": 11,
+      "oracle_cases": 8,
+      "status": "passed"
+    },
+    "focused_remediation_identity_seamless_and_frozen_pins": {
+      "duration_seconds": 26.52,
+      "passed": 70,
+      "skipped": 0
+    },
+    "repository_check": "passed",
+    "repository_wide_ruff_format": "passed",
+    "repository_wide_ruff_lint": "passed"
+  }
+}

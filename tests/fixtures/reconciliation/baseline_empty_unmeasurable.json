@@ -1,0 +1,12 @@
+{
+  "meta": {
+    "engine": "BloodHound Legacy 4.0.3",
+    "neo4j_version": "4.1.13",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "status": "not_measurable",
+    "reason": "Synthetic empty export for comparator testing; not a Legacy run observation",
+    "synthetic": true
+  },
+  "nodes": [],
+  "edges": []
+}

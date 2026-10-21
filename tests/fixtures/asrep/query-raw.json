@@ -1,0 +1,52 @@
+{
+  "source_foothold": "10000000-0000-4000-8000-000000000001",
+  "initial_actor": "10000000-0000-4000-8000-000000000001",
+  "initial_state": {
+    "control": [],
+    "known_identity": [
+      "S-1-5-21-1000-2000-3000-1700"
+    ],
+    "asrep_request_capability": [
+      [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000001"
+      ]
+    ]
+  },
+  "authentication_context": "10000000-0000-4000-8000-000000000001",
+  "target": "10000000-0000-4000-8000-000000000002",
+  "target_goal": {
+    "target": "10000000-0000-4000-8000-000000000002",
+    "required_state": {
+      "admin_control": [
+        "10000000-0000-4000-8000-000000000002"
+      ]
+    }
+  },
+  "checkpoint_goal": {
+    "target": "S-1-5-21-1000-2000-3000-512",
+    "required_state": {
+      "effective_member": [
+        [
+          "S-1-5-21-1000-2000-3000-1700",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      ]
+    }
+  },
+  "assumptions": [],
+  "allowed_techniques": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ],
+  "budget": {
+    "max_paths": 50,
+    "max_steps": 9,
+    "max_expansions": 5000
+  },
+  "scenario_reference": "synthetic-228",
+  "ranking_query_id": "query-228"
+}

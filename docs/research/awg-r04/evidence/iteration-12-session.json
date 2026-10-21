@@ -1,0 +1,360 @@
+{
+  "schema_version": "awg-r04-session-boundary-evidence/1",
+  "baseline_revision": "e0345e2ae38af994cecab9ae154f38d32c8c9f65",
+  "native_revision": "74b4cd044d4296b67458a8ceb516ce2f1aa7ee9f",
+  "both_captures_tracked_clean": true,
+  "same_case_module_sha256": "sha256:c270ffb97cac187ea952d27ec77c7cf96e7964ed277eedd0bd80cf9cbaee13e4",
+  "before_matches": 23,
+  "after_matches": 26,
+  "total": 26,
+  "cases": [
+    {
+      "case": "typed_password",
+      "oracle": "success",
+      "before": "success",
+      "after": "success",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 2,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "opaque_session_material",
+      "oracle": "unsupported",
+      "before": "no_path",
+      "after": "unsupported",
+      "before_negative_proof": true,
+      "after_negative_proof": false,
+      "expansions": 0,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_opportunity_only",
+      "oracle": "unsupported",
+      "before": "no_path",
+      "after": "unsupported",
+      "before_negative_proof": true,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_with_password_claim",
+      "oracle": "unsupported",
+      "before": "no_path",
+      "after": "unsupported",
+      "before_negative_proof": true,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_without_admin",
+      "oracle": "negative_within_model",
+      "before": "no_path",
+      "after": "no_path",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 0,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_stale",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_freshness_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_absent",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_presence_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_protected",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "session_access_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_wrong_owner",
+      "oracle": "negative_within_model",
+      "before": "no_path",
+      "after": "no_path",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_wrong_context",
+      "oracle": "negative_within_model",
+      "before": "no_path",
+      "after": "no_path",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 0,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_disabled_owner",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_enabled_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_invalid",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_validity_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_network_false",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_network_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_authentication_false",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_authentication_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_membership_false",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 2,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_membership_unknown",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 2,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "password_foreign_fact_context",
+      "oracle": "indeterminate",
+      "before": "indeterminate",
+      "after": "indeterminate",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "observed_false_veto",
+      "oracle": "negative_within_model",
+      "before": "blocked",
+      "after": "blocked",
+      "before_negative_proof": true,
+      "after_negative_proof": true,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    },
+    {
+      "case": "opaque_with_usable_identity",
+      "oracle": "success",
+      "before": "success",
+      "after": "success",
+      "before_negative_proof": false,
+      "after_negative_proof": false,
+      "expansions": 1,
+      "same_inputs_attempts_paths": true
+    }
+  ],
+  "complete_native_before": {
+    "path": "docs/research/awg-r04/evidence/iteration-12-before.json",
+    "bytes": 657735,
+    "sha256": "sha256:88f27533373f6cd2ee44807158563f9625fb5bf480f66c499aca62cfb4425998"
+  },
+  "complete_native_after": {
+    "path": "docs/research/awg-r04/evidence/iteration-12-after.json",
+    "bytes": 661275,
+    "sha256": "sha256:e824155a9e92b3d7c3bb49fe2d3ef78d80744250eb266037a4e2d9b94ce1ced0"
+  },
+  "raw_session_inspection": {
+    "file": "data/raw/SEAMLESS/20210920185958_computers.json",
+    "bytes": 303149,
+    "sha256": "sha256:238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+    "computers": 100,
+    "session_records": 0,
+    "field_types": {
+      "list": 100
+    },
+    "scope": "Direct stdlib public raw lookup, not AWG parser. No records does not establish no live sessions or collection completeness."
+  },
+  "native_week4": {
+    "twice_deterministic": true,
+    "semantic_file_sha256": "sha256:3de651539b9a58b6367974a037eef133ee195a8f23d18ed7321acafab79c498c",
+    "semantic_digest": "sha256:e4f9a3f1779753650a45dbf4c671c8cf68363e100c4a9bc861850a0cb2cbbbec",
+    "summary": {
+      "blocked_run_count": 0,
+      "known_defect_count": 0,
+      "not_executed_count": 2,
+      "pass_count": 36,
+      "pending_count": 0,
+      "total_cases": 38,
+      "unexpected_failure_count": 0
+    },
+    "manifest": {
+      "path": "reports/research/week4-guided-exploration-acceptance-manifest-v13.json",
+      "bytes": 331497,
+      "sha256": "sha256:b29df225b9089400114fe51121e222d52a3c390dcd2054ba418e6a1e87b51774"
+    },
+    "full_local_capture": {
+      "reference": "reports/generated/awg-r04-acceptance-v13/native.json",
+      "bytes": 3597299,
+      "sha256": "sha256:f2cc8c25df2cfa96f55eb5d1a22af270a8b74dfe8cb197d30511b0d300c7968c"
+    }
+  },
+  "checks": {
+    "selected_integration": {
+      "passed": 216,
+      "duration_seconds": 21.38,
+      "junit": {
+        "path": "docs/research/awg-r04/evidence/iteration-12-integration.xml",
+        "bytes": 31505,
+        "sha256": "sha256:8ac6c5f4641cdffca8602a1d2811ea21b1275fa351f55b676e11dff0f8abb426"
+      }
+    },
+    "final_new_controls": {
+      "passed": 40,
+      "duration_seconds": 2.47,
+      "junit": {
+        "path": "docs/research/awg-r04/evidence/iteration-12-controls.xml",
+        "bytes": 5917,
+        "sha256": "sha256:bd1fb39a95d097d16f931aa01506241902be488b32d8c2b8c333e9f524efa2be"
+      }
+    },
+    "overlap": true
+  },
+  "history": {
+    "catalog_and_numeric_unchanged": true,
+    "source_successors": [
+      "docs/research/ratings/likelihood-v1/source-manifest-v13.json",
+      "docs/research/ratings/scenario-basis-v1/source-manifest-v13.json"
+    ],
+    "historical_source_manifests_preserved": true
+  },
+  "limits": [
+    "26 finite cases, not an AD accuracy rate or full catalog oracle.",
+    "Only coverage/status/proof disposition changes; no native transition, path, cost or discovery improvement claimed.",
+    "Unsupported is conservative and does not prove an exploitable route to the goal. Detector is limited to declared usable-identity goals.",
+    "No typed extraction recipe, no automatic password from session, no new C/P/I basis. Shared-work arithmetic is unchanged and not independently benchmarked here.",
+    "Zero session records in public raw; no fresh fullraw session benchmark or speedup.",
+    "Selected suites overlap. Full suite and fresh BloodHound CE comparator not executed."
+  ],
+  "first_attempts": {
+    "session-first.xml": "49 passed, old/new boundary overlap",
+    "session-selected.xml": "37pass/1new test rejected by existing goal-reference guard; corrected fixture target, no guard relaxation.",
+    "raw_lookup": "First independent lookup assumed data key; actual public legacy format uses computers. Corrected above; native parsing unchanged.",
+    "evidence_builder": "First draft used execution.revision; native runner records execution.source.revision. Corrected assertion, no capture alteration."
+  }
+}

@@ -1,0 +1,469 @@
+{
+  "version": "awg-r04-after-profile/1.0.0",
+  "executable_revision": "ca3eceef5c8db8ffc8efda38f122afbdb048f582",
+  "profiler": "CPython cProfile; concurrent validations; no latency baseline or before/after speed comparison",
+  "pstats_sha256": "sha256:d7e918993c0655a4efa108643e97732bc6572e35c0d072dab215e49101608957",
+  "profile_total_seconds": 261.5122639640004,
+  "calls": 249498698,
+  "primitive_calls": 197187525,
+  "harness_summary": {
+    "repo": "/workspace/scratch/b1f06964c680/awg-r04/repo",
+    "head": "ca3eceef5c8db8ffc8efda38f122afbdb048f582",
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+      "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+      "docs/research/target-manifest.schema.json": "sha256:002da403bc1f7b0c185724c0b4687b4ea3a5dd0f016a7949e644283c9e16eff9",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:e94c2d250a25ae8f2f092fe2549fe82b784d7f257cccb1d071543560504bb9c8",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:bc50cca87ef2a2b6e7b6626f102237b4e18ea3cd28f25e585dbcba1715d9e66a",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+      "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+      "src/engine/remediation_runner.py": "sha256:1d6bcb594465a8c2992095e37b4c6363f6bae10cfa4c1ee2f76ba23f026ce442",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:dabbc12ff5668ded6378c36d52ec5f00ef5c894c3d4806de282ba47c9b9dd445",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "python": "3.14.8",
+    "snapshot_sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8",
+    "graph_load_seconds": 11.643005796000125,
+    "harness_sha256": "sha256:c15f651d67a6c100f3370af7e1f816b48e6bed654f52b8ad1be0118fcee489b3",
+    "fixed_randomness": "Only uuid4 run labels are constant; evaluator/search/cost/verifier unchanged",
+    "comparison_exclusions": [
+      "execution.started_at",
+      "execution.elapsed_seconds",
+      "execution.source_pins"
+    ],
+    "rows": [
+      {
+        "trial": 0,
+        "pipeline_seconds": 249.1493827889999,
+        "serialization_and_comparison_seconds": 0.04310613799998464,
+        "stable_package_sha256": "sha256:b97bb937d891ff5afad959d05f12edc061c7bb95352d3ad3b9241de3a7561cea",
+        "summary": {
+          "requested_pairs": 1,
+          "evaluated_pairs": 1,
+          "unsupported_pairs": 0,
+          "unknown_pairs": 0,
+          "truncated_pairs": 0,
+          "affected_sources": [
+            "declared-requester"
+          ],
+          "exposed_sources_before": [
+            "declared-requester"
+          ],
+          "exposed_sources_after": [],
+          "fully_disconnected_sources": [
+            "declared-requester"
+          ],
+          "goals_still_reachable": [],
+          "proven_disconnected_pairs": [
+            {
+              "source_id": "declared-requester",
+              "goal_id": "C0"
+            }
+          ],
+          "programs_cut": {
+            "numerator": 1,
+            "denominator": 1,
+            "percent": 100.0,
+            "scope": "complete_declared_scope"
+          },
+          "routes_cut": {
+            "numerator": 1,
+            "denominator": 1,
+            "percent": 100.0,
+            "scope": "complete_declared_scope"
+          },
+          "pairs_disconnected": {
+            "numerator": 1,
+            "denominator": 1,
+            "percent": 100.0,
+            "scope": "complete_declared_scope"
+          },
+          "limitations": [
+            "Declared finite scope; no global choke-point or campaign probability claim.",
+            "Returned-path inventory is observed-corpus only; defender costs are unrated.",
+            "Old packets are refused; fresh automatic C only; P/I comparison remains pending.",
+            "Transport evaluated_pairs counts represented cells; analytics counts execution."
+          ]
+        }
+      }
+    ]
+  },
+  "top_cumulative_functions": [
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.exec>",
+      "calls": 622,
+      "primitive_calls": 1,
+      "own_seconds": 0.09892618,
+      "cumulative_seconds": 262.38620781000003
+    },
+    {
+      "file": "docs/research/awg-r04/evidence/counterfactual-harness.txt",
+      "line": 1,
+      "function": "<module>",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.011272539000000002,
+      "cumulative_seconds": 262.386086534
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 605,
+      "function": "run_remediation",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.219696783,
+      "cumulative_seconds": 211.810787497
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 50,
+      "function": "_digest",
+      "calls": 254,
+      "primitive_calls": 254,
+      "own_seconds": 0.8284733940000001,
+      "cumulative_seconds": 142.289612603
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/program_identity.py",
+      "line": 13,
+      "function": "canonical_value",
+      "calls": 17322850,
+      "primitive_calls": 571,
+      "own_seconds": 66.801180822,
+      "cumulative_seconds": 137.531519094
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 46,
+      "function": "_value",
+      "calls": 555,
+      "primitive_calls": 555,
+      "own_seconds": 0.001536438,
+      "cumulative_seconds": 137.474941368
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 578,
+      "function": "replay_baseline",
+      "calls": 2,
+      "primitive_calls": 2,
+      "own_seconds": 0.24316721800000002,
+      "cumulative_seconds": 104.36573633900001
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 809,
+      "function": "verify_package",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.0023235260000000002,
+      "cumulative_seconds": 83.033539614
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/copy.py",
+      "line": 110,
+      "function": "deepcopy",
+      "calls": 32061540,
+      "primitive_calls": 47550,
+      "own_seconds": 24.265812239000002,
+      "cumulative_seconds": 79.320709002
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/copy.py",
+      "line": 172,
+      "function": "_deepcopy_list",
+      "calls": 1016747,
+      "primitive_calls": 212,
+      "own_seconds": 5.5622113870000005,
+      "cumulative_seconds": 78.390731872
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/copy.py",
+      "line": 198,
+      "function": "_deepcopy_dict",
+      "calls": 2128869,
+      "primitive_calls": 216648,
+      "own_seconds": 33.509511251,
+      "cumulative_seconds": 76.556368167
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 129,
+      "function": "_observation",
+      "calls": 4,
+      "primitive_calls": 4,
+      "own_seconds": 0.000540118,
+      "cumulative_seconds": 60.993374209
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 116,
+      "function": "_query_digest",
+      "calls": 4,
+      "primitive_calls": 4,
+      "own_seconds": 0.3298121,
+      "cumulative_seconds": 60.76842752
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/graph.py",
+      "line": 159,
+      "function": "to_canonical",
+      "calls": 15,
+      "primitive_calls": 15,
+      "own_seconds": 0.330497843,
+      "cumulative_seconds": 60.421337059
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 62,
+      "function": "_scope",
+      "calls": 3,
+      "primitive_calls": 3,
+      "own_seconds": 0.19212141700000002,
+      "cumulative_seconds": 50.73995638900001
+    },
+    {
+      "file": "~",
+      "line": 0,
+      "function": "<built-in method builtins.isinstance>",
+      "calls": 84135888,
+      "primitive_calls": 84135888,
+      "own_seconds": 31.631179817000003,
+      "cumulative_seconds": 47.691555048000005
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 235,
+      "function": "_after_search",
+      "calls": 2,
+      "primitive_calls": 2,
+      "own_seconds": 0.00155097,
+      "cumulative_seconds": 41.657936438
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 145,
+      "function": "prepare_baseline",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.082903665,
+      "cumulative_seconds": 37.335690050000004
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 284,
+      "function": "_execute_after",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 3.2672e-05,
+      "cumulative_seconds": 26.021874184
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/dataclasses.py",
+      "line": 1477,
+      "function": "is_dataclass",
+      "calls": 17321742,
+      "primitive_calls": 17321742,
+      "own_seconds": 16.262249402000002,
+      "cumulative_seconds": 24.53151013
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 680,
+      "function": "replay_program",
+      "calls": 3,
+      "primitive_calls": 3,
+      "own_seconds": 0.12599722800000002,
+      "cumulative_seconds": 18.532873388000002
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/semantics/evaluator.py",
+      "line": 79,
+      "function": "__getitem__",
+      "calls": 3,
+      "primitive_calls": 3,
+      "own_seconds": 0.09175880900000001,
+      "cumulative_seconds": 18.362644149
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/ranking/resolution_service.py",
+      "line": 41,
+      "function": "canonical_digest",
+      "calls": 1558,
+      "primitive_calls": 1558,
+      "own_seconds": 0.07595317,
+      "cumulative_seconds": 17.563067129
+    },
+    {
+      "file": "<frozen abc>",
+      "line": 117,
+      "function": "__instancecheck__",
+      "calls": 17161165,
+      "primitive_calls": 17161165,
+      "own_seconds": 8.208078284,
+      "cumulative_seconds": 16.060384207000002
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/json/__init__.py",
+      "line": 185,
+      "function": "dumps",
+      "calls": 59290,
+      "primitive_calls": 59290,
+      "own_seconds": 0.16803979400000002,
+      "cumulative_seconds": 14.4696648
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/json/encoder.py",
+      "line": 185,
+      "function": "encode",
+      "calls": 59290,
+      "primitive_calls": 59290,
+      "own_seconds": 0.146530349,
+      "cumulative_seconds": 14.262577462000001
+    },
+    {
+      "file": "/root/.local/share/uv/python/cpython-3.14.8-linux-x86_64-gnu/lib/python3.14/json/encoder.py",
+      "line": 207,
+      "function": "iterencode",
+      "calls": 58932,
+      "primitive_calls": 58932,
+      "own_seconds": 14.063869583,
+      "cumulative_seconds": 14.063870069
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation.py",
+      "line": 58,
+      "function": "_facts",
+      "calls": 11,
+      "primitive_calls": 11,
+      "own_seconds": 0.000250504,
+      "cumulative_seconds": 13.350895008
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/remediation_runner.py",
+      "line": 312,
+      "function": "_seed_paths",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.06625267500000001,
+      "cumulative_seconds": 11.503870017
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/graph.py",
+      "line": 90,
+      "function": "from_snapshot",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.0026118630000000003,
+      "cumulative_seconds": 11.413416428000001
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/parser/snapshot_facts.py",
+      "line": 223,
+      "function": "deserialize_snapshot",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.0033362960000000003,
+      "cumulative_seconds": 10.352848786000001
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/query.py",
+      "line": 337,
+      "function": "run",
+      "calls": 7,
+      "primitive_calls": 7,
+      "own_seconds": 0.00012174000000000001,
+      "cumulative_seconds": 10.001716476
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/query.py",
+      "line": 320,
+      "function": "search",
+      "calls": 7,
+      "primitive_calls": 7,
+      "own_seconds": 0.309100309,
+      "cumulative_seconds": 9.990928985
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/engine/search.py",
+      "line": 351,
+      "function": "generate_attack_paths",
+      "calls": 7,
+      "primitive_calls": 7,
+      "own_seconds": 4.988187074000001,
+      "cumulative_seconds": 9.681827438000001
+    },
+    {
+      "file": "/workspace/scratch/b1f06964c680/awg-r04/repo/src/parser/serialization.py",
+      "line": 35,
+      "function": "deserialize_graph",
+      "calls": 1,
+      "primitive_calls": 1,
+      "own_seconds": 0.002630528,
+      "cumulative_seconds": 8.100426172
+    }
+  ],
+  "interpretation": "Native generation seven calls cumulative about 9.68s; canonical transformation, hashing and copying remain large. Cumulative frames overlap; do not sum them or compare instrumented elapsed with unprofiled timing trials.",
+  "next_experiment": "Exact built-in-type fast paths in canonical_value, preserving Enum/dataclass/Mapping/set semantics and independent verifier. Microprototype matches bytes on JSON snapshot only; concurrent timings vary, not production or end-to-end proof."
+}

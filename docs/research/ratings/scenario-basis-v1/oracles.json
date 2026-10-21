@@ -1,0 +1,264 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "freeze_policy": "Revised numeric premises and exact products are authored before public automatic execution. They are assertions only; generated candidates never use oracle sequences as input. Historical alternative and frozen #243 sections are unchanged.",
+  "generated_risk_comparison": {
+    "scenario_id": "w4-two-routes-exact",
+    "contract_version": "public-rating-resolution/1.1.0",
+    "graph_fixture": "tests/fixtures/attack_scenarios/graphs/two-routes.json",
+    "description": "Risk comparison over three genuinely generated attack paths on two-routes graph.",
+    "target_goal": {
+      "goal_id": "admin_host_c0",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "semantic_goal": {
+        "version": "semantic-goal/1.0.0",
+        "kind": "required_state",
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "required_state": {
+          "admin_control": [
+            "10000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    "expected_programs": [
+      {
+        "candidate_id": "cand_direct",
+        "generated_candidate_id": "generated_0001",
+        "description": "Alice uses AdminTo directly to Host C0",
+        "active_steps": [
+          "obtain_admin_execution_on_host"
+        ],
+        "passive_steps": [],
+        "shared_preparation": [
+          "auth_context"
+        ],
+        "q_intervals": [
+          [
+            "4/5",
+            "9/10"
+          ],
+          [
+            "1/2",
+            "3/4"
+          ]
+        ],
+        "exact_path_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "decimal_path_interval": [
+          0.4,
+          0.675
+        ],
+        "expected_C": 2,
+        "shared_prep_C": 1,
+        "active_work_C": 1,
+        "expected_I": "High",
+        "pareto_membership": "nondominated",
+        "expected_terminal_source": "S-1-5-21-1000-2000-3000-1101"
+      },
+      {
+        "candidate_id": "cand_member_direct",
+        "generated_candidate_id": "generated_0002",
+        "description": "Alice propagates group entitlement to Admins, then uses AdminTo directly to Host C0",
+        "active_steps": [
+          "obtain_admin_execution_on_host"
+        ],
+        "passive_steps": [
+          "propagate_group_entitlement"
+        ],
+        "shared_preparation": [
+          "auth_context"
+        ],
+        "q_intervals": [
+          [
+            "4/5",
+            "9/10"
+          ],
+          [
+            "1/2",
+            "3/4"
+          ]
+        ],
+        "exact_path_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "decimal_path_interval": [
+          0.4,
+          0.675
+        ],
+        "expected_C": 2,
+        "shared_prep_C": 1,
+        "active_work_C": 1,
+        "expected_I": "High",
+        "pareto_membership": "nondominated",
+        "expected_terminal_source": "S-1-5-21-1000-2000-3000-1101"
+      },
+      {
+        "candidate_id": "cand_member_inherited",
+        "generated_candidate_id": "generated_0003",
+        "description": "Alice propagates group entitlement to Admins, then uses AdminTo from Admins to Host C0",
+        "active_steps": [
+          "obtain_admin_execution_on_host"
+        ],
+        "passive_steps": [
+          "propagate_group_entitlement"
+        ],
+        "shared_preparation": [
+          "auth_context"
+        ],
+        "q_intervals": [
+          [
+            "4/5",
+            "9/10"
+          ],
+          [
+            "1/2",
+            "3/4"
+          ]
+        ],
+        "exact_path_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "decimal_path_interval": [
+          0.4,
+          0.675
+        ],
+        "expected_C": 2,
+        "shared_prep_C": 1,
+        "active_work_C": 1,
+        "expected_I": "High",
+        "pareto_membership": "nondominated",
+        "expected_terminal_source": "S-1-5-21-1000-2000-3000-2103"
+      }
+    ],
+    "expected_nondominated": [
+      "generated_0001",
+      "generated_0002",
+      "generated_0003"
+    ],
+    "expected_nondominated_labels": [
+      "cand_direct",
+      "cand_member_direct",
+      "cand_member_inherited"
+    ],
+    "expected_dominated": [],
+    "expected_dominated_labels": [],
+    "dominance_relation": "Identical non-degenerate P intervals overlap; all three paths are incomparable under scoped risk preference. Equal C does not resolve overlap. No dominance claim.",
+    "min_effort_winner": "generated_0001",
+    "min_effort_winner_label": "cand_direct",
+    "minimum_effort_value": 2,
+    "expected_cost_multiset": [
+      2,
+      2,
+      2
+    ],
+    "numeric_activation_permitted": false,
+    "min_effort_ties": [
+      "generated_0001",
+      "generated_0002",
+      "generated_0003"
+    ],
+    "numeric_basis": "synthetic_test_only",
+    "numeric_approval": false
+  },
+  "incomparable_alternative_case": {
+    "source": "accepted #181 Source-A generator/bridge and unchanged Week 3 q and I",
+    "expected_programs": [
+      {
+        "historical_candidate_id": "cand_seamless_01_direct_lidia",
+        "active_event_count": 3,
+        "q_intervals": [
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "1/2",
+            "9/10"
+          ]
+        ],
+        "exact_path_interval": [
+          "9/40",
+          "8379/10000"
+        ],
+        "C": 2,
+        "I": "High"
+      },
+      {
+        "historical_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+        "active_event_count": 5,
+        "q_intervals": [
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "3/5",
+            "19/20"
+          ],
+          [
+            "3/4",
+            "49/50"
+          ],
+          [
+            "1/2",
+            "9/10"
+          ]
+        ],
+        "exact_path_interval": [
+          "81/800",
+          "7800849/10000000"
+        ],
+        "C": 3,
+        "I": "High"
+      }
+    ],
+    "expected_nondominated": [
+      "cand_seamless_01_direct_lidia",
+      "cand_seamless_02_alt_vajer_ollie"
+    ],
+    "expected_dominated": [],
+    "relation": "Overlapping P intervals with equal High impact are incomparable; effort cannot break overlapping-interval risk ties. Direct candidate minimizes C=2 vs C=3."
+  },
+  "frozen_243": {
+    "source": "docs/research/scenarios/week4-seamless-v1.json",
+    "program": [
+      "asrep_request",
+      "recover_asrep_secret",
+      "activate_recovered_identity",
+      "obtain_admin_execution_on_host"
+    ],
+    "event_dispositions": [
+      "REQUIRES_CONTEXT",
+      "UNRATED_NO_BASIS",
+      "REQUIRES_CONTEXT",
+      "REQUIRES_CONTEXT"
+    ],
+    "current_P": null,
+    "q_event_count": 4,
+    "horizon": "fixed-snapshot-window",
+    "recovery_budget": "unmeasured-budget",
+    "proposed_C_by_event": [
+      0,
+      2,
+      0,
+      1
+    ],
+    "proposed_C_total": 3,
+    "proposed_I": "High",
+    "DA_checkpoint": false,
+    "no_new_preparation": true
+  }
+}

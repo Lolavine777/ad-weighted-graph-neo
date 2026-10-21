@@ -1,0 +1,66 @@
+{
+  "summary_id": "week4-scoring-validation-summary",
+  "version": "1.0.0",
+  "timestamp": "2026-10-07T00:00:00Z",
+  "overall_status": "ALL_PASS",
+  "author": "Lolavine777 (TTS A)",
+  "evaluator_version": "1.0.0",
+  "records": [
+    {
+      "package": "synthetic-a2-e.json",
+      "status": "PASS",
+      "description": "Counter-structural Min-Effort: M/I has 2 steps but effort 2, beating D (effort 5).",
+      "min_effort_optimum": "cand_member_inherited",
+      "minimum_effort_value": 2,
+      "pareto_frontier": [
+        "cand_direct",
+        "cand_member_direct",
+        "cand_member_inherited"
+      ],
+      "anti_double_counting_verified": true
+    },
+    {
+      "package": "synthetic-a2-t.json",
+      "status": "PASS",
+      "description": "Ledger T Min-Effort tie: all three programs achieve identical effort 2.",
+      "minimum_effort_value": 2,
+      "all_efforts_equal": true,
+      "pareto_frontier": [
+        "cand_direct",
+        "cand_member_direct",
+        "cand_member_inherited"
+      ]
+    },
+    {
+      "package": "synthetic-a2-ties.json",
+      "status": "PASS",
+      "description": "ADR-0013 Section 4 effort tie-break: M/I effort 2 strictly dominates D effort 5 under point P=1/2.",
+      "pareto_frontier": [
+        "cand_member_inherited"
+      ],
+      "effort_tie_break_verified": true
+    },
+    {
+      "package": "synthetic-a2-diagnostics.json",
+      "status": "PASS",
+      "description": "Diagnostic partitioning: blocked, unknown, likelihood_unrated, effort_unrated, and impact_unrated.",
+      "diagnostics_candidates": [
+        "cand_blocked_firewall",
+        "cand_unknown_service",
+        "cand_missing_likelihood_basis",
+        "cand_assumed_gate_unrated_basis",
+        "cand_unrated_effort",
+        "cand_unrated_impact"
+      ],
+      "fail_closed_verified": true
+    }
+  ],
+  "checksums": {
+    "synthetic-a2-e.json": "007755b020417dd763e0d137a8987359c2779125222693ac4e3c48f6cbf560c1",
+    "synthetic-a2-t.json": "53350f80707d7a6246824bf908728683cfb1c3253fab6b49fbd611b0f05cb651",
+    "synthetic-a2-ties.json": "c4a124162a959df66b24e4b9b1d563533416f860cb03fd1a0f0cb806cd36dc8c",
+    "synthetic-a2-diagnostics.json": "bee77c510e99a05d3edbeee7e417fb82943a51e7bab2d8192f958f8eec1f1441",
+    "week4-seamless-disposition.json": "207364b456cbb5ddea1c483661b6e3b26d3512ee19675b040f7687bdeda273bf",
+    "actual-evaluator-results.json": "a184f52fd4805c08d47675955b6978a2805b6217900964bdc130017f6e262f41"
+  }
+}

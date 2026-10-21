@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Experimental Week 4 query result envelope (Refs #213)",
+  "description": "Transport wrapper only. Nested engine results retain authoritative public API fields. #232/#212 merged; CLI #213, independent #208 and actual private/SEAMLESS acceptance remain pending.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "acceptance", "reproducibility", "runtime", "semantic"],
+  "properties": {
+    "schema_version": {"const": "week4-query-result/0.2.0"},
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "resolved_dependencies", "pending_acceptance", "limitations"],
+      "properties": {
+        "status": {"const": "experimental_pending_213_208"},
+        "resolved_dependencies": {"const": {"https://github.com/nairyuuu/ad-weighted-graph/pull/232": "merged"}},
+        "pending_acceptance": {"const": ["#213 human review and CLI acceptance", "#208 independent exact-revision reproduction", "Actual private/SEAMLESS query reproduction"]},
+        "limitations": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "reproducibility": {
+      "type": "object",
+      "required": ["revision", "tracked_changes", "inputs", "effective_config_sha256", "semantic_sha256", "config_files", "source_files"],
+      "properties": {
+        "revision": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "tracked_changes": {"type": "array", "items": {"type": "string"}},
+        "inputs": {"type": "object", "additionalProperties": {
+          "type": "object", "required": ["reference", "sha256"],
+          "properties": {"reference": {"type": "string"}, "sha256": {"$ref": "#/$defs/digest"}}
+        }},
+        "effective_config_sha256": {"$ref": "#/$defs/digest"},
+        "semantic_sha256": {"$ref": "#/$defs/digest"},
+        "source_files": {"type": "object", "additionalProperties": {"$ref": "#/$defs/digest"}},
+        "config_files": {"type": "object", "additionalProperties": {"$ref": "#/$defs/digest"}}
+      }
+    },
+    "runtime": {
+      "type": "object", "required": ["started_at", "duration_seconds", "python", "platform"],
+      "properties": {
+        "started_at": {"type": "string", "format": "date-time"},
+        "duration_seconds": {"type": "number", "minimum": 0},
+        "python": {"type": "string"}, "platform": {"type": "string"}
+      }
+    },
+    "semantic": {
+      "type": "object",
+      "required": ["query", "materialized", "status", "checkpoint_reached", "final_goal_reached", "caps", "complete", "truncated", "truncation_reason", "expansions", "candidates", "attempts", "diagnostics", "checkpoint_diagnostics", "binding_diagnostics", "ranking_result", "min_effort", "ranking_disposition", "engine_reported_guarantees", "input_label", "snapshot_metadata", "snapshot_facts_present", "snapshot_facts"],
+      "properties": {
+        "query": {"type": "object"}, "materialized": {"type": "object"},
+        "status": {"type": "string"},
+        "checkpoint_reached": {"type": "boolean"}, "final_goal_reached": {"type": "boolean"},
+        "caps": {"type": "object"}, "complete": {"type": "boolean"}, "truncated": {"type": "boolean"},
+        "truncation_reason": {"type": ["string", "null"]}, "expansions": {"type": "integer", "minimum": 0},
+        "candidates": {"type": "array", "items": {
+          "type": "object", "required": ["candidate_id", "nodes", "edges", "transition_history", "final_state", "runtime_context"],
+          "properties": {"candidate_id": {"type": "string", "pattern": "^generated_[0-9]{4,}$"}, "transition_history": {"type": "array"}}
+        }},
+        "attempts": {"type": "array"}, "diagnostics": {"type": "array"}, "checkpoint_diagnostics": {"type": "array"},
+        "binding_diagnostics": {"type": "object"}, "ranking_result": {"type": ["object", "null"]},
+        "min_effort": {"type": ["object", "null"]},
+        "ranking_disposition": {"enum": ["evaluated", "unrated"]},
+        "engine_reported_guarantees": {"type": "object", "description": "Authoritative engine scope/proof flags after #212. Apply only to declared semantic scope and assessed coverage; do not imply global optimum, Top-K or full Week 4/SEAMLESS acceptance."},
+        "input_label": {"enum": ["synthetic", "private", "seamless"]},
+        "snapshot_metadata": {"type": "object"}, "snapshot_facts_present": {"type": "boolean"},
+        "snapshot_facts": {"type": ["object", "null"]}
+      }
+    }
+  },
+  "$defs": {"digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}}
+}

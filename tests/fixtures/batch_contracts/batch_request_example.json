@@ -1,0 +1,170 @@
+{
+  "schema_version": "batch-query-request/1.0.0",
+  "batch_id": "batch-w5-acceptance-demo-01",
+  "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+  "evaluation_mode": "scenario",
+  "prioritization_policy": "min_effort_impact_pareto",
+  "common_budget": {
+    "max_paths": 1000,
+    "max_steps": 12,
+    "max_expansions": 100000
+  },
+  "target_goal_ids": null,
+  "target_manifest": {
+    "manifest_id": "target-manifest-synthetic-v1",
+    "version": "1.0.0",
+    "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+    "domain_sid": "S-1-5-21-1000-2000-3000",
+    "default_discovery_goals": [
+      "goal-synthetic-da",
+      "goal-synthetic-c0-host"
+    ],
+    "targets": [
+      {
+        "goal_id": "goal-synthetic-da",
+        "category": "tier_0_identity",
+        "target_node_id": "S-1-5-21-1000-2000-3000-2103",
+        "target_node_kind": "Group",
+        "display_name": "Domain Admins (SYNTHETIC-Admins)",
+        "technical_consequence": "domain_admin_entitlement",
+        "impact_rating": "Catastrophic",
+        "required_control_level": "admin_entitlement",
+        "required_state": {
+          "effective_member": [
+            [
+              "__RESOLVED_ACTOR__",
+              "S-1-5-21-1000-2000-3000-2103"
+            ]
+          ]
+        },
+        "checkpoint_goal": null
+      },
+      {
+        "goal_id": "goal-synthetic-c0-host",
+        "category": "tier_0_host",
+        "target_node_id": "10000000-0000-4000-8000-000000000002",
+        "target_node_kind": "Computer",
+        "display_name": "High Value Host (SYNTHETIC-Host)",
+        "technical_consequence": "host_administrative_takeover",
+        "impact_rating": "High",
+        "required_control_level": "host_admin_execution",
+        "required_state": {
+          "admin_control": [
+            "10000000-0000-4000-8000-000000000002"
+          ]
+        },
+        "checkpoint_goal": {
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "required_state": {
+            "effective_member": [
+              [
+                "__RESOLVED_ACTOR__",
+                "S-1-5-21-1000-2000-3000-2103"
+              ]
+            ]
+          }
+        }
+      }
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "src-alice-usable",
+      "node_id": "S-1-5-21-1000-2000-3000-1101",
+      "node_kind": "User",
+      "profile_kind": "user_usable_identity",
+      "authentication_context": "S-1-5-21-1000-2000-3000-1101",
+      "declared_assumptions": [
+        {
+          "predicate": "admin_channel",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Admin channel assumption",
+          "provenance_reference": "batch:src-alice-usable"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Auth accepted assumption",
+          "provenance_reference": "batch:src-alice-usable"
+        },
+        {
+          "predicate": "security_group",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "rationale": "Security group assumption",
+          "provenance_reference": "batch:src-alice-usable"
+        },
+        {
+          "predicate": "membership_usable",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "value": true,
+          "rationale": "Usable membership assumption",
+          "provenance_reference": "batch:src-alice-usable"
+        }
+      ],
+      "custom_budget": null,
+      "description": "User Alice with usable identity"
+    },
+    {
+      "source_id": "src-bob-password",
+      "node_id": "S-1-5-21-1000-2000-3000-1102",
+      "node_kind": "User",
+      "profile_kind": "user_leaked_password",
+      "authentication_context": "10000000-0000-4000-8000-000000000002",
+      "declared_assumptions": [
+        {
+          "predicate": "secret_valid",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Valid secret",
+          "provenance_reference": "batch:src-bob-password"
+        },
+        {
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "KDC network reachability",
+          "provenance_reference": "batch:src-bob-password"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Kerberos authentication success",
+          "provenance_reference": "batch:src-bob-password"
+        }
+      ],
+      "custom_budget": null,
+      "description": "User Bob with leaked password"
+    },
+    {
+      "source_id": "src-otherhost-admin",
+      "node_id": "10000000-0000-4000-8000-000000000003",
+      "node_kind": "Computer",
+      "profile_kind": "computer_control_admin",
+      "authentication_context": "10000000-0000-4000-8000-000000000003",
+      "declared_assumptions": [],
+      "custom_budget": null,
+      "description": "Compromised Computer OtherHost with local admin control"
+    },
+    {
+      "source_id": "src-helpdesk-group",
+      "node_id": "S-1-5-21-1000-2000-3000-2101",
+      "node_kind": "Group",
+      "profile_kind": "unsupported",
+      "authentication_context": "S-1-5-21-1000-2000-3000-2101",
+      "declared_assumptions": [],
+      "custom_budget": null,
+      "description": "Unsupported source group node"
+    }
+  ]
+}

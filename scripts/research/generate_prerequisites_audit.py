@@ -1,0 +1,417 @@
+"""Generate the SEAMLESS Prerequisites Audit Table and Report.
+
+Implements the audit deliverable required by Issue #290:
+Classifies each runtime predicate into observed, safely_conditionable,
+needs_scoped_override, or cannot_default with detailed rationale.
+"""
+
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+
+AUDIT_ENTRIES = [
+    {
+        "predicate": "actor_controlled",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Attacker has active control over the executing actor",
+        "rationale": (
+            "Evaluated strictly from branch AttackState.control or usable_identity. "
+            "Never an external assumption."
+        ),
+        "failure_mode": "Halts execution immediately if actor is not in control.",
+    },
+    {
+        "predicate": "actor_authenticated",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Actor identity is usable within the current authentication context",
+        "rationale": (
+            "Evaluated from branch AttackState.usable_identity matching "
+            "context.authentication_context."
+        ),
+        "failure_mode": "Halts execution; unauthenticated actor cannot invoke techniques.",
+    },
+    {
+        "predicate": "source_authorized",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": ("Source principal is actor or group where actor is an effective member"),
+        "rationale": "Evaluated dynamically from branch AttackState.effective_member.",
+        "failure_mode": "Halts execution; actor cannot exercise rights of unjoined groups.",
+    },
+    {
+        "predicate": "source_admin_control",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Source computer host is under administrative control",
+        "rationale": "Evaluated from branch AttackState.admin_control.",
+        "failure_mode": "Halts execution; credential dumping requires prior host compromise.",
+    },
+    {
+        "predicate": "reset_password_control",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Actor holds capability to reset passwords on target",
+        "rationale": "Evaluated from branch AttackState.reset_password_control.",
+        "failure_mode": "Halts execution; acquire_reset_identity requires prior reset.",
+    },
+    {
+        "predicate": "authentication_context_matches",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Target matches the authentication context of the query",
+        "rationale": "Evaluated by comparing target node ID with context auth context.",
+        "failure_mode": "Blocks transition if credentials bound to different context.",
+    },
+    {
+        "predicate": "known_identity",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Target identity is known to the attacker",
+        "rationale": "Evaluated from AttackState.known_identity.",
+        "failure_mode": "Blocks roasting and delegation if identity is undiscovered.",
+    },
+    {
+        "predicate": "asrep_request_capability",
+        "classification": "observed",
+        "category": "evaluator_state",
+        "description": "Foothold has capability to send raw AS-REQ packets",
+        "rationale": "Evaluated from AttackState.asrep_request_capability.",
+        "failure_mode": "Blocks asrep_request if foothold lacks AS-REQ capability.",
+    },
+    {
+        "predicate": "dontreqpreauth",
+        "classification": "observed",
+        "category": "snapshot_attribute",
+        "description": "User account has Kerberos preauthentication disabled",
+        "rationale": "Authoritative property collected in BloodHound v3 snapshot facts.",
+        "failure_mode": "Snapshot lookup vetoes asrep_request if dontreqpreauth is False.",
+    },
+    {
+        "predicate": "has_spn",
+        "classification": "observed",
+        "category": "snapshot_attribute",
+        "description": "User account has registered Service Principal Names",
+        "rationale": "Authoritative property from users.json serviceprincipalnames array.",
+        "failure_mode": "Blocks kerberoast_request if account has no SPN.",
+    },
+    {
+        "predicate": "service_principal_names",
+        "classification": "observed",
+        "category": "snapshot_attribute",
+        "description": "List of SPNs registered on the user object",
+        "rationale": "Authoritative property from snapshot facts.",
+        "failure_mode": "Blocks service ticket acquisition if SPN list is empty.",
+    },
+    {
+        "predicate": "actor_enabled",
+        "classification": "observed",
+        "category": "snapshot_attribute",
+        "description": "Actor object enabled status in Active Directory",
+        "rationale": "Authoritative property from snapshot. If False, triggers veto.",
+        "failure_mode": "Known-false veto if False; satisfies if True.",
+    },
+    {
+        "predicate": "target_enabled",
+        "classification": "observed",
+        "category": "snapshot_attribute",
+        "description": "Target object enabled status in Active Directory",
+        "rationale": "Authoritative property from snapshot. If False, triggers veto.",
+        "failure_mode": "Known-false veto if False; satisfies if True.",
+    },
+    {
+        "predicate": "network_kdc_reachable",
+        "classification": "safely_conditionable",
+        "category": "environment_network",
+        "description": "KDC port 88 reachable over intranet network",
+        "rationale": "Standard AD intranet condition; DCs reachable from domain members.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "network_rpc_reachable",
+        "classification": "safely_conditionable",
+        "category": "environment_network",
+        "description": "MS-RPC port 135 and dynamic ports reachable for SAMR",
+        "rationale": "Standard AD condition for directory management operations.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "network_winrm_reachable",
+        "classification": "safely_conditionable",
+        "category": "environment_network",
+        "description": "WinRM ports 5985/5986 reachable on target computers",
+        "rationale": "Standard enterprise condition for remote computer management.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "service_winrm_running",
+        "classification": "safely_conditionable",
+        "category": "environment_service",
+        "description": "WinRM service is active and listening on target computer",
+        "rationale": "Expected state for remote administration targets under policy.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "asrep_request_accepted",
+        "classification": "safely_conditionable",
+        "category": "protocol_acceptance",
+        "description": "KDC accepts AS-REQ for accounts with preauth disabled",
+        "rationale": "Standard RFC 4120 behavior implemented by Active Directory KDC.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "service_ticket_request_accepted",
+        "classification": "safely_conditionable",
+        "category": "protocol_acceptance",
+        "description": "KDC issues TGS service ticket for valid registered SPN",
+        "rationale": "Standard RFC 4120 Kerberos behavior for authenticated users.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "kerberos_authentication_usable",
+        "classification": "safely_conditionable",
+        "category": "protocol_acceptance",
+        "description": "Kerberos authentication operational on client system",
+        "rationale": "Standard condition on Windows domain member systems.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "kerberos_actor_authenticated",
+        "classification": "safely_conditionable",
+        "category": "protocol_acceptance",
+        "description": "Logon session holds valid initial Kerberos TGT",
+        "rationale": "Standard condition for authenticated domain user logon.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "admin_channel",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "Administrative channel open for local administrators",
+        "rationale": "Standard condition for hosts where identity has AdminTo rights.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "admin_execution_context",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "Host execution environment allows administrative command execution",
+        "rationale": "Standard condition for local administrator sessions.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "endpoint_authorized",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "Target endpoint authorizes management connections",
+        "rationale": "Corresponds to local administrator rights on target system.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "host_admin_mapping",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "Local administrator group mapping corresponds to AdminTo",
+        "rationale": "Standard mapping of Domain Admins or delegated local admins.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "authentication_accepted",
+        "classification": "safely_conditionable",
+        "category": "authentication",
+        "description": "Target accepts valid domain credentials for authentication",
+        "rationale": "Standard Active Directory domain member authentication behavior.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "winrm_authentication_accepted",
+        "classification": "safely_conditionable",
+        "category": "authentication",
+        "description": "WinRM listener validates administrative domain credentials",
+        "rationale": "Standard behavior for remote management users.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "rdp_available",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "Remote Desktop service enabled and accepting connections",
+        "rationale": "Standard condition for CanRDP edge targets in enterprise.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "winrm_available",
+        "classification": "safely_conditionable",
+        "category": "administrative_access",
+        "description": "WinRM remoting endpoint available on target host",
+        "rationale": "Standard condition for CanPSRemote edge targets.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "directory_write_allowed",
+        "classification": "safely_conditionable",
+        "category": "directory_dacl",
+        "description": "Directory modification allowed under GenericAll or WriteDacl",
+        "rationale": "Standard AD DACL semantics: object ACE grants modification.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "password_policy_accepts",
+        "classification": "safely_conditionable",
+        "category": "directory_dacl",
+        "description": "Password reset complies with length and complexity policy",
+        "rationale": "Attacker can generate passwords conforming to domain policy.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "membership_change_allowed",
+        "classification": "safely_conditionable",
+        "category": "directory_dacl",
+        "description": "Adding members to group is permitted under GenericAll",
+        "rationale": "Standard AD object control behavior for security groups.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "membership_usable",
+        "classification": "safely_conditionable",
+        "category": "token_propagation",
+        "description": "Group SID is incorporated into access token upon session logon",
+        "rationale": "Standard Kerberos/NTLM PAC authorization token construction.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "secret_valid",
+        "classification": "safely_conditionable",
+        "category": "credential_activation",
+        "description": "Secret matches directory hash and is unexpired",
+        "rationale": "Once secret is recovered or set, authentication succeeds.",
+        "failure_mode": "Unresolved in raw mode; resolved True under scenario profile.",
+    },
+    {
+        "predicate": "security_group",
+        "classification": "safely_conditionable",
+        "category": "group_type_boundary",
+        "description": "Target group is a security group capable of token authorization",
+        "rationale": (
+            "Safely conditionable for recognized security groups. "
+            "FORBIDDEN from defaulting to True for groups named DISTLIST or DISTRIBUTION."
+        ),
+        "failure_mode": "Rejected for distribution groups; resolved True for security groups.",
+    },
+    {
+        "predicate": "recovery_success",
+        "classification": "needs_scoped_override",
+        "category": "password_cracking",
+        "description": "Offline password recovery successfully cracks ticket or hash",
+        "rationale": (
+            "Depends on password complexity, dictionary, and GPU budget. "
+            "FORBIDDEN from defaulting to True in standard mode. "
+            "Requires explicit recovery_opt_in with method and budget. Never implies P=1."
+        ),
+        "failure_mode": "Halts prefix replay at recovery step without explicit opt-in.",
+    },
+    {
+        "predicate": "session_fresh",
+        "classification": "needs_scoped_override",
+        "category": "credential_dumping",
+        "description": "Cached logon session in LSASS is unexpired and active",
+        "rationale": "Requires live telemetry or explicit scoped override.",
+        "failure_mode": "Cannot default in standard profile; requires specific override.",
+    },
+    {
+        "predicate": "session_present",
+        "classification": "needs_scoped_override",
+        "category": "credential_dumping",
+        "description": "Target user session currently exists in LSASS memory",
+        "rationale": "Requires live telemetry or explicit scoped override.",
+        "failure_mode": "Cannot default in standard profile; requires specific override.",
+    },
+    {
+        "predicate": "credential_accessible",
+        "classification": "needs_scoped_override",
+        "category": "credential_dumping",
+        "description": "LSASS memory is readable by elevated process",
+        "rationale": "Requires endpoint security configuration evidence.",
+        "failure_mode": "Cannot default in standard profile; requires specific override.",
+    },
+    {
+        "predicate": "rbcd_delegation_gates",
+        "classification": "needs_scoped_override",
+        "category": "rbcd_delegation",
+        "description": "RBCD delegation gates (s4u_request_accepted, delegation_policy_allows)",
+        "rationale": "Requires specific RBCD recipe bindings and explicit delegation opt-in.",
+        "failure_mode": "Cannot default in standard profile; requires specific override.",
+    },
+    {
+        "predicate": "usable_identity",
+        "classification": "cannot_default",
+        "category": "attacker_capability",
+        "description": "Attacker holds credentials and interactive logon rights",
+        "rationale": (
+            "Attacker capability must come strictly from foothold or valid technique effects. "
+            "Never granted by assumption."
+        ),
+        "failure_mode": "Policy rejects any attempt to assume this predicate.",
+    },
+    {
+        "predicate": "admin_control",
+        "classification": "cannot_default",
+        "category": "attacker_capability",
+        "description": "Attacker holds elevated code execution on target computer",
+        "rationale": (
+            "Goal capability must be attained through applicable technique chain. "
+            "Never granted by assumption."
+        ),
+        "failure_mode": "Policy rejects any attempt to assume this predicate.",
+    },
+    {
+        "predicate": "control",
+        "classification": "cannot_default",
+        "category": "attacker_capability",
+        "description": "Direct administrative control over object",
+        "rationale": "Must come from initial foothold. Never assumed by policy.",
+        "failure_mode": "Policy rejects any attempt to assume this predicate.",
+    },
+    {
+        "predicate": "relationship_exists",
+        "classification": "cannot_default",
+        "category": "structural_boundary",
+        "description": "Structural relationship exists in the Active Directory directory",
+        "rationale": "Canonical graph structure is immutable; policy cannot invent edges.",
+        "failure_mode": "Policy rejects any attempt to assume non-existent structural edges.",
+    },
+]
+
+
+def generate_audit_json() -> None:
+    json_path = ROOT / "reports/research/seamless-prerequisites-audit.json"
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_payload = {
+        "schema_version": "seamless-prerequisites-audit/1.0.0",
+        "title": "SEAMLESS Active Technique Runtime Prerequisites Audit",
+        "snapshot_id": ("sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"),
+        "classification_summary": {
+            "observed": len([e for e in AUDIT_ENTRIES if e["classification"] == "observed"]),
+            "safely_conditionable": len(
+                [e for e in AUDIT_ENTRIES if e["classification"] == "safely_conditionable"]
+            ),
+            "needs_scoped_override": len(
+                [e for e in AUDIT_ENTRIES if e["classification"] == "needs_scoped_override"]
+            ),
+            "cannot_default": len(
+                [e for e in AUDIT_ENTRIES if e["classification"] == "cannot_default"]
+            ),
+            "total_predicates": len(AUDIT_ENTRIES),
+        },
+        "entries": AUDIT_ENTRIES,
+    }
+    json_path.write_text(
+        json.dumps(json_payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
+    )
+    print(f"Wrote JSON audit report to {json_path}")
+
+
+if __name__ == "__main__":
+    generate_audit_json()

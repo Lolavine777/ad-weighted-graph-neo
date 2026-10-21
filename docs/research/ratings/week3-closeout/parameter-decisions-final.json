@@ -1,0 +1,1356 @@
+{
+  "schema_version": "1.0.0",
+  "release_id": "seamless-week3-human-reviewed",
+  "release_version": "1.0.0",
+  "evidence_class": "human_reviewed_ai_assisted_ratings",
+  "status": "reviewed_parameter_selection",
+  "input_digests": {
+    "sheet1": "sha256:1e3134315d209d0cca930f5850af8d5397c576f78f75906238178a9ab6a2407f",
+    "sheet2": "sha256:68a49f6fb02dfc30eb0e42d5aa9691da7d9c4006ef456eee22682a9a92f75525",
+    "policy": "sha256:0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883",
+    "confirmation": "sha256:709316e49b42c91c0a9fc893b154608fa3341f9c4c691bfd038c1eb440ef7cf0",
+    "ai_draft": "sha256:e06dbbf8ddb2f8a88fd79182739fc9bb73ca158a9080e1d19d67fbe92f046d79",
+    "template": "sha256:251771f39c888d525edde10e969f481836a4c3bbc48029ec8a4ed6cdeaf4cb04"
+  },
+  "report_digest": "sha256:5bd0f44b300180e8f7c6bfe72f50f9af79955218556a9483afbc787010dfb554",
+  "decisions": [
+    {
+      "category": "impact",
+      "pair_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+      "binding": {
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "target_asset_label": null,
+        "success_event": "terminal_compromise_seamless_dc"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "impact_rating",
+        "evaluator": "Lolavine777",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "consequence_rating": "High",
+        "business_rationale": "Thực thi lệnh với quyền quản trị trên BADBLOOD tạo khả năng can thiệp vào dữ liệu định danh và kiểm soát truy cập của miền, gây nguy cơ tổn hại lớn tới tính bảo mật, tính toàn vẹn và khả năng hoạt động của các dịch vụ phụ thuộc. Đánh giá áp dụng cho bối cảnh doanh nghiệp giả định; dữ liệu chưa mô tả đầy đủ hậu quả nghiệp vụ để xác lập mức Critical.",
+        "affected_business_services": [
+          "identity",
+          "authentication",
+          "access_control"
+        ],
+        "rating_status": "rated",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+        ]
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng chọn High cho hậu quả kiểm soát quản trị tài sản đích trong doanh nghiệp giả định; chưa đủ thông tin nghiệp vụ để nâng Critical.",
+      "resolution": "Không có bất đồng nhãn nguồn. Giữ business rationale và phạm vi; không suy consequence trực tiếp từ nhãn DC/Tier0.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:5d94574a601cd2ae02e5818e4e271c45a49995bf2cbc7b286230c5bcd1f09d3c",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_reset_josefa",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_02_alt_vajer_ollie:q1",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_reset_josefa",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/5",
+          "upper": "19/20"
+        },
+        "uncertainty_rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_1 = P(action_reset_josefa succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: no previous event)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:032826dc129ead486a9ebfbd8a7bdd29716d457b86de846b42201b50dc958411",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_activate_josefa",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_02_alt_vajer_ollie:q2",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_activate_josefa",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/4",
+          "upper": "49/50"
+        },
+        "uncertainty_rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_2 = P(action_activate_josefa succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:0c720eaea583e6b2951af57c59f432fe495469b7b1b896be28c9603407c50656",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_reset_ollie",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_02_alt_vajer_ollie:q3",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_reset_ollie",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/5",
+          "upper": "19/20"
+        },
+        "uncertainty_rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_3 = P(action_reset_ollie succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:4d29472572cf7ce2a6843118ded6528a1c9c4ef32802f006232e64d3e5b7dafc",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_activate_ollie",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_02_alt_vajer_ollie:q4",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_activate_ollie",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/4",
+          "upper": "49/50"
+        },
+        "uncertainty_rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_4 = P(action_activate_ollie succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0, reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:8424312dbfd2bb242b29e33e260a46e128546a8f0d5df5782690cf7c3ba646bc",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_winrm_badblood_ollie",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_02_alt_vajer_ollie:q5",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_winrm_badblood_ollie",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "1/2",
+          "upper": "9/10"
+        },
+        "uncertainty_rationale": "Sau prior events/closure thành công và endpoint authorization/context đã khai báo, outcome cần phiên remote và thực thi quản trị hoàn tất. Khoảng rộng phản ánh bất định xử lý, cấp phát tài nguyên và session quotas chưa đo. Không tái tính reachability/listener/DA mapping/endpoint authorization đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 30 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/winrm/quotas"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_5 = P(action_winrm_badblood_ollie succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0, reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 30
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:385b0751a075e384ab478b22d0de0a47185475b5af4d5845c0e5ccfa9fd4a6d0",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_reset_lidia",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_01_direct_lidia:q1",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_reset_lidia",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/5",
+          "upper": "19/20"
+        },
+        "uncertainty_rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_1 = P(action_reset_lidia succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: no previous event)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:f89b44748bf728f59f5717f58f77b721f475fd1a5a507e1c26a6fb9c0d10bd34",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_activate_lidia",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_01_direct_lidia:q2",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_activate_lidia",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/4",
+          "upper": "49/50"
+        },
+        "uncertainty_rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_2 = P(action_activate_lidia succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:a0661a9a9d82a560dd295ccb78727b2b3814697b51661641dde7bbaa85c2d301",
+      "binding": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_winrm_badblood_lidia",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_01_direct_lidia:q3",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-host-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_winrm_badblood_lidia",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "1/2",
+          "upper": "9/10"
+        },
+        "uncertainty_rationale": "Sau prior events/closure thành công và endpoint authorization/context đã khai báo, outcome cần phiên remote và thực thi quản trị hoàn tất. Khoảng rộng phản ánh bất định xử lý, cấp phát tài nguyên và session quotas chưa đo. Không tái tính reachability/listener/DA mapping/endpoint authorization đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 30 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/winrm/quotas"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_3 = P(action_winrm_badblood_lidia succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4131, S=scenario-seamless-host-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 30
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:6ffe712bc64ba70fd720885ff90337a38dff3665135e29c4078edfe43a14f386",
+      "binding": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_reset_ollie_from_b",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_source_b_01_ollie:q1",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_reset_ollie_from_b",
+        "outcome_work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/5",
+          "upper": "19/20"
+        },
+        "uncertainty_rationale": "Reset là thao tác tiêu chuẩn dưới quyền và kênh đã được kịch bản chấp nhận. Khoảng rộng phản ánh chưa có số liệu về hoàn tất xử lý/response trong thời hạn của bước; không tính lại account enabled, quyền reset, policy hoặc reachability đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 15 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_1 = P(action_reset_ollie_from_b succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4157, S=scenario-seamless-source-b-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: no previous event)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:f0c75c9364520016b03fe2e86a3c17570f682ff4a29486a13137f29ef50eaa64",
+      "binding": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_activate_ollie",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_source_b_01_ollie:q2",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_activate_ollie",
+        "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "3/4",
+          "upper": "49/50"
+        },
+        "uncertainty_rationale": "Sau credentials và mọi prior events đã thành công, xin ticket là xác thực tiêu chuẩn. Khoảng cao hơn reset/WinRM là phán đoán của AI về mức phối hợp thấp hơn, không suy từ C=0 hoặc khẳng định tỷ lệ đo được. Không tái tính authentication/KDC prerequisites đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 10 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_2 = P(action_activate_ollie succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4157, S=scenario-seamless-source-b-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "likelihood",
+      "pair_digest": "sha256:9c4524c1aec077b1708caa1363ecab6a1e510b5c8145b6a22827a594bb07ff37",
+      "binding": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "operational_horizon": "24h",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "outcome_action_id": "action_winrm_badblood_ollie",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "question_id": "cand_seamless_source_b_01_ollie:q3",
+        "record_type": "conditional_likelihood",
+        "evaluator": "Lolavine777",
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "query_id": "query-seamless-source-b-to-dc-v1",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "operational_horizon": "24h",
+        "ordered_work_prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "outcome_action_id": "action_winrm_badblood_ollie",
+        "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "conditioning_previous_successes": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "quantity": "q_i = P(E_i succeeds | foothold, scenario, all previous events succeeded)",
+        "conditional_bounds": {
+          "lower": "1/2",
+          "upper": "9/10"
+        },
+        "uncertainty_rationale": "Sau prior events/closure thành công và endpoint authorization/context đã khai báo, outcome cần phiên remote và thực thi quản trị hoàn tất. Khoảng rộng phản ánh bất định xử lý, cấp phát tài nguyên và session quotas chưa đo. Không tái tính reachability/listener/DA mapping/endpoint authorization đã conditioning là true. Các cận là AI-proposed, human-adopted scenario judgment, không được suy trực tiếp từ tài liệu; chưa hiệu chuẩn và không là statistical confidence interval. Giữ full-history/F/S của bản ghi và horizon 24h; đánh giá hoàn tất sau tối đa 3 lần thử trong 30 phút theo chính sách chung. B giữ khoảng rộng của bản AI dưới chính sách này theo xác nhận được A chuyển đạt; đây là nhận định kịch bản, không là phép đổi xác suất từ horizon 24h sang deadline phút. Giả định cùng khoảng cho cơ chế tương đương trong scoped contexts là quy ước của lượt review chung, không là marginal fallback hay independence giữa events.",
+        "basis_category": "scenario_assumption",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/winrm/quotas"
+        ],
+        "rating_status": "rated",
+        "question_text": "q_3 = P(action_winrm_badblood_ollie succeeds | F=S-1-5-21-1271839998-3495686680-2211690266-4157, S=scenario-seamless-source-b-to-dc@1.1.0, snapshot=sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812, horizon=24h, all previous events succeeded: reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0, acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0)",
+        "evidence_limitation": "Human adoption of an AI-proposed scenario interval after exposure to A, relayed by A. No empirical calibration, blind independence or statistical confidence claim; technical sources establish mechanism only. Sensitivity remains necessary.",
+        "execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 30
+        },
+        "execution_policy_reference": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "path": "execution-policy.json",
+          "sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883"
+        }
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "Đề xuất giữ khoảng rộng B đã xác nhận, chứa toàn bộ khoảng A trong cùng full-history và policy. Giữ bất định được nêu trong cả hai phiếu; chưa có dữ liệu định lượng để chọn trung bình hoặc thu hẹp khoảng.",
+      "resolution": "Hai source bounds khác nhau nhưng cùng outcome/policy và chồng lấn. Giữ cả hai trong provenance. Chọn khoảng B để giữ bất định của nhận định theo kịch bản; giữ nguyên hai bộ giá trị nguồn.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "nairyuuu"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:e53c2d55af07beb12c0056f5d47014deec38db1c489a81bd4275749058db882c",
+      "binding": {
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_ACTIVATE_JOSEFA",
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_rationale": "Xin vé Kerberos bằng công cụ tiêu chuẩn, mật khẩu đã có, trao đổi được xử lý tự động.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [
+            "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+          ]
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://datatracker.ietf.org/doc/html/rfc4120#section-3.1"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:a6cb386c722c95cd3f43093bba4dc339da08670094aef6922995d79925655959",
+      "binding": {
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_ACTIVATE_OLLIE",
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_rationale": "Xin vé Kerberos cho Ollie bằng công cụ tiêu chuẩn với mật khẩu đã có; phần này tính riêng trong từng đường.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [],
+          "prerequisite_dependencies_by_query": {
+            "query-seamless-host-to-dc-v1": [
+              "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+            ],
+            "query-seamless-source-b-to-dc-v1": [
+              "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+            ]
+          }
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường. Hai reset là prerequisite thay thế theo query; không phải hai prerequisite đồng thời. Trường by_query là chú thích bản nháp, chưa phải thay đổi schema.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://datatracker.ietf.org/doc/html/rfc4120#section-3.1"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:8fe5efefa8f10b720e00c90fd39ea47c636d2883ef300e02c3a822240027eee9",
+      "binding": {
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_ACTIVATE_LIDIA",
+        "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "acquire_ticket",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_rationale": "Dùng cơ chế Kerberos tiêu chuẩn với mật khẩu đã có; công cụ tự động xử lý trao đổi xác thực trong kịch bản. C=0 là bậc thấp nhất của rubric, không phải không có thao tác hay bảo đảm thành công.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [
+            "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+          ]
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Xin vé là công việc riêng phụ thuộc mật khẩu có từ reset, không tính lại reset hoặc chuẩn bị foothold. Alias prerequisite sẽ được mở sang canonical ID khi lập phiếu đầy đủ.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://datatracker.ietf.org/doc/html/rfc4120#section-3.1"
+        ]
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:6cffd1a8261a85a6a4ca40d54447d433c9b50a078b9bf434d9d712e220e2d732",
+      "binding": {
+        "work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "remote_exec_winrm",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_WINRM_DC_OLLIE",
+        "work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "remote_exec_winrm",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Mở phiên WinRM, gửi lệnh và xác nhận thực thi quản trị; gộp trong một đơn vị công việc.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [
+            "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+          ]
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_requirements",
+          "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_session_configurations"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:7139afc1e0437e398afccc2f4ef6199f73805285405b24d5cf60a074db7e51a8",
+      "binding": {
+        "work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "remote_exec_winrm",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_WINRM_DC_LIDIA",
+        "work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "technique_name": "remote_exec_winrm",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Dùng PowerShell/WinRM tiêu chuẩn để thiết lập phiên từ xa, gửi lệnh và kiểm tra kết quả cùng quyền thực thi quản trị. Đơn vị công việc gộp mở phiên và xác nhận thực thi, không tính thành hai đơn vị.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [
+            "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+          ]
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Không tính lại công sức lấy mật khẩu, xin vé hoặc chuẩn bị foothold. Prerequisite là thứ tự, không phải công sức trùng. Alias sẽ được mở sang canonical IDs khi lập phiếu đầy đủ.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_remote_requirements",
+          "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_session_configurations"
+        ]
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:6ddfe1f72b38a2d5de71606d4a9d5077fd90ccabec6b614f5411327bf9a7ae8a",
+      "binding": {
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_RESET_OLLIE",
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Dùng quyền của Josefa qua VA-JER để đặt lại mật khẩu Ollie; quy trình reset tiêu chuẩn, không tính suy diễn nhóm thành công việc chủ động.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": [
+            "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+          ]
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:3c46daa5bf6b324d722cf93e0b69ae71840a31ecefec21cb0dd404c24d11156f",
+      "binding": {
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_RESET_JOSEFA",
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Đặt lại mật khẩu Josefa bằng quy trình/API tiêu chuẩn trong bối cảnh đã khai báo.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": []
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:7a8b6c92cad4b2e394fedd53841930ffaa71d4dcf1fee96f4daadb4e12468e7a",
+      "binding": {
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_RESET_LIDIA",
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Dùng API/công cụ tiêu chuẩn để thiết lập kết nối được xác thực, chọn mật khẩu phù hợp chính sách, gửi yêu cầu đặt lại và kiểm tra phản hồi. Điểm ma sát 2 đánh giá quy trình quản lý các thao tác này trong kịch bản; không phải số đo thời gian thực nghiệm. Chưa tính bước xin vé Kerberos.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": []
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Chi phí reset chỉ gồm yêu cầu đặt mật khẩu và kiểm tra kết quả. Không cộng lại foothold là điều kiện ban đầu, không bao gồm xin vé Kerberos.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ]
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    },
+    {
+      "category": "effort",
+      "pair_digest": "sha256:35fb0485d5d3feb84aa2ba80503d904ad94d6bb05e70c0cbcfc31119b62d14c5",
+      "binding": {
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0"
+      },
+      "disposition": "reviewed",
+      "final_record": {
+        "record_type": "work_unit_effort",
+        "evaluator": "Lolavine777",
+        "alias": "WU_RESET_OLLIE_FROM_B",
+        "work_unit_id": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "technique_name": "reset_password",
+        "actor_scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_scope": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "context_scope": "default",
+        "boundary_scope": "intra_forest",
+        "ledger_version": "1.0.0",
+        "rubric_evaluation": {
+          "t1_complexity": 1,
+          "t2_friction": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_rationale": "Đặt lại mật khẩu Ollie từ FINWVIR theo cùng quy trình/API tiêu chuẩn và phạm vi đã khai báo.",
+        "overlap_analysis": {
+          "is_independent": true,
+          "shared_preparation_tags": [],
+          "prerequisite_dependencies": []
+        },
+        "rating_status": "rated",
+        "overlap_rationale": "Mỗi bước chỉ tính thao tác riêng; không tính lại mật khẩu/vé/foothold đã có. Công sức được tổng hợp riêng cho từng đường, không cộng giữa các đường.",
+        "overlap_representation_status": "compiled_from_confirmed_nonduplication_for_review",
+        "source_references": [
+          "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+        ],
+        "source_reference_provenance": "Tài liệu cơ chế đã dùng khi giải thích các thao tác cùng loại; không suy ra điểm số thực nghiệm từ tài liệu."
+      },
+      "reviewer_identity": "Lolavine777",
+      "declared_at": "2026-10-03T10:00:47+07:00",
+      "rationale": "A/B cùng rubric T1/T2 và C. Giữ công sức riêng của từng unit, loại setup/foothold chung đã phân bổ; phụ thuộc thứ tự không đồng nghĩa đếm trùng.",
+      "resolution": "Không có chênh lệch C. Giữ overlap và prerequisite theo query, đặc biệt hai reset Ollie là lựa chọn thay thế, không phải AND.",
+      "decision_reference": "docs/research/ratings/week3-closeout/parameter-selection.md",
+      "selected_source_evaluator": "Lolavine777"
+    }
+  ],
+  "selection_record": "docs/research/ratings/week3-closeout/parameter-selection.md"
+}

@@ -1,0 +1,27 @@
+{
+  "repository": "nairyuuu/ad-weighted-graph",
+  "base_commit": "340e8e526e1e693d4c4b55635c459985eb08fa49",
+  "branch": "docs/awg-r03-planner-handoff",
+  "files": {
+    "AWG-R02_Bao_cao_thuc_nghiem.md": {
+      "bytes": 44420,
+      "sha256": "98a2e45cb38135cbd51d87d4fa033ed27de3491f06fbdd91b144a1700e6e6fcc"
+    },
+    "AWG-R02_Experimental_Evidence.zip": {
+      "bytes": 687415,
+      "sha256": "9f0180fce0db17902e361857262a89ac6e89391df6460bf8b41812f082b1d64a"
+    },
+    "HANDOFF.md": {
+      "bytes": 16425,
+      "sha256": "8732bd6f3b5e64b1c9f9c04b6ab6cbda8e69be97855740a4dc7e5f8e3135f662"
+    },
+    "README.md": {
+      "bytes": 2760,
+      "sha256": "b2d57667f8f27b053f63355bfb1d66786250d6819beddaca33d6d9b8c33e8f9e"
+    },
+    "prepare_evidence.py": {
+      "bytes": 1450,
+      "sha256": "44ce7873a5af3752fc8301e8197ebe0085c3c79a09b465602a04ebfa98af9c60"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "authority": "https://github.com/nairyuuu/ad-weighted-graph/issues/267#issuecomment-6166280449",
+  "deployment_role": "explicit_declared_scenario_not_snapshot_baseline",
+  "queries": [
+    {
+      "base_case_id": "asrep-natural-password",
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 10,
+        "max_steps": 6
+      },
+      "id": "asrep_password_recovery-widecap2p36-reference-v1",
+      "supported": true
+    },
+    {
+      "base_case_id": "kerberoast-identity",
+      "budget": {
+        "max_expansions": 1000,
+        "max_paths": 50,
+        "max_steps": 4
+      },
+      "id": "kerberoast_password_recovery-widecap2p36-reference-v1",
+      "supported": true
+    }
+  ],
+  "version": "final-cpi-declared-recovery-cohort/1.0.0"
+}

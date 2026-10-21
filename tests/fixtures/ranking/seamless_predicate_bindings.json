@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0.0",
+  "binding_basis": "Explicit selected actor/target and property-owning node from the pinned scenario; validated against raw and canonical output.",
+  "predicate_bindings": {
+    "enabled_tstwvir": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "property": "enabled"
+    },
+    "enabled_finwvir": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "property": "enabled"
+    },
+    "enabled_lidia": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "property": "enabled"
+    },
+    "enabled_josefa": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "property": "enabled"
+    },
+    "enabled_ollie": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "property": "enabled"
+    },
+    "enabled_badblood": {
+      "node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "property": "enabled"
+    },
+    "genericall_tstwvir_lidia": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "kind": "GenericAll"
+    },
+    "genericall_tstwvir_josefa": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "kind": "GenericAll"
+    },
+    "genericall_vajer_ollie": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "kind": "GenericAll"
+    },
+    "genericall_da_badblood": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "kind": "GenericAll"
+    },
+    "genericall_finwvir_ollie": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "kind": "GenericAll"
+    },
+    "memberof_lidia_da": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "kind": "MemberOf"
+    },
+    "memberof_josefa_vajer": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+      "kind": "MemberOf"
+    },
+    "memberof_ollie_da": {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "kind": "MemberOf"
+    }
+  }
+}

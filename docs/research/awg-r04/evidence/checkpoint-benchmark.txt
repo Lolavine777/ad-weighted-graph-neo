@@ -1,0 +1,94 @@
+"""Controlled checkpoint policy comparison: same graph, cohort, budgets and native code."""
+import argparse
+import copy
+import hashlib
+import json
+import statistics
+import sys
+import time
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--snapshot', type=Path, required=True)
+p.add_argument('--request', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+p.add_argument('--sources', type=int, default=20)
+a = p.parse_args()
+a.output.mkdir(parents=True, exist_ok=False)
+sys.path.insert(0, str(a.repo.resolve()))
+from src.engine import batch
+from src.engine.graph import EngineGraph
+from src.engine.ranking.resolution_service import canonical_digest
+
+sha = lambda b: 'sha256:' + hashlib.sha256(b).hexdigest()
+raw = a.snapshot.read_bytes()
+graph = EngineGraph.from_snapshot(raw.decode())
+graph.to_prepared()  # warm the owned preparation equally before every timed policy
+request = json.loads(a.request.read_text())
+request['sources'] = sorted(request['sources'], key=lambda s: (s['node_kind'], s['node_id']))[:a.sources]
+n = len(request['sources']) * len(request['target_manifest']['targets'])
+limits = batch.BatchExecutionBudget(max_cells=n, max_expansions=n * request['common_budget']['max_expansions'])
+pins = batch.execution_source_pins()
+reference = None
+rows = []
+original = batch._atomic_json
+for trial, interval in enumerate((1, 25, 25, 1)):
+    writes = []
+
+    def measured(path, data):
+        started = time.perf_counter()
+        original(path, data)
+        writes.append({'seconds': time.perf_counter() - started, 'bytes': path.stat().st_size})
+
+    batch._atomic_json = measured
+    try:
+        started = time.perf_counter()
+        result = batch.run_source_goal_batch(
+            request, graph, allowed_techniques=['propagate_group_entitlement', 'obtain_admin_execution_on_host'],
+            execution_budget=limits, checkpoint=a.output / f'checkpoint-{trial}.json',
+            checkpoint_interval=interval,
+        ).to_dict()
+        elapsed = time.perf_counter() - started
+    finally:
+        batch._atomic_json = original
+    normalized = copy.deepcopy(result)
+    normalized['reproducibility']['runtime'].pop('elapsed_seconds')
+    normalized['reproducibility']['runtime'].pop('checkpoint_interval', None)
+    if reference is None:
+        reference = normalized
+    assert normalized == reference, 'Full normalized decision package differs'
+    encoded = json.dumps(result, ensure_ascii=False, sort_keys=True).encode()
+    path = a.output / f'result-{trial}.json'
+    path.write_bytes(encoded)
+    rows.append({
+        'trial': trial, 'checkpoint_interval': interval, 'pipeline_seconds': elapsed,
+        'checkpoint_writes': len(writes), 'checkpoint_seconds': sum(w['seconds'] for w in writes),
+        'logical_checkpoint_bytes_written': sum(w['bytes'] for w in writes),
+        'native_result': {'path': str(path), 'bytes': len(encoded), 'sha256': sha(encoded)},
+        'normalized_decision_sha256': canonical_digest(normalized), 'summary': result['summary'],
+    })
+    print(json.dumps({k: rows[-1][k] for k in ('trial', 'checkpoint_interval', 'pipeline_seconds', 'checkpoint_writes', 'checkpoint_seconds')}), flush=True)
+assert batch.execution_source_pins() == pins, 'Source changed during comparison'
+before = statistics.median(r['pipeline_seconds'] for r in rows if r['checkpoint_interval'] == 1)
+after = statistics.median(r['pipeline_seconds'] for r in rows if r['checkpoint_interval'] == 25)
+report = {
+    'version': 'awg-r04-checkpoint-comparison/1.0', 'snapshot_sha256': sha(raw),
+    'snapshot_id': graph.metadata['snapshot_id'], 'request_sha256': canonical_digest(request),
+    'sources': len(request['sources']), 'goals': len(request['target_manifest']['targets']), 'pairs': n,
+    'execution_budget': {'max_cells': limits.max_cells, 'max_expansions': limits.max_expansions},
+    'source_pins': pins, 'trials': rows, 'median_per_cell_seconds': before,
+    'median_grouped_seconds': after, 'observed_ratio': before / after,
+    'all_normalized_full_packages_equal': True,
+    'excluded_fields': ['reproducibility.runtime.elapsed_seconds', 'reproducibility.runtime.checkpoint_interval'],
+    'harness_sha256': sha(Path(__file__).read_bytes()),
+    'limitations': [
+        'ABBA, two trials per setting; local host without CPU affinity/isolation or statistical inference.',
+        'One 20-source/12-goal evidence-only cohort, two techniques, no numeric registry.',
+        'Native default remains interval 1; exposure default selects 25. This changes persistence, not search.',
+        'Graph loading, owned preparation warmup and final comparison/result serialization are outside timing.',
+        'Byte counts are logical file output, not physical storage traffic or peak memory.',
+    ],
+}
+(a.output / 'summary.json').write_text(json.dumps(report, ensure_ascii=False, sort_keys=True, indent=2)+'\n')
+print(json.dumps({'before_median': before, 'after_median': after, 'ratio': before / after, 'decisions_equal': True}), flush=True)

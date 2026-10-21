@@ -1,0 +1,226 @@
+{
+  "report_id": "evidence-qi-calibration-237",
+  "schema_version": "1.1.0",
+  "evaluator": "Lolavine777",
+  "pinned_revision": "develop@32ffd62ce9e65c20ccb032143bb8c8cb3dae259a",
+  "dataset_digest": "sha256:b67c02f1d088f6a43d865981e43f91f25d9c7f6aa31e27b93b99301b009a4575",
+  "dataset_file": "lab_benchmark_dataset.json",
+  "dataset_classification": "controlled_lab_benchmark_prototype",
+  "lab_pilot_estimation": {
+    "technique": "recover_asrep_secret",
+    "method": "hashcat_dictionary_rockyou_best64",
+    "budget": 10000000,
+    "horizon_seconds": 3600.0,
+    "target_complexity_class": "standard_enterprise_user",
+    "status": "rated",
+    "sample_size": 60,
+    "success_count": 22,
+    "point_estimate": 0.36666666666666664,
+    "lower_bound": 0.25620916687225426,
+    "upper_bound": 0.49316999369896963,
+    "lower_fraction": "32/125",
+    "upper_fraction": "247/500",
+    "basis_category": "controlled_lab_benchmark_prototype",
+    "dataset_classification": "controlled_lab_benchmark_prototype",
+    "evidence_disposition": "quarantined_prototype_not_for_production_ranking",
+    "bounds_table_entry": {
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "lower": "32/125",
+      "upper": "247/500",
+      "basis_category": "controlled_lab_benchmark_prototype",
+      "dataset_classification": "controlled_lab_benchmark_prototype",
+      "evidence_disposition": "quarantined_prototype_not_for_production_ranking",
+      "rationale": "Controlled lab benchmark prototype Wilson 95% interval derived from n=60 prototype trials (k=22 successes, p_hat=0.3667). Method: hashcat_dictionary_rockyou_best64, Budget: 10000000, Horizon: 3600.0s. Outer rational bounds: [32/125, 247/500]. Notice: Classified as software benchmark prototype; quarantined from production ranking."
+    },
+    "production_ranking_bounds_table_entry": null
+  },
+  "holdout_evaluation": {
+    "status": "evaluated",
+    "holdout_sample_size": 40,
+    "holdout_empirical_rate": 0.35,
+    "holdout_rate_in_interval_diagnostic": true,
+    "coverage_hit": true,
+    "coverage_diagnostic_note": "Single-split consistency diagnostic only (whether holdout empirical rate falls within predicted Wilson CI). Does not establish repeated-sampling coverage or complete probability calibration.",
+    "interval_width": 0.23696082682671538,
+    "brier_score": 0.22793964620187307,
+    "log_loss": 0.6483963394856189,
+    "predicted_rational_bounds": [
+      "32/125",
+      "247/500"
+    ],
+    "refusal_reason": null,
+    "refusal_diagnostics": null
+  },
+  "refusal_audit": {
+    "total_cases": 19,
+    "all_passed": true,
+    "cases": [
+      {
+        "case_id": "REFUSAL-SEAMLESS-DOMAIN-TRANSFER",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unrepresentative_domain_transfer_seamless: no empirical password distribution or telemetry observed in SEAMLESS snapshot"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-SYNTHETIC-FIXTURE",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "synthetic_test_fixture_rejected_as_evidence"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-METHOD",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_method_specification"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-BUDGET",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_budget_specification"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-HORIZON",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_horizon_specification"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-OUT-OF-SCOPE-TECHNIQUE",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "out_of_scope_technique: 'genericall_reset_password' not supported by recovery pilot",
+          "unsupported_prefix_history: prefix sequence ['asrep_request', 'genericall_reset_password'] is not supported by evidence manifest (supported sequences: [['asrep_request', 'recover_asrep_secret']])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-EMPTY-PREFIX",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "empty_prefix: prefix tuple cannot be empty"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-PREFIX-ACTION-MISMATCH",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "prefix_action_mismatch: target step 'unrelated_action' does not correspond to technique 'recover_asrep_secret'",
+          "unsupported_prefix_history: prefix sequence ['asrep_request', 'unrelated_action'] is not supported by evidence manifest (supported sequences: [['asrep_request', 'recover_asrep_secret']])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-PREREQUISITE-HISTORY",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_prerequisite_in_history: technique 'recover_asrep_secret' requires prior material acquisition 'asrep_request' in prefix history, found []",
+          "unsupported_prefix_history: prefix sequence ['recover_asrep_secret'] is not supported by evidence manifest (supported sequences: [['asrep_request', 'recover_asrep_secret']])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-SEAMLESS-MIXED-CASE",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unrepresentative_domain_transfer_seamless: no empirical password distribution or telemetry observed in SEAMLESS snapshot"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-UNSEEN-DOMAIN",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_domain_or_scenario: scenario 'new-production-domain' is not within verified evidence scope (supported: ['lab-benchmark-asrep-v1', 'lab://benchmarks/asrep/v1'])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-UNSUPPORTED-PREFIX-HISTORY",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_prefix_history: prefix sequence ['reset_password', 'asrep_request', 'recover_asrep_secret'] is not supported by evidence manifest (supported sequences: [['asrep_request', 'recover_asrep_secret']])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-WILDCARD-LAB-DOMAIN",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_domain_or_scenario: scenario 'lab-unseen-production-bank-ad' is not within verified evidence scope (supported: ['lab-benchmark-asrep-v1', 'lab://benchmarks/asrep/v1'])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-COMPLEXITY-CLASS",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_target_complexity_class_specification"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-UNSUPPORTED-ACTOR-CAPABILITY",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_actor_capability: actor capability 'unprivileged_user_no_gpu' is not supported by evidence (supported: ['offline_gpu_cracking'])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-INVALID-PREFIX-STEP",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "invalid_prefix_step_identifier: prefix contains non-string or empty step identifiers: step[0]=''"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-MISSING-ACTOR-CAPABILITY",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "missing_actor_capability_specification: actor_capability must be explicitly specified to bind against manifest evidence capability (supported: ['offline_gpu_cracking'])"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-STANDALONE-RECOVERY-UNSUPPORTED-PREFIX",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_prefix_history: prefix sequence ['recover_asrep_secret'] is not supported by evidence manifest (supported sequences: [['asrep_request', 'recover_asrep_secret']])",
+          "unsupported_prefix_history: initial_material_present=True is not supported by evidence manifest without prerequisite acquisition step"
+        ],
+        "conformance_pass": true
+      },
+      {
+        "case_id": "REFUSAL-SCENARIO-OUTSIDE-MANIFEST",
+        "status": "unrated",
+        "missing_basis_reasons": [
+          "unsupported_domain_or_scenario: scenario 'lab-scenario' is not within verified evidence scope (supported: ['lab-benchmark-asrep-v1', 'lab://benchmarks/asrep/v1'])"
+        ],
+        "conformance_pass": true
+      }
+    ]
+  },
+  "baseline_comparison": {
+    "status": "unavailable",
+    "reason": "no_reviewed_baseline_for_technique",
+    "explanation": "No reviewed expert judgment baseline exists for recover_asrep_secret in Week 3 releases. Week 3 reviewed release only covered 11 parameters for other techniques (e.g. reset_password); Week 4 AS-REP #228 declared recover_asrep_secret unrated with missing_basis_reasons: ['no_numeric_basis']. Direct numeric comparison against the reset_password interval [3/5, 19/20] is methodologically invalid due to distinct attack events, policies, and contexts. A narrower confidence interval does not imply superiority.",
+    "seamless_status": "unrated",
+    "seamless_disposition": "Preserve unrated fail-closed due to lack of observed password distribution and telemetry in BloodHound snapshot"
+  }
+}

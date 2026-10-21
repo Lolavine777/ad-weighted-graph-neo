@@ -1,0 +1,86 @@
+"""Same-input local runner; only random run labels are fixed for exact comparison."""
+import argparse
+import copy
+import gc
+import hashlib
+import json
+import platform
+import subprocess
+import sys
+import time
+import uuid
+from pathlib import Path
+from unittest.mock import patch
+
+p = argparse.ArgumentParser()
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--snapshot', type=Path, required=True)
+p.add_argument('--pilot-request', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+p.add_argument('--trials', type=int, default=3)
+a = p.parse_args()
+sys.path.insert(0, str(a.repo.resolve()))
+from src.engine.graph import EngineGraph
+from src.engine.remediation import prepare_baseline, request_for_baseline
+from src.engine.remediation_runner import run_remediation
+from src.engine.batch import execution_source_pins
+
+a.output.mkdir(parents=True, exist_ok=False)
+load_started=time.perf_counter()
+raw=a.snapshot.read_bytes()
+graph=EngineGraph.from_snapshot(raw.decode())
+load_seconds=time.perf_counter()-load_started
+snapshot_sha='sha256:'+hashlib.sha256(raw).hexdigest()
+del raw
+request=json.loads(a.pilot_request.read_text())
+owner=next(s['node_id'] for s in request['sources'] if s['source_id']=='user-identity')
+context=next(s['node_id'] for s in request['sources'] if s['source_id']=='computer-admin')
+group=request['target_manifest']['targets'][0]['target_node_id']
+assumptions=next(s['declared_assumptions'] for s in request['sources'] if s['source_id']=='user-identity')
+query={
+    'source_foothold':context, 'initial_actor':context,
+    'initial_state':{'control':[], 'known_identity':[owner], 'asrep_request_capability':[[context,context]]},
+    'authentication_context':context, 'target':context,
+    'target_goal':{'target':context,'required_state':{'admin_control':[context]}},
+    'checkpoint_goal':{'target':group,'required_state':{'effective_member':[[owner,group]]}},
+    'allowed_techniques':['asrep_request','recover_asrep_secret','activate_recovered_identity','obtain_admin_execution_on_host'],
+    'assumptions':assumptions, 'budget':{'max_paths':10,'max_steps':6,'max_expansions':1000},
+    'scenario_reference':'r04-counterfactual-comparable',
+}
+edit={
+    'edit_id':'deny-admin-channel','catalog_entry_id':'admin-channel','kind':'runtime_fact_replace',
+    'key':{'predicate':'admin_channel','subject':owner,'target':context,'authentication_context':context,'binding_id':None},
+    'expected_before':True,'after':False,'declaration':'counterfactual_intervention',
+    'evidence_refs':['scenario://r04/comparable'],'rationale':'Same explicit runtime denial in both implementations',
+}
+cells=[{'source_id':'declared-requester','goal_id':'C0','query':query}]
+rows=[]
+for i in range(a.trials):
+    started=time.perf_counter()
+    with patch('src.engine.remediation_runner.uuid.uuid4', return_value=uuid.UUID(int=4)):
+        baseline=prepare_baseline(graph,cells,run_id='r04-comparable-before')
+        intervention=request_for_baseline(baseline,[edit],request_id='r04-comparable-channel')
+        package=run_remediation(intervention,graph,baseline)
+    seconds=time.perf_counter()-started
+    serialization_started=time.perf_counter()
+    complete=json.dumps(package,sort_keys=True,separators=(',',':'),ensure_ascii=False)
+    (a.output/f'package-{i}.json').write_text(complete)
+    semantic=copy.deepcopy(package)
+    for key in ('started_at','elapsed_seconds','source_pins'):
+        semantic['execution'].pop(key)
+    stable=json.dumps(semantic,sort_keys=True,separators=(',',':'),ensure_ascii=False)
+    row={'trial':i,'pipeline_seconds':seconds,'serialization_and_comparison_seconds':time.perf_counter()-serialization_started,
+         'stable_package_sha256':'sha256:'+hashlib.sha256(stable.encode()).hexdigest(),
+         'summary':package['report']['summary']}
+    rows.append(row)
+    print(json.dumps(row),flush=True)
+    del package,complete,semantic,stable
+    gc.collect()
+evidence={'repo':str(a.repo),'head':subprocess.check_output(['git','rev-parse','HEAD'],cwd=a.repo,text=True).strip(),
+          'source_pins':execution_source_pins(), 'python':platform.python_version(),
+          'snapshot_sha256':snapshot_sha,'graph_load_seconds':load_seconds,
+          'harness_sha256':'sha256:'+hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+          'fixed_randomness':'Only uuid4 run labels are constant; evaluator/search/cost/verifier unchanged',
+          'comparison_exclusions':['execution.started_at','execution.elapsed_seconds','execution.source_pins'],
+          'rows':rows}
+(a.output/'summary.json').write_text(json.dumps(evidence,indent=2))

@@ -1,0 +1,56 @@
+* text=auto
+docs/research/ratings/week3-2026-10-02/*.json -text
+*.py text eol=lf
+*.md text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sh text eol=lf
+requirements*.txt text eol=lf
+docs/research/ratings/week3-closeout/reviewed-release.json text eol=lf
+*.ps1 text eol=crlf
+data/samples/manifests/synthetic-v1.json text eol=lf
+data/samples/manifests/parser-cli-seamless-v1.json text eol=lf
+data/samples/snapshot-input/** -text
+data/samples/parser-cli-input/** -text
+data/samples/manifests/parser-demo-rich-v1.json text eol=lf
+data/samples/manifests/parser-demo-error-v1.json text eol=lf
+data/samples/parser-demo-rich-input/** -text
+data/samples/parser-demo-error-input/** -text
+tests/fixtures/ranking/week3_acceptance_cases.json text eol=lf
+# Exact-byte #175 bindings must survive a Windows core.autocrlf=true checkout.
+docs/research/ratings/week3-closeout/semantic-bridge-plan.json text eol=lf
+docs/research/ratings/week3-closeout/search-integration-plan.json text eol=lf
+data/samples/manifests/seamless-raw-v1.json text eol=lf
+tests/fixtures/attack_scenarios/** text eol=lf
+# Exact-byte Week 4 ratings bindings must survive a Windows core.autocrlf=true checkout.
+docs/research/ratings/week4/** text eol=lf
+
+# Acceptance provenance pins remain byte-identical across supported checkouts.
+tests/fixtures/ranking/week4_acceptance*.json text eol=lf
+tests/fixtures/ranking/seamless_time_policy.json text eol=lf
+tests/fixtures/kerberoasting/*.json text eol=lf
+pyproject.toml text eol=lf
+.python-version text eol=lf
+docs/research/evidence/kerberoasting-216/** text eol=lf
+# Reproduction outputs preserve the exact bytes hashed by the Windows harness.
+docs/research/evidence/kerberoasting-216/run-*.json -text
+
+# Exact-byte AS-REP reproducibility inputs and evidence.
+tests/fixtures/asrep/** text eol=lf
+docs/research/evidence/asrep-228/** text eol=lf
+# Stored acceptance artifacts retain the bytes referenced in reproduction hashes.
+reports/research/week4-*.json text eol=lf
+
+tests/fixtures/query_cli/** text eol=lf
+docs/research/week4-query-result.schema.json text eol=lf
+
+# Exact-byte RBCD reproducibility inputs and evidence.
+tests/fixtures/rbcd/** text eol=lf
+docs/research/evidence/rbcd-229/** text eol=lf
+
+# Frozen SEAMLESS expectations and evidence retain exact bytes on Windows.
+docs/research/scenarios/week4-seamless-v1*.json text eol=lf
+tests/fixtures/rating_resolution/** text eol=lf
+docs/research/public-rating-coverage.schema.json text eol=lf
+docs/research/week4-query-result-0.3.schema.json text eol=lf
+reports/research/issue250-*.json text eol=lf

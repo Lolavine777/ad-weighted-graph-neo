@@ -1,0 +1,66 @@
+{
+  "schema_version": "target-manifest/1.1.0",
+  "manifest_id": "target-manifest-seamless-usable-identity-v2",
+  "version": "2.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "domain_sid": "S-1-5-21-1271839998-3495686680-2211690266",
+  "description": "Explicit successor: any same usable identity with DA/EA group entitlement in each source Computer context. Legacy actor-specific goals remain frozen. Numeric impact needs exact reviewed goal binding.",
+  "default_discovery_goals": [
+    "goal-seamless-da-entitlement-v2",
+    "goal-seamless-ea-entitlement-v2",
+    "goal-seamless-dc-admin-v2"
+  ],
+  "targets": [
+    {
+      "goal_id": "goal-seamless-da-entitlement-v2",
+      "category": "tier_0_identity",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_node_kind": "Group",
+      "display_name": "Domain Admins (SEAMLESS)",
+      "technical_consequence": "domain_wide_credential_and_administrative_entitlement",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "admin_entitlement",
+      "provenance_locator": "20210920185958_groups.json#/groups/40",
+      "required_state": {},
+      "checkpoint_goal": null,
+      "description": "One same attacker-usable identity has effective membership in this Group in the declared Computer context; the original foothold actor need not be that identity.",
+      "goal_kind": "usable_identity_entitlement"
+    },
+    {
+      "goal_id": "goal-seamless-ea-entitlement-v2",
+      "category": "tier_0_identity",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_node_kind": "Group",
+      "display_name": "Enterprise Admins (SEAMLESS)",
+      "technical_consequence": "forest_wide_full_administrative_control",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "admin_entitlement",
+      "provenance_locator": "20210920185958_groups.json#/groups/18",
+      "required_state": {},
+      "checkpoint_goal": null,
+      "description": "One same attacker-usable identity has effective membership in this Group in the declared Computer context; the original foothold actor need not be that identity.",
+      "goal_kind": "usable_identity_entitlement"
+    },
+    {
+      "goal_id": "goal-seamless-dc-admin-v2",
+      "category": "tier_0_host",
+      "target_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_node_kind": "Computer",
+      "display_name": "Primary Domain Controller (badblood.seamless.local)",
+      "technical_consequence": "terminal_compromise_dc_host_and_active_directory_database",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "host_admin_execution",
+      "provenance_locator": "20210920185958_computers.json#/computers/0",
+      "required_state": {
+        "admin_control": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        ]
+      },
+      "checkpoint_goal": {
+        "kind": "usable_identity_entitlement",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+      },
+      "description": "Administrative execution on the DC host; this alone does not prove NTDS extraction. Usable DA identity is an optional checkpoint."
+    }
+  ]
+}

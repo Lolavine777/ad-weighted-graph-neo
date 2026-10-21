@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SEAMLESS Scenario Policy Profile Specification (Issue #290)",
+  "description": "Snapshot-pinned, versioned policy profile specifying assumption applicability and non-negotiable boundaries for Active Directory attack graph conditional reachability.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_id",
+    "version",
+    "bound_snapshot_id",
+    "evaluation_mode",
+    "description",
+    "forbidden_predicates",
+    "rules"
+  ],
+  "properties": {
+    "profile_id": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9_-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "bound_snapshot_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "evaluation_mode": {
+      "type": "string",
+      "enum": [
+        "evidence_only",
+        "seamless_standard_scenario",
+        "exploratory_what_if"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "forbidden_predicates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/applicabilityRule"
+      }
+    }
+  },
+  "$defs": {
+    "applicabilityRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rule_id",
+        "predicate",
+        "taxonomy",
+        "default_value",
+        "provenance_reference",
+        "rationale",
+        "metadata"
+      ],
+      "properties": {
+        "rule_id": {
+          "type": "string"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "taxonomy": {
+          "type": "string",
+          "enum": [
+            "global",
+            "typed",
+            "specific",
+            "forbidden_to_default"
+          ]
+        },
+        "subject_kind": {
+          "type": ["string", "null"]
+        },
+        "target_kind": {
+          "type": ["string", "null"]
+        },
+        "default_value": {
+          "type": "boolean"
+        },
+        "provenance_reference": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "metadata": {
+          "type": "object"
+        }
+      }
+    }
+  }
+}

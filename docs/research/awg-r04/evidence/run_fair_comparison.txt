@@ -1,0 +1,93 @@
+"""Small algorithm comparison on existing fixtures; no parallel semantic engine."""
+import hashlib
+import heapq
+import json
+import shutil
+import socket
+import subprocess
+import sys
+from collections import deque
+from pathlib import Path
+
+root=Path(__file__).resolve().parent;repo=root/'repo'
+out=repo/'reports/generated/awg-r04-comparison-v3';out.mkdir(exist_ok=False)
+checkout_changes=subprocess.check_output(['git','status','--porcelain','-uall'],cwd=repo,text=True).splitlines()
+assert all(line[3:]=='README.md' or line[3:].startswith('docs/') for line in checkout_changes),checkout_changes
+revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip()
+paths={'graph':'tests/fixtures/attack_scenarios/graphs/two-routes.json','query':'tests/fixtures/query_cli/two-routes-query.json','rating':'docs/research/ratings/week4/synthetic-a2-e.json'}
+inputs={k:json.loads((repo/p).read_text()) for k,p in paths.items()}
+query=inputs['query'];rating=inputs['rating']['query'];actions={a['action_id']:a for a in rating['bound_actions']};units=rating['work_units_ledger']
+def union_cost(ids):
+    keys={w for action_id in ids for w in actions[action_id]['referenced_work_unit_ids']}
+    return sum(units[k]['computed_cost'] for k in keys)
+weights={a['edge_id']:union_cost([a['action_id']]) for a in rating['bound_actions']}
+source=query['aliases'][query['initial_actor']];target=query['aliases'][query['target']]
+bindings={(k[0],*(query['aliases'].get(x,x) for x in k[1:])):v for k,v in query['action_bindings']}
+def projection(weighted,condition=True):
+    edges=[e for e in inputs['graph']['edges'] if condition or e['kind']!='AdminTo']
+    adjacency={}
+    for e in edges:adjacency.setdefault(e['source'],[]).append(e)
+    if weighted:
+        pending=[(0,0,source,[],[])];best={source:0};serial=1
+        while pending:
+            cost,_,node,nodes,ids=heapq.heappop(pending)
+            if cost!=best[node]:continue
+            if node==target:return {'nodes':nodes+[node],'edge_ids':ids,'hops':len(ids),'C':cost}
+            for e in adjacency.get(node,[]):
+                value=cost+weights[e['id']]
+                if value<best.get(e['target'],float('inf')):
+                    best[e['target']]=value;heapq.heappush(pending,(value,serial,e['target'],nodes+[node],ids+[e['id']]));serial+=1
+    else:
+        pending=deque([(source,[],[])]);seen={source}
+        while pending:
+            node,nodes,ids=pending.popleft()
+            if node==target:return {'nodes':nodes+[node],'edge_ids':ids,'hops':len(ids),'C':sum(weights[e] for e in ids)}
+            for e in adjacency.get(node,[]):
+                if e['target'] not in seen:seen.add(e['target']);pending.append((e['target'],nodes+[node],ids+[e['id']]))
+    return None
+
+bfs=projection(False);dijkstra=projection(True)
+assert bfs['hops']==1 and bfs['C']==5 and dijkstra['hops']==2 and dijkstra['C']==2
+assert projection(False,False) is projection(True,False) is None
+cases=[]
+for name in ['complete','cap1','auth_false']:
+    q=json.loads(json.dumps(query))
+    if name=='cap1':q['budget']['max_paths']=1
+    if name=='auth_false':
+        f=next(f for f in q['runtime_facts'] if f['predicate']=='authentication_accepted');f['value']=False;f['origin']='blocked_evidence';f['rationale']='Synthetic explicit authentication refusal.'
+    qp=out/(name+'-query.json');qp.write_text(json.dumps(q,ensure_ascii=False,indent=2)+'\n')
+    op=out/(name+'-native.json')
+    cmd=[sys.executable,'-m','src.engine','query','--query',str(qp.relative_to(repo)),'--graph',paths['graph'],'--label','synthetic','--output',str(op.relative_to(repo))]
+    if name!='auth_false':cmd+=['--ranking-query',paths['rating']]
+    result=subprocess.run(cmd,cwd=repo,capture_output=True,text=True)
+    assert result.returncode==0,result.stderr
+    packet=json.loads(op.read_text());s=packet['semantic'];oracle=[]
+    for candidate in s['candidates']:
+        action_ids=[]
+        for step in candidate['transition_history']:
+            r=step['result']['request'];action_ids.append(bindings[tuple(r[k] for k in ['technique_id','actor','source','target'])])
+        oracle.append({'candidate_id':candidate['candidate_id'],'edge_ids':[e['id'] for e in candidate['edges']],'independent_union_C':union_cost(action_ids)})
+    C=s['min_effort']['minimum_effort_value'] if s['min_effort'] else None
+    if name=='complete':
+        assert s['complete'] and not s['truncated'] and C==min(p['independent_union_C'] for p in oracle)==2
+        assert s['engine_reported_guarantees']['is_minimum_proven_over_scope']
+        best=next(p for p in oracle if p['candidate_id']==s['min_effort']['best_candidate_id']);assert best['edge_ids']==dijkstra['edge_ids']
+    elif name=='cap1':
+        assert C==5 and s['truncated'] and len(s['candidates'])==1
+        assert not s['engine_reported_guarantees']['is_minimum_proven_over_scope']
+    else:
+        assert not s['candidates'] and not s['final_goal_reached'] and s['status']=='blocked'
+        assert s['engine_reported_guarantees']['is_no_path_proven_over_scope']
+    cases.append({'case':name,'native_status':s['status'],'native_C':C,'complete':s['complete'],'truncated':s['truncated'],'native_guarantees':s['engine_reported_guarantees'],'native_expansions':s['expansions'],'native_program_union_oracle':oracle,'BFS':bfs if name!='auth_false' else None,'weighted_Dijkstra':dijkstra if name!='auth_false' else None,'unconditioned_graph_would_still_show_route':name=='auth_false','command':cmd[1:],'output':{'path':op.relative_to(repo).as_posix(),'bytes':op.stat().st_size,'sha256':hashlib.sha256(op.read_bytes()).hexdigest()},'native_reproducibility':packet['reproducibility']})
+services={}
+for port in [7474,8080]:
+    try:
+        with socket.create_connection(('127.0.0.1',port),timeout=1):services[str(port)]='tcp_connect_succeeded'
+    except OSError as error:services[str(port)]=type(error).__name__
+environment={'executables':{name:shutil.which(name) for name in ['docker','podman','neo4j','java']},'free_disk_bytes':shutil.disk_usage(repo).free,'compose_loopback_ports':services,'fresh_BloodHound_CE_status':'NOT_EXECUTED','reason':'This harness runs local fixture baselines, not CE. Current binary/service availability is recorded above; historical exports are not a substitute.'}
+for case in cases:
+    for path,expected in case['native_reproducibility']['source_files'].items():
+        assert 'sha256:'+hashlib.sha256((repo/path).read_bytes()).hexdigest()==expected,path
+report={'version':'awg-r04-fair-comparison/1','source_revision':revision,'checkout_changes':checkout_changes,'native_source_files_equal_current_bytes':True,'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'inputs':{k:{'path':p,'sha256':hashlib.sha256((repo/p).read_bytes()).hexdigest()} for k,p in paths.items()},'projection':'Existing synthetic two routes, same declared work-unit prices. Direct5=shared_auth1+direct4; MemberOf0; inherited2=shared_auth1+inherited1. Edge weights are an explicit conditioned additive projection, not raw canonical unit weights. Auth-False conditioning removes both AdminTo alternatives. No timing comparison or whole-catalog semantic completeness claim.','cases':cases,'environment':environment,'limits':['Native bounded FIFO returning C5 is not a correctness bug: minimum proofFalse. DijkstraC2 is a genuine simpler alternative on this additive fixture.','False-auth conditioning is available to both approaches; comparing against an unconditioned graph would be unfair.','Synthetic costs are the existing test ledger, not calibrated AD effort or new P/I.','Full-SEAMLESS direct conditioned comparison is iteration16 evidence; fresh BloodHound CE remains NOT_EXECUTED.']}
+(out/'comparison.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'revision':revision,'cases':[(c['case'],c['native_C'],c['native_status']) for c in cases],'BFS_C':bfs['C'],'Dijkstra_C':dijkstra['C']}))

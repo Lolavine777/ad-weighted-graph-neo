@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Foothold Capability Profiles Specification (Issue #268)",
+  "description": "Typed specification of initial attacker foothold capability profiles and unsupported source declarations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "profiles"
+  ],
+  "properties": {
+    "schema_version": {
+      "enum": [
+        "foothold-profiles/1.0.0",
+        "foothold-profiles/1.1.0"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "profiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/footholdProfile"
+      }
+    }
+  },
+  "$defs": {
+    "footholdProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_id",
+        "kind",
+        "node_id",
+        "node_kind",
+        "initial_actor",
+        "authentication_context",
+        "is_supported"
+      ],
+      "properties": {
+        "profile_id": {
+          "type": "string",
+          "pattern": "^[a-zA-Z0-9_-]+$"
+        },
+        "kind": {
+          "enum": [
+            "user_leaked_password",
+            "user_usable_identity",
+            "computer_control_admin",
+            "computer_control_user",
+            "computer_usable_identity",
+            "unsupported"
+          ]
+        },
+        "node_id": {
+          "type": "string"
+        },
+        "node_kind": {
+          "enum": [
+            "User",
+            "Computer",
+            "Group",
+            "Domain",
+            "OU",
+            "OrganizationalUnit",
+            "GPO",
+            "Container"
+          ]
+        },
+        "initial_actor": {
+          "type": "string"
+        },
+        "authentication_context": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "is_supported": {
+          "type": "boolean"
+        },
+        "error_code": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unsupported_reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_activation_technique": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "activation_prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "provenance_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "declared_assumptions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "initial_state_summary": {
+          "type": "object",
+          "required": [
+            "control",
+            "admin_control",
+            "usable_identity",
+            "known_identity",
+            "recovered_secret_count",
+            "remote_command_execution"
+          ],
+          "properties": {
+            "control": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "admin_control": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "usable_identity": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "known_identity": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "recovered_secret_count": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "remote_command_execution": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schema_version": {
+            "const": "foothold-profiles/1.0.0"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "profiles": {
+            "items": {
+              "properties": {
+                "kind": {
+                  "enum": [
+                    "user_leaked_password",
+                    "user_usable_identity",
+                    "computer_control_admin",
+                    "computer_control_user",
+                    "unsupported"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

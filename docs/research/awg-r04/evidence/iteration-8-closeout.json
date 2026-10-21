@@ -1,0 +1,125 @@
+{
+  "schema_version": "awg-r04-audit-serialization-closeout/1",
+  "validated_clean_revision": "2eef19515a8d464860a444b67ef151ab70705fdb",
+  "benchmark_native_revision": "b605f5db596511aad40204cc62af58cb625073b5",
+  "native_code_introduced_at": "745bbd2a206312756de024af020bb8d419b8ef98",
+  "final_tests": {
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "247",
+      "time": "113.412",
+      "timestamp": "2026-10-18T13:05:38.156156+02:00",
+      "hostname": "403d5e0687a2"
+    },
+    "per_module": {
+      "tests.test_query_cli": 65,
+      "tests.test_reset_effort": 21,
+      "tests.test_exposure": 18,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_source_goal_batch_runner": 50,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_review_regressions": 10
+    },
+    "artifact": {
+      "path": "docs/research/awg-r04/evidence/iteration-8-final-clean.xml",
+      "bytes": 35500,
+      "sha256": "sha256:59df873fe81193be9fda0baa52ca5c422c6588089c301f0227a2febb798c7b1c"
+    }
+  },
+  "post_compatibility_native_cli": {
+    "revision": "2eef19515a8d464860a444b67ef151ab70705fdb",
+    "command": [
+      "/workspace/scratch/b1f06964c680/awg-r04/.venv/bin/python",
+      "-m",
+      "src.engine",
+      "query",
+      "--snapshot",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/processed/awg-r04/pilot-v2/snapshot.json",
+      "--query",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-effort-pilot-v4/batch-public-query.json",
+      "--label",
+      "seamless",
+      "--output",
+      "/workspace/scratch/b1f06964c680/awg-r04/audit-post-compat/native.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_computers.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_domains.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_gpos.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_groups.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_ous.json",
+      "--prerequisite",
+      "/workspace/scratch/b1f06964c680/awg-r04/repo/data/raw/SEAMLESS/20210920185958_users.json",
+      "--compact-output"
+    ],
+    "reference": {
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/repo/reports/generated/awg-r04-audit-benchmark-v2/03-compact.json",
+      "bytes": 59799180,
+      "sha256": "sha256:c0fcdeff1bd1c89e1e98008cf613df14427029b90524d7e516a9948a4b5887f0"
+    },
+    "fresh_output": {
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/audit-post-compat/native.json",
+      "bytes": 59799180,
+      "sha256": "sha256:0fb65b8eb7f4609bad0b9006331971d9579c2f6128af11aa9ee0fda1a1218eb9"
+    },
+    "full_semantics_equal": true,
+    "full_package_equal_except_explicit_physical_metadata": true,
+    "source_metadata_differences": {
+      "scripts/research/likelihood_catalog.py": "sha256:2d9801e0f317a2f063ec2a176dd18afbdac2c692c923fa0e0716c4d01e9cb789",
+      "scripts/research/rating_source_successors.py": "sha256:c63750307894070a5944966903b67a1b9a18f40384c25517a3ad6497964173cf",
+      "scripts/research/scenario_rating_pack.py": "sha256:4514de177b01e5d31bbf8766e4afc3102e6c798f739d44f1d02e26d17112d74f"
+    },
+    "all_src_native_bytes_unchanged": true,
+    "semantic_sha256": "sha256:382707e849b0337524ae3016890360d6ae48407f304a8a330defb3b83da3a2c9",
+    "normalization": [
+      "runtime.started_at",
+      "runtime.duration_seconds",
+      "reproducibility.revision",
+      "reproducibility.source_files.scripts/research/likelihood_catalog.py",
+      "reproducibility.source_files.scripts/research/rating_source_successors.py",
+      "reproducibility.source_files.scripts/research/scenario_rating_pack.py"
+    ]
+  },
+  "all_benchmarked_src_bytes_equal_to_final_native": true,
+  "acceptance_pins_equal_to_current_files": true,
+  "acceptance_manifest": {
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v10.json",
+    "bytes": 331496,
+    "sha256": "sha256:bb0905bd9d5141fa9d1eb86d31e51511fb356920aa67fe347836c4d103def353"
+  },
+  "primary_experiment": {
+    "path": "docs/research/awg-r04/evidence/iteration-8-audit.json",
+    "bytes": 219185,
+    "sha256": "sha256:7c6a6aaa0765ba7e229d60e115762874fa13ece163fa7ac625c2b78f32b6b4fb"
+  },
+  "compatibility_and_first_failure_history": {
+    "path": "docs/research/awg-r04/evidence/iteration-8-compatibility.json",
+    "bytes": 3300,
+    "sha256": "sha256:d9a0cb568f1adcd705863a831416a6b96614616f04f13424b16e46fe02a0a344"
+  },
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "PASS; 577 files formatted",
+    "contract": "PASS; 2 synthetic fixtures",
+    "repository_links": {
+      "status": "FAIL_known_inaccessible_historical_artifact",
+      "only_failure": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip"
+    }
+  },
+  "job_state": "All iteration8 benchmark/profile/native acceptance/post-compatibility CLI/history/final test jobs completed; no worker pending.",
+  "scope": "Selected checks overlap 152/76 runs; not a whole-suite completion claim. Benchmark3trials/mode is one query, no statistical or batch/domain-wide speed guarantee.",
+  "next_action": "Bounded same-scope 1-source x3-auto-goal batch measurement; preserve full decision-package parity and R1/R2/R3. Choose one measured preparation/serialization hotspot before considering shared grounding/AND-OR.",
+  "publication": "Subsequent changes append docs/evidence only; publish with fresh feature-branch lease, no main/develop/parent changes."
+}

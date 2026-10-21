@@ -1,0 +1,272 @@
+{
+  "budgets": {
+    "max_cells": null,
+    "max_expansions": null,
+    "max_seconds": null,
+    "per_query_seconds": null
+  },
+  "comparisons": [
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "reachable": 2
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "direct-admin",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 0,
+        "percent": 0.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 2,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 2
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 2
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-channel",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 2,
+        "percent": 100.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 4,
+        "percent": 100.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 0
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 1,
+          "reachable": 1
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-channel:individual:channel-alice",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 3,
+        "percent": 75.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 1
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 1,
+          "reachable": 1
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-channel:individual:channel-bob",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 1,
+        "percent": 25.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 3
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 1,
+          "reachable": 1
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-membership",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 3,
+        "percent": 75.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 1
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "reachable": 2
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-membership:individual:membership-alice",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 0,
+        "percent": 0.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 2,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 2
+    },
+    {
+      "C_available_cells": 0,
+      "C_statuses": {
+        "unrated": 2
+      },
+      "P_comparison": "pending",
+      "coverage": {
+        "after": {
+          "proven_unreachable": 1,
+          "reachable": 1
+        },
+        "before": {
+          "reachable": 2
+        }
+      },
+      "declared_pairs": 2,
+      "intervention": "shared-membership:individual:membership-bob",
+      "new_bypasses": 0,
+      "not_run_pairs": 0,
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "complete_declared_scope"
+      },
+      "programs_cut": {
+        "denominator": 4,
+        "numerator": 1,
+        "percent": 25.0,
+        "scope": "complete_declared_scope"
+      },
+      "raw_unchanged": true,
+      "rediscovery": {
+        "complete": 2
+      },
+      "remaining_bypasses": 3
+    }
+  ],
+  "inventory_candidates": 8,
+  "process_peak_rss_bytes": 62676992,
+  "runtime_seconds": 34.11038960000042,
+  "schema_version": "remediation-study-summary/1",
+  "scope": "bounded declared cohorts; not a full-source scan",
+  "verified_raw_files": null
+}

@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "engine": "BloodHound Legacy 4.0.3",
+    "neo4j_version": "4.1.13",
+    "snapshot_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "description": "Baseline graph with stored relationship multiplicity",
+    "synthetic": true,
+    "comparison_scope": {
+      "id": "m1-structural-v1",
+      "node_population": "collected_and_boundary",
+      "relationship_kinds": [
+        "MemberOf",
+        "AdminTo",
+        "GenericAll",
+        "WriteDacl",
+        "ForceChangePassword",
+        "CanRDP",
+        "CanPSRemote",
+        "HasSession"
+      ],
+      "memberof_semantics": "direct"
+    },
+    "source_evidence": "tests/fixtures/reconciliation/baseline_multiplicity_graph.json",
+    "export_complete": true
+  },
+  "nodes": [
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "kind": "User", "label": "Alice@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "kind": "User", "label": "Bob@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1103", "kind": "User", "label": "Charlie@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1104", "kind": "User", "label": "Dave@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "Group", "label": "Helpdesk@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2102", "kind": "Group", "label": "Operators@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3101", "kind": "Computer", "label": "WS01@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3102", "kind": "Computer", "label": "SRV01@DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "NT AUTHORITY-S-1-5-4", "kind": "Group", "label": "INTERACTIVE", "domain": "NT AUTHORITY", "is_boundary": true},
+    {"id": "EXTERNAL.LOCAL-S-1-5-21-888-999-100-1105", "kind": "User", "label": "ForeignAdmin@EXTERNAL.LOCAL", "domain": "EXTERNAL.LOCAL", "is_boundary": true}
+  ],
+  "edges": [
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "MemberOf"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "MemberOf"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "MemberOf"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "MemberOf"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2102", "kind": "MemberOf"},
+    {"source": "EXTERNAL.LOCAL-S-1-5-21-888-999-100-1105", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2102", "kind": "MemberOf"},
+    {"source": "NT AUTHORITY-S-1-5-4", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2101", "kind": "MemberOf"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3101", "kind": "AdminTo"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-2102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3102", "kind": "AdminTo"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "kind": "GenericAll"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "kind": "GenericAll"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "kind": "GenericAll"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1103", "kind": "WriteDacl"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1104", "kind": "ForceChangePassword"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3101", "kind": "CanRDP"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1102", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3102", "kind": "CanPSRemote"},
+    {"source": "DOMAIN.LOCAL-S-1-5-21-500-600-700-3101", "target": "DOMAIN.LOCAL-S-1-5-21-500-600-700-1101", "kind": "HasSession"}
+  ]
+}

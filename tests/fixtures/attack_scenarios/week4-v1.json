@@ -1,0 +1,692 @@
+{
+  "schema_version": "1.0.0",
+  "bindings": {
+    "contract_version": "1.3.0",
+    "catalog_version": "0.6",
+    "contract_digest": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "catalog_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241"
+  },
+  "graphs": {
+    "two-routes": {
+      "path": "graphs/two-routes.json",
+      "digest": "sha256:01ce6844293f3d5532a132c3c3a00799e2c1a5390003bd45f89b1068536f2c79",
+      "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+      "aliases": {
+        "Alice": "S-1-5-21-1000-2000-3000-1101",
+        "Bob": "S-1-5-21-1000-2000-3000-1102",
+        "Helpdesk": "S-1-5-21-1000-2000-3000-2101",
+        "Operators": "S-1-5-21-1000-2000-3000-2102",
+        "Admins": "S-1-5-21-1000-2000-3000-2103",
+        "Host": "10000000-0000-4000-8000-000000000002",
+        "OtherHost": "10000000-0000-4000-8000-000000000003"
+      }
+    }
+  },
+  "evidence": {
+    "bh-admin": {
+      "url": "https://bloodhound.specterops.io/resources/edges/admin-to",
+      "section": "Abuse Info",
+      "claim": "Local administrator có thể thực hiện administrative operations trên host.",
+      "limit": "Model còn đòi channel và authentication gates; không chọn exploit/tool cụ thể."
+    },
+    "token": {
+      "url": "https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens",
+      "section": "Access token contents",
+      "claim": "Token mô tả user và group SIDs dùng cho authorization.",
+      "limit": "Snapshot membership không chứng minh token hiện tại đã cập nhật."
+    }
+  },
+  "scenarios": [
+    {
+      "scenario_id": "w4-two-routes-exact",
+      "version": "1.0.0",
+      "description": "Delta #206: toàn bộ programs first-success trên graph tái sử dụng; expected duyệt độc lập trong week4-scenarios.md.",
+      "graph": "two-routes",
+      "initial_actor": "Alice",
+      "initial_state": {
+        "control": [
+          "Alice"
+        ]
+      },
+      "authentication_context": null,
+      "target_goal": {
+        "target": "Host",
+        "required_state": {
+          "admin_control": [
+            "Host"
+          ]
+        }
+      },
+      "runtime_facts": [
+        {
+          "predicate": "admin_channel",
+          "subject": "Alice",
+          "target": "Host",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "Alice",
+          "target": "Host",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "security_group",
+          "subject": "Alice",
+          "target": "Admins",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "membership_usable",
+          "subject": "Alice",
+          "target": "Admins",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+          "evidence_ref": "bh-admin"
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "direct",
+          "request": {
+            "technique_id": "obtain_admin_execution_on_host",
+            "actor": "Alice",
+            "source": "Alice",
+            "target": "Host"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "admin_control": [
+                "Host"
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+          "derived_from": null,
+          "explanation": "Alice dùng AdminTo trực tiếp.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        },
+        {
+          "step_id": "member",
+          "request": {
+            "technique_id": "propagate_group_entitlement",
+            "actor": "Alice",
+            "source": "Alice",
+            "target": "Admins"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "effective_member": [
+                [
+                  "Alice",
+                  "Admins"
+                ]
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+          "derived_from": null,
+          "explanation": "Nhánh thay thế dùng membership token usable.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        },
+        {
+          "step_id": "inherited",
+          "request": {
+            "technique_id": "obtain_admin_execution_on_host",
+            "actor": "Alice",
+            "source": "Admins",
+            "target": "Host"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ],
+            "effective_member": [
+              [
+                "Alice",
+                "Admins"
+              ]
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "admin_control": [
+                "Host"
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+          "derived_from": null,
+          "explanation": "Sau membership Alice dùng AdminTo thuộc Admins.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        }
+      ],
+      "oracle_scope": {
+        "techniques": [
+          "obtain_admin_execution_on_host",
+          "propagate_group_entitlement"
+        ],
+        "budget": {
+          "max_paths": 1000,
+          "max_steps": 12,
+          "max_expansions": 100000
+        },
+        "completeness": "finite_declared_catalog",
+        "path_policy": "exact_set"
+      },
+      "variants": [
+        {
+          "variant_id": "positive",
+          "description": "Oracle độc lập: direct; member/direct; member/inherited; dừng tại lần đầu đạt admin_control Host.",
+          "fact_changes": [],
+          "transition_overrides": {},
+          "expected_search": {
+            "outcome": "success",
+            "required_reachable": [
+              {
+                "control": [
+                  "Alice"
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "admin_control": [
+                  "Host"
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ],
+                "admin_control": [
+                  "Host"
+                ]
+              }
+            ],
+            "forbidden": {
+              "control": [
+                "Bob",
+                "Admins"
+              ],
+              "admin_control": [
+                "OtherHost"
+              ],
+              "usable_identity": [
+                [
+                  "Bob",
+                  "Host"
+                ]
+              ]
+            },
+            "acceptable_paths": [
+              [
+                "direct"
+              ],
+              [
+                "member",
+                "direct"
+              ],
+              [
+                "member",
+                "inherited"
+              ]
+            ],
+            "required_diagnostics": []
+          }
+        },
+        {
+          "variant_id": "initial-entitlement",
+          "description": "Chỉ thêm effective_member Alice/Admins vào initial capability; cùng graph, actor, facts, target.",
+          "fact_changes": [],
+          "transition_overrides": {},
+          "expected_search": {
+            "outcome": "success",
+            "required_reachable": [
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ],
+                "admin_control": [
+                  "Host"
+                ]
+              }
+            ],
+            "forbidden": {
+              "control": [
+                "Bob",
+                "Admins"
+              ],
+              "admin_control": [
+                "OtherHost"
+              ],
+              "usable_identity": [
+                [
+                  "Bob",
+                  "Host"
+                ]
+              ]
+            },
+            "acceptable_paths": [
+              [
+                "direct"
+              ],
+              [
+                "inherited"
+              ],
+              [
+                "member",
+                "direct"
+              ],
+              [
+                "member",
+                "inherited"
+              ]
+            ],
+            "required_diagnostics": []
+          },
+          "initial_state": {
+            "control": [
+              "Alice"
+            ],
+            "effective_member": [
+              [
+                "Alice",
+                "Admins"
+              ]
+            ]
+          }
+        },
+        {
+          "variant_id": "host-control-only",
+          "description": "Host OtherHost controlled nhưng không khai báo control/usable Alice; không được suy host control thành identity.",
+          "fact_changes": [],
+          "transition_overrides": {
+            "direct": {
+              "status": "blocked",
+              "additions": {},
+              "failed": [
+                "actor_controlled"
+              ],
+              "unknown": []
+            },
+            "member": {
+              "status": "blocked",
+              "additions": {},
+              "failed": [
+                "actor_controlled"
+              ],
+              "unknown": []
+            }
+          },
+          "expected_search": {
+            "outcome": "no_path",
+            "required_reachable": [
+              {
+                "admin_control": [
+                  "OtherHost"
+                ]
+              }
+            ],
+            "forbidden": {
+              "admin_control": [
+                "Host"
+              ],
+              "effective_member": [
+                [
+                  "Alice",
+                  "Admins"
+                ]
+              ]
+            },
+            "acceptable_paths": [],
+            "required_diagnostics": [
+              {
+                "step_id": "direct",
+                "status": "blocked",
+                "predicates": [
+                  "actor_controlled"
+                ]
+              },
+              {
+                "step_id": "member",
+                "status": "blocked",
+                "predicates": [
+                  "actor_controlled"
+                ]
+              }
+            ]
+          },
+          "initial_state": {
+            "admin_control": [
+              "OtherHost"
+            ]
+          }
+        }
+      ],
+      "evidence_refs": [
+        "bh-admin",
+        "token"
+      ]
+    },
+    {
+      "scenario_id": "w4-other-target",
+      "version": "1.0.0",
+      "description": "Delta #206: chỉ đổi target sang OtherHost trên cùng graph, actor, initial capability và facts; không có cạnh tới OtherHost.",
+      "graph": "two-routes",
+      "initial_actor": "Alice",
+      "initial_state": {
+        "control": [
+          "Alice"
+        ]
+      },
+      "authentication_context": null,
+      "target_goal": {
+        "target": "OtherHost",
+        "required_state": {
+          "admin_control": [
+            "OtherHost"
+          ]
+        }
+      },
+      "runtime_facts": [
+        {
+          "predicate": "admin_channel",
+          "subject": "Alice",
+          "target": "Host",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "Alice",
+          "target": "Host",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "security_group",
+          "subject": "Alice",
+          "target": "Admins",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+          "evidence_ref": "bh-admin"
+        },
+        {
+          "predicate": "membership_usable",
+          "subject": "Alice",
+          "target": "Admins",
+          "value": true,
+          "origin": "declared_assumption",
+          "scope": "two-routes:fixed-snapshot-window",
+          "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+          "evidence_ref": "bh-admin"
+        }
+      ],
+      "steps": [
+        {
+          "step_id": "direct",
+          "request": {
+            "technique_id": "obtain_admin_execution_on_host",
+            "actor": "Alice",
+            "source": "Alice",
+            "target": "Host"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "admin_control": [
+                "Host"
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+          "derived_from": null,
+          "explanation": "Alice dùng AdminTo trực tiếp.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        },
+        {
+          "step_id": "member",
+          "request": {
+            "technique_id": "propagate_group_entitlement",
+            "actor": "Alice",
+            "source": "Alice",
+            "target": "Admins"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "effective_member": [
+                [
+                  "Alice",
+                  "Admins"
+                ]
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+          "derived_from": null,
+          "explanation": "Nhánh thay thế dùng membership token usable.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        },
+        {
+          "step_id": "inherited",
+          "request": {
+            "technique_id": "obtain_admin_execution_on_host",
+            "actor": "Alice",
+            "source": "Admins",
+            "target": "Host"
+          },
+          "before": {
+            "control": [
+              "Alice"
+            ],
+            "effective_member": [
+              [
+                "Alice",
+                "Admins"
+              ]
+            ]
+          },
+          "expected": {
+            "status": "applicable",
+            "additions": {
+              "admin_control": [
+                "Host"
+              ]
+            },
+            "failed": [],
+            "unknown": []
+          },
+          "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+          "derived_from": null,
+          "explanation": "Sau membership Alice dùng AdminTo thuộc Admins.",
+          "evidence_refs": [
+            "bh-admin",
+            "token"
+          ]
+        }
+      ],
+      "oracle_scope": {
+        "techniques": [
+          "obtain_admin_execution_on_host",
+          "propagate_group_entitlement"
+        ],
+        "budget": {
+          "max_paths": 1000,
+          "max_steps": 12,
+          "max_expansions": 100000
+        },
+        "completeness": "finite_declared_catalog",
+        "path_policy": "exact_set"
+      },
+      "variants": [
+        {
+          "variant_id": "positive",
+          "description": "Không có owner/action trong scope thêm admin_control OtherHost; complete no-path, vẫn có states admin_control Host.",
+          "fact_changes": [],
+          "transition_overrides": {},
+          "expected_search": {
+            "outcome": "no_path",
+            "required_reachable": [
+              {
+                "control": [
+                  "Alice"
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "admin_control": [
+                  "Host"
+                ]
+              },
+              {
+                "control": [
+                  "Alice"
+                ],
+                "effective_member": [
+                  [
+                    "Alice",
+                    "Admins"
+                  ]
+                ],
+                "admin_control": [
+                  "Host"
+                ]
+              }
+            ],
+            "forbidden": {
+              "admin_control": [
+                "OtherHost"
+              ]
+            },
+            "acceptable_paths": [],
+            "required_diagnostics": []
+          }
+        }
+      ],
+      "evidence_refs": [
+        "bh-admin",
+        "token"
+      ]
+    }
+  ]
+}

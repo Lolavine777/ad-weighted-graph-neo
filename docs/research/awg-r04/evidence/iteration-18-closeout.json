@@ -1,0 +1,131 @@
+{
+  "code_commit": "2e4b05dd6b72a657aecda46be1f91968b14b9291",
+  "native_capture_parent_commit": "89620794c0c46c5985100b98bca8b9dc43863259",
+  "native_capture_scope": "Working tree had importer changes and unrelated local files. All native source bytes match the parent Git objects and current files; no clean-tree capture claim. Full metadata retained.",
+  "native_source_pins_verified": 75,
+  "acceptance_v16_pins_verified": 127,
+  "engine_changed": false,
+  "tests": {
+    "adapter": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "47",
+      "time": "4.359",
+      "timestamp": "2026-10-19T22:27:08.063843+07:00",
+      "hostname": "Nguyens-MacBook-Air.local"
+    },
+    "workflow": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "86",
+      "time": "11.975",
+      "timestamp": "2026-10-19T22:17:02.973684+07:00",
+      "hostname": "Nguyens-MacBook-Air.local"
+    }
+  },
+  "native_remediation_audit": {
+    "uncompressed_bytes": 375800971,
+    "uncompressed_sha256": "15fb109ad1f997cf872c56d606bb624e9493a867a79f2f352541277efbb32c3c",
+    "gzip_bytes": 10625246
+  },
+  "independent_raw_witness_checks": 4,
+  "first_attempts": [
+    "raw upload6 HTTP500 no data tag found",
+    "envelope v3 accepted but553 ACE errors and missing field mappings; not valid baseline",
+    "first CE direct audit10 missing self-GenericAll; upstream ParseACEData documents exclusion",
+    "wrong source SID2474 first multi demo stopped; corrected1395 namespace separate",
+    "first local remediation harness referred missing prior pilot path; corrected in new namespace"
+  ],
+  "preserved_unrelated_local_files": [
+    "uv.lock",
+    "docs/Tong_quan_de_tai_Identity_Asset_Graph.pdf",
+    "docs/final-report/"
+  ],
+  "limits": [
+    "No global full-native minimum under truncation",
+    "No CE-vs-AWG timing comparison",
+    "No full-taxonomy semantic equivalence claim",
+    "No new calibrated P/I or optimal defender cost",
+    "No live AD exploitation"
+  ],
+  "final_ce": {
+    "code_commit": "2e4b05dd6b72a657aecda46be1f91968b14b9291",
+    "project": "awg-r04-ce-final-v1",
+    "server_errors": 0,
+    "files_accepted_and_completed": 6,
+    "converted_manifest_sha256": "7f8493c7596d50f3478a52af16bfd9eb24eb27bf312b3585b3422d6d58e6c404",
+    "scope": "Fresh import from committed source. Subsequent presentation/evidence files are uncommitted; importer/native source bytes unchanged."
+  },
+  "final_code_commit": "84dd61ee32abd171eea1f02ed7684b6c06d6d19c",
+  "review_fixes": {
+    "all_mode": "Historical6 DatasetA/B targets preserved, seamless explicit-only; regression test PASS",
+    "brief": "After-witness DENA actor/context/C/package refs displayed, discovery refs corrected; presentation regenerated without native re-execution"
+  },
+  "presentation_harness": {
+    "captured": "evidence/run_local_remediation_captured.txt",
+    "reproduce_with_bypass_details": "evidence/run_local_remediation.txt",
+    "native_audit_unchanged": true
+  },
+  "published_log_transforms": [
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-envelope-server.log",
+      "published_sha256": "2a2940707240ed2031105daf070d9267f16cfd5e02ce172356ac061903ab3493",
+      "local_original": "reports/generated/awg-r04-ce-v1/envelope-server.log",
+      "local_original_sha256": "2b718ffaee9b5a195631d545e72ab5b491b822c221cd75bcdf9c4e572a5d30e9",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-envelope-probe.log",
+      "published_sha256": "c2ac745767b8032e4af9b3899b2c4b5e541695a8f9785657edc96de8c5666ed0",
+      "local_original": "reports/generated/awg-r04-ce-v1/envelope-probe.log",
+      "local_original_sha256": "c2ac745767b8032e4af9b3899b2c4b5e541695a8f9785657edc96de8c5666ed0",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-final-import.log",
+      "published_sha256": "f66620d5b312b0de6cd4a3ff0c272c69ad8f53b40259a591920acdc42cc1dced",
+      "local_original": "reports/generated/awg-r04-ce-v1/final-import.log",
+      "local_original_sha256": "f66620d5b312b0de6cd4a3ff0c272c69ad8f53b40259a591920acdc42cc1dced",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-final-server.log",
+      "published_sha256": "804bba7c3eb87c3c210eaff2a7d17832975cc129a64a7b499e7bd8efe591623f",
+      "local_original": "reports/generated/awg-r04-ce-v1/final-server.log",
+      "local_original_sha256": "8da243a444af1bb5fd14eb0c13c5e364ac5a96e23d49252f6822f4149abc2e62",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-converted-server.log",
+      "published_sha256": "975d5f5b1892899b76b04006166abe5e419249392770d0fbd77581bb00acfc44",
+      "local_original": "reports/generated/awg-r04-ce-v1/converted-server.log",
+      "local_original_sha256": "7a6cb6ce661d685c2b48073fa7c24d30bc0ba7322b154bd674a2e9c9604fa2a5",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-converted-import.log",
+      "published_sha256": "e2d65312918e20237338db57146175d484f533989a17abfbd22dc6c7b7e65d7c",
+      "local_original": "reports/generated/awg-r04-ce-v1/converted-import.log",
+      "local_original_sha256": "e2d65312918e20237338db57146175d484f533989a17abfbd22dc6c7b7e65d7c",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-raw-import-server.log",
+      "published_sha256": "f031f6390bad665fe5e9b466c876b21a176301a29f52bdf948afa956203fff1f",
+      "local_original": "reports/generated/awg-r04-ce-v1/raw-import-server.log",
+      "local_original_sha256": "22a4dee261fd470b24f2e021607cd528cfe64ecc19266022cff70477a16b7786",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    },
+    {
+      "published": "docs/research/awg-r04/evidence/iteration-18-raw-import.log",
+      "published_sha256": "3e47b065b6909575ab976b149424a22dcfb1fd6e39db1352c97a7db2bb2b6736",
+      "local_original": "reports/generated/awg-r04-ce-v1/raw-import.log",
+      "local_original_sha256": "3e47b065b6909575ab976b149424a22dcfb1fd6e39db1352c97a7db2bb2b6736",
+      "transform": "Redact initial admin password when present; remove trailing line whitespace. Full original retained locally."
+    }
+  ]
+}

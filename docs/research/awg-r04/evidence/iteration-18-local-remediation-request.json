@@ -1,0 +1,48 @@
+{
+  "schema_version": "1.1.0",
+  "request_id": "guided-mvp:sha256:26278dceadbd3ae272b6b88ef1cc2b4233df18948d6310298c700ecdacec7b37",
+  "catalog_id": "ad-remediation/1.0.0",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "baseline_run_id": "guided-mvp-remediation",
+  "scope": {
+    "engine_revision": "89620794c0c46c5985100b98bca8b9dc43863259",
+    "evaluation_mode": "scenario",
+    "goal_manifest_digest": "sha256:a0bdead93610b56c085578722a986a7f95d49992a463ec9d735a7abf0ea09c34",
+    "graph_digest": "sha256:279a8b5925b16c328f4a2c88bee693e402f9a4c75f651763622b455bbefd2c9e",
+    "program_identity_version": "semantic-program/1",
+    "query_profile_digest": "sha256:35732f4dec796b5b06e2f33de8f257cc61b5e6bd66614fc6a4ee9ad907517ab6",
+    "rating_inputs_digest": "sha256:06338efb9c849ec93ac7cd15c830b1b7e6b98b35f1636a719e1e3cdf03642c2d",
+    "route_identity_version": "ordered-observed-edges/1",
+    "search_budget": {
+      "max_expansions": 6000,
+      "max_paths": 1,
+      "max_steps": 3
+    },
+    "semantic_catalog_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "snapshot_facts_digest": "sha256:1361aaa56d98aedba94a1c317195bf9b32f440175cd14d51a1157ac438baa26c",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "source_manifest_digest": "sha256:fec2ce19555128289130609393059957dcd66fc6ef051bb7071107a4fbbafb8f"
+  },
+  "edits": [
+    {
+      "catalog_entry_id": "group-membership",
+      "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+      "edit_id": "inventory-0ecdacec7b37-0",
+      "effective_right_verified": true,
+      "evidence_refs": [
+        "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75"
+      ],
+      "kind": "deny_relationship",
+      "provenance_digest": "sha256:2fee941e3d7c6504de0973cd01158de3f45d505c0862cf067838c4d725cf646a",
+      "rationale": "Observed-scope counterfactual candidate; validate operational prerequisites separately.",
+      "relationship": {
+        "kind": "MemberOf",
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+      }
+    }
+  ],
+  "initial_state_policy": "rebuild_same_declared_foothold",
+  "conflict_policy": "reject_duplicate_or_conflicting_keys",
+  "missing_evidence_policy": "unresolved_no_effect_claim"
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": "target-manifest/1.0.0",
+  "manifest_id": "target-manifest-synthetic-v1",
+  "version": "1.0.0",
+  "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+  "domain_sid": "S-1-5-21-1000-2000-3000",
+  "description": "Snapshot-pinned target manifest for synthetic two-routes test suite.",
+  "default_discovery_goals": [
+    "goal-synthetic-da",
+    "goal-synthetic-c0-host"
+  ],
+  "targets": [
+    {
+      "goal_id": "goal-synthetic-da",
+      "category": "tier_0_identity",
+      "target_node_id": "S-1-5-21-1000-2000-3000-2103",
+      "target_node_kind": "Group",
+      "display_name": "Domain Admins (SYNTHETIC-Admins)",
+      "technical_consequence": "domain_admin_entitlement",
+      "impact_rating": "Catastrophic",
+      "required_control_level": "admin_entitlement",
+      "provenance_locator": null,
+      "required_state": {
+        "effective_member": [
+          [
+            "__RESOLVED_ACTOR__",
+            "S-1-5-21-1000-2000-3000-2103"
+          ]
+        ]
+      },
+      "checkpoint_goal": null,
+      "description": "Usable domain admin group membership entitlement."
+    },
+    {
+      "goal_id": "goal-synthetic-c0-host",
+      "category": "tier_0_host",
+      "target_node_id": "10000000-0000-4000-8000-000000000002",
+      "target_node_kind": "Computer",
+      "display_name": "High Value Host (SYNTHETIC-Host)",
+      "technical_consequence": "host_administrative_takeover",
+      "impact_rating": "High",
+      "required_control_level": "host_admin_execution",
+      "provenance_locator": null,
+      "required_state": {
+        "admin_control": [
+          "10000000-0000-4000-8000-000000000002"
+        ]
+      },
+      "checkpoint_goal": {
+        "target": "S-1-5-21-1000-2000-3000-2103",
+        "required_state": {
+          "effective_member": [
+            [
+              "__RESOLVED_ACTOR__",
+              "S-1-5-21-1000-2000-3000-2103"
+            ]
+          ]
+        }
+      },
+      "description": "Full administrative control on target computer asset C0."
+    }
+  ]
+}

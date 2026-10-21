@@ -1,0 +1,800 @@
+{
+  "$id": "result-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "baseline_input_digest_after": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "catalog_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "cells": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "affected": {
+            "type": "boolean"
+          },
+          "affected_program_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "after": {
+            "additionalProperties": false,
+            "properties": {
+              "cell_ref": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "program_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query_digest": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "reachability": {
+                "enum": [
+                  "reachable",
+                  "proven_unreachable",
+                  "unknown",
+                  "unsupported",
+                  "error",
+                  "not_evaluated"
+                ]
+              },
+              "route_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "route_ids": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "run_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "scope_proof_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "search_diagnostics": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "trace_refs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "program_id": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "route_id": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "trace_ref": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "program_id",
+                    "trace_ref",
+                    "route_id"
+                  ],
+                  "type": "object"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "truncated": {
+                "type": "boolean"
+              },
+              "unresolved_feasibility": {
+                "type": "boolean"
+              },
+              "witness_program_ids": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "run_id",
+              "cell_ref",
+              "query_digest",
+              "reachability",
+              "complete",
+              "truncated",
+              "unresolved_feasibility",
+              "program_count",
+              "route_count",
+              "witness_program_ids",
+              "search_diagnostics",
+              "scope_proof_ref",
+              "route_ids",
+              "trace_refs"
+            ],
+            "type": "object"
+          },
+          "before": {
+            "additionalProperties": false,
+            "properties": {
+              "cell_ref": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "complete": {
+                "type": "boolean"
+              },
+              "program_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "query_digest": {
+                "pattern": "^sha256:[0-9a-f]{64}$",
+                "type": "string"
+              },
+              "reachability": {
+                "enum": [
+                  "reachable",
+                  "proven_unreachable",
+                  "unknown",
+                  "unsupported",
+                  "error",
+                  "not_evaluated"
+                ]
+              },
+              "route_count": {
+                "minimum": 0,
+                "type": "integer"
+              },
+              "route_ids": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "run_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "scope_proof_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "search_diagnostics": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "trace_refs": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "program_id": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "route_id": {
+                      "minLength": 1,
+                      "type": "string"
+                    },
+                    "trace_ref": {
+                      "minLength": 1,
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "program_id",
+                    "trace_ref",
+                    "route_id"
+                  ],
+                  "type": "object"
+                },
+                "type": "array",
+                "uniqueItems": true
+              },
+              "truncated": {
+                "type": "boolean"
+              },
+              "unresolved_feasibility": {
+                "type": "boolean"
+              },
+              "witness_program_ids": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "run_id",
+              "cell_ref",
+              "query_digest",
+              "reachability",
+              "complete",
+              "truncated",
+              "unresolved_feasibility",
+              "program_count",
+              "route_count",
+              "witness_program_ids",
+              "search_diagnostics",
+              "scope_proof_ref",
+              "route_ids",
+              "trace_refs"
+            ],
+            "type": "object"
+          },
+          "bypass_program_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "conditional_p": {
+            "additionalProperties": false,
+            "properties": {
+              "after_interval": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "items": {
+                      "type": "number"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": "array"
+                  }
+                ]
+              },
+              "after_program_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "basis_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "before_interval": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "items": {
+                      "type": "number"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": "array"
+                  }
+                ]
+              },
+              "before_program_id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "comparison_scope_digest": {
+                "oneOf": [
+                  {
+                    "pattern": "^sha256:[0-9a-f]{64}$",
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "delta_interval": {
+                "oneOf": [
+                  {
+                    "type": "null"
+                  },
+                  {
+                    "items": {
+                      "type": "number"
+                    },
+                    "maxItems": 2,
+                    "minItems": 2,
+                    "type": "array"
+                  }
+                ]
+              },
+              "interpretation": {
+                "const": "conditional_single_program_not_campaign"
+              },
+              "status": {
+                "enum": [
+                  "comparable",
+                  "unrated",
+                  "incomparable"
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "before_interval",
+              "after_interval",
+              "delta_interval",
+              "before_program_id",
+              "after_program_id",
+              "comparison_scope_digest",
+              "basis_refs",
+              "interpretation"
+            ],
+            "type": "object"
+          },
+          "cut_program_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "cut_route_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "disconnected": {
+            "type": "boolean"
+          },
+          "effort": {
+            "additionalProperties": false,
+            "properties": {
+              "after": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "basis_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "before": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "delta": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "proof_refs": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              "status": {
+                "enum": [
+                  "exact",
+                  "incumbent",
+                  "unrated",
+                  "unreachable",
+                  "incomparable"
+                ]
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "status",
+              "before",
+              "after",
+              "delta",
+              "unit",
+              "proof_refs",
+              "basis_refs"
+            ],
+            "type": "object"
+          },
+          "goal_id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "new_program_ids": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "replay_failures": {
+            "items": {
+              "additionalProperties": false,
+              "properties": {
+                "decision_ref": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "intervention_ids": {
+                  "items": {
+                    "minLength": 1,
+                    "type": "string"
+                  },
+                  "minItems": 1,
+                  "type": "array",
+                  "uniqueItems": true
+                },
+                "program_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "trace_ref": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "program_id",
+                "intervention_ids",
+                "decision_ref",
+                "trace_ref"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "source_id": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "source_id",
+          "goal_id",
+          "before",
+          "after",
+          "affected",
+          "affected_program_ids",
+          "cut_program_ids",
+          "bypass_program_ids",
+          "new_program_ids",
+          "disconnected",
+          "effort",
+          "conditional_p",
+          "cut_route_ids",
+          "replay_failures"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "comparison_scope_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "counterfactual_origin": {
+      "const": "declared_intervention_not_observation"
+    },
+    "declared_goal_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "declared_source_ids": {
+      "items": {
+        "minLength": 1,
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "overlay_digest": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "overlay_disposition": {
+      "enum": [
+        "applied",
+        "unresolved",
+        "rejected"
+      ]
+    },
+    "request_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "summary": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_sources": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "evaluated_pairs": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "exposed_sources_after": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "exposed_sources_before": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "fully_disconnected_sources": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "goals_still_reachable": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "limitations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "pairs_disconnected": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "numerator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "percent": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "scope": {
+              "enum": [
+                "complete_declared_scope",
+                "observed_corpus_only",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator",
+            "percent",
+            "scope"
+          ],
+          "type": "object"
+        },
+        "programs_cut": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "numerator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "percent": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "scope": {
+              "enum": [
+                "complete_declared_scope",
+                "observed_corpus_only",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator",
+            "percent",
+            "scope"
+          ],
+          "type": "object"
+        },
+        "proven_disconnected_pairs": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "goal_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "source_id": {
+                "minLength": 1,
+                "type": "string"
+              }
+            },
+            "required": [
+              "source_id",
+              "goal_id"
+            ],
+            "type": "object"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "requested_pairs": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "routes_cut": {
+          "additionalProperties": false,
+          "properties": {
+            "denominator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "numerator": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "percent": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "scope": {
+              "enum": [
+                "complete_declared_scope",
+                "observed_corpus_only",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "numerator",
+            "denominator",
+            "percent",
+            "scope"
+          ],
+          "type": "object"
+        },
+        "truncated_pairs": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unknown_pairs": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "unsupported_pairs": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "requested_pairs",
+        "evaluated_pairs",
+        "unsupported_pairs",
+        "unknown_pairs",
+        "truncated_pairs",
+        "affected_sources",
+        "exposed_sources_before",
+        "exposed_sources_after",
+        "fully_disconnected_sources",
+        "goals_still_reachable",
+        "proven_disconnected_pairs",
+        "programs_cut",
+        "routes_cut",
+        "pairs_disconnected",
+        "limitations"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "catalog_digest",
+    "comparison_scope_digest",
+    "overlay_digest",
+    "overlay_disposition",
+    "counterfactual_origin",
+    "baseline_input_digest_after",
+    "cells",
+    "summary",
+    "declared_source_ids",
+    "declared_goal_ids"
+  ],
+  "type": "object"
+}

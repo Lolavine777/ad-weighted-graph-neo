@@ -1,0 +1,646 @@
+# Normative semantic catalog. Expected telemetry is a prediction, not corpus evidence.
+# Version 0.3 adds scoped Week 3 capability transitions without canonical edge kinds.
+version: "0.6"
+evidence_registry:
+  ms-security-4724:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4724
+    claim: Security Event 4724 is emitted for a password reset attempt against another account.
+    rationale: >-
+      This supports the reset_target_password and genericall_reset_password
+      expectations; it does not prove reset success or a static directory right.
+    confidence: high
+  ms-security-group-membership:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4732
+    claim: Group-membership modification events are action telemetry for adding a member to a security-enabled group.
+    rationale: The event family supports the active genericall_add_member transition, not passive MemberOf traversal.
+    confidence: high
+  ms-security-4728:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: >-
+      https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/advanced-audit-policy-configuration
+    claim: Security Event 4728 records a member added to a security-enabled global group.
+    rationale: This covers the global-group branch of genericall_add_member.
+    confidence: high
+  ms-security-4756:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: >-
+      https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/advanced-audit-policy-configuration
+    claim: Security Event 4756 records a member added to a security-enabled universal group.
+    rationale: This covers the universal-group branch of genericall_add_member.
+    confidence: high
+  ms-security-5136:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-5136
+    claim: >-
+      Security Event 5136 can record a directory-object attribute modification
+      when Directory Service Changes auditing and a matching SACL apply.
+    rationale: >-
+      This supports ACL-change-shaped telemetry for DACL mutation while
+      preserving the distinction from static WriteDacl or GenericAll evidence.
+    confidence: high
+  ms-security-4624-logontype10:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624
+    claim: Security Event 4624 with Logon Type 10 represents a RemoteInteractive logon signal.
+    rationale: The qualifier is required; Event 4624 without LogonType 10 is not an RDP-specific mapping.
+    confidence: high
+  mitre-t1021-001:
+    type: attack_framework_reference
+    source: MITRE ATT&CK
+    locator: https://attack.mitre.org/techniques/T1021/001/
+    claim: Remote Desktop Protocol is a distinct remote-services technique.
+    rationale: >-
+      This supports the semantic interpretation of
+      open_remote_interactive_session without making a structural CanRDP edge
+      or logon row a confirmed attack.
+    confidence: high
+  ms-winrm-powershell-audit:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_logging_windows
+    claim: WinRM and PowerShell operational/script logging are configuration-dependent activity signals.
+    rationale: CanPSRemote has no single mandatory event ID; provider-specific fields and audit configuration are required.
+    confidence: medium
+  mitre-t1021-006:
+    type: attack_framework_reference
+    source: MITRE ATT&CK
+    locator: https://attack.mitre.org/techniques/T1021/006/
+    claim: Windows Remote Management is a distinct remote-services technique.
+    rationale: This supports the remote-command transition while keeping WinRM execution separate from host-bound structural authorization.
+    confidence: high
+  mitre-t1003-001:
+    type: attack_framework_reference
+    source: MITRE ATT&CK
+    locator: https://attack.mitre.org/techniques/T1003/001/
+    claim: LSASS Memory is a credential-access technique requiring process/target qualification.
+    rationale: >-
+      This supports credential-access monitoring for recover_session_credential_material; Sysmon Event 10 alone is not sufficient proof.
+    confidence: high
+  ms-sysmon-event10:
+    type: authoritative_reference
+    source: Microsoft Sysinternals
+    locator: https://learn.microsoft.com/en-us/sysinternals/downloads/sysmon
+    claim: Sysmon Event 10 records process-access activity.
+    rationale: It is an optional descriptive signal for credential access and must be qualified by TargetImage and related fields.
+    confidence: high
+  ms-security-session-boundary:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4624
+    claim: Security logon/session events can provide session-boundary context when correlated with identity, host and time.
+    rationale: >-
+      A HasSession relationship is an opportunity; session telemetry does not itself establish credential material or credential theft.
+    confidence: medium
+  ms-kerberos-authentication:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview
+    claim: Kerberos authenticates an identity before service authorization.
+    rationale: Supports a separate acquire-ticket gate; reset alone does not establish usable identity.
+    confidence: high
+  ms-access-token-groups:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/windows/win32/secauthz/access-tokens
+    claim: Access tokens include user identity and group SIDs used for authorization.
+    rationale: Supports branch actor and membership context; snapshot membership alone is not an observed
+      token.
+    confidence: high
+  ms-winrm-security:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/winrm-security
+    claim: PowerShell remoting authenticates users and runs sessions under their security context.
+    rationale: Listener, endpoint access and administrative execution context remain explicit scenario
+      gates.
+    confidence: high
+  ms-da-default-administrators:
+    type: authoritative_reference
+    source: Microsoft Learn
+    locator: >-
+      https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/appendix-b--privileged-accounts-and-groups-in-active-directory
+    claim: Domain Admins has default Administrators membership on domain computers.
+    rationale: Default behavior supports a declared host mapping, not an inferred canonical AdminTo
+      edge.
+    confidence: high
+techniques:
+  - id: propagate_group_entitlement
+    relationship: "MemberOf"
+    semantic_class: "entitlement"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["Group"]
+    action_required: false
+    prerequisites: ["actor_controlled", "source_authorized", "actor_enabled", "security_group", "membership_usable"]
+    effects: ["effective_member"]
+    failure_conditions: ["group_not_security_enabled", "token_or_scope_incompatible"]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["authorization_context"]
+    remediation: ["Review security group membership"]
+  - id: obtain_admin_execution_on_host
+    relationship: "AdminTo"
+    semantic_class: "host_admin"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["Computer"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "admin_channel"
+      - "authentication_accepted"
+    effects: ["admin_control"]
+    failure_conditions: ["management_channel_unavailable", "authentication_rejected"]
+    expected_telemetry:
+      - provider: "Management channel dependent"
+        event_id: null
+        requirement: "Channel and audit configuration dependent"
+        evidence_refs: [ms-winrm-powershell-audit]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["reachability", "authentication_context"]
+    remediation: ["Restrict administrative access and management channels"]
+  - id: genericall_reset_password
+    relationship: "GenericAll"
+    semantic_class: "object_control"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["User"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "target_enabled"
+      - "password_policy_accepts"
+      - "directory_write_allowed"
+    effects: ["authentication_control"]
+    failure_conditions: ["password_policy_rejected", "account_disabled", "directory_write_blocked"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: 4724
+        requirement: "Audit policy dependent; reset attempt does not prove success"
+        evidence_refs: [ms-security-4724]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["operational_impact", "detectability"]
+    remediation: ["Remove excessive account permissions"]
+  - id: genericall_add_member
+    relationship: "GenericAll"
+    semantic_class: "object_control"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["Group"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "security_group"
+      - "membership_change_allowed"
+      - "directory_write_allowed"
+    effects: ["add_membership"]
+    failure_conditions: ["membership_change_rejected", "directory_write_blocked"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: null
+        requirement: "4728, 4732 or 4756 depending on scope and auditing"
+        evidence_refs: [ms-security-4728, ms-security-group-membership, ms-security-4756]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["token_freshness", "operational_impact"]
+    remediation: ["Restrict group modification rights"]
+  - id: genericall_grant_write_dacl
+    relationship: "GenericAll"
+    semantic_class: "object_control"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["User", "Group", "Computer", "Domain", "OU", "GPO"]
+    action_required: true
+    prerequisites: ["actor_controlled", "source_authorized", "actor_enabled", "directory_write_allowed"]
+    effects: ["grant_write_dacl"]
+    failure_conditions: ["directory_write_blocked"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: 5136
+        requirement: "Directory Service Changes auditing and matching SACL required"
+        evidence_refs: [ms-security-5136]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["detectability", "target_type"]
+    remediation: ["Remove excessive object control"]
+  - id: grant_new_object_right
+    relationship: "WriteDacl"
+    semantic_class: "graph_mutation"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["User", "Group", "Computer", "Domain", "OU", "GPO"]
+    action_required: true
+    prerequisites: ["actor_controlled", "source_authorized", "actor_enabled", "directory_write_allowed"]
+    effects: ["grant_generic_all"]
+    failure_conditions: ["directory_write_blocked"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: 5136
+        requirement: "Directory Service Changes auditing and matching SACL required"
+        evidence_refs: [ms-security-5136]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["detectability", "target_type"]
+    remediation: ["Restrict DACL modification rights"]
+  - id: reset_target_password
+    relationship: "ForceChangePassword"
+    semantic_class: "authentication_control"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["User"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "target_enabled"
+      - "password_policy_accepts"
+      - "directory_write_allowed"
+    effects: ["authentication_control"]
+    failure_conditions: ["password_policy_rejected", "account_disabled", "directory_write_blocked"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: 4724
+        requirement: "Audit policy dependent; reset attempt does not prove success"
+        evidence_refs: [ms-security-4724]
+    attack_refs: []
+    confidence: "medium"
+    cost_factors: ["operational_impact", "detectability"]
+    remediation: ["Restrict password reset delegation"]
+  - id: open_remote_interactive_session
+    relationship: "CanRDP"
+    semantic_class: "remote_interactive"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["Computer"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "rdp_available"
+      - "authentication_accepted"
+    effects: ["interactive_session"]
+    failure_conditions: ["rdp_unavailable", "authentication_rejected"]
+    expected_telemetry:
+      - provider: "Microsoft-Windows-Security-Auditing"
+        event_id: 4624
+        requirement: "Logon Type 10; audit policy dependent"
+        evidence_refs: [ms-security-4624-logontype10, mitre-t1021-001]
+    attack_refs: ["T1021.001"]
+    confidence: "medium"
+    cost_factors: ["reachability", "detectability"]
+    remediation: ["Restrict remote interactive logon"]
+  - id: open_winrm_remote_session
+    relationship: "CanPSRemote"
+    semantic_class: "remote_command"
+    source_kinds: ["User", "Group", "Computer"]
+    target_kinds: ["Computer"]
+    action_required: true
+    prerequisites:
+      - "actor_controlled"
+      - "source_authorized"
+      - "actor_enabled"
+      - "winrm_available"
+      - "authentication_accepted"
+    effects: ["remote_command_execution"]
+    failure_conditions: ["winrm_unavailable", "authentication_rejected"]
+    expected_telemetry:
+      - provider: "WinRM and PowerShell"
+        event_id: null
+        requirement: "Operational and script logging configuration dependent"
+        evidence_refs: [ms-winrm-powershell-audit, mitre-t1021-006]
+    attack_refs: ["T1021.006"]
+    confidence: "medium"
+    cost_factors: ["reachability", "endpoint_controls"]
+    remediation: ["Restrict WinRM endpoints and remoting permissions"]
+  - id: recover_session_credential_material
+    relationship: "HasSession"
+    semantic_class: "credential_opportunity"
+    source_kinds: ["Computer"]
+    target_kinds: ["User"]
+    action_required: true
+    prerequisites: ["source_admin_control", "session_fresh", "session_present", "credential_accessible"]
+    effects: ["credential_material"]
+    failure_conditions: ["session_stale_or_absent", "credential_material_protected"]
+    expected_telemetry:
+      - provider: "Credential access monitoring"
+        event_id: null
+        requirement: "Technique, endpoint controls and audit configuration dependent"
+        evidence_refs: [mitre-t1003-001, ms-sysmon-event10, ms-security-session-boundary]
+    attack_refs: ["T1003"]
+    confidence: "medium"
+    cost_factors: ["temporal_freshness", "endpoint_controls"]
+    remediation: ["Protect credentials and reduce privileged sessions"]
+
+
+  # Capability relationships below are search/state vocabulary, never canonical edges.
+  - id: scenario_reset_password
+    relationship: GenericAll
+    semantic_class: object_control
+    source_kinds:
+      - User
+      - Group
+      - Computer
+    target_kinds:
+      - User
+    action_required: true
+    prerequisites:
+      - actor_controlled
+      - source_authorized
+      - actor_enabled
+      - target_enabled
+      - password_policy_accepts
+      - directory_write_allowed
+      - network_rpc_reachable
+    effects:
+      - authentication_control
+      - reset_password_control
+    failure_conditions:
+      - password_policy_rejected
+      - account_disabled
+      - directory_write_blocked
+    expected_telemetry:
+      - provider: Microsoft-Windows-Security-Auditing
+        event_id: 4724
+        requirement: Audit policy dependent; reset attempt does not prove success
+        evidence_refs:
+          - ms-security-4724
+    attack_refs: []
+    confidence: medium
+    cost_factors:
+      - operational_impact
+      - detectability
+    remediation:
+      - Remove excessive account permissions
+  - id: acquire_reset_identity
+    relationship: AuthenticationControl
+    semantic_class: object_control
+    source_kinds:
+      - User
+    target_kinds:
+      - Computer
+    action_required: true
+    prerequisites:
+      - reset_password_control
+      - authentication_context_matches
+      - actor_enabled
+      - network_kdc_reachable
+      - authentication_accepted
+    effects:
+      - usable_identity
+    failure_conditions:
+      - credential_not_reset_password
+      - kdc_unreachable
+      - authentication_rejected
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors:
+      - reviewed_acquire_ticket_work_only
+    remediation:
+      - Review authentication policy and account restrictions
+  - id: scenario_winrm_admin
+    relationship: DeclaredHostAdmin
+    semantic_class: host_admin
+    source_kinds:
+      - Group
+    target_kinds:
+      - Computer
+    action_required: true
+    prerequisites:
+      - actor_controlled
+      - source_authorized
+      - actor_enabled
+      - actor_authenticated
+      - host_admin_mapping
+      - network_winrm_reachable
+      - service_winrm_running
+      - winrm_authentication_accepted
+      - endpoint_authorized
+      - admin_execution_context
+      - target_enabled
+    effects:
+      - admin_control
+    failure_conditions:
+      - host_mapping_unusable
+      - listener_unavailable
+      - authentication_rejected
+      - endpoint_denied
+      - restricted_execution_context
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors:
+      - reviewed_remote_exec_winrm_work_only
+    remediation:
+      - Restrict administrative group mapping and remoting endpoint permissions
+
+  - id: kerberoast_request
+    relationship: RoastTarget
+    semantic_class: credential_opportunity
+    source_kinds: [User, Computer]
+    target_kinds: [User]
+    action_required: true
+    prerequisites:
+      - known_identity
+      - has_spn
+      - service_principal_names
+      - kerberos_actor_authenticated
+      - kerberos_authentication_usable
+      - network_kdc_reachable
+      - service_ticket_request_accepted
+    effects: [service_ticket_material]
+    failure_conditions: [spn_absent, authentication_unavailable, request_denied]
+    expected_telemetry: []
+    attack_refs: [T1558.003]
+    confidence: medium
+    cost_factors: [request_work_requires_basis]
+    remediation: [Review service account exposure]
+  - id: recover_ticket_secret
+    relationship: TicketMaterial
+    semantic_class: credential_opportunity
+    source_kinds: [User, Computer]
+    target_kinds: [User]
+    action_required: true
+    prerequisites: [ticket_material, recovery_scope, recovery_success]
+    effects: [recovered_secret]
+    failure_conditions: [recovery_failed_in_declared_scope]
+    expected_telemetry: []
+    attack_refs: [T1558.003]
+    confidence: medium
+    cost_factors: [method_budget_horizon_requires_basis]
+    remediation: [Use strong managed service account secrets]
+  - id: activate_recovered_identity
+    relationship: RecoveredSecret
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [Computer]
+    action_required: true
+    prerequisites:
+      - recovered_password
+      - authentication_context_matches
+      - actor_enabled
+      - secret_valid
+      - network_kdc_reachable
+      - authentication_accepted
+    effects: [usable_identity]
+    failure_conditions: [secret_invalid, authentication_rejected]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [activation_work_requires_basis]
+    remediation: [Review authentication policy and account restrictions]
+
+  - id: asrep_request
+    relationship: ASRepTarget
+    semantic_class: credential_opportunity
+    source_kinds: [User, Computer]
+    target_kinds: [User]
+    action_required: true
+    prerequisites:
+      - known_identity
+      - asrep_request_capability
+      - target_enabled
+      - dontreqpreauth
+      - network_kdc_reachable
+      - asrep_request_accepted
+    effects: [asrep_material]
+    failure_conditions: [preauthentication_required, request_denied]
+    expected_telemetry: []
+    attack_refs: [T1558.004]
+    confidence: medium
+    cost_factors: [request_work_requires_basis]
+    remediation: [Require Kerberos preauthentication]
+  - id: recover_asrep_secret
+    relationship: ASRepMaterial
+    semantic_class: credential_opportunity
+    source_kinds: [User, Computer]
+    target_kinds: [User]
+    action_required: true
+    prerequisites: [asrep_material, recovery_scope, recovery_success]
+    effects: [recovered_secret]
+    failure_conditions: [recovery_failed_in_declared_scope]
+    expected_telemetry: []
+    attack_refs: [T1558.004]
+    confidence: medium
+    cost_factors: [method_budget_horizon_requires_basis]
+    remediation: [Use strong account secrets and require preauthentication]
+
+  - id: rbcd_acquire_secret
+    relationship: RBCDReset
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [User]
+    action_required: true
+    prerequisites:
+      - actor_authenticated
+      - exact_reset_right
+      - effective_reset_right
+      - directory_write_allowed
+      - password_policy_accepts
+    effects: [rbcd_secret]
+    failure_conditions: [required_gate_denied]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [rbcd_work_requires_basis]
+    remediation: [Review delegation and resource authorization]
+
+  - id: rbcd_prepare_service
+    relationship: RBCDPrepare
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [User]
+    action_required: true
+    prerequisites:
+      - scoped_password
+      - has_spn
+      - service_principal_names
+      - target_enabled
+      - secret_valid
+      - key_derivation_accepted
+      - key_encryption_compatible
+      - service_authentication_accepted
+      - network_kdc_reachable
+    effects: [controlled_service]
+    failure_conditions: [required_gate_denied]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [rbcd_work_requires_basis]
+    remediation: [Review delegation and resource authorization]
+
+  - id: rbcd_configure_descriptor
+    relationship: RBCDConfigure
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [Computer]
+    action_required: true
+    prerequisites:
+      - actor_authenticated
+      - known_identity
+      - exact_descriptor_right
+      - effective_descriptor_write
+      - directory_write_allowed
+    effects: [rbcd_descriptor]
+    failure_conditions: [required_gate_denied]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [rbcd_work_requires_basis]
+    remediation: [Review delegation and resource authorization]
+
+  - id: rbcd_delegate_service
+    relationship: RBCDDelegate
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [Computer]
+    action_required: true
+    prerequisites:
+      - controlled_service
+      - rbcd_descriptor
+      - known_impersonated_identity
+      - target_spn_binding
+      - delegation_policy_allows
+      - network_kdc_reachable
+      - s4u_request_accepted
+    effects: [delegated_context]
+    failure_conditions: [required_gate_denied]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [rbcd_work_requires_basis]
+    remediation: [Review delegation and resource authorization]
+
+  - id: rbcd_service_admin
+    relationship: RBCDAsset
+    semantic_class: authentication_control
+    source_kinds: [User]
+    target_kinds: [Computer]
+    action_required: true
+    prerequisites:
+      - delegated_context
+      - target_spn_binding
+      - target_enabled
+      - network_winrm_reachable
+      - service_winrm_running
+      - endpoint_authorized
+      - winrm_authentication_accepted
+      - admin_execution_context
+    effects: [admin_control]
+    failure_conditions: [required_gate_denied]
+    expected_telemetry: []
+    attack_refs: []
+    confidence: medium
+    cost_factors: [rbcd_work_requires_basis]
+    remediation: [Review delegation and resource authorization]

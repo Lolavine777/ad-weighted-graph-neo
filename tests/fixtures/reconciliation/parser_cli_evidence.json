@@ -1,0 +1,278 @@
+{
+  "synthetic": true,
+  "source_revision": "49f591fa4feef390e62252509352ac2d8a5f7a88",
+  "rich_command": [
+    "/workspaces/ad-weighted-graph/.venv/bin/python",
+    "-m",
+    "src.parser.cli",
+    "--snapshot-id",
+    "sha256:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4",
+    "--raw-dir",
+    "data/samples/parser-demo-rich-input",
+    "--manifest-dir",
+    "data/samples/manifests",
+    "--time-policy",
+    "data/samples/parser-demo/time-policy.json",
+    "--created-at",
+    "2026-09-25T00:00:00Z",
+    "--error-policy",
+    "fail_fast",
+    "--output",
+    "/tmp/pr157-before/rich.json",
+    "--summary"
+  ],
+  "rich_metadata": {
+    "code_version": "49f591fa4feef390e62252509352ac2d8a5f7a88",
+    "contract_version": "1.3.0",
+    "created_at": "2026-09-25T00:00:00Z",
+    "snapshot_id": "sha256:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4",
+    "weight_profile": "unit"
+  },
+  "rich_counts": {
+    "nodes": 6,
+    "edges": 10,
+    "assessments": 1
+  },
+  "rich_output_selection": {
+    "MemberOf": {
+      "id": "sha256:1298fa6fa72ae0d5f131bba62397b460d971641e618d004b0787e229c4de55bd",
+      "kind": "MemberOf",
+      "provenance": [
+        {
+          "attribute": "Members[].MemberId",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/groups-repeat.json",
+          "record_id": "S-1-5-21-4100-4200-4300-2101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[].MemberId",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/groups.json",
+          "record_id": "S-1-5-21-4100-4200-4300-2101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-4100-4200-4300-1101",
+      "target": "S-1-5-21-4100-4200-4300-2101",
+      "weight": 1.0
+    },
+    "AdminTo": {
+      "derivation": {
+        "kind": "nested_membership",
+        "paths": [
+          {
+            "steps": [
+              {
+                "evidence_refs": [
+                  "sha256:0cd5a5c397eab60e22a7f14e25c70f8313c8b901516617e0005941ce749f057f",
+                  "sha256:4d76283600ee085c642371f45f3dcb6454110f23db2423d24a5390d9ce77bc24"
+                ],
+                "operation": "effective_membership",
+                "order": 0,
+                "source": "S-1-5-21-4100-4200-4300-1101",
+                "target": "S-1-5-21-4100-4200-4300-2101"
+              },
+              {
+                "evidence_refs": [
+                  "sha256:0d3c7ed073976cccb2ab56f1fcbdafbb67cc37b8c2ac9a8e7ba1ee03a3cf1481"
+                ],
+                "operation": "effective_membership",
+                "order": 1,
+                "source": "S-1-5-21-4100-4200-4300-2101",
+                "target": "S-1-5-21-4100-4200-4300-2102"
+              },
+              {
+                "evidence_refs": [
+                  "sha256:b612682113713f8ba4bbe649e254fc3bb331cfa4895a85b1fc938ca9be4df924"
+                ],
+                "operation": "host_local_membership",
+                "order": 2,
+                "source": "S-1-5-21-4100-4200-4300-2102",
+                "target": "S-1-5-21-4100-4200-4300-3101"
+              }
+            ]
+          }
+        ],
+        "version": "1.1.0"
+      },
+      "id": "sha256:5987bc629b3b8cd76d1a535b4a336b3ce1edfd1bf70f2660f98851273a6d4b28",
+      "kind": "AdminTo",
+      "provenance": [
+        {
+          "attribute": "LocalGroups[].Results[]",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/computers.json",
+          "record_id": "S-1-5-21-4100-4200-4300-3101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[]",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/groups-repeat.json",
+          "record_id": "S-1-5-21-4100-4200-4300-2101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[]",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/groups.json",
+          "record_id": "S-1-5-21-4100-4200-4300-2101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "Members[]",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "positive",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/groups.json",
+          "record_id": "S-1-5-21-4100-4200-4300-2102",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "source": "S-1-5-21-4100-4200-4300-1101",
+      "target": "S-1-5-21-4100-4200-4300-3101",
+      "weight": 1.0
+    },
+    "CanRDP_unknown": {
+      "id": "host-access:b848cee22da5da6045c1173f3856404070b2163efff80996674c63c401e277ce",
+      "kind": "CanRDP",
+      "provenance": [
+        {
+          "attribute": "RemoteDesktopUsers[]",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "unknown",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/computers.json",
+          "record_id": "S-1-5-21-4100-4200-4300-3101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        },
+        {
+          "attribute": "UserRights",
+          "collector": "sharphound/synthetic-v3",
+          "evidence_type": "unknown",
+          "raw_file": "snapshot:1f76e5bdeffbc474fa55872fe328806faf35a23f29525d8adfeecc1f6484a5d4/computers.json",
+          "record_id": "S-1-5-21-4100-4200-4300-3101",
+          "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+          "timestamp": "2026-09-24T00:00:00Z",
+          "timestamp_status": "assumed"
+        }
+      ],
+      "reason": "required UserRights evidence is incomplete",
+      "status": "unknown",
+      "subject": "S-1-5-21-4100-4200-4300-1101",
+      "target": "S-1-5-21-4100-4200-4300-3101"
+    }
+  },
+  "raw_m1_metadata": {
+    "code_version": "49f591fa4feef390e62252509352ac2d8a5f7a88",
+    "contract_version": "1.3.0",
+    "created_at": "2026-10-01T00:00:00Z",
+    "snapshot_id": "sha256:b70656467f4709e948495175430dc9245ce668d92d91cfeb3be96b81728b810d",
+    "weight_profile": "unit"
+  },
+  "raw_m1_counts": {
+    "nodes": 6,
+    "edges": 9,
+    "assessments": 0
+  },
+  "raw_m1_directed_triples": [
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "WriteDacl",
+      "target": "S-1-5-21-700-800-900-1102"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "CanPSRemote",
+      "target": "S-1-5-21-700-800-900-3101"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "CanRDP",
+      "target": "S-1-5-21-700-800-900-3101"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "GenericAll",
+      "target": "S-1-5-21-700-800-900-1102"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-3101",
+      "kind": "HasSession",
+      "target": "S-1-5-21-700-800-900-1102"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "MemberOf",
+      "target": "S-1-5-21-700-800-900-2101"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "AdminTo",
+      "target": "S-1-5-21-700-800-900-3101"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-2101",
+      "kind": "AdminTo",
+      "target": "S-1-5-21-700-800-900-3101"
+    },
+    {
+      "source": "S-1-5-21-700-800-900-1101",
+      "kind": "ForceChangePassword",
+      "target": "S-1-5-21-700-800-900-1102"
+    }
+  ],
+  "raw_m1_session": {
+    "id": "sha256:a04c4f5f4c6e85a3b29872f16344ea2f08db6db88a3d533e5ffd466c9e034bee",
+    "kind": "HasSession",
+    "provenance": [
+      {
+        "attribute": "Sessions[].UserSID",
+        "collector": "synthetic/47",
+        "evidence_type": "positive",
+        "raw_file": "snapshot:b70656467f4709e948495175430dc9245ce668d92d91cfeb3be96b81728b810d/computers.json",
+        "record_id": "S-1-5-21-700-800-900-3101",
+        "time_provenance_reason": "Fixed illustrative collection time for synthetic parser demo snapshots; not an observed collection timestamp.",
+        "timestamp": "2026-09-24T00:00:00Z",
+        "timestamp_status": "assumed"
+      }
+    ],
+    "source": "S-1-5-21-700-800-900-3101",
+    "target": "S-1-5-21-700-800-900-1102",
+    "weight": 1.0
+  },
+  "raw_m1_domain_nodes": [
+    {
+      "domain": "EXTERNAL.TEST",
+      "id": "S-1-5-21-1700-1800-1900",
+      "is_boundary": true,
+      "kind": "Domain",
+      "label": "EXTERNAL.TEST"
+    },
+    {
+      "domain": "SYNTHETIC.TEST",
+      "id": "S-1-5-21-700-800-900",
+      "is_boundary": false,
+      "kind": "Domain",
+      "label": "S-1-5-21-700-800-900"
+    }
+  ]
+}

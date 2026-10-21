@@ -1,0 +1,410 @@
+{
+  "batch": {
+    "declared_cells": 6,
+    "effort_rated_cells": 2,
+    "evaluated_cells": 6,
+    "likelihood_rated_cells": 0,
+    "not_run_cells_count": 0,
+    "policy": "min_effort_impact_pareto",
+    "sources_reaching_tier_0": 2,
+    "status_counts": {
+      "truncated_incomplete": 4,
+      "truncated_success": 2
+    },
+    "successful_cells": 2,
+    "successful_sources": 2,
+    "supported_sources": 2,
+    "total_sources": 2,
+    "unsupported_sources": 0
+  },
+  "defender_brief": {
+    "defender-brief.json": {
+      "path": "defender-brief.json",
+      "sha256": "sha256:9da7c8a5f022b33d7b402cc2e9eff60106df11cbb805395b762b614687ca5f7e"
+    },
+    "defender-brief.md": {
+      "path": "defender-brief.md",
+      "sha256": "sha256:118903066608990ca000c42ac66785a74bd6902e5c60660d85b6b2e37196f8e4"
+    }
+  },
+  "effort_profile": {
+    "classes": {
+      "acquire_reset_identity": {
+        "cost": 0,
+        "method": "AuthenticationControl",
+        "name": "reset_identity_activation",
+        "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "name": "directory_password_reset",
+        "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+        "t1": 1,
+        "t2": 2
+      }
+    },
+    "dimension": "C",
+    "excluded": [
+      "P",
+      "I",
+      "password recovery",
+      "retries",
+      "existing source membership route",
+      "pre-seeded second usable identity/context",
+      "group/derived-right reset work",
+      "Computer host control without explicit network identity"
+    ],
+    "historical_numeric_authority": {
+      "dimension": "C",
+      "review": {
+        "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+        "purpose": "numeric_context_history_adoption",
+        "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+        "reviewed_at": "2026-10-13T04:30:57Z",
+        "reviewer": "nairyuuu"
+      }
+    },
+    "profile_id": "reset-activation-c-v2",
+    "scope_adoption": {
+      "rationale": "Apply the same ordinal reset/activation operation rubric to direct User or explicitly usable Computer principals, at one same-domain Computer context. The controller kind changes applicability, not the operation price. This is an opt-in solo-fork scenario estimate, not observed duration or historical reviewer approval of this scope. One successful operation per canonical work unit; retries/time not modeled. Local host control alone is insufficient. An actor-to-User canonical grant may be inherited; effective permission is already a conditioned prerequisite. Group/derived rights remain unpriced.",
+      "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/297",
+      "status": "explicit_opt_in_solo_fork_scenario"
+    },
+    "sources": {
+      "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": {
+        "sha256": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb"
+      },
+      "docs/research/ratings/final-cpi-v1/profile.json": {
+        "sha256": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37"
+      }
+    },
+    "version": "2.0.0"
+  },
+  "elapsed_seconds": 35.840108499862254,
+  "evaluation_mode": "scenario",
+  "execution_budget": {
+    "max_cells": 6,
+    "max_expansions": 36000,
+    "max_seconds": null,
+    "per_query_seconds": null
+  },
+  "impact": "Unknown unless separately bound by an applicable numeric registry",
+  "implementation_sha256": "sha256:53134992c7a35c0146eb0dacdb8e03bf1422942f5ec0123fdc8ee9cdbda7ce53",
+  "input_files": {
+    "snapshot": {
+      "reference": "reports/generated/awg-r04-ce-v1/snapshot.json",
+      "sha256": "sha256:ea9c6c54f4a9439bca6e7bfd403a00c8032c882944668eb3fd0d4545b32b0f63"
+    }
+  },
+  "phase_seconds": {
+    "batch_search_and_audit": 28.284738625166938,
+    "build_defender_brief": 0.01789458398707211,
+    "compile_and_write_request": 0.2804469580296427,
+    "inventory": 0.6859657918103039,
+    "load_and_validate_graph": 1.3474444160237908,
+    "serialize_full_result": 4.452882124809548
+  },
+  "progress": {
+    "path": "discovery-progress.jsonl",
+    "sha256": "sha256:f6b553c2fdfae5476287788d8a87325a5f4da5f1eeb372930999a207258e8212"
+  },
+  "result": {
+    "path": "result.json",
+    "sha256": "sha256:807cfba26c1420e2071755a9659d51ad750fa2a786caf0a335b3020e0477c191"
+  },
+  "resume": {
+    "enabled": false,
+    "previous_artifacts": []
+  },
+  "scenario_policy": {
+    "digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+    "profile": {
+      "bound_snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "description": "SEAMLESS standard scenario assumption profile: conditions safe Active Directory intranet reachability, protocol acceptance, and DACL write rights while strictly forbidding recovery_success, unverified distribution groups, and fictitious edges.",
+      "evaluation_mode": "seamless_standard_scenario",
+      "forbidden_predicates": [
+        "actor_authenticated",
+        "actor_controlled",
+        "admin_control",
+        "control",
+        "controlled_service",
+        "delegated_context",
+        "rbcd_descriptor",
+        "rbcd_secret",
+        "recovery_success",
+        "relationship_exists",
+        "source_admin_control",
+        "source_authorized",
+        "usable_identity"
+      ],
+      "profile_id": "seamless-standard-v1",
+      "rules": [
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "network_kdc_reachable",
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+          "rule_id": "rule-global-kdc-reachable",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "network_rpc_reachable",
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "rationale": "MS-RPC port 135/dynamic RPC reachable for directory/SAMR operations",
+          "rule_id": "rule-global-rpc-reachable",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "network_winrm_reachable",
+          "provenance_reference": "policy://seamless/v1/network/winrm",
+          "rationale": "WinRM ports 5985/5986 reachable to servers configured for remote management",
+          "rule_id": "rule-global-winrm-reachable",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "service_winrm_running",
+          "provenance_reference": "policy://seamless/v1/service/winrm",
+          "rationale": "WinRM service is running and listening on target computer",
+          "rule_id": "rule-global-winrm-service-running",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "asrep_request_accepted",
+          "provenance_reference": "policy://seamless/v1/kerberos/asrep",
+          "rationale": "KDC standard AS-REQ accepted for accounts with DONT_REQ_PREAUTH flag",
+          "rule_id": "rule-global-asrep-request-accepted",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "service_ticket_request_accepted",
+          "provenance_reference": "policy://seamless/v1/kerberos/tgs",
+          "rationale": "KDC standard TGS-REQ accepted for accounts with valid SPN",
+          "rule_id": "rule-global-service-ticket-accepted",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "kerberos_authentication_usable",
+          "provenance_reference": "policy://seamless/v1/kerberos/auth",
+          "rationale": "Kerberos authentication package is functional on domain member systems",
+          "rule_id": "rule-global-kerberos-usable",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "kerberos_actor_authenticated",
+          "provenance_reference": "policy://seamless/v1/kerberos/tgt",
+          "rationale": "Authenticated logon session holds a valid Kerberos TGT",
+          "rule_id": "rule-global-kerberos-actor-authenticated",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "global"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "admin_channel",
+          "provenance_reference": "policy://seamless/v1/host/admin-channel",
+          "rationale": "Administrative channel (SMB/WMI/WinRM) is available for local administrators",
+          "rule_id": "rule-typed-admin-channel",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "admin_execution_context",
+          "provenance_reference": "policy://seamless/v1/host/exec-context",
+          "rationale": "Host execution context permits remote code execution for administrators",
+          "rule_id": "rule-typed-admin-execution-context",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "endpoint_authorized",
+          "provenance_reference": "policy://seamless/v1/host/endpoint-auth",
+          "rationale": "Target endpoint authorizes connections from designated administrator accounts",
+          "rule_id": "rule-typed-endpoint-authorized",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "host_admin_mapping",
+          "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+          "rationale": "Local administrator group mapping corresponds to AdminTo entitlement",
+          "rule_id": "rule-typed-host-admin-mapping",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "authentication_accepted",
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "rationale": "Target validates and accepts valid domain credentials",
+          "rule_id": "rule-typed-auth-accepted",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "winrm_authentication_accepted",
+          "provenance_reference": "policy://seamless/v1/auth/winrm-accepted",
+          "rationale": "WinRM listener validates and accepts administrative credentials",
+          "rule_id": "rule-typed-winrm-auth-accepted",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "rdp_available",
+          "provenance_reference": "policy://seamless/v1/service/rdp",
+          "rationale": "Remote Desktop service is enabled and accepting connections",
+          "rule_id": "rule-typed-rdp-available",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "winrm_available",
+          "provenance_reference": "policy://seamless/v1/service/winrm-available",
+          "rationale": "WinRM PowerShell remoting endpoint is available",
+          "rule_id": "rule-typed-winrm-available",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "directory_write_allowed",
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "rationale": "Active Directory directory modification allowed under granted ACE rights",
+          "rule_id": "rule-typed-directory-write",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "password_policy_accepts",
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "rationale": "Password reset value satisfies domain password complexity and length policy",
+          "rule_id": "rule-typed-password-policy-accepts",
+          "subject_kind": null,
+          "target_kind": "User",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "membership_change_allowed",
+          "provenance_reference": "policy://seamless/v1/directory/member-add",
+          "rationale": "Modifying group member attribute allowed under granted object control ACE",
+          "rule_id": "rule-typed-membership-change",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "membership_usable",
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "rationale": "Group SID is incorporated into access token upon session logon",
+          "rule_id": "rule-typed-membership-usable",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "secret_valid",
+          "provenance_reference": "policy://seamless/v1/credential/secret-valid",
+          "rationale": "Target account secret is current, unexpired, and matches directory password hash",
+          "rule_id": "rule-typed-secret-valid",
+          "subject_kind": null,
+          "target_kind": null,
+          "taxonomy": "typed"
+        },
+        {
+          "default_value": true,
+          "metadata": {},
+          "predicate": "security_group",
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "rationale": "Target group is a security-enabled group capable of token authorization",
+          "rule_id": "rule-typed-security-group",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "taxonomy": "typed"
+        }
+      ],
+      "version": "1.0.0"
+    }
+  },
+  "search_strategy": "Per-source/per-goal goal_guided; prepared reuse, not shared traversal; unsupported goal/catalog falls back to FIFO",
+  "selection": {
+    "all_inventory_pairs_selected": false,
+    "eligible_sources": 2590,
+    "eligible_targets": 12,
+    "inventory_pairs_outside_selected_cohort": 31074,
+    "max_sources": 0,
+    "max_targets": 3,
+    "potential_pairs": 31080,
+    "selected_pairs": 6,
+    "selected_sources": 2,
+    "selected_targets": 3,
+    "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+    "source_selector": [
+      "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "S-1-5-21-1271839998-3495686680-2211690266-4157"
+    ]
+  },
+  "version": "exposure-inventory/1.0.0"
+}

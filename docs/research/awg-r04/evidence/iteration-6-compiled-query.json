@@ -1,0 +1,1023 @@
+{
+  "action_bindings": null,
+  "active_scope": null,
+  "aliases": {
+    "__RESOLVED_ACTOR__": "S-1-5-21-1271839998-3495686680-2211690266-2799"
+  },
+  "allowed_techniques": [
+    "obtain_admin_execution_on_host",
+    "propagate_group_entitlement"
+  ],
+  "assumptions": [
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2408",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-500",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "host_kind": "Computer",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-admin-channel"
+      },
+      "origin": "declared_assumption",
+      "predicate": "admin_channel",
+      "provenance_reference": "policy://seamless/v1/host/admin-channel",
+      "rationale": "Administrative channel available on target host BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-asrep-request-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "asrep_request_accepted",
+      "provenance_reference": "policy://seamless/v1/kerberos/asrep",
+      "rationale": "KDC accepts AS-REQ for preauth-disabled identity DENA_WILLIAM@SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2408",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Logon authentication accepted for DENA_WILLIAM@SEAMLESS.INTERNAL in context S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-500",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-auth-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "policy://seamless/v1/auth/accepted",
+      "rationale": "Host BADBLOOD.SEAMLESS.INTERNAL accepts domain credentials for authorized local admin",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-host-admin-mapping"
+      },
+      "origin": "declared_assumption",
+      "predicate": "host_admin_mapping",
+      "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+      "rationale": "Local administrator group mapping corresponds to AdminTo entitlement on BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-host-admin-mapping"
+      },
+      "origin": "declared_assumption",
+      "predicate": "host_admin_mapping",
+      "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+      "rationale": "Local administrator group mapping corresponds to AdminTo entitlement on BADBLOOD.SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-kerberos-actor-authenticated"
+      },
+      "origin": "declared_assumption",
+      "predicate": "kerberos_actor_authenticated",
+      "provenance_reference": "policy://seamless/v1/kerberos/tgt",
+      "rationale": "Actor possesses initial Kerberos TGT",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-kerberos-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "kerberos_authentication_usable",
+      "provenance_reference": "policy://seamless/v1/kerberos/auth",
+      "rationale": "Kerberos package functional on foothold host",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-11",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-516",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target": "S-1-5-9",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-11",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "target": "S-1-5-11",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-membership-usable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "policy://seamless/v1/token/member-usable",
+      "rationale": "Group membership is incorporated into session token",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-kdc-reachable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "network_kdc_reachable",
+      "provenance_reference": "policy://seamless/v1/network/kdc",
+      "rationale": "KDC reachable for logon authentication",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-kdc-reachable"
+      },
+      "origin": "declared_assumption",
+      "predicate": "network_kdc_reachable",
+      "provenance_reference": "policy://seamless/v1/network/kdc",
+      "rationale": "KDC network reachable from initial foothold",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-secret-valid"
+      },
+      "origin": "declared_assumption",
+      "predicate": "secret_valid",
+      "provenance_reference": "policy://seamless/v1/credential/secret-valid",
+      "rationale": "Recovered secret for DENA_WILLIAM@SEAMLESS.INTERNAL is valid in domain",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545): Users (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-11",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-516): Domain Controllers (MS-SAMR 2.2.1.1.5)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group DOMAIN CONTROLLERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-516",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "ENTERPRISE DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-9): Enterprise Domain Controllers (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group ENTERPRISE DOMAIN CONTROLLERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target": "S-1-5-9",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-11): Authenticated Users (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group AUTHENTICATED USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-11",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-512): Domain Admins (MS-SAMR 2.2.1.1.5)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group DOMAIN ADMINS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "DOMAIN USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-21-1271839998-3495686680-2211690266-513): Domain Users (MS-SAMR 2.2.1.1.5)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group DOMAIN USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544): Administrators (MS-DTYP 2.4.2.4 / MS-SAMR 2.2.1.1.5)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group ADMINISTRATORS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545): Users (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544): Administrators (MS-DTYP 2.4.2.4 / MS-SAMR 2.2.1.1.5)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group ADMINISTRATORS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (S-1-5-11): Authenticated Users (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group AUTHENTICATED USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "target": "S-1-5-11",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "classification_basis": "well_known_identity_allowlist",
+        "group_kind": "security_group",
+        "group_label": "USERS@SEAMLESS.INTERNAL",
+        "identity_provenance": "reviewed well-known security identity (domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545): Users (MS-DTYP 2.4.2.4)",
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-typed-security-group"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "policy://seamless/v1/token/security-group",
+      "rationale": "Group USERS@SEAMLESS.INTERNAL is a verified security group (well_known_identity_allowlist)",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-513",
+      "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-545",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "policy_version": "1.0.0",
+        "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+        "profile_id": "seamless-standard-v1",
+        "rule_id": "rule-global-service-ticket-accepted"
+      },
+      "origin": "declared_assumption",
+      "predicate": "service_ticket_request_accepted",
+      "provenance_reference": "policy://seamless/v1/kerberos/tgs",
+      "rationale": "KDC issues service ticket for SPN identity DENA_WILLIAM@SEAMLESS.INTERNAL",
+      "scope": "seamless-policy:seamless-standard-v1",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    }
+  ],
+  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "budget": {
+    "max_expansions": 100,
+    "max_paths": 5,
+    "max_steps": 4
+  },
+  "catalog": null,
+  "checkpoint_goal": null,
+  "checkpoint_state_predicate": null,
+  "evaluation_mode": "scenario",
+  "graph": null,
+  "initial_actor": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+  "initial_state": {
+    "admin_control": [],
+    "asrep_material": [],
+    "asrep_request_capability": [],
+    "authentication_control": [],
+    "authentication_unknown": [],
+    "control": [
+      "S-1-5-21-1271839998-3495686680-2211690266-2799"
+    ],
+    "controlled_service": [],
+    "credential_material": [],
+    "delegated_context": [],
+    "effective_member": [],
+    "interactive_session": [],
+    "known_identity": [
+      "S-1-5-21-1271839998-3495686680-2211690266-2799"
+    ],
+    "permission": [],
+    "rbcd_descriptor": [],
+    "rbcd_secret": [],
+    "recovered_secret": [],
+    "relationship_added": [],
+    "remote_command_execution": [],
+    "reset_password_control": [],
+    "service_ticket_material": [],
+    "usable_identity": [
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      ]
+    ]
+  },
+  "ranking_query": null,
+  "rating_resolution": null,
+  "rbcd_bindings": [],
+  "runtime_facts": [],
+  "scenario_policy_metadata": {
+    "applied_overrides": [],
+    "assumptions_count": 49,
+    "evaluation_mode": "seamless_standard_scenario",
+    "policy_assumptions_count": 49,
+    "profile_digest": "sha256:22936f0d82df3efe72fcd3ab4c0a8dc39abef8c08252ee55b3017c069a98c2a9",
+    "profile_id": "seamless-standard-v1",
+    "rejected_assumptions": [
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group '13-POL-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3703"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'RA-PUERTOESC-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3700"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'KO-609661116-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-3700",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3714"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'SO-A1B-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3993"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'VI-DRAGONS16-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3778"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'RO-MAG-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3988"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'LE-MIGUEL294-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3728"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'MA-DELIA8488-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-3700",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-4056"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'CL-PATANEGRA-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3686"
+      },
+      {
+        "attempted_value": true,
+        "conflicting_origin": null,
+        "conflicting_value": null,
+        "predicate": "security_group",
+        "rationale": "Group 'JE-LAURACAST-DISTLIST1@SEAMLESS.INTERNAL' has distribution list naming or distribution groupType; DACL rights cannot propagate without explicit opt-in",
+        "reason": "distribution_group_cannot_default",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-3942"
+      }
+    ],
+    "rejected_count": 10,
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+  },
+  "scenario_reference": "batch-cell:sha256:d1ec8cae1436a23c96114bd77777996b285d4efae099d87f6cf29daded355807",
+  "source_foothold": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+  "success_state_predicate": null,
+  "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "target_goal": {
+    "required_state": {
+      "admin_control": [
+        "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      ]
+    },
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+  },
+  "withheld_relationships": null
+}

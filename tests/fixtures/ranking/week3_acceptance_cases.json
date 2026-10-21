@@ -1,0 +1,1305 @@
+{
+  "schema_version": "1.0.0",
+  "recorded_provenance": {
+    "base_revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+    "runtime": {
+      "python": "3.14.7",
+      "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+      "installed_distributions": {
+        "PyYAML": "6.0.3",
+        "Pygments": "2.21.0",
+        "iniconfig": "2.3.0",
+        "networkx": "3.7",
+        "packaging": "26.3",
+        "pathspec": "1.1.1",
+        "pluggy": "1.6.0",
+        "pytest": "9.1.1",
+        "ruff": "0.16.8",
+        "yamllint": "1.38.0"
+      }
+    },
+    "verification": "Recorded from the original acceptance run; not verified against the current checkout/runtime by replay_command."
+  },
+  "scope": "Release and supplied-candidate replay only; parser/search E2E pending",
+  "runtime": {
+    "dependencies": "requirements-dev.txt",
+    "dependencies_file_sha256": "77b0803fae9921f6d018a6c999a3008ae7873bae7d130da32947e128507e09e8",
+    "requirements_file_sha256": "8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f"
+  },
+  "release": {
+    "path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+    "digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+    "file_sha256": "5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+    "verify_entrypoint": "scripts.research.reviewed_parameter_release.verify_release",
+    "oracle": {
+      "path": "docs/research/ratings/week3-closeout/validation-summary.json",
+      "canonical_digest": "sha256:1ed194811fc60cc982ec52fb51416bdb93e3be00ec308c604e19c7b5d5777cb3",
+      "entrypoint": "scripts.research.reviewed_parameter_release.analytical_expectations"
+    },
+    "raw_manifest": {
+      "path": "data/samples/manifests/seamless-raw-v1.json",
+      "canonical_digest": "sha256:bcba779c6b18e0c5fe9e04e8684195034aad5acf30017e4d068816438fb3c66b"
+    }
+  },
+  "overlay_policy": "RFC 6902 add/remove on deep copy after verify_release. Counterfactual variants, not observations/new ratings. Keep original query/scope/rating bindings; case_id + overlaid_digest identifies variant. Never reseal as reviewed release.",
+  "programs": {
+    "cand_seamless_01_direct_lidia": [
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+    ],
+    "cand_seamless_02_alt_vajer_ollie": [
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+    ],
+    "cand_seamless_source_b_01_ollie": [
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+    ]
+  },
+  "replay_command": ".venv/bin/python tests/test_week3_acceptance_manifest.py",
+  "b_search_boundary": {
+    "entrypoints": [
+      "src.engine.search.generate_attack_paths",
+      "src.engine.ranking.orchestration.coverage_from_search_result",
+      "src.engine.ranking.orchestration.evaluate_search_candidates"
+    ],
+    "command_owner": "B #155/#48 must provide raw/parser -> actual bounded search -> ordered bindings -> adapter -> rank command per case. Replay command is not that command.",
+    "raw_prerequisites": "Local data/raw/SEAMLESS matching snapshot manifest; no raw records committed. Synthetic regressions run without raw.",
+    "ranking_cli": ".venv/bin/python -m src.engine.ranking.cli --query <case-query.json> --search-candidates <actual-bound-paths.json> --graph <canonical-graph.json> --coverage <actual-search-coverage.json> --output <case-result.json>"
+  },
+  "required_evidence": [
+    "integrated revision/runtime/dependencies/input digests and time policy",
+    "original fact ledger plus overlay identity and graph delta if evidence withheld",
+    "actual generator caps/counters/truncation: active work budget=6; record max_paths/max_steps/max_expansions/timeout",
+    "ordered transition decisions: actor/target, exact observed edge IDs/locators, derived origins, failed/unknown predicates",
+    "ordered action/work IDs, full-history bounds and work basis, target asset/success event/first-goal trace",
+    "rational output, frontier/relations, Min-Effort + coverage; two deterministic runs and clean-checkout cross-reproduction",
+    "empty bounded result is not global no-path evidence"
+  ],
+  "regression_execution": {
+    "verification": "References only; replay_command does not collect or execute these regressions. Full pytest/CI executes them.",
+    "execution_command": ".venv/bin/python -m pytest tests/test_engine_path_ranking_conformance.py -q"
+  },
+  "regression_references": [
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_11_known_false_hard_veto_overrides_assumptions",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_03_unknown_prerequisite",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_adapter_rejects_wrong_or_unknown_step_action",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_adapter_preserves_derived_transition_without_structural_evidence",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_derived_step_first_goal_trimming_keeps_exact_structural_prefix",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_13_first_goal_hitting_and_suffix_trimming",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_22_conservative_pareto_dominance",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_23_overlapping_intervals_remain_incomparable",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_24_exact_point_likelihood_effort_tiebreak",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_16_persistent_work_unit_deduplication",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_conformance_18_unresolved_work_overlap_withholds_cost",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_coverage_preserves_explicit_issue_146_step_limit_reason",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_coverage_fails_closed_when_truncation_cause_is_not_observable",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_to_ranking_hydrates_exact_edge_from_pinned_canonical_graph",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    },
+    {
+      "nodeid": "tests/test_engine_path_ranking_conformance.py::test_search_to_ranking_false_and_unknown_facts_fail_closed",
+      "evidence_class": "synthetic regression; not release-consuming raw/search E2E"
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "w3-source-a-positive",
+      "kind": "positive",
+      "evidence_class": "SEAMLESS supplied scenario; human_reviewed_ai_assisted_ratings",
+      "source": "source_a",
+      "query_id": "query-seamless-host-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a",
+        "projection_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b",
+        "overlaid_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_01_direct_lidia",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/0",
+          "canonical_digest": "sha256:4a506717ea20e006c30cea5effd64029a57b9d847dc9f551a7855e47b27e3c7b",
+          "ordered_action_ids": [
+            "action_reset_lidia",
+            "action_activate_lidia",
+            "action_closure_lidia_da",
+            "action_winrm_badblood_lidia"
+          ],
+          "program_ref": "cand_seamless_01_direct_lidia"
+        },
+        {
+          "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/1",
+          "canonical_digest": "sha256:006817d2f10fbbd68f5165de9c1a6e56624492d69fe063144fcdee5b8a01358c",
+          "ordered_action_ids": [
+            "action_reset_josefa",
+            "action_activate_josefa",
+            "action_closure_josefa_vajer",
+            "action_reset_ollie",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_02_alt_vajer_ollie"
+        }
+      ],
+      "overlay": [],
+      "expected": {
+        "candidates": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "feasible",
+            "effort": 2,
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_01_direct_lidia",
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "relations": [
+          {
+            "a": "cand_seamless_01_direct_lidia",
+            "b": "cand_seamless_02_alt_vajer_ollie",
+            "relation": "incomparable"
+          }
+        ],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_01_direct_lidia",
+          "minimum_effort_value": 2
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 2,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        }
+      },
+      "search_expected": "Generate equivalent ordered release programs under recorded bounded scope. Match programs/bindings, not arbitrary generator candidate labels. Any extra path lacking full-history ratings remains unrated.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:65a0f10588a783a72b4d77a6e1901cf22e9d3e8463bc35b9d7485d280fad1680",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-a-positive",
+        "summary": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "feasible",
+            "effort": 2,
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ]
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      }
+    },
+    {
+      "case_id": "w3-source-a-known-false",
+      "kind": "known_false",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_a",
+      "query_id": "query-seamless-host-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a",
+        "projection_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b",
+        "overlaid_digest": "sha256:0b1e409a2573253c77c0de49641a257f37dbf420def093a6ba6399f85eeb02af"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_01_direct_lidia",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/0",
+          "canonical_digest": "sha256:4a506717ea20e006c30cea5effd64029a57b9d847dc9f551a7855e47b27e3c7b",
+          "ordered_action_ids": [
+            "action_reset_lidia",
+            "action_activate_lidia",
+            "action_closure_lidia_da",
+            "action_winrm_badblood_lidia"
+          ],
+          "program_ref": "cand_seamless_01_direct_lidia"
+        },
+        {
+          "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/1",
+          "canonical_digest": "sha256:006817d2f10fbbd68f5165de9c1a6e56624492d69fe063144fcdee5b8a01358c",
+          "ordered_action_ids": [
+            "action_reset_josefa",
+            "action_activate_josefa",
+            "action_closure_josefa_vajer",
+            "action_reset_ollie",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_02_alt_vajer_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "add",
+          "path": "/query/facts_ledger/false_facts/-",
+          "value": {
+            "predicate": "directory_write_allowed_lidia",
+            "layer": 3,
+            "truth_value": false,
+            "reason": "w3-source-a-known-false counterfactual, not snapshot observation"
+          }
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "blocked",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "blocked",
+              "likelihood_unrated"
+            ]
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "minimum_effort_value": 3
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 2,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "False",
+          "layer": 3,
+          "disposition": "observed_false_veto"
+        }
+      },
+      "search_expected": "No related candidate in frontier. Search may prune blocked transitions; persist false predicate and decision reason even if no candidate reaches adapter. True assumption cannot override false.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:483116dc5e671ffeaf51e3b36d58aae93f360caf4089497fce5fc98c1bad9705",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-a-known-false",
+        "summary": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "blocked",
+            "effort": null,
+            "likelihood_interval": null
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "directory_write_allowed_lidia",
+        "layer": 3,
+        "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/query/facts_ledger/predicate_layers/directory_write_allowed_lidia",
+        "requires_actions": [
+          "action_reset_lidia"
+        ],
+        "search_binding": {
+          "catalog": "configs/attack_semantics.yml",
+          "technique_id": "genericall_reset_password",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "value": false,
+          "origin": "blocked_evidence",
+          "scope": "scenario-seamless-host-to-dc",
+          "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto.",
+          "policy": "Resolve known-false veto before constructing RuntimeContext; it rejects contradictory duplicate keys. Preserve original observed/assumed ledger in audit; never insert both contradictory RuntimeFact records."
+        }
+      }
+    },
+    {
+      "case_id": "w3-source-a-runtime-unknown",
+      "kind": "runtime_unknown",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_a",
+      "query_id": "query-seamless-host-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a",
+        "projection_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b",
+        "overlaid_digest": "sha256:9cd32f74f5114dc152e8d2db517ac21b065a51faf57aaebd15c68191801e3421"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_01_direct_lidia",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/0",
+          "canonical_digest": "sha256:4a506717ea20e006c30cea5effd64029a57b9d847dc9f551a7855e47b27e3c7b",
+          "ordered_action_ids": [
+            "action_reset_lidia",
+            "action_activate_lidia",
+            "action_closure_lidia_da",
+            "action_winrm_badblood_lidia"
+          ],
+          "program_ref": "cand_seamless_01_direct_lidia"
+        },
+        {
+          "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/1",
+          "canonical_digest": "sha256:006817d2f10fbbd68f5165de9c1a6e56624492d69fe063144fcdee5b8a01358c",
+          "ordered_action_ids": [
+            "action_reset_josefa",
+            "action_activate_josefa",
+            "action_closure_josefa_vajer",
+            "action_reset_ollie",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_02_alt_vajer_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "remove",
+          "path": "/query/facts_ledger/assumed_facts/7"
+        },
+        {
+          "op": "add",
+          "path": "/query/facts_ledger/unknown_facts/-",
+          "value": {
+            "predicate": "directory_write_allowed_lidia",
+            "layer": 3,
+            "reason": "w3-source-a-runtime-unknown runtime observation unavailable"
+          }
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "unknown",
+              "likelihood_unrated"
+            ]
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "minimum_effort_value": 3
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 2,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "Unknown",
+          "layer": 3,
+          "disposition": "declared_unknown_fact"
+        }
+      },
+      "search_expected": "No related candidate applicable/ranked. Preserve unknown transition/exclusion reason. Remove assumption in search context too; do not impute bounds or default true.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:d1205f919806d7f3d19dfd00197f512ddf1441533b03a9f1afb925fe007657a3",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-a-runtime-unknown",
+        "summary": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "directory_write_allowed_lidia",
+        "layer": 3,
+        "rationale": "Remove runtime assumption; explicitly unknown without telemetry.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/query/facts_ledger/predicate_layers/directory_write_allowed_lidia",
+        "requires_actions": [
+          "action_reset_lidia"
+        ],
+        "search_binding": {
+          "catalog": "configs/attack_semantics.yml",
+          "technique_id": "genericall_reset_password",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+          "value": null,
+          "origin": "unknown",
+          "scope": "scenario-seamless-host-to-dc",
+          "rationale": "Remove runtime assumption; explicitly unknown without telemetry.",
+          "policy": "Resolve known-false veto before constructing RuntimeContext; it rejects contradictory duplicate keys. Preserve original observed/assumed ledger in audit; never insert both contradictory RuntimeFact records."
+        }
+      }
+    },
+    {
+      "case_id": "w3-source-a-structural-missing",
+      "kind": "structural_missing",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_a",
+      "query_id": "query-seamless-host-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a",
+        "projection_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b",
+        "overlaid_digest": "sha256:bc51f63fc2dea068e98071892a48ea5cb2c35e85e8fbf1c25c4b3bb93c903653"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_01_direct_lidia",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/0",
+          "canonical_digest": "sha256:4a506717ea20e006c30cea5effd64029a57b9d847dc9f551a7855e47b27e3c7b",
+          "ordered_action_ids": [
+            "action_reset_lidia",
+            "action_activate_lidia",
+            "action_closure_lidia_da",
+            "action_winrm_badblood_lidia"
+          ],
+          "program_ref": "cand_seamless_01_direct_lidia"
+        },
+        {
+          "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/1",
+          "canonical_digest": "sha256:006817d2f10fbbd68f5165de9c1a6e56624492d69fe063144fcdee5b8a01358c",
+          "ordered_action_ids": [
+            "action_reset_josefa",
+            "action_activate_josefa",
+            "action_closure_josefa_vajer",
+            "action_reset_ollie",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_02_alt_vajer_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "remove",
+          "path": "/query/facts_ledger/observed_facts/5/provenance_reference"
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "unknown",
+              "likelihood_unrated"
+            ]
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "minimum_effort_value": 3
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 2,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "Unknown",
+          "layer": 1,
+          "disposition": "missing_structural_provenance"
+        }
+      },
+      "search_expected": "Lidia remains unknown in replay. For raw/search E2E withhold the matching structural provenance at graph/search boundary too; record exact locator + graph delta. Complete unmodified graph could re-establish evidence, so query-only overlay is insufficient.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:ee93ae99f8f3e071467222e3b26f4a0bfb575da8be70eac0d9618b42d5866ba7",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-a-structural-missing",
+        "summary": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "genericall_tstwvir_lidia",
+        "layer": 1,
+        "rationale": "Withhold existing evidence; unrelated alternative route is unaffected.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/query/facts_ledger/predicate_layers/genericall_tstwvir_lidia",
+        "requires_actions": [
+          "action_reset_lidia"
+        ]
+      }
+    },
+    {
+      "case_id": "w3-source-a-telemetry-missing",
+      "kind": "telemetry_missing",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_a",
+      "query_id": "query-seamless-host-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a",
+        "projection_digest": "sha256:bfec064800996cc3c0dce15806db4aec62097cfbc0d42530a6a10e7ab06f840b",
+        "overlaid_digest": "sha256:90b49a4806703a6d48edd10430c3bf606ef9a9fb4974d5fd0dc9e08e614b97f9"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_01_direct_lidia",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/0",
+          "canonical_digest": "sha256:4a506717ea20e006c30cea5effd64029a57b9d847dc9f551a7855e47b27e3c7b",
+          "ordered_action_ids": [
+            "action_reset_lidia",
+            "action_activate_lidia",
+            "action_closure_lidia_da",
+            "action_winrm_badblood_lidia"
+          ],
+          "program_ref": "cand_seamless_01_direct_lidia"
+        },
+        {
+          "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/candidates/1",
+          "canonical_digest": "sha256:006817d2f10fbbd68f5165de9c1a6e56624492d69fe063144fcdee5b8a01358c",
+          "ordered_action_ids": [
+            "action_reset_josefa",
+            "action_activate_josefa",
+            "action_closure_josefa_vajer",
+            "action_reset_ollie",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_02_alt_vajer_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "remove",
+          "path": "/query/facts_ledger/observed_facts/1"
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "unknown",
+              "likelihood_unrated"
+            ]
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_02_alt_vajer_ollie",
+          "minimum_effort_value": 3
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 2,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "Unknown",
+          "layer": 2,
+          "disposition": "missing_telemetry"
+        }
+      },
+      "search_expected": "No default enabled=true. Withhold enabled_lidia observation from search fact context too; preserve unrelated alternative evidence.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:fbbb840769596359abca040de76e4cb054a68a4270fb191756cac3842d4535b9",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-a-telemetry-missing",
+        "summary": {
+          "cand_seamless_01_direct_lidia": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null
+          },
+          "cand_seamless_02_alt_vajer_ollie": {
+            "status": "feasible",
+            "effort": 3,
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "enabled_lidia",
+        "layer": 2,
+        "rationale": "Withhold existing evidence; unrelated alternative route is unaffected.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_a/query/facts_ledger/predicate_layers/enabled_lidia",
+        "requires_actions": [
+          "action_reset_lidia",
+          "action_activate_lidia",
+          "action_closure_lidia_da",
+          "action_winrm_badblood_lidia"
+        ]
+      }
+    },
+    {
+      "case_id": "w3-source-b-positive",
+      "kind": "positive",
+      "evidence_class": "SEAMLESS supplied scenario; human_reviewed_ai_assisted_ratings",
+      "source": "source_b",
+      "query_id": "query-seamless-source-b-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b",
+        "projection_digest": "sha256:270794b79a46bc5efcf40602d9d8666981922dc50ad39451abad42518ea9df09",
+        "overlaid_digest": "sha256:270794b79a46bc5efcf40602d9d8666981922dc50ad39451abad42518ea9df09"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_source_b_01_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b/candidates/0",
+          "canonical_digest": "sha256:01915a64c9b4a6c84664e5c267a26758240aad218579e4b6d5de5b3d67f797a2",
+          "ordered_action_ids": [
+            "action_reset_ollie_from_b",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_source_b_01_ollie"
+        }
+      ],
+      "overlay": [],
+      "expected": {
+        "candidates": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "feasible",
+            "effort": 2,
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ],
+            "impact": "High",
+            "diagnostic_reasons": []
+          }
+        },
+        "pareto_frontier": [
+          "cand_seamless_source_b_01_ollie"
+        ],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": "cand_seamless_source_b_01_ollie",
+          "minimum_effort_value": 2
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 1,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        }
+      },
+      "search_expected": "Generate equivalent ordered release programs under recorded bounded scope. Match programs/bindings, not arbitrary generator candidate labels. Any extra path lacking full-history ratings remains unrated.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:95377e1c907b1964f039b9c961d0d105a38e2de5f9c11e18bad02ec46c7c4a02",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-b-positive",
+        "summary": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "feasible",
+            "effort": 2,
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ]
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      }
+    },
+    {
+      "case_id": "w3-source-b-known-false",
+      "kind": "known_false",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_b",
+      "query_id": "query-seamless-source-b-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b",
+        "projection_digest": "sha256:270794b79a46bc5efcf40602d9d8666981922dc50ad39451abad42518ea9df09",
+        "overlaid_digest": "sha256:2017ae850db68b114e2f65e11e8b2f91b641e70eda58f6ae8e114a387e6f8eae"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_source_b_01_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b/candidates/0",
+          "canonical_digest": "sha256:01915a64c9b4a6c84664e5c267a26758240aad218579e4b6d5de5b3d67f797a2",
+          "ordered_action_ids": [
+            "action_reset_ollie_from_b",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_source_b_01_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "add",
+          "path": "/query/facts_ledger/false_facts/-",
+          "value": {
+            "predicate": "directory_write_allowed_ollie",
+            "layer": 3,
+            "truth_value": false,
+            "reason": "w3-source-b-known-false counterfactual, not snapshot observation"
+          }
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "blocked",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "blocked",
+              "likelihood_unrated"
+            ]
+          }
+        },
+        "pareto_frontier": [],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": null,
+          "minimum_effort_value": null
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 1,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "False",
+          "layer": 3,
+          "disposition": "observed_false_veto"
+        }
+      },
+      "search_expected": "No related candidate in frontier. Search may prune blocked transitions; persist false predicate and decision reason even if no candidate reaches adapter. True assumption cannot override false.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:322659cfb8ac920fcfe43159d25dca39c4ee77ca0a9426ff0a893d64cf0c54a1",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-b-known-false",
+        "summary": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "blocked",
+            "effort": null,
+            "likelihood_interval": null
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "directory_write_allowed_ollie",
+        "layer": 3,
+        "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b/query/facts_ledger/predicate_layers/directory_write_allowed_ollie",
+        "requires_actions": [
+          "action_reset_ollie_from_b"
+        ],
+        "search_binding": {
+          "catalog": "configs/attack_semantics.yml",
+          "technique_id": "genericall_reset_password",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "value": false,
+          "origin": "blocked_evidence",
+          "scope": "scenario-seamless-source-b-to-dc",
+          "rationale": "Counterfactual directory-write permission false; retain true assumption to check veto.",
+          "policy": "Resolve known-false veto before constructing RuntimeContext; it rejects contradictory duplicate keys. Preserve original observed/assumed ledger in audit; never insert both contradictory RuntimeFact records."
+        }
+      }
+    },
+    {
+      "case_id": "w3-source-b-runtime-unknown",
+      "kind": "runtime_unknown",
+      "evidence_class": "Counterfactual overlay; not SEAMLESS negative observation",
+      "source": "source_b",
+      "query_id": "query-seamless-source-b-to-dc-v1",
+      "scenario": {
+        "scenario_id": "scenario-seamless-source-b-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "target_goal": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "success_event": "terminal_compromise_seamless_dc",
+          "required_predicates": [
+            "admin_control_badblood"
+          ]
+        }
+      },
+      "input": {
+        "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b",
+        "projection_digest": "sha256:270794b79a46bc5efcf40602d9d8666981922dc50ad39451abad42518ea9df09",
+        "overlaid_digest": "sha256:d095cf41dd8e2467c70bde7000c3ac7f96fdf4ced3391b592ab4e7138b25145b"
+      },
+      "bindings": [
+        {
+          "candidate_id": "cand_seamless_source_b_01_ollie",
+          "locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b/candidates/0",
+          "canonical_digest": "sha256:01915a64c9b4a6c84664e5c267a26758240aad218579e4b6d5de5b3d67f797a2",
+          "ordered_action_ids": [
+            "action_reset_ollie_from_b",
+            "action_activate_ollie",
+            "action_closure_ollie_da",
+            "action_winrm_badblood_ollie"
+          ],
+          "program_ref": "cand_seamless_source_b_01_ollie"
+        }
+      ],
+      "overlay": [
+        {
+          "op": "remove",
+          "path": "/query/facts_ledger/assumed_facts/6"
+        },
+        {
+          "op": "add",
+          "path": "/query/facts_ledger/unknown_facts/-",
+          "value": {
+            "predicate": "directory_write_allowed_ollie",
+            "layer": 3,
+            "reason": "w3-source-b-runtime-unknown runtime observation unavailable"
+          }
+        }
+      ],
+      "expected": {
+        "candidates": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null,
+            "impact": "High",
+            "diagnostic_reasons": [
+              "unknown",
+              "likelihood_unrated"
+            ]
+          }
+        },
+        "pareto_frontier": [],
+        "relations": [],
+        "min_effort": {
+          "best_candidate_id": null,
+          "minimum_effort_value": null
+        },
+        "search_metadata": {
+          "budget_limit": 6,
+          "candidates_evaluated": 1,
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "caps_applied": {
+            "max_active_work_budget": 6,
+            "max_candidates": null,
+            "timeout_ms": null,
+            "max_expansions": null
+          },
+          "completeness_scope": "unspecified_subset",
+          "search_algorithm": "provided_candidate_assessment"
+        },
+        "resolved_fact": {
+          "value": "Unknown",
+          "layer": 3,
+          "disposition": "declared_unknown_fact"
+        }
+      },
+      "search_expected": "No related candidate applicable/ranked. Preserve unknown transition/exclusion reason. Remove assumption in search context too; do not impute bounds or default true.",
+      "actual_replay": {
+        "verdict": "passed",
+        "revision": "d8e0b28be2afd5b1807082283efd4db01fad3240",
+        "implementation": "PathRankingEngine.evaluate -> validation/facts/replay/assessment/frontier",
+        "canonical_output_digest": "sha256:d6715f30ec395a62e2b51313ee9096ebad22fd9587a7e18cffde15f87475ee58",
+        "input_output_prefix": "reports/generated/week3-177/w3-source-b-runtime-unknown",
+        "summary": {
+          "cand_seamless_source_b_01_ollie": {
+            "status": "unknown",
+            "effort": null,
+            "likelihood_interval": null
+          }
+        }
+      },
+      "actual_search_e2e": {
+        "verdict": "not_run",
+        "output": null
+      },
+      "predicate": {
+        "name": "directory_write_allowed_ollie",
+        "layer": 3,
+        "rationale": "Remove runtime assumption; explicitly unknown without telemetry.",
+        "catalog_locator": "docs/research/ratings/week3-closeout/reviewed-release.json#/query_projections/source_b/query/facts_ledger/predicate_layers/directory_write_allowed_ollie",
+        "requires_actions": [
+          "action_reset_ollie_from_b"
+        ],
+        "search_binding": {
+          "catalog": "configs/attack_semantics.yml",
+          "technique_id": "genericall_reset_password",
+          "predicate": "directory_write_allowed",
+          "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "value": null,
+          "origin": "unknown",
+          "scope": "scenario-seamless-source-b-to-dc",
+          "rationale": "Remove runtime assumption; explicitly unknown without telemetry.",
+          "policy": "Resolve known-false veto before constructing RuntimeContext; it rejects contradictory duplicate keys. Preserve original observed/assumed ledger in audit; never insert both contradictory RuntimeFact records."
+        }
+      }
+    }
+  ]
+}

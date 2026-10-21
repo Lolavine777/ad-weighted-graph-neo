@@ -1,0 +1,220 @@
+{
+  "query_id": "query-seamless-host-to-dc-v1",
+  "version": "1.0.0",
+  "search_metadata": {
+    "budget_limit": 6,
+    "candidates_evaluated": 2,
+    "is_truncated": false,
+    "truncation_reasons": [],
+    "caps_applied": {
+      "max_active_work_budget": 6,
+      "max_candidates": null,
+      "timeout_ms": null,
+      "max_expansions": null
+    },
+    "completeness_scope": "unspecified_subset",
+    "search_algorithm": "provided_candidate_assessment"
+  },
+  "eligible_candidates": {},
+  "pareto_frontier": [],
+  "diagnostics": {
+    "cand_seamless_01_direct_lidia": {
+      "reasons": [
+        "likelihood_unrated",
+        "impact_unrated"
+      ],
+      "assessment": {
+        "candidate_id": "cand_seamless_01_direct_lidia",
+        "bound_action_ids": [
+          "action_reset_lidia",
+          "action_activate_lidia",
+          "action_closure_lidia_da",
+          "action_winrm_badblood_lidia"
+        ],
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "program": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_seamless_01",
+            "node_ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-4131",
+              "S-1-5-21-1271839998-3495686680-2211690266-3398",
+              "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            ],
+            "edge_ids": [
+              "sha256:add3ecb3858d5426d003da9ecdba89274ea02d5c7d9e99e3e10ece6a5d077932",
+              "sha256:e44b0f47456908b5209f670f2cf0889ae4695e9efd24c82bbda4da1ae043cb48",
+              "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9"
+            ],
+            "provenance_locators": [
+              "20210920185958_users.json#/users/2310/Aces/3",
+              "20210920185958_groups.json#/groups/40/Members/0",
+              "20210920185958_computers.json#/computers/0/Aces/1"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_lidia": "True",
+          "admin_control_badblood": "True",
+          "admin_execution_context_lidia": "True",
+          "authentication_accepted_lidia": "True",
+          "credentials_lidia": "True",
+          "da_host_admin_mapping": "True",
+          "directory_write_allowed_lidia": "True",
+          "effective_member_da_lidia": "True",
+          "enabled_badblood": "True",
+          "enabled_lidia": "True",
+          "enabled_tstwvir": "True",
+          "endpoint_authorized_lidia": "True",
+          "foothold_controlled_tstwvir": "True",
+          "genericall_tstwvir_lidia": "True",
+          "memberof_lidia_da": "True",
+          "membership_security_group_usable_lidia_da": "True",
+          "network_kdc_reachable": "True",
+          "network_rpc_reachable": "True",
+          "network_winrm_reachable": "True",
+          "password_policy_accepts_lidia": "True",
+          "service_winrm_running": "True",
+          "winrm_authentication_accepted_lidia": "True"
+        },
+        "nominal_effort": null,
+        "effort": null,
+        "effort_status": "unrated",
+        "unrated_work_units": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "impact": null,
+        "consequence_rating": null,
+        "impact_status": "unrated",
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "likelihood_basis_summary": "Withheld: missing conditional prefix bounds in table"
+      }
+    },
+    "cand_seamless_02_alt_vajer_ollie": {
+      "reasons": [
+        "likelihood_unrated",
+        "impact_unrated"
+      ],
+      "assessment": {
+        "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+        "bound_action_ids": [
+          "action_reset_josefa",
+          "action_activate_josefa",
+          "action_closure_josefa_vajer",
+          "action_reset_ollie",
+          "action_activate_ollie",
+          "action_closure_ollie_da",
+          "action_winrm_badblood_ollie"
+        ],
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "program": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_seamless_02",
+            "node_ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-4131",
+              "S-1-5-21-1271839998-3495686680-2211690266-1766",
+              "S-1-5-21-1271839998-3495686680-2211690266-3790",
+              "S-1-5-21-1271839998-3495686680-2211690266-2014",
+              "S-1-5-21-1271839998-3495686680-2211690266-512",
+              "S-1-5-21-1271839998-3495686680-2211690266-1000"
+            ],
+            "edge_ids": [
+              "sha256:e6e5d605be1a120753808f94017202855a53fdd9a6b9831ac3421d09fbba1538",
+              "sha256:f8b6da6bcbda61ddab0d8184c957e39809ed4e444d5dee181f2309cf0e682173",
+              "sha256:3b30de3caac96bad3b7b1980c323661cba1cbeccd3c676d20ce2eb15f4a67689",
+              "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+              "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9"
+            ],
+            "provenance_locators": [
+              "20210920185958_users.json#/users/666/Aces/3",
+              "20210920185958_groups.json#/groups/246/Members/14",
+              "20210920185958_users.json#/users/917/Aces/3",
+              "20210920185958_groups.json#/groups/40/Members/3",
+              "20210920185958_computers.json#/computers/0/Aces/1"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_josefa": "True",
+          "actor_controlled_ollie": "True",
+          "admin_control_badblood": "True",
+          "admin_execution_context_ollie": "True",
+          "authentication_accepted_josefa": "True",
+          "authentication_accepted_ollie": "True",
+          "credentials_josefa": "True",
+          "credentials_ollie": "True",
+          "da_host_admin_mapping": "True",
+          "directory_write_allowed_josefa": "True",
+          "directory_write_allowed_ollie": "True",
+          "effective_member_da_ollie": "True",
+          "effective_member_vajer_josefa": "True",
+          "enabled_badblood": "True",
+          "enabled_josefa": "True",
+          "enabled_ollie": "True",
+          "enabled_tstwvir": "True",
+          "endpoint_authorized_ollie": "True",
+          "foothold_controlled_tstwvir": "True",
+          "genericall_tstwvir_josefa": "True",
+          "genericall_vajer_ollie": "True",
+          "memberof_josefa_vajer": "True",
+          "memberof_ollie_da": "True",
+          "membership_security_group_usable_josefa_vajer": "True",
+          "membership_security_group_usable_ollie_da": "True",
+          "network_kdc_reachable": "True",
+          "network_rpc_reachable": "True",
+          "network_winrm_reachable": "True",
+          "password_policy_accepts_josefa": "True",
+          "password_policy_accepts_ollie": "True",
+          "service_winrm_running": "True",
+          "winrm_authentication_accepted_ollie": "True"
+        },
+        "nominal_effort": null,
+        "effort": null,
+        "effort_status": "unrated",
+        "unrated_work_units": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "impact": null,
+        "consequence_rating": null,
+        "impact_status": "unrated",
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "likelihood_basis_summary": "Withheld: missing conditional prefix bounds in table"
+      }
+    }
+  },
+  "min_effort_to_da_baseline": {
+    "goal_id": "terminal_compromise_seamless_dc",
+    "best_candidate_id": null,
+    "minimum_effort_value": null,
+    "associated_likelihood_interval": null,
+    "associated_impact": null,
+    "coverage_disclosure": "No feasible rated candidate found in evaluated set.",
+    "baseline_coverage": {
+      "is_truncated": false,
+      "truncation_reasons": [],
+      "completeness_scope": "unspecified_subset"
+    }
+  }
+}

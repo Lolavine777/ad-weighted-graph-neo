@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-10-05",
+  "status": "passed_local_validation_pending_human_review",
+  "source_base_revision": "6fbb410db9b2371fbe6ce3149fe484c2de306da3",
+  "validation_binding": "Exact code/input byte digests; local reports contain checkout HEAD plus uncommitted harness pins. Final published head and CI are reported in the PR.",
+  "code_files": [
+    {
+      "path": "src/engine/search.py",
+      "digest": "sha256:e048e6090314dd640c08b9c76f7ba60b3c5072df89283d80b81d0a7b08fb177f"
+    },
+    {
+      "path": "scripts/research/attack_scenarios.py",
+      "digest": "sha256:078793ced5d7207417bade5688789c9ee6833b52e36121298e061d2a68ea8b25"
+    },
+    {
+      "path": "scripts/research/attack_scenarios_seamless.py",
+      "digest": "sha256:f70ed608925ff53016fa81292eda9f337ee3a65daaa339a43c9bd62b9fd985e6"
+    },
+    {
+      "path": "tests/test_attack_scenarios.py",
+      "digest": "sha256:45d6b74b21abbe489c96b8fd7ec90266bb2e267241a49933cd941ba29afa60de"
+    },
+    {
+      "path": "tests/test_attack_scenarios_seamless.py",
+      "digest": "sha256:d6d909724e69ba4032e6a42310c5d3aa79069c6b9c869a7b742f961ed77b553a"
+    },
+    {
+      "path": "tests/test_engine_path_ranking_conformance.py",
+      "digest": "sha256:5be8a8d758cb3f265dfd48475899e83e291f40c1df0422c49f4177cd5e09340d"
+    },
+    {
+      "path": ".gitattributes",
+      "digest": "sha256:f2be77a18ba976c6bbef7f2ce12829a8da1c40105b24a5c63804eabcd188ea28"
+    }
+  ],
+  "synthetic": {
+    "status": "passed",
+    "suite_digest": "sha256:c085953b834eb5cae4960335bd4871f780a8c5fc424fb673d21a48a494c20b67",
+    "scenarios": 15,
+    "variants": 92,
+    "relationship_kinds": 8,
+    "catalog_owners": 13,
+    "complete_cases": 92,
+    "report_digests": [
+      "sha256:5967e0ccb9fb0888e40ad3adabde980a9bed83ab318a2764bc2ac3cc1e63c8be",
+      "sha256:5967e0ccb9fb0888e40ad3adabde980a9bed83ab318a2764bc2ac3cc1e63c8be"
+    ],
+    "deterministic_byte_match": true,
+    "outcome_counts": {
+      "success": 13,
+      "no_path": 42,
+      "indeterminate": 37
+    }
+  },
+  "seamless": {
+    "status": "passed",
+    "case_id": "w3-source-b-positive",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "graph_digest": "sha256:41fdff96d00562c0ff096efcc1b585c189e707c8b8f61b199b6197bc7feceae0",
+    "graph_file_digest": "sha256:41fdff96d00562c0ff096efcc1b585c189e707c8b8f61b199b6197bc7feceae0",
+    "runtime_context_digest": "sha256:96efd25217bf6f404c13565aea69515fa6dde76890c26414503204d7e1ae7cad",
+    "initial_state_digest": "sha256:577bf0166c814dc9d6c949ca9efbb4cd3d8efeca18efc3eb36f9ce859923af6b",
+    "catalog_digest": "sha256:4257f5f0e9d1a6a925d550c73ff5538a56283a3c63a5de77f496834c70aa070d",
+    "binding_digest": "sha256:e0bfc16bb9f02dd1f4bcb35f606b7d277c355803dc46b2fcd8841a9e6d76a35d",
+    "raw_manifest_digest": "sha256:bcba779c6b18e0c5fe9e04e8684195034aad5acf30017e4d068816438fb3c66b",
+    "programs": 1,
+    "steps_per_program": [
+      4
+    ],
+    "expansions": 7595,
+    "complete": true,
+    "truncated": false,
+    "bounds": {
+      "max_expansions": 60000,
+      "max_paths": 25,
+      "max_steps": 10
+    },
+    "report_digests": [
+      "sha256:119c020e4eb0ae5875367e6184b42c9b1b0cf1b8f217db1db7a717e314ddf6d1",
+      "sha256:119c020e4eb0ae5875367e6184b42c9b1b0cf1b8f217db1db7a717e314ddf6d1"
+    ],
+    "deterministic_byte_match": true,
+    "numeric_ratings_used": false
+  },
+  "checks": {
+    "focused_pytest": "140 passed",
+    "full_pytest": "1776 passed, 2 existing Windows filesystem skips, 48 subtests passed",
+    "ruff_check": "passed",
+    "ruff_format_check": "passed",
+    "yamllint": "passed",
+    "check_contract": "passed",
+    "check_repository": "passed",
+    "git_diff_check": "passed",
+    "compose_config": "passed",
+    "windows_style_checkout_pin_validation": "passed with core.autocrlf=true and core.eol=crlf"
+  },
+  "ci": "Pending PR workflow on final commit; no human approval yet.",
+  "unresolved_gaps": [
+    "General ForceChangePassword/legacy password-control to usable authentication owner (#174)",
+    "Credential material to validated usable identity (#174)",
+    "Authentication/token lifetime, expiry, renewal and revocation (#174)",
+    "Unmodeled techniques: RBCD, DCSync, AD CS, delegation, shadow credentials",
+    "Legacy Catalog 0.2 implementation documentation discrepancy",
+    "No claim outside declared finite catalog/context/object fixtures or global optimum"
+  ],
+  "review_fix": {
+    "review": "https://github.com/nairyuuu/ad-weighted-graph/pull/188#pullrequestreview-5409973233",
+    "behavior": "Initial success requires a unique target_predicate match; ambiguous multi-target attribution raises ValueError before path budget.",
+    "regression": "Two Computers, only one initially admin-controlled; max_paths=1 and 10 both reject. Unique target succeeds with minimum budget; no matching target produces no asset."
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "declared_pairs": 2,
+  "configured_goals": [
+    "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800"
+  ],
+  "after_evaluated_pairs": 2,
+  "after_not_run_pairs": 0,
+  "rediscovery_status_counts": {
+    "truncated": 2
+  },
+  "coverage": {
+    "before": {
+      "truncated": 2
+    },
+    "after": {
+      "truncated": 2
+    }
+  },
+  "unresolved_feasibility_counts": {
+    "before": 2,
+    "after": 2
+  },
+  "complete_discovery_counts": {
+    "before": 0,
+    "after": 0
+  },
+  "unknown_replay_programs": 0,
+  "retained_after_programs": 0,
+  "new_after_programs": 2,
+  "numeric_comparison": {
+    "effort_status_counts": {
+      "incumbent": 2
+    },
+    "probability": "pending_reviewed_cross_intervention_comparability",
+    "defender_cost": null,
+    "operational_impact": null,
+    "impact_comparison": null
+  },
+  "priority_policy": "defensive-complete-scope-first/2"
+}

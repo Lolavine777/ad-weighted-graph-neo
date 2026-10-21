@@ -1,0 +1,1 @@
+{"meta":{"type":"groups"},"groups":[{"ObjectIdentifier":"S-1-5-21-1000-2000-3000-2101","Properties":{"name":"Operators@EXAMPLE.TEST","domain":"EXAMPLE.TEST"},"Members":[{"MemberId":"S-1-5-21-1000-2000-3000-1101","MemberType":"User"}]}]}

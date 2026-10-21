@@ -1,0 +1,2235 @@
+{
+  "artifact_type": "compact_summary_of_actual_validation_not_full_report",
+  "base_revision": "bd2a4cf43dd539443a67ba20655cca800f38d65c",
+  "exporter_module_sha256": "sha256:03d48f4332f5f80c337d66ce39984f892eb23ca4ddc8cfd2101b3ce91ec1f960",
+  "runtime": "Python 3.12.14; text snapshot; not full-suite or clean-checkout verification",
+  "release_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+  "cli_release_file_sha256": "sha256:20d8f6952103dcdff88802170db444fb7bba56e4baa48757fbcd3c6fcc1f8df6",
+  "committed_release_file_sha256": "sha256:5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+  "full_validation_file_sha256": "sha256:99ea60c98a4d1ed06e7feb8d436135d3298b458c26ea3fee4a213049fb4ec912",
+  "full_validation_report_digest": "sha256:4906ed68baae9ee86db297dae71cf70e1a39520c828cdce0a6c31f877d3bc834",
+  "validation_status": "passed",
+  "evidence_class": "human_reviewed_ai_assisted_ratings",
+  "tool_human_acceptance_marker": "pending",
+  "parameter_selection": "reviewed; see parameter-selection.md",
+  "coverage": {
+    "parameter_records_perturbed": 21,
+    "scope": "three supplied SEAMLESS candidates only",
+    "missing_coverage": [
+      "global path search",
+      "joint/multivariate perturbations",
+      "empirical calibration",
+      "attack execution"
+    ]
+  },
+  "sources": {
+    "source_a": {
+      "expected_candidates": {
+        "cand_seamless_01_direct_lidia": {
+          "likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "effort": 2,
+          "impact": "High"
+        },
+        "cand_seamless_02_alt_vajer_ollie": {
+          "likelihood_interval": [
+            "81/800",
+            "7800849/10000000"
+          ],
+          "effort": 3,
+          "impact": "High"
+        }
+      },
+      "actual_candidates": {
+        "cand_seamless_01_direct_lidia": {
+          "likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "effort": 2,
+          "impact": "High"
+        },
+        "cand_seamless_02_alt_vajer_ollie": {
+          "likelihood_interval": [
+            "81/800",
+            "7800849/10000000"
+          ],
+          "effort": 3,
+          "impact": "High"
+        }
+      },
+      "expected_frontier": [
+        "cand_seamless_01_direct_lidia",
+        "cand_seamless_02_alt_vajer_ollie"
+      ],
+      "actual_frontier": [
+        "cand_seamless_01_direct_lidia",
+        "cand_seamless_02_alt_vajer_ollie"
+      ],
+      "expected_relations": [
+        {
+          "a": "cand_seamless_01_direct_lidia",
+          "b": "cand_seamless_02_alt_vajer_ollie",
+          "relation": "incomparable"
+        }
+      ],
+      "actual_relations": [
+        {
+          "a": "cand_seamless_01_direct_lidia",
+          "b": "cand_seamless_02_alt_vajer_ollie",
+          "relation": "incomparable"
+        }
+      ],
+      "expected_min_effort": {
+        "best_candidate_id": "cand_seamless_01_direct_lidia",
+        "minimum_effort_value": 2
+      },
+      "actual_min_effort": {
+        "goal_id": "terminal_compromise_seamless_dc",
+        "best_candidate_id": "cand_seamless_01_direct_lidia",
+        "minimum_effort_value": 2,
+        "associated_likelihood_interval": [
+          "9/40",
+          "8379/10000"
+        ],
+        "associated_impact": "High",
+        "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+        "baseline_coverage": {
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "completeness_scope": "unspecified_subset"
+        }
+      }
+    },
+    "source_b": {
+      "expected_candidates": {
+        "cand_seamless_source_b_01_ollie": {
+          "likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "effort": 2,
+          "impact": "High"
+        }
+      },
+      "actual_candidates": {
+        "cand_seamless_source_b_01_ollie": {
+          "likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "effort": 2,
+          "impact": "High"
+        }
+      },
+      "expected_frontier": [
+        "cand_seamless_source_b_01_ollie"
+      ],
+      "actual_frontier": [
+        "cand_seamless_source_b_01_ollie"
+      ],
+      "expected_relations": [],
+      "actual_relations": [],
+      "expected_min_effort": {
+        "best_candidate_id": "cand_seamless_source_b_01_ollie",
+        "minimum_effort_value": 2
+      },
+      "actual_min_effort": {
+        "goal_id": "terminal_compromise_seamless_dc",
+        "best_candidate_id": "cand_seamless_source_b_01_ollie",
+        "minimum_effort_value": 2,
+        "associated_likelihood_interval": [
+          "9/40",
+          "8379/10000"
+        ],
+        "associated_impact": "High",
+        "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+        "baseline_coverage": {
+          "is_truncated": false,
+          "truncation_reasons": [],
+          "completeness_scope": "unspecified_subset"
+        }
+      }
+    }
+  },
+  "sensitivity": [
+    {
+      "category": "likelihood",
+      "record_key": "0",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "1",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "2",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "3",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "4",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "5",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "6",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "7",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "729/8000",
+                  "70207641/100000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "8",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "9",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "likelihood",
+      "record_key": "10",
+      "rationale": "Multiply one full-history step interval by 9/10; local assumption probe",
+      "query_ids": [
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "81/400",
+                  "75411/100000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "81/400",
+                "75411/100000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1",
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        },
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1",
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "High"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 4,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        },
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "effort",
+      "record_key": "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4157:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+      "rationale": "Change one reviewed rubric score by one point within 1..3",
+      "query_ids": [
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": true,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 3,
+                "impact": "High"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 3,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "High",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "category": "impact",
+      "record_key": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "rationale": "Move selected consequence by one ordinal category",
+      "query_ids": [
+        "query-seamless-host-to-dc-v1",
+        "query-seamless-source-b-to-dc-v1"
+      ],
+      "outcomes": {
+        "source_a": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "Medium"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "Medium"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_01_direct_lidia": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "Medium"
+              },
+              "cand_seamless_02_alt_vajer_ollie": {
+                "likelihood_interval": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "effort": 3,
+                "impact": "Medium"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_01_direct_lidia",
+              "cand_seamless_02_alt_vajer_ollie"
+            ],
+            "expected_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "actual_relations": [
+              {
+                "a": "cand_seamless_01_direct_lidia",
+                "b": "cand_seamless_02_alt_vajer_ollie",
+                "relation": "incomparable"
+              }
+            ],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_01_direct_lidia",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "Medium",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        },
+        "source_b": {
+          "frontier_changed": false,
+          "relations_changed": false,
+          "min_effort_changed": false,
+          "min_effort_winner_changed": false,
+          "expected_actual": {
+            "expected_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "Medium"
+              }
+            },
+            "actual_candidates": {
+              "cand_seamless_source_b_01_ollie": {
+                "likelihood_interval": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "effort": 2,
+                "impact": "Medium"
+              }
+            },
+            "expected_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "actual_frontier": [
+              "cand_seamless_source_b_01_ollie"
+            ],
+            "expected_relations": [],
+            "actual_relations": [],
+            "expected_min_effort": {
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2
+            },
+            "actual_min_effort": {
+              "goal_id": "terminal_compromise_seamless_dc",
+              "best_candidate_id": "cand_seamless_source_b_01_ollie",
+              "minimum_effort_value": 2,
+              "associated_likelihood_interval": [
+                "9/40",
+                "8379/10000"
+              ],
+              "associated_impact": "Medium",
+              "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+              "baseline_coverage": {
+                "is_truncated": false,
+                "truncation_reasons": [],
+                "completeness_scope": "unspecified_subset"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "stability": {
+    "parameter_records": 21,
+    "query_outcomes": 24,
+    "frontier_changes": 0,
+    "relation_changes": 0,
+    "min_effort_winner_changes": 0,
+    "min_effort_summary_changes": 6,
+    "interpretation": "Stable candidate identities under these local probes only; cost/probability/impact values can change. Not proof of global or joint-perturbation robustness."
+  }
+}

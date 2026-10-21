@@ -1,0 +1,895 @@
+{
+  "verification_role": "A maintainer self-verification",
+  "independent_B_review": false,
+  "release_acceptance": "BLOCKED",
+  "accepted_develop_revision": "a79debb35d40431dd4395b9c6806928792e1835c",
+  "repair_source_revision": "3df54fcde4f4c7f3bd92b88d4d5addc84e0672fc",
+  "main_revision": "fc9bcdb45501a498ec6681607147912750784667",
+  "blockers": [
+    {
+      "issue": 247,
+      "case": "frozen_243",
+      "detail": "Four new effort-class scopes remain pending numeric review; no accepted scoped replacement",
+      "rated": 0,
+      "required": 4
+    },
+    {
+      "issue": 249,
+      "case": "frozen_243",
+      "detail": "eq-seamless-frozen-admin-execution-004 remains proposed_pending_b_review; its scope/horizon equivalence is not an adopted historical numeric scope",
+      "rated": 0,
+      "required": 1
+    }
+  ],
+  "frozen_243": {
+    "scenario_sha256": "66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752",
+    "cases": [
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 1,
+            "total_unresolved_gaps": 9,
+            "unrated_candidates": 1
+          },
+          "canonical_work_units": 4,
+          "checkpoint_reached": false,
+          "efforts": {
+            "generated_0001": null
+          },
+          "final_goal_reached": true,
+          "gap_codes": [
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "explicit_unrated_disposition"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "explicit_unrated_disposition"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "explicit_unrated_disposition"
+            },
+            {
+              "dimension": "C",
+              "disposition": "unrated",
+              "reason_code": "explicit_unrated_disposition"
+            },
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "P",
+              "disposition": "unrated",
+              "reason_code": "missing_evidence"
+            },
+            {
+              "dimension": "I",
+              "disposition": "refused",
+              "reason_code": "prerequisite_gate_refusal"
+            }
+          ],
+          "likelihoods": {
+            "generated_0001": null
+          },
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 4
+            },
+            "I": {
+              "rated": 0,
+              "required": 1
+            },
+            "P": {
+              "rated": 0,
+              "required": 4
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 1,
+          "programs": [
+            [
+              "asrep_request",
+              "recover_asrep_secret",
+              "activate_recovered_identity",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "status": "success"
+        },
+        "case": "frozen243_assumed",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_assumed.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_assumed.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "indeterminate"
+        },
+        "case": "frozen243_raw",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_raw.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_raw.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "indeterminate"
+        },
+        "case": "frozen243_missing_recovery",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_missing_recovery.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_missing_recovery.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "blocked"
+        },
+        "case": "frozen243_asset_veto",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_asset_veto.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_asset_veto.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "no_path"
+        },
+        "case": "frozen243_off",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_off.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_off.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "blocked"
+        },
+        "case": "frozen243_no_request",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_no_request.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_no_request.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      },
+      {
+        "actual": {
+          "aggregate_summary": {
+            "fully_rated_candidates": 0,
+            "partially_rated_candidates": 0,
+            "total_candidates": 0,
+            "total_unresolved_gaps": 0,
+            "unrated_candidates": 0
+          },
+          "canonical_work_units": 0,
+          "checkpoint_reached": false,
+          "efforts": {},
+          "final_goal_reached": false,
+          "gap_codes": [],
+          "likelihoods": {},
+          "minimum_effort": null,
+          "minimum_proven": false,
+          "numeric_requests": {
+            "C": {
+              "rated": 0,
+              "required": 0
+            },
+            "I": {
+              "rated": 0,
+              "required": 0
+            },
+            "P": {
+              "rated": 0,
+              "required": 0
+            }
+          },
+          "pareto_frontier": [],
+          "passive_steps": 0,
+          "paths": 0,
+          "programs": [],
+          "status": "truncated"
+        },
+        "case": "frozen243_step_cap",
+        "command": "{checkout}/.venv/bin/python -m src.engine.query_cli --query {checkout}/reports/generated/issue250/frozen243_step_cap.query.json --rating-resolution {checkout}/reports/generated/issue250/frozen243_step_cap.config.json --snapshot {checkout}/reports/generated/issue250/frozen243.snapshot.json --label seamless --prerequisite {checkout}/data/samples/manifests/seamless-raw-v1.json",
+        "evidence_class": "actual_private_dataset_conditional_prediction",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "frozen_semantic_expectations": "PASS",
+        "status": "PASS",
+        "two_runs_equal": true
+      }
+    ],
+    "P_gap_events": [
+      "asrep_request",
+      "recover_asrep_secret",
+      "activate_recovered_identity",
+      "obtain_admin_execution_on_host"
+    ],
+    "P_gap_is_allowed": true
+  },
+  "source_a": {
+    "probe": {
+      "package": {
+        "files_verified": 9,
+        "source_pins_verified": 19,
+        "status": "proposed_pending_b_review",
+        "verified": true
+      },
+      "probe": {
+        "basis": "scenario_assumption",
+        "basis_canonical_digest": "sha256:fd709b190fc3d388f61a38cab93100f9786332e667d9b8178914dd4aeefb5ac1",
+        "coverage_digest": "sha256:86b673ed4a06f5d9be49bfe165f5b6c563deea1753511ce092fb55a8ceb98f25",
+        "fully_rated_paths": 2,
+        "min_effort": {
+          "all_best_candidate_ids": [
+            "generated_0001"
+          ],
+          "associated_impact": "High",
+          "associated_likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "baseline_coverage": {
+            "caps_applied": {
+              "max_active_work_budget": 10,
+              "max_candidates": 1000,
+              "max_expansions": 60000,
+              "max_steps": 10,
+              "timeout_ms": null
+            },
+            "completeness_scope": "budget_bounded",
+            "is_truncated": false,
+            "truncation_reasons": []
+          },
+          "best_candidate_id": "generated_0001",
+          "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+          "goal_id": "bounded_source_a_admin_dc",
+          "minimum_effort_value": 2,
+          "tie_count": 1
+        },
+        "numeric_approval": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 8,
+            "required": 8
+          },
+          "I": {
+            "rated": 1,
+            "required": 1
+          },
+          "P": {
+            "rated": 8,
+            "required": 46
+          }
+        },
+        "p_unrated_paths": 22,
+        "pareto_frontier": [
+          "generated_0001",
+          "generated_0006"
+        ],
+        "paths_generated": 24,
+        "pending_numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 8
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 46
+          }
+        },
+        "ranking_digest": "sha256:2e64891d73155bf3984dfd24cbff1aefdbf9bc7ba1531aca651767d10cc203ba",
+        "review_simulation": true,
+        "status": "PASS"
+      }
+    },
+    "copy_status": "Review/disposition gates changed on copies only; no canonical numeric activation or new B approval",
+    "registry_digests": {
+      "effort": {
+        "sha256": "sha256:f8fa0cabf05687c1118d0bf038b555e2ad827ea8fb26f6cce8900a20513b1f3f",
+        "version": "1.0.0"
+      },
+      "impact": {
+        "sha256": "sha256:54e6b93c65352818d9b2f960d8716ebb194bef8ab6d3106a502210509db5902a",
+        "version": "1.0.0"
+      },
+      "impact_source": {
+        "sha256": "sha256:ffbcf0b94a5c523c695019d8ec3442b41f20ea875d5ee677dac9aef7400635c0",
+        "version": "1.0.0"
+      },
+      "likelihood": {
+        "sha256": "sha256:a5b709276628179bdef3e87d1914e9218be64a330f2bc91c7566b3e4be70c96a",
+        "version": "1.0.0"
+      }
+    },
+    "cli_reproducibility": {
+      "revision": "a79debb35d40431dd4395b9c6806928792e1835c",
+      "semantic_sha256": "sha256:9b6dfad90479f0615dce867fb64664d26d12bff03a36c1cfb8c9c0df2e8b483d",
+      "effective_config_sha256": "sha256:1bebd3a4b59fbfbe67f2f5b6e426539c3c9806604254643c2fb5257880360873",
+      "inputs": {
+        "graph_input": {
+          "reference": "docs/research/ratings/scenario-basis-v1/source-a-graph.json",
+          "sha256": "sha256:ded70c9658332b71906fc14523b38ca2b1354da69576e73ecea14a837c7fa9ab"
+        },
+        "prerequisite_0": {
+          "reference": "data/samples/manifests/seamless-raw-v1.json",
+          "sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d"
+        },
+        "query": {
+          "reference": "reports/generated/week4-closure/source-a-accepted-copy.query.json",
+          "sha256": "sha256:b8a10f336be08509371feef9f887207e95f1af24a29c97d140837d46690be732"
+        }
+      },
+      "tracked_changes": []
+    },
+    "comparison": {
+      "status": "PASS",
+      "schema_version": "week4-query-result/0.3.0",
+      "semantic_digest_verified": true,
+      "packages_equal_excluding_runtime": true,
+      "revision": "a79debb35d40431dd4395b9c6806928792e1835c",
+      "semantic_sha256": "sha256:9b6dfad90479f0615dce867fb64664d26d12bff03a36c1cfb8c9c0df2e8b483d",
+      "tracked_changes": []
+    },
+    "raw_projection": {
+      "verified": true,
+      "nodes": 7,
+      "edges": 16
+    },
+    "negative_controls": [
+      {
+        "mutation": "scenario_id",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "ordered_work_prefix",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "method",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "horizon",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "source_id",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "goal",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 8
+          },
+          "I": {
+            "required": 1,
+            "rated": 0
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "missing_basis",
+        "status": "PASS",
+        "paths": 24,
+        "numeric_requests": {
+          "C": {
+            "required": 8,
+            "rated": 8
+          },
+          "P": {
+            "required": 46,
+            "rated": 0
+          },
+          "I": {
+            "required": 1,
+            "rated": 1
+          }
+        },
+        "frontier": []
+      },
+      {
+        "mutation": "known_false",
+        "status": "PASS",
+        "paths": 0,
+        "numeric_requests": {
+          "C": {
+            "required": 0,
+            "rated": 0
+          },
+          "P": {
+            "required": 0,
+            "rated": 0
+          },
+          "I": {
+            "required": 0,
+            "rated": 0
+          }
+        },
+        "frontier": []
+      }
+    ]
+  },
+  "historical_bytes": {
+    "docs/research/scenarios/week4-seamless-v1.json": {
+      "baseline_revision": "3b08ade6c0ddfba3c8fb489e43ecd2c153fa90ac",
+      "sha256": "66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752",
+      "byte_identical": true
+    },
+    "docs/research/scenarios/week4-seamless-v1-actual.json": {
+      "baseline_revision": "3b08ade6c0ddfba3c8fb489e43ecd2c153fa90ac",
+      "sha256": "85928e10e41a733d62bab073e3b0e00f0b41781471bd2fd6efcf17d94f8acea0",
+      "byte_identical": true
+    },
+    "docs/research/ratings/week3-closeout/reviewed-release.json": {
+      "baseline_revision": "fc9bcdb45501a498ec6681607147912750784667",
+      "sha256": "5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+      "byte_identical": true
+    },
+    "docs/research/ratings/week3-closeout/semantic-bridge-plan.json": {
+      "baseline_revision": "fc9bcdb45501a498ec6681607147912750784667",
+      "sha256": "56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390",
+      "byte_identical": true
+    }
+  },
+  "initial_full_pytest": {
+    "revision": "a79debb35d40431dd4395b9c6806928792e1835c",
+    "passed": 2593,
+    "failed": 3,
+    "skipped": 9,
+    "subtests_passed": 48,
+    "seconds": 268.95,
+    "root_cause": "Two raw-absent baseline assertions plus the nested demo invoking those assertions"
+  },
+  "focused_rating_tests": {
+    "revision": "a79debb35d40431dd4395b9c6806928792e1835c",
+    "passed": 417,
+    "seconds": 57.65
+  },
+  "repaired_acceptance_tests": {
+    "source_revision": "3df54fcde4f4c7f3bd92b88d4d5addc84e0672fc",
+    "passed": 14,
+    "seconds": 96.62
+  },
+  "quality": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "return_code": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "return_code": 0,
+      "stdout": "412 files already formatted\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "yamllint",
+        "."
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/check_contract.py"
+      ],
+      "return_code": 0,
+      "stdout": "Contract and 2 synthetic fixture(s) validated.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/check_repository.py"
+      ],
+      "return_code": 0,
+      "stdout": "Repository checks passed for 615 tracked/unignored files.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        ".env.example",
+        "--profile",
+        "graph",
+        "config",
+        "--quiet"
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "return_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "remote_CI": {
+    "run": 38125190114,
+    "jobs": 4,
+    "executed_steps": 0,
+    "classification": "runner/infrastructure unavailable",
+    "not_a_CI_PASS": true,
+    "annotation": "The job was not started because recent account payments have failed or your spending limit needs to be increased."
+  },
+  "not_closed": [
+    251,
+    245,
+    247,
+    248,
+    249,
+    250,
+    256,
+    206,
+    239,
+    208,
+    204
+  ],
+  "intentionally_deferred": [
+    237,
+    259
+  ],
+  "release_PR": {
+    "number": 235,
+    "state": "DRAFT",
+    "merged": false
+  },
+  "repaired_full_pytest": {
+    "source_revision": "3df54fcde4f4c7f3bd92b88d4d5addc84e0672fc",
+    "passed": 2596,
+    "failed": 0,
+    "skipped": 9,
+    "subtests_passed": 48,
+    "seconds": 270.01,
+    "skip_reasons": [
+      "5 optional Windows telemetry inputs",
+      "1 Windows junction platform condition",
+      "2 native filesystem case-alias conditions",
+      "1 optional alternate raw dataset"
+    ]
+  },
+  "absent_prerequisite_control": {
+    "status": "PASS",
+    "method": "Isolated Path.is_dir observation; actual authorized files retained"
+  }
+}

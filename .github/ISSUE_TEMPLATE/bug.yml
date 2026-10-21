@@ -1,0 +1,36 @@
+name: Bug / Lỗi
+description: Báo lỗi parser, graph, kết quả đường đi hoặc môi trường.
+title: "[Bug] "
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Kết quả mong đợi và thực tế
+      description: Nêu sai khác và ảnh hưởng, không đính kèm dữ liệu AD riêng.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Cách tái hiện tối thiểu
+      description: Lệnh chạy, fixture tổng hợp, source/target/profile nếu liên quan.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Commit, OS, Python, schema/profile và công cụ liên quan
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Log đã loại thông tin nhạy cảm
+      render: text
+  - type: checkboxes
+    id: data_check
+    attributes:
+      label: Kiểm tra dữ liệu đính kèm
+      options:
+        - label: Nội dung và file đính kèm không chứa dữ liệu AD riêng hoặc bí mật truy cập.
+          required: true

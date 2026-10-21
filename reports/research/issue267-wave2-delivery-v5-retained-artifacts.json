@@ -1,0 +1,24 @@
+{
+  "CLI_exit_codes_exact_integer_zero": true,
+  "before_after_query_digests_match_pinned_scopes": true,
+  "cases": [
+    "original.source-a-projection",
+    "original.source-a-full-raw-four",
+    "original.source-a-full-generator",
+    "original.lidia-full-generator",
+    "original.josefa-full-generator",
+    "original.asrep-natural-password",
+    "original.kerberoast-material",
+    "original.kerberoast-identity",
+    "supplementary.rbcd-unassumed",
+    "supplementary.rbcd-scoped",
+    "supplementary.acl-group-host",
+    "supplementary.acl-group-projection",
+    "supplementary.acl-group-all-generator",
+    "supplementary.winrm-command"
+  ],
+  "limitation": "Read-only check of genuine v5 artifacts; does not repair v5 aggregate corruption guards. Follow-up #289 adds native corruption regressions and fresh v7 acceptance.",
+  "report_digest": "sha256:c34f0d120668e98f41806ca94211646386d9b55b748c4907d43df0808fce74cb",
+  "two_retained_CLI_outputs_typed_canonical_digests_equal": true,
+  "version": "retained-artifact-audit/1.0.0"
+}

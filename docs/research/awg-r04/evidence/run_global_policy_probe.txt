@@ -1,0 +1,52 @@
+"""Execute native global policy on the same12 goals; lossless gzip avoids duplicate giant JSON."""
+import gzip
+import hashlib
+import json
+import subprocess
+import sys
+import time
+from collections import Counter
+from pathlib import Path
+
+repo = Path(__file__).resolve().parent / 'repo'
+sys.path.insert(0, str(repo))
+from src.engine.graph import EngineGraph
+from src.engine.batch import run_source_goal_batch, BatchExecutionBudget
+from scripts.defender_brief import build_defender_brief, render_defender_brief
+
+out = Path(sys.argv[1]).resolve()
+out.mkdir(parents=True, exist_ok=False)
+revision = subprocess.check_output(['git','rev-parse','HEAD'], cwd=repo, text=True).strip()
+assert not subprocess.check_output(['git','status','--porcelain'],cwd=repo,text=True).strip()
+request = json.loads((repo/'reports/generated/awg-r04-defender-v1/after/request.json').read_text())
+for source in request['sources']:
+    source['declared_assumptions'] = []
+(out/'request.json').write_text(json.dumps(request,indent=2)+'\n')
+start=time.perf_counter()
+graph=EngineGraph.from_snapshot((repo/'data/processed/awg-r04/pilot-v2/snapshot.json').read_text())
+loaded=time.perf_counter()
+result=run_source_goal_batch(request,graph,allowed_techniques=['scenario_reset_password','acquire_reset_identity','propagate_group_entitlement'],scenario_policy='seamless-standard-v1',effort_profile='reset-activation-c-v2',execution_budget=BatchExecutionBudget(max_cells=12,max_expansions=72000)).to_dict()
+done=time.perf_counter()
+inputs=result['reproducibility']['inputs']
+rows=[]
+for sid,matrix in result['source_goal_matrix'].items():
+ for gid,cell in matrix.items():
+  from src.engine.ranking.resolution_service import canonical_digest
+  trace=inputs['public_queries'][canonical_digest([sid,gid])]
+  native=trace['result'];attempts=native['attempts']
+  unknown=Counter(p for at in attempts for p in at['unknown'])
+  rows.append({'source_id':sid,'goal_id':gid,'status':cell['status'],'reached':cell['final_goal_reached'],'C':cell['min_effort'],'expansions':cell['expansions'],'attempt_statuses':dict(Counter(at['status'] for at in attempts)),'unknown_predicates':dict(unknown),'assumptions':trace['query']['assumptions'],'policy_metadata':trace['query'].get('scenario_policy_metadata'),'guarantees':trace['guarantees'],'paths':native['paths']})
+projection={'revision':revision,'native_summary':result['summary'],'rows':rows,'phase_seconds':{'load':loaded-start,'native_batch_audit':done-loaded},'source_pins':inputs['source_pins'],'scenario_policy':inputs.get('scenario_policy'),'scope':'same12 automatic goals, same initial identity/caps/techniques; replace seven handwritten assumptions with existing standard profile; no performance comparison'}
+(out/'projection.json').write_text(json.dumps(projection,ensure_ascii=False,indent=2)+'\n')
+inventory=json.loads((repo/'reports/generated/awg-r04-defender-v1/after/inventory.json').read_text())
+brief=build_defender_brief(graph,inventory,request,result)
+(out/'defender-brief.json').write_text(json.dumps(brief,ensure_ascii=False,indent=2)+'\n')
+(out/'defender-brief.md').write_text(render_defender_brief(brief))
+encoder=json.JSONEncoder(ensure_ascii=False,separators=(',',':'))
+digest=hashlib.sha256();size=0
+with gzip.open(out/'result.json.gz','wb',compresslevel=1) as f:
+ for chunk in encoder.iterencode(result):
+  raw=chunk.encode();digest.update(raw);size+=len(raw);f.write(raw)
+projection['audit']={'compressed_bytes':(out/'result.json.gz').stat().st_size,'uncompressed_bytes':size,'uncompressed_sha256':digest.hexdigest(),'format':'lossless compact JSON in gzip; native dictionary unchanged'}
+(out/'projection.json').write_text(json.dumps(projection,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'revision':revision,'rows':[{k:r[k] for k in ['goal_id','status','C','expansions','attempt_statuses','unknown_predicates']} for r in rows],'seconds':done-start,'audit':projection['audit']}))

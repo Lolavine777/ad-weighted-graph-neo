@@ -1,0 +1,62 @@
+{
+  "schema_version": "awg-r04-batch-writer-closeout/1",
+  "validated_clean_revision": "47d039e7bf86ed05c0a8006ab6d27b219324aecd",
+  "benchmark_native_revision": "acf4a0fea8c9bee0477110f1f505f33242149f3d",
+  "final_tests": {
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "248",
+      "time": "115.266",
+      "timestamp": "2026-10-18T13:43:10.640115+02:00",
+      "hostname": "403d5e0687a2"
+    },
+    "per_module": {
+      "tests.test_query_cli": 65,
+      "tests.test_reset_effort": 21,
+      "tests.test_exposure": 18,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_review_regressions": 10
+    },
+    "artifact": {
+      "path": "docs/research/awg-r04/evidence/iteration-9-final-clean.xml",
+      "bytes": 35647,
+      "sha256": "sha256:0b3b199988339f0d4ec5dc779f9ff0fdca739066303fa55357f6472c68a2511d"
+    }
+  },
+  "measured_implementation_pins_equal_to_current_files": true,
+  "acceptance_byte_pins_equal_to_current_files": true,
+  "acceptance_manifest": {
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v11.json",
+    "bytes": 331497,
+    "sha256": "sha256:5d273d2f7a95d265d6f6912a283422f689b4774735128da7adfb559f565ff513"
+  },
+  "primary_experiment": {
+    "path": "docs/research/awg-r04/evidence/iteration-9-batch.json",
+    "bytes": 151070,
+    "sha256": "sha256:ff61c74fd00e07f22979659ab80659e61d050e8f6e388f354d5b249a26729adb"
+  },
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "PASS; 578 files formatted",
+    "contract": "PASS; 2 synthetic fixtures",
+    "repository_links": {
+      "status": "FAIL_known_inaccessible_historical_artifact",
+      "only_failure": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip"
+    }
+  },
+  "job_state": "All iteration9 batch benchmarks, profile, native acceptance and final tests completed; no worker pending.",
+  "scope": "248 selected checks; earlier109 overlap. Not whole-suite or an independent AD oracle. Ten trials represent three distinct source-goal pairs; no new remediation/disconnection claim.",
+  "next_action": "Computer foothold capability/oracle against original requirements. Distinguish local execution/control from usable domain identity; no implicit credentials or manufactured Sessions.",
+  "publication": "Subsequent closeout changes are docs/evidence only. Fresh leased feature-branch push; main/develop/parent refs unchanged."
+}

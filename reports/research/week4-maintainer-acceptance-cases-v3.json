@@ -1,0 +1,3986 @@
+{
+  "cases": [
+    {
+      "actual": {
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "program_routes": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ]
+        ],
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "assertions": [
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": [
+            [
+              "obtain_admin_execution_on_host"
+            ],
+            [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ],
+            [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "actual_present": true,
+          "expected": [
+            [
+              "obtain_admin_execution_on_host"
+            ],
+            [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ],
+            [
+              "propagate_group_entitlement",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "field": "programs",
+          "passed": true
+        },
+        {
+          "actual": [
+            [
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ]
+          ],
+          "actual_present": true,
+          "expected": [
+            [
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "S-1-5-21-1000-2000-3000-1101",
+                "S-1-5-21-1000-2000-3000-2103",
+                "10000000-0000-4000-8000-000000000002"
+              ]
+            ]
+          ],
+          "field": "program_routes",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-M-POSITIVE",
+      "category": "core_query_asset",
+      "command": "run_attack_query(q_m, graph=two_routes_raw)",
+      "coverage": "complete_3_paths",
+      "description": "Baseline Q-ASSET: Foothold Computer OtherHost + Alice usable at Host -> dynamic generation of 3 paths",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:70f7adcd5909ce77f333900f6041b4bb8cdeec2b8cc37975971b63f5bc5581c2",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "program_routes": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ]
+        ],
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "inputs": {
+        "authentication_context": "Host",
+        "initial_actor": "Alice",
+        "source_foothold": "OtherHost",
+        "target": "Host",
+        "usable_identity": [
+          [
+            "Alice",
+            "Host"
+          ]
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:afc1edaa3ba31f56a488d8b02f305fcfe175a14796f234126398c36df53edb8b",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "error_message": "source foothold is computer 'OtherHost' but initial actor is domain user 'Alice' without declared usable_identity or control",
+        "error_type": "ValueError"
+      },
+      "assertions": [
+        {
+          "actual": "ValueError",
+          "actual_present": true,
+          "expected": "ValueError",
+          "field": "error_type",
+          "passed": true
+        },
+        {
+          "actual": "source foothold is computer 'OtherHost' but initial actor is domain user 'Alice' without declared usable_identity or control",
+          "actual_present": true,
+          "expected": "without declared usable_identity or control",
+          "field": "error_message_contains",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-X-S",
+      "category": "core_query_input_separation",
+      "command": "materialize_query(query_dict, graph=two_routes_raw)",
+      "coverage": "fail_closed_validation",
+      "description": "Foothold Computer with domain user actor without declared usable_identity raises ValueError",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "error_message_contains": "without declared usable_identity or control",
+        "error_type": "ValueError"
+      },
+      "inputs": {
+        "declared_usable_identity": null,
+        "initial_actor": "Alice",
+        "source_foothold": "OtherHost"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:6c714f94f533ed4b2ade9062bd7ba5f13befeefc1de67e36cb89b5cf0893d562",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "no_path"
+      },
+      "assertions": [
+        {
+          "actual": "no_path",
+          "actual_present": true,
+          "expected": "no_path",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-X-I",
+      "category": "core_query_input_separation",
+      "command": "run_attack_query(q_x_i, graph=two_routes_raw)",
+      "coverage": "exhaustive_within_scope",
+      "description": "Foothold Computer alone (initial_actor=OtherHost) finds 0 paths to Host",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:8a621e02d3800229e535aa99dc429cc86d3c956c81eef7e396fbf1b0289ce7f1",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "no_path"
+      },
+      "inputs": {
+        "initial_actor": "OtherHost",
+        "initial_state": {
+          "control": [
+            "OtherHost"
+          ]
+        },
+        "source_foothold": "OtherHost"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:8e1e8e0192281096c02c236ac1c11aa727c6a661cbd8fc7a08ec31151af78f8e",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "blocked"
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-X-H-WRONG",
+      "category": "core_query_input_separation",
+      "command": "run_attack_query(q_x_h, graph=two_routes_raw)",
+      "coverage": "blocked_auth_scope",
+      "description": "Usable identity scoped to Host executed in OtherHost auth context -> blocked",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:b3fdfbeb56db9a9b833c130d372295123ce094511bd5dbfc9e5c6dac0be26fd9",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "blocked"
+      },
+      "inputs": {
+        "authentication_context": "OtherHost",
+        "usable_identity": [
+          [
+            "Alice",
+            "Host"
+          ]
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:122348ce4854cda596d1bbba116dbeefc5cdca06d6b2c95ae04ff5098fc3555a",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "status": "success"
+      },
+      "assertions": [
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-X-H-VALID",
+      "category": "core_query_input_separation",
+      "command": "run_attack_query(q_x_h_val, graph=two_routes_raw)",
+      "coverage": "complete_3_paths",
+      "description": "Usable identity scoped to Host executed in matching Host auth context -> success",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:70f7adcd5909ce77f333900f6041b4bb8cdeec2b8cc37975971b63f5bc5581c2",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "status": "success"
+      },
+      "inputs": {
+        "authentication_context": "Host",
+        "usable_identity": [
+          [
+            "Alice",
+            "Host"
+          ]
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:913d773dcb6773bae02e58e59e3f950ff63c0db4fd9d666a9088b86fc4ea7625",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "checkpoint_reached_final_goal_blocked"
+      },
+      "assertions": [
+        {
+          "actual": "checkpoint_reached_final_goal_blocked",
+          "actual_present": true,
+          "expected": "checkpoint_reached_final_goal_blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-C-F",
+      "category": "checkpoint_asset_separation",
+      "command": "run_attack_query(q_c_f, graph=two_routes_raw)",
+      "coverage": "checkpoint_reached_asset_blocked",
+      "description": "DA checkpoint reached, but final asset gate admin_channel=False",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:63f6bea57933d951389ef09d423b674c4057d527a1b031eef87c0d3d84faa304",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "checkpoint_reached_final_goal_blocked"
+      },
+      "inputs": {
+        "admin_channel": false,
+        "checkpoint_goal": "effective_member(Alice, Admins)"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:bdfd522bd90f5cfc78ff9bef6214aae8dd9cd3fac3eabe409ef7ccb2da2807fd",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "checkpoint_reached_final_goal_indeterminate"
+      },
+      "assertions": [
+        {
+          "actual": "checkpoint_reached_final_goal_indeterminate",
+          "actual_present": true,
+          "expected": "checkpoint_reached_final_goal_indeterminate",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-C-U",
+      "category": "checkpoint_asset_separation",
+      "command": "run_attack_query(q_c_u, graph=two_routes_raw)",
+      "coverage": "checkpoint_reached_asset_indeterminate",
+      "description": "DA checkpoint reached, but final asset gate admin_channel is missing without assumption",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:73d520b32cc686d3ca6282d87fc0ecb36b09e316df595df5d32a660aa9f8b3c2",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "checkpoint_reached_final_goal_indeterminate"
+      },
+      "inputs": {
+        "admin_channel": "missing",
+        "checkpoint_goal": "effective_member(Alice, Admins)"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:5757e7e06aa611bb0bab6e3cd740fcfdbe4a1227a3ca0e5ccb8cd83b3b1883a3",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "paths_count": 1,
+        "status": "success"
+      },
+      "assertions": [
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "paths_count",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-DA-NEG-ASSET-POS",
+      "category": "checkpoint_asset_separation",
+      "command": "run_attack_query(q_da_neg, graph=two_routes_raw)",
+      "coverage": "asset_reached_without_checkpoint",
+      "description": "Asset goal reached directly via AdminTo; DA checkpoint blocked -> status success, checkpoint_reached=False",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:47427793ce5e87d72ba9f87edd09723fddf75740a8e6bbd42c0e1cd8ff72c70f",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "paths_count": 1,
+        "status": "success"
+      },
+      "inputs": {
+        "checkpoint_goal": "effective_member(Alice, Admins)",
+        "membership_usable": false
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:0267d0bc678f812c1416eca906590d5885c00c1ae41d9da15fef01be94a17027",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "checkpoint_reached": true,
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "status": "success"
+      },
+      "assertions": [
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "paths_count",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-DA-POS",
+      "category": "checkpoint_asset_separation",
+      "command": "run_attack_query(q_da_pos, graph=two_routes_raw)",
+      "coverage": "both_checkpoint_and_asset_reached",
+      "description": "Both DA checkpoint and final asset goal are reached -> status success, checkpoint_reached=True, final_goal_reached=True",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:39551012156fafc0757a6833ed5deeb63d916a2d84351ed18f47a1b445be2717",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "checkpoint_reached": true,
+        "final_goal_reached": true,
+        "paths_count": 3,
+        "status": "success"
+      },
+      "inputs": {
+        "checkpoint_goal": "effective_member(Alice, Admins)",
+        "runtime_facts": "all observed true",
+        "target_goal": "admin_control(Host)"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:5a96fb350427c2f1051bfa20a2cc0032c3f635a63e3ad228d7dd96e7ab69dec4",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "final_goal_reached": false,
+        "indeterminate_attempts_present": true,
+        "paths_count": 0,
+        "status": "indeterminate"
+      },
+      "assertions": [
+        {
+          "actual": "indeterminate",
+          "actual_present": true,
+          "expected": "indeterminate",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "indeterminate_attempts_present",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-G-U",
+      "category": "runtime_facts_and_assumptions",
+      "command": "run_attack_query(q_g_u, graph=psremote_raw)",
+      "coverage": "missing_fact_indeterminate",
+      "description": "Missing required fact winrm_available without assumption -> status indeterminate",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:2d7e0d39585b15082b3776e8ee0a920495997f11a4fa0ddc559ba5b7884d04f9",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "final_goal_reached": false,
+        "indeterminate_attempts_present": true,
+        "paths_count": 0,
+        "status": "indeterminate"
+      },
+      "inputs": {
+        "missing_fact": "winrm_available"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:835fea027415dc579884dd58c6e4dc936593059fb33e9e516028f4a137e5a894",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "assumption_backed": true,
+        "final_goal_reached": true,
+        "paths_count": 1,
+        "status": "success"
+      },
+      "assertions": [
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "assumption_backed",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-G-A",
+      "category": "runtime_facts_and_assumptions",
+      "command": "run_attack_query(q_g_a, graph=psremote_raw)",
+      "coverage": "scenario_assumption_success",
+      "description": "Valid declared assumption with scope and rationale enables scenario execution -> success",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:fb7d67cc7e6b59588221b4e7e9d2458f0622f27c3f6033731f197635cb460e81",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "assumption_backed": true,
+        "final_goal_reached": true,
+        "paths_count": 1,
+        "status": "success"
+      },
+      "inputs": {
+        "declared_assumption": "winrm_available=True"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:139d5f80570d6b9c71f176ab44fd0eb7ea25aad5dae465bc359dd5ee79b3030f",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "blocked_attempts_present": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "blocked"
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "blocked_attempts_present",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-G-F",
+      "category": "runtime_facts_and_assumptions",
+      "command": "run_attack_query(q_g_f, graph=psremote_raw)",
+      "coverage": "authoritative_blocked",
+      "description": "Authoritative false fact winrm_available=False without assumption -> status blocked",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:143f16735e4245067482a25e6caa0d5515d17142f2ac1d01eb0cec90a38b0a47",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "blocked_attempts_present": true,
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "status": "blocked"
+      },
+      "inputs": {
+        "authoritative_fact": "winrm_available=False"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:53d00ab3e4e4fdc5a45c971d70fccd9c6322b8fb8d2747d13f90b231e1953634",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "final_goal_reached": false,
+        "rejected_assumptions_count": 1,
+        "rejection_reasons": [
+          "known_false_veto"
+        ],
+        "status": "blocked"
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "rejected_assumptions_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "known_false_veto"
+          ],
+          "actual_present": true,
+          "expected": [
+            "known_false_veto"
+          ],
+          "field": "rejection_reasons",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-G-VETO",
+      "category": "runtime_facts_and_assumptions",
+      "command": "run_attack_query(q_g_veto, graph=psremote_raw)",
+      "coverage": "authoritative_veto",
+      "description": "Authoritative false fact vetoes declared assumption true and records audit trace in rejected_assumptions",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:deb2ff8ead14b984ccb4f494115e6d91c4f6ff8bffcbad05ee443b30300458fd",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "final_goal_reached": false,
+        "rejected_assumptions_count": 1,
+        "rejection_reasons": [
+          "known_false_veto"
+        ],
+        "status": "blocked"
+      },
+      "inputs": {
+        "authoritative_fact": "winrm_available=False",
+        "declared_assumption": "winrm_available=True"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:79eeec983bdbf5e228b7b34480ffff217efdf4733c7944dd53a82e39ba16c435",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "best_candidate_id": "generated_0003",
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        },
+        "is_minimum_proven_over_scope": true,
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "minimum_effort_value": 2,
+        "optimization_scope": "exhaustive_within_scope"
+      },
+      "assertions": [
+        {
+          "actual": 2,
+          "actual_present": true,
+          "expected": 2,
+          "field": "minimum_effort_value",
+          "passed": true
+        },
+        {
+          "actual": "generated_0003",
+          "actual_present": true,
+          "expected": "generated_0003",
+          "field": "best_candidate_id",
+          "passed": true
+        },
+        {
+          "actual": "exhaustive_within_scope",
+          "actual_present": true,
+          "expected": "exhaustive_within_scope",
+          "field": "optimization_scope",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": 5,
+            "generated_0002": 5,
+            "generated_0003": 2
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": 5,
+            "generated_0002": 5,
+            "generated_0003": 2
+          },
+          "field": "efforts",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0002": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0003": [
+              "12/25",
+              "18/25"
+            ]
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0002": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0003": [
+              "12/25",
+              "18/25"
+            ]
+          },
+          "field": "likelihoods",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": "High",
+            "generated_0002": "High",
+            "generated_0003": "High"
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": "High",
+            "generated_0002": "High",
+            "generated_0003": "High"
+          },
+          "field": "impacts",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-MIN-EFFORT-E",
+      "category": "min_effort_scoring",
+      "command": "run_attack_query(q_min_e, two_routes_raw)",
+      "coverage": "exhaustive_within_scope",
+      "description": "Counter-structural Min-Effort: 2-step M/I (effort 2) beats 1-step D (effort 5) under Ledger E",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:0006ef332b2441496ce6897d45752e8e0dafba440c42f7cf907b039b9e3923aa",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "best_candidate_id": "generated_0003",
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        },
+        "is_minimum_proven_over_scope": true,
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "minimum_effort_value": 2,
+        "optimization_scope": "exhaustive_within_scope"
+      },
+      "inputs": {
+        "budget": {
+          "max_expansions": 100000,
+          "max_paths": 1000,
+          "max_steps": 12
+        },
+        "scoring_ledger": "Ledger E"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:d6cc818aeadb6ee8b677870b82fccc9f6568fda5b4873de50559fea4a658b82b",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "all_best_candidate_ids": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003"
+        ],
+        "all_best_candidates_count": 3,
+        "minimum_effort_value": 2,
+        "tie_count": 3
+      },
+      "assertions": [
+        {
+          "actual": 2,
+          "actual_present": true,
+          "expected": 2,
+          "field": "minimum_effort_value",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "tie_count",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "all_best_candidates_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            "generated_0001",
+            "generated_0002",
+            "generated_0003"
+          ],
+          "actual_present": true,
+          "expected": [
+            "generated_0001",
+            "generated_0002",
+            "generated_0003"
+          ],
+          "field": "all_best_candidate_ids",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-MIN-EFFORT-T",
+      "category": "min_effort_scoring",
+      "command": "run_attack_query(q_min_t, two_routes_raw)",
+      "coverage": "exhaustive_within_scope",
+      "description": "3-way Min-Effort tie: D (effort 2), M/D (effort 2), M/I (effort 2) all tied",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:11e4350a73f9e7bacaa1527ef1152721d2feac8b81b4b4b6a616a4593d507e89",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "all_best_candidate_ids": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003"
+        ],
+        "all_best_candidates_count": 3,
+        "minimum_effort_value": 2,
+        "tie_count": 3
+      },
+      "inputs": {
+        "scoring_ledger": "Ledger T"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:7b96c8f7296703774ce3f9f4826a8c8c99567e8ef11e5cfab8dea07f985302a6",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "pareto_frontier": [
+          "cand_member_inherited"
+        ],
+        "strictly_dominates": true
+      },
+      "assertions": [
+        {
+          "actual": [
+            "cand_member_inherited"
+          ],
+          "actual_present": true,
+          "expected": [
+            "cand_member_inherited"
+          ],
+          "field": "pareto_frontier",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "strictly_dominates",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-MIN-EFFORT-TIES",
+      "category": "min_effort_scoring",
+      "command": "PathRankingEngine(version='1.0.0').evaluate(query_payload=ties_pkg['query'], candidates=ties_pkg['candidates'])",
+      "coverage": "tie_break_resolved",
+      "description": "ADR-0013 Sec 4 point likelihood tie-break: M/I (effort 2) strictly dominates D (effort 5) under P=1/2",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "pareto_frontier": [
+          "cand_member_inherited"
+        ],
+        "strictly_dominates": true
+      },
+      "inputs": {
+        "candidates": [
+          "cand_direct",
+          "cand_member_inherited"
+        ],
+        "likelihood_point": "1/2"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:9c0bf79b2f7a8f88a8458310af3d9bf824a240dbd6b3c892de4367706651f0f2",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "effort_d": 5,
+        "effort_md": 5,
+        "efforts_equal": true
+      },
+      "assertions": [
+        {
+          "actual": 5,
+          "actual_present": true,
+          "expected": 5,
+          "field": "effort_d",
+          "passed": true
+        },
+        {
+          "actual": 5,
+          "actual_present": true,
+          "expected": 5,
+          "field": "effort_md",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "efforts_equal",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-REUSE-ANTI-DOUBLE-COUNTING",
+      "category": "min_effort_scoring",
+      "command": "run_attack_query(q_min_e, two_routes_raw)",
+      "coverage": "anti_double_counting_verified",
+      "description": "Reused work unit counted once; passive membership adds 0 effort; effort(D) == effort(M/D) == 5",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "effort_d": 5,
+        "effort_md": 5,
+        "efforts_equal": true
+      },
+      "inputs": {
+        "program_1": "Direct Admin (1 hop)",
+        "program_2": "Member + Direct Admin (2 hops)"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:d7da45477b13afc54c0ed02e6b0dad110150fb48c044a3a67f704647bdd0aea6",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "effort": 5,
+        "effort_status": "rated",
+        "impact_status": "unrated",
+        "program": [
+          "w-auth-otherhost",
+          "w-direct-admin-otherhost"
+        ]
+      },
+      "assertions": [
+        {
+          "actual": 5,
+          "actual_present": true,
+          "expected": 5,
+          "field": "effort",
+          "passed": true
+        },
+        {
+          "actual": "rated",
+          "actual_present": true,
+          "expected": "rated",
+          "field": "effort_status",
+          "passed": true
+        },
+        {
+          "actual": "unrated",
+          "actual_present": true,
+          "expected": "unrated",
+          "field": "impact_status",
+          "passed": true
+        },
+        {
+          "actual": [
+            "w-auth-otherhost",
+            "w-direct-admin-otherhost"
+          ],
+          "actual_present": true,
+          "expected": [
+            "w-auth-otherhost",
+            "w-direct-admin-otherhost"
+          ],
+          "field": "program",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-REUSE-CONTEXT-SEPARATION",
+      "category": "min_effort_scoring",
+      "command": "assess_candidate_program(decoded_diag, cand_unrated_impact)",
+      "coverage": "otherhost_ledger_assessment_only",
+      "description": "OtherHost ledger: effort rated; impact remains unrated. This row does not prove deduplication across multiple contexts.",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "effort": 5,
+        "effort_status": "rated",
+        "impact_status": "unrated",
+        "program": [
+          "w-auth-otherhost",
+          "w-direct-admin-otherhost"
+        ]
+      },
+      "inputs": {
+        "work_units": [
+          "w-auth-otherhost (1)",
+          "w-direct-admin-otherhost (4)"
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:229adfc2da849aa497f63384c3fe0849bba670ec18c468aef19be23fa4d80fe3",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "is_minimum_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset",
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "truncated",
+          "passed": true
+        },
+        {
+          "actual": "path_limit_reached",
+          "actual_present": true,
+          "expected": "path_limit_reached",
+          "field": "truncation_reason",
+          "passed": true
+        },
+        {
+          "actual": "best_in_generated_subset",
+          "actual_present": true,
+          "expected": "best_in_generated_subset",
+          "field": "optimization_scope",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-CAP-PATHS",
+      "category": "search_budget_caps",
+      "command": "run_attack_query(q_cap_paths, two_routes_raw)",
+      "coverage": "partial_truncated",
+      "description": "max_paths=1 cap triggers truncation; cannot claim global minimum",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:23e2c6191aed392832d191788a096ee56fd59a822b1a0d0df44848ccdd2fc0c2",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "is_minimum_proven_over_scope": false,
+        "optimization_scope": "best_in_generated_subset",
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "inputs": {
+        "max_paths": 1
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:30742958f63c84904926e44c189d1a19ec1a7b09cc4b8ae5339a2a887ad85970",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "is_minimum_proven_over_scope": false,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached"
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "truncated",
+          "passed": true
+        },
+        {
+          "actual": "expansion_limit_reached",
+          "actual_present": true,
+          "expected": "expansion_limit_reached",
+          "field": "truncation_reason",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-CAP-EXP",
+      "category": "search_budget_caps",
+      "command": "run_attack_query(q_cap_exp, two_routes_raw)",
+      "coverage": "partial_truncated_expansions",
+      "description": "max_expansions=1 cap triggers truncation; truncation_reason=expansion_limit_reached",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:5ce979baf05c307241c3eae2da268af639dfd5714fa9e04cba84acbf0e97f5e2",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "is_minimum_proven_over_scope": false,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached"
+      },
+      "inputs": {
+        "max_expansions": 1
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:ae1cc62bfe118436e0180946f5fe1ce21722c0a08ed77fdc805733dba682878d",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "is_minimum_proven_over_scope": false,
+        "truncated": true,
+        "truncation_reason": "step_limit_reached"
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "truncated",
+          "passed": true
+        },
+        {
+          "actual": "step_limit_reached",
+          "actual_present": true,
+          "expected": "step_limit_reached",
+          "field": "truncation_reason",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-CAP-STEPS",
+      "category": "search_budget_caps",
+      "command": "run_attack_query(q_cap_steps, two_routes_raw)",
+      "coverage": "partial_truncated_steps",
+      "description": "max_steps=1 cap triggers truncation; truncation_reason=step_limit_reached",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:5bcfb0c9c83308442c14caf55f33df1cc10f62385752744302813f6824cdefca",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "is_minimum_proven_over_scope": false,
+        "truncated": true,
+        "truncation_reason": "step_limit_reached"
+      },
+      "inputs": {
+        "max_steps": 1
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:b0ae31224a411ff897a5d5094f1b47073d5a02e4537612352f8be4121ed72595",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "diagnostics_count": 6,
+        "pareto_frontier_count": 0,
+        "unrated_assumed_likelihood": null,
+        "unrated_effort": null,
+        "unrated_effort_status": "unrated",
+        "unrated_impact": null,
+        "unrated_likelihood": null
+      },
+      "assertions": [
+        {
+          "actual": 6,
+          "actual_present": true,
+          "expected": 6,
+          "field": "diagnostics_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "pareto_frontier_count",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "unrated_effort",
+          "passed": true
+        },
+        {
+          "actual": "unrated",
+          "actual_present": true,
+          "expected": "unrated",
+          "field": "unrated_effort_status",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "unrated_likelihood",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "unrated_assumed_likelihood",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "unrated_impact",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-SCORE-DIAGNOSTICS",
+      "category": "min_effort_scoring",
+      "command": "PathRankingEngine(version='1.0.0').evaluate(query_payload=diag_pkg['query'], candidates=diag_pkg['candidates'])",
+      "coverage": "diagnostic_partitioning",
+      "description": "Fail-closed diagnostic partitioning: missing effort/likelihood/impact basis -> unrated, fail-closed diagnostic partition, no score invented",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "diagnostics_count": 6,
+        "pareto_frontier_count": 0,
+        "unrated_assumed_likelihood": null,
+        "unrated_effort": null,
+        "unrated_effort_status": "unrated",
+        "unrated_impact": null,
+        "unrated_likelihood": null
+      },
+      "inputs": {
+        "candidates_tested": 6
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:ec51ffa8ce5d8b9b7b1825b71d97c017bdbab433735178e40e1a62277bda0ef5",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "candidates_adapted": 2,
+        "candidates_received": 3,
+        "candidates_rejected_by_adapter": 1,
+        "is_minimum_proven_over_scope": false,
+        "minimum_effort_value": 5,
+        "optimization_scope": "best_in_bound_subset",
+        "paths_count": 3
+      },
+      "aliases": [
+        "W4-DEFECT-ADAPTER-REJECT"
+      ],
+      "assertions": [
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "candidates_received",
+          "passed": true
+        },
+        {
+          "actual": 2,
+          "actual_present": true,
+          "expected": 2,
+          "field": "candidates_adapted",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "candidates_rejected_by_adapter",
+          "passed": true
+        },
+        {
+          "actual": "best_in_bound_subset",
+          "actual_present": true,
+          "expected": "best_in_bound_subset",
+          "field": "optimization_scope",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        },
+        {
+          "actual": 5,
+          "actual_present": true,
+          "expected": 5,
+          "field": "minimum_effort_value",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-DEFECT-212-ADAPTER-REJECT",
+      "category": "defect_issue_212",
+      "command": "run_attack_query(replace(q_min_e, action_bindings=rejected_bindings), graph)",
+      "coverage": "adapter_exclusion_reproduction",
+      "dependency": "Integrated #232 regression: adapter exclusions downgrade scope/proof; retained known signature detects recurrence",
+      "description": "Public query drops the cheapest generated path at adapter validation",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:67ae50fec8cde1a91880188e15715ddbeb246cbd226b79078703d380c81796fa",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "candidates_adapted": 2,
+        "candidates_received": 3,
+        "candidates_rejected_by_adapter": 1,
+        "is_minimum_proven_over_scope": false,
+        "minimum_effort_value": 5,
+        "optimization_scope": "best_in_bound_subset",
+        "paths_count": 3
+      },
+      "inputs": {
+        "binding_override": "inherited admin -> action_member_admins"
+      },
+      "known_observation": {
+        "candidates_adapted": 2,
+        "candidates_received": 3,
+        "candidates_rejected_by_adapter": 1,
+        "is_minimum_proven_over_scope": true,
+        "minimum_effort_value": 5,
+        "optimization_scope": "exhaustive_within_scope",
+        "paths_count": 3
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:2db6d583e001c5af575070976661bbb599d98d07b3e0195f2741b633c00a9891",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "adapter_rejected": false,
+        "candidates_evaluated": 0,
+        "canonical_minimum_effort": null,
+        "diagnostic": null,
+        "disposition": "semantic_initial_goal_zero_work",
+        "eligible_candidates": {},
+        "final_goal_reached": true,
+        "impact": null,
+        "likelihood_interval": null,
+        "optimization_scope": "exhaustive_within_scope",
+        "pareto_frontier": [],
+        "path_transitions": 0,
+        "paths_count": 1,
+        "ranking_status": "not_applicable",
+        "zero_new_work_disclosed": true
+      },
+      "aliases": [
+        "W4-DEFECT-ZERO-ACTION"
+      ],
+      "assertions": [
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "path_transitions",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "adapter_rejected",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "zero_new_work_disclosed",
+          "passed": true
+        },
+        {
+          "actual": "not_applicable",
+          "actual_present": true,
+          "expected": "not_applicable",
+          "field": "ranking_status",
+          "passed": true
+        },
+        {
+          "actual": "semantic_initial_goal_zero_work",
+          "actual_present": true,
+          "expected": "semantic_initial_goal_zero_work",
+          "field": "disposition",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "likelihood_interval",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "impact",
+          "passed": true
+        },
+        {
+          "actual": {},
+          "actual_present": true,
+          "expected": {},
+          "field": "eligible_candidates",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "pareto_frontier",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "candidates_evaluated",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "canonical_minimum_effort",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-DEFECT-212-ZERO-ACTION",
+      "category": "defect_issue_212",
+      "command": "run_attack_query(q_zero, graph=two_routes_raw)",
+      "coverage": "semantic_initial_goal_zero_work",
+      "dependency": "Integrated #232 regression: semantic zero work; canonical ranking is not applicable",
+      "description": "Zero-action semantic goal with target != foothold; separate canonical ranking",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:4b00803d78382eab541a690f9cc108c22f6235feb941fed28bcea0ebf75e9f0d",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "adapter_rejected": false,
+        "candidates_evaluated": 0,
+        "canonical_minimum_effort": null,
+        "disposition": "semantic_initial_goal_zero_work",
+        "eligible_candidates": {},
+        "final_goal_reached": true,
+        "impact": null,
+        "likelihood_interval": null,
+        "pareto_frontier": [],
+        "path_transitions": 0,
+        "paths_count": 1,
+        "ranking_status": "not_applicable",
+        "zero_new_work_disclosed": true
+      },
+      "inputs": {
+        "initial_state": "admin_control(Host)",
+        "source_foothold": "OtherHost",
+        "target": "Host"
+      },
+      "known_observation": {
+        "adapter_rejected": true,
+        "diagnostic_contains": "does not match query foothold",
+        "final_goal_reached": true,
+        "optimization_scope": "no_rated_candidates",
+        "path_transitions": 0,
+        "paths_count": 1,
+        "zero_new_work_disclosed": false
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:5260f36591ad5e60bf3b50cdef4dae0a2c0a08c35bfec450dab3eec76b34b087",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "actual_field_present": true,
+        "documentation_matches_output": null
+      },
+      "aliases": [
+        "W4-DEFECT-DOCS-SHAPE"
+      ],
+      "assertions": [
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": true,
+          "field": "documentation_matches_output",
+          "passed": false
+        }
+      ],
+      "case_id": "W4-DEFECT-212-DOCS-SHAPE",
+      "category": "manual_contract_audit",
+      "command": null,
+      "coverage": "manual_audit_not_executed",
+      "dependency": "Manual public docs/API audit #212; field presence alone is insufficient",
+      "description": "Public documentation/API agreement requires a manual audit",
+      "disposition": "Normative expectation not evaluated; Manual public docs/API audit #212; field presence alone is insufficient",
+      "evidence_class": "manual_check_not_executed",
+      "execution_status": "not_executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "documentation_matches_output": true
+      },
+      "inputs": {
+        "api_field": "min_effort.minimum_effort_value"
+      },
+      "normative_acceptance": false,
+      "output_digest": "sha256:210238186c2e406c6c373cdbd180df1a1bb7656fb2b8344cea52efd4427f85f3",
+      "verdict": "NOT EXECUTED"
+    },
+    {
+      "actual": {
+        "actors": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102"
+        ],
+        "asset_goal": true,
+        "assumption_backed": true,
+        "candidates_adapted": 1,
+        "canonical_unchanged": true,
+        "checkpoint": true,
+        "effort": null,
+        "effort_status": "unrated",
+        "extension_off_paths": 0,
+        "extension_off_status": "no_path",
+        "extension_on_paths": 1,
+        "extension_on_status": "success",
+        "impact": null,
+        "impact_status": "unrated",
+        "is_minimum_proven_over_scope": false,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "milestones": [
+          {
+            "activated_target": false,
+            "admin": false,
+            "member": false,
+            "recovered_secret": false,
+            "ticket_material": true
+          },
+          {
+            "activated_target": false,
+            "admin": false,
+            "member": false,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": false,
+            "member": false,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": false,
+            "member": true,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": true,
+            "member": true,
+            "recovered_secret": true,
+            "ticket_material": true
+          }
+        ],
+        "minimum_effort_value": null,
+        "pareto_frontier": [],
+        "programs": [
+          [
+            "kerberoast_request",
+            "recover_ticket_secret",
+            "activate_recovered_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        ],
+        "shared_inputs_equal": true,
+        "truncated": false
+      },
+      "assertions": [
+        {
+          "actual": "no_path",
+          "actual_present": true,
+          "expected": "no_path",
+          "field": "extension_off_status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "extension_off_paths",
+          "passed": true
+        },
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "extension_on_status",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "extension_on_paths",
+          "passed": true
+        },
+        {
+          "actual": [
+            [
+              "kerberoast_request",
+              "recover_ticket_secret",
+              "activate_recovered_identity",
+              "propagate_group_entitlement",
+              "scenario_winrm_admin"
+            ]
+          ],
+          "actual_present": true,
+          "expected": [
+            [
+              "kerberoast_request",
+              "recover_ticket_secret",
+              "activate_recovered_identity",
+              "propagate_group_entitlement",
+              "scenario_winrm_admin"
+            ]
+          ],
+          "field": "programs",
+          "passed": true
+        },
+        {
+          "actual": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-1102",
+            "S-1-5-21-1000-2000-3000-1102",
+            "S-1-5-21-1000-2000-3000-1102"
+          ],
+          "actual_present": true,
+          "expected": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-1102",
+            "S-1-5-21-1000-2000-3000-1102",
+            "S-1-5-21-1000-2000-3000-1102"
+          ],
+          "field": "actors",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "truncated",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "assumption_backed",
+          "passed": true
+        },
+        {
+          "actual": 1,
+          "actual_present": true,
+          "expected": 1,
+          "field": "candidates_adapted",
+          "passed": true
+        },
+        {
+          "actual": "unrated",
+          "actual_present": true,
+          "expected": "unrated",
+          "field": "effort_status",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "effort",
+          "passed": true
+        },
+        {
+          "actual": "unrated",
+          "actual_present": true,
+          "expected": "unrated",
+          "field": "likelihood_status",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "likelihood_interval",
+          "passed": true
+        },
+        {
+          "actual": "unrated",
+          "actual_present": true,
+          "expected": "unrated",
+          "field": "impact_status",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "impact",
+          "passed": true
+        },
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": null,
+          "field": "minimum_effort_value",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "pareto_frontier",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "shared_inputs_equal",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        },
+        {
+          "actual": [
+            {
+              "activated_target": false,
+              "admin": false,
+              "member": false,
+              "recovered_secret": false,
+              "ticket_material": true
+            },
+            {
+              "activated_target": false,
+              "admin": false,
+              "member": false,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": false,
+              "member": false,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": false,
+              "member": true,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": true,
+              "member": true,
+              "recovered_secret": true,
+              "ticket_material": true
+            }
+          ],
+          "actual_present": true,
+          "expected": [
+            {
+              "activated_target": false,
+              "admin": false,
+              "member": false,
+              "recovered_secret": false,
+              "ticket_material": true
+            },
+            {
+              "activated_target": false,
+              "admin": false,
+              "member": false,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": false,
+              "member": false,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": false,
+              "member": true,
+              "recovered_secret": true,
+              "ticket_material": true
+            },
+            {
+              "activated_target": true,
+              "admin": true,
+              "member": true,
+              "recovered_secret": true,
+              "ticket_material": true
+            }
+          ],
+          "field": "milestones",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-TECH-KERBEROASTING",
+      "category": "extension_technique",
+      "command": "run_attack_query(q_off, graph) vs run_attack_query(q_on, graph)",
+      "coverage": "generated_synthetic_program_and_unrated_assessment",
+      "dependency": "Integrated #230 generated synthetic chain; private-data replay and numeric basis remain separate",
+      "description": "Generated credential chain and asset action; unrated C/P/I",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:ebfffe7e4fbcfd6f639e11c7f1a8d19671fbd28181487fa3a4a0d6be73913b91",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output; extension OFF has no applicable capability acquisition or asset route",
+      "expected": {
+        "actors": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102"
+        ],
+        "asset_goal": true,
+        "assumption_backed": true,
+        "candidates_adapted": 1,
+        "canonical_unchanged": true,
+        "checkpoint": true,
+        "effort": null,
+        "effort_status": "unrated",
+        "extension_off_paths": 0,
+        "extension_off_status": "no_path",
+        "extension_on_paths": 1,
+        "extension_on_status": "success",
+        "impact": null,
+        "impact_status": "unrated",
+        "is_minimum_proven_over_scope": false,
+        "likelihood_interval": null,
+        "likelihood_status": "unrated",
+        "milestones": [
+          {
+            "activated_target": false,
+            "admin": false,
+            "member": false,
+            "recovered_secret": false,
+            "ticket_material": true
+          },
+          {
+            "activated_target": false,
+            "admin": false,
+            "member": false,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": false,
+            "member": false,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": false,
+            "member": true,
+            "recovered_secret": true,
+            "ticket_material": true
+          },
+          {
+            "activated_target": true,
+            "admin": true,
+            "member": true,
+            "recovered_secret": true,
+            "ticket_material": true
+          }
+        ],
+        "minimum_effort_value": null,
+        "pareto_frontier": [],
+        "programs": [
+          [
+            "kerberoast_request",
+            "recover_ticket_secret",
+            "activate_recovered_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        ],
+        "shared_inputs_equal": true,
+        "truncated": false
+      },
+      "inputs": {
+        "fixture": "scripts/research/kerberoasting_probe.py:synthetic"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:c586ae4bea91bbc9fd46fb65b5b9e65c81fbba81ffa3c28bccab9fa1006ff7e8",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [
+          "kerberoast_request"
+        ],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": true
+      },
+      "assertions": [
+        {
+          "actual": "indeterminate",
+          "actual_present": true,
+          "expected": "indeterminate",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [
+            "kerberoast_request"
+          ],
+          "actual_present": true,
+          "expected": [
+            "kerberoast_request"
+          ],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-MATERIAL",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:a90393c48c04fe84069d9c9885e504c8069e9a4297473569ca49ef70edd6cbb4",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [
+          "kerberoast_request"
+        ],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": true
+      },
+      "inputs": {
+        "changed_predicate": "recovery_success",
+        "value": null
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:95533704a0c3dac59f8c92b40fdbe5869663b0604814dd2abbd0f894b695e391",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-KDC-F",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:1bb2f7fc31c322face4963a11439fb2defbc63da70cdd62da7d74f8158009fe5",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "inputs": {
+        "changed_predicate": "network_kdc_reachable",
+        "value": false
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:d42a4e937552aa41700a865f4c2d9a3c41d7c783caafd92e6dab3f54143e6948",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": false
+      },
+      "assertions": [
+        {
+          "actual": "indeterminate",
+          "actual_present": true,
+          "expected": "indeterminate",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-KDC-U",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:493e80521d6c327952b7935e389096ba32c5f4f3384217df49619fce3aa4a3e7",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": false
+      },
+      "inputs": {
+        "changed_predicate": "network_kdc_reachable",
+        "value": null
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:6ac9bed9a587506b37f0f07ff47927cc316c2905dd8c428d63401fa8c53681c1",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [
+          "kerberoast_request",
+          "recover_ticket_secret"
+        ],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": true,
+        "status": "blocked",
+        "ticket_material": true
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [
+            "kerberoast_request",
+            "recover_ticket_secret"
+          ],
+          "actual_present": true,
+          "expected": [
+            "kerberoast_request",
+            "recover_ticket_secret"
+          ],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-AUTH-F",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:40c95dc96bce666fed26b94f83d6c1558e6d1bec0ffdd491785a233b306ac76c",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [
+          "kerberoast_request",
+          "recover_ticket_secret"
+        ],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": true,
+        "status": "blocked",
+        "ticket_material": true
+      },
+      "inputs": {
+        "changed_predicate": "authentication_accepted",
+        "value": false
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:42d03f042aa9860e1fd4df369b1ed762ae647482c6ae4f0cf30b8ab32a98cc8c",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-NO-AUTH",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:a19b3b6fca04eb9393a0a5a064d8fc1e497a06f8d9eccfd7a64ae40acdc4298f",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "inputs": {
+        "changed_predicate": null,
+        "value": null
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:d42a4e937552aa41700a865f4c2d9a3c41d7c783caafd92e6dab3f54143e6948",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "assertions": [
+        {
+          "actual": "blocked",
+          "actual_present": true,
+          "expected": "blocked",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-FACT-F",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:94ccd4f4ad1790ac2076805022fdcd9c159d7c4c7ae0dd97d851c5be375efd6f",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "blocked",
+        "ticket_material": false
+      },
+      "inputs": {
+        "changed_predicate": "has_spn",
+        "value": false
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:d42a4e937552aa41700a865f4c2d9a3c41d7c783caafd92e6dab3f54143e6948",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": false
+      },
+      "assertions": [
+        {
+          "actual": "indeterminate",
+          "actual_present": true,
+          "expected": "indeterminate",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint",
+          "passed": true
+        },
+        {
+          "actual": [],
+          "actual_present": true,
+          "expected": [],
+          "field": "applied_prefix",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "ticket_material",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "recovered_secret",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "activated_target",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-FACT-U",
+      "category": "extension_technique",
+      "command": "run_attack_query(variant_query, graph=variant_graph)",
+      "coverage": "generated_synthetic_cutoff",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence",
+      "description": "Kerberoasting independent cutoff; preserve applicable prefix only",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:73d6b7db899a4b9bf728bb8dfa65baee15a5775c884a25a5a89508e60eeeeb74",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "expected": {
+        "activated_target": false,
+        "applied_prefix": [],
+        "asset_goal": false,
+        "canonical_unchanged": true,
+        "checkpoint": false,
+        "paths_count": 0,
+        "recovered_secret": false,
+        "status": "indeterminate",
+        "ticket_material": false
+      },
+      "inputs": {
+        "changed_predicate": "has_spn",
+        "value": null
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:6ac9bed9a587506b37f0f07ff47927cc316c2905dd8c428d63401fa8c53681c1",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "baseline_asset_goal": true,
+        "baseline_truncated": false,
+        "canonical_unchanged": true,
+        "extension_asset_goal": true,
+        "extension_truncated": true,
+        "extension_truncation_reason": "path_limit_reached",
+        "new_asset_coverage": false,
+        "scope": "generated_scope",
+        "shared_caps": {
+          "max_expansions": 5000,
+          "max_paths": 50,
+          "max_steps": 9
+        },
+        "shared_inputs_equal": true
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "baseline_asset_goal",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "extension_asset_goal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "new_asset_coverage",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "shared_inputs_equal",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "canonical_unchanged",
+          "passed": true
+        },
+        {
+          "actual": "generated_scope",
+          "actual_present": true,
+          "expected": "generated_scope",
+          "field": "scope",
+          "passed": true
+        },
+        {
+          "actual": {
+            "max_expansions": 5000,
+            "max_paths": 50,
+            "max_steps": 9
+          },
+          "actual_present": true,
+          "expected": {
+            "max_expansions": 5000,
+            "max_paths": 50,
+            "max_steps": 9
+          },
+          "field": "shared_caps",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-K-OVERLAP",
+      "category": "extension_technique",
+      "command": "run_attack_query(overlap_off) vs run_attack_query(overlap_on)",
+      "coverage": "same_input_generated_scope_coverage_comparison",
+      "dependency": "Same input/caps, owner-scope toggle only; no numeric superiority claim",
+      "description": "Existing reset route reaches same asset; bounded coverage comparison",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:b758f7343fa648e5ee55bdd0ef54798ca81cdc23ef14ecabd2375b71560bd9b1",
+      "execution_status": "executed",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output; existential same-asset witnesses require no exhaustive path enumeration; caps/truncation disclosed separately",
+      "expected": {
+        "baseline_asset_goal": true,
+        "canonical_unchanged": true,
+        "extension_asset_goal": true,
+        "new_asset_coverage": false,
+        "scope": "generated_scope",
+        "shared_caps": {
+          "max_expansions": 5000,
+          "max_paths": 50,
+          "max_steps": 9
+        },
+        "shared_inputs_equal": true
+      },
+      "inputs": {
+        "fixture": "synthetic(overlap=True)"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:f849d00752a1cd36aa7ed37e133702f09218b7ff5b8bb487fd2e454d08eace2c",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "catalog_support": true,
+        "query_validator_behavior": "",
+        "search_support": true
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "catalog_support",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "search_support",
+          "passed": true
+        },
+        {
+          "actual": "",
+          "actual_present": true,
+          "expected": "",
+          "field": "query_validator_behavior",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-TECH-ASREP",
+      "category": "extension_technique",
+      "command": "run_attack_query(asrep_query, asrep_graph)",
+      "coverage": "scoped_synthetic_prediction_only_mapping_review_pending",
+      "dependency": "B #228 scoped implementation; #206/#208 domain mapping and private acceptance still pending",
+      "description": "AS-REP #228 synthetic query; domain mapping review pending",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:ff7f177e55da8613727a25ec0edd174ba6a9ca159a46afca3a932a1484d513b4",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "catalog_support": true,
+        "query_validator_behavior": "",
+        "search_support": true
+      },
+      "inputs": {
+        "issue_number": 228,
+        "owner": "TTS B (@nairyuuu)",
+        "techniques": [
+          "asrep_request",
+          "recover_asrep_secret",
+          "activate_recovered_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:74ef677e3cafb926598a36d129f6aae23a5c62e5dfa543f647ddff5f0aae0dcf",
+      "pending_observation": {
+        "catalog_support": false,
+        "query_validator_behavior_contains": "unknown technique IDs in allowed_techniques: ['asrep_roasting']",
+        "search_support": null
+      },
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "catalog_support": true,
+        "query_validator_behavior": "",
+        "search_support": true
+      },
+      "assertions": [
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "catalog_support",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "search_support",
+          "passed": true
+        },
+        {
+          "actual": "",
+          "actual_present": true,
+          "expected": "",
+          "field": "query_validator_behavior",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-TECH-RBCD",
+      "category": "extension_technique",
+      "command": "run_attack_query(rbcd_query, rbcd_graph)",
+      "coverage": "scoped_synthetic_prediction_only_mapping_review_pending",
+      "dependency": "B #229; search support untested until concrete handoff",
+      "description": "RBCD #229 synthetic query; domain mapping review pending",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:382954c2122166c127b0f48e81c2b7c4dc4c3b293bafa7661f6da0ddf5ca9b7d",
+      "execution_status": "executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "catalog_support": true,
+        "query_validator_behavior": "",
+        "search_support": true
+      },
+      "inputs": {
+        "issue_number": 229,
+        "owner": "TTS B (@nairyuuu)",
+        "techniques": [
+          "rbcd_acquire_secret",
+          "rbcd_prepare_service",
+          "rbcd_configure_descriptor",
+          "rbcd_delegate_service",
+          "rbcd_service_admin"
+        ]
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:74ef677e3cafb926598a36d129f6aae23a5c62e5dfa543f647ddff5f0aae0dcf",
+      "pending_observation": {
+        "catalog_support": false,
+        "query_validator_behavior_contains": "unknown technique IDs in allowed_techniques: ['configure_rbcd']",
+        "search_support": null
+      },
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "best_candidate_id": "generated_0003",
+        "checkpoint_reached": false,
+        "clean_tracked_source": true,
+        "comparison_exit_code": 0,
+        "complete": true,
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "exit_code": 0,
+        "final_goal_reached": true,
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        },
+        "invalid_artifacts_absent": true,
+        "invalid_diagnostics_present": true,
+        "invalid_exit_codes": {
+          "empty_state": 1,
+          "null_ranking": 1
+        },
+        "invalid_stdout_empty": true,
+        "is_minimum_proven_over_scope": true,
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "minimum_effort_value": 2,
+        "optimization_scope": "exhaustive_within_scope",
+        "output_exit_code": 0,
+        "output_stdout_empty": true,
+        "path_sequences": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Admins",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ]
+        ],
+        "paths_count": 3,
+        "ranking_disposition": "evaluated",
+        "reachable_states_match_oracle": true,
+        "runtime_compared": false,
+        "schema_version": "week4-query-result/0.2.0",
+        "semantic_digest_valid": true,
+        "status": "success",
+        "truncated": false,
+        "two_runs_equal": true
+      },
+      "assertions": [
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "exit_code",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "output_exit_code",
+          "passed": true
+        },
+        {
+          "actual": "week4-query-result/0.2.0",
+          "actual_present": true,
+          "expected": "week4-query-result/0.2.0",
+          "field": "schema_version",
+          "passed": true
+        },
+        {
+          "actual": "success",
+          "actual_present": true,
+          "expected": "success",
+          "field": "status",
+          "passed": true
+        },
+        {
+          "actual": 3,
+          "actual_present": true,
+          "expected": 3,
+          "field": "paths_count",
+          "passed": true
+        },
+        {
+          "actual": [
+            [
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Alice",
+                "Host"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "Alice",
+                "Alice",
+                "Admins"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Admins",
+                "Host"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "Alice",
+                "Alice",
+                "Admins"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Alice",
+                "Host"
+              ]
+            ]
+          ],
+          "actual_present": true,
+          "expected": [
+            [
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Alice",
+                "Host"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "Alice",
+                "Alice",
+                "Admins"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Admins",
+                "Host"
+              ]
+            ],
+            [
+              [
+                "propagate_group_entitlement",
+                "Alice",
+                "Alice",
+                "Admins"
+              ],
+              [
+                "obtain_admin_execution_on_host",
+                "Alice",
+                "Alice",
+                "Host"
+              ]
+            ]
+          ],
+          "field": "path_sequences",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "reachable_states_match_oracle",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "final_goal_reached",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "checkpoint_reached",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "complete",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "truncated",
+          "passed": true
+        },
+        {
+          "actual": "evaluated",
+          "actual_present": true,
+          "expected": "evaluated",
+          "field": "ranking_disposition",
+          "passed": true
+        },
+        {
+          "actual": 2,
+          "actual_present": true,
+          "expected": 2,
+          "field": "minimum_effort_value",
+          "passed": true
+        },
+        {
+          "actual": "generated_0003",
+          "actual_present": true,
+          "expected": "generated_0003",
+          "field": "best_candidate_id",
+          "passed": true
+        },
+        {
+          "actual": "exhaustive_within_scope",
+          "actual_present": true,
+          "expected": "exhaustive_within_scope",
+          "field": "optimization_scope",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "is_minimum_proven_over_scope",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": 5,
+            "generated_0002": 5,
+            "generated_0003": 2
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": 5,
+            "generated_0002": 5,
+            "generated_0003": 2
+          },
+          "field": "efforts",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0002": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0003": [
+              "12/25",
+              "18/25"
+            ]
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0002": [
+              "2/5",
+              "27/40"
+            ],
+            "generated_0003": [
+              "12/25",
+              "18/25"
+            ]
+          },
+          "field": "likelihoods",
+          "passed": true
+        },
+        {
+          "actual": {
+            "generated_0001": "High",
+            "generated_0002": "High",
+            "generated_0003": "High"
+          },
+          "actual_present": true,
+          "expected": {
+            "generated_0001": "High",
+            "generated_0002": "High",
+            "generated_0003": "High"
+          },
+          "field": "impacts",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "semantic_digest_valid",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "clean_tracked_source",
+          "passed": true
+        },
+        {
+          "actual": 0,
+          "actual_present": true,
+          "expected": 0,
+          "field": "comparison_exit_code",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "two_runs_equal",
+          "passed": true
+        },
+        {
+          "actual": false,
+          "actual_present": true,
+          "expected": false,
+          "field": "runtime_compared",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "output_stdout_empty",
+          "passed": true
+        },
+        {
+          "actual": {
+            "empty_state": 1,
+            "null_ranking": 1
+          },
+          "actual_present": true,
+          "expected": {
+            "empty_state": 1,
+            "null_ranking": 1
+          },
+          "field": "invalid_exit_codes",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "invalid_stdout_empty",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "invalid_diagnostics_present",
+          "passed": true
+        },
+        {
+          "actual": true,
+          "actual_present": true,
+          "expected": true,
+          "field": "invalid_artifacts_absent",
+          "passed": true
+        }
+      ],
+      "case_id": "W4-CLI-PACKAGE",
+      "category": "cli_integration",
+      "command": "python -m src.engine.query_cli --query tests/fixtures/query_cli/two-routes-query.json --graph tests/fixtures/attack_scenarios/graphs/two-routes.json --ranking-query docs/research/ratings/week4/synthetic-a2-e.json --label synthetic",
+      "coverage": "synthetic_cli_generation_scoring_and_transport; not private acceptance",
+      "description": "Execute CLI stdout/output, compare two runs and reject invalid inputs",
+      "disposition": "All independent expected assertions satisfied within declared synthetic scope.",
+      "evidence_class": "synthetic_test_only",
+      "evidence_digest": "sha256:dcb1a45fde4215fd8a730632f2c0f43da775eb847af815e06bb4dbeaa40c5388",
+      "execution_status": "executed",
+      "expectation_basis": "Accepted A scenario week4-v1.json two-routes variant 0; independent Ledger E; reviewed CLI schema 0.2 and fail-closed input contract. No expected value is taken from current execution.",
+      "expected": {
+        "best_candidate_id": "generated_0003",
+        "checkpoint_reached": false,
+        "clean_tracked_source": true,
+        "comparison_exit_code": 0,
+        "complete": true,
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "exit_code": 0,
+        "final_goal_reached": true,
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        },
+        "invalid_artifacts_absent": true,
+        "invalid_diagnostics_present": true,
+        "invalid_exit_codes": {
+          "empty_state": 1,
+          "null_ranking": 1
+        },
+        "invalid_stdout_empty": true,
+        "is_minimum_proven_over_scope": true,
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "minimum_effort_value": 2,
+        "optimization_scope": "exhaustive_within_scope",
+        "output_exit_code": 0,
+        "output_stdout_empty": true,
+        "path_sequences": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Admins",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ]
+        ],
+        "paths_count": 3,
+        "ranking_disposition": "evaluated",
+        "reachable_states_match_oracle": true,
+        "runtime_compared": false,
+        "schema_version": "week4-query-result/0.2.0",
+        "semantic_digest_valid": true,
+        "status": "success",
+        "truncated": false,
+        "two_runs_equal": true
+      },
+      "inputs": {
+        "empty_initial_state": {},
+        "graph": "tests/fixtures/attack_scenarios/graphs/two-routes.json",
+        "null_ranking_wrapper": {
+          "query": null
+        },
+        "query": "tests/fixtures/query_cli/two-routes-query.json",
+        "ratings": "docs/research/ratings/week4/synthetic-a2-e.json"
+      },
+      "normative_acceptance": true,
+      "output_digest": "sha256:7ffe86f4b9b6919dfb09ee42dbbde4bfed8d9b6d1f1cf78994cde87ef9972378",
+      "verdict": "PASS"
+    },
+    {
+      "actual": {
+        "authorized_trace_verified": null,
+        "private_raw_data_present": false,
+        "probe_execution": "not_executed"
+      },
+      "assertions": [
+        {
+          "actual": null,
+          "actual_present": true,
+          "expected": true,
+          "field": "authorized_trace_verified",
+          "passed": false
+        }
+      ],
+      "case_id": "W4-SEAMLESS-DATASET-GATE",
+      "category": "dataset_governance",
+      "command": null,
+      "coverage": "private_trace_not_executed",
+      "dependency": "Authorized private raw and pinned trace required; filesystem presence is not policy verification",
+      "description": "Filesystem prerequisite check only; private probe not executed",
+      "disposition": "Normative expectation not evaluated; Authorized private raw and pinned trace required; filesystem presence is not policy verification",
+      "evidence_class": "prerequisite_observation_only",
+      "execution_status": "not_executed",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md",
+      "expected": {
+        "authorized_trace_verified": true
+      },
+      "inputs": {
+        "manifest_path": "data/samples/manifests/seamless-raw-v1.json"
+      },
+      "normative_acceptance": false,
+      "output_digest": "sha256:8a7df26690d48159aca0dbafb0018f2b76e2c2c8e426ea845d4c532721a89377",
+      "verdict": "BLOCKED RUN"
+    }
+  ],
+  "manifest_version": "2.0.0",
+  "summary": {
+    "blocked_run_count": 1,
+    "known_defect_count": 0,
+    "not_executed_count": 1,
+    "pass_count": 36,
+    "pending_count": 0,
+    "total_cases": 38,
+    "unexpected_failure_count": 0
+  }
+}

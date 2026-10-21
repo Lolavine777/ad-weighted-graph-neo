@@ -1,0 +1,892 @@
+{
+  "query": {
+    "query_metadata": {
+      "query_id": "query-seamless-host-to-dc-v1",
+      "version": "1.0.0",
+      "scenario_id": "scenario-seamless-host-to-dc",
+      "scenario_version": "1.1.0",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+      "evaluation_mode": "scenario",
+      "work_boundary": "intra_forest",
+      "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+      "target_goal": {
+        "goal_id": "terminal_compromise_seamless_dc",
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "horizon": "24h",
+      "active_work_budget": 6,
+      "bundle_id": "bundle-seamless-host-to-dc-v1",
+      "bundle_version": "1.0.0",
+      "bundle_digest": "sha256:0a137817d33c7f22884ca06a19039b10bf75b39bd470a25b73ce5cb40ee58246",
+      "governance": {
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "status": "pending_independent_human_ratings",
+        "human_agreement_status": "pending",
+        "empirical_calibration_status": "none",
+        "raters": [],
+        "reconciliation": null,
+        "governance_notes": "All parameters are research-assisted scenario hypotheses based on Microsoft Open Specifications and RFC 4120. Human rating sheets remain unrated and pending. No empirical calibration is claimed."
+      }
+    },
+    "facts_ledger": {
+      "observed_facts": [
+        {
+          "predicate": "enabled_tstwvir",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_computers.json#/computers/46/Properties/enabled"
+        },
+        {
+          "predicate": "enabled_lidia",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_users.json#/users/2310/Properties/enabled"
+        },
+        {
+          "predicate": "enabled_josefa",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_users.json#/users/666/Properties/enabled"
+        },
+        {
+          "predicate": "enabled_ollie",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_users.json#/users/917/Properties/enabled"
+        },
+        {
+          "predicate": "enabled_badblood",
+          "truth_value": true,
+          "layer": 2,
+          "provenance_reference": "20210920185958_computers.json#/computers/0/Properties/enabled"
+        },
+        {
+          "predicate": "genericall_tstwvir_lidia",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_users.json#/users/2310/Aces/3"
+        },
+        {
+          "predicate": "genericall_tstwvir_josefa",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_users.json#/users/666/Aces/3"
+        },
+        {
+          "predicate": "genericall_vajer_ollie",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_users.json#/users/917/Aces/3"
+        },
+        {
+          "predicate": "memberof_lidia_da",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_groups.json#/groups/40/Members/0"
+        },
+        {
+          "predicate": "memberof_josefa_vajer",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_groups.json#/groups/246/Members/14"
+        },
+        {
+          "predicate": "memberof_ollie_da",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_groups.json#/groups/40/Members/3"
+        },
+        {
+          "predicate": "genericall_da_badblood",
+          "truth_value": true,
+          "layer": 1,
+          "provenance_reference": "20210920185958_computers.json#/computers/0/Aces/1"
+        }
+      ],
+      "false_facts": [],
+      "assumed_facts": [
+        {
+          "predicate": "foothold_controlled_tstwvir",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "Source A LocalSystem foothold can use the machine identity for authenticated directory requests; proposed scenario condition, not a snapshot observation."
+        },
+        {
+          "predicate": "network_rpc_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "Authenticated password-reset directory channel is reachable from Source A during 24h, including any protocol-specific secure transport; ports alone do not prove write success."
+        },
+        {
+          "predicate": "network_kdc_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The domain KDC is reachable with valid naming/time/protocol context during the horizon."
+        },
+        {
+          "predicate": "network_winrm_reachable",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected WinRM transport is reachable from the foothold during 24h."
+        },
+        {
+          "predicate": "service_winrm_running",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected WinRM listener is available during 24h; OS defaults do not establish observed service state."
+        },
+        {
+          "predicate": "da_host_admin_mapping",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The domain default DA-to-host-Administrators mapping on the DC remains usable in this scenario; this is a proposed technical-rule condition, not inferred from the AD computer GenericAll ACE."
+        },
+        {
+          "predicate": "password_policy_accepts_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The proposed replacement password satisfies the effective password policy at the write time."
+        },
+        {
+          "predicate": "directory_write_allowed_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write."
+        },
+        {
+          "predicate": "authentication_accepted_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition."
+        },
+        {
+          "predicate": "membership_security_group_usable_lidia_da",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated."
+        },
+        {
+          "predicate": "password_policy_accepts_josefa",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The proposed replacement password satisfies the effective password policy at the write time."
+        },
+        {
+          "predicate": "directory_write_allowed_josefa",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write."
+        },
+        {
+          "predicate": "authentication_accepted_josefa",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition."
+        },
+        {
+          "predicate": "membership_security_group_usable_josefa_vajer",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated."
+        },
+        {
+          "predicate": "password_policy_accepts_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The proposed replacement password satisfies the effective password policy at the write time."
+        },
+        {
+          "predicate": "directory_write_allowed_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The bound actor can submit an authenticated password reset using its observed object right; protocol protection, ACL effective access and directory controls permit the write."
+        },
+        {
+          "predicate": "authentication_accepted_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The KDC accepts the new credential for this actor; account restrictions and authentication controls permit the bound ticket acquisition."
+        },
+        {
+          "predicate": "membership_security_group_usable_ollie_da",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The authenticated runtime token includes a security-enabled group entitlement usable at the bound resource in this domain/scope. GroupType is absent from raw; MemberOf alone does not establish this condition. No snapshot group-type predicate is asserted or mutated."
+        },
+        {
+          "predicate": "winrm_authentication_accepted_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The target WinRM service accepts this actor's authentication with the selected service identity/transport."
+        },
+        {
+          "predicate": "endpoint_authorized_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected Microsoft.PowerShell endpoint permits this actor's administrative token; endpoint ACL and logon controls allow it."
+        },
+        {
+          "predicate": "admin_execution_context_lidia",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected endpoint runs commands in this actor's unrestricted elevated administrative context, without JEA or a reduced RunAs identity; endpoint access alone is insufficient."
+        },
+        {
+          "predicate": "winrm_authentication_accepted_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The target WinRM service accepts this actor's authentication with the selected service identity/transport."
+        },
+        {
+          "predicate": "endpoint_authorized_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected Microsoft.PowerShell endpoint permits this actor's administrative token; endpoint ACL and logon controls allow it."
+        },
+        {
+          "predicate": "admin_execution_context_ollie",
+          "truth_value": true,
+          "layer": 3,
+          "rationale": "The selected endpoint runs commands in this actor's unrestricted elevated administrative context, without JEA or a reduced RunAs identity; endpoint access alone is insufficient."
+        }
+      ],
+      "unknown_facts": [
+        {
+          "predicate": "edr_telemetry",
+          "layer": 3,
+          "rationale": "unmonitored_endpoint"
+        },
+        {
+          "predicate": "session_badblood",
+          "layer": 3,
+          "rationale": "No collected session connection; runtime presence is unknown."
+        }
+      ],
+      "predicate_layers": {
+        "credentials_lidia": 3,
+        "actor_controlled_lidia": 3,
+        "effective_member_da_lidia": 3,
+        "credentials_josefa": 3,
+        "actor_controlled_josefa": 3,
+        "effective_member_vajer_josefa": 3,
+        "credentials_ollie": 3,
+        "actor_controlled_ollie": 3,
+        "effective_member_da_ollie": 3,
+        "admin_control_badblood": 3,
+        "enabled_tstwvir": 2,
+        "enabled_lidia": 2,
+        "enabled_josefa": 2,
+        "enabled_ollie": 2,
+        "enabled_badblood": 2,
+        "genericall_tstwvir_lidia": 1,
+        "genericall_tstwvir_josefa": 1,
+        "genericall_vajer_ollie": 1,
+        "memberof_lidia_da": 1,
+        "memberof_josefa_vajer": 1,
+        "memberof_ollie_da": 1,
+        "genericall_da_badblood": 1,
+        "foothold_controlled_tstwvir": 3,
+        "network_rpc_reachable": 3,
+        "network_kdc_reachable": 3,
+        "network_winrm_reachable": 3,
+        "service_winrm_running": 3,
+        "da_host_admin_mapping": 3,
+        "password_policy_accepts_lidia": 3,
+        "directory_write_allowed_lidia": 3,
+        "authentication_accepted_lidia": 3,
+        "membership_security_group_usable_lidia_da": 3,
+        "password_policy_accepts_josefa": 3,
+        "directory_write_allowed_josefa": 3,
+        "authentication_accepted_josefa": 3,
+        "membership_security_group_usable_josefa_vajer": 3,
+        "password_policy_accepts_ollie": 3,
+        "directory_write_allowed_ollie": 3,
+        "authentication_accepted_ollie": 3,
+        "membership_security_group_usable_ollie_da": 3,
+        "winrm_authentication_accepted_lidia": 3,
+        "endpoint_authorized_lidia": 3,
+        "admin_execution_context_lidia": 3,
+        "winrm_authentication_accepted_ollie": 3,
+        "endpoint_authorized_ollie": 3,
+        "admin_execution_context_ollie": 3,
+        "edr_telemetry": 3,
+        "session_badblood": 3
+      }
+    },
+    "bound_actions": [
+      {
+        "action_id": "action_reset_lidia",
+        "technique": "reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "referenced_work_unit_ids": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "enabled_tstwvir",
+          "enabled_lidia",
+          "genericall_tstwvir_lidia",
+          "network_rpc_reachable",
+          "password_policy_accepts_lidia",
+          "directory_write_allowed_lidia",
+          "foothold_controlled_tstwvir"
+        ],
+        "adds": [
+          "credentials_lidia"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "reset_password"
+      },
+      {
+        "action_id": "action_activate_lidia",
+        "technique": "acquire_ticket",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "credentials_lidia",
+          "enabled_lidia",
+          "network_kdc_reachable",
+          "authentication_accepted_lidia"
+        ],
+        "adds": [
+          "actor_controlled_lidia"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "acquire_ticket"
+      },
+      {
+        "action_id": "action_closure_lidia_da",
+        "technique": "membership_closure",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_lidia",
+          "memberof_lidia_da",
+          "enabled_lidia",
+          "membership_security_group_usable_lidia_da"
+        ],
+        "adds": [
+          "effective_member_da_lidia"
+        ],
+        "is_passive_closure": true,
+        "technique_name": "membership_closure",
+        "bound_work_units": []
+      },
+      {
+        "action_id": "action_winrm_badblood_lidia",
+        "technique": "remote_exec_winrm",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "effective_member_da_lidia",
+          "network_winrm_reachable",
+          "service_winrm_running",
+          "enabled_badblood",
+          "actor_controlled_lidia",
+          "enabled_lidia",
+          "da_host_admin_mapping",
+          "winrm_authentication_accepted_lidia",
+          "endpoint_authorized_lidia",
+          "admin_execution_context_lidia"
+        ],
+        "adds": [
+          "admin_control_badblood"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "remote_exec_winrm"
+      },
+      {
+        "action_id": "action_reset_josefa",
+        "technique": "reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "referenced_work_unit_ids": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "enabled_tstwvir",
+          "enabled_josefa",
+          "genericall_tstwvir_josefa",
+          "network_rpc_reachable",
+          "password_policy_accepts_josefa",
+          "directory_write_allowed_josefa",
+          "foothold_controlled_tstwvir"
+        ],
+        "adds": [
+          "credentials_josefa"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "reset_password"
+      },
+      {
+        "action_id": "action_activate_josefa",
+        "technique": "acquire_ticket",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "credentials_josefa",
+          "enabled_josefa",
+          "network_kdc_reachable",
+          "authentication_accepted_josefa"
+        ],
+        "adds": [
+          "actor_controlled_josefa"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "acquire_ticket"
+      },
+      {
+        "action_id": "action_closure_josefa_vajer",
+        "technique": "membership_closure",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_josefa",
+          "memberof_josefa_vajer",
+          "enabled_josefa",
+          "membership_security_group_usable_josefa_vajer"
+        ],
+        "adds": [
+          "effective_member_vajer_josefa"
+        ],
+        "is_passive_closure": true,
+        "technique_name": "membership_closure",
+        "bound_work_units": []
+      },
+      {
+        "action_id": "action_reset_ollie",
+        "technique": "reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "referenced_work_unit_ids": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "effective_member_vajer_josefa",
+          "enabled_ollie",
+          "genericall_vajer_ollie",
+          "network_rpc_reachable",
+          "password_policy_accepts_ollie",
+          "directory_write_allowed_ollie",
+          "actor_controlled_josefa",
+          "enabled_josefa"
+        ],
+        "adds": [
+          "credentials_ollie"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "reset_password"
+      },
+      {
+        "action_id": "action_activate_ollie",
+        "technique": "acquire_ticket",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "credentials_ollie",
+          "enabled_ollie",
+          "network_kdc_reachable",
+          "authentication_accepted_ollie"
+        ],
+        "adds": [
+          "actor_controlled_ollie"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "acquire_ticket"
+      },
+      {
+        "action_id": "action_closure_ollie_da",
+        "technique": "membership_closure",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_ollie",
+          "memberof_ollie_da",
+          "enabled_ollie",
+          "membership_security_group_usable_ollie_da"
+        ],
+        "adds": [
+          "effective_member_da_ollie"
+        ],
+        "is_passive_closure": true,
+        "technique_name": "membership_closure",
+        "bound_work_units": []
+      },
+      {
+        "action_id": "action_winrm_badblood_ollie",
+        "technique": "remote_exec_winrm",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "referenced_work_unit_ids": [
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "requires": [
+          "effective_member_da_ollie",
+          "network_winrm_reachable",
+          "service_winrm_running",
+          "enabled_badblood",
+          "actor_controlled_ollie",
+          "enabled_ollie",
+          "da_host_admin_mapping",
+          "winrm_authentication_accepted_ollie",
+          "endpoint_authorized_ollie",
+          "admin_execution_context_ollie"
+        ],
+        "adds": [
+          "admin_control_badblood"
+        ],
+        "is_passive_closure": false,
+        "technique_name": "remote_exec_winrm"
+      }
+    ],
+    "work_units_ledger": {
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 1,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_cost": 1,
+        "computed_cost": 1
+      },
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 0,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_cost": 0,
+        "computed_cost": 0
+      },
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 1,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_cost": 1,
+        "computed_cost": 1
+      },
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 1,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_cost": 1,
+        "computed_cost": 1
+      },
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 0,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_cost": 0,
+        "computed_cost": 0
+      },
+      "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 1,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_cost": 1,
+        "computed_cost": 1
+      },
+      "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 0,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 1,
+          "formula": "base",
+          "computed_cost": 0
+        },
+        "effort_cost": 0,
+        "computed_cost": 0
+      },
+      "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0": {
+        "overlap_state": "independent",
+        "rating_status": "rated",
+        "effort": 1,
+        "missing_basis_reasons": [],
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "effort_cost": 1,
+        "computed_cost": 1
+      }
+    },
+    "conditional_bounds_table": [
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+        ],
+        "lower": "7/10",
+        "upper": "9/10",
+        "question_id": "q1",
+        "outcome_action_id": "action_reset_lidia",
+        "technical_source": "MS-SAMR 3.1.5.6.4 SamrSetInformationUser2",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Reset password for Lidia via GenericAll from TSTWVIR"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "lower": "4/5",
+        "upper": "19/20",
+        "question_id": "q2",
+        "outcome_action_id": "action_activate_lidia",
+        "technical_source": "RFC 4120 Section 3.1, MS-KILE 3.3.5.1",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Kerberos TGT acquisition for Lidia given reset success"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "lower": "3/5",
+        "upper": "4/5",
+        "question_id": "q3",
+        "outcome_action_id": "action_winrm_badblood_lidia",
+        "technical_source": "MS-WSMV 3.1.4, MS-PSRP 3.1.5.3",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "WinRM interactive administrative execution on DC via Lidia given DA membership"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+        ],
+        "lower": "3/4",
+        "upper": "9/10",
+        "question_id": "q4",
+        "outcome_action_id": "action_reset_josefa",
+        "technical_source": "MS-SAMR 3.1.5.6.4",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Reset password for Josefa via GenericAll from TSTWVIR"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "lower": "4/5",
+        "upper": "19/20",
+        "question_id": "q5",
+        "outcome_action_id": "action_activate_josefa",
+        "technical_source": "RFC 4120 Section 3.1, MS-KILE 3.3.5.1",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Kerberos TGT acquisition for Josefa given reset success"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+        ],
+        "lower": "7/10",
+        "upper": "17/20",
+        "question_id": "q6",
+        "outcome_action_id": "action_reset_ollie",
+        "technical_source": "MS-SAMR 3.1.5.6.4, MS-PAC 2.5",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Reset password for Ollie via VA-JER-ADMINGROUP1 GenericAll"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "lower": "4/5",
+        "upper": "19/20",
+        "question_id": "q7",
+        "outcome_action_id": "action_activate_ollie",
+        "technical_source": "RFC 4120 Section 3.1, MS-KILE 3.3.5.1",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "Kerberos TGT acquisition for Ollie given reset success"
+      },
+      {
+        "prefix": [
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+          "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+        ],
+        "lower": "3/5",
+        "upper": "4/5",
+        "question_id": "q8",
+        "outcome_action_id": "action_winrm_badblood_ollie",
+        "technical_source": "MS-WSMV 3.1.4, MS-PSRP 3.1.5.3",
+        "basis_category": "research_assisted_scenario_hypotheses",
+        "rationale": "WinRM interactive administrative execution on DC via Ollie given DA membership"
+      }
+    ],
+    "target_impact_assessments": {
+      "S-1-5-21-1271839998-3495686680-2211690266-1000": {
+        "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "success_event": "terminal_compromise_seamless_dc",
+        "rating_status": "rated",
+        "consequence_rating": "High",
+        "business_rationale": "Chi\u1ebfm quy\u1ec1n \u0111i\u1ec1u khi\u1ec3n Domain Controller d\u1eabn \u0111\u1ebfn m\u1ea5t ho\u00e0n to\u00e0n t\u00ednh to\u00e0n v\u1eb9n v\u00e0 b\u1ea3o m\u1eadt c\u1ee7a d\u1ecbch v\u1ee5 \u0111\u1ecbnh danh Active Directory tr\u00ean to\u00e0n mi\u1ec1n; tuy nhi\u00ean, do snapshot kh\u00f4ng ch\u1ee9a b\u1eb1ng ch\u1ee9ng v\u1ec1 c\u00e1c d\u1ecbch v\u1ee5 kinh doanh tr\u1ecdng y\u1ebfu c\u1ea5p qu\u1ed1c gia ho\u1eb7c an to\u00e0n t\u00ednh m\u1ea1ng, m\u1ee9c \u0111\u00e1nh gi\u00e1 High l\u00e0 ph\u00f9 h\u1ee3p v\u00e0 b\u1ea3o th\u1ee7.",
+        "affected_business_services": [
+          "identity",
+          "active_directory"
+        ],
+        "missing_basis_reasons": []
+      }
+    }
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_seamless_01_direct_lidia",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "bound_action_ids": [
+        "action_reset_lidia",
+        "action_activate_lidia",
+        "action_closure_lidia_da",
+        "action_winrm_badblood_lidia"
+      ],
+      "structural_routes": [
+        {
+          "route_id": "route_seamless_01",
+          "node_ids": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ],
+          "edge_ids": [
+            "sha256:add3ecb3858d5426d003da9ecdba89274ea02d5c7d9e99e3e10ece6a5d077932",
+            "sha256:e44b0f47456908b5209f670f2cf0889ae4695e9efd24c82bbda4da1ae043cb48",
+            "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9"
+          ],
+          "provenance_locators": [
+            "20210920185958_users.json#/users/2310/Aces/3",
+            "20210920185958_groups.json#/groups/40/Members/0",
+            "20210920185958_computers.json#/computers/0/Aces/1"
+          ]
+        }
+      ],
+      "scope_binding": {
+        "query_id": "query-seamless-host-to-dc-v1",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131"
+      }
+    },
+    {
+      "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "bound_action_ids": [
+        "action_reset_josefa",
+        "action_activate_josefa",
+        "action_closure_josefa_vajer",
+        "action_reset_ollie",
+        "action_activate_ollie",
+        "action_closure_ollie_da",
+        "action_winrm_badblood_ollie"
+      ],
+      "structural_routes": [
+        {
+          "route_id": "route_seamless_02",
+          "node_ids": [
+            "S-1-5-21-1271839998-3495686680-2211690266-4131",
+            "S-1-5-21-1271839998-3495686680-2211690266-1766",
+            "S-1-5-21-1271839998-3495686680-2211690266-3790",
+            "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "S-1-5-21-1271839998-3495686680-2211690266-512",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ],
+          "edge_ids": [
+            "sha256:e6e5d605be1a120753808f94017202855a53fdd9a6b9831ac3421d09fbba1538",
+            "sha256:f8b6da6bcbda61ddab0d8184c957e39809ed4e444d5dee181f2309cf0e682173",
+            "sha256:3b30de3caac96bad3b7b1980c323661cba1cbeccd3c676d20ce2eb15f4a67689",
+            "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+            "sha256:57a246b4f71dff94a59b59addcf4e9aa6bd1bdb5d78817c1f733cc2ee197b2b9"
+          ],
+          "provenance_locators": [
+            "20210920185958_users.json#/users/666/Aces/3",
+            "20210920185958_groups.json#/groups/246/Members/14",
+            "20210920185958_users.json#/users/917/Aces/3",
+            "20210920185958_groups.json#/groups/40/Members/3",
+            "20210920185958_computers.json#/computers/0/Aces/1"
+          ]
+        }
+      ],
+      "scope_binding": {
+        "query_id": "query-seamless-host-to-dc-v1",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "work_boundary": "intra_forest",
+        "horizon": "24h",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131"
+      }
+    }
+  ]
+}

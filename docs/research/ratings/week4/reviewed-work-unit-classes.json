@@ -1,0 +1,944 @@
+{
+  "schema_version": "1.0.0",
+  "total_classes": 23,
+  "classes": [
+    {
+      "class_id": "class_ad_dacl_mutation",
+      "name": "Active Directory DACL Mutation",
+      "description": "Modifying discretionary access control lists on directory objects to grant administrative or replication rights.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Semantics catalog DACL mutation (T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "genericall_grant_write_dacl",
+          "grant_new_object_right"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_ad_group_membership_add",
+      "name": "Active Directory Group Membership Addition",
+      "description": "Adding an Active Directory principal to a security group using GenericAll or WriteProperty permissions.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Semantics catalog group addition (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "genericall_add_member"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_ad_password_reset_samr",
+      "name": "Active Directory Password Reset over SAMR/LDAP",
+      "description": "Resetting target user account password over authenticated SAMR/RPC or LDAP connection using standard tools and APIs.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 3 reviewed baseline (SEAMLESS WU_RESET_*, T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "reset_password",
+          "genericall_reset_password",
+          "reset_target_password",
+          "scenario_reset_password"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "WU_RESET_LIDIA",
+          "WU_RESET_JOSEFA",
+          "WU_RESET_OLLIE"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_asrep_offline_crack",
+      "name": "AS-REP Offline Secret Recovery",
+      "description": "Offline password cracking of recovered AS-REP encrypted timestamp using dictionary and rule attacks.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Frozen #243 AS-REP offline cracking work unit (T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "recover_asrep_secret"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_asrep_request",
+      "name": "AS-REP Roasting Request",
+      "description": "Issuing AS-REQ for accounts with DoNotRequirePreAuth set to obtain encrypted AS-REP response.",
+      "t1": 1,
+      "t2": 1,
+      "formula": "base",
+      "computed_cost": 0,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Frozen #243 AS-REP request work unit (T1=1, T2=1, C=0).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "asrep_request"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_cross_forest_trust_hop",
+      "name": "Cross-Forest Trust Hop",
+      "description": "Attempting cross-forest trust traversal outside intra_forest boundary.",
+      "t1": 0,
+      "t2": 0,
+      "formula": "base",
+      "computed_cost": null,
+      "disposition": "refused",
+      "unrated_reason_code": "out_of_scope",
+      "unrated_reason_detail": "Cross-forest trust hop violates intra_forest work boundary",
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Explicit refusal due to intra_forest boundary constraint.",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "cross_forest_trust_hop"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "cross_forest"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_direct_host_admin_execution",
+      "name": "Direct Host Admin Execution",
+      "description": "Direct privilege escalation or admin execution facing active host defenses and monitoring without inherited delegation.",
+      "t1": 3,
+      "t2": 3,
+      "formula": "base",
+      "computed_cost": 4,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 4 Fixture A2 direct branch baseline (T1=3, T2=3, C=4).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "obtain_admin_execution_on_host"
+        ],
+        "methods": [
+          "direct",
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "w-direct-admin",
+          "WU_DIRECT_ADMIN"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": "_is_direct_admin"
+      }
+    },
+    {
+      "class_id": "class_host_admin_channel",
+      "name": "Host administration via declared admin channel",
+      "description": "Accepted semantic admin_channel abstraction; transport unspecified.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Proposed generic channel effort; transport and defense friction unspecified.",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "obtain_admin_execution_on_host"
+        ],
+        "methods": [
+          "default"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": "_is_generic_admin_channel"
+      }
+    },
+    {
+      "class_id": "class_inherited_host_admin_execution",
+      "name": "Inherited Host Admin Execution",
+      "description": "Administrative execution utilizing existing group delegation or inherited authority under reduced host friction.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 4 Fixture A2 inherited branch baseline (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "obtain_admin_execution_on_host"
+        ],
+        "methods": [
+          "inherited",
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "w-inherited-admin",
+          "WU_INHERITED_ADMIN"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": "_is_inherited_admin"
+      }
+    },
+    {
+      "class_id": "class_kerberoast_offline_crack",
+      "name": "Kerberoast Offline Ticket Secret Recovery",
+      "description": "Offline password hash cracking of Kerberos TGS ticket secret using specialized compute tooling.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Kerberoasting offline cracking (#246 Worked Example 2, T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "recover_ticket_secret"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_kerberoast_request",
+      "name": "Kerberoast Service Ticket Request",
+      "description": "Requesting Kerberos TGS service ticket for accounts configured with ServicePrincipalNames.",
+      "t1": 1,
+      "t2": 1,
+      "formula": "base",
+      "computed_cost": 0,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Kerberoasting TGS request baseline (T1=1, T2=1, C=0).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "kerberoast_request"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_kerberos_identity_activation",
+      "name": "Kerberos Recovered Identity Activation",
+      "description": "Activating and verifying recovered password or ticket secret into an authenticated execution session.",
+      "t1": 1,
+      "t2": 1,
+      "formula": "base",
+      "computed_cost": 0,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Frozen #243 AS-REP and Kerberoasting activation (T1=1, T2=1, C=0).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "activate_recovered_identity"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_kerberos_ticket_acquisition",
+      "name": "Kerberos Ticket Acquisition",
+      "description": "Requesting standard Kerberos TGT or service ticket using acquired credentials via automated protocol exchange.",
+      "t1": 1,
+      "t2": 1,
+      "formula": "base",
+      "computed_cost": 0,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 3 reviewed baseline (SEAMLESS WU_ACTIVATE_*, T1=1, T2=1, C=0).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "acquire_ticket",
+          "acquire_reset_identity"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "WU_ACTIVATE_LIDIA",
+          "WU_ACTIVATE_JOSEFA",
+          "WU_ACTIVATE_OLLIE"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_lsass_credential_dump",
+      "name": "LSASS Process Credential Material Dump",
+      "description": "Extracting plaintext credentials or ticket keys from LSASS process memory on compromised host.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Semantics catalog credential dumping (T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "recover_session_credential_material"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rbcd_acquire_secret",
+      "name": "RBCD Intermediate Secret Acquisition",
+      "description": "Acquiring intermediate computer account secret or machine account quota utilization for RBCD delegation.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "RBCD Recipe step 1 (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "rbcd_acquire_secret"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "work_rbcd_acquire_secret"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rbcd_configure_descriptor",
+      "name": "RBCD Security Descriptor Configuration",
+      "description": "Writing msDS-AllowedToActOnBehalfOfOtherIdentity security descriptor attribute on target computer via LDAP.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "RBCD Recipe step 3 (T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "rbcd_configure_descriptor"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "work_rbcd_configure_descriptor"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rbcd_delegate_service",
+      "name": "RBCD Constrained Service Delegation",
+      "description": "Performing S4U2self and S4U2proxy protocol transition exchange to obtain impersonated service ticket.",
+      "t1": 2,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 2,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "RBCD Recipe step 4 (T1=2, T2=2, C=2).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "rbcd_delegate_service"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "work_rbcd_delegate_service"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rbcd_prepare_service",
+      "name": "RBCD Service Preparation",
+      "description": "Verifying service principal name and service registration readiness for constrained delegation.",
+      "t1": 1,
+      "t2": 1,
+      "formula": "base",
+      "computed_cost": 0,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "RBCD Recipe step 2 (T1=1, T2=1, C=0).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "rbcd_prepare_service"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "work_rbcd_prepare_service"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rbcd_service_admin",
+      "name": "RBCD Delegated Service Administration",
+      "description": "Executing administrative commands on target host using delegated Kerberos service ticket.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "RBCD Recipe step 5 (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "rbcd_service_admin"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "work_rbcd_service_admin"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_rdp_remote_interactive",
+      "name": "Remote Interactive Desktop Session",
+      "description": "Establishing authenticated remote desktop interactive session over RDP.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Semantics catalog RDP interactive session (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "open_remote_interactive_session"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_shared_auth_preparation",
+      "name": "Shared Persistent Authentication Preparation",
+      "description": "Establishing and validating shared authenticated channel and staging reusable credentials on a target machine.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 4 Fixture A2 shared preparation baseline (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "auth_context",
+          "shared_preparation",
+          "w-auth-context",
+          "obtain_admin_execution_on_host"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "w-auth-context",
+          "WU_AUTH_CONTEXT"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": "_is_shared_auth_prep"
+      }
+    },
+    {
+      "class_id": "class_unconstrained_delegation_abuse",
+      "name": "Unconstrained Delegation Abuse",
+      "description": "Abusing unconstrained Kerberos delegation on compromised host; lacks empirical timing and friction measurements.",
+      "t1": 0,
+      "t2": 0,
+      "formula": "base",
+      "computed_cost": null,
+      "disposition": "unrated",
+      "unrated_reason_code": "missing_evidence",
+      "unrated_reason_detail": "Unconstrained delegation abuse has no empirical timing or friction basis",
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Explicit unrated disposition due to missing empirical calibration.",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "unconstrained_delegation_abuse"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": null
+      }
+    },
+    {
+      "class_id": "class_winrm_host_admin",
+      "name": "WinRM Remote Host Administration",
+      "description": "Establishing remote PowerShell / WinRM management session, verifying administrative credentials and executing host commands.",
+      "t1": 1,
+      "t2": 2,
+      "formula": "base",
+      "computed_cost": 1,
+      "disposition": "rated",
+      "unrated_reason_code": null,
+      "unrated_reason_detail": null,
+      "basis_category": "scenario_assumption",
+      "review_reference": "docs/research/ratings/week4/reviewed-work-unit-classes.md",
+      "provenance_digest": null,
+      "notes": "Week 3 reviewed baseline and Frozen #243 AS-REP (T1=1, T2=2, C=1).",
+      "review_status": "pending_b_review",
+      "applicability": {
+        "techniques": [
+          "remote_exec_winrm",
+          "open_winrm_remote_session",
+          "scenario_winrm_admin",
+          "obtain_admin_execution_on_host"
+        ],
+        "methods": [
+          "*"
+        ],
+        "boundaries": [
+          "intra_forest",
+          "synthetic_two_routes",
+          "scoped-rbcd-delegation"
+        ],
+        "work_classes": [
+          "active_work",
+          "shared_preparation"
+        ],
+        "scopes": null,
+        "aliases": [
+          "WU_WINRM_DC_LIDIA",
+          "WU_WINRM_DC_OLLIE"
+        ],
+        "required_auth_context": null,
+        "required_resource_context": null,
+        "semantic_predicate": "_is_winrm_admin"
+      }
+    }
+  ],
+  "registry_digest": "sha256:51c7c060965c80f354b21159450dd24f1a46b7df609781f5de29458d04d18163"
+}

@@ -1,0 +1,123 @@
+"""Two declared capability cohorts on a public snapshot; not a speed benchmark."""
+import argparse
+import hashlib
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--repo', type=Path, required=True)
+p.add_argument('--snapshot', type=Path, required=True)
+p.add_argument('--raw', type=Path, required=True)
+p.add_argument('--manifest', type=Path, required=True)
+p.add_argument('--reference-query', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+a = p.parse_args()
+repo = a.repo.resolve()
+assert not a.output.exists(), 'Preserve prior experiment'
+a.output.mkdir(parents=True)
+sha = lambda raw: 'sha256:' + hashlib.sha256(raw).hexdigest()
+pin = lambda path: {'path': str(path.resolve()), 'bytes': path.stat().st_size, 'sha256': sha(path.read_bytes())}
+manifest = json.loads(a.manifest.read_text())
+for item in manifest['files']:
+    raw = (a.raw / item['relative_path']).read_bytes()
+    assert len(raw) == item['size_bytes'] and sha(raw) == 'sha256:' + item['sha256']
+domain = 'S-1-5-21-1271839998-3495686680-2211690266'
+source, victim, goal = (domain + suffix for suffix in ['-4157', '-2799', '-512'])
+users = json.loads((a.raw / '20210920185958_users.json').read_text(encoding='utf-8-sig'))['users']
+groups = json.loads((a.raw / '20210920185958_groups.json').read_text(encoding='utf-8-sig'))['groups']
+user = next(x for x in users if x['ObjectIdentifier'] == victim)
+group = next(x for x in groups if x['ObjectIdentifier'] == goal)
+ace = [x for x in user['Aces'] if x['PrincipalSID'] == source and x['RightName'] == 'GenericAll']
+member = [x for x in group['Members'] if x['MemberId'] == victim]
+assert ace and member
+reference = json.loads(a.reference_query.read_text())
+assert reference['source_foothold'] == source and reference['authentication_context'] == source
+assumptions_path = a.output / 'assumptions.json'
+assumptions_path.write_text(json.dumps(reference['assumptions'], indent=2) + '\n')
+assert len(reference['assumptions']) == 7
+assert all(x['value'] is True and x['origin'] == 'declared_assumption' for x in reference['assumptions'])
+provenance = 'scenario://awg-r04/machine-identity/FINWVIR-4157'
+trials = []
+for name, profile in [('local-shell', 'computer_control_user'), ('machine-identity', 'computer_usable_identity')]:
+    output = a.output / name
+    command = [sys.executable, '-m', 'scripts.exposure', '--snapshot', str(a.snapshot.resolve()),
+        '--source', source, '--authentication-context', source, '--computer-profile', profile,
+        '--evaluation-mode', 'scenario', '--assumptions', str(assumptions_path.resolve()),
+        '--max-sources', '0', '--max-targets', '3', '--max-paths', '1', '--max-steps', '3',
+        '--max-expansions', '10000', '--max-cells', '3', '--global-max-expansions', '30000',
+        '--output-dir', str(output.resolve())]
+    if profile == 'computer_usable_identity':
+        command.extend(['--machine-identity-provenance', provenance])
+    for technique in ['scenario_reset_password', 'acquire_reset_identity', 'propagate_group_entitlement']:
+        command.extend(['--technique', technique])
+    completed = subprocess.run(command, cwd=repo, text=True, capture_output=True)
+    (a.output / (name + '.stdout')).write_text(completed.stdout)
+    (a.output / (name + '.stderr')).write_text(completed.stderr)
+    if completed.returncode:
+        raise RuntimeError(completed.stderr)
+    result = json.loads((output / 'result.json').read_text())
+    req = json.loads((output / 'request.json').read_text())
+    assert req == result['reproducibility']['inputs']['request'] or (
+        req['sources'] == result['reproducibility']['inputs']['request']['sources']
+    )
+    for path, expected in result['reproducibility']['inputs']['source_pins'].items():
+        assert sha((repo / path).read_bytes()) == expected, path
+    assert result['summary']['declared_cells'] == 3
+    assert not result['summary']['not_run_cells']
+    rows = []
+    targets = {t['goal_id']: t['target_node_id'] for t in req['target_manifest']['targets']}
+    for sid, values in result['source_goal_matrix'].items():
+        for gid, cell in values.items():
+            trace = next(x for x in result['reproducibility']['inputs']['public_queries'].values()
+                         if x.get('query', {}).get('target') == targets[gid])
+            state = trace['materialized']['initial_attack_state']
+            if profile == 'computer_usable_identity':
+                assert state['usable_identity'] == [[source, source]]
+                assert not any(state[k] for k in ['control', 'admin_control', 'remote_command_execution', 'recovered_secret'])
+                assert req['sources'][0]['identity_provenance_reference'] == provenance
+            else:
+                assert not state['usable_identity'] and not cell['final_goal_reached']
+            rows.append({'source_id': sid, 'goal_id': gid, 'target': targets[gid], 'cell': cell,
+                         'query': trace['query'], 'initial_state': state, 'guarantees': trace['guarantees'],
+                         'witness_requests': [[s['result']['request'] for s in path['transition_history']]
+                                              for path in trace['result']['paths']]})
+    trials.append({'name': name, 'command': command, 'revision': result['reproducibility']['revision'],
+                  'request': req, 'summary': result['summary'], 'rows': rows,
+                  'source_pins': result['reproducibility']['inputs']['source_pins'],
+                  'artifacts': {n: pin(output / n) for n in ['result.json', 'checkpoint.json', 'summary.json', 'request.json', 'inventory.json', 'selection.json', 'overview.md']}})
+    print(json.dumps({'mode': name, 'rows': [(r['target'], r['cell']['status'], r['cell']['expansions']) for r in rows]}), flush=True)
+    del result
+
+for name in ['inventory.json', 'selection.json']:
+    assert (a.output / 'local-shell' / name).read_bytes() == (a.output / 'machine-identity' / name).read_bytes()
+assert trials[0]['request']['schema_version'] == 'batch-query-request/1.0.0'
+assert trials[1]['request']['schema_version'] == 'batch-query-request/1.1.0'
+assert {r['target'] for r in trials[1]['rows'] if r['cell']['final_goal_reached']} == {goal}
+
+sys.path.insert(0, str(repo))
+from src.engine.graph import EngineGraph
+from src.engine.query import run_attack_query
+from src.engine.query_cli import wire
+from src.engine.semantics.credentials import replay_path
+graph = EngineGraph.from_snapshot(a.snapshot.read_bytes())
+public = next(r['query'] for r in trials[1]['rows'] if r['target'] == goal)
+native = run_attack_query(public, graph)
+full_batch = json.loads((a.output / 'machine-identity/result.json').read_text())
+trace = next(t for t in full_batch['reproducibility']['inputs']['public_queries'].values() if t['query']['target'] == goal)
+assert wire(native.paths) == trace['result']['paths']
+for path in native.paths:
+    replay_path(path, graph)
+packet = {'schema_version': 'awg-r04-machine-discovery-experiment/1',
+    'snapshot': pin(a.snapshot), 'raw_manifest': pin(a.manifest), 'raw_verified_files': len(manifest['files']),
+    'harness': pin(Path(__file__)), 'independent_raw_chain': {'source': source, 'user': victim, 'goal': goal, 'ace': ace, 'membership': member},
+    'trials': trials, 'inventory_and_selection_identical': True,
+    'native_api_and_batch_positive_paths_equal': True, 'native_positive_replay_count': len(native.paths),
+    'acceptance_limitations': ['Two capability declarations on the same three distinct source-goal pairs, not six distinct pairs.',
+        'Seven runtime gates and the machine identity are explicit scenario declarations, not observed compromise or P=1.',
+        'No C/P/I adoption, minimum or physical safety claim. Cap flags are retained exactly.',
+        'No speed comparison: capabilities differ and no repeated performance trials were run.',
+        'Full results/checkpoints kept locally; this summary omits non-witness attempts but pins complete artifacts.']}
+(a.output / 'experiment.json').write_text(json.dumps(packet, ensure_ascii=False, sort_keys=True, indent=2) + '\n')
+print(json.dumps({'native_positive_replay_count': len(native.paths), 'snapshot_nodes': len(graph.nodes()), 'snapshot_edges': len(graph.edges())}))

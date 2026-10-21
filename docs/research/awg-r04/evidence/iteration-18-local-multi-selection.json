@@ -1,0 +1,17 @@
+{
+  "all_inventory_pairs_selected": false,
+  "eligible_sources": 2590,
+  "eligible_targets": 12,
+  "inventory_pairs_outside_selected_cohort": 31074,
+  "max_sources": 0,
+  "max_targets": 3,
+  "potential_pairs": 31080,
+  "selected_pairs": 6,
+  "selected_sources": 2,
+  "selected_targets": 3,
+  "selection_policy": "deterministic technical priority then stable IDs; no reachability or risk assertion",
+  "source_selector": [
+    "S-1-5-21-1271839998-3495686680-2211690266-1395",
+    "S-1-5-21-1271839998-3495686680-2211690266-4157"
+  ]
+}

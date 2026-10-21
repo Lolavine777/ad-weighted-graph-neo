@@ -1,0 +1,152 @@
+"""One mined permission intervention on two prior exact public DA queries."""
+import gc
+import gzip
+import hashlib
+import json
+import subprocess
+import sys
+import time
+from collections import Counter
+from dataclasses import asdict
+from pathlib import Path
+
+root = Path.cwd()
+repo = root
+sys.path.insert(0, str(repo))
+from src.engine.graph import EngineGraph
+from src.engine.batch import BatchExecutionBudget
+from src.engine.remediation import prepare_baseline, ReplayBaseline, request_for_baseline
+from src.engine.remediation_runner import inventory_interventions, run_remediation, rank_interventions
+from src.engine.ranking.resolution_service import canonical_digest
+
+out = repo/'reports/generated/awg-r04-ce-v1/native-remediation-v2'
+out.mkdir(exist_ok=False)
+working_changes = subprocess.check_output(['git', 'status', '--porcelain'], cwd=repo, text=True)
+revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip()
+start = time.perf_counter()
+def save(name, value):
+    (out/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
+def event(stage, **data):
+    print(json.dumps({'stage':stage, 'seconds':time.perf_counter()-start, **data}), flush=True)
+def query_from_capture(path, key):
+    import re
+    with path.open(encoding='utf-8') as f:
+        marker=json.dumps(key)
+        buf=''
+        while True:
+            chunk=f.read(1048576);assert chunk,'query key missing'
+            buf+=chunk
+            pos=buf.find(marker)
+            if pos>=0:
+                buf=buf[pos+len(marker):];break
+            buf=buf[-len(marker):]
+        while True:
+            match=re.search(r'"query"\s*:',buf)
+            if match:
+                buf=buf[match.end():].lstrip();break
+            chunk=f.read(1048576);assert chunk,'query missing';buf+=chunk
+        while True:
+            try:
+                query,_=json.JSONDecoder().raw_decode(buf);return query
+            except json.JSONDecodeError:
+                chunk=f.read(1048576);assert chunk,'truncated query';buf+=chunk
+
+old = repo/'reports/generated/awg-r04-ce-v1/demo-multi-corrected'
+p=json.loads((old/'request.json').read_text())
+goal=next(t for t in p['target_manifest']['targets'] if t['display_name'].startswith('DOMAIN ADMINS@'))
+cells=[]
+for source in p['sources']:
+    sid,gid=source['source_id'],goal['goal_id']
+    query=query_from_capture(old/'result.json',canonical_digest([sid,gid]))
+    assert query['search_order']=='goal_guided' and query['target']==goal['target_node_id']
+    cells.append({'source_id':sid,'goal_id':gid,'query':query})
+assert len(cells)==2 and len({c['goal_id'] for c in cells})==1
+save('cells.json',cells)
+graph = EngineGraph.from_snapshot((repo/'reports/generated/awg-r04-ce-v1/snapshot.json').read_text())
+graph_before = canonical_digest(graph.to_canonical())
+event('loaded_exact_prior_queries', pairs=len(cells))
+baseline = prepare_baseline(graph,cells,run_id='guided-mvp-remediation')
+save('baseline.json',asdict(baseline));event('baseline_prepared')
+inventory = inventory_interventions(graph,baseline)
+save('inventory.json',inventory)
+choices = sorted((c for c in inventory['candidates'] if c['status']=='supported' and c['technical_edits'] and all(e['kind']=='deny_relationship' for e in c['technical_edits'])),key=lambda c:(-len(c['observed_bindings']),c['candidate_id']))
+assert choices, 'no supported mined relationship candidate'
+candidate = choices[0]
+request = request_for_baseline(baseline,candidate['technical_edits'],request_id='guided-mvp:'+candidate['candidate_id'])
+save('request.json',request)
+save('selection.json',{'policy':'Supported relationship edits only, descending native observed binding coverage, stable candidate_id; not effectiveness or defender cost','selected':candidate,'all_inventory_candidates':len(inventory['candidates']),'supported_relationship_candidates':len(choices)})
+event('mined_intervention', candidate=candidate['candidate_id'],edits=candidate['technical_edits'],inventory=len(inventory['candidates']))
+gc.collect()
+before=time.perf_counter()
+package=run_remediation(request,graph,baseline,execution_budget=BatchExecutionBudget(max_cells=2,max_expansions=24000))
+seconds=time.perf_counter()-before
+assert canonical_digest(graph.to_canonical())==graph_before
+assert package['execution']['after_executed_cells']==2
+save('report.json',package['report'])
+save('analytics.json',package['analytics'])
+save('ranking.json',rank_interventions([package]))
+replay=package['artifacts'][package['replay_ref']]
+save('replay.json',replay)
+witnesses=[]
+for cell in package['report']['cells']:
+    for side in ['before','after']:
+        for trace in cell[side]['trace_refs']:
+            native=package['artifacts'][trace['trace_ref']]
+            witnesses.append({'source_id':cell['source_id'],'goal_id':cell['goal_id'],'side':side,'trace':trace,'native':native})
+save('witnesses.json',witnesses)
+event('verified_native_replay_and_rediscovery',summary=package['report']['summary'],analytics=package['analytics'],native_seconds=seconds)
+projection={'version':'awg-r04-guided-remediation/1','revision':revision,'prior_capture_revision':revision,'working_changes':working_changes,'prior_queries_exact_sha256':{canonical_digest([c['source_id'],c['goal_id']]):canonical_digest(c['query']) for c in cells},'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'selection':json.loads((out/'selection.json').read_text()),'request':request,'report':package['report'],'analytics':package['analytics'],'ranking':rank_interventions([package]),'execution':package['execution'],'phase_seconds':{'setup_inventory':before-start,'native_remediation_including_verifier':seconds},'raw_graph_unchanged':True,'limits':'Two declared independent compromises to one DA Group goal, same exact prior queries/caps/three techniques. Complete native package verifier runs in run_remediation. No optimal fix, domain-wide gain, live AD change, statistical speedup or calibrated P claim.'}
+digest=hashlib.sha256();size=0;pieces=[];length=0
+with gzip.open(out/'package.json.gz','wb',compresslevel=1) as f:
+    def flush():
+        global pieces,length,size
+        b=''.join(pieces).encode();f.write(b);digest.update(b);size+=len(b);pieces=[];length=0
+    for chunk in json.JSONEncoder(ensure_ascii=False,separators=(',',':')).iterencode(package):
+        pieces.append(chunk);length+=len(chunk)
+        if length>=262144:flush()
+    if pieces:flush()
+projection['audit']={'uncompressed_bytes':size,'uncompressed_sha256':digest.hexdigest(),'gzip_bytes':(out/'package.json.gz').stat().st_size}
+save('projection.json',projection)
+event('complete',summary=package['report']['summary'],audit=projection['audit'])
+
+from scripts.defender_brief import remediation_outcome,render_defender_brief
+brief=json.loads((old/'defender-brief.json').read_text())
+brief['remediation']={'status':'executed','ranking':rank_interventions([package]),'outcomes':[remediation_outcome(graph,package)]}
+report=package['report']
+sources={source['source_id']:source['node_id'] for source in p['sources']}
+names={node['id']:node['label'] for node in graph.nodes()}
+# Presentation of already verified after witnesses; no search or package changes.
+for goal_row in brief['goals']:
+    if goal_row['trace'].startswith('result.json#'):
+        goal_row['trace'] = '../demo-multi-corrected/' + goal_row['trace']
+brief['after_witnesses'] = []
+for witness in witnesses:
+    if witness['side'] != 'after':
+        continue
+    cell = next(c for c in report['cells'] if c['source_id'] == witness['source_id'] and c['goal_id'] == witness['goal_id'])
+    assert not cell['after']['complete'], 'This demo must retain incumbent/minimumFalse scope'
+    actions = [h['result']['request'] for h in witness['native']['native_history']]
+    context = witness['native']['runtime_context']['authentication_context']
+    brief['after_witnesses'].append({
+        'source_id': witness['source_id'],
+        'source_label': names[sources[witness['source_id']]],
+        'authentication_context': {'id': context, 'label': names[context]},
+        'goal_id': witness['goal_id'],
+        'C_best_found': cell['effort']['after'],
+        'C_status': cell['effort']['status'],
+        'minimum_proven': False,
+        'steps': [{'technique': a['technique_id'], 'actor': {'id': a['actor'], 'label': names[a['actor']]}, 'target': {'id': a['target'], 'label': names[a['target']]}} for a in actions],
+        'package_trace': 'package.json.gz#/artifacts/' + witness['trace']['trace_ref'],
+    })
+assert len(brief['after_witnesses']) == len(report['cells']) == 2
+text = render_defender_brief(brief).replace('\u2014', '-')
+text += '\n## Bypass thực tế sau can thiệp\n\n'
+text += 'Các trace package dưới đây đọc sau khi giải nén package.json.gz; result.json của discovery nằm ở thư mục kế bên.\n\n'
+for row in brief['after_witnesses']:
+    text += f"### {row['source_label']}\n\n"
+    text += f"Context: **{row['authentication_context']['label']}**. C tìm thấy **{row['C_best_found']}**, trạng thái `{row['C_status']}`, minimum proof **False**.\n\n"
+    for i, step in enumerate(row['steps'], 1):
+        text += f"{i}. **{step['actor']['label']}**: `{step['technique']}` → **{step['target']['label']}**.\n"
+    text += f"\nTrace đã verify: `{row['package_trace']}`.\n\n"
+(out/'defender-brief.json').write_text(json.dumps(brief,ensure_ascii=False,indent=2)+'\n')
+(out/'defender-brief.md').write_text(text)

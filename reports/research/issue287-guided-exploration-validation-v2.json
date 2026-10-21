@@ -1,0 +1,132 @@
+{
+  "kind": "PR287_exact_head_validation_successor",
+  "code_revision": "5a923f4e84e09c8dedd9151fa0d5a04f9274bb15",
+  "tested_publication_revision": "65136f90d9447f792d51c46613a76f8f6ae52ed8",
+  "develop_revision": "81d37814b9544300f701822da4883bb1f0148906",
+  "historical_ledger": "issue287-guided-exploration-validation.json",
+  "historical_preservation_sha256": {
+    "src/engine/exploration.py": "a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+    "docs/worklog/2026-10-14-guided-exploration-backend.md": "9dfdce2202c4aee0266a643874bd835a1f766774cbe91af2cbbcff7d37f940b5",
+    "reports/research/issue287-guided-exploration-validation.json": "67ad7deab5e274beeb4476453f198f5779b866f5f30e577eb521d7cd7cf56c98",
+    "reports/research/issue287-guided-exploration-acceptance.json": "b4ca9f7a3064c749cb33323e2407846d2e35f545386af5df4ca45bdb2a15d191",
+    "reports/research/issue287-guided-exploration-acceptance-v2.json": "8fb3141ad9d6888c6e9f3248e08b0d00908399ac8a4ff11000539fe9f66ce48b",
+    "reports/research/issue287-kerberoasting-seamless-acceptance.json": "578292b45224aad49641585c3e85dfbcddcd98c36b897028028612b435049dea",
+    "reports/research/week4-guided-exploration-acceptance-manifest-v3.json": "81023e1852098409f477316c69a1d6ae6d4cea05d1e8bfefad66cd23e164a9c4",
+    "reports/research/week4-maintainer-acceptance-manifest-v9.json": "16cfad407123dcb99564ea5d7065d06a9092057e2d256c28a8068d1c371609dc",
+    "reports/research/week4-maintainer-acceptance-cases-v2.json": "dec17ae2c8fc39faa320ca5c1487bb3087f7fe319cd2cdb81145149d16d50bae"
+  },
+  "successor_report_sha256": {
+    "issue287-kerberoasting-seamless-acceptance-v2.json": "75c3459ea460fcc7ce3f4ee60308c54f92d54969b4ebd1be61432ec1322d5cca",
+    "issue287-guided-exploration-acceptance-v3.json": "e84164f86e2e8292701aa2fc14fbeec879f155293d19d8459c19ac92867fb2e8",
+    "week4-guided-exploration-acceptance-manifest-v4.json": "e4efce461f21ed1664704136339d902e1f7334f51f5c9051ecc22b280e432d99"
+  },
+  "executable_tree_digest": "sha256:5b73ab2b46dd82fc826fcc6fa00e8e6ca43b1477e06abf2daf073b5b3cbd7ece",
+  "source_input_digest": "sha256:a307da5d1d2445fe27c1b4aacf64197c4f903a718af7586b0e6c261ecf5c936e",
+  "checks": [
+    {
+      "check": "real_SEAMLESS_Kerberoasting",
+      "status": "PASS",
+      "passed": 8,
+      "total": 8,
+      "elapsed_seconds": 93.701,
+      "evidence": "issue287-kerberoasting-seamless-acceptance-v2.json"
+    },
+    {
+      "check": "real_SEAMLESS_guided_exploration",
+      "status": "PASS",
+      "passed": 24,
+      "total": 24,
+      "elapsed_seconds": 146.399,
+      "evidence": "issue287-guided-exploration-acceptance-v3.json"
+    },
+    {
+      "check": "synthetic_runner_CLI_regressions",
+      "status": "PASS",
+      "passed": 9,
+      "command": ".venv/bin/python -m pytest tests/test_kerberoasting_seamless_acceptance.py -q"
+    },
+    {
+      "check": "intermediate_focused_tests",
+      "status": "FAIL",
+      "passed": 162,
+      "failed": 4,
+      "elapsed_seconds": 349.18,
+      "cause": "Documentation edited during test run; clean_tracked_source became False",
+      "log_sha256": "8c2a8bb4905ab53fb88e079fec4d4d806fb572c0e83d8e48733c30539de70832"
+    },
+    {
+      "check": "clean_checkout_rerun_of_four_failed_tests",
+      "status": "PASS",
+      "passed": 4,
+      "elapsed_seconds": 92.13,
+      "log_sha256": "c4ff12b87ed33b15245dac07aff4713e212d0e00112d9e61df20cc38d91fa37c"
+    },
+    {
+      "check": "full_repository_pytest",
+      "status": "PASS",
+      "passed": 3201,
+      "skipped": 7,
+      "subtests_passed": 99,
+      "elapsed_seconds": 1503.64,
+      "command": ".venv/bin/python -m pytest -q --tb=short",
+      "log_sha256": "985e96b202a7cbf5fd8fd8162a166d92b87ce64013aed2cf7bebbb9f688cb392",
+      "skip_reasons": [
+        "Optional guided private dataset environment absent in full run; exercised in focused real-data run",
+        "Windows junction and filesystem aliases",
+        "Three optional remediation private-data tests outside this PR scope"
+      ]
+    },
+    {
+      "check": "week4_deterministic_reproduction",
+      "status": "PASS",
+      "pass_count": 36,
+      "manual_not_executed_count": 2,
+      "unexpected_failure_count": 0,
+      "dirty_pinned_files": [],
+      "pinned_files": 125,
+      "evidence": "week4-guided-exploration-acceptance-manifest-v4.json"
+    },
+    {
+      "check": "repository_quality",
+      "status": "PASS",
+      "commands": [
+        ".venv/bin/python -m ruff check .",
+        ".venv/bin/python -m ruff format --check .",
+        ".venv/bin/python -m yamllint .",
+        ".venv/bin/python scripts/check_contract.py",
+        ".venv/bin/python scripts/check_repository.py",
+        "NEO4J_PASSWORD=ci-validation-placeholder docker compose --env-file .env.example --profile graph config --quiet"
+      ]
+    }
+  ],
+  "real_data_broken_invariant_reproduction": [
+    {
+      "phase": "before",
+      "code_revision": "84205803db22593a9de8beb458f9b28c5e4574ea",
+      "status": "PASS",
+      "process_exit_code": 0,
+      "all_replay_steps_applicable": false,
+      "failed_checks": [],
+      "local_summary_sha256": "36c3b4c940d60766776c4534fd04761f884f58a6e52fca7c13cbccc75c60c6b1",
+      "perturbation": "Change only returned assumed kerberoast_request probe status to blocked after real evaluation"
+    },
+    {
+      "phase": "after",
+      "code_revision": "5a923f4e84e09c8dedd9151fa0d5a04f9274bb15",
+      "status": "FAIL",
+      "process_exit_code": 1,
+      "all_replay_steps_applicable": false,
+      "failed_checks": [
+        "assumed_replay"
+      ],
+      "local_summary_sha256": "8709b57aafcc06e3969c4da2f7c5866d04b91f815a84014e184950a179ca5e9e",
+      "perturbation": "Change only returned assumed kerberoast_request probe status to blocked after real evaluation"
+    }
+  ],
+  "limits": [
+    "Local macOS validation; native Windows CI is separate",
+    "Full private traces remain ignored locally; summaries contain reviewed labels and hashes",
+    "No viewer integration, scenario-policy adoption, numerical ratings, new assumptions, or search changes",
+    "No automatic merge or manual remote CI rerun"
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "raw_snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "raw_manifest_sha256": "a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+  "source_labels": {
+    "S-1-5-21-1271839998-3495686680-2211690266-4157": "FINWVIR1000001.SEAMLESS.INTERNAL",
+    "S-1-5-21-1271839998-3495686680-2211690266-1395": "OLA_CARSON@SEAMLESS.INTERNAL"
+  },
+  "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+  "goal_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+  "denied_membership": [
+    "S-1-5-21-1271839998-3495686680-2211690266-2014",
+    "S-1-5-21-1271839998-3495686680-2211690266-512"
+  ],
+  "denied_member_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+  "query_results": [
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "side": "before",
+      "direct_route_count": 4,
+      "topology_hops": 2,
+      "folded_ordinal_C_minimum": 1,
+      "raw_owners": [
+        "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "S-1-5-21-1271839998-3495686680-2211690266-3325",
+        "S-1-5-21-1271839998-3495686680-2211690266-3398"
+      ],
+      "CE_custom_cypher": {
+        "cypher": "MATCH (s {objectid:$source})-[:GenericAll]->(u:User)-[:MemberOf]->(g:Group {objectid:$goal}) WHERE coalesce(u.enabled,true) AND ($denied IS NULL OR u.objectid <> $denied) RETURN DISTINCT u.objectid AS owner, u.name AS label ORDER BY owner",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": null
+        },
+        "rows": [
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "label": "DENA_WILLIAM@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+            "label": "ANTONY_FORBES@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "label": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+          }
+        ],
+        "query_and_transport_seconds": 0.052526041865348816
+      },
+      "unconditioned_topology_only": {
+        "cypher": "MATCH (s {objectid:$source}), (g:Group {objectid:$goal}), p=shortestPath((s)-[:GenericAll|MemberOf*1..6]->(g)) WHERE all(r IN relationships(p) WHERE $denied IS NULL OR NOT (type(r)=\"MemberOf\" AND startNode(r).objectid=$denied AND endNode(r).objectid=$goal)) RETURN [n IN nodes(p)|n.objectid] AS ids, [r IN relationships(p)|type(r)] AS kinds, length(p) AS hops",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": null
+        },
+        "rows": [
+          {
+            "ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "S-1-5-21-1271839998-3495686680-2211690266-3325",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ],
+            "kinds": [
+              "GenericAll",
+              "MemberOf"
+            ],
+            "hops": 2
+          }
+        ],
+        "query_and_transport_seconds": 0.059400832979008555
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "side": "after",
+      "direct_route_count": 3,
+      "topology_hops": 2,
+      "folded_ordinal_C_minimum": 1,
+      "raw_owners": [
+        "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "S-1-5-21-1271839998-3495686680-2211690266-3325",
+        "S-1-5-21-1271839998-3495686680-2211690266-3398"
+      ],
+      "CE_custom_cypher": {
+        "cypher": "MATCH (s {objectid:$source})-[:GenericAll]->(u:User)-[:MemberOf]->(g:Group {objectid:$goal}) WHERE coalesce(u.enabled,true) AND ($denied IS NULL OR u.objectid <> $denied) RETURN DISTINCT u.objectid AS owner, u.name AS label ORDER BY owner",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        "rows": [
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "label": "DENA_WILLIAM@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+            "label": "ANTONY_FORBES@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "label": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+          }
+        ],
+        "query_and_transport_seconds": 0.023641624953597784
+      },
+      "unconditioned_topology_only": {
+        "cypher": "MATCH (s {objectid:$source}), (g:Group {objectid:$goal}), p=shortestPath((s)-[:GenericAll|MemberOf*1..6]->(g)) WHERE all(r IN relationships(p) WHERE $denied IS NULL OR NOT (type(r)=\"MemberOf\" AND startNode(r).objectid=$denied AND endNode(r).objectid=$goal)) RETURN [n IN nodes(p)|n.objectid] AS ids, [r IN relationships(p)|type(r)] AS kinds, length(p) AS hops",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        "rows": [
+          {
+            "ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-4157",
+              "S-1-5-21-1271839998-3495686680-2211690266-3325",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ],
+            "kinds": [
+              "GenericAll",
+              "MemberOf"
+            ],
+            "hops": 2
+          }
+        ],
+        "query_and_transport_seconds": 0.02998062502592802
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "side": "before",
+      "direct_route_count": 4,
+      "topology_hops": 2,
+      "folded_ordinal_C_minimum": 1,
+      "raw_owners": [
+        "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "S-1-5-21-1271839998-3495686680-2211690266-3325",
+        "S-1-5-21-1271839998-3495686680-2211690266-3398"
+      ],
+      "CE_custom_cypher": {
+        "cypher": "MATCH (s {objectid:$source})-[:GenericAll]->(u:User)-[:MemberOf]->(g:Group {objectid:$goal}) WHERE coalesce(u.enabled,true) AND ($denied IS NULL OR u.objectid <> $denied) RETURN DISTINCT u.objectid AS owner, u.name AS label ORDER BY owner",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": null
+        },
+        "rows": [
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+            "label": "OLLIE_LONG@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "label": "DENA_WILLIAM@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+            "label": "ANTONY_FORBES@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "label": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+          }
+        ],
+        "query_and_transport_seconds": 0.0034363330341875553
+      },
+      "unconditioned_topology_only": {
+        "cypher": "MATCH (s {objectid:$source}), (g:Group {objectid:$goal}), p=shortestPath((s)-[:GenericAll|MemberOf*1..6]->(g)) WHERE all(r IN relationships(p) WHERE $denied IS NULL OR NOT (type(r)=\"MemberOf\" AND startNode(r).objectid=$denied AND endNode(r).objectid=$goal)) RETURN [n IN nodes(p)|n.objectid] AS ids, [r IN relationships(p)|type(r)] AS kinds, length(p) AS hops",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": null
+        },
+        "rows": [
+          {
+            "ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "S-1-5-21-1271839998-3495686680-2211690266-3325",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ],
+            "kinds": [
+              "GenericAll",
+              "MemberOf"
+            ],
+            "hops": 2
+          }
+        ],
+        "query_and_transport_seconds": 0.0058563328348100185
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "side": "after",
+      "direct_route_count": 3,
+      "topology_hops": 2,
+      "folded_ordinal_C_minimum": 1,
+      "raw_owners": [
+        "S-1-5-21-1271839998-3495686680-2211690266-2799",
+        "S-1-5-21-1271839998-3495686680-2211690266-3325",
+        "S-1-5-21-1271839998-3495686680-2211690266-3398"
+      ],
+      "CE_custom_cypher": {
+        "cypher": "MATCH (s {objectid:$source})-[:GenericAll]->(u:User)-[:MemberOf]->(g:Group {objectid:$goal}) WHERE coalesce(u.enabled,true) AND ($denied IS NULL OR u.objectid <> $denied) RETURN DISTINCT u.objectid AS owner, u.name AS label ORDER BY owner",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        "rows": [
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+            "label": "DENA_WILLIAM@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3325",
+            "label": "ANTONY_FORBES@SEAMLESS.INTERNAL"
+          },
+          {
+            "owner": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+            "label": "LIDIA_ALFORD@SEAMLESS.INTERNAL"
+          }
+        ],
+        "query_and_transport_seconds": 0.0030531249940395355
+      },
+      "unconditioned_topology_only": {
+        "cypher": "MATCH (s {objectid:$source}), (g:Group {objectid:$goal}), p=shortestPath((s)-[:GenericAll|MemberOf*1..6]->(g)) WHERE all(r IN relationships(p) WHERE $denied IS NULL OR NOT (type(r)=\"MemberOf\" AND startNode(r).objectid=$denied AND endNode(r).objectid=$goal)) RETURN [n IN nodes(p)|n.objectid] AS ids, [r IN relationships(p)|type(r)] AS kinds, length(p) AS hops",
+        "parameters": {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+          "goal": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "denied": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+        },
+        "rows": [
+          {
+            "ids": [
+              "S-1-5-21-1271839998-3495686680-2211690266-1395",
+              "S-1-5-21-1271839998-3495686680-2211690266-3325",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ],
+            "kinds": [
+              "GenericAll",
+              "MemberOf"
+            ],
+            "hops": 2
+          }
+        ],
+        "query_and_transport_seconds": 0.00532158394344151
+      }
+    }
+  ],
+  "identity_audit": {
+    "raw_unique_ids": 3368,
+    "CE_unique_ids": 3374,
+    "raw_ids_missing_in_CE": [],
+    "CE_only_ids": [
+      "S-1-5-21-1271839998-3495686680-2211690266-1000-544",
+      "S-1-5-21-1271839998-3495686680-2211690266-1000-555",
+      "S-1-5-21-1271839998-3495686680-2211690266-1000-562",
+      "S-1-5-21-1271839998-3495686680-2211690266-1000-580",
+      "SEAMLESS.INTERNAL-S-1-5-17",
+      "SEAMLESS.INTERNAL-S-1-5-4"
+    ]
+  },
+  "CE_census": {
+    "nodes": {
+      "cypher": "MATCH (n) WHERE NOT 'MigrationData' IN labels(n) RETURN count(n) AS count",
+      "parameters": {},
+      "rows": [
+        {
+          "count": 3374
+        }
+      ],
+      "query_and_transport_seconds": 0.009567041881382465
+    },
+    "edges": {
+      "cypher": "MATCH ()-[r]->() RETURN type(r) AS kind, count(r) AS count ORDER BY kind",
+      "parameters": {},
+      "rows": [
+        {
+          "kind": "AdminTo",
+          "count": 5
+        },
+        {
+          "kind": "AllExtendedRights",
+          "count": 2499
+        },
+        {
+          "kind": "CanPSRemote",
+          "count": 2
+        },
+        {
+          "kind": "CoerceToTGT",
+          "count": 1
+        },
+        {
+          "kind": "Contains",
+          "count": 2816
+        },
+        {
+          "kind": "ExecuteDCOM",
+          "count": 1
+        },
+        {
+          "kind": "GPLink",
+          "count": 2
+        },
+        {
+          "kind": "GenericAll",
+          "count": 37034
+        },
+        {
+          "kind": "GenericWrite",
+          "count": 3166
+        },
+        {
+          "kind": "GetChanges",
+          "count": 3
+        },
+        {
+          "kind": "GetChangesAll",
+          "count": 2
+        },
+        {
+          "kind": "LocalToComputer",
+          "count": 4
+        },
+        {
+          "kind": "MemberOf",
+          "count": 15917
+        },
+        {
+          "kind": "MemberOfLocalGroup",
+          "count": 11
+        },
+        {
+          "kind": "Owns",
+          "count": 3362
+        },
+        {
+          "kind": "OwnsRaw",
+          "count": 3362
+        },
+        {
+          "kind": "WriteDacl",
+          "count": 3392
+        },
+        {
+          "kind": "WriteOwner",
+          "count": 3392
+        },
+        {
+          "kind": "WriteOwnerRaw",
+          "count": 3392
+        }
+      ],
+      "query_and_transport_seconds": 0.034806958166882396
+    }
+  },
+  "direct_relationship_audit": {
+    "expected_unique_raw_triples": 50368,
+    "CE_unique_triples": 52951,
+    "missing": [
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-1545",
+        "S-1-5-21-1271839998-3495686680-2211690266-1545",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-3610",
+        "S-1-5-21-1271839998-3495686680-2211690266-3610",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-3611",
+        "S-1-5-21-1271839998-3495686680-2211690266-3611",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-3862",
+        "S-1-5-21-1271839998-3495686680-2211690266-3862",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-3962",
+        "S-1-5-21-1271839998-3495686680-2211690266-3962",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4086",
+        "S-1-5-21-1271839998-3495686680-2211690266-4086",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4141",
+        "S-1-5-21-1271839998-3495686680-2211690266-4141",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "GenericAll"
+      ],
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4162",
+        "S-1-5-21-1271839998-3495686680-2211690266-4162",
+        "GenericAll"
+      ]
+    ],
+    "CE_additional_count": 2593,
+    "export_sha256": "10d87f12a4f80ef4f9407cb1ad06f97d4c6a299cb6e56509f2e7894fb522389d",
+    "matched_nonself_triples": 50358,
+    "documented_self_ACE_exclusions": 10,
+    "exclusion_source": "https://github.com/SpecterOps/BloodHound/blob/v9.8.0/packages/go/ein/ad.go#L465",
+    "unexpected_missing": []
+  },
+  "scope": "Direct GenericAll(source, enabled User) followed by direct User MemberOf Domain Admins. Runtime success and usable source/context are conditioned on seamless-standard-v1, C profile reset-activation-c-v2. After is a query-only exclusion of the exact OLLIE->DA edge; persistent CE graph unchanged. Folded cost1 is declared ordinal effort, not a built-in CE metric. Topology-only queries are separately labeled. No full native global minimum or speed claim."
+}

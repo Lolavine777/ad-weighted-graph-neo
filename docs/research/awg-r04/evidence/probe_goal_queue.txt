@@ -1,0 +1,67 @@
+"""RESEARCH ONLY: reorder the native queue, with no candidate pruning or semantic rules."""
+import hashlib
+import heapq
+import json
+import subprocess
+import sys
+import time
+from collections import deque
+from pathlib import Path
+
+root=Path(__file__).resolve().parent;repo=root/'repo';sys.path.insert(0,str(repo))
+from src.engine import search
+from src.engine.graph import EngineGraph
+from src.engine.batch import run_source_goal_batch,BatchExecutionBudget
+from src.engine.query import materialize_query
+from src.engine.query_cli import wire
+from src.engine.semantics.evaluator import evaluate
+from src.engine.semantics import apply_transition
+from src.engine.semantics.transitions import TransitionRequest,Status
+
+out=Path(sys.argv[1]);out.mkdir(parents=True,exist_ok=False)
+graph=EngineGraph.from_snapshot((repo/'data/processed/awg-r04/pilot-v2/snapshot.json').read_text())
+req=json.loads((repo/'reports/generated/awg-r04-global-policy-v1/after/request.json').read_text())
+goals=[g for g in req['target_manifest']['targets'] if g['target_node_id'].endswith('-512')]
+assert len(goals)==1
+target=goals[0]['target_node_id'];req['target_goal_ids']=[goals[0]['goal_id']]
+reverse={}
+for e in graph.edges():
+ if e['kind']=='MemberOf':reverse.setdefault(e['target'],set()).add(e['source'])
+dist={target:0};todo=deque([target])
+while todo:
+ node=todo.popleft()
+ for child in reverse.get(node,()):
+  if child not in dist:dist[child]=dist[node]+1;todo.append(child)
+
+class GoalQueue:
+ def __init__(self,items):
+  self.heap=[];self.serial=0
+  for item in items:self.append(item)
+ def __bool__(self):return bool(self.heap)
+ def append(self,item):
+  state=item[1]
+  candidates=[(dist.get(u,10**9),0) for u,c in state.usable_identity]+[(dist.get(u,10**9),1) for u in state.reset_password_control]
+  priority=min(candidates,default=(10**9,2))
+  heapq.heappush(self.heap,(*priority,len(item[4]),self.serial,item));self.serial+=1
+ def popleft(self):return heapq.heappop(self.heap)[-1]
+
+original=search.deque;search.deque=GoalQueue;start=time.perf_counter()
+try:
+ result=run_source_goal_batch(req,graph,allowed_techniques=['scenario_reset_password','acquire_reset_identity','propagate_group_entitlement'],scenario_policy='seamless-standard-v1',effort_profile='reset-activation-c-v2',execution_budget=BatchExecutionBudget(max_cells=1,max_expansions=6000)).to_dict()
+finally:search.deque=original
+seconds=time.perf_counter()-start
+trace=next(iter(result['reproducibility']['inputs']['public_queries'].values()));native=trace['result'];cell=next(iter(next(iter(result['source_goal_matrix'].values())).values()))
+replayed=0
+material=materialize_query(trace['query'],graph)
+for path in native['paths']:
+ state=material.initial_attack_state
+ for step in path['transition_history']:
+  action=step['result']['request'];transition=evaluate(graph.to_prepared(),state,TransitionRequest(**action),material.runtime_context)
+  assert transition.status is Status.APPLICABLE
+  state=apply_transition(state,transition)
+ assert wire(state)==path['final_state']
+ assert material.semantic_goal.matches(state)
+ replayed+=1
+payload={'version':'goal-queue-research-probe/1','production':False,'source_revision':subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip(),'external_harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'method':'Only monkeypatch pending queue in existing native planner. Reverse MemberOf hop distance of reset/usable owners; prefer usable owner, then shorter history and serial tie. Retains every queued state/candidate; not an admissible cost heuristic or new production engine.','request':req,'query':trace['query'],'cell':cell,'guarantees':trace['guarantees'],'paths':native['paths'],'native_transition_replays':replayed,'phase_seconds_instrumented':seconds,'limits':'One automatic DA goal and three techniques. Logical-budget witness comparison only, not speed/optimality/full-domain evidence.'}
+(out/'projection.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'reached':cell['final_goal_reached'],'C':cell['min_effort'],'expansions':cell['expansions'],'replayed':replayed,'seconds':seconds}))

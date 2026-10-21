@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "disposition_id": "seamless-week4-parameter-disposition",
+  "version": "1.0.0",
+  "created_at": "2026-10-07T00:00:00Z",
+  "author": "Lolavine777 (TTS A)",
+  "reviewer": "nairyuuu (TTS B)",
+  "status": "reviewed_disposition",
+  "evidence_class": "human_reviewed_disposition",
+  "week3_reference": {
+    "release_id": "seamless-week3-human-reviewed",
+    "release_version": "1.0.0",
+    "canonical_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+    "parameters_count": 21,
+    "status": "unchanged_historical_baseline"
+  },
+  "reuse_criteria": {
+    "description": "Ratings from Week 3 closeout are only reused when all five dimensions are identical: exact binding, success event, context, operational horizon, and target asset.",
+    "enforcement": "If any condition deviates or runtime mapping is unresolved, the candidate remains unrated. No synthetic or default values may be substituted."
+  },
+  "dispositions": [
+    {
+      "scope": "week3_source_a_candidate_1_lidia",
+      "binding_status": "reusable_under_week3_scope",
+      "week4_reuse_verdict": "reusable_if_query_unchanged",
+      "parameters_reused": [
+        "WU_RESET_LIDIA",
+        "WU_ACTIVATE_LIDIA",
+        "WU_WINRM_DC_LIDIA",
+        "q1",
+        "q2",
+        "q3"
+      ],
+      "notes": "Valid only for original query-seamless-host-to-dc-v1 within 24h horizon."
+    },
+    {
+      "scope": "week3_source_a_candidate_2_josefa_ollie",
+      "binding_status": "reusable_under_week3_scope",
+      "week4_reuse_verdict": "reusable_if_query_unchanged",
+      "parameters_reused": [
+        "WU_RESET_JOSEFA",
+        "WU_ACTIVATE_JOSEFA",
+        "WU_RESET_OLLIE",
+        "WU_ACTIVATE_OLLIE",
+        "WU_WINRM_DC_OLLIE",
+        "q4",
+        "q5",
+        "q6",
+        "q7",
+        "q8"
+      ],
+      "notes": "Valid only for original query-seamless-host-to-dc-v1 within 24h horizon."
+    },
+    {
+      "scope": "week3_source_b_candidate_ollie",
+      "binding_status": "reusable_under_week3_scope",
+      "week4_reuse_verdict": "reusable_if_query_unchanged",
+      "parameters_reused": [
+        "WU_RESET_OLLIE_FROM_B",
+        "WU_ACTIVATE_OLLIE",
+        "WU_WINRM_DC_OLLIE",
+        "q9",
+        "q10",
+        "q11"
+      ],
+      "notes": "Valid only for original query-seamless-source-b-to-dc-v1 within 24h horizon."
+    },
+    {
+      "scope": "week4_machine_source_queries_X_to_Y",
+      "binding_status": "unresolved_mapping_pending_B",
+      "week4_reuse_verdict": "unrated_pending_interface",
+      "parameters_reused": [],
+      "unrated_reason": "Machine source mapping (Computer X to Y) and host-level authentication context are not yet bound in public query interface. No numeric rating is claimed."
+    },
+    {
+      "scope": "week4_extension_as_rep_roasting",
+      "binding_status": "screened_without_recovery_data",
+      "week4_reuse_verdict": "unrated_pending_empirical_basis",
+      "parameters_reused": [],
+      "unrated_reason": "AS-REP roasting request material is supported by dontreqpreauth field, but password recovery within 24h horizon lacks empirical cracked rate data. Reset qualifier from Week 3 must NOT be reused for offline hash cracking. Remains explicitly unrated; neither P=0 nor P=1 nor synthetic defaults are filled."
+    },
+    {
+      "scope": "week4_extension_kerberoasting",
+      "binding_status": "screened_without_recovery_data",
+      "week4_reuse_verdict": "unrated_pending_empirical_basis",
+      "parameters_reused": [],
+      "unrated_reason": "SPN enumeration produces ticket material, but offline TGS cracking lacks empirical dictionary calibration in SEAMLESS. Remains explicitly unrated."
+    },
+    {
+      "scope": "week4_extension_rbcd",
+      "binding_status": "screened_without_runtime_support",
+      "week4_reuse_verdict": "unrated_pending_runtime_gates",
+      "parameters_reused": [],
+      "unrated_reason": "AddAllowedToAct DACL write is identified, but S4U2self/S4U2proxy delegation and machine account acquisition runtime gates lack empirical basis. Remains unrated."
+    },
+    {
+      "scope": "week4_da_checkpoint_vs_asset_success",
+      "binding_status": "distinct_events",
+      "week4_reuse_verdict": "independent_evaluation",
+      "parameters_reused": [],
+      "unrated_reason": "Acquiring Domain Admin membership checkpoint is distinct from compromise of DC asset. Impact consequence is bound to specific asset target, not defaulted from DA role."
+    }
+  ]
+}

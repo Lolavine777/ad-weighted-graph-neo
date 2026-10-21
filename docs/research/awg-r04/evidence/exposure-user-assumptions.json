@@ -1,0 +1,54 @@
+[
+  {
+    "assumption_metadata": {
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "declared_by": "228-handoff-proposal"
+    },
+    "predicate": "authentication_accepted",
+    "provenance_reference": "scenario://228/explicit-outcomes",
+    "rationale": "Declared prediction outcome, not observed success",
+    "scope": "seamless-228/C0",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "declared_by": "228-handoff-proposal"
+    },
+    "predicate": "admin_channel",
+    "provenance_reference": "scenario://228/explicit-outcomes",
+    "rationale": "Declared prediction outcome, not observed success",
+    "scope": "seamless-228/C0",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "declared_by": "228-handoff-proposal"
+    },
+    "predicate": "security_group",
+    "provenance_reference": "scenario://228/explicit-outcomes",
+    "rationale": "Declared prediction outcome, not observed success",
+    "scope": "seamless-228/C0",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "value": true
+  },
+  {
+    "assumption_metadata": {
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "declared_by": "228-handoff-proposal"
+    },
+    "predicate": "membership_usable",
+    "provenance_reference": "scenario://228/explicit-outcomes",
+    "rationale": "Declared prediction outcome, not observed success",
+    "scope": "seamless-228/C0",
+    "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "value": true
+  }
+]

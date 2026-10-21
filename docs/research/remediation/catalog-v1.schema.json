@@ -1,0 +1,131 @@
+{
+  "$id": "catalog-v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "catalog_id": {
+      "const": "ad-remediation/1.0.0"
+    },
+    "entries": {
+      "items": {
+        "additionalProperties": false,
+        "properties": {
+          "defender_cost": {
+            "type": "null"
+          },
+          "id": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "intervention": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "layer": {
+            "enum": [
+              "relationship",
+              "snapshot_fact",
+              "runtime",
+              "advisory"
+            ]
+          },
+          "limitations": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "predicates": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "relationships": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "type": "array",
+            "uniqueItems": true
+          },
+          "required_evidence": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "support": {
+            "enum": [
+              "executable_semantics",
+              "requires_new_basis"
+            ]
+          },
+          "technical_references": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array"
+          },
+          "techniques": {
+            "items": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "minItems": 1,
+            "type": "array",
+            "uniqueItems": true
+          },
+          "title": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "techniques",
+          "relationships",
+          "predicates",
+          "layer",
+          "intervention",
+          "required_evidence",
+          "limitations",
+          "technical_references",
+          "support",
+          "defender_cost"
+        ],
+        "type": "object"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "semantic_catalog_sha256": {
+      "pattern": "^sha256:[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "status": {
+      "const": "proposed_pending_B_review"
+    }
+  },
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "semantic_catalog_sha256",
+    "status",
+    "entries"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "public-rating-resolution/1.1.0",
+  "mode": "automatic",
+  "policy": "synthetic_test_only",
+  "scope": {
+    "query_id": "synthetic-issue250",
+    "scenario_id": "w4-two-routes-exact",
+    "scenario_version": "1.0.0",
+    "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+    "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+    "work_boundary": "intra_forest",
+    "horizon": "24h",
+    "active_work_budget": 12,
+    "evaluation_mode": "scenario",
+    "target_goal": {
+      "goal_id": "admin",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "success_event": "admin_control_host"
+    }
+  },
+  "registries": {}
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "path": "reports/generated/awg-r04-ce-v1/snapshot.json",
+    "bytes": 48326845,
+    "sha256": "ea9c6c54f4a9439bca6e7bfd403a00c8032c882944668eb3fd0d4545b32b0f63"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/demo-one/result.json",
+    "bytes": 2152175349,
+    "sha256": "dd3d9abdd6399e9fcdd1fc69a9b2627ba4dde640f231e0ee188727833e37b244"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/demo-multi-corrected/result.json",
+    "bytes": 1140315380,
+    "sha256": "807cfba26c1420e2071755a9659d51ad750fa2a786caf0a335b3020e0477c191"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/native-remediation-v2/package.json.gz",
+    "bytes": 10625246,
+    "sha256": "92bb0dd211fdff38e6ce1ab674fa0f4a84a63dfbe68791c8cddfd0c9ce083067"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/native-remediation-v2/cells.json",
+    "bytes": 46566357,
+    "sha256": "5a48122edd59c7226f86dc6beb2b7d7b376c51b1e2eda25671ab09bfc2710ea6"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/native-remediation-v2/baseline.json",
+    "bytes": 38055679,
+    "sha256": "8ad0f9d7edba5b964d1b42bbe2cffd0d90598f7adef0b5544b448cddae473338"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/native-remediation-v2/witnesses.json",
+    "bytes": 90848595,
+    "sha256": "6237436723ba820ed2bc513cbd3c6b4619853254cf61ab75412824fcbc9f5c63"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/raw-import-server.log",
+    "bytes": 130647,
+    "sha256": "22a4dee261fd470b24f2e021607cd528cfe64ecc19266022cff70477a16b7786"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/envelope-server.log",
+    "bytes": 218945,
+    "sha256": "2b718ffaee9b5a195631d545e72ab5b491b822c221cd75bcdf9c4e572a5d30e9"
+  },
+  {
+    "path": "reports/generated/awg-r04-ce-v1/converted-server.log",
+    "bytes": 124064,
+    "sha256": "7a6cb6ce661d685c2b48073fa7c24d30bc0ba7322b154bd674a2e9c9604fa2a5"
+  }
+]

@@ -1,0 +1,195 @@
+{
+  "experiment": "issue-121-unchanged-legacy-pre41",
+  "dataset_id": "seamless-v1",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "input_manifest": "data/samples/manifests/seamless-raw-v1.json",
+  "input_root": "data/raw/SEAMLESS",
+  "input_transformed": false,
+  "runtime": {
+    "bloodhound_version": "4.0.3",
+    "bloodhound_artifact": "https://github.com/SpecterOps/BloodHound-Legacy/releases/download/4.0.3/BloodHound-linux-x64.zip",
+    "bloodhound_artifact_sha256": "2321bcf59fc695ef50c4c540af7c4f76343e9ea8d1989ed0d30f33b705147d25",
+    "neo4j_version": "4.1.13",
+    "neo4j_image": "neo4j@sha256:1f08dd79d877776e2501ba77d8b4c5354e8953d603fcae31df6b7b2c61685bc0",
+    "host": "Windows 10.0.26200.0; WSL2 Ubuntu 26.04 LTS; Linux 6.18.33.1-microsoft-standard-WSL2",
+    "importer": "official Linux Electron GUI"
+  },
+  "runs": [
+    {
+      "name": "initial",
+      "clean_database_before_import": {
+        "nodes": 0,
+        "relationships": 0
+      },
+      "manifest_verification": {
+        "status": "verified",
+        "issues": []
+      },
+      "file_outcomes": {
+        "20210920185958_computers.json": "Upload Complete",
+        "20210920185958_domains.json": "Upload Complete",
+        "20210920185958_gpos.json": "Upload Complete",
+        "20210920185958_groups.json": "Upload Complete",
+        "20210920185958_ous.json": "Upload Complete",
+        "20210920185958_users.json": "Upload Complete"
+      },
+      "nodes_by_label": {
+        "Computer": 100,
+        "Domain": 1,
+        "GPO": 2,
+        "Group": 551,
+        "OU": 223,
+        "User": 2493
+      },
+      "node_total": 3370,
+      "unique_objectids": 3370,
+      "base_only_nodes": 0,
+      "relationships_by_type": {
+        "AdminTo": 5,
+        "AllExtendedRights": 2499,
+        "CanPSRemote": 2,
+        "CanRDP": 3,
+        "Contains": 2816,
+        "ExecuteDCOM": 1,
+        "GenericAll": 37034,
+        "GenericWrite": 3166,
+        "GetChanges": 3,
+        "GetChangesAll": 2,
+        "GpLink": 2,
+        "MemberOf": 15917,
+        "Owns": 3362,
+        "WriteDacl": 3392,
+        "WriteOwner": 3392
+      },
+      "relationship_total": 71596,
+      "relationships_with_isacl_true": 52850,
+      "ui_warnings_observed": [],
+      "rejected_record_count": null,
+      "import_duration_seconds": null,
+      "importer_write_error_count": null,
+      "base_only_validation": "label_population_revalidation; see evidence_revalidation"
+    },
+    {
+      "name": "clean_database_rerun",
+      "clean_database_before_import": {
+        "nodes": 0,
+        "relationships": 0
+      },
+      "manifest_verification": {
+        "status": "verified",
+        "issues": []
+      },
+      "file_outcomes": {
+        "20210920185958_computers.json": "Upload Complete",
+        "20210920185958_domains.json": "Upload Complete",
+        "20210920185958_gpos.json": "Upload Complete",
+        "20210920185958_groups.json": "Upload Complete",
+        "20210920185958_ous.json": "Upload Complete",
+        "20210920185958_users.json": "Upload Complete"
+      },
+      "nodes_by_label": {
+        "Computer": 100,
+        "Domain": 1,
+        "GPO": 2,
+        "Group": 551,
+        "OU": 223,
+        "User": 2493
+      },
+      "node_total": 3370,
+      "unique_objectids": 3370,
+      "base_only_nodes": 0,
+      "relationships_by_type": {
+        "AdminTo": 5,
+        "AllExtendedRights": 2499,
+        "CanPSRemote": 2,
+        "CanRDP": 3,
+        "Contains": 2816,
+        "ExecuteDCOM": 1,
+        "GenericAll": 37034,
+        "GenericWrite": 3166,
+        "GetChanges": 3,
+        "GetChangesAll": 2,
+        "GpLink": 2,
+        "MemberOf": 15917,
+        "Owns": 3362,
+        "WriteDacl": 3392,
+        "WriteOwner": 3392
+      },
+      "relationship_total": 71596,
+      "relationships_with_isacl_true": 52850,
+      "ui_warnings_observed": [],
+      "rejected_record_count": null,
+      "import_duration_seconds": null,
+      "importer_write_error_count": null,
+      "base_only_validation": "label_population_revalidation; see evidence_revalidation"
+    }
+  ],
+  "conclusion": "Official BloodHound Legacy 4.0.3 reports completion for all six unchanged schema-v3 files; aggregate counts reproduce in two clean databases. Import-time write failures and record rejection remain unknown.",
+  "scope": "Historical importer compatibility only; neither an adapted Legacy-v4 baseline nor a BloodHound CE 9.7 parity result.",
+  "group_identity_reconciliation": {
+    "evidence": "reports/research/issue-139-seamless-boundary-legacy-403.json",
+    "observed_on": "2026-10-01",
+    "status": "measured",
+    "project_collected_count": 549,
+    "project_boundary_count": 2,
+    "project_total_count": 551,
+    "legacy_count": 551,
+    "literal_common_count": 517,
+    "literal_project_only_count": 34,
+    "literal_legacy_only_count": 34,
+    "mapped_common_count": 551,
+    "mapped_common_collected_count": 549,
+    "mapped_common_boundary_count": 2,
+    "project_only": [],
+    "legacy_only": [],
+    "unresolved_mappings": [],
+    "set_digests": {
+      "project_collected": "1ac31dadc6fdf29f754888b4660e1282d80179c7067f697f25c5b702b8b81ff3",
+      "project_boundary": "8cd9493687b4b2a70801460d1fc13767c9a372f219dded52ca1a265165a1ef9b",
+      "project_total": "41d8c593b33785b8024f1d5960fa37284d99d17b22246d0b3ad75e8bbf3cd606",
+      "legacy_stored": "9417099e7a3aa6b4439c58c7c428d6e5f73dac62244461e614227a39f0a45f1d",
+      "legacy_mapped": "41d8c593b33785b8024f1d5960fa37284d99d17b22246d0b3ad75e8bbf3cd606"
+    },
+    "limitation": "Chỉ đối soát identity Group; không chứng minh metadata, ngữ nghĩa membership, độ đầy đủ export hoặc parity của toàn graph.",
+    "raw_group_count": 550,
+    "raw_unique_group_count": 549,
+    "legacy_minus_raw": [
+      "SEAMLESS.INTERNAL-S-1-5-17",
+      "SEAMLESS.INTERNAL-S-1-5-4"
+    ],
+    "raw_minus_legacy": [],
+    "raw_collected_set_sha256": "6558d70de958be9294b683cfe5736fddadb5ee5fe6273337ea4993d1f09831d8",
+    "input_sha256": {
+      "project": "f70c773c828bce481acec1f416c6272718bb4bf4798150c4642642b75bfa8944",
+      "legacy_groups": "98b953bbe516982246587050b8b1762b46074450310d3599e1187ee198739e05",
+      "mapping": "2459f13fce61f875cb29357240fd8f5dcdafed46b41533e77319e736f6866b70"
+    },
+    "duplicate_raw_representations": {
+      "objectid": "SEAMLESS.INTERNAL-S-1-5-32-545",
+      "locators": [
+        "20210920185958_groups.json#/groups/6",
+        "20210920185958_groups.json#/groups/549"
+      ],
+      "member_counts": [
+        4,
+        0
+      ],
+      "duplicate_cause": "unknown",
+      "description": "Hai representation cùng identity; #/groups/549 không chứa occurrence của INTERACTIVE."
+    },
+    "derivation": "550 raw records − 1 representation trùng = 549 collected identities; 549 + 2 materialized placeholders = 551 Legacy Group identities.",
+    "initial_and_rerun_group_set_equal": true
+  },
+  "evidence_revalidation": {
+    "reviewed_on": "2026-10-04",
+    "source_revision": "6d06dc7bb9352db568eb7dc6deb92285a8d32489",
+    "source": "reports/research/issue-139-seamless-boundary-legacy-403.json",
+    "new_import_performed": false,
+    "new_database_queries_performed": false,
+    "base_only_query": "MATCH (n:Base) WHERE size(labels(n)) = 1 RETURN count(n) AS base_only_nodes",
+    "base_only_method": "Derived from complete recorded labels population (3370 nodes, every label set contains Base and a typed label), historical equal per-label populations in both runs; corrected query not rerun.",
+    "write_error_count": null,
+    "write_error_evidence_status": "not_captured",
+    "full_graph_parity_status": "not_established"
+  }
+}

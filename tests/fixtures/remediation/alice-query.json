@@ -1,0 +1,79 @@
+{
+  "allowed_techniques": [
+    "obtain_admin_execution_on_host",
+    "propagate_group_entitlement"
+  ],
+  "assumptions": [
+    {
+      "assumption_metadata": {
+        "declared_by": "269-independent-oracle"
+      },
+      "predicate": "admin_channel",
+      "provenance_reference": "synthetic://269/assumptions",
+      "rationale": "Synthetic declared context, not observed compromise",
+      "scope": "remediation269-synthetic",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "269-independent-oracle"
+      },
+      "predicate": "authentication_accepted",
+      "provenance_reference": "synthetic://269/assumptions",
+      "rationale": "Synthetic declared context, not observed compromise",
+      "scope": "remediation269-synthetic",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "269-independent-oracle"
+      },
+      "predicate": "membership_usable",
+      "provenance_reference": "synthetic://269/assumptions",
+      "rationale": "Synthetic declared context, not observed compromise",
+      "scope": "remediation269-synthetic",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "269-independent-oracle"
+      },
+      "predicate": "security_group",
+      "provenance_reference": "synthetic://269/assumptions",
+      "rationale": "Synthetic declared context, not observed compromise",
+      "scope": "remediation269-synthetic",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-2103",
+      "value": true
+    }
+  ],
+  "budget": {
+    "max_expansions": 1000,
+    "max_paths": 100,
+    "max_steps": 6
+  },
+  "initial_actor": "S-1-5-21-1000-2000-3000-1101",
+  "initial_state": {
+    "control": [
+      "S-1-5-21-1000-2000-3000-1101"
+    ]
+  },
+  "runtime_facts": [],
+  "scenario_reference": "remediation269-synthetic",
+  "source_foothold": "S-1-5-21-1000-2000-3000-1101",
+  "target": "10000000-0000-4000-8000-000000000002",
+  "target_goal": {
+    "required_state": {
+      "admin_control": [
+        "10000000-0000-4000-8000-000000000002"
+      ]
+    },
+    "target": "10000000-0000-4000-8000-000000000002"
+  }
+}

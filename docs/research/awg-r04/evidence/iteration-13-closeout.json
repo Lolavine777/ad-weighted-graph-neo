@@ -1,0 +1,104 @@
+{
+  "schema_version": "awg-r04-defender-closeout/1",
+  "validated_clean_revision": "ffcad383f98dced6c3dcbafa7a0435ec09882408",
+  "native_fullraw_capture_revision": "bc8aa99c19eff85df316c11046ae390e33cc2a1c",
+  "baseline_fullraw_revision": "6cd7247cf17a83e25e12ed906f68221ce9277e24",
+  "final_checks": {
+    "revision": "ffcad383f98dced6c3dcbafa7a0435ec09882408",
+    "junit_sha256": "fc7979d501adcac560729be802dff7ca563f3b73c8af3b0a3ccc9852bd75a843",
+    "testsuite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "527",
+      "time": "144.711",
+      "timestamp": "2026-10-18T22:44:54.368662-04:00",
+      "hostname": "8a65a67eb49d"
+    },
+    "test_modules": {
+      "tests.test_asrep": 51,
+      "tests.test_attack_semantics_transitions": 45,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_computer_foothold_boundary": 18,
+      "tests.test_engine": 30,
+      "tests.test_exposure": 18,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_machine_identity_profile": 35,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_query_cli": 65,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_rbcd": 33,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_reset_effort": 21,
+      "tests.test_source_goal_batch_contract": 44,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_review_regressions": 10,
+      "tests.test_machine_reset_effort": 16,
+      "tests.test_defender_brief": 7
+    },
+    "python": "3.14.8",
+    "packages": {
+      "networkx": "3.7",
+      "pytest": "9.1.1",
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "ruff": "0.16.8"
+    }
+  },
+  "suite_overlap": "97 selected and 527 final overlap; do not add counts. Selected modules only, not a full-suite claim.",
+  "pins": {
+    "fullraw_after_source_pins_equal_current": 70,
+    "native_acceptance_file_pins_equal_current": 127,
+    "projected_acceptance_file_pins_equal_current": 127,
+    "v1_definition_unchanged": true
+  },
+  "code_unchanged_since_native_capture": true,
+  "publication_changes_since_native": [
+    "README.md",
+    "docs/research/awg-r04/CONTINUE.md",
+    "docs/research/awg-r04/ITERATION-13.md",
+    "docs/research/awg-r04/RESULTS.md",
+    "docs/research/awg-r04/evidence/defender-run-projection-harness.txt",
+    "docs/research/awg-r04/evidence/iteration-13-defender.json",
+    "docs/research/awg-r04/evidence/iteration-13-selected.xml",
+    "docs/research/awg-r04/examples/defender-brief.json",
+    "docs/research/awg-r04/examples/defender-brief.md",
+    "reports/research/week4-guided-exploration-acceptance-manifest-v14.json"
+  ],
+  "acceptance": {
+    "version": 14,
+    "manifest_sha256": "2d28d61e23cc601249606f34411376aa1a01bfcfee12882871dc0292677c17cc",
+    "native_twice": {
+      "pass": 36,
+      "not_executed": 2,
+      "fail": 0
+    },
+    "frozen_semantic_sha256": "e4f9a3f1779753650a45dbf4c671c8cf68363e100c4a9bc861850a0cb2cbbbec",
+    "previous_v13_preserved": true
+  },
+  "source_authorities": {
+    "likelihood": "strict verify_package PASS; source v13 unchanged",
+    "scenario": "strict verify_package PASS; source v13 unchanged",
+    "numeric_catalog_history": "unchanged"
+  },
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "590 files unchanged",
+    "contract": "PASS; two synthetic fixtures",
+    "repository_links": "only known missing historical AWG-R03_Verification.zip"
+  },
+  "scope": [
+    "One explicit same-domain usable machine identity, seven declared runtime assumptions, three techniques, twelve automatically inventoried important goals.",
+    "Same full native attempts, paths/states, statuses, expansions and proof flags before/after; only DA witness receives C=1. No new reachability.",
+    "Brief 6418 bytes; JSON 39312 bytes; full audit retained, not storage reduction.",
+    "All12 cells truncated, no minimum or negative proof, P/I unrated. Eleven goals unresolved.",
+    "No new speedup, full-domain coverage, raw remediation gain or fresh BloodHound comparison."
+  ],
+  "jobs": "all fullraw before/after, independent projection, native acceptance and final-check jobs completed; no worker pending",
+  "next_action": "Test existing global scenario profile on this cohort, then profile repeated preparation/C work before optimizing. Pause HasSession/FCP expansion without relevant observed data or a blocking product use case.",
+  "publication": "Final descendant adds only docs/evidence; leased fast-forward of feature branch only. Main/develop/parent refs untouched."
+}

@@ -1,0 +1,3242 @@
+{
+  "execution_identity": {
+    "dependencies": {
+      "PyYAML": {
+        "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+        "version": "6.0.3"
+      },
+      "attrs": {
+        "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+        "version": "26.1.0"
+      },
+      "jsonschema": {
+        "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+        "version": "4.26.0"
+      },
+      "jsonschema-specifications": {
+        "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+        "version": "2025.9.1"
+      },
+      "networkx": {
+        "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+        "version": "3.7"
+      },
+      "referencing": {
+        "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+        "version": "0.37.0"
+      },
+      "rpds-py": {
+        "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+        "version": "2026.9.1"
+      }
+    },
+    "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+    "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+    "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0",
+    "source_files": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "data/samples/manifests/seamless-raw-v1.json": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+      "docs/research/ratings/asrep-expert-v1/historical-pins.json": "sha256:944e44ed30a9b2c1eb289336e38cfe29acd0faf0a45444af92840e601a23f9f2",
+      "docs/research/ratings/asrep-expert-v1/oracle.json": "sha256:20b24e31b930aab646ceb83bbb298efa53136b4e6bfca6a5a189493374397ced",
+      "docs/research/ratings/asrep-expert-v1/proposal.json": "sha256:fcfe4c7a1615bc7b7c39be2bf2621a78e0dbece15c8dec951d3bd61879e1f662",
+      "docs/research/ratings/asrep-expert-v1/remote-ci.json": "sha256:25570ac62b81b1a976dec11bcc58c330b74d5bc0b27b822b0a094df019766295",
+      "docs/research/ratings/asrep-expert-v1/source-records.json": "sha256:12ba85a72f5f4725b4a7c2eac272e5fca8a666e2caa20ba5d5f3940046170b6b",
+      "docs/research/ratings/asrep-expert-v2/audit.json": "sha256:2892fd0019dbe0cd0bdc8146e79ddaddf89f1c4b411ae351adef3a8b45927afa",
+      "docs/research/ratings/asrep-expert-v2/oracle.json": "sha256:8fa2f40c579bf36d790d4174c740b12b69e4b2511a896bb539f6d7d36856bbb2",
+      "docs/research/ratings/asrep-expert-v2/proposal.json": "sha256:71486bb12eb06516a618f5a27a82dc7162774f118b2afc8753448ec24a1192b0",
+      "docs/research/ratings/asrep-expert-v2/source-records.json": "sha256:fb292b7cd5972aa3de42eb1b552e32a1436bf2d99bca86fd3d17715e99826247",
+      "docs/research/ratings/final-cpi-release-v1/decisions.adopted.json": "sha256:26ab721ce1076bfe647447a60ff41968fc3ec8b053704486e29981ae7ae522cb",
+      "docs/research/ratings/final-cpi-release-v1/decisions.pending.json": "sha256:072af7d8e6cbdf1fa714f7a50e8d98e234ced732fbced81f882a9072c793b47b",
+      "docs/research/ratings/final-cpi-v1/applicability-v1.1.json": "sha256:238ad34773ffa941737f083700ec09dae9fe6c387fddd5549fcbba775d418125",
+      "docs/research/ratings/final-cpi-v1/cohort.json": "sha256:37e5a02ea8a4a5bc61f67e620c19276291ba3db6a5f2d6255f07c79cc48e90ad",
+      "docs/research/ratings/final-cpi-v1/profile.json": "sha256:7ab15414741b26e3a895b88008bb1273ab7482a73dd37fba0dcd61c006995d37",
+      "docs/research/ratings/final-cpi-v1/source-a-inventory.json": "sha256:f96098baef8be0dc624e5f296d6fdfa8245634abc2c37ed392db259cd79eeedb",
+      "docs/research/ratings/final-cpi-v1/supplementary-cohort.json": "sha256:8d2eba835d9ffc93665c41f89120e7c38665197257c8d50b26278e44f41dbeef",
+      "docs/research/ratings/final-cpi-v1/taxonomy.json": "sha256:2300c5f07d12d3e099d3046b0fa266ad7fd5d62b1b443188728b7963069a3066",
+      "docs/research/ratings/likelihood-v1/bindings.json": "sha256:d5c7c778cf9294b955da2e1807022b3c6437789079d431207f6e6b7eea818a5d",
+      "docs/research/ratings/likelihood-v1/catalog.json": "sha256:30d67534d867bf397cacf6bfd1286cf823ba89d5ee859363d2874a5059b17cd8",
+      "docs/research/ratings/likelihood-v1/manifest.json": "sha256:0d4d70bdeaab7d1403e1f680904caca2b1609693dc838f8eedadc201acf6321c",
+      "docs/research/ratings/likelihood-v1/min-effort-input.json": "sha256:70d0d4480df583e844c728ba34a96880d784949c3b5b45005557211476df2181",
+      "docs/research/ratings/likelihood-v1/oracles.json": "sha256:f4add5e7af3978c9a3313a6b8ee6dc4cf732aecd9e14ca37b1cb3d75b71e96b4",
+      "docs/research/ratings/likelihood-v1/release-dispositions.json": "sha256:d5c6b4d67bac224405e12766b771ac2ab19838a27ff434974619d2dfcede7b9e",
+      "docs/research/ratings/scenario-basis-v1/automatic-query.json": "sha256:ab9aa8e73ad5c7f09b1e1c893e2539b71866df37299ad22543ce1e22c005dcb2",
+      "docs/research/ratings/scenario-basis-v1/coverage-matrix.json": "sha256:6b8144f2bc25188997d5378259c6739e15f8f3ccefca07b9e6b4bf47ec100a98",
+      "docs/research/ratings/scenario-basis-v1/manifest.json": "sha256:0f35d28a7e883be6fa97320fffd97fc6332c7381dd736a2ab35c2018938d5603",
+      "docs/research/ratings/scenario-basis-v1/oracles.json": "sha256:a4b38d0961fd4523fcee6acf988d26a5a63d034331ad917c678ac590658e4d35",
+      "docs/research/ratings/scenario-basis-v1/scenario-rating-pack.json": "sha256:c3f6f033aedfb0ec2d4376dc0195206363d0ddf25f2ec2bb74f1c26a13a2f15f",
+      "docs/research/ratings/scenario-basis-v1/source-a-basis.json": "sha256:df24d93726a6fa72ad04700752ef318849852693d45000dcc1e0121ab53986b9",
+      "docs/research/ratings/scenario-basis-v1/source-a-graph.json": "sha256:ded70c9658332b71906fc14523b38ca2b1354da69576e73ecea14a837c7fa9ab",
+      "docs/research/ratings/scenario-basis-v1/source-a-oracles.json": "sha256:4ffec98f3c0bf9797c9eb1288e0092e7c655c5dc49bbe8fc720e010cb1d1b944",
+      "docs/research/ratings/scenario-basis-v1/source-a-query.json": "sha256:2c64fef9d2f14312f30c249ab811e191c3103569661dd87bc0be3473d4e7a85f",
+      "docs/research/ratings/scenario-basis-v1/source-manifest-v2.json": "sha256:9a9d9ee0d1e609898c4f2e2044c1a37a4090e52326c8cf12e3dc6e5676685b85",
+      "docs/research/ratings/week3-2026-10-02/execution-policy.json": "sha256:0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883",
+      "docs/research/ratings/week3-2026-10-02/rater-A.json": "sha256:078e9fa59198e97ad86b330c8481314cb1c2e407915ac187299761b91ccab90f",
+      "docs/research/ratings/week3-2026-10-02/rater-B-ai-draft.json": "sha256:e06dbbf8ddb2f8a88fd79182739fc9bb73ca158a9080e1d19d67fbe92f046d79",
+      "docs/research/ratings/week3-2026-10-02/rater-B.json": "sha256:d8490da4bc25b304a382b1a52a9f1e328d7f57cbf1336a67b701ed0576946945",
+      "docs/research/ratings/week3-2026-10-02/shared-review-confirmation.json": "sha256:0c89165f6830c26d1a9ebdd5c2611c9085ac6ffb6377d21d5dca4f6c1f876caf",
+      "docs/research/ratings/week3-2026-10-02/verification-summary.json": "sha256:371a9c134ed824fd276e025d12177ee9e8565d2f40cb93641c842723c0b59668",
+      "docs/research/ratings/week3-closeout/parameter-decisions-final.json": "sha256:e6707c2ae60be777e3855f79e152d18b3a8b09d6de730e6f91c818464cc21ba2",
+      "docs/research/ratings/week3-closeout/reviewed-release.json": "sha256:5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+      "docs/research/ratings/week3-closeout/search-integration-plan.json": "sha256:c26d18918fc6ce62bda98cb20f4da3be786ca1ee5f42fa82dc0e035b82be7f86",
+      "docs/research/ratings/week3-closeout/semantic-bridge-plan.json": "sha256:56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390",
+      "docs/research/ratings/week3-closeout/source-inputs/execution-policy.json": "sha256:0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883",
+      "docs/research/ratings/week3-closeout/source-inputs/rater-A.json": "sha256:1e3134315d209d0cca930f5850af8d5397c576f78f75906238178a9ab6a2407f",
+      "docs/research/ratings/week3-closeout/source-inputs/rater-B.json": "sha256:68a49f6fb02dfc30eb0e42d5aa9691da7d9c4006ef456eee22682a9a92f75525",
+      "docs/research/ratings/week3-closeout/source-inputs/shared-review-confirmation.json": "sha256:709316e49b42c91c0a9fc893b154608fa3341f9c4c691bfd038c1eb440ef7cf0",
+      "docs/research/ratings/week3-closeout/validation-summary.json": "sha256:ab938207f974015a19bf82149ec8532315c193ef2f6ab3cf11e5cd151394bee9",
+      "docs/research/ratings/week4-maintainer-v1/frozen243-disposition.json": "sha256:9a7115edc716fdc206c5357e14f68f9f4949eacd231dca60a7a54f694f3a6e03",
+      "docs/research/ratings/week4/actual-evaluator-results.json": "sha256:a184f52fd4805c08d47675955b6978a2805b6217900964bdc130017f6e262f41",
+      "docs/research/ratings/week4/impact-equivalence-registry.json": "sha256:b5ee1ca987709d63ef330f1848306af6ebd3dd5ff82de6275805678995f0f400",
+      "docs/research/ratings/week4/reviewed-work-unit-classes.json": "sha256:37b10f5a3bea4f7679b34ebc6fa744aa94c58bf83a07accfd89fdfa374866443",
+      "docs/research/ratings/week4/source-a-p-binding-proposal.json": "sha256:d541d17d29f8754bc61ca7d79f169cb7d8e27847f434555058e6bd8b4cb9738c",
+      "docs/research/ratings/week4/synthetic-a2-diagnostics.json": "sha256:bee77c510e99a05d3edbeee7e417fb82943a51e7bab2d8192f958f8eec1f1441",
+      "docs/research/ratings/week4/synthetic-a2-e.json": "sha256:007755b020417dd763e0d137a8987359c2779125222693ac4e3c48f6cbf560c1",
+      "docs/research/ratings/week4/synthetic-a2-t.json": "sha256:53350f80707d7a6246824bf908728683cfb1c3253fab6b49fbd611b0f05cb651",
+      "docs/research/ratings/week4/synthetic-a2-ties.json": "sha256:c4a124162a959df66b24e4b9b1d563533416f860cb03fd1a0f0cb806cd36dc8c",
+      "docs/research/ratings/week4/validation-summary.json": "sha256:1eb545092254262675dae7bed1ea32f1a1defa3deae0449e4a67e1fea82c0be2",
+      "docs/research/ratings/week4/week4-seamless-disposition.json": "sha256:207364b456cbb5ddea1c483661b6e3b26d3512ee19675b040f7687bdeda273bf",
+      "docs/research/scenarios/week4-seamless-v1.json": "sha256:66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752",
+      "pyproject.toml": "sha256:de4472d1848b876bc30164c2ec2fd4053fd8a82817fce613f9be4c1f410aee2f",
+      "requirements-dev.txt": "sha256:77b0803fae9921f6d018a6c999a3008ae7873bae7d130da32947e128507e09e8",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/audit_seamless_raw.py": "sha256:2e3d251d0d5c27af9018e5102f302a870fcf2a17c3cf08f0382519726ff682a3",
+      "scripts/audit_windows_telemetry_raw.py": "sha256:4a7123696ec52566656cfa2a6d093e1152775743abcd9f9c97ea4e3c241ef3ea",
+      "scripts/bloodhound_baseline_audit.py": "sha256:bafc5cf631635d6bf8912ce26a45859726b85b5078509a45ea2b37951164ba7a",
+      "scripts/check_contract.py": "sha256:2053b5c84c84350e2b5a2ec217e3385e73f72913be5c07d9523a2b55ad954173",
+      "scripts/check_repository.py": "sha256:e6bbfe6f6a23c4ffb125914b38edaeb40b6a0f4ff19b5596306e0117756e31ef",
+      "scripts/claim_traceability.py": "sha256:f42be1ac8fc8878b8df0d0286f3cbcf4fe3ff09e5ddb87595ac000ab2cb9b163",
+      "scripts/eda_dataset_analysis.py": "sha256:f31b8d285e196c42844972b3f78e44d06611070a8fc505428915c6ce946610e5",
+      "scripts/import_canonical_graph.py": "sha256:b96e66123c1832855cfc8a2e6b7a0ebf2be2de149811e8604f892b4a7018b731",
+      "scripts/reconcile_graph_baseline.py": "sha256:3cffd94a75fba734ff270173b9c36a9ac7cbfd0874b3cc1901d94474914f8a16",
+      "scripts/research/asrep_expert_basis.py": "sha256:3bf56e268abe317267cf3035d958d269099220482ce1c1368661c64bcc637471",
+      "scripts/research/asrep_inputs.py": "sha256:7f790289de985688e2af75a425fea71fc7d5238d03d807e12291ab7be0f32aa4",
+      "scripts/research/attack_scenarios.py": "sha256:a239623325ed3d01200384075d9015dbc233d19e829c20eb25ed4553bc265be6",
+      "scripts/research/attack_scenarios_seamless.py": "sha256:f70ed608925ff53016fa81292eda9f337ee3a65daaa339a43c9bd62b9fd985e6",
+      "scripts/research/check_week3_rating_policy.py": "sha256:96075cc6983e37f4063ebc2c7cbf6327c956d1fdafafe48d0f71a3c0be61fc11",
+      "scripts/research/compare_group_identity_sets.py": "sha256:6ee47ab7615f06c4775fd702cea778d027813d7ba373689c6183935b3f783c1d",
+      "scripts/research/compare_query_runs.py": "sha256:0c151f57b5c1f2f755301f4d32b89455886fee121814e45cad557d6c64199a62",
+      "scripts/research/credential_bindings.py": "sha256:21bc3d8d98cb211fe66f7b45e0daed6d0406d798bb5fdd121a952dc47373269d",
+      "scripts/research/empirical_qi_estimator.py": "sha256:ab6007aa0c820bfe4f9687f67c65b29610c340d741e1e12bf92e412901fdcff9",
+      "scripts/research/export_legacy_reconciliation_baseline.py": "sha256:86476feb7097fbd6d5136f6b2224265823ce5fc3e5bbcfe1ccb7086fdb928b71",
+      "scripts/research/field_screening_probe.py": "sha256:ad680ae79d1f30c307879f471cc55fb79ac5c21ce82bb882998c158fc81329fa",
+      "scripts/research/final_cpi_adoption_replay.py": "sha256:fc297d7ef1e16143d57ed548fc65799fbc4a1e71dff74985debfe7151e001503",
+      "scripts/research/final_cpi_coverage.py": "sha256:bec3c732a4d880779d32612f70eb2ab9aa7d4974661aab31b05c9bf466c39365",
+      "scripts/research/final_cpi_extension.py": "sha256:0957bcc298d817681c6d77ef15bcbec9d3d1aa79fbe8ad5d32bde68044d05378",
+      "scripts/research/final_cpi_profiles.py": "sha256:2d3274377cefce1c88bd43fb256d504444ed6eb1bc2e7a65f3edab4c23577839",
+      "scripts/research/final_cpi_release.py": "sha256:40c371b473bb81bb0fc19b68e1a2036916d2aceb1675ef2ca7d7ebd2702fb553",
+      "scripts/research/issue250_public_probe.py": "sha256:909329fb1c16267f3fa8452c2f083df1e3af38415134be9db1ce3a5b6dd74363",
+      "scripts/research/kerberoasting_probe.py": "sha256:2595ed5beb22bf3f526b9fbb0d9c2d207474fdb572bc25288a14abbfb85a323b",
+      "scripts/research/likelihood_catalog.py": "sha256:c4cc8f06a82e3ce8eb605d4e3bc465399f5dc446c5877fed39beb82c94e5b047",
+      "scripts/research/likelihood_demo_probe.py": "sha256:13f370fc10352c6850fda5227f668d0836cf414fef549c8d7e572caa63c2394d",
+      "scripts/research/path_ranking_wire_adapter.py": "sha256:92f479e6eede12e5964b820bc73b67333cd50532f764ff4007cba98393374999",
+      "scripts/research/rating_p_binding_probe.py": "sha256:c8f2551e5e3061494390e75d9a6dc7fc0f4a3970edf8654d645cfa64a341282a",
+      "scripts/research/raw_path_probe.py": "sha256:4ce85c6e5aebbdac3344d249aae2fc33968806061b072685cb9800f21186645a",
+      "scripts/research/rbcd_inputs.py": "sha256:1e6b113322bbf804740bfc0d4f1facc31683e0ec93c033e845b02dde49e6bbe2",
+      "scripts/research/reconcile_rating_sheets.py": "sha256:6aeab687960158165346c724b43c3b084068765d230c9104181e0cafcc69d028",
+      "scripts/research/reconcile_seamless_legacy.py": "sha256:602244bf3e47a7196f20bdfd46fa9f7bc0586f2036c8914b6c73add73e69440c",
+      "scripts/research/reproduce_legacy_reconciliation.py": "sha256:57de62a3119dbc1aa081d78631402b12dca2e5bfca7a283d649674f1f29f9b12",
+      "scripts/research/reproduce_seamless_legacy.py": "sha256:1f2bbf0023adc2d1402f330e6f56b6f246152ef82f9c16f1e6f1172a9d682cd2",
+      "scripts/research/reviewed_parameter_release.py": "sha256:03d48f4332f5f80c337d66ce39984f892eb23ca4ddc8cfd2101b3ce91ec1f960",
+      "scripts/research/scenario_rating_pack.py": "sha256:91d292b4bd8ea06a3a1fa9d921324e694adc187ec018d0c67ab1afb5da0b7d58",
+      "scripts/research/seamless_packet_evidence.py": "sha256:1aab10a83c9cee7e30cdd1272b60e5a8b2ea24444381512b2c7e640b29f0dbd0",
+      "scripts/research/seamless_parameter_validation.py": "sha256:0e97ca37c72500db9ff98046e91b486d1cbe0db2ed248f2238fc44a915dddff0",
+      "scripts/research/semantics_probe.py": "sha256:45be9d25106b6e862ebb73f528304dc64159c99d32ed4434020cea320bcbd052",
+      "scripts/research/snapshot_facts_probe.py": "sha256:ab2657d6f2b2e60f1a52120eaaeb56519767d1b9d94f2ab5d7645e701cfb3822",
+      "scripts/research/source_goal_batch.py": "sha256:ec1080c663faa4b13ca5e8b172bdeb0c4d83847da0f91fec8f42389c2958b1e6",
+      "scripts/research/synthetic_reviewed_release_demo.py": "sha256:f4a10ea890e08cc9e92ca64fd8c4023a4cb9d249fa811af23e1009693cd63f67",
+      "scripts/research/trace_project_raw_locator.py": "sha256:24eec687a9ba585d2f97855cfdaafd2319607bd1bb5aa01cc48fc05daf66af65",
+      "scripts/research/week3_engine_acceptance.py": "sha256:137aedb58e28b4728658a1372de03d60913526b8922fe8c2c819813ec027895b",
+      "scripts/research/week3_semantic_bridge_probe.py": "sha256:d1ebb68e4af64079e5d54eb3ec48af332169b1b4bd192840a0c2e66b65a9adae",
+      "scripts/research/week4_acceptance_runner.py": "sha256:d56d053de6b86b79c1ccc131c5544c6869e2a6acc9fd6d9debdb29442a543f9f",
+      "scripts/research/week4_cli_acceptance.py": "sha256:367b93cf8c120169615d78fbe6942b797d6ab1c73dc376d25beaf75a5b846788",
+      "scripts/research/week4_maintainer_disposition.py": "sha256:7d203c1fdef0eddefc1ef205268301f09a129ed51821abab4a9439589ba6026c",
+      "scripts/research/week4_scoring_eval.py": "sha256:490037ed9258246f5ef07a4bc8f66ea65e2a5a1e31eed6308e3539d814820207",
+      "scripts/research/worked_example_validation.py": "sha256:fd860d21aaca2d7a938b2e88b793c397ed91c40fb0fa91450b3d8675fb8f169c",
+      "scripts/run_bloodhound_baseline.py": "sha256:0381716d48a84b984f90b4006f0631781d3f3cc9c5077523406796cf19de3d2b",
+      "scripts/snapshot_manifest.py": "sha256:8d59facc2021d52b9b0d54e3ec8c2a49d6eee2b2f845911f3b321fdccb2ab421",
+      "scripts/verify_data_inventory.py": "sha256:cf14e19c2da1e508a7fb9eb216f78a528b3c1d54feaac6dea29399e4f58fddb0",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:a31d9a3fe9572a2bd9d28c5917464f77c7c91f1fa139c43fb8ad8586f31d9269",
+      "src/engine/graph.py": "sha256:df1f043927e2dedbef97a1b7cea937dff5c6165893cbef47ecf29332bff827e5",
+      "src/engine/query.py": "sha256:9705aa08986d9e59e0ae0238c6f9e3d32be1d721287d75c323f21336bdd37419",
+      "src/engine/query_cli.py": "sha256:40c86721fd144330348b2ce0f9fea89059b6ce783391a1319d95b1984102bcc2",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:cc50a758053509766d0fa52316436aff9d9e49529aa5a1215ea374c77da34908",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:9c6123e9c9fed42c6c51c4f30b4223d6080d8752f808ca2945ceb1bc8eb4235a",
+      "src/engine/ranking/replay.py": "sha256:6f4818305efe661f3fdee9da5b6ca75b9e79f127ec6cb293b6850c1ef1ee95b6",
+      "src/engine/ranking/resolution_service.py": "sha256:d9efee8553610b11317265da82a5a6f4ca0f0043582450a6e74379f8b09634c0",
+      "src/engine/ranking/resolver.py": "sha256:93b75586a70fa5c7693fddb7877f3fddd6ebd8c09575a72898191f50be849105",
+      "src/engine/ranking/validation.py": "sha256:d62195f40c108aa19d954c86bfde4d8f4269661c7dcf72860c96d57202aa7f67",
+      "src/engine/ranking/verification.py": "sha256:04f77d877bcee5cd51de68d5186a4d15b9e4b6f1c35716f29d76088a2e6d6261",
+      "src/engine/search.py": "sha256:e2f10c5d5e54c535d3891becd7ee8df6a27b4bcc2d390b2bf1ef22204b6f5cca",
+      "src/engine/semantics/__init__.py": "sha256:9fa8d5df674073e13ceab0b30d949894c20d62d7340ee34a00ecf80a3864ce0d",
+      "src/engine/semantics/catalog.py": "sha256:090c1f1ee189769e22d49428890a0584f7bc34e529889a51800ea9ec4fd33952",
+      "src/engine/semantics/credentials.py": "sha256:fa8cefbb979e84fcc6ae7bd2ab44b785f3abeebe9e1601894e5175c4b803cc16",
+      "src/engine/semantics/evaluator.py": "sha256:0d4dd143f8f608cd6ae29f5619aca7cc71f0e89b9b858561283d1c2368531a05",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:febc835609269d8fbcd0a4f07316a798b7a9e156463ef215a80cecf7690b3701",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:4946cf68c97a33ddcecca1ddee214abc951990b62c7a6308d28b5664143b04a9",
+      "src/parser/cli.py": "sha256:7911a4f524fc62e8cd5cecc38d367876160602d9b5b2efaec1d601b0fcc9340b",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:e22939b18af27aec573e245f871fde0fa663e7b2ea524b014ee9b41e3d04dca0",
+      "src/parser/snapshot_facts.py": "sha256:5a6c42517de41a67df88d2141c265fea564271ba714295ddf571ea9c0f8cef53",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8",
+      "tests/fixtures/asrep/oracle.json": "sha256:a23343ca83b9587dfb2e13a0f456e7250981b8a34a2be4163bfce0778ae08847",
+      "tests/fixtures/asrep/query-off.json": "sha256:6a76852523e21ec9dd2399b4e15798cc8d2103b576d0336ccc0a26db6ad95b77",
+      "tests/fixtures/asrep/query-raw.json": "sha256:00b6566f62b239328466b9ec0b2690bd2dcfca4a6d3ff4c7f630d7af336a9b6c",
+      "tests/fixtures/asrep/query.json": "sha256:76927bfacc9aa40e6c0800dfc0a1760efacb40e64f3eeb7ac2ce2e7074d93790",
+      "tests/fixtures/asrep/snapshot.json": "sha256:f2feab1d92c2f8a3745eb8e67dbd8edf798e5ab4fad914ebd07a7f7db1e08c62",
+      "tests/fixtures/attack_scenarios/graphs/two-routes.json": "sha256:982816b924a73396961a54ab5b7c2e40140941aaa9bfa99a075649dde57457e7",
+      "tests/fixtures/ranking/seamless_time_policy.json": "sha256:0dff9f0d84078ad39d304cc8807d7c91fc35a680cf5bfe008e4a65ab2acacc0a"
+    }
+  },
+  "execution_python": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+  "groups": {
+    "original": {
+      "all_completed_query_counts": {
+        "C_rated": 48,
+        "I_rated": 48,
+        "P_rated": 48,
+        "Pareto_eligible": 48,
+        "conditioned_feasible": 50,
+        "fully_rated": 48,
+        "valid_generated": 50
+      },
+      "cases": [
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 24,
+              "I_rated": 24,
+              "P_rated": 24,
+              "Pareto_eligible": 24,
+              "conditioned_feasible": 24,
+              "fully_rated": 24,
+              "valid_generated": 24
+            },
+            "coverage_digest": "sha256:a6b26cc59aaeaa05f4a4cb1fc370a91327e8a0c1bc992f118c2f22e030de79fc",
+            "expansions": 193,
+            "frontier": [
+              "generated_0001",
+              "generated_0002",
+              "generated_0003",
+              "generated_0004",
+              "generated_0005",
+              "generated_0006",
+              "generated_0007",
+              "generated_0008",
+              "generated_0009",
+              "generated_0010",
+              "generated_0011",
+              "generated_0012",
+              "generated_0013",
+              "generated_0014",
+              "generated_0015",
+              "generated_0016",
+              "generated_0017",
+              "generated_0018",
+              "generated_0019",
+              "generated_0020",
+              "generated_0021",
+              "generated_0022",
+              "generated_0023",
+              "generated_0024"
+            ],
+            "gaps": [],
+            "min_effort": 2,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 24,
+              "reset_identity_activation": 24,
+              "winrm_admin_execution": 24
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 312,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 24,
+              "fully_rated": 0,
+              "valid_generated": 24
+            },
+            "coverage_digest": "sha256:73b3735adcc6b85c69f588449b47c3eb5fc5855d08f59093f3e30255ed901dc2",
+            "expansions": 193,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 8,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 46,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 24,
+              "reset_identity_activation": 24,
+              "winrm_admin_execution": 24
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": true,
+            "case_digest": "sha256:3d8409a98602a0a061fcc5556b6b8a97f7d22f53f3a06d8ad455e841e13fa743",
+            "case_graph_identity": {
+              "graph_digest": "sha256:04119351d1cb6b9bd594993d141f840604bfe5f5257fd7f8d2b8cbf1423017d9",
+              "snapshot_facts_digest": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "source-a-projection",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129",
+            "query_consumed_digest": "sha256:596db8589ccbe5727f1bb20b1e18d81898b550e56e9b456c86733b6fa9370f8e",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 16,
+            "is_full_raw": false,
+            "nodes": 7,
+            "sha256": "sha256:04119351d1cb6b9bd594993d141f840604bfe5f5257fd7f8d2b8cbf1423017d9"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 24,
+            "worked_programs": [
+              {
+                "C": 2,
+                "I": "High",
+                "P": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0002",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0003",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0004",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0005",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-projection.query.json --graph /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-projection.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": true,
+            "native_transports": [
+              {
+                "bytes": 20875175,
+                "native_file_sha256": "4e46be03c6f06ed26aba2765c58e8b2a45a605afe337578aa187d0c9d86fcb2f"
+              },
+              {
+                "bytes": 20875175,
+                "native_file_sha256": "e5323fd93a9f2d490ac3c3392f51181277bc82e2f3cdbb30b2aeb5814f8447f7"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129",
+          "query_consumed_digest": "sha256:596db8589ccbe5727f1bb20b1e18d81898b550e56e9b456c86733b6fa9370f8e",
+          "query_id": "source-a-projection",
+          "sensitivity": {
+            "authority": "synthetic_test_only controls; changed questions are not an adopted release",
+            "baseline": {
+              "B_goal_contract_gap": false,
+              "counts": {
+                "C_rated": 24,
+                "I_rated": 24,
+                "P_rated": 24,
+                "Pareto_eligible": 24,
+                "conditioned_feasible": 24,
+                "fully_rated": 24,
+                "valid_generated": 24
+              },
+              "coverage_digest": "sha256:93ecd11fd44f68b5c661afc723881487c485ac4cf6c767c1d372bf007feb05fe",
+              "expansions": 193,
+              "frontier": [
+                "generated_0001",
+                "generated_0002",
+                "generated_0003",
+                "generated_0004",
+                "generated_0005",
+                "generated_0006",
+                "generated_0007",
+                "generated_0008",
+                "generated_0009",
+                "generated_0010",
+                "generated_0011",
+                "generated_0012",
+                "generated_0013",
+                "generated_0014",
+                "generated_0015",
+                "generated_0016",
+                "generated_0017",
+                "generated_0018",
+                "generated_0019",
+                "generated_0020",
+                "generated_0021",
+                "generated_0022",
+                "generated_0023",
+                "generated_0024"
+              ],
+              "gaps": [],
+              "min_effort": 2,
+              "paths_by_action_family_nonexclusive": {
+                "directory_password_reset": 24,
+                "reset_identity_activation": 24,
+                "winrm_admin_execution": 24
+              },
+              "status": "success",
+              "truncated": false,
+              "truncation_reason": null,
+              "unreturned_goal_state_success_events": []
+            },
+            "frontier_changed_with_bounds": false,
+            "scope": "query-local frontier/profile controls only; no B-owned source aggregation or remediation counterfactual claim",
+            "variants": {
+              "authoritative_false_terminal": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:5e881d4669d3d5f652cd99dfd56b521eb0af344cbac65ebd4fab1d66f9512682",
+                "expansions": 193,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "indeterminate",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              },
+              "missing_terminal_declaration": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:5e881d4669d3d5f652cd99dfd56b521eb0af344cbac65ebd4fab1d66f9512682",
+                "expansions": 193,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "indeterminate",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              },
+              "step_cap": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 0,
+                  "I_rated": 0,
+                  "P_rated": 0,
+                  "Pareto_eligible": 0,
+                  "conditioned_feasible": 0,
+                  "fully_rated": 0,
+                  "valid_generated": 0
+                },
+                "coverage_digest": "sha256:65feebcbb0c07ad265f1a348851ba4dff55f7df6927dd7768f74fb7409abc6f1",
+                "expansions": 6,
+                "frontier": [],
+                "gaps": [],
+                "min_effort": null,
+                "paths_by_action_family_nonexclusive": {},
+                "status": "truncated",
+                "truncated": true,
+                "truncation_reason": "step_limit_reached",
+                "unreturned_goal_state_success_events": []
+              },
+              "widened_bounds_test_only": {
+                "B_goal_contract_gap": false,
+                "counts": {
+                  "C_rated": 24,
+                  "I_rated": 24,
+                  "P_rated": 24,
+                  "Pareto_eligible": 24,
+                  "conditioned_feasible": 24,
+                  "fully_rated": 24,
+                  "valid_generated": 24
+                },
+                "coverage_digest": "sha256:893ccc73f00945a22dd864527ed2011454357b85bb8cfbbe0330231a2b2070c0",
+                "expansions": 193,
+                "frontier": [
+                  "generated_0001",
+                  "generated_0002",
+                  "generated_0003",
+                  "generated_0004",
+                  "generated_0005",
+                  "generated_0006",
+                  "generated_0007",
+                  "generated_0008",
+                  "generated_0009",
+                  "generated_0010",
+                  "generated_0011",
+                  "generated_0012",
+                  "generated_0013",
+                  "generated_0014",
+                  "generated_0015",
+                  "generated_0016",
+                  "generated_0017",
+                  "generated_0018",
+                  "generated_0019",
+                  "generated_0020",
+                  "generated_0021",
+                  "generated_0022",
+                  "generated_0023",
+                  "generated_0024"
+                ],
+                "gaps": [],
+                "min_effort": 2,
+                "paths_by_action_family_nonexclusive": {
+                  "directory_password_reset": 24,
+                  "reset_identity_activation": 24,
+                  "winrm_admin_execution": 24
+                },
+                "status": "success",
+                "truncated": false,
+                "truncation_reason": null,
+                "unreturned_goal_state_success_events": []
+              }
+            }
+          },
+          "source_profile": "historical_source_a",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 23,
+              "I_rated": 23,
+              "P_rated": 23,
+              "Pareto_eligible": 23,
+              "conditioned_feasible": 23,
+              "fully_rated": 23,
+              "valid_generated": 23
+            },
+            "coverage_digest": "sha256:d3d047e00cd7472c0cccd9687e56a259e03b621860cdc4bab0712610e3f343c5",
+            "expansions": 60000,
+            "frontier": [
+              "generated_0001",
+              "generated_0002",
+              "generated_0003",
+              "generated_0004",
+              "generated_0005",
+              "generated_0006",
+              "generated_0007",
+              "generated_0008",
+              "generated_0009",
+              "generated_0010",
+              "generated_0011",
+              "generated_0012",
+              "generated_0013",
+              "generated_0014",
+              "generated_0015",
+              "generated_0016",
+              "generated_0017",
+              "generated_0018",
+              "generated_0019",
+              "generated_0020",
+              "generated_0021",
+              "generated_0022",
+              "generated_0023"
+            ],
+            "gaps": [],
+            "min_effort": 2,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 23,
+              "reset_identity_activation": 23,
+              "winrm_admin_execution": 23
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 297,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 23,
+              "fully_rated": 0,
+              "valid_generated": 23
+            },
+            "coverage_digest": "sha256:ccc8b2d8c0a5da30ff7d265b107f5791a0f07325e63efb50e94ac1c54f6f32c8",
+            "expansions": 60000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 8,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 46,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "directory_password_reset": 23,
+              "reset_identity_activation": 23,
+              "winrm_admin_execution": 23
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": true,
+            "case_digest": "sha256:eb9a71b2af1f7319b5657246f706f8814714ce2b4dd36675439d2978cbe81ec6",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "source-a-full-raw-four",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:3341a37ad2ead8c6a5d150fd699da341fb2b93a810331a0c53226e75e1c7f2e6",
+            "query_consumed_digest": "sha256:9ea9bf0da493014e1fbec1a2be60b8ba3f744fd268e8b4e232852ee6210a820a",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 23,
+            "worked_programs": [
+              {
+                "C": 2,
+                "I": "High",
+                "P": [
+                  "9/40",
+                  "8379/10000"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0002",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "27/200",
+                  "159201/200000"
+                ],
+                "candidate": "generated_0003",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0004",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              },
+              {
+                "C": 3,
+                "I": "High",
+                "P": [
+                  "81/800",
+                  "7800849/10000000"
+                ],
+                "candidate": "generated_0005",
+                "program": [
+                  "scenario_reset_password",
+                  "scenario_reset_password",
+                  "acquire_reset_identity",
+                  "acquire_reset_identity",
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-full-raw-four.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-full-raw-four.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 230686720,
+                "native_file_sha256": "e06080c0e7faeffadea76df002ae2e7af2473fd749e6866f9c76a75a750e83f6"
+              },
+              {
+                "bytes": 755434949,
+                "native_file_sha256": "6d2b36c5ccc7142ecf3df9af7ab04348fa358b0b21312c826f0ae60e6c40bc5b"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:3341a37ad2ead8c6a5d150fd699da341fb2b93a810331a0c53226e75e1c7f2e6",
+          "query_consumed_digest": "sha256:9ea9bf0da493014e1fbec1a2be60b8ba3f744fd268e8b4e232852ee6210a820a",
+          "query_id": "source-a-full-raw-four",
+          "source_profile": "historical_source_a",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:98fe4705b1814d6c40f322057a7b1b4fc83fa3c7311a2e1f2540bacb2a5139b6",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:1a0120c3a828f189d79fb21dfc14eddac2217dbca3d1187328d9fdbc2cb90ba9",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": true,
+            "case_digest": "sha256:023e48f620e95387aa12800740cba1efbb0d1484e38e30f854ec8c667354e01d",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "source-a-full-generator",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:07f8f6ad30ebe216dffd40e954d10480c1c9e3e9d69ede692416cb5806cf05fd",
+            "query_consumed_digest": "sha256:792b96eb045e7f1416b4d462e6c94b228e34a3114463c31c7f6a54338d9640bd",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.source-a-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 27972874,
+                "native_file_sha256": "8b5b36036b8b1bcdfaaaaa45010b0e1e4dfa75aa05e56502ad9345b29e7c787a"
+              },
+              {
+                "bytes": 27972880,
+                "native_file_sha256": "af06437e8fafcce8a16409f41e1cd2ced9dc354d641fba75c11af20007e45e8f"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:07f8f6ad30ebe216dffd40e954d10480c1c9e3e9d69ede692416cb5806cf05fd",
+          "query_consumed_digest": "sha256:792b96eb045e7f1416b4d462e6c94b228e34a3114463c31c7f6a54338d9640bd",
+          "query_id": "source-a-full-generator",
+          "source_profile": "historical_source_a",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 1,
+              "I_rated": 1,
+              "P_rated": 1,
+              "Pareto_eligible": 1,
+              "conditioned_feasible": 1,
+              "fully_rated": 1,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:86f157b7039021faa7229bb476a43c543097ca643fd591c36934bec3322694c5",
+            "expansions": 2000,
+            "frontier": [
+              "generated_0001"
+            ],
+            "gaps": [],
+            "min_effort": 1,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_admin_execution": 1
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [
+            "estimated_expert_scenario"
+          ],
+          "actual_review_audit_entries": 3,
+          "actual_review_statuses": [
+            "accepted",
+            "reviewed"
+          ],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:e713e296d2e189107bd5fa05c555dad1eefca0aad1a3438b9f041846c2f639c0",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_admin_execution": 1
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": true,
+            "case_digest": "sha256:65077c416afe12fabd8d56e0c3f85c2913830f0c79cc85e76e7866d98638f958",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "lidia-full-generator",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:9aa0ffcaca2ac0bf3380821c7e478f2201b28b3889ff1731717713ab1eb16dfe",
+            "query_consumed_digest": "sha256:e1c949541644f7723f58538dad87ed05ea24561b372eb11979f3c883e0bdd6c9",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 1,
+            "worked_programs": [
+              {
+                "C": 1,
+                "I": "High",
+                "P": [
+                  "1/2",
+                  "9/10"
+                ],
+                "candidate": "generated_0001",
+                "program": [
+                  "propagate_group_entitlement",
+                  "scenario_winrm_admin"
+                ]
+              }
+            ]
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.lidia-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.lidia-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 28545523,
+                "native_file_sha256": "8391f347f8879661b6ae9aab91c3f210332c1eaf76b70cdcbfadb87ddf6afdcc"
+              },
+              {
+                "bytes": 28545522,
+                "native_file_sha256": "f5579cc0c0570d7b65058d61afef8861011d5f729d38327dbfb29cc7c88f13bb"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:9aa0ffcaca2ac0bf3380821c7e478f2201b28b3889ff1731717713ab1eb16dfe",
+          "query_consumed_digest": "sha256:e1c949541644f7723f58538dad87ed05ea24561b372eb11979f3c883e0bdd6c9",
+          "query_id": "lidia-full-generator",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:5c3cbb8930027690caca55395e15a90a029287afe29490f58693cac7ac690874",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:5b583e78f39092bf9335f48ea2d64fba6cebc9fa0ad56682f55be2c7b656c824",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "truncated",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": true,
+            "case_digest": "sha256:9583959397c587843ae1b2e425f9bb54c8c80f4a34f17b8961aed38f8d7a49dd",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "josefa-full-generator",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:9132e57b8dae53242e5658c3fdb8d5740e9140deb0626e4aad53278a3b677da3",
+            "query_consumed_digest": "sha256:ceb04415364c75c69ef85a3817b3d554d5108f43ad076987ac0b2721963635ee",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": true,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.josefa-full-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.josefa-full-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 30167634,
+                "native_file_sha256": "c24290996fdea8468a48d754ee38aeeaa09e8c3ff554492c9a0bd48935e7e0db"
+              },
+              {
+                "bytes": 30167634,
+                "native_file_sha256": "5f3d1bb5f747e6674aab4489d05944655c594497f8fbab62736fee5a948fa0be"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:9132e57b8dae53242e5658c3fdb8d5740e9140deb0626e4aad53278a3b677da3",
+          "query_consumed_digest": "sha256:ceb04415364c75c69ef85a3817b3d554d5108f43ad076987ac0b2721963635ee",
+          "query_id": "josefa-full-generator",
+          "source_profile": "historical_josefa_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:35959d4e4d7d233a5f985a2f8228066be515fc2303b1aa3c8f7f9a8d91c6912f",
+            "expansions": 4,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 4,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "asrep_material_request": 1,
+              "asrep_password_recovery": 1,
+              "host_admin_execution": 1,
+              "recovered_identity_activation": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:35959d4e4d7d233a5f985a2f8228066be515fc2303b1aa3c8f7f9a8d91c6912f",
+            "expansions": 4,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 4,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "asrep_material_request": 1,
+              "asrep_password_recovery": 1,
+              "host_admin_execution": 1,
+              "recovered_identity_activation": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:55a34b9d8bf7c064fcb5b8c21b45e2105ee1f89f07fa42108ed31dce4cd6256e",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "asrep-natural-password",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+            "query_consumed_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.asrep-natural-password.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.asrep-natural-password.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9832520,
+                "native_file_sha256": "281957c531eb8a41bb1f809498dc942391576fe27dfe432de0c64786b16ebc48"
+              },
+              {
+                "bytes": 9832520,
+                "native_file_sha256": "1e136863b2502649076fd1d0edfe5ed99508418efd5d832a7763f3f049b2bbb9"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+          "query_consumed_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+          "query_id": "asrep-natural-password",
+          "source_profile": "frozen_X_request_capability",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:75c6ff8e58fc78c3b4f85ff43aae95d6803d25780db320e432d021ae2dee4863",
+            "expansions": 1,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "kerberoast_material_request": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:75c6ff8e58fc78c3b4f85ff43aae95d6803d25780db320e432d021ae2dee4863",
+            "expansions": 1,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "kerberoast_material_request": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:fdfbc09df14e2a5cf383e01b7e73e310643f4e215baa57e3d5bac2fbb25139ef",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "kerberoast-material",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+            "query_consumed_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "ticket_material",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.kerberoast-material.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.kerberoast-material.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9120417,
+                "native_file_sha256": "216dac734ccb28b5b2633dfc99ccf97749a4b6e4089e1985571235d1e20775af"
+              },
+              {
+                "bytes": 9120417,
+                "native_file_sha256": "430878975f64686272f2a8bd785a39f624293d95e5e9389502969266391603e4"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+          "query_consumed_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+          "query_id": "kerberoast-material",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": true,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:65ffe3df4c19641f5bae2efbd7697403d289b24366cf1f9230d986f6a287435d",
+            "expansions": 3,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "no_path",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": [
+              "activate_recovered_identity"
+            ]
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": true,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:65ffe3df4c19641f5bae2efbd7697403d289b24366cf1f9230d986f6a287435d",
+            "expansions": 3,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "no_path",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": [
+              "activate_recovered_identity"
+            ]
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:77de064782213f3f0e1f7b6d9434e9f18868f79f3d6202421c19ff7034c0d3ca",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "kerberoast-identity",
+            "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "original",
+            "query_before_release_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+            "query_consumed_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "usable_identity",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.kerberoast-identity.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/original.kerberoast-identity.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 8939893,
+                "native_file_sha256": "e317d233d7ecf3b4148708d2425bbf9f27fb926fc80e61b1a7dfb6ca486c30e5"
+              },
+              {
+                "bytes": 8939894,
+                "native_file_sha256": "9f34366fcada54c84e19954f6bce1657a9b19492435f2d3d4ee5d3301faa20d4"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+          "query_consumed_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+          "query_id": "kerberoast-identity",
+          "source_profile": "historical_lidia_user",
+          "supported_cohort": true
+        }
+      ],
+      "cohort_digest": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+      "complete_replay": true,
+      "denominator_unit": "query-program occurrences in the frozen cohort; predeclared projection/raw overlap retained, never interpreted as independent unique attacks; CLI repeats are verification only and are never added to the denominator",
+      "full_generator_coverage_established": false,
+      "manifest_verified_full_raw_completed_query_counts": {
+        "C_rated": 24,
+        "I_rated": 24,
+        "P_rated": 24,
+        "Pareto_eligible": 24,
+        "conditioned_feasible": 26,
+        "fully_rated": 24,
+        "valid_generated": 26
+      },
+      "meets_80_percent_on_complete_supported_returned_sample": true,
+      "missing_queries": [],
+      "supported_completed_query_counts": {
+        "C_rated": 48,
+        "I_rated": 48,
+        "P_rated": 48,
+        "Pareto_eligible": 48,
+        "conditioned_feasible": 50,
+        "fully_rated": 48,
+        "valid_generated": 50
+      },
+      "supported_returned_sample_full_fraction": "24/25",
+      "truncated_query_count": 4,
+      "unrated_query_count": 2
+    },
+    "supplementary": {
+      "all_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 109,
+        "fully_rated": 0,
+        "valid_generated": 109
+      },
+      "cases": [
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:8a22231a7a5e3c7f7265ec92d73cc5e6049fc85dd53f07ee52bd5da1b5a852d9",
+            "expansions": 2,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "indeterminate",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 0,
+              "fully_rated": 0,
+              "valid_generated": 0
+            },
+            "coverage_digest": "sha256:8a22231a7a5e3c7f7265ec92d73cc5e6049fc85dd53f07ee52bd5da1b5a852d9",
+            "expansions": 2,
+            "frontier": [],
+            "gaps": [],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {},
+            "status": "indeterminate",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:466215818973996e3d77d79d2735f27888c986ea46080cf24aad3d3899b962ff",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "rbcd-unassumed",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+            "query_consumed_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.rbcd-unassumed.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.rbcd-unassumed.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 8905850,
+                "native_file_sha256": "8a26c98988961a2c3f2808432d8abc01f3b5e73a463a055967aec16c09262109"
+              },
+              {
+                "bytes": 8905850,
+                "native_file_sha256": "a213b6a6a3204ad2861ba7fc1a7f23a03c5ae7357fe8773ab8f076566513ace2"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+          "query_consumed_digest": "sha256:4b6418efb137e5f13e0f288607c39f31d16760da140fa07658c562e30d7175a9",
+          "query_id": "rbcd-unassumed",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:18faf4e4c6b857dd106c1e8dfc07a161ba1f7b3d7dc114be15487132deab42be",
+            "expansions": 14,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 5,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 14,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "rbcd_admin_execution": 3,
+              "rbcd_descriptor_mutation": 3,
+              "rbcd_secret_acquisition": 3,
+              "rbcd_service_delegation": 3,
+              "rbcd_service_preparation": 3
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:18faf4e4c6b857dd106c1e8dfc07a161ba1f7b3d7dc114be15487132deab42be",
+            "expansions": 14,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 5,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 14,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "rbcd_admin_execution": 3,
+              "rbcd_descriptor_mutation": 3,
+              "rbcd_secret_acquisition": 3,
+              "rbcd_service_delegation": 3,
+              "rbcd_service_preparation": 3
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:5a71b359f606e1af0c01eb0d7d86b192ff9bb302c8c88f7f47e5e55d08fb48af",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "rbcd-scoped",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+            "query_consumed_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.rbcd-scoped.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.rbcd-scoped.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 15502249,
+                "native_file_sha256": "2a7eb27708098d1e11408262623794353c9480a30d7cfe46f0ed909b7a418c3a"
+              },
+              {
+                "bytes": 15502249,
+                "native_file_sha256": "d640500a9d320451a1e83d2b4d5f5ac7094b90e18a330d2d24bf7b707001097e"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+          "query_consumed_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+          "query_id": "rbcd-scoped",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:6bd329c4d9a53e3da536aa0e3255d7b78f34df11ff03f7679659ab3fb61fcada",
+            "expansions": 5000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 2,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 1,
+              "host_admin_execution": 3
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 3,
+              "fully_rated": 0,
+              "valid_generated": 3
+            },
+            "coverage_digest": "sha256:6bd329c4d9a53e3da536aa0e3255d7b78f34df11ff03f7679659ab3fb61fcada",
+            "expansions": 5000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 2,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 3,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 1,
+              "host_admin_execution": 3
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:9eeee3d3b32b9fa33d7ad24824a2cb87b477758aaaa438744b73e69378bee7e9",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "acl-group-host",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+            "query_consumed_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-host.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-host.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 53621930,
+                "native_file_sha256": "b42ad69ac04610090f617b967b371f2f4a8b0756a1e9214a6bca97a80ae33e07"
+              },
+              {
+                "bytes": 53621931,
+                "native_file_sha256": "6b9554226effc0dea980f1dbe8ca5f04a65c1a22634056a8f9d800d97b97a5b4"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+          "query_consumed_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+          "query_id": "acl-group-host",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 100,
+              "fully_rated": 0,
+              "valid_generated": 100
+            },
+            "coverage_digest": "sha256:d1f053b3f1423ab78264457030fe618f41f441e513e0ab9d719ab788b14ce9e9",
+            "expansions": 478,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 7,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 49,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 98,
+              "grant_write_dacl": 86,
+              "group_membership_mutation": 95,
+              "host_admin_execution": 100
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "path_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 100,
+              "fully_rated": 0,
+              "valid_generated": 100
+            },
+            "coverage_digest": "sha256:d1f053b3f1423ab78264457030fe618f41f441e513e0ab9d719ab788b14ce9e9",
+            "expansions": 478,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 7,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 49,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "grant_generic_all": 98,
+              "grant_write_dacl": 86,
+              "group_membership_mutation": 95,
+              "host_admin_execution": 100
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "path_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:c0833a92dc9c41f305e10be875904afe0fd72a3407dc8e1fc0afd8dbe6ff6c91",
+            "case_graph_identity": {
+              "graph_digest": "sha256:fa6a40862f60a258ef7aec102d81c06c1c10ffd2fc800d76be62cdfc1fe5365d",
+              "snapshot_facts_digest": "sha256:72297ce844078d11fe4bdeaaeb0835f0949fe36ab44f7073f25922633ac9fe55",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "acl-group-projection",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+            "query_consumed_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 12,
+            "is_full_raw": false,
+            "nodes": 4,
+            "sha256": "sha256:fa6a40862f60a258ef7aec102d81c06c1c10ffd2fc800d76be62cdfc1fe5365d"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-projection.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-projection.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 73053394,
+                "native_file_sha256": "207e7d2c0007099e10a2f21a4dc73b712d7ca8c1b790d086465bc4637054c88b"
+              },
+              {
+                "bytes": 73053393,
+                "native_file_sha256": "46c2cb80a6db107df9dbc0273849d63c3c2cb5b386d9c7370972b83a17b3e9cb"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+          "query_consumed_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+          "query_id": "acl-group-projection",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 2,
+              "fully_rated": 0,
+              "valid_generated": 2
+            },
+            "coverage_digest": "sha256:644f474b3c0ba4f4bf098a9d7c830976c6e0241740138f8f6f82ce5d5f713ca8",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "host_admin_execution": 2
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 2,
+              "fully_rated": 0,
+              "valid_generated": 2
+            },
+            "coverage_digest": "sha256:644f474b3c0ba4f4bf098a9d7c830976c6e0241740138f8f6f82ce5d5f713ca8",
+            "expansions": 2000,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "host_admin_execution": 2
+            },
+            "status": "success",
+            "truncated": true,
+            "truncation_reason": "expansion_limit_reached",
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:f96cfcb831571d3b2ba40d29f745be33727854ff8bdbca118e443acb18f01efd",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "acl-group-all-generator",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+            "query_consumed_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "admin_control",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-all-generator.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.acl-group-all-generator.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 26891385,
+                "native_file_sha256": "762d1464605b0743d1e9e8e0366cbb67d95718fe09e4662a9c5a84780f3d9920"
+              },
+              {
+                "bytes": 26891385,
+                "native_file_sha256": "73359355b33c20345763f2e658a9d5e368f79836889767259291bf514c247e43"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+          "query_consumed_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+          "query_id": "acl-group-all-generator",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": false
+        },
+        {
+          "actual_after_decision": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:81ddf7bd99501360e93c4479a898bd5ed7ea1116b096b7a01fd72a9ff3f55ff7",
+            "expansions": 6,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_command_session": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "actual_numeric_basis_classes": [],
+          "actual_review_audit_entries": 0,
+          "actual_review_statuses": [],
+          "baseline_pending": {
+            "B_goal_contract_gap": false,
+            "counts": {
+              "C_rated": 0,
+              "I_rated": 0,
+              "P_rated": 0,
+              "Pareto_eligible": 0,
+              "conditioned_feasible": 1,
+              "fully_rated": 0,
+              "valid_generated": 1
+            },
+            "coverage_digest": "sha256:81ddf7bd99501360e93c4479a898bd5ed7ea1116b096b7a01fd72a9ff3f55ff7",
+            "expansions": 6,
+            "frontier": [],
+            "gaps": [
+              {
+                "count": 1,
+                "dimension": "C",
+                "reason": "missing_evidence"
+              },
+              {
+                "count": 1,
+                "dimension": "I",
+                "reason": "prerequisite_gate_refusal"
+              },
+              {
+                "count": 1,
+                "dimension": "P",
+                "reason": "prerequisite_gate_refusal"
+              }
+            ],
+            "min_effort": null,
+            "paths_by_action_family_nonexclusive": {
+              "winrm_command_session": 1
+            },
+            "status": "success",
+            "truncated": false,
+            "truncation_reason": null,
+            "unreturned_goal_state_success_events": []
+          },
+          "evidence_scope": {
+            "adoption_applied": false,
+            "case_digest": "sha256:0be9c46e0e3bd76a57f9e0cc4da4b8788fd8755c3a4c5263357fd7dbc08de9a9",
+            "case_graph_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "case_id": "winrm-command",
+            "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+            "execution_digest": "sha256:875b0f0ce34c422cfb3a6105e7ba9d582062d2cce509e818ea24663a10a78916",
+            "group": "supplementary",
+            "query_before_release_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+            "query_consumed_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+            "raw_input_identity": {
+              "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+              "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+              "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+            },
+            "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+            "version": "final-cpi-checkpoint-scope/2.0.0"
+          },
+          "execution_identity": {
+            "dependencies": {
+              "PyYAML": {
+                "content_digest": "sha256:a7c05dab675a3b9e9751f8fc31acc35f5185da15d48607a466a92d08c38be7f1",
+                "version": "6.0.3"
+              },
+              "attrs": {
+                "content_digest": "sha256:8ba2d7e5dc5b6b23b296a45309a44e063a228f658c67f249c0c51a83be324b11",
+                "version": "26.1.0"
+              },
+              "jsonschema": {
+                "content_digest": "sha256:b87e05a7cef7caae89fa441dd161d6562cf6c8ec086c5e27a1d64f9fb4ee2e3c",
+                "version": "4.26.0"
+              },
+              "jsonschema-specifications": {
+                "content_digest": "sha256:cbf7983e7f546329445f2ba51ad1e07ddffd95b5ad8f7dea644101151a5d9214",
+                "version": "2025.9.1"
+              },
+              "networkx": {
+                "content_digest": "sha256:541660bb129dd2748b57fcb9521c9c177323a2e2b9a9bb441971cb02062adbb4",
+                "version": "3.7"
+              },
+              "referencing": {
+                "content_digest": "sha256:23ca7912add6ca3d4676ab5ee460348685c896caf78c52fbd71539c01fb0e33f",
+                "version": "0.37.0"
+              },
+              "rpds-py": {
+                "content_digest": "sha256:7d099133ef2599b5e7004006e6d9649ab4d95414bd146586877785f6de5085c1",
+                "version": "2026.9.1"
+              }
+            },
+            "python_executable_digest": "sha256:60b250069178fb421d296805bcff5514acfe9ea9597f92413863db87ed6b4a18",
+            "python_version": "3.14.8 (main, Oct  3 2026, 01:04:31) [Clang 22.1.3 ]",
+            "source_digest": "sha256:0cbab28eb0c26aef632aa36f4b6afe1cf170c5038fe7124dfc134e2fe96871e0"
+          },
+          "goal": "remote_command_execution",
+          "graph": {
+            "edges": 56367,
+            "is_full_raw": true,
+            "nodes": 3370,
+            "sha256": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea"
+          },
+          "historical_files_byte_preserved": 44,
+          "independent_oracle": {
+            "checked_eligible_candidates": 0,
+            "worked_programs": []
+          },
+          "numeric_adoption_applied": false,
+          "programs_unchanged_by_adoption": true,
+          "public_verification": {
+            "API_CLI_semantic_ranking_coverage_programs_equal": true,
+            "CLI_timeout_seconds": 600,
+            "command": "/workspace/scratch/84382341b15f/repo/.venv/bin/python -m src.engine.query_cli --query /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.winrm-command.query.json --snapshot /workspace/scratch/84382341b15f/repo/reports/generated/issue277-adoption-v2/supplementary.winrm-command.graph.json --label seamless --prerequisite /workspace/scratch/84382341b15f/repo/data/samples/manifests/seamless-raw-v1.json",
+            "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+            "comparison_version": "final-cpi-public-comparison/2.0.0",
+            "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+            "minimum_proven": false,
+            "native_transports": [
+              {
+                "bytes": 9042888,
+                "native_file_sha256": "6cc44ea937b711da15a1fb9eef91bc03dc740d1233b038a4c41514995c1bf43e"
+              },
+              {
+                "bytes": 9042889,
+                "native_file_sha256": "c5ed4d4315e7a5e8bdd1c369be1e7a373e78f9c8669675f50ff5debc2a64cea6"
+              }
+            ],
+            "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+            "orchestration_search_ranking_programs_equal": true,
+            "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+            "program_summary_scope": "technique names are display summaries only",
+            "two_CLI_exit_codes": [
+              0,
+              0
+            ],
+            "two_process_equal": true
+          },
+          "query_before_release_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+          "query_consumed_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+          "query_id": "winrm-command",
+          "source_profile": "initial User control/usable identity explicitly supplied outside C/P boundary; RBCD preserves existing supplied usable identity without global control",
+          "supported_cohort": true
+        }
+      ],
+      "cohort_digest": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+      "complete_replay": true,
+      "denominator_unit": "query-program occurrences in the frozen cohort; predeclared projection/raw overlap retained, never interpreted as independent unique attacks; CLI repeats are verification only and are never added to the denominator",
+      "full_generator_coverage_established": false,
+      "manifest_verified_full_raw_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 9,
+        "fully_rated": 0,
+        "valid_generated": 9
+      },
+      "meets_80_percent_on_complete_supported_returned_sample": false,
+      "missing_queries": [],
+      "supported_completed_query_counts": {
+        "C_rated": 0,
+        "I_rated": 0,
+        "P_rated": 0,
+        "Pareto_eligible": 0,
+        "conditioned_feasible": 7,
+        "fully_rated": 0,
+        "valid_generated": 7
+      },
+      "supported_returned_sample_full_fraction": "0",
+      "truncated_query_count": 3,
+      "unrated_query_count": 5
+    }
+  },
+  "limitations": [
+    "First-wave expert scenario adoption, not empirical calibration.",
+    "Original and supplementary cohorts are separate; no denominator pooling.",
+    "Supplementary context/query pins were not adopted; pending remains pending.",
+    "Truncated returned samples are not full generator/global-optimum coverage.",
+    "Query-local sensitivity only; source/batch/chokepoint sensitivity not established.",
+    "Partial connector-materialized checkout; no full repository test claim."
+  ],
+  "raw_input_identity": {
+    "graph_digest": "sha256:473c0dd49efcc189ea75d16ba721d31632f08b9afc023b29a9d1d2604799c8ea",
+    "snapshot_facts_digest": "sha256:974765c2d2eb4ba0eb141ba375540c7905e23e18a126e484bdd089e89055b833",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+  },
+  "release_digest": "sha256:76d0ca4c6f1b2259615c12193966c79bfd8e511a87d788ad0bbfdbf0f88b30b4",
+  "review": {
+    "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+    "purpose": "numeric_context_history_adoption",
+    "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+    "reviewed_at": "2026-10-13T04:30:57Z",
+    "reviewer": "nairyuuu"
+  },
+  "reviewed_proposal_head": "365a5f628d0750db055026c5fcdfe13bea93f121",
+  "version": "final-cpi-actual-adoption-replay/2.0.0"
+}

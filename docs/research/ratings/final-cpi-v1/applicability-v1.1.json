@@ -1,0 +1,252 @@
+{
+  "classes": {
+    "asrep_material_request": {
+      "deadline_minutes": 10,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "ASRepTarget"
+      ]
+    },
+    "asrep_password_recovery": {
+      "deadline_minutes": 1200,
+      "horizon": "24h",
+      "max_attempts": 1,
+      "methods": [
+        "offline-asrep-etype23-rank-unknown-final-v1"
+      ]
+    },
+    "directory_password_reset": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "ForceChangePassword",
+        "GenericAll"
+      ]
+    },
+    "grant_generic_all": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "WriteDacl"
+      ]
+    },
+    "grant_write_dacl": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "GenericAll"
+      ]
+    },
+    "group_membership_mutation": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "GenericAll"
+      ]
+    },
+    "host_admin_execution": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "AdminTo"
+      ]
+    },
+    "kerberoast_material_request": {
+      "deadline_minutes": 10,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RoastTarget"
+      ]
+    },
+    "kerberoast_password_recovery": {
+      "deadline_minutes": 1200,
+      "horizon": "24h",
+      "max_attempts": 1,
+      "methods": [
+        "offline-tgs-etype-unobserved-rank-unknown-final-v1"
+      ]
+    },
+    "rbcd_admin_execution": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RBCDAsset"
+      ]
+    },
+    "rbcd_descriptor_mutation": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RBCDConfigure"
+      ]
+    },
+    "rbcd_secret_acquisition": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RBCDReset"
+      ]
+    },
+    "rbcd_service_delegation": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RBCDDelegate"
+      ]
+    },
+    "rbcd_service_preparation": {
+      "deadline_minutes": 15,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RBCDPrepare"
+      ]
+    },
+    "rdp_interactive_session": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "CanRDP"
+      ]
+    },
+    "recovered_identity_activation": {
+      "deadline_minutes": 10,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "RecoveredSecret"
+      ]
+    },
+    "reset_identity_activation": {
+      "deadline_minutes": 10,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "AuthenticationControl"
+      ]
+    },
+    "session_credential_material": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "HasSession"
+      ]
+    },
+    "winrm_admin_execution": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "DeclaredHostAdmin"
+      ]
+    },
+    "winrm_command_session": {
+      "deadline_minutes": 30,
+      "horizon": "24h",
+      "max_attempts": 3,
+      "methods": [
+        "CanPSRemote"
+      ]
+    }
+  },
+  "policies": {
+    "final-cpi-roasting-24h-v1": {
+      "classes": [
+        "asrep_material_request",
+        "kerberoast_material_request",
+        "asrep_password_recovery",
+        "kerberoast_password_recovery",
+        "recovered_identity_activation",
+        "host_admin_execution"
+      ],
+      "recovery_contexts": [
+        {
+          "budget": "one-worker;20h;cap-68719476736-distinct-verifications;no-floor;no-restart",
+          "horizon": "24h",
+          "method": "offline-asrep-etype23-rank-unknown-final-v1"
+        },
+        {
+          "budget": "one-worker;20h;cap-68719476736-distinct-verifications;no-floor;no-restart",
+          "horizon": "24h",
+          "method": "offline-tgs-etype-unobserved-rank-unknown-final-v1"
+        }
+      ],
+      "retry_policy": {
+        "activation": "three attempts/10m",
+        "admin": "three attempts/30m; SMB/RPC transport scenario for AdminTo",
+        "recovery": null,
+        "request": "three attempts/10m",
+        "stop": "first verified success, authoritative denial, event deadline, campaign deadline or compute cap"
+      }
+    },
+    "final-cpi-supplement-24h-v1": {
+      "classes": [
+        "group_membership_mutation",
+        "grant_write_dacl",
+        "grant_generic_all",
+        "host_admin_execution",
+        "winrm_command_session",
+        "rbcd_secret_acquisition",
+        "rbcd_service_preparation",
+        "rbcd_descriptor_mutation",
+        "rbcd_service_delegation",
+        "rbcd_admin_execution"
+      ],
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      }
+    },
+    "week3-seamless-bounded-retry": {
+      "classes": [
+        "directory_password_reset",
+        "reset_identity_activation",
+        "winrm_admin_execution"
+      ],
+      "retry_policy": {
+        "by_mechanism": {
+          "acquire_ticket": {
+            "deadline_minutes": 10,
+            "max_attempts": 3
+          },
+          "remote_exec_winrm": {
+            "deadline_minutes": 30,
+            "max_attempts": 3
+          },
+          "reset_password": {
+            "deadline_minutes": 15,
+            "max_attempts": 3
+          }
+        },
+        "policy_id": "week3-seamless-bounded-retry",
+        "version": "1.0.0"
+      }
+    }
+  },
+  "status": "proposed_pending_b_review",
+  "transport": {
+    "host_admin_execution": "AdminTo only under declared SMB/RPC policy",
+    "rbcd_admin_execution": "RBCDAsset exact WinRM HTTP service binding",
+    "winrm_admin_execution": "DeclaredHostAdmin elevated WinRM only",
+    "winrm_command_session": "CanPSRemote non-elevated command session only"
+  },
+  "unsupported": [
+    "rdp_interactive_session and session_credential_material have no bound supported policy yet; no interval may be minted",
+    "unrecognized policy/retry/method/horizon/lineage must be refused before binding"
+  ],
+  "version": "1.1.0"
+}

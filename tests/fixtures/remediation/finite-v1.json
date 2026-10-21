@@ -1,0 +1,352 @@
+{
+  "cases": {
+    "alternative_bypass": {
+      "cells": {
+        "alice": {
+          "after_program_ids": [
+            "alice-D"
+          ],
+          "after_programs": 1,
+          "before_program_ids": [
+            "alice-D",
+            "alice-MD",
+            "alice-MI"
+          ],
+          "before_programs": 3,
+          "reachable_after": true
+        },
+        "bob": {
+          "after_program_ids": [
+            "bob-MI"
+          ],
+          "after_programs": 1,
+          "before_program_ids": [
+            "bob-MI"
+          ],
+          "before_programs": 1,
+          "reachable_after": true
+        }
+      },
+      "runtime_controls": {
+        "alice": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "membership_usable",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": false
+          }
+        ]
+      }
+    },
+    "false_evidence": {
+      "path_count": 0,
+      "runtime_controls": {
+        "alice": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "admin_channel",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          }
+        ]
+      },
+      "status": "blocked",
+      "truncated": false
+    },
+    "genuine_choke": {
+      "cells": {
+        "alice": {
+          "after_program_ids": [],
+          "after_programs": 0,
+          "before_program_ids": [
+            "alice-D",
+            "alice-MD",
+            "alice-MI"
+          ],
+          "before_programs": 3,
+          "reachable_after": false
+        },
+        "bob": {
+          "after_program_ids": [],
+          "after_programs": 0,
+          "before_program_ids": [
+            "bob-MI"
+          ],
+          "before_programs": 1,
+          "reachable_after": false
+        }
+      },
+      "runtime_controls": {
+        "alice": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "admin_channel",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          }
+        ],
+        "bob": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "admin_channel",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          }
+        ]
+      }
+    },
+    "ineffective_fix": {
+      "cells": {
+        "alice": {
+          "after_program_ids": [
+            "alice-D",
+            "alice-MD",
+            "alice-MI"
+          ],
+          "after_programs": 3,
+          "before_program_ids": [
+            "alice-D",
+            "alice-MD",
+            "alice-MI"
+          ],
+          "before_programs": 3,
+          "reachable_after": true
+        },
+        "bob": {
+          "after_program_ids": [
+            "bob-MI"
+          ],
+          "after_programs": 1,
+          "before_program_ids": [
+            "bob-MI"
+          ],
+          "before_programs": 1,
+          "reachable_after": true
+        }
+      },
+      "runtime_controls": {
+        "alice": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "rdp_available",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          }
+        ],
+        "bob": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "rdp_available",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          }
+        ]
+      }
+    },
+    "missing_evidence": {
+      "path_count": 0,
+      "status": "indeterminate",
+      "truncated": false
+    },
+    "multiple_sources": {
+      "cells": {
+        "alice": {
+          "after_program_ids": [
+            "alice-D"
+          ],
+          "after_programs": 1,
+          "before_program_ids": [
+            "alice-D",
+            "alice-MD",
+            "alice-MI"
+          ],
+          "before_programs": 3,
+          "reachable_after": true
+        },
+        "bob": {
+          "after_program_ids": [],
+          "after_programs": 0,
+          "before_program_ids": [
+            "bob-MI"
+          ],
+          "before_programs": 1,
+          "reachable_after": false
+        }
+      },
+      "runtime_controls": {
+        "alice": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "membership_usable",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": false
+          }
+        ],
+        "bob": [
+          {
+            "origin": "blocked_evidence",
+            "predicate": "membership_usable",
+            "provenance_reference": "synthetic://269/counterfactual",
+            "rationale": "Declared synthetic negative control, not observed remediation",
+            "scope": "remediation269-synthetic",
+            "subject": "S-1-5-21-1000-2000-3000-1102",
+            "target": "S-1-5-21-1000-2000-3000-2103",
+            "value": false
+          }
+        ]
+      }
+    },
+    "nonstructural": {
+      "after_programs": 0,
+      "before_programs": 1,
+      "program": [
+        "asrep_request",
+        "recover_asrep_secret",
+        "activate_recovered_identity",
+        "propagate_group_entitlement",
+        "scenario_winrm_admin"
+      ],
+      "structural_source_outbound_edges": 0
+    },
+    "search_truncation": {
+      "global_paths_cut_percent": null,
+      "path_count": 1,
+      "proven_disconnected_pairs": 0,
+      "status": "success",
+      "truncated": true
+    }
+  },
+  "derivation": "Literal expectations from four ordered programs: Alice D, M/D, M/I; Bob M/I. Frozen independently before execution.",
+  "evidence_class": "synthetic_test_only",
+  "expected_step_specs": {
+    "alice-D": [
+      {
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "technique_id": "obtain_admin_execution_on_host"
+        }
+      }
+    ],
+    "alice-MD": [
+      {
+        "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "technique_id": "propagate_group_entitlement"
+        }
+      },
+      {
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "technique_id": "obtain_admin_execution_on_host"
+        }
+      }
+    ],
+    "alice-MI": [
+      {
+        "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "technique_id": "propagate_group_entitlement"
+        }
+      },
+      {
+        "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-2103",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "technique_id": "obtain_admin_execution_on_host"
+        }
+      }
+    ],
+    "bob-MI": [
+      {
+        "edge_id": "sha256:a4e6a0752667ea39f258d1e01e424e6a831803802b5564f7a0763a3dbced7686",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1102",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-1102",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "technique_id": "propagate_group_entitlement"
+        }
+      },
+      {
+        "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+        "request": {
+          "actor": "S-1-5-21-1000-2000-3000-1102",
+          "rbcd_binding": null,
+          "source": "S-1-5-21-1000-2000-3000-2103",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "technique_id": "obtain_admin_execution_on_host"
+        }
+      }
+    ]
+  },
+  "goal": "host-admin",
+  "programs": {
+    "alice-D": [
+      "direct"
+    ],
+    "alice-MD": [
+      "member",
+      "direct"
+    ],
+    "alice-MI": [
+      "member",
+      "inherited"
+    ],
+    "bob-MI": [
+      "member",
+      "inherited"
+    ]
+  },
+  "schema_version": "1.0.0",
+  "sources": [
+    "alice",
+    "bob"
+  ]
+}

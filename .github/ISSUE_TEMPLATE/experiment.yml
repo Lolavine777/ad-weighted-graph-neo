@@ -1,0 +1,37 @@
+name: Experiment / Thực nghiệm
+description: Đối chứng BloodHound, phân tích độ nhạy, choke point hoặc hiệu năng.
+title: "[Experiment] "
+body:
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Câu hỏi, giả thuyết và baseline
+    validations:
+      required: true
+  - type: textarea
+    id: protocol
+    attributes:
+      label: Thiết kế và manifest
+      description: Dataset ID/checksum, commit, profile, source/targets, K, seed, số lần chạy, phiên bản công cụ.
+    validations:
+      required: true
+  - type: textarea
+    id: metrics
+    attributes:
+      label: Metric và tiêu chí đánh giá
+      description: Đơn vị, mẫu số, phạm vi lấy mẫu; nêu cách giải thích chênh lệch.
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Đầu ra và cách tái lập
+      description: Lệnh chạy, đường dẫn báo cáo theo mẫu experiment; chỉ chia sẻ dữ liệu tổng hợp/đã kiểm tra.
+    validations:
+      required: true
+  - type: input
+    id: ownership
+    attributes:
+      label: Owner / reviewer / milestone / phụ thuộc
+    validations:
+      required: true

@@ -1,0 +1,75 @@
+"""Matched native product runs; original semantics, complete audit in lossless gzip."""
+import gzip
+import hashlib
+import json
+import subprocess
+import sys
+import time
+from collections import Counter
+from pathlib import Path
+
+root=Path(__file__).resolve().parent;repo=root/'repo';sys.path.insert(0,str(repo))
+from scripts.exposure import inventory_exposure,build_request
+from scripts.defender_brief import build_defender_brief,render_defender_brief
+from src.engine.graph import EngineGraph
+from src.engine.batch import run_source_goal_batch,BatchExecutionBudget
+from src.engine.query import materialize_query
+from src.engine.query_cli import wire
+from src.engine.ranking.resolution_service import canonical_digest
+from src.engine.semantics import apply_transition
+from src.engine.semantics.evaluator import evaluate
+from src.engine.semantics.transitions import TransitionRequest,Status
+
+order,cohort=sys.argv[1:3];assert order in ['fifo','goal_guided'] and cohort in ['2x3','1x12']
+out=repo/'reports/generated/awg-r04-guided-v1'/f'{cohort}-{order}';out.mkdir(parents=True,exist_ok=False)
+assert not subprocess.check_output(['git','status','--porcelain'],cwd=repo,text=True).strip()
+revision=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();start=time.perf_counter()
+graph=EngineGraph.from_snapshot((repo/'data/processed/awg-r04/pilot-v2/snapshot.json').read_text())
+find=lambda label:next(n['id'] for n in graph.nodes() if n['label'].split('@')[0].split('.')[0]==label)
+machine=find('FINWVIR1000001');sources=[machine] if cohort=='1x12' else [machine,find('OLA_CARSON')]
+inventory=inventory_exposure(graph)
+request,selection=build_request(graph,inventory,source_ids=sources,authentication_context=machine,user_profile='user_usable_identity',computer_profile='computer_usable_identity',machine_identity_provenance='scenario://awg-r04/machine-identity/FINWVIR-4157',max_sources=0,max_targets=0 if cohort=='1x12' else 3,evaluation_mode='scenario',budget={'max_paths':1,'max_steps':3,'max_expansions':6000})
+(out/'request.json').write_text(json.dumps(request,ensure_ascii=False,indent=2)+'\n')
+(out/'selection.json').write_text(json.dumps(selection,ensure_ascii=False,indent=2)+'\n')
+events=[]
+def progress(event):
+ event['elapsed_seconds']=time.perf_counter()-start;events.append(event)
+ with (out/'discovery-progress.jsonl').open('a') as f:f.write(json.dumps(event,ensure_ascii=False)+'\n')
+before=time.perf_counter();cells=12 if cohort=='1x12' else 6
+result=run_source_goal_batch(request,graph,allowed_techniques=['scenario_reset_password','acquire_reset_identity','propagate_group_entitlement'],scenario_policy='seamless-standard-v1',effort_profile='reset-activation-c-v2',search_order=order,on_cell=progress,execution_budget=BatchExecutionBudget(max_cells=cells,max_expansions=6000*cells)).to_dict();done=time.perf_counter()
+inputs=result['reproducibility']['inputs'];rows=[];replays=0
+for sid,matrix in result['source_goal_matrix'].items():
+ for gid,cell in matrix.items():
+  trace=inputs['public_queries'][canonical_digest([sid,gid])];query=trace['query'];native=trace['result'];comparable=dict(query)
+  scenario=comparable.pop('scenario_reference');rating=comparable.pop('rating_resolution',None);comparable.pop('search_order',None)
+  if rating:
+   assert rating['scope']['scenario_id']==scenario
+   for record in rating['registries']['effort']['data']:assert record['applicability']['scopes']==[scenario]
+  witnesses=[]
+  for path in native['paths']:
+   material=materialize_query(query,graph);state=material.initial_attack_state;resets=set();steps=[]
+   for step in path['transition_history']:
+    action=step['result']['request'];transition=evaluate(graph.to_prepared(),state,TransitionRequest(**action),material.runtime_context)
+    assert transition.status is Status.APPLICABLE;state=apply_transition(state,transition)
+    if action['technique_id']=='scenario_reset_password':resets.add((action['actor'],action['target'],material.runtime_context.authentication_context))
+    steps.append({'request':action,'edge_id':step['edge_id'],'derived_from_step':step['derived_from_step']})
+   assert wire(state)==path['final_state'] and material.semantic_goal.matches(state);replays+=1
+   if cell['min_effort'] is not None:assert cell['min_effort']==len(resets)
+   witnesses.append({'steps':steps,'final_state_sha256':canonical_digest(path['final_state']),'full_path_sha256':canonical_digest(path),'independent_reset_work_count':len(resets)})
+  rows.append({'source_id':sid,'goal_id':gid,'status':cell['status'],'reached':cell['final_goal_reached'],'C':cell['min_effort'],'P':cell['likelihood_interval'],'impact':cell['impact'],'expansions':cell['expansions'],'truncated':cell['truncated'],'guarantees':trace['guarantees'],'search_strategy':trace['materialized'].get('search_strategy',{'requested':'fifo','effective':'fifo'}),'normalized_query_sha256':canonical_digest(comparable),'query_sha256':canonical_digest(query),'initial_state_sha256':canonical_digest(trace['materialized']['initial_attack_state']),'assumptions_sha256':canonical_digest(query['assumptions']),'assumptions_count':len(query['assumptions']),'attempt_statuses':dict(Counter(a['status'] for a in native['attempts'])),'witnesses':witnesses})
+brief=build_defender_brief(graph,inventory,request,result)
+(out/'defender-brief.json').write_text(json.dumps(brief,ensure_ascii=False,indent=2)+'\n');(out/'defender-brief.md').write_text(render_defender_brief(brief))
+projection={'revision':revision,'search_order':order,'cohort':cohort,'request':request,'selection':selection,'summary':result['summary'],'rows':rows,'events':events,'native_replays':replays,'phase_seconds':{'load_inventory_compile':before-start,'native_batch_audit':done-before},'source_pins':inputs['source_pins'],'external_harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'limits':'One run per mode, logical budget comparison. No globally optimal paths, statistically reliable wall speedup, whole-domain coverage or new P/I claim.'}
+(out/'projection.json').write_text(json.dumps(projection,ensure_ascii=False,indent=2)+'\n')
+digest=hashlib.sha256();size=0;pieces=[];length=0
+with gzip.open(out/'result.json.gz','wb',compresslevel=1) as f:
+ def flush():
+  global pieces,length,size
+  data=''.join(pieces).encode();f.write(data);digest.update(data);size+=len(data);pieces=[];length=0
+ for chunk in json.JSONEncoder(ensure_ascii=False,separators=(',',':')).iterencode(result):
+  pieces.append(chunk);length+=len(chunk)
+  if length>=262144:flush()
+ if pieces:flush()
+projection['audit']={'uncompressed_bytes':size,'uncompressed_sha256':digest.hexdigest(),'gzip_bytes':(out/'result.json.gz').stat().st_size}
+(out/'projection.json').write_text(json.dumps(projection,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'revision':revision,'order':order,'cohort':cohort,'summary':result['summary'],'native_replays':replays,'native_seconds':done-before,'gzip_bytes':projection['audit']['gzip_bytes']}))

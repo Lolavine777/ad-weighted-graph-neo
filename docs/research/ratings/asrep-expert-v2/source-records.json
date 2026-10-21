@@ -1,0 +1,58 @@
+[
+  {
+    "changed_dimensions": [
+      "full ordered AS-REP successful history",
+      "actor/source/authentication context",
+      "recovered-secret lineage and age",
+      "scenario version and policy id"
+    ],
+    "interval": [
+      "3/4",
+      "49/50"
+    ],
+    "json_pointer": "/conditional_bounds_table/1",
+    "new_events_proposed": [
+      "activate_recovered_identity"
+    ],
+    "outcome_action_id": "action_activate_lidia",
+    "question_id": "cand_seamless_01_direct_lidia:q2",
+    "residual_failure_excludes": [
+      "reachability already conditioned by scenario",
+      "authentication policy already declared",
+      "structural effective permission",
+      "earlier event failure"
+    ],
+    "source_event": "Reset-derived Kerberos identity activation after prior reset success",
+    "source_path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+    "source_record_sha256": "sha256:aaa286b53af4e0ed8b5ac2be25fd936d41b241354c601980f7097e7599c6fd22",
+    "transfer_review": "pending B; source acceptance does not adopt new event/context/history"
+  },
+  {
+    "changed_dimensions": [
+      "full ordered AS-REP successful history",
+      "actor/source/authentication context",
+      "recovered-secret lineage and age",
+      "scenario version and policy id"
+    ],
+    "interval": [
+      "1/2",
+      "9/10"
+    ],
+    "json_pointer": "/conditional_bounds_table/2",
+    "new_events_proposed": [
+      "obtain_admin_execution_on_host"
+    ],
+    "outcome_action_id": "action_winrm_badblood_lidia",
+    "question_id": "cand_seamless_01_direct_lidia:q3",
+    "residual_failure_excludes": [
+      "reachability already conditioned by scenario",
+      "authentication policy already declared",
+      "structural effective permission",
+      "earlier event failure"
+    ],
+    "source_event": "Authenticated WinRM administration of C0 after all reset/activation prefixes and passive authorization",
+    "source_path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+    "source_record_sha256": "sha256:0082c41677ac51cc2b35def35253570870146ad0e5ee8dea6ef25d25bb3ef93a",
+    "transfer_review": "pending B; source acceptance does not adopt new event/context/history"
+  }
+]

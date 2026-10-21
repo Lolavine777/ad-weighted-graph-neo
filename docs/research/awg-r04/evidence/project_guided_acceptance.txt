@@ -1,0 +1,35 @@
+"""Append an acceptance projection; retain the full native capture and frozen oracle."""
+import copy
+import hashlib
+import json
+import shutil
+import sys
+from pathlib import Path
+
+root=Path(__file__).resolve().parent
+repo=root/'repo'
+sys.path[:0]=[str(repo),str(repo/'tests')]
+from scripts.research.week4_acceptance_runner import compute_digest,semantic_payload
+from test_week4_acceptance_manifest import normalize_prerequisite_observation
+
+native=json.loads((root/'guided-week4-compatible-native.json').read_text())
+assert native['summary']['pass_count']==36 and native['summary']['unexpected_failure_count']==0
+assert not native['execution']['source']['checkout_dirty']
+for p,h in native['execution']['file_sha256'].items():assert hashlib.sha256((repo/p).read_bytes()).hexdigest()==h,p
+packet=copy.deepcopy(native)
+for case in packet['cases']:
+ if case['case_id']!='W4-K-OVERLAP' and 'evidence' in case:
+  case['evidence_digest']=compute_digest(case.pop('evidence'))
+assert semantic_payload(packet)==semantic_payload(native)
+frozen=repo/'reports/research/week4-maintainer-acceptance-cases-v3.json'
+assert normalize_prerequisite_observation(semantic_payload(packet))==normalize_prerequisite_observation(json.loads(frozen.read_text()))
+capture=repo/'reports/generated/awg-r04-acceptance-v16/native.json'
+capture.parent.mkdir(parents=True,exist_ok=False);shutil.copyfile(root/'guided-week4-compatible-native.json',capture)
+pin=lambda p:{'path':p.relative_to(repo).as_posix(),'bytes':p.stat().st_size,'sha256':'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest()}
+previous=repo/'reports/research/week4-guided-exploration-acceptance-manifest-v15.json'
+packet['execution']['previous_acceptance_manifest']={k:v for k,v in pin(previous).items() if k!='bytes'}
+packet['execution']['evidence_projection']={'policy':'Full K-overlap evidence retained; other case evidence replaced only by exact evidence_digest','full_local_capture':pin(capture),'frozen_cases':pin(frozen),'semantic_payload_equal_to_full_capture':True,'normalized_semantic_payload_equal_to_frozen_v3':True,'only_environment_normalization':'Existing normalize_prerequisite_observation; no outcome or oracle changes','generator_sha256':'sha256:'+hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+destination=repo/'reports/research/week4-guided-exploration-acceptance-manifest-v16.json'
+assert not destination.exists()
+destination.write_text(json.dumps(packet,ensure_ascii=False,indent=2,sort_keys=True)+'\n')
+print(json.dumps({'manifest':pin(destination),'native_summary':native['summary'],'frozen_semantic_digest':compute_digest(semantic_payload(packet))}))

@@ -1,0 +1,75 @@
+"""Independent raw/CE comparison; no AWG parser, graph or evaluator imports."""
+import argparse,base64,hashlib,json,time,urllib.request
+from pathlib import Path
+
+def raw_inputs(root):
+ manifest=json.loads((root/'data/samples/manifests/seamless-raw-v1.json').read_text())
+ records={}
+ for entry in manifest['files']:
+  data=(root/'data/raw/SEAMLESS'/entry['relative_path']).read_bytes()
+  assert len(data)==entry['size_bytes'] and hashlib.sha256(data).hexdigest()==entry['sha256']
+  payload=json.loads(data.decode('utf-8-sig'));records[payload['meta']['type']]=payload[payload['meta']['type']]
+ return manifest,records
+
+def raw_routes(records,source,goal,denied=None):
+ members={m['MemberId'] for g in records['groups'] if g['ObjectIdentifier']==goal for m in g['Members'] if m['MemberType']=='User'}
+ return sorted({u['ObjectIdentifier'] for u in records['users'] if u['ObjectIdentifier'] in members and u['ObjectIdentifier']!=denied and u['Properties'].get('enabled') is not False and any(a['PrincipalSID']==source and a['RightName']=='GenericAll' for a in u['Aces'])})
+
+def query(cypher,parameters=None):
+ data=json.dumps({'statements':[{'statement':cypher,'parameters':parameters or {}}]}).encode()
+ auth=base64.b64encode(b'neo4j:bloodhoundcommunityedition').decode()
+ request=urllib.request.Request('http://127.0.0.1:17474/db/neo4j/tx/commit',data=data,headers={'Authorization':'Basic '+auth,'Content-Type':'application/json'})
+ started=time.perf_counter()
+ with urllib.request.urlopen(request,timeout=120) as r:response=json.load(r)
+ assert not response.get('errors'),response.get('errors')
+ result=response['results'][0]
+ rows=[dict(zip(result['columns'],row['row'])) for row in result['data']]
+ return {'cypher':cypher,'parameters':parameters or {},'rows':rows,'query_and_transport_seconds':time.perf_counter()-started}
+
+def run(root):
+ manifest,records=raw_inputs(root)
+ names={r['ObjectIdentifier']:r['Properties']['name'] for rows in records.values() for r in rows}
+ find=lambda prefix:next(i for i,n in names.items() if n.startswith(prefix))
+ sources=[find('FINWVIR1000001.'),find('OLA_CARSON@')];goal=find('DOMAIN ADMINS@');edited=find('OLLIE_LONG@')
+ evidence={'raw_snapshot_id':manifest['snapshot_id'],'raw_manifest_sha256':hashlib.sha256((root/'data/samples/manifests/seamless-raw-v1.json').read_bytes()).hexdigest(),'source_labels':{s:names[s] for s in sources},'goal':goal,'goal_label':names[goal],'denied_membership':[edited,goal],'denied_member_label':names[edited],'query_results':[]}
+ census=query('MATCH (n) WHERE n.objectid IS NOT NULL RETURN n.objectid AS id, labels(n) AS labels')
+ ids={r['id'] for r in census['rows']};rawids=set(names)
+ evidence['identity_audit']={'raw_unique_ids':len(rawids),'CE_unique_ids':len(ids),'raw_ids_missing_in_CE':sorted(rawids-ids),'CE_only_ids':sorted(ids-rawids)}
+ assert not rawids-ids,'source identities missing in CE'
+ evidence['CE_census']={'nodes':query("MATCH (n) WHERE NOT 'MigrationData' IN labels(n) RETURN count(n) AS count"),'edges':query('MATCH ()-[r]->() RETURN type(r) AS kind, count(r) AS count ORDER BY kind')}
+ # Exact source records yield these direct relationship triples. CE can add derived edges.
+ direct=set()
+ for rows in records.values():
+  for r in rows:
+   for a in r['Aces']:
+    if a['RightName']=='GenericAll':direct.add((a['PrincipalSID'],r['ObjectIdentifier'],'GenericAll'))
+ for g in records['groups']:
+  for m in g['Members']:direct.add((m['MemberId'],g['ObjectIdentifier'],'MemberOf'))
+ ce=query('MATCH (s)-[r:GenericAll|MemberOf]->(t) RETURN DISTINCT s.objectid AS source, t.objectid AS target, type(r) AS kind')
+ actual={(r['source'],r['target'],r['kind']) for r in ce['rows']}
+ missing=sorted(direct-actual)
+ evidence['direct_relationship_audit']={'expected_unique_raw_triples':len(direct),'CE_unique_triples':len(actual),'missing':missing,'CE_additional_count':len(actual-direct),'export_sha256':hashlib.sha256(json.dumps(ce['rows'],sort_keys=True).encode()).hexdigest()}
+ excluded={r for r in direct if r[0]==r[1] and r[2]=='GenericAll'}
+ assert set(map(tuple,missing))==excluded, 'unexpected raw relationship loss'
+ evidence['direct_relationship_audit'].update({'matched_nonself_triples':len(direct-excluded),'documented_self_ACE_exclusions':len(excluded),'exclusion_source':'https://github.com/SpecterOps/BloodHound/blob/v9.8.0/packages/go/ein/ad.go#L465','unexpected_missing':[]})
+ for source in sources:
+  for side,denied in [('before',None),('after',edited)]:
+   params={'source':source,'goal':goal,'denied':denied}
+   direct_q=query('MATCH (s {objectid:$source})-[:GenericAll]->(u:User)-[:MemberOf]->(g:Group {objectid:$goal}) WHERE coalesce(u.enabled,true) AND ($denied IS NULL OR u.objectid <> $denied) RETURN DISTINCT u.objectid AS owner, u.name AS label ORDER BY owner',params)
+   expected=raw_routes(records,source,goal,denied)
+   actualowners=[r['owner'] for r in direct_q['rows']]
+   assert actualowners==expected,{'source':source,'side':side,'raw':expected,'CE':actualowners}
+   # This is a finite additive projection with exactly one reset1/activation0 and membership0.
+   result={'source':source,'side':side,'direct_route_count':len(expected),'topology_hops':2 if expected else None,'folded_ordinal_C_minimum':1 if expected else None,'raw_owners':expected,'CE_custom_cypher':direct_q}
+   topology=query('MATCH (s {objectid:$source}), (g:Group {objectid:$goal}), p=shortestPath((s)-[:GenericAll|MemberOf*1..6]->(g)) WHERE all(r IN relationships(p) WHERE $denied IS NULL OR NOT (type(r)="MemberOf" AND startNode(r).objectid=$denied AND endNode(r).objectid=$goal)) RETURN [n IN nodes(p)|n.objectid] AS ids, [r IN relationships(p)|type(r)] AS kinds, length(p) AS hops',params)
+   assert topology['rows'] and topology['rows'][0]['hops'] == 2
+   result['unconditioned_topology_only']=topology
+   evidence['query_results'].append(result)
+ evidence['scope']='Direct GenericAll(source, enabled User) followed by direct User MemberOf Domain Admins. Runtime success and usable source/context are conditioned on seamless-standard-v1, C profile reset-activation-c-v2. After is a query-only exclusion of the exact OLLIE->DA edge; persistent CE graph unchanged. Folded cost1 is declared ordinal effort, not a built-in CE metric. Topology-only queries are separately labeled. No full native global minimum or speed claim.'
+ return evidence
+
+if __name__=='__main__':
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--output',type=Path,required=True);args=parser.parse_args()
+ assert not args.output.exists(),'refuse evidence overwrite'
+ result=run(Path.cwd());args.output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+ print(json.dumps({'identities':result['identity_audit'],'direct_audit':result['direct_relationship_audit'],'routes':[(r['source'],r['side'],r['direct_route_count']) for r in result['query_results']]}))

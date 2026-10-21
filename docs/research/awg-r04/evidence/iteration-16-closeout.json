@@ -1,0 +1,123 @@
+{
+  "version": "awg-r04-remediation-closeout/1",
+  "validated_clean_revision": "986c278f89699bf9336a8e2029af6dee1206e932",
+  "native_capture_clean_revision": "09686f1c66944b7c5fa51c77f29a785535729632",
+  "final_selected_tests": {
+    "testsuite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "86",
+      "time": "25.212",
+      "timestamp": "2026-10-19T10:49:21.541369+03:00",
+      "hostname": "bbd922fe3368"
+    },
+    "modules": {
+      "tests.test_defender_brief": 8,
+      "tests.test_exposure": 18,
+      "tests.test_remediation_runner": 30,
+      "tests.test_remediation_discovery": 3,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_goal_guided_search": 23
+    },
+    "junit_sha256": "f5b77d4138c2a16434c4ef94d97da4676341d5e6608492f3b2c3d0a112fbce1e"
+  },
+  "scope": "86focused checks include CLI/exposure, actual capped native remediation/bypass, inventory/discovery/reuse, goal-guided binding and defender rendering; initial86 overlap, not a full-suite claim or rerun of prior593.",
+  "byte_verification": {
+    "native_pins_equal_current": 75,
+    "acceptance_v16_pins_equal_current": 127,
+    "strict_source_authorities14_pass": true,
+    "none_of_presentation_changes_in_pinned_native_scope": true,
+    "raw_oracle_plain_and_lossless_gzip_input_repeat_byte_identical": true
+  },
+  "native_source_pins_verified_against_capture_git_objects_and_current_bytes": 75,
+  "native_package": {
+    "verified_by_native_replay_rediscovery_and_reexecuting_package_verifier": true,
+    "gzip_crc_uncompressed_bytes_sha256_independently_verified": true,
+    "uncompressed_bytes": 375800973,
+    "uncompressed_sha256": "13a648a98aa1151709b589b98139dd797a10fb46fa38df35fd34c75250fbabc7",
+    "gzip_bytes": 10622371
+  },
+  "independent_raw_oracle": {
+    "manifest_files_verified": 6,
+    "native_witnesses_supported_by_raw_ACE_and_membership": 4,
+    "direct_conditioned_routes_per_source": [
+      4,
+      3
+    ],
+    "BFS_and_Dijkstra_match_in_explicit_projection": true,
+    "full_native_minimum_proven": false,
+    "no_fresh_BloodHound_CE_execution_claim": true
+  },
+  "outcome": {
+    "source_goal_pairs": 2,
+    "old_programs_cut": 2,
+    "old_programs_denominator": 2,
+    "old_programs_scope": "observed_corpus_only",
+    "reachable_before": 2,
+    "reachable_after": 2,
+    "new_programs_after": 2,
+    "proven_disconnected_pairs": 0,
+    "unknown_after_pairs": 0,
+    "C_best_found_before_after": [
+      1,
+      1
+    ]
+  },
+  "checks": {
+    "ruff_check": "PASS",
+    "ruff_format": "3changedPythonfiles unchanged",
+    "strict_source_authorities14": "PASS/no numeric or history modification",
+    "acceptance_v16": "All127existing source byte pins exact; no acceptance source changed, no successor needed",
+    "contract": "2syntheticfixturesPASS",
+    "repository_links": "Only known historical AWG-R03_Verification.zip missing"
+  },
+  "phase_seconds": {
+    "setup_inventory": 62.972061522999866,
+    "native_remediation_including_verifier": 214.96672312300007
+  },
+  "preservation": {
+    "raw_graph_facts_unchanged": true,
+    "large_captures_retained_losslessly": [
+      {
+        "original_path": "cells.json",
+        "original_bytes": 46566357,
+        "original_sha256": "3aafb47e6807ba3082850d7f795a6b1930d90107cbab4cc949535f2d4761f440",
+        "lossless_gzip": "cells.json.gz",
+        "gzip_bytes": 1270309,
+        "gzip_sha256": "726841fb25f5a6d0ddcc23ef40d0867d29c13571b94f22b3be5820587aae89d9",
+        "full_decompression_digest_verified": true
+      },
+      {
+        "original_path": "baseline.json",
+        "original_bytes": 38055679,
+        "original_sha256": "e4948f52b8c06f0226d2d7fb85b7c06b76bdfa4d94ff38798aba2e27eeef50a9",
+        "lossless_gzip": "baseline.json.gz",
+        "gzip_bytes": 1139456,
+        "gzip_sha256": "a3e138d00685e38cf125176096a4a58c10a9ae51a059e655626d3d54db90933f",
+        "full_decompression_digest_verified": true
+      },
+      {
+        "original_path": "replay.json",
+        "original_bytes": 66997422,
+        "original_sha256": "a6256aa37e965ccd4e8d27d01364338dde271f5fd2a2b829944d1bf8c6174356",
+        "lossless_gzip": "replay.json.gz",
+        "gzip_bytes": 1518285,
+        "gzip_sha256": "a2289e526577bdf3f751761a69df19ef58351f0494b2536cbbdd03f49b860553",
+        "full_decompression_digest_verified": true
+      },
+      {
+        "original_path": "witnesses.json",
+        "original_bytes": 90848595,
+        "original_sha256": "538321f6ad5f15c08fc6d2d8708fdf3d27fe85aef1c644bcae9f6a91930cad47",
+        "lossless_gzip": "witnesses.json.gz",
+        "gzip_bytes": 1571472,
+        "gzip_sha256": "1f13827194c3faa2a5e5c3ab9e0a802cac565c58cad49baa5766e14e101e6cbc",
+        "full_decompression_digest_verified": true
+      }
+    ]
+  },
+  "jobs": "All native captures/verifier/oracles/focused tests complete. Final descendant docs/evidence only.",
+  "next_action": "Close the demo/defense around the working discovery→verified-intervention→bypass chain. Fresh same-scope BloodHound comparison remains open; no evidence for engine/AND–OR rewrite."
+}

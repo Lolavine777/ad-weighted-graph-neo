@@ -1,0 +1,211 @@
+{
+  "accepted": {
+    "C_rated": 0,
+    "I_rated": 0,
+    "P_rated": 0,
+    "Pareto_eligible": 0,
+    "conditioned_feasible": 24,
+    "fully_rated": 0,
+    "valid_generated": 24
+  },
+  "authority": {
+    "greater_than_80_percent_gate": "NOT ESTABLISHED",
+    "natural_password_recovery": "UNRATED_NO_BASIS",
+    "pending_decision_digest": "sha256:072af7d8e6cbdf1fa714f7a50e8d98e234ced732fbced81f882a9072c793b47b",
+    "production_adoption": false
+  },
+  "independent_oracle": {
+    "checked_eligible_candidates": 24,
+    "worked_programs": [
+      {
+        "C": 2,
+        "I": "High",
+        "P": [
+          "9/40",
+          "8379/10000"
+        ],
+        "candidate": "generated_0001",
+        "program": [
+          "scenario_reset_password",
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      },
+      {
+        "C": 3,
+        "I": "High",
+        "P": [
+          "27/200",
+          "159201/200000"
+        ],
+        "candidate": "generated_0002",
+        "program": [
+          "scenario_reset_password",
+          "scenario_reset_password",
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      },
+      {
+        "C": 3,
+        "I": "High",
+        "P": [
+          "27/200",
+          "159201/200000"
+        ],
+        "candidate": "generated_0003",
+        "program": [
+          "scenario_reset_password",
+          "scenario_reset_password",
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      },
+      {
+        "C": 3,
+        "I": "High",
+        "P": [
+          "81/800",
+          "7800849/10000000"
+        ],
+        "candidate": "generated_0004",
+        "program": [
+          "scenario_reset_password",
+          "scenario_reset_password",
+          "acquire_reset_identity",
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      },
+      {
+        "C": 3,
+        "I": "High",
+        "P": [
+          "81/800",
+          "7800849/10000000"
+        ],
+        "candidate": "generated_0005",
+        "program": [
+          "scenario_reset_password",
+          "scenario_reset_password",
+          "acquire_reset_identity",
+          "acquire_reset_identity",
+          "propagate_group_entitlement",
+          "scenario_winrm_admin"
+        ]
+      }
+    ]
+  },
+  "input_pins": {
+    "applicability-v1.1.json": "sha256:92b2557a8dc8ffc383c2120704e6d9f8be341a1e1c159f77efdef0b27e1ff1be",
+    "cohort.json": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+    "profile.json": "sha256:0a07821f77987dadc487ebafc3de09a82a4761b9e6eaad51c63b9b35da26b3ae",
+    "source-a-inventory.json": "sha256:ac4160025569578988072a155f1196092a83904244b40faa6948082e8c162f7c",
+    "taxonomy.json": "sha256:bcd9b4176870b8ba301c373587a09c5a1403f3f4898ef3e4271f1f21ecfb5c3f"
+  },
+  "integration": {
+    "develop": "28236f234a8eba40db0a0f47b70034f27543e063",
+    "pr271_integration_commit": "31a31740ad39e5697329c3e0927f995a153ff467",
+    "proposal_head": "d08d0af165d2feb98ba0796cdddedf03cd280f07"
+  },
+  "numeric_adoption": false,
+  "public_verification": {
+    "pending": {
+      "API_CLI_semantic_ranking_coverage_programs_equal": true,
+      "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+      "comparison_version": "final-cpi-public-comparison/2.0.0",
+      "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+      "minimum_proven": false,
+      "native_transports": [
+        {
+          "bytes": 25275660,
+          "native_file_sha256": "5343ef731e031363033030b16d0cbb1e1acb71fa14ca18f9d78b6eb4db1e9b13"
+        },
+        {
+          "bytes": 25275661,
+          "native_file_sha256": "a9c1ca881bd07e73351d8b950baab871854848b2c117276775f22fb7c01f1519"
+        }
+      ],
+      "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+      "orchestration_search_ranking_programs_equal": true,
+      "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+      "program_summary_scope": "technique names are display summaries only",
+      "two_CLI_exit_codes": [
+        0,
+        0
+      ],
+      "two_process_equal": true
+    },
+    "synthetic": {
+      "API_CLI_semantic_ranking_coverage_programs_equal": true,
+      "comparison": "normalized semantic outcomes, generated programs, caps/guarantees, full ranking/coverage",
+      "comparison_version": "final-cpi-public-comparison/2.0.0",
+      "full_attempt_traces": "transient; normalized private artifacts and native file digests retained",
+      "minimum_proven": true,
+      "native_transports": [
+        {
+          "bytes": 20901954,
+          "native_file_sha256": "d0a19eb95c744d8da9f07b992c2be0753da05426278c41c546324061d3a24eab"
+        },
+        {
+          "bytes": 20901954,
+          "native_file_sha256": "9f305edafffec1342bff9c2ace5cacb32d4c5d2d3d946aa3bb0d7157a4ba9331"
+        }
+      ],
+      "orchestration_comparison_scope": "search truncation/reason/completeness/expansions, ordered programs and ranking only; public status/goal/caps/guarantees are not exposed by this orchestration contract",
+      "orchestration_search_ranking_programs_equal": true,
+      "program_identity_scope": "ordered canonical wire(PathResult); excludes only candidate_id",
+      "program_summary_scope": "technique names are display summaries only",
+      "two_CLI_exit_codes": [
+        0,
+        0
+      ],
+      "two_process_equal": true
+    }
+  },
+  "raw_replay_limit": "original full-raw-four transport timed out at 180s before completing run1; full cohort denominator not measured in this run",
+  "revision": "91df4154e1c97436033ac2f491b8dec32d506f83",
+  "source_sha256": {
+    "scripts/research/final_cpi_coverage.py": "42ac7fef722ecb3b74fd8c1b45f2ea5c59f74ffcba412a8c73bd96a78d347a64",
+    "scripts/research/final_cpi_profiles.py": "2d3274377cefce1c88bd43fb256d504444ed6eb1bc2e7a65f3edab4c23577839",
+    "src/engine/ranking/effort_registry.py": "163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+    "src/engine/ranking/likelihood.py": "7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+    "src/engine/ranking/resolution_service.py": "d9efee8553610b11317265da82a5a6f4ca0f0043582450a6e74379f8b09634c0",
+    "src/engine/ranking/resolver.py": "93b75586a70fa5c7693fddb7877f3fddd6ebd8c09575a72898191f50be849105"
+  },
+  "synthetic_wiring": {
+    "C_rated": 24,
+    "I_rated": 24,
+    "P_rated": 24,
+    "Pareto_eligible": 24,
+    "conditioned_feasible": 24,
+    "fully_rated": 24,
+    "valid_generated": 24
+  },
+  "validation": {
+    "additional_raw_tests": "INTERRUPTED; no completed suite total claimed",
+    "focused_regressions": {
+      "passed": 232,
+      "raw_cases_deselected": 9,
+      "seconds": 38.28
+    },
+    "format": "PASS changed files",
+    "full_raw_cohort": "INCOMPLETE: raw-four CLI exceeded 180-second wall limit",
+    "full_suite": "NOT RUN",
+    "lint": "PASS changed files",
+    "python": "3.14.8",
+    "remote_ci": "NOT CLAIMED PASS"
+  },
+  "verified_snapshot": {
+    "archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+    "file_count": 6,
+    "raw_verified_after_probe": true,
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "total_size_bytes": 11371828
+  },
+  "version": "issue267-b-release-projection/1.0.0"
+}

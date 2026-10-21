@@ -1,0 +1,103 @@
+"""Raw direct-ACE/member oracle and BFS/Dijkstra on an explicit simple projection.
+
+No AWG parser, candidate generator, transitions, ranking or cost compiler imported.
+This validates a subset/witness, not full semantic completeness or AD execution.
+"""
+import hashlib
+import gzip
+import heapq
+import json
+from collections import deque
+from pathlib import Path
+
+root=Path(__file__).resolve().parent;repo=root/'repo'
+out=repo/'reports/generated/awg-r04-guided-remediation-v1'
+raw=repo/'data/raw/SEAMLESS'
+manifest=json.loads((repo/'data/samples/manifests/seamless-raw-v1.json').read_text())
+for f in manifest['files']:
+    b=(raw/f['relative_path']).read_bytes()
+    assert len(b)==f['size_bytes'] and hashlib.sha256(b).hexdigest()==f['sha256']
+def records(kind):
+    path=raw/f'20210920185958_{kind}.json'
+    return json.loads(path.read_text(encoding='utf-8-sig'))[kind]
+users=records('users');groups=records('groups');computers=records('computers')
+names={r['ObjectIdentifier']:r['Properties']['name'] for r in users+groups+computers}
+old=json.loads((repo/'reports/generated/awg-r04-guided-v1/2x3-goal_guided/projection.json').read_text())
+sources={s['source_id']:s['node_id'] for s in old['request']['sources']}
+request=json.loads((out/'request.json').read_text())
+edit=request['edits'][0];assert len(request['edits'])==1
+relation=edit['relationship'];assert relation['kind']=='MemberOf'
+target=relation['target'];assert target.endswith('-512')
+members={}
+for gi,g in enumerate(groups):
+    if g['ObjectIdentifier']!=target:continue
+    for mi,m in enumerate(g['Members']):
+        if m['MemberType']=='User':
+            members[m['MemberId']]={'file':'20210920185958_groups.json','pointer':f'/groups/{gi}/Members/{mi}'}
+assert relation['source'] in members
+rights={source:{} for source in sources.values()}
+for ui,u in enumerate(users):
+    uid=u['ObjectIdentifier']
+    if u['Properties'].get('enabled') is False:continue
+    for ai,a in enumerate(u['Aces']):
+        principal=a['PrincipalSID']
+        if principal in rights and a['RightName']=='GenericAll':
+            rights[principal][uid]={'file':'20210920185958_users.json','pointer':f'/users/{ui}/Aces/{ai}','IsInherited':a['IsInherited']}
+
+def shortest(adjacency,start,weighted):
+    if weighted:
+        queue=[(0,0,start,[start])];best={start:0};serial=1
+        while queue:
+            cost,_,node,path=heapq.heappop(queue)
+            if cost!=best[node]:continue
+            if node==target:return {'path':path,'hops':len(path)-1,'C':cost}
+            for nxt,weight in adjacency.get(node,[]):
+                new=cost+weight
+                if new<best.get(nxt,float('inf')):
+                    best[nxt]=new;heapq.heappush(queue,(new,serial,nxt,path+[nxt]));serial+=1
+    else:
+        queue=deque([(start,[start],0)]);seen={start}
+        while queue:
+            node,path,cost=queue.popleft()
+            if node==target:return {'path':path,'hops':len(path)-1,'C':cost}
+            for nxt,weight in adjacency.get(node,[]):
+                if nxt not in seen:seen.add(nxt);queue.append((nxt,path+[nxt],cost+weight))
+    return None
+
+rows=[]
+for sid,source in sources.items():
+    assert source not in members, 'zero-reset direct membership requires separate handling'
+    for side in ['before','after']:
+        owners=sorted(set(rights[source]) & set(members))
+        if side=='after':owners=[o for o in owners if o!=relation['source']]
+        adjacency={source:[(u,1) for u in owners],**{u:[(target,0)] for u in owners}}
+        bfs=shortest(adjacency,source,False);dijkstra=shortest(adjacency,source,True)
+        assert bfs and dijkstra and bfs['C']==dijkstra['C']==1
+        rows.append({'source_id':sid,'source':source,'side':side,'direct_conditioned_routes':len(owners),
+                     'BFS':bfs,'weighted_Dijkstra':dijkstra,
+                     'projection_min_C':1,'projection_lower_bound':'Every path in this explicitly two-edge projection requires one reset1/activation0; no initial DA membership or other initial identity is admitted.',
+                     'example_raw_support':{'owner':owners[0],'GenericAll':rights[source][owners[0]],'MemberOf':members[owners[0]]}})
+
+witness_path=out/'witnesses.json'
+witnesses=json.loads(witness_path.read_text() if witness_path.exists() else gzip.decompress(witness_path.with_suffix('.json.gz').read_bytes()).decode());checked=[]
+for w in witnesses:
+    actions=[h['result']['request'] for h in w['native']['native_history']]
+    assert [a['technique_id'] for a in actions]==['scenario_reset_password','acquire_reset_identity','propagate_group_entitlement']
+    actor=sources[w['source_id']];owner=actions[0]['target']
+    assert actions[0]['actor']==actor and owner in rights[actor] and owner in members
+    assert actions[1]['actor']==owner and actions[2]['actor']==owner and actions[2]['target']==target
+    if w['side']=='after':assert owner!=relation['source']
+    checked.append({'source_id':w['source_id'],'side':w['side'],'actor':actor,'owner':owner,'goal':target,
+                    'actual_actor_labels':[names.get(a['actor'],a['actor']) for a in actions],
+                    'owner_label':names[owner],'source_label':names[actor],'goal_label':names[target],
+                    'GenericAll':rights[actor][owner],'MemberOf':members[owner],
+                    'independent_unique_reset_work_count':len({(a['actor'],a['target']) for a in actions if a['technique_id']=='scenario_reset_password'})})
+assert len(checked)==4
+result={'version':'awg-r04-remediation-raw-oracle/1','raw_files_manifest_verified':6,
+        'edited_membership':{**relation,'source_label':names[relation['source']],'target_label':names[target],'raw_support':members[relation['source']]},
+        'native_witnesses_checked':checked,'conditioned_projection_results':rows,
+        'projection_definition':'Only observed direct GenericAll(source, enabled User), bundled reset+activation C1, followed by direct User membership in this DA Group C0. Runtime gates and usable source/context are conditioned on the declared scenario. No inferred/group ACLs, credential cracking, nested membership or host control.',
+        'independence':'Python stdlib reads raw records/locators and manifest, implements standalone BFS/Dijkstra and counts reset operations; no AWG source imported.',
+        'limits':['Projection minimum is not a full-native minimum proof; native proof flags stay unchanged.','This restricted additive case can be solved by a simple weighted graph; not evidence AWG is faster or required for it.','A bypass proves continued exposure in the scenario, not that the edit has no security value elsewhere.','No timing comparison between this reduced projection and the full audited native pipeline.']}
+(out/'raw-oracle.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'routes':[(r['source_id'],r['side'],r['direct_conditioned_routes']) for r in rows],'raw_witnesses':len(checked),'edited_membership':result['edited_membership']}))

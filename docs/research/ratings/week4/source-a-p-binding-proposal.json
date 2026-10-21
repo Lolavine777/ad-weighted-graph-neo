@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "numeric_reuse_permitted": false,
+  "purpose": "Exact contextual equivalence proposal for the two generated historical Source-A programs only",
+  "accepted_bridge_path": "docs/research/ratings/week3-closeout/semantic-bridge-plan.json",
+  "accepted_release_path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+  "accepted_release_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+  "accepted_input_pins": {
+    "acceptance_manifest": {
+      "blob_sha": "fa60208cfd4d9621f2ee22edc3489eb960a6a686",
+      "canonical_digest": "sha256:73048e3f93be293556e65dc0e8c950255d7b77b9194b150f86b85b6cfc254c28",
+      "file_sha256": "6c6b2c591007c4de7f6f7fdba39ed01242356fd9d66313d4a53033bc1ce20152",
+      "path": "tests/fixtures/ranking/week3_acceptance_cases.json",
+      "source_pr": 178,
+      "source_revision": "6d06dc7bb9352db568eb7dc6deb92285a8d32489"
+    },
+    "accepted_plan": {
+      "canonical_digest": "sha256:2fc93a877235f0703d8f0341e15062047e4df15011214330ab601a566a671e5a",
+      "file_sha256": "c26d18918fc6ce62bda98cb20f4da3be786ca1ee5f42fa82dc0e035b82be7f86",
+      "path": "docs/research/ratings/week3-closeout/search-integration-plan.json"
+    }
+  },
+  "candidate_source": "generate_attack_paths",
+  "historical_candidates": [
+    "cand_seamless_01_direct_lidia",
+    "cand_seamless_02_alt_vajer_ollie"
+  ],
+  "search_budget": {
+    "max_expansions": 60000,
+    "max_paths": 25,
+    "max_steps": 10
+  },
+  "scope_claim": "Bounded reviewed subset; expansion cap reached; no exhaustive/K-best or Pareto acceptance claim",
+  "proposed_action_equivalences": {
+    "scenario_reset_password": "reset_password",
+    "acquire_reset_identity": "acquire_ticket",
+    "scenario_winrm_admin": "remote_exec_winrm"
+  },
+  "passive_closure": "propagate_group_entitlement adds no work unit and no q event",
+  "identity_rule": "Every field of the full P lookup key, including every ordered canonical prefix identity, must match its reviewed digest; no wildcard, context projection or technique-only lookup",
+  "binding_inventory": [
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q1",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_01_direct_lidia:q1",
+      "source_record_digest": "sha256:32b2ee63b577b22c0fe4f62e527869ffb9d16e2f037fda4d75858dcb24d02565",
+      "generated_lookup_key_digest": "sha256:c72314584a37c34547cc3aef6e6f5cea6e3d4a8c3645f621c18163efbe54824d",
+      "legacy_lookup_key_digest": "sha256:058497326f0fe634341477e4795a1b615c69bca90427ddd14ecc4e104917c628",
+      "ordered_history_length": 1,
+      "legacy_outcome_action_id": "action_reset_lidia"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q2",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_01_direct_lidia:q2",
+      "source_record_digest": "sha256:a224ffb1bcbfee5f1b0138576880d11a16ebc06c24782e65acd7d8c9be92d62d",
+      "generated_lookup_key_digest": "sha256:aff9b8571e019a2957f05947cb01c1f104ef19496a477b4f6176493d169636fa",
+      "legacy_lookup_key_digest": "sha256:e30dcd4daeb2fca0679230a4b6fd49dd4178a826c0bf9aba6678da3b3d801ab4",
+      "ordered_history_length": 2,
+      "legacy_outcome_action_id": "action_activate_lidia"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q3",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_01_direct_lidia:q3",
+      "source_record_digest": "sha256:4c2094cc1ea4c03d25b2d2852f92205dd5ae90b041ff879cbf6151054903ea7c",
+      "generated_lookup_key_digest": "sha256:bf57ed5606a3d5755448b61d3457af45d703b9844fbb66adec68f2d9d113259c",
+      "legacy_lookup_key_digest": "sha256:2bf71bc80b8253be1b6deba178a1ad2344b273e2d54434d5b872e24a04c9cfd5",
+      "ordered_history_length": 3,
+      "legacy_outcome_action_id": "action_winrm_badblood_lidia"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q1",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q1",
+      "source_record_digest": "sha256:97eb9cae826fe2cfb1550e86558d1c3cbe5d689e1f0438d01fa8398846959e5e",
+      "generated_lookup_key_digest": "sha256:8b3d606ac1442f237e2bffbd08a17d5d29adfd6b346b371ba2c3af2353ffe2c4",
+      "legacy_lookup_key_digest": "sha256:caad3ea0e9703a05e6cc89fb67bc1f11e105c7d0cdf75b297dbb85b22fb2dcff",
+      "ordered_history_length": 1,
+      "legacy_outcome_action_id": "action_reset_josefa"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q2",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q2",
+      "source_record_digest": "sha256:84a229ba6fa1863a58b89aded577dccac887a8d564d5510e06fbd1b5b8497b13",
+      "generated_lookup_key_digest": "sha256:b79d481e5ad6d8b368e91a6eda7b345436263fcace2aa2a97b72ebc522eaecfc",
+      "legacy_lookup_key_digest": "sha256:851f0b08e171f3cd8268aea010b1c77e8495f9a449bbf4921a9e5fcc25aaf301",
+      "ordered_history_length": 2,
+      "legacy_outcome_action_id": "action_activate_josefa"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q3",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q3",
+      "source_record_digest": "sha256:bbd50be3ccea864715e05308d39dd81807f56a6bf3b91aa7ee1613f6ee2c31f1",
+      "generated_lookup_key_digest": "sha256:9e54ef931eae8aecee2268394039aba0834e70ca106e50591fb9b38ecf81b0c3",
+      "legacy_lookup_key_digest": "sha256:2f444048feb145718bdfc7d3e32e296d4ad3a88dc3984cc2ce29d521abbd1387",
+      "ordered_history_length": 3,
+      "legacy_outcome_action_id": "action_reset_ollie"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q4",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q4",
+      "source_record_digest": "sha256:76c8041a7cc619fd2688f024433b2a4f9403a64450b13450d934796ce1743b29",
+      "generated_lookup_key_digest": "sha256:72145d20a93ba1d60515827379558b366f080f610f6e76a32c2066eabf65711d",
+      "legacy_lookup_key_digest": "sha256:99c03a04dbff8cf558a219ca2ccf2e8f4eded671faf8b6ede5ffe657973b3ffe",
+      "ordered_history_length": 4,
+      "legacy_outcome_action_id": "action_activate_ollie"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q5",
+      "status": "proposed_pending_b_review",
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q5",
+      "source_record_digest": "sha256:e5a51f1c89624de52c1ffd28f9b9141f1880d7a307296db111cce09425a2d428",
+      "generated_lookup_key_digest": "sha256:83ab0ec879987659a24f6d2f6714661c3e42cd8637b8fb926bdbbefe0bfbfa3f",
+      "legacy_lookup_key_digest": "sha256:3147234136d49b1161676e2230462a498acf3c036880a331d54fcded62756b8d",
+      "ordered_history_length": 5,
+      "legacy_outcome_action_id": "action_winrm_badblood_ollie"
+    }
+  ],
+  "required_b_decision": "Review each exact generated contextual key against its pinned historical q record, including aliases, structural source, auth/resource context and retry policy; approve or reject each binding without changing Week 3 ratings.",
+  "implementation_gate": "This is not a loaded numeric registry. B must review exact local inventories and approve/reject each binding and its C applicability before an explicit provider adapter is implemented under #250/#251.",
+  "reproduction": "python -m scripts.research.rating_p_binding_probe --raw-dir <manifest-verified-private-raw-dir> --output <local-private-inventory.json>"
+}

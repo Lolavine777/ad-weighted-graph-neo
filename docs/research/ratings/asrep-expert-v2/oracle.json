@@ -1,0 +1,136 @@
+{
+  "conditional_intervals": [
+    [
+      "9/10",
+      "99/100"
+    ],
+    [
+      null,
+      null
+    ],
+    [
+      "3/4",
+      "49/50"
+    ],
+    [
+      "1/2",
+      "9/10"
+    ]
+  ],
+  "effort": 3,
+  "frozen_before_new_engine_run": true,
+  "impact": "High",
+  "missing_q_product": null,
+  "not_a_phase2_comparison": true,
+  "path_product": null,
+  "pending": {
+    "C_rated": 0,
+    "I_rated": 0,
+    "P_events_rated": 0,
+    "P_events_required": 4,
+    "P_rated": 0,
+    "Pareto_eligible": 0,
+    "conditioned_feasible_paths": 1,
+    "fully_rated": 0,
+    "valid_generated_paths": 1
+  },
+  "program": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "obtain_admin_execution_on_host"
+  ],
+  "review_gate_test_copy_only": {
+    "C_rated": 1,
+    "I_rated": 1,
+    "P_events_rated": 3,
+    "P_events_required": 4,
+    "P_rated": 0,
+    "Pareto_eligible": 0,
+    "conditioned_feasible_paths": 1,
+    "fully_rated": 0,
+    "valid_generated_paths": 1
+  },
+  "schema_version": "asrep-expert-oracle/2.0.0",
+  "semantic_cases": {
+    "asset_veto": {
+      "checkpoint_reached": false,
+      "final_goal_reached": false,
+      "maximum_successful_prefix_steps": 3,
+      "path_count": 0,
+      "rejected_assumption_reasons": [
+        "known_false_veto"
+      ],
+      "status": "blocked"
+    },
+    "assumed": {
+      "checkpoint_reached": false,
+      "final_goal_reached": true,
+      "programs": [
+        [
+          "asrep_request",
+          "recover_asrep_secret",
+          "activate_recovered_identity",
+          "obtain_admin_execution_on_host"
+        ]
+      ],
+      "projected_states": [
+        [],
+        [
+          "material"
+        ],
+        [
+          "material",
+          "secret"
+        ],
+        [
+          "material",
+          "secret",
+          "usable"
+        ],
+        [
+          "material",
+          "secret",
+          "usable",
+          "admin"
+        ]
+      ],
+      "status": "success"
+    },
+    "missing_recovery": {
+      "final_goal_reached": false,
+      "maximum_successful_prefix_steps": 1,
+      "path_count": 0,
+      "status": "indeterminate"
+    },
+    "no_request": {
+      "final_goal_reached": false,
+      "path_count": 0,
+      "status": "blocked"
+    },
+    "off": {
+      "final_goal_reached": false,
+      "path_count": 0,
+      "status": "no_path"
+    },
+    "raw": {
+      "final_goal_reached": false,
+      "maximum_successful_prefix_steps": 0,
+      "path_count": 0,
+      "status": "indeterminate"
+    },
+    "step_cap": {
+      "final_goal_reached": false,
+      "path_count": 0,
+      "status": "truncated",
+      "truncated": true,
+      "truncation_reason": "step_limit_reached"
+    }
+  },
+  "unit_costs": [
+    0,
+    2,
+    0,
+    1
+  ]
+}

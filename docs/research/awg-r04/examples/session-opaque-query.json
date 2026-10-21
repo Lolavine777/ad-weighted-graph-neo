@@ -1,0 +1,103 @@
+{
+  "source_foothold": "10000000-0000-4000-8000-000000000002",
+  "initial_actor": "10000000-0000-4000-8000-000000000002",
+  "initial_state": {
+    "control": [
+      "10000000-0000-4000-8000-000000000002"
+    ],
+    "admin_control": [
+      "10000000-0000-4000-8000-000000000002"
+    ]
+  },
+  "authentication_context": "10000000-0000-4000-8000-000000000002",
+  "target": "S-1-5-21-1000-2000-3000-512",
+  "target_goal": {
+    "kind": "usable_identity_entitlement",
+    "target": "S-1-5-21-1000-2000-3000-512"
+  },
+  "allowed_techniques": [
+    "activate_recovered_identity",
+    "propagate_group_entitlement",
+    "recover_session_credential_material"
+  ],
+  "assumptions": [
+    {
+      "predicate": "secret_valid",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "session_fresh",
+      "subject": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1101",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "session_present",
+      "subject": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1101",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    },
+    {
+      "predicate": "credential_accessible",
+      "subject": "10000000-0000-4000-8000-000000000002",
+      "target": "S-1-5-21-1000-2000-3000-1101",
+      "value": true,
+      "scope": "session-boundary-oracle",
+      "rationale": "Synthetic finite gate",
+      "provenance_reference": "synthetic://session-boundary/session_opportunity_only"
+    }
+  ],
+  "budget": {
+    "max_paths": 10,
+    "max_steps": 4,
+    "max_expansions": 100
+  },
+  "scenario_reference": "session-boundary-oracle/session_opportunity_only"
+}

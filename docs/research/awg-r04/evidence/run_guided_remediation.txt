@@ -1,0 +1,106 @@
+"""One mined permission intervention on two prior exact public DA queries."""
+import gc
+import gzip
+import hashlib
+import json
+import subprocess
+import sys
+import time
+from collections import Counter
+from dataclasses import asdict
+from pathlib import Path
+
+root = Path(__file__).resolve().parent
+repo = root / 'repo'
+sys.path.insert(0, str(repo))
+from src.engine.graph import EngineGraph
+from src.engine.batch import BatchExecutionBudget
+from src.engine.remediation import prepare_baseline, ReplayBaseline, request_for_baseline
+from src.engine.remediation_runner import inventory_interventions, run_remediation, rank_interventions
+from src.engine.ranking.resolution_service import canonical_digest
+
+out = repo/'reports/generated/awg-r04-guided-remediation-v1'
+out.mkdir(exist_ok=False)
+assert not subprocess.check_output(['git', 'status', '--porcelain'], cwd=repo, text=True).strip()
+revision = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip()
+start = time.perf_counter()
+def save(name, value):
+    (out/name).write_text(json.dumps(value, ensure_ascii=False, indent=2)+'\n')
+def event(stage, **data):
+    print(json.dumps({'stage':stage, 'seconds':time.perf_counter()-start, **data}), flush=True)
+def query_from_capture(path, key):
+    marker = json.dumps(key)+':{"query":'
+    with gzip.open(path,'rt',encoding='utf-8') as f:
+        buf = ''
+        while True:
+            chunk = f.read(1048576); assert chunk, 'query marker missing'
+            buf += chunk
+            pos = buf.find(marker)
+            if pos >= 0:
+                buf = buf[pos+len(marker):]; break
+            buf = buf[-len(marker):]
+        decoder = json.JSONDecoder()
+        while True:
+            try:
+                query, _ = decoder.raw_decode(buf); return query
+            except json.JSONDecodeError:
+                chunk=f.read(1048576); assert chunk,'truncated query';buf+=chunk
+
+old = repo/'reports/generated/awg-r04-guided-v1/2x3-goal_guided'
+p = json.loads((old/'projection.json').read_text())
+cells = []
+for row in p['rows']:
+    if not row['reached']: continue
+    sid, gid = row['source_id'],row['goal_id']
+    query = query_from_capture(old/'result.json.gz', canonical_digest([sid,gid]))
+    assert canonical_digest(query)==row['query_sha256']
+    assert query['search_order']=='goal_guided' and query['target'].endswith('-512')
+    cells.append({'source_id':sid,'goal_id':gid,'query':query})
+assert len(cells)==2 and len({c['goal_id'] for c in cells})==1
+save('cells.json',cells)
+graph = EngineGraph.from_snapshot((repo/'data/processed/awg-r04/pilot-v2/snapshot.json').read_text())
+graph_before = canonical_digest(graph.to_canonical())
+event('loaded_exact_prior_queries', pairs=len(cells))
+baseline = prepare_baseline(graph,cells,run_id='guided-mvp-remediation')
+save('baseline.json',asdict(baseline));event('baseline_prepared')
+inventory = inventory_interventions(graph,baseline)
+save('inventory.json',inventory)
+choices = sorted((c for c in inventory['candidates'] if c['status']=='supported' and c['technical_edits'] and all(e['kind']=='deny_relationship' for e in c['technical_edits'])),key=lambda c:(-len(c['observed_bindings']),c['candidate_id']))
+assert choices, 'no supported mined relationship candidate'
+candidate = choices[0]
+request = request_for_baseline(baseline,candidate['technical_edits'],request_id='guided-mvp:'+candidate['candidate_id'])
+save('request.json',request)
+save('selection.json',{'policy':'Supported relationship edits only, descending native observed binding coverage, stable candidate_id; not effectiveness or defender cost','selected':candidate,'all_inventory_candidates':len(inventory['candidates']),'supported_relationship_candidates':len(choices)})
+event('mined_intervention', candidate=candidate['candidate_id'],edits=candidate['technical_edits'],inventory=len(inventory['candidates']))
+gc.collect()
+before=time.perf_counter()
+package=run_remediation(request,graph,baseline,execution_budget=BatchExecutionBudget(max_cells=2,max_expansions=24000))
+seconds=time.perf_counter()-before
+assert canonical_digest(graph.to_canonical())==graph_before
+assert package['execution']['after_executed_cells']==2
+save('report.json',package['report'])
+save('analytics.json',package['analytics'])
+save('ranking.json',rank_interventions([package]))
+replay=package['artifacts'][package['replay_ref']]
+save('replay.json',replay)
+witnesses=[]
+for cell in package['report']['cells']:
+    for side in ['before','after']:
+        for trace in cell[side]['trace_refs']:
+            native=package['artifacts'][trace['trace_ref']]
+            witnesses.append({'source_id':cell['source_id'],'goal_id':cell['goal_id'],'side':side,'trace':trace,'native':native})
+save('witnesses.json',witnesses)
+event('verified_native_replay_and_rediscovery',summary=package['report']['summary'],analytics=package['analytics'],native_seconds=seconds)
+projection={'version':'awg-r04-guided-remediation/1','revision':revision,'prior_capture_revision':p['revision'],'prior_queries_exact_sha256':{canonical_digest([c['source_id'],c['goal_id']]):canonical_digest(c['query']) for c in cells},'harness_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'selection':json.loads((out/'selection.json').read_text()),'request':request,'report':package['report'],'analytics':package['analytics'],'ranking':rank_interventions([package]),'execution':package['execution'],'phase_seconds':{'setup_inventory':before-start,'native_remediation_including_verifier':seconds},'raw_graph_unchanged':True,'limits':'Two declared independent compromises to one DA Group goal, same exact prior queries/caps/three techniques. Complete native package verifier runs in run_remediation. No optimal fix, domain-wide gain, live AD change, statistical speedup or calibrated P claim.'}
+digest=hashlib.sha256();size=0;pieces=[];length=0
+with gzip.open(out/'package.json.gz','wb',compresslevel=1) as f:
+    def flush():
+        global pieces,length,size
+        b=''.join(pieces).encode();f.write(b);digest.update(b);size+=len(b);pieces=[];length=0
+    for chunk in json.JSONEncoder(ensure_ascii=False,separators=(',',':')).iterencode(package):
+        pieces.append(chunk);length+=len(chunk)
+        if length>=262144:flush()
+    if pieces:flush()
+projection['audit']={'uncompressed_bytes':size,'uncompressed_sha256':digest.hexdigest(),'gzip_bytes':(out/'package.json.gz').stat().st_size}
+save('projection.json',projection)
+event('complete',summary=package['report']['summary'],audit=projection['audit'])

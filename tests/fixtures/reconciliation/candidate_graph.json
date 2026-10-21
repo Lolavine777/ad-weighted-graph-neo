@@ -1,0 +1,150 @@
+{
+  "metadata": {
+    "contract_version": "1.3.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "created_at": "2026-10-01T00:00:00Z",
+    "code_version": "fixture/synthetic",
+    "synthetic": true,
+    "description": "Independent synthetic candidate graph for baseline comparator testing",
+    "comparison_scope": {
+      "id": "m1-structural-v1",
+      "node_population": "collected_and_boundary",
+      "relationship_kinds": [
+        "MemberOf",
+        "AdminTo",
+        "GenericAll",
+        "WriteDacl",
+        "ForceChangePassword",
+        "CanRDP",
+        "CanPSRemote",
+        "HasSession"
+      ],
+      "memberof_semantics": "direct"
+    },
+    "source_evidence": "tests/fixtures/reconciliation/candidate_graph.json",
+    "export_complete": true
+  },
+  "nodes": [
+    {"id": "S-1-5-21-500-600-700-1101", "kind": "User", "label": "Alice", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-1102", "kind": "User", "label": "Bob", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-1103", "kind": "User", "label": "Charlie", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-1104", "kind": "User", "label": "Dave", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-2101", "kind": "Group", "label": "Helpdesk", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-2102", "kind": "Group", "label": "Operators", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-3101", "kind": "Computer", "label": "WS01", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-21-500-600-700-3102", "kind": "Computer", "label": "SRV01", "domain": "DOMAIN.LOCAL", "is_boundary": false},
+    {"id": "S-1-5-4", "kind": "Group", "label": "INTERACTIVE", "domain": "NT AUTHORITY", "is_boundary": true},
+    {"id": "S-1-5-21-888-999-100-1105", "kind": "User", "label": "ForeignAdmin", "domain": "EXTERNAL.LOCAL", "is_boundary": true}
+  ],
+  "edges": [
+    {
+      "id": "sha256:0001000000000000000000000000000000000000000000000000000000000001",
+      "source": "S-1-5-21-500-600-700-1101",
+      "target": "S-1-5-21-500-600-700-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2101", "attribute": "Members"},
+        {"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups-repeat.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2101", "attribute": "Members"}
+      ]
+    },
+    {
+      "id": "sha256:0002000000000000000000000000000000000000000000000000000000000002",
+      "source": "S-1-5-21-500-600-700-1102",
+      "target": "S-1-5-21-500-600-700-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2101", "attribute": "Members"}]
+    },
+    {
+      "id": "sha256:0003000000000000000000000000000000000000000000000000000000000003",
+      "source": "S-1-5-21-500-600-700-2101",
+      "target": "S-1-5-21-500-600-700-2102",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2102", "attribute": "Members"}]
+    },
+    {
+      "id": "sha256:0004000000000000000000000000000000000000000000000000000000000004",
+      "source": "S-1-5-21-888-999-100-1105",
+      "target": "S-1-5-21-500-600-700-2102",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2102", "attribute": "Members"}]
+    },
+    {
+      "id": "sha256:0005000000000000000000000000000000000000000000000000000000000005",
+      "source": "S-1-5-4",
+      "target": "S-1-5-21-500-600-700-2101",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/groups.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-2101", "attribute": "Members"}]
+    },
+    {
+      "id": "sha256:0006000000000000000000000000000000000000000000000000000000000006",
+      "source": "S-1-5-21-500-600-700-2102",
+      "target": "S-1-5-21-500-600-700-3101",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/computers.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-3101", "attribute": "LocalAdmins"}]
+    },
+    {
+      "id": "sha256:0007000000000000000000000000000000000000000000000000000000000007",
+      "source": "S-1-5-21-500-600-700-2102",
+      "target": "S-1-5-21-500-600-700-3102",
+      "kind": "AdminTo",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/computers.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-3102", "attribute": "LocalAdmins"}]
+    },
+    {
+      "id": "sha256:0008000000000000000000000000000000000000000000000000000000000008",
+      "source": "S-1-5-21-500-600-700-1101",
+      "target": "S-1-5-21-500-600-700-1102",
+      "kind": "GenericAll",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/users.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-1102", "attribute": "Aces"}]
+    },
+    {
+      "id": "sha256:0009000000000000000000000000000000000000000000000000000000000009",
+      "source": "S-1-5-21-500-600-700-1101",
+      "target": "S-1-5-21-500-600-700-1103",
+      "kind": "WriteDacl",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/users.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-1103", "attribute": "Aces"}]
+    },
+    {
+      "id": "sha256:0010000000000000000000000000000000000000000000000000000000000010",
+      "source": "S-1-5-21-500-600-700-1102",
+      "target": "S-1-5-21-500-600-700-1104",
+      "kind": "ForceChangePassword",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/users.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-1104", "attribute": "Aces"}]
+    },
+    {
+      "id": "sha256:0011000000000000000000000000000000000000000000000000000000000011",
+      "source": "S-1-5-21-500-600-700-1101",
+      "target": "S-1-5-21-500-600-700-3101",
+      "kind": "CanRDP",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/computers.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-3101", "attribute": "RemoteDesktopUsers"}]
+    },
+    {
+      "id": "sha256:0012000000000000000000000000000000000000000000000000000000000012",
+      "source": "S-1-5-21-500-600-700-1102",
+      "target": "S-1-5-21-500-600-700-3102",
+      "kind": "CanPSRemote",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/computers.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-3102", "attribute": "RemoteManagementUsers"}]
+    },
+    {
+      "id": "sha256:0013000000000000000000000000000000000000000000000000000000000013",
+      "source": "S-1-5-21-500-600-700-3101",
+      "target": "S-1-5-21-500-600-700-1101",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [{"raw_file": "snapshot:1111111111111111111111111111111111111111111111111111111111111111/computers.json", "collector": "synthetic/1.0", "timestamp": "2026-10-01T00:00:00Z", "timestamp_status": "observed", "evidence_type": "positive", "record_id": "S-1-5-21-500-600-700-3101", "attribute": "Sessions"}]
+    }
+  ],
+  "assessments": []
+}

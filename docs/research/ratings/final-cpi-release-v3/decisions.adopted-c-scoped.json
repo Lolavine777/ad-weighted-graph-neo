@@ -1,0 +1,452 @@
+{
+  "authority": {
+    "dimension": "C",
+    "disposition": "adopt",
+    "numeric_basis_class": "estimated_expert_scenario",
+    "reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267#issuecomment-6142406787",
+    "reviewed_at": "2026-10-13T09:21:18Z",
+    "reviewer": "nairyuuu"
+  },
+  "binding_constraints": {
+    "adopted_contexts": [
+      "acl-group-host",
+      "kerberoast-material",
+      "rbcd-scoped",
+      "winrm-command"
+    ],
+    "context_authority_digest": "sha256:af2d62fed6d58a4d388b49c2e529a1579262a4c6132a41c58c5988e0ab412fed",
+    "context_authority_reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/271#issuecomment-6163909537",
+    "recovery_C_only_classes": {
+      "asrep_password_recovery": 2,
+      "kerberoast_password_recovery": 3
+    },
+    "recovery_C_only_contexts": [
+      "asrep-natural-password",
+      "kerberoast-identity"
+    ]
+  },
+  "candidate_digest": "sha256:dc79dc9ac9371844ac506cbd5601cdb9c8aabee0425f62291ab52f709dab3d16",
+  "classes": {
+    "asrep_material_request": {
+      "C": {
+        "cost": 0,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "asrep_password_recovery": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "no numeric basis"
+      }
+    },
+    "grant_generic_all": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "grant_write_dacl": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "group_membership_mutation": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "host_admin_execution": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "kerberoast_material_request": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "kerberoast_password_recovery": {
+      "C": {
+        "cost": 3,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "no numeric basis"
+      }
+    },
+    "rbcd_admin_execution": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "rbcd_descriptor_mutation": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "rbcd_secret_acquisition": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "rbcd_service_delegation": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "rbcd_service_preparation": {
+      "C": {
+        "cost": 2,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    },
+    "winrm_command_session": {
+      "C": {
+        "cost": 1,
+        "decision": "adopt"
+      },
+      "P": {
+        "decision": "needs_evidence",
+        "reason": "exact context/history authority pending; numeric values already approved"
+      }
+    }
+  },
+  "context_domains": {
+    "acl-group-all-generator": {
+      "consequence_rating": "High",
+      "control_scope": {
+        "actions_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:cd92da7a95a41ab29be586bdc1b9337cbdf8f2155f43dd959eb72130603d2a4c",
+      "horizon": "24h",
+      "query_digest": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+      "registry_counts": {
+        "effort": 7,
+        "likelihood": 212
+      },
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:5b8aa4846ab201a309db538b2e32d0d749d4e20e0ce26479c9cd0f1b75ca0d72",
+        "kind": "required_state",
+        "required_state_fields": [
+          "admin_control"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:27338183afdb4c3d15c931c01e4c46023f31e4c07dd092b3808af9fe45dc18d3"
+    },
+    "acl-group-host": {
+      "consequence_rating": "High",
+      "control_scope": {
+        "actions_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:760f279ac935c72e1ce9cf6339c1e0f4b54fd7cd42300f39e3e459f2b9fa922a",
+      "horizon": "24h",
+      "query_digest": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+      "registry_counts": {
+        "effort": 7,
+        "likelihood": 212
+      },
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:5b8aa4846ab201a309db538b2e32d0d749d4e20e0ce26479c9cd0f1b75ca0d72",
+        "kind": "required_state",
+        "required_state_fields": [
+          "admin_control"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:deb28f3d8c870020101335d531848c33fbc74f91b81bb97edd057956e3554f03"
+    },
+    "acl-group-projection": {
+      "consequence_rating": "High",
+      "control_scope": {
+        "actions_digest": "sha256:be082066b500afad041d353b0d10498d98e2f1482914b1d8d7a575b263deb382",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:05f316aa76e6ede3a96d1cba8db4817af3044b82377c7b31602093774143e8a3",
+      "horizon": "24h",
+      "query_digest": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+      "registry_counts": {
+        "effort": 7,
+        "likelihood": 212
+      },
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:5b8aa4846ab201a309db538b2e32d0d749d4e20e0ce26479c9cd0f1b75ca0d72",
+        "kind": "required_state",
+        "required_state_fields": [
+          "admin_control"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:465992dc424fd5dfaeb76e90edbe6965d4b46cb399fa9cf3e4f326ff4cb54811"
+    },
+    "asrep-natural-password": {
+      "consequence_rating": "High",
+      "control_scope": {
+        "actions_digest": "sha256:bd7e9fae9b28755b6d566a50119870cb2c737cb8b8d9c31fe2a9d0a6fed086a5",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:ddb2e46118c672363b1d7d5e7a7b14dcd9fc2ad2c0ff23bf421e1805a7772db5",
+      "horizon": "24h",
+      "query_digest": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+      "registry_counts": {
+        "effort": 4,
+        "likelihood": 3
+      },
+      "retry_policy": {
+        "activation": "three attempts/10m",
+        "admin": "three attempts/30m; SMB/RPC transport scenario for AdminTo",
+        "recovery": {
+          "budget": "one-worker;20h;cap-68719476736-distinct-verifications;no-floor;no-restart",
+          "horizon": "24h",
+          "method": "offline-asrep-etype23-rank-unknown-final-v1"
+        },
+        "request": "three attempts/10m",
+        "stop": "first verified success, authoritative denial, event deadline, campaign deadline or compute cap"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:5b8aa4846ab201a309db538b2e32d0d749d4e20e0ce26479c9cd0f1b75ca0d72",
+        "kind": "required_state",
+        "required_state_fields": [
+          "admin_control"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:cbef36d74514a960d0777b38d8a54e290e1af4b370cdf70a099e213912cb43ab"
+    },
+    "kerberoast-identity": {
+      "consequence_rating": "Medium",
+      "control_scope": {
+        "actions_digest": "sha256:64fc1f28bc7b9697f71459f8f5a71ff29ca730019dddfc21c938feb6d48840fd",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:2f93ac4929cefd138d31b27d2e26c34e2aa8a049c480494dbeff8ad5f500c0ba",
+      "horizon": "24h",
+      "query_digest": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+      "registry_counts": {
+        "effort": 3,
+        "likelihood": 2
+      },
+      "retry_policy": {
+        "activation": "three attempts/10m",
+        "admin": "three attempts/30m; SMB/RPC transport scenario for AdminTo",
+        "recovery": {
+          "budget": "one-worker;20h;cap-68719476736-distinct-verifications;no-floor;no-restart",
+          "horizon": "24h",
+          "method": "offline-tgs-etype-unobserved-rank-unknown-final-v1"
+        },
+        "request": "three attempts/10m",
+        "stop": "first verified success, authoritative denial, event deadline, campaign deadline or compute cap"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:21eabc3dea189f48dace67fb54792eba159db9c00a5319334f0a5c6b6c281005",
+        "kind": "required_state",
+        "required_state_fields": [
+          "usable_identity"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:8cd286b25cb6b7d6ac40d22a989a27304df35c932306f6fe528997e5f9e27124"
+    },
+    "kerberoast-material": {
+      "consequence_rating": "Low",
+      "control_scope": {
+        "actions_digest": "sha256:7b95ce167662e530a6a5656c3c8eed14102fab08a27f7d548250d04a53b39bfd",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:808a174e7f5313620957217721dcad0898c18e7f8bac7bec1b08a8015e87d1ea",
+      "horizon": "24h",
+      "query_digest": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+      "registry_counts": {
+        "effort": 1,
+        "likelihood": 1
+      },
+      "retry_policy": {
+        "activation": "three attempts/10m",
+        "admin": "three attempts/30m; SMB/RPC transport scenario for AdminTo",
+        "recovery": {
+          "budget": "one-worker;20h;cap-68719476736-distinct-verifications;no-floor;no-restart",
+          "horizon": "24h",
+          "method": "offline-tgs-etype-unobserved-rank-unknown-final-v1"
+        },
+        "request": "three attempts/10m",
+        "stop": "first verified success, authoritative denial, event deadline, campaign deadline or compute cap"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:a8326b42b47a29c6f757d90ea567ad60a3d58b575ef203ff0762e7674f08b01f",
+        "kind": "required_state",
+        "required_state_fields": [
+          "service_ticket_material"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:db56932be5a1e3544f974f1893f0998f7645c9ce43bda6bc488a6ab9e7e4df2c"
+    },
+    "rbcd-scoped": {
+      "consequence_rating": "High",
+      "control_scope": {
+        "actions_digest": "sha256:8b1174c98e539b1b90326ae93fd0214edf3727fd82dc2ee28e5336ff17bfc59d",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:2d1193087c3e106aa35203b16bfb83fedcb4eec6491398126715339b5c68f29e",
+      "horizon": "24h",
+      "query_digest": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+      "registry_counts": {
+        "effort": 5,
+        "likelihood": 14
+      },
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:a9a5938d7f52b5026d0d05d1ca6910a350026d5d8f2115cc37650f45320b35e6",
+        "kind": "required_state",
+        "required_state_fields": [
+          "admin_control"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:9c73255c58678425fb34bad9c21442327f0ffcf56b9760c3b4c2c87c4df7a89e"
+    },
+    "winrm-command": {
+      "consequence_rating": "Medium",
+      "control_scope": {
+        "actions_digest": "sha256:68ce8120d9eebf20ef0663ffa505d2c5e2084dcb8f3a8d05fc9d1835d8f5d6ca",
+        "equivalence": "stable-no-depletion-distinct-work-v1",
+        "initially_succeeded": []
+      },
+      "history_records_digest": "sha256:b6c1c19be7f6ef88493d7ec83b95067260c7cff2c96c4c809186b26675987911",
+      "horizon": "24h",
+      "query_digest": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5",
+      "registry_counts": {
+        "effort": 1,
+        "likelihood": 1
+      },
+      "retry_policy": {
+        "directory_and_rbcd_preparation": "three attempts/15m per unique event",
+        "remote_execution": "three attempts/30m per unique event; SMB/RPC for AdminTo",
+        "stop": "verified success, authoritative denial, event/campaign deadline; no restart"
+      },
+      "typed_goal": {
+        "canonical_digest": "sha256:3c87a9763dae8319a1a8db65c8e190dab6b8b3611b0b36a1dbe95d5edd6f55d7",
+        "kind": "required_state",
+        "required_state_fields": [
+          "remote_command_execution"
+        ],
+        "version": "semantic-goal/1.0.0"
+      },
+      "work_units_digest": "sha256:c280da27fd72ecdac14ccf44b2107f3b340a589ba94b71dc992efe878a6a0a78"
+    }
+  },
+  "input_pins": {
+    "applicability-v1.1.json": "sha256:92b2557a8dc8ffc383c2120704e6d9f8be341a1e1c159f77efdef0b27e1ff1be",
+    "cohort.json": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+    "profile.json": "sha256:0a07821f77987dadc487ebafc3de09a82a4761b9e6eaad51c63b9b35da26b3ae",
+    "source-a-inventory.json": "sha256:ac4160025569578988072a155f1196092a83904244b40faa6948082e8c162f7c",
+    "supplementary-cohort.json": "sha256:f40780e9b1bb07fddea102571b260bdf4924cea455f58061fa69226d004851f5",
+    "taxonomy.json": "sha256:bcd9b4176870b8ba301c373587a09c5a1403f3f4898ef3e4271f1f21ecfb5c3f"
+  },
+  "query_pins": {
+    "acl-group-all-generator": "sha256:12d151749597834c544794e4bc6a8d8fb0c13e0639ed2127268960070a6a6881",
+    "acl-group-host": "sha256:bbc89964d0174905e7fae9f69872a0b8b02d22107068f7059f83d7a245ac5b72",
+    "acl-group-projection": "sha256:56a7acd5fec5e1c0ff95d117737894208ec78d5e042bc71fd093ea31c6d1fabe",
+    "asrep-natural-password": "sha256:32160f5966d9bb95b1a9fcb013be4071deaed1aa5c29b81558101b834f01eeea",
+    "kerberoast-identity": "sha256:7246aeaf9d02ba6f815194c959951215d879608bbf26ec481fe423902f9eb940",
+    "kerberoast-material": "sha256:81afb12ab74a0d790e630ef633cf8236135e115896c44a09b418f6e53c38c822",
+    "rbcd-scoped": "sha256:b655c6945cd6c0fb7d68a7a08e9c77557e68433639ebe12180a2351395c3022c",
+    "winrm-command": "sha256:c07039b91b38e43d139615308d695c7c567dd5ae7bfdf9ad98c8d6011e4b1bd5"
+  },
+  "release_id": "final-cpi-wave2-approved-effort-v3-scoped",
+  "status": "adopted_c_only",
+  "version": "final-cpi-effort-release/1.1.0",
+  "withheld": {
+    "I": "Existing typed consequence mappings remain unchanged.",
+    "P": "No new conditional record is accepted by this release.",
+    "history_equivalence": "No extension of stable-no-depletion-distinct-work-v1.",
+    "rdp_interactive_session": "Unsupported policy binding; no records emitted.",
+    "recovered_identity_activation": "Needs evidence; reset approval does not transfer.",
+    "session_credential_material": "Unsupported policy binding; no records emitted."
+  }
+}

@@ -1,0 +1,963 @@
+{
+  "schema_version": "1.0.0",
+  "catalog_id": "week4-supported-likelihood-v1",
+  "version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "baseline_revision": "94db074b5cd5c74b76b5e2555d59c5a952153b7e",
+  "source_pins": {
+    "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "src/engine/semantics/catalog.py": "sha256:090c1f1ee189769e22d49428890a0584f7bc34e529889a51800ea9ec4fd33952",
+    "src/engine/search.py": "sha256:e2f10c5d5e54c535d3891becd7ee8df6a27b4bcc2d390b2bf1ef22204b6f5cca",
+    "src/engine/semantics/credentials.py": "sha256:fa8cefbb979e84fcc6ae7bd2ab44b785f3abeebe9e1601894e5175c4b803cc16",
+    "src/engine/semantics/rbcd.py": "sha256:febc835609269d8fbcd0a4f07316a798b7a9e156463ef215a80cecf7690b3701",
+    "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+    "src/engine/semantics/evaluator.py": "sha256:0d4dd143f8f608cd6ae29f5619aca7cc71f0e89b9b858561283d1c2368531a05",
+    "src/engine/ranking/resolver.py": "sha256:2d7fdc4900c4fb62da75b4222ebe179229ca059316db3d626ba6e849124bdad1",
+    "docs/research/ratings/week3-closeout/reviewed-release.json": "sha256:5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+    "docs/research/ratings/week3-closeout/semantic-bridge-plan.json": "sha256:56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390",
+    "docs/research/ratings/week4/reviewed-work-unit-classes.json": "sha256:37b10f5a3bea4f7679b34ebc6fa744aa94c58bf83a07accfd89fdfa374866443",
+    "docs/research/ratings/week4/impact-equivalence-registry.json": "sha256:b5ee1ca987709d63ef330f1848306af6ebd3dd5ff82de6275805678995f0f400",
+    "docs/research/scenarios/week4-seamless-v1.json": "sha256:66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752",
+    "tests/fixtures/attack_scenarios/graphs/two-routes.json": "sha256:982816b924a73396961a54ab5b7c2e40140941aaa9bfa99a075649dde57457e7",
+    "docs/research/ratings/week4/synthetic-a2-e.json": "sha256:007755b020417dd763e0d137a8987359c2779125222693ac4e3c48f6cbf560c1",
+    "scripts/research/week3_semantic_bridge_probe.py": "sha256:d1ebb68e4af64079e5d54eb3ec48af332169b1b4bd192840a0c2e66b65a9adae",
+    "scripts/research/asrep_inputs.py": "sha256:7f790289de985688e2af75a425fea71fc7d5238d03d807e12291ab7be0f32aa4",
+    "tests/frozen_rating_inputs.py": "sha256:5e71b237c4d1dca5a15e6e452198888b333e3e065bbd0192e6e229f705682fa9",
+    "src/engine/ranking/likelihood.py": "sha256:9e6040ca3f09f92c5d410f2661569d9001ea360120a98dd57e4b596ab7de7247",
+    "docs/research/ratings/week4/source-a-p-binding-proposal.json": "sha256:d541d17d29f8754bc61ca7d79f169cb7d8e27847f434555058e6bd8b4cb9738c"
+  },
+  "required_context": [
+    "scenario_id",
+    "scenario_version",
+    "snapshot_id",
+    "foothold_node_id",
+    "actor_id",
+    "source_id",
+    "target_id",
+    "target_class",
+    "actor_capability",
+    "method",
+    "auth_context",
+    "resource_context",
+    "boundary",
+    "scope",
+    "policy_id",
+    "retry_policy",
+    "budget",
+    "horizon",
+    "target_population",
+    "ordered_work_prefix",
+    "conditioning_previous_successes",
+    "outcome_work_unit_id",
+    "success_event"
+  ],
+  "context_policy": "Every field must be explicit; null means absence, never wildcard. Full ordered canonical active history is mandatory. Gates being true do not supply numeric q. No retries simulated by search. Shared preparation is one q event per distinct executed work identity; reuse is NO_NEW_Q_EVENT. Different auth/resource contexts do not deduplicate.",
+  "interval_semantics": "q_i = P(E_i completes under the declared execution policy | foothold, scenario, and all previous active events succeeded). Exact rational epistemic scenario bounds, not statistical confidence intervals. P(path) multiplies all ordered conditional bounds without an independence assumption. Any missing bound makes P(path) null.",
+  "classes": [
+    {
+      "class_id": "directory_password_reset",
+      "success_event": "Set the target user password and establish authentication_control; only scenario_reset_password also establishes reset_password_control.",
+      "required_active_work": "Authenticated directory reset request and response verification; excludes ticket activation.",
+      "additional_context_requirements": [
+        "reset API and effective right",
+        "target account enabled and policy",
+        "directory/RPC channel",
+        "new secret validity"
+      ],
+      "non_applicability": "The historical reset basis only covers scenario_reset_password in the eight exact bindings. Generic reset owners do not establish the same activation capability."
+    },
+    {
+      "class_id": "reset_identity_activation",
+      "success_event": "Establish usable_identity for the reset user in the exact authentication context.",
+      "required_active_work": "Acquire and validate usable authentication after successful reset.",
+      "additional_context_requirements": [
+        "reset_password_control owner",
+        "matching authentication context",
+        "KDC exchange and acceptance"
+      ],
+      "non_applicability": "Reset-password-derived authentication only; excludes recovered secrets and bare credential_material."
+    },
+    {
+      "class_id": "recovered_identity_activation",
+      "success_event": "Establish usable_identity for the recovered password owner in its exact artifact context.",
+      "required_active_work": "Validate the recovered password and complete authentication.",
+      "additional_context_requirements": [
+        "recovered password artifact lineage/form",
+        "secret validity",
+        "KDC and authentication policy"
+      ],
+      "non_applicability": "Reset activation is not equivalent without separate history/resource review; token material is not a password."
+    },
+    {
+      "class_id": "asrep_material_request",
+      "success_event": "Create AS-REP encrypted material for the known target user in the current context.",
+      "required_active_work": "Issue AS-REQ and obtain usable material; no password recovery.",
+      "additional_context_requirements": [
+        "known target",
+        "scoped request capability",
+        "dontreqpreauth true",
+        "KDC request and response"
+      ],
+      "non_applicability": "No probability from dontreqpreauth or request_accepted=true; no generic reset equivalence."
+    },
+    {
+      "class_id": "asrep_password_recovery",
+      "success_event": "Recover a password-form secret from the exact AS-REP material lineage.",
+      "required_active_work": "Run specified offline recovery against the material within explicit compute/time limits.",
+      "additional_context_requirements": [
+        "material owner/context/digest",
+        "encryption/password population",
+        "recovery method",
+        "compute resource and budget",
+        "horizon"
+      ],
+      "non_applicability": "Frozen #243 has unmeasured-budget and no password population or campaign evidence; recovery_success=true only gates a predicted branch."
+    },
+    {
+      "class_id": "kerberoast_material_request",
+      "success_event": "Create service_ticket_material for the known SPN-bearing target user.",
+      "required_active_work": "Obtain encrypted TGS material using scoped request capability.",
+      "additional_context_requirements": [
+        "known target and has_spn",
+        "SPN/service binding",
+        "scoped ticket request capability",
+        "KDC request and response"
+      ],
+      "non_applicability": "AS-REP and Kerberoast request contexts are different; SPN discovery is not free active preparation."
+    },
+    {
+      "class_id": "kerberoast_password_recovery",
+      "success_event": "Recover a password-form secret from the exact service-ticket material lineage.",
+      "required_active_work": "Run specified offline recovery against the TGS material within explicit compute/time limits.",
+      "additional_context_requirements": [
+        "material owner/context/digest",
+        "encryption/password population",
+        "recovery method",
+        "compute resource and budget",
+        "horizon"
+      ],
+      "non_applicability": "AS-REP recovery probabilities cannot be copied; no calibrated target-password population."
+    },
+    {
+      "class_id": "host_admin_execution",
+      "success_event": "Establish admin_control of the exact host.",
+      "required_active_work": "Authenticate, establish the declared management channel and verify administrative execution.",
+      "additional_context_requirements": [
+        "management transport",
+        "auth credential/token",
+        "endpoint and execution context",
+        "host identity and authorization source"
+      ],
+      "non_applicability": "Transport-unspecified AdminTo does not imply WinRM, RDP or Domain Admin membership; it does not reuse scenario_winrm_admin q."
+    },
+    {
+      "class_id": "winrm_admin_execution",
+      "success_event": "Establish admin_control through the declared group-to-host administrative WinRM mapping.",
+      "required_active_work": "Complete WinRM administrative execution after scoped usable identity and passive membership.",
+      "additional_context_requirements": [
+        "authenticated actor and effective group",
+        "declared host-admin mapping",
+        "WinRM listener/endpoint",
+        "administrative execution context"
+      ],
+      "non_applicability": "Only the exact Source-A generated-to-historical histories are proposed; no member-host, alternate actor or retry generalization."
+    },
+    {
+      "class_id": "winrm_command_session",
+      "success_event": "Establish remote_command_execution on the host; administrative control is not implied.",
+      "required_active_work": "Open the WinRM remote command session and verify the specified command capability.",
+      "additional_context_requirements": [
+        "WinRM transport",
+        "authentication and endpoint authorization",
+        "execution privilege"
+      ],
+      "non_applicability": "CanPSRemote command execution is weaker than administrative WinRM and cannot reuse its q interval."
+    },
+    {
+      "class_id": "rdp_interactive_session",
+      "success_event": "Establish interactive_session on the host; administrative control is not implied.",
+      "required_active_work": "Complete the remote interactive logon and session.",
+      "additional_context_requirements": [
+        "RDP reachability/listener",
+        "NLA/authentication",
+        "logon rights and session resource policy"
+      ],
+      "non_applicability": "Neither AdminTo nor WinRM events are RDP equivalences."
+    },
+    {
+      "class_id": "group_membership_mutation",
+      "success_event": "Add the exact actor/group membership to branch state.",
+      "required_active_work": "Submit and verify the directory membership modification.",
+      "additional_context_requirements": [
+        "security group scope",
+        "effective membership-write right",
+        "directory transport and authorization",
+        "member identity"
+      ],
+      "non_applicability": "Passive propagation/token closure is not this mutation; no accepted q for this active write."
+    },
+    {
+      "class_id": "grant_write_dacl",
+      "success_event": "Grant the exact branch-local WriteDacl permission.",
+      "required_active_work": "Construct, submit and verify the directory security descriptor change.",
+      "additional_context_requirements": [
+        "target kind/descriptor",
+        "GenericAll right",
+        "ACE scope/inheritance",
+        "directory write method"
+      ],
+      "non_applicability": "Different output right from grant_generic_all; no probability from existing ACL evidence."
+    },
+    {
+      "class_id": "grant_generic_all",
+      "success_event": "Grant the exact branch-local GenericAll permission.",
+      "required_active_work": "Construct, submit and verify the directory security descriptor change.",
+      "additional_context_requirements": [
+        "target kind/descriptor",
+        "WriteDacl right",
+        "ACE scope/inheritance",
+        "directory write method"
+      ],
+      "non_applicability": "Derived permission is a result; the active DACL mutation still needs q."
+    },
+    {
+      "class_id": "session_credential_material",
+      "success_event": "Create credential_material for the session user; no usable_identity is implied.",
+      "required_active_work": "Recover the specified material after host admin control and fresh accessible session.",
+      "additional_context_requirements": [
+        "session freshness/window",
+        "host privilege",
+        "exact extraction mechanism/material form",
+        "credential protection/endpoint policy"
+      ],
+      "non_applicability": "HasSession is an opportunity, not success; generic material is not necessarily an LSASS password."
+    },
+    {
+      "class_id": "rbcd_secret_acquisition",
+      "success_event": "Create rbcd_secret under the exact delegation binding.",
+      "required_active_work": "Reset the binding principal password under the exact reset right.",
+      "additional_context_requirements": [
+        "controller/principal/target/context binding",
+        "effective reset right",
+        "password policy and directory method"
+      ],
+      "non_applicability": "RBCD secret has separate typed lineage; no automatic Week 3 reset reuse."
+    },
+    {
+      "class_id": "rbcd_service_preparation",
+      "success_event": "Create controlled_service under the exact delegation binding.",
+      "required_active_work": "Derive a compatible key and authenticate the already SPN-bearing service principal.",
+      "additional_context_requirements": [
+        "scoped principal password",
+        "existing SPNs",
+        "key derivation/encryption",
+        "KDC service authentication"
+      ],
+      "non_applicability": "This owner does not create a computer account or register an SPN; preparation is active even if C=0."
+    },
+    {
+      "class_id": "rbcd_descriptor_mutation",
+      "success_event": "Create rbcd_descriptor under the exact delegation binding.",
+      "required_active_work": "Write and verify the target RBCD descriptor.",
+      "additional_context_requirements": [
+        "controller/principal/target binding",
+        "exact descriptor right",
+        "effective descriptor write",
+        "directory transport"
+      ],
+      "non_applicability": "Not a generic DACL grant or passive derived closure; no accepted q basis."
+    },
+    {
+      "class_id": "rbcd_service_delegation",
+      "success_event": "Create delegated_context for the exact impersonated identity, target and SPN.",
+      "required_active_work": "Complete scoped S4U exchange with successful prior service and descriptor events.",
+      "additional_context_requirements": [
+        "full delegation binding",
+        "prior secret/service/descriptor history",
+        "known impersonated identity",
+        "target SPN/policy/KDC"
+      ],
+      "non_applicability": "Different impersonated identity, target service, prior order or policy requires separate basis."
+    },
+    {
+      "class_id": "rbcd_admin_execution",
+      "success_event": "Establish admin_control on the exact delegation target using delegated service context.",
+      "required_active_work": "Execute the administrative service operation using the bound delegated ticket.",
+      "additional_context_requirements": [
+        "delegated context artifact",
+        "exact target/SPN",
+        "WinRM endpoint policy",
+        "admin execution context"
+      ],
+      "non_applicability": "Delegated authentication is different from reset-password WinRM; no q reuse by shared transport."
+    },
+    {
+      "class_id": "passive_membership_closure",
+      "success_event": "Propagate effective membership from an existing or branch-added MemberOf relationship.",
+      "required_active_work": "No new active operation; existing authorization closure only.",
+      "additional_context_requirements": [
+        "actor and security-group/token scope"
+      ],
+      "non_applicability": "No active work or q event; zero-action initial success is separately not a numeric rating event."
+    }
+  ],
+  "actions": [
+    {
+      "technique_id": "acquire_reset_identity",
+      "canonical_class": "reset_identity_activation",
+      "relationship": "AuthenticationControl",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "reset_password_control",
+        "authentication_context_matches",
+        "actor_enabled",
+        "network_kdc_reachable",
+        "authentication_accepted"
+      ],
+      "success_effects": [
+        "usable_identity"
+      ],
+      "generator_route": "reset_password_control capability producer",
+      "numeric_records": [],
+      "rationale": "Reset-password-derived authentication only; excludes recovered secrets and bare credential_material."
+    },
+    {
+      "technique_id": "activate_recovered_identity",
+      "canonical_class": "recovered_identity_activation",
+      "relationship": "RecoveredSecret",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "recovered_password",
+        "authentication_context_matches",
+        "actor_enabled",
+        "secret_valid",
+        "network_kdc_reachable",
+        "authentication_accepted"
+      ],
+      "success_effects": [
+        "usable_identity"
+      ],
+      "generator_route": "credential artifact producers",
+      "numeric_records": [],
+      "rationale": "Reset activation is not equivalent without separate history/resource review; token material is not a password."
+    },
+    {
+      "technique_id": "asrep_request",
+      "canonical_class": "asrep_material_request",
+      "relationship": "ASRepTarget",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "known_identity",
+        "asrep_request_capability",
+        "target_enabled",
+        "dontreqpreauth",
+        "network_kdc_reachable",
+        "asrep_request_accepted"
+      ],
+      "success_effects": [
+        "asrep_material"
+      ],
+      "generator_route": "credential artifact producers",
+      "numeric_records": [],
+      "rationale": "No probability from dontreqpreauth or request_accepted=true; no generic reset equivalence."
+    },
+    {
+      "technique_id": "genericall_add_member",
+      "canonical_class": "group_membership_mutation",
+      "relationship": "GenericAll",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "Group"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "security_group",
+        "membership_change_allowed",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "add_membership"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "Passive propagation/token closure is not this mutation; no accepted q for this active write."
+    },
+    {
+      "technique_id": "genericall_grant_write_dacl",
+      "canonical_class": "grant_write_dacl",
+      "relationship": "GenericAll",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User",
+        "Group",
+        "Computer",
+        "Domain",
+        "OU",
+        "GPO"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "grant_write_dacl"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "Different output right from grant_generic_all; no probability from existing ACL evidence."
+    },
+    {
+      "technique_id": "genericall_reset_password",
+      "canonical_class": "directory_password_reset",
+      "relationship": "GenericAll",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "authentication_control"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "The historical reset basis only covers scenario_reset_password in the eight exact bindings. Generic reset owners do not establish the same activation capability."
+    },
+    {
+      "technique_id": "grant_new_object_right",
+      "canonical_class": "grant_generic_all",
+      "relationship": "WriteDacl",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User",
+        "Group",
+        "Computer",
+        "Domain",
+        "OU",
+        "GPO"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "grant_generic_all"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "Derived permission is a result; the active DACL mutation still needs q."
+    },
+    {
+      "technique_id": "kerberoast_request",
+      "canonical_class": "kerberoast_material_request",
+      "relationship": "RoastTarget",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "known_identity",
+        "has_spn",
+        "service_principal_names",
+        "kerberos_actor_authenticated",
+        "kerberos_authentication_usable",
+        "network_kdc_reachable",
+        "service_ticket_request_accepted"
+      ],
+      "success_effects": [
+        "service_ticket_material"
+      ],
+      "generator_route": "credential artifact producers",
+      "numeric_records": [],
+      "rationale": "AS-REP and Kerberoast request contexts are different; SPN discovery is not free active preparation."
+    },
+    {
+      "technique_id": "obtain_admin_execution_on_host",
+      "canonical_class": "host_admin_execution",
+      "relationship": "AdminTo",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "admin_channel",
+        "authentication_accepted"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "Transport-unspecified AdminTo does not imply WinRM, RDP or Domain Admin membership; it does not reuse scenario_winrm_admin q."
+    },
+    {
+      "technique_id": "open_remote_interactive_session",
+      "canonical_class": "rdp_interactive_session",
+      "relationship": "CanRDP",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "rdp_available",
+        "authentication_accepted"
+      ],
+      "success_effects": [
+        "interactive_session"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "Neither AdminTo nor WinRM events are RDP equivalences."
+    },
+    {
+      "technique_id": "open_winrm_remote_session",
+      "canonical_class": "winrm_command_session",
+      "relationship": "CanPSRemote",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "winrm_available",
+        "authentication_accepted"
+      ],
+      "success_effects": [
+        "remote_command_execution"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "CanPSRemote command execution is weaker than administrative WinRM and cannot reuse its q interval."
+    },
+    {
+      "technique_id": "propagate_group_entitlement",
+      "canonical_class": "passive_membership_closure",
+      "relationship": "MemberOf",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "Group"
+      ],
+      "event_policy": "NO_Q_EVENT",
+      "disposition": "NO_Q_EVENT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "security_group",
+        "membership_usable"
+      ],
+      "success_effects": [
+        "effective_member"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "No active work or q event; zero-action initial success is separately not a numeric rating event."
+    },
+    {
+      "technique_id": "rbcd_acquire_secret",
+      "canonical_class": "rbcd_secret_acquisition",
+      "relationship": "RBCDReset",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "actor_authenticated",
+        "exact_reset_right",
+        "effective_reset_right",
+        "directory_write_allowed",
+        "password_policy_accepts"
+      ],
+      "success_effects": [
+        "rbcd_secret"
+      ],
+      "generator_route": "RBCD binding producers",
+      "numeric_records": [],
+      "rationale": "RBCD secret has separate typed lineage; no automatic Week 3 reset reuse."
+    },
+    {
+      "technique_id": "rbcd_configure_descriptor",
+      "canonical_class": "rbcd_descriptor_mutation",
+      "relationship": "RBCDConfigure",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "actor_authenticated",
+        "known_identity",
+        "exact_descriptor_right",
+        "effective_descriptor_write",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "rbcd_descriptor"
+      ],
+      "generator_route": "RBCD binding producers",
+      "numeric_records": [],
+      "rationale": "Not a generic DACL grant or passive derived closure; no accepted q basis."
+    },
+    {
+      "technique_id": "rbcd_delegate_service",
+      "canonical_class": "rbcd_service_delegation",
+      "relationship": "RBCDDelegate",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "controlled_service",
+        "rbcd_descriptor",
+        "known_impersonated_identity",
+        "target_spn_binding",
+        "delegation_policy_allows",
+        "network_kdc_reachable",
+        "s4u_request_accepted"
+      ],
+      "success_effects": [
+        "delegated_context"
+      ],
+      "generator_route": "RBCD binding producers",
+      "numeric_records": [],
+      "rationale": "Different impersonated identity, target service, prior order or policy requires separate basis."
+    },
+    {
+      "technique_id": "rbcd_prepare_service",
+      "canonical_class": "rbcd_service_preparation",
+      "relationship": "RBCDPrepare",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "scoped_password",
+        "has_spn",
+        "service_principal_names",
+        "target_enabled",
+        "secret_valid",
+        "key_derivation_accepted",
+        "key_encryption_compatible",
+        "service_authentication_accepted",
+        "network_kdc_reachable"
+      ],
+      "success_effects": [
+        "controlled_service"
+      ],
+      "generator_route": "RBCD binding producers",
+      "numeric_records": [],
+      "rationale": "This owner does not create a computer account or register an SPN; preparation is active even if C=0."
+    },
+    {
+      "technique_id": "rbcd_service_admin",
+      "canonical_class": "rbcd_admin_execution",
+      "relationship": "RBCDAsset",
+      "source_kinds": [
+        "User"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "delegated_context",
+        "target_spn_binding",
+        "target_enabled",
+        "network_winrm_reachable",
+        "service_winrm_running",
+        "endpoint_authorized",
+        "winrm_authentication_accepted",
+        "admin_execution_context"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "generator_route": "RBCD binding producers",
+      "numeric_records": [],
+      "rationale": "Delegated authentication is different from reset-password WinRM; no q reuse by shared transport."
+    },
+    {
+      "technique_id": "recover_asrep_secret",
+      "canonical_class": "asrep_password_recovery",
+      "relationship": "ASRepMaterial",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "asrep_material",
+        "recovery_scope",
+        "recovery_success"
+      ],
+      "success_effects": [
+        "recovered_secret"
+      ],
+      "generator_route": "credential artifact producers",
+      "numeric_records": [],
+      "rationale": "Frozen #243 has unmeasured-budget and no password population or campaign evidence; recovery_success=true only gates a predicted branch."
+    },
+    {
+      "technique_id": "recover_session_credential_material",
+      "canonical_class": "session_credential_material",
+      "relationship": "HasSession",
+      "source_kinds": [
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "source_admin_control",
+        "session_fresh",
+        "session_present",
+        "credential_accessible"
+      ],
+      "success_effects": [
+        "credential_material"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "HasSession is an opportunity, not success; generic material is not necessarily an LSASS password."
+    },
+    {
+      "technique_id": "recover_ticket_secret",
+      "canonical_class": "kerberoast_password_recovery",
+      "relationship": "TicketMaterial",
+      "source_kinds": [
+        "User",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "UNRATED_NO_BASIS",
+      "required_gates": [
+        "ticket_material",
+        "recovery_scope",
+        "recovery_success"
+      ],
+      "success_effects": [
+        "recovered_secret"
+      ],
+      "generator_route": "credential artifact producers",
+      "numeric_records": [],
+      "rationale": "AS-REP recovery probabilities cannot be copied; no calibrated target-password population."
+    },
+    {
+      "technique_id": "reset_target_password",
+      "canonical_class": "directory_password_reset",
+      "relationship": "ForceChangePassword",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed"
+      ],
+      "success_effects": [
+        "authentication_control"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "The historical reset basis only covers scenario_reset_password in the eight exact bindings. Generic reset owners do not establish the same activation capability."
+    },
+    {
+      "technique_id": "scenario_reset_password",
+      "canonical_class": "directory_password_reset",
+      "relationship": "GenericAll",
+      "source_kinds": [
+        "User",
+        "Group",
+        "Computer"
+      ],
+      "target_kinds": [
+        "User"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "target_enabled",
+        "password_policy_accepts",
+        "directory_write_allowed",
+        "network_rpc_reachable"
+      ],
+      "success_effects": [
+        "authentication_control",
+        "reset_password_control"
+      ],
+      "generator_route": "structural/branch permission relationships",
+      "numeric_records": [],
+      "rationale": "The historical reset basis only covers scenario_reset_password in the eight exact bindings. Generic reset owners do not establish the same activation capability."
+    },
+    {
+      "technique_id": "scenario_winrm_admin",
+      "canonical_class": "winrm_admin_execution",
+      "relationship": "DeclaredHostAdmin",
+      "source_kinds": [
+        "Group"
+      ],
+      "target_kinds": [
+        "Computer"
+      ],
+      "event_policy": "ACTIVE_Q_EVENT",
+      "disposition": "REQUIRES_CONTEXT",
+      "required_gates": [
+        "actor_controlled",
+        "source_authorized",
+        "actor_enabled",
+        "actor_authenticated",
+        "host_admin_mapping",
+        "network_winrm_reachable",
+        "service_winrm_running",
+        "winrm_authentication_accepted",
+        "endpoint_authorized",
+        "admin_execution_context",
+        "target_enabled"
+      ],
+      "success_effects": [
+        "admin_control"
+      ],
+      "generator_route": "GenericAll Group-to-Computer declared-host mapping",
+      "numeric_records": [],
+      "rationale": "Only the exact Source-A generated-to-historical histories are proposed; no member-host, alternate actor or retry generalization."
+    }
+  ],
+  "excluded_unsupported": [
+    "dcsync",
+    "unconstrained_delegation_abuse",
+    "cross_forest_trust_hop"
+  ],
+  "out_of_scope_policy": "Unsupported techniques and cross-forest/boundary-changed queries are OUT_OF_SCOPE. This does not shrink the supported active inventory.",
+  "empirical_policy": "#238 prototype output is quarantined and cannot be production evidence. No easy/medium/hard probability, C-to-P, CVSS/MAUT/LLM confidence or assumption-to-q conversion."
+}

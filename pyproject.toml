@@ -1,0 +1,22 @@
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+# Narrow archival exclusion preserving published AWG-R03 research evidence byte-for-byte.
+extend-exclude = [
+    ".tools",
+    ".cache",
+    "data/raw",
+    "data/processed",
+    "reports/generated",
+    "notebooks",
+    "docs/research/awg-r03/prepare_evidence.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra --strict-markers"
+markers = ["integration: tests crossing parser and engine boundaries"]

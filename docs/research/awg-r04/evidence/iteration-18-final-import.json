@@ -1,0 +1,326 @@
+{
+  "seamless": {
+    "snapshot_key": "seamless",
+    "dataset_id": "seamless-v1",
+    "snapshot_id": "sha256:7f8493c7596d50f3478a52af16bfd9eb24eb27bf312b3585b3422d6d58e6c404",
+    "archive_name": "20210920185958_BloodHound.zip",
+    "archive_sha256": "b8e9f003dd51a98838be86d8f98b0844a19a7876aad0a81b525f19e110105813",
+    "collector": "SharpHound (legacy v3)",
+    "file_statuses": [
+      {
+        "file": "20210920185958_computers.json",
+        "status": "success",
+        "code": 202
+      },
+      {
+        "file": "20210920185958_domains.json",
+        "status": "success",
+        "code": 202
+      },
+      {
+        "file": "20210920185958_gpos.json",
+        "status": "success",
+        "code": 202
+      },
+      {
+        "file": "20210920185958_groups.json",
+        "status": "success",
+        "code": 202
+      },
+      {
+        "file": "20210920185958_ous.json",
+        "status": "success",
+        "code": 202
+      },
+      {
+        "file": "20210920185958_users.json",
+        "status": "success",
+        "code": 202
+      }
+    ],
+    "total_nodes": 3374,
+    "label_counts": {
+      "Base": 3374,
+      "User": 2493,
+      "Group": 551,
+      "OU": 223,
+      "Tag_Tier_Zero": 107,
+      "Computer": 100,
+      "ADLocalGroup": 4,
+      "GPO": 2,
+      "Domain": 1
+    },
+    "m1_node_counts": {
+      "User": 2493,
+      "Computer": 100,
+      "Group": 551,
+      "Domain": 1,
+      "OU": 223,
+      "GPO": 2
+    },
+    "total_relationships": 78363,
+    "all_relationship_counts": {
+      "GenericAll": 37034,
+      "MemberOf": 15917,
+      "WriteDacl": 3392,
+      "WriteOwnerRaw": 3392,
+      "WriteOwner": 3392,
+      "OwnsRaw": 3362,
+      "Owns": 3362,
+      "GenericWrite": 3166,
+      "Contains": 2816,
+      "AllExtendedRights": 2499,
+      "MemberOfLocalGroup": 11,
+      "AdminTo": 5,
+      "LocalToComputer": 4,
+      "GetChanges": 3,
+      "GetChangesAll": 2,
+      "CanPSRemote": 2,
+      "GPLink": 2,
+      "CoerceToTGT": 1,
+      "ExecuteDCOM": 1
+    },
+    "m1_edge_counts": {
+      "MemberOf": 15917,
+      "AdminTo": 5,
+      "GenericAll": 37034,
+      "WriteDacl": 3392,
+      "ForceChangePassword": 0,
+      "CanPSRemote": 2,
+      "CanRDP": 0,
+      "HasSession": 0
+    },
+    "dangling_base_nodes": 0,
+    "m1_samples": {
+      "MemberOf": [
+        {
+          "s_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "t_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "ENTERPRISE DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "t_id": "SEAMLESS.INTERNAL-S-1-5-9"
+        },
+        {
+          "s_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "t_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "DOMAIN CONTROLLERS@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-516"
+        },
+        {
+          "s_lbl": [
+            "Computer",
+            "Base"
+          ],
+          "s_name": "FSRWLPT1000000.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-4095",
+          "t_lbl": [
+            "Group",
+            "Base"
+          ],
+          "t_name": "DOMAIN COMPUTERS@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-515"
+        }
+      ],
+      "AdminTo": [
+        {
+          "s_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "t_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "s_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "t_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "s_lbl": [
+            "Base",
+            "User",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "ADMINISTRATOR@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-500",
+          "t_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "GenericAll": [
+        {
+          "s_lbl": [
+            "Computer",
+            "Base"
+          ],
+          "s_name": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "t_lbl": [
+            "Base",
+            "User"
+          ],
+          "t_name": "JUDY_CHERRY@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1659"
+        },
+        {
+          "s_lbl": [
+            "Computer",
+            "Base"
+          ],
+          "s_name": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "t_lbl": [
+            "Base",
+            "User"
+          ],
+          "t_name": "CARY_CHAPMAN@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1756"
+        },
+        {
+          "s_lbl": [
+            "Computer",
+            "Base"
+          ],
+          "s_name": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "t_lbl": [
+            "Group",
+            "Base"
+          ],
+          "t_name": "MI-1123NICOL-DISTLIST1@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-3969"
+        }
+      ],
+      "WriteDacl": [
+        {
+          "s_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "t_lbl": [
+            "Base",
+            "Domain",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266"
+        },
+        {
+          "s_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "t_lbl": [
+            "Base",
+            "User",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "KRBTGT@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-502"
+        },
+        {
+          "s_lbl": [
+            "Group",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "s_name": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "t_lbl": [
+            "Base",
+            "User",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "ADMINISTRATOR@SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-500"
+        }
+      ],
+      "ForceChangePassword": [],
+      "CanPSRemote": [
+        {
+          "s_lbl": [
+            "Base",
+            "User"
+          ],
+          "s_name": "VICKY_SCHWARTZ@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-3296",
+          "t_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        },
+        {
+          "s_lbl": [
+            "Base",
+            "User"
+          ],
+          "s_name": "FERN_CRAIG@SEAMLESS.INTERNAL",
+          "s_id": "S-1-5-21-1271839998-3495686680-2211690266-3385",
+          "t_lbl": [
+            "Computer",
+            "Base",
+            "Tag_Tier_Zero"
+          ],
+          "t_name": "BADBLOOD.SEAMLESS.INTERNAL",
+          "t_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "CanRDP": [],
+      "HasSession": []
+    },
+    "source_snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "converted_manifest_sha256": "7f8493c7596d50f3478a52af16bfd9eb24eb27bf312b3585b3422d6d58e6c404"
+  }
+}

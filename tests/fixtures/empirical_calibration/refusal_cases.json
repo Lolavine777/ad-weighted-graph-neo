@@ -1,0 +1,382 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "case_id": "REFUSAL-SEAMLESS-DOMAIN-TRANSFER",
+      "description": "Attempting empirical transfer to SEAMLESS Active Directory without observed password distribution or telemetry",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unrepresentative_domain_transfer_seamless"
+    },
+    {
+      "case_id": "REFUSAL-SYNTHETIC-FIXTURE",
+      "description": "Attempting to use software testing synthetic fixture as empirical evidence",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": true,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "synthetic_test_fixture_rejected_as_evidence"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-METHOD",
+      "description": "Query missing recovery method specification",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": null,
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_method_specification"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-BUDGET",
+      "description": "Query missing cracking budget specification",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": null,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_budget_specification"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-HORIZON",
+      "description": "Query missing deadline/horizon specification",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": null,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_horizon_specification"
+    },
+    {
+      "case_id": "REFUSAL-OUT-OF-SCOPE-TECHNIQUE",
+      "description": "Technique outside the offline credential recovery pilot scope",
+      "context": {
+        "technique": "genericall_reset_password",
+        "method": "ldap_set_password",
+        "budget": 3,
+        "horizon_seconds": 900.0,
+        "target_complexity_class": "domain_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "genericall_reset_password"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "out_of_scope_technique"
+    },
+    {
+      "case_id": "REFUSAL-EMPTY-PREFIX",
+      "description": "Prefix sequence is empty; violates full-history conditioning requirement",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [],
+      "expected_status": "unrated",
+      "expected_reason_substr": "empty_prefix"
+    },
+    {
+      "case_id": "REFUSAL-PREFIX-ACTION-MISMATCH",
+      "description": "Prefix target action does not match evaluation context technique",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "unrelated_action"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "prefix_action_mismatch"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-PREREQUISITE-HISTORY",
+      "description": "History prefix lacks material acquisition prerequisite (asrep_request)",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_prerequisite_in_history"
+    },
+    {
+      "case_id": "REFUSAL-SEAMLESS-MIXED-CASE",
+      "description": "Attempting empirical transfer to SEAMLESS Active Directory with mixed-case scenario ID",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "SeAmLeSs-enterprise",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unrepresentative_domain_transfer_seamless"
+    },
+    {
+      "case_id": "REFUSAL-UNSEEN-DOMAIN",
+      "description": "Attempting empirical estimation on unseen production domain outside verified lab evidence scope",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "new-production-domain",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_domain_or_scenario"
+    },
+    {
+      "case_id": "REFUSAL-UNSUPPORTED-PREFIX-HISTORY",
+      "description": "History prefix contains unmeasured prior modification steps (reset_password) altering password distribution",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "reset_password",
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_prefix_history"
+    },
+    {
+      "case_id": "REFUSAL-WILDCARD-LAB-DOMAIN",
+      "description": "Attempting empirical estimation on unverified domain starting with lab prefix",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-unseen-production-bank-ad",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_domain_or_scenario"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-COMPLEXITY-CLASS",
+      "description": "Context missing target complexity class specification",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": null,
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_target_complexity_class_specification"
+    },
+    {
+      "case_id": "REFUSAL-UNSUPPORTED-ACTOR-CAPABILITY",
+      "description": "Context requests actor capability not supported by empirical evidence package",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "unprivileged_user_no_gpu"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_actor_capability"
+    },
+    {
+      "case_id": "REFUSAL-INVALID-PREFIX-STEP",
+      "description": "Prefix contains invalid empty or non-string step identifier",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "invalid_prefix_step_identifier"
+    },
+    {
+      "case_id": "REFUSAL-MISSING-ACTOR-CAPABILITY",
+      "description": "Context missing required actor capability specification under manifest boundary",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "actor_capability": null
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "missing_actor_capability_specification"
+    },
+    {
+      "case_id": "REFUSAL-STANDALONE-RECOVERY-UNSUPPORTED-PREFIX",
+      "description": "Standalone recovery prefix with initial_material_present=True rejected because manifest only supports sequence with prior acquisition",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-benchmark-asrep-v1",
+        "is_synthetic_fixture": false,
+        "initial_material_present": true,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_prefix_history"
+    },
+    {
+      "case_id": "REFUSAL-SCENARIO-OUTSIDE-MANIFEST",
+      "description": "Scenario alias lab-scenario is outside strict evidence manifest supported_scenario_ids",
+      "context": {
+        "technique": "recover_asrep_secret",
+        "method": "hashcat_dictionary_rockyou_best64",
+        "budget": 10000000,
+        "horizon_seconds": 3600.0,
+        "target_complexity_class": "standard_enterprise_user",
+        "scenario_id": "lab-scenario",
+        "is_synthetic_fixture": false,
+        "actor_capability": "offline_gpu_cracking"
+      },
+      "prefix": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "expected_status": "unrated",
+      "expected_reason_substr": "unsupported_domain_or_scenario"
+    }
+  ]
+}

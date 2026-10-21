@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0.0",
+  "registry_id": "impact-equivalence-registry-week4",
+  "version": "1.0.0",
+  "created_at": "2026-10-09T00:00:00Z",
+  "author": "Lolavine777 (TTS A)",
+  "reviewer": "nairyuuu (TTS B)",
+  "status": "proposed_pending_b_review",
+  "evidence_class": "scenario_assumption",
+  "description": "Proposed same-asset consequence equivalence; pending B review",
+  "review_reference": "docs/research/ratings/week4/impact-equivalence-decision.md",
+  "mappings": [
+    {
+      "mapping_id": "eq-seamless-dc-admin-control-001",
+      "status": "proposed_pending_b_review",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_asset_label": "BADBLOOD DC01$ (C0 / #/computers/0)",
+      "source_event": "terminal_compromise_seamless_dc",
+      "destination_event": "admin_control_c0",
+      "consequence_semantics": "Administrative control of the BADBLOOD domain controller allows tampering with directory identity data and access control across the domain, directly threatening confidentiality, integrity, and availability of identity, authentication, and access control services.",
+      "consequence_rating": "High",
+      "affected_business_services": [
+        "identity",
+        "authentication",
+        "access_control"
+      ],
+      "applicability": {
+        "scenario_id": [
+          "scenario-seamless-host-to-dc",
+          "week4-seamless-v1",
+          "scenario-seamless-risk-comparison"
+        ],
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "boundary": "intra_forest",
+        "horizon_policy": "independent_of_recovery_horizon",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "directionality": "symmetric",
+      "rationale": "In Week 3, terminal_compromise_seamless_dc was defined by the predicate admin_control_badblood achieved via administrative command execution on the DC host. In Week 4 / #243, the terminal goal admin_control on C0 achieves identical administrative control on the same canonical DC host (S-1-5-21-1271839998-3495686680-2211690266-1000). The technical consequence and business risk to domain identity and authentication services are identical. Host execution on this specific DC implies DC control, distinguished from host execution on a member workstation or Domain Admin membership checkpoint.",
+      "source_rating_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+      "source_rating_version": "1.0.0",
+      "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+      "review_reference": "docs/research/ratings/week4/impact-equivalence-decision.md",
+      "provenance": {
+        "proposed_by": "Lolavine777",
+        "requested_reviewer": "nairyuuu",
+        "review_disposition": "pending"
+      },
+      "source_release_canonical_digest": "sha256:8af324ca79e8f21d9c250d7c4a901f69ac4f41720070cd1c28464fa8e64bdb18"
+    },
+    {
+      "mapping_id": "eq-seamless-dc-admin-control-002",
+      "status": "proposed_pending_b_review",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_asset_label": "BADBLOOD DC01$ (C0 / #/computers/0)",
+      "source_event": "terminal_compromise_seamless_dc",
+      "destination_event": "admin_control_seamless_dc",
+      "consequence_semantics": "Administrative control of the BADBLOOD domain controller allows tampering with directory identity data and access control across the domain, directly threatening confidentiality, integrity, and availability of identity, authentication, and access control services.",
+      "consequence_rating": "High",
+      "affected_business_services": [
+        "identity",
+        "authentication",
+        "access_control"
+      ],
+      "applicability": {
+        "scenario_id": [
+          "scenario-seamless-host-to-dc",
+          "week4-seamless-v1",
+          "scenario-seamless-risk-comparison"
+        ],
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "boundary": "intra_forest",
+        "horizon_policy": "independent_of_recovery_horizon",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "directionality": "symmetric",
+      "rationale": "Direct semantic equivalence for administrative control of BADBLOOD DC between explicit Week 3 terminal event and generated admin_control_seamless_dc event.",
+      "source_rating_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+      "source_rating_version": "1.0.0",
+      "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+      "review_reference": "docs/research/ratings/week4/impact-equivalence-decision.md",
+      "provenance": {
+        "proposed_by": "Lolavine777",
+        "requested_reviewer": "nairyuuu",
+        "review_disposition": "pending"
+      },
+      "source_release_canonical_digest": "sha256:8af324ca79e8f21d9c250d7c4a901f69ac4f41720070cd1c28464fa8e64bdb18"
+    },
+    {
+      "mapping_id": "eq-seamless-dc-admin-control-003",
+      "status": "proposed_pending_b_review",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_asset_label": "BADBLOOD DC01$ (C0 / #/computers/0)",
+      "source_event": "terminal_compromise_seamless_dc",
+      "destination_event": "terminal_compromise",
+      "consequence_semantics": "Administrative control of the BADBLOOD domain controller allows tampering with directory identity data and access control across the domain, directly threatening confidentiality, integrity, and availability of identity, authentication, and access control services.",
+      "consequence_rating": "High",
+      "affected_business_services": [
+        "identity",
+        "authentication",
+        "access_control"
+      ],
+      "applicability": {
+        "scenario_id": [
+          "scenario-seamless-host-to-dc",
+          "week4-seamless-v1",
+          "scenario-seamless-risk-comparison"
+        ],
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "boundary": "intra_forest",
+        "horizon_policy": "independent_of_recovery_horizon",
+        "required_predicates": [
+          "admin_control_badblood"
+        ]
+      },
+      "directionality": "symmetric",
+      "rationale": "Direct semantic equivalence between Week 3 DC compromise event and default resolver success_event 'terminal_compromise' when target asset is BADBLOOD DC.",
+      "source_rating_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+      "source_rating_version": "1.0.0",
+      "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+      "review_reference": "docs/research/ratings/week4/impact-equivalence-decision.md",
+      "provenance": {
+        "proposed_by": "Lolavine777",
+        "requested_reviewer": "nairyuuu",
+        "review_disposition": "pending"
+      },
+      "source_release_canonical_digest": "sha256:8af324ca79e8f21d9c250d7c4a901f69ac4f41720070cd1c28464fa8e64bdb18"
+    },
+    {
+      "mapping_id": "eq-seamless-frozen-admin-execution-004",
+      "status": "proposed_pending_b_review",
+      "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "target_asset_label": "BADBLOOD DC01$ (C0 / #/computers/0)",
+      "source_event": "terminal_compromise_seamless_dc",
+      "destination_event": "admin_execution_on_C",
+      "consequence_semantics": "Administrative control of the BADBLOOD domain controller allows tampering with directory identity data and access control across the domain, directly threatening confidentiality, integrity, and availability of identity, authentication, and access control services.",
+      "consequence_rating": "High",
+      "affected_business_services": [
+        "identity",
+        "authentication",
+        "access_control"
+      ],
+      "applicability": {
+        "scenario_id": [
+          "week4-seamless-v1"
+        ],
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "boundary": "intra_forest",
+        "horizon_policy": "independent_of_recovery_horizon",
+        "required_predicates": [
+          "admin"
+        ],
+        "goal_id": "admin_control(C0)"
+      },
+      "directionality": "directional",
+      "rationale": "Proposed equality of the explicit terminal admin_control(C0) consequence with historical admin_control_badblood on the same asset. No claim about secret theft, DA membership, or execution transport.",
+      "source_rating_digest": "sha256:553ca894c710580be597b747ff95e05e869246f419af5d7afbd52e32394377df",
+      "source_rating_version": "1.0.0",
+      "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+      "review_reference": "docs/research/ratings/week4/impact-equivalence-decision.md",
+      "provenance": {
+        "proposed_by": "Lolavine777",
+        "requested_reviewer": "nairyuuu",
+        "review_disposition": "pending"
+      },
+      "source_release_canonical_digest": "sha256:8af324ca79e8f21d9c250d7c4a901f69ac4f41720070cd1c28464fa8e64bdb18"
+    }
+  ]
+}

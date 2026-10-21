@@ -1,0 +1,69 @@
+{
+  "baseline_run_id": "finite-before",
+  "catalog_digest": "sha256:2630bb2c3d4c714c40aa3b72f9f079030f205e4a0f271fb2220cd6651e92cc77",
+  "catalog_id": "ad-remediation/1.0.0",
+  "conflict_policy": "reject_duplicate_or_conflicting_keys",
+  "edits": [
+    {
+      "after": false,
+      "catalog_entry_id": "group-membership",
+      "declaration": "counterfactual_intervention",
+      "edit_id": "membership-alice",
+      "evidence_refs": [
+        "synthetic://269/assumptions"
+      ],
+      "expected_before": true,
+      "key": {
+        "authentication_context": null,
+        "binding_id": null,
+        "predicate": "membership_usable",
+        "subject": "S-1-5-21-1000-2000-3000-1101",
+        "target": "S-1-5-21-1000-2000-3000-2103"
+      },
+      "kind": "runtime_fact_replace",
+      "rationale": "Shared group policy denial expanded to exact actor/group bindings"
+    },
+    {
+      "after": false,
+      "catalog_entry_id": "group-membership",
+      "declaration": "counterfactual_intervention",
+      "edit_id": "membership-bob",
+      "evidence_refs": [
+        "synthetic://269/assumptions"
+      ],
+      "expected_before": true,
+      "key": {
+        "authentication_context": null,
+        "binding_id": null,
+        "predicate": "membership_usable",
+        "subject": "S-1-5-21-1000-2000-3000-1102",
+        "target": "S-1-5-21-1000-2000-3000-2103"
+      },
+      "kind": "runtime_fact_replace",
+      "rationale": "Shared group policy denial expanded to exact actor/group bindings"
+    }
+  ],
+  "initial_state_policy": "rebuild_same_declared_foothold",
+  "missing_evidence_policy": "unresolved_no_effect_claim",
+  "request_id": "finite-shared-membership",
+  "schema_version": "1.1.0",
+  "scope": {
+    "engine_revision": "7368cac505b3d19331cb8a688114107e91134f25",
+    "evaluation_mode": "scenario",
+    "goal_manifest_digest": "sha256:873d490956608e24dbdc2b35882bc7867f793d902a4c189c0f6f29278cd0ed80",
+    "graph_digest": "sha256:73c151a00a0ae3a334b16d2d2ac5eb4b714e10b9239bae391e7a470b7a79e08c",
+    "program_identity_version": "semantic-program/1",
+    "query_profile_digest": "sha256:06697ea478fdbd67d8ef4d9390c544638c59c91c1cca1741dac54e2e9194e138",
+    "rating_inputs_digest": "sha256:74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+    "route_identity_version": "ordered-observed-edges/1",
+    "search_budget": {
+      "max_expansions": 1000,
+      "max_paths": 100,
+      "max_steps": 6
+    },
+    "semantic_catalog_digest": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "snapshot_facts_digest": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+    "source_manifest_digest": "sha256:3bd9b7ea5ad83ec19bd3e99b985b0865d2a75d47dbf5907f5e65a5d75d4b4343"
+  }
+}

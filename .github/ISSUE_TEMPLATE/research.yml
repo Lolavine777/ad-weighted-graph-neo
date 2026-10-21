@@ -1,0 +1,35 @@
+name: Research / Nghiên cứu
+description: Taxonomy, trọng số, giả định mô hình hoặc quyết định thiết kế.
+title: "[Research] "
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Câu hỏi nghiên cứu
+      description: Điều cần xác minh; tác động tới taxonomy, contract hoặc thuật toán.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Nguồn và phương pháp kiểm chứng
+      description: Nguồn chính thức, dữ liệu cần xem, giả định và phương án so sánh.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Đầu ra và tiêu chí chốt
+      description: Bảng taxonomy, rubric, ADR hoặc experiment; bằng chứng đủ để quyết định.
+    validations:
+      required: true
+  - type: input
+    id: ownership
+    attributes:
+      label: Owner / reviewer / milestone / hạn
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Phụ thuộc và câu hỏi còn mở

@@ -1,0 +1,7190 @@
+{
+  "cases": [
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 6,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "member_U_G1",
+          "member_U_G2",
+          "member_U_G3",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [
+          "member_U_G1",
+          "member_G1_G3",
+          "admin"
+        ],
+        "witness_C": 1,
+        "witness_valid": true
+      },
+      "case": 1,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 1.0,
+        "min_C": 1,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "admin": [
+            "member_U_G3"
+          ],
+          "member_G1_G3": [
+            "member_U_G1"
+          ],
+          "member_G2_G3": [
+            "member_U_G2"
+          ],
+          "member_G3_G1": [
+            "member_U_G3"
+          ],
+          "member_U_G1": [],
+          "member_U_G2": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "member_U_G1",
+          "member_G1_G3",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "group_identity_compromise": false,
+      "input_file": "evidence/f1-inputs/01-cycle-diamond.json",
+      "input_sha256": "5980830be3937b2762f6d3b36cef40d60b450c9ae30b7d7e60bb2c23c4a60a9c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 84
+        },
+        "complete": true,
+        "expansions": 84,
+        "materialize_seconds": 0.06295602099999087,
+        "minimum_C_under_independent_ledger": 1,
+        "path_count": 40,
+        "reachable": true,
+        "search_seconds": 0.04328669199958313,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 1,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "member_U_G1",
+          "member_U_G2",
+          "member_U_G3",
+          "usable_U"
+        ],
+        "states": 26,
+        "statuses": {
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "member_G1_G3": [
+            "applicable",
+            "blocked"
+          ],
+          "member_G2_G3": [
+            "applicable",
+            "blocked"
+          ],
+          "member_G3_G1": [
+            "applicable",
+            "blocked"
+          ],
+          "member_U_G1": [
+            "applicable"
+          ],
+          "member_U_G2": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "member_U_G1",
+          "member_G1_G3",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "cycle-diamond"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "auth_V",
+          "member_V_G1",
+          "reset_V",
+          "right_U_V",
+          "usable_U",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "grant",
+          "reset",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_C": 5,
+        "witness_valid": true
+      },
+      "case": 2,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 5.0,
+        "min_C": 5,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "reset_V"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "grant": [],
+          "member": [
+            "usable_V"
+          ],
+          "reset": [
+            "right_U_V"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "grant",
+          "reset",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/02-derived-right-chain.json",
+      "input_sha256": "3bfe94d07d83e088943fc2057b6b19d5e33999d524f923600df3081696f08a7f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 5
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.00037517700002354104,
+        "minimum_C_under_independent_ledger": 5,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.001821412000026612,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 5,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "auth_V",
+          "member_V_G1",
+          "reset_V",
+          "right_U_V",
+          "usable_U",
+          "usable_V"
+        ],
+        "states": 6,
+        "statuses": {
+          "activate": [
+            "applicable",
+            "blocked"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "grant": [
+            "applicable"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ],
+          "reset": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "grant",
+          "reset",
+          "activate",
+          "member",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "derived-right-chain"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 1,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "auth_V",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 3,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "reset_V"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "reset": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/03-downstream-goal.json",
+      "input_sha256": "2f6d0a2fcc7e2917c9e17afa005ee2c2f52e6e7d8b218c81cb4f029397558ed5",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.0004269820001354674,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0001915180000651162,
+        "truncation_reason": null
+      },
+      "notes": "Force reset produces authentication_control, not reset_password_control; no activation bridge in current vocabulary.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "auth_V",
+          "usable_U"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "reset": [
+            "applicable"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "unsupported composition",
+      "variant": "downstream-goal"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 1,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "auth_V",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [
+          "reset"
+        ],
+        "witness_C": 2,
+        "witness_valid": true
+      },
+      "case": 3,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 2.0,
+        "min_C": 2,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "reset_V"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "reset": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "reset"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/03-reset-marker.json",
+      "input_sha256": "e6de7ecec59a7720ec353ecf2ef20bc3f8191fc11fc74d6dd59fa4efa7f1395e",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.0003056470000046829,
+        "minimum_C_under_independent_ledger": 2,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.00036101499972573947,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 2,
+        "reachable": true,
+        "reachable_facts": [
+          "auth_V",
+          "usable_U"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "reset": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "reset"
+        ]
+      },
+      "scope": "supported",
+      "variant": "reset-marker"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "auth_V",
+          "member_V_G1",
+          "reset_V",
+          "usable_U",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_C": 2,
+        "witness_valid": true
+      },
+      "case": 3,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 2.0,
+        "min_C": 2,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "reset": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/03-declared-reset-credential-control.json",
+      "input_sha256": "37c57d2cc5a6bfeeeeba55a00c9f57914913b9a3f071b08712a2afc14c3d0dd5",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 12
+        },
+        "complete": true,
+        "expansions": 12,
+        "materialize_seconds": 0.0003618369996729598,
+        "minimum_C_under_independent_ledger": 2,
+        "path_count": 4,
+        "reachable": true,
+        "search_seconds": 0.0031186900000648166,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 2,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "auth_V",
+          "member_V_G1",
+          "reset_V",
+          "usable_U",
+          "usable_V"
+        ],
+        "states": 8,
+        "statuses": {
+          "activate": [
+            "applicable"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ],
+          "reset": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ]
+      },
+      "scope": "positive control",
+      "variant": "declared-reset-credential-control"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 4,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin-goal": [
+            "member_V_G1"
+          ],
+          "admin-source": [],
+          "member": [
+            "usable_V"
+          ],
+          "session-material": [
+            "admin_H1"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/04-downstream-goal.json",
+      "input_sha256": "b97a6631432126fc96e0edee081cb0009f5ca6bf24549db13f646a7be203c3bc",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.0008954780000749452,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0005288020001898985,
+        "truncation_reason": null
+      },
+      "notes": "HasSession does not declare a password or a recovery action; no automatic credential promotion is valid.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "usable_U"
+        ],
+        "states": 3,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin-goal": [
+            "blocked"
+          ],
+          "admin-source": [
+            "applicable"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "session-material": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "unsupported composition",
+      "variant": "downstream-goal"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [
+          "admin-source",
+          "session-material"
+        ],
+        "witness_C": 2,
+        "witness_valid": true
+      },
+      "case": 4,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 2.0,
+        "min_C": 2,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin-goal": [
+            "member_V_G1"
+          ],
+          "admin-source": [],
+          "member": [
+            "usable_V"
+          ],
+          "session-material": [
+            "admin_H1"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "admin-source",
+          "session-material"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/04-material-marker.json",
+      "input_sha256": "8492f3d66ac69861374cc32b1bde752f89c9797524e064feebfdd4783ddf9627",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00042157699999734177,
+        "minimum_C_under_independent_ledger": 2,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.0005900670003029518,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 2,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "usable_U"
+        ],
+        "states": 3,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin-goal": [
+            "blocked"
+          ],
+          "admin-source": [
+            "applicable"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "session-material": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "admin-source",
+          "session-material"
+        ]
+      },
+      "scope": "supported",
+      "variant": "material-marker"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "admin_H2",
+          "material_V",
+          "member_V_G1",
+          "secret_V_X",
+          "usable_U",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin-goal"
+        ],
+        "witness_C": 2,
+        "witness_valid": true
+      },
+      "case": 4,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 2.0,
+        "min_C": 2,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [],
+          "admin-goal": [
+            "member_V_G1"
+          ],
+          "admin-source": [],
+          "member": [
+            "usable_V"
+          ],
+          "session-material": [
+            "admin_H1"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin-goal"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/04-declared-password-control.json",
+      "input_sha256": "2611aeb61dc6f968094d8136e263ec800392468377f3e7c645a9ee6a3bf42a3d",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 77
+        },
+        "complete": true,
+        "expansions": 77,
+        "materialize_seconds": 0.00037500899998121895,
+        "minimum_C_under_independent_ledger": 2,
+        "path_count": 31,
+        "reachable": true,
+        "search_seconds": 0.034876795999934984,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 2,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "admin_H2",
+          "material_V",
+          "member_V_G1",
+          "secret_V_X",
+          "usable_U",
+          "usable_V"
+        ],
+        "states": 12,
+        "statuses": {
+          "activate": [
+            "applicable"
+          ],
+          "admin-goal": [
+            "applicable",
+            "blocked"
+          ],
+          "admin-source": [
+            "applicable"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ],
+          "session-material": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "activate",
+          "member",
+          "admin-goal"
+        ]
+      },
+      "scope": "positive control",
+      "variant": "declared-password-control"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "known_V",
+          "material_V_X",
+          "member_V_G",
+          "request_X_V",
+          "secret_V_X",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_C": 6,
+        "witness_valid": true
+      },
+      "case": 5,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 6.0,
+        "min_C": 6,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/05-true.json",
+      "input_sha256": "02de455bd20e23aa9f1d138d25320ab170213033013ef951b589444059230a7f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 5
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.0004381109997666499,
+        "minimum_C_under_independent_ledger": 6,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.0023037129999465833,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 6,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "known_V",
+          "material_V_X",
+          "member_V_G",
+          "request_X_V",
+          "secret_V_X",
+          "usable_V"
+        ],
+        "states": 6,
+        "statuses": {
+          "activate": [
+            "applicable",
+            "blocked"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ],
+          "recover": [
+            "applicable",
+            "blocked"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "true"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_V",
+          "material_V_X",
+          "request_X_V"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 5,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/05-false.json",
+      "input_sha256": "55357a82fe0712997271892ed31f1b0f4cc39b3b7be08a4d8b09dc4dc2772008",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 1
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00047266899991882383,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00042558599989206414,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_V",
+          "material_V_X",
+          "request_X_V"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "recover": [
+            "blocked"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "false"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_V",
+          "material_V_X",
+          "request_X_V"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 5,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/05-none.json",
+      "input_sha256": "60c24014149f30b72bc7f5ec298a27699852303dfaf56dab71f13d49b2e75c8f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "indeterminate": 1
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00034677900021051755,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0006684770000902063,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_V",
+          "material_V_X",
+          "request_X_V"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "recover": [
+            "blocked",
+            "unknown"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "none"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "material_V_X",
+          "member_V_G",
+          "secret_V_X",
+          "usable_U",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_C": 6,
+        "witness_valid": true
+      },
+      "case": 6,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 6.0,
+        "min_C": 6,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/06-true.json",
+      "input_sha256": "810d3af1fd2ea9ccff38610b16230392f5aa610518f5eb18a102e8991d3b8c9d",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 5
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.0003485389997877064,
+        "minimum_C_under_independent_ledger": 6,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.0020963960000699444,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 6,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "material_V_X",
+          "member_V_G",
+          "secret_V_X",
+          "usable_U",
+          "usable_V"
+        ],
+        "states": 6,
+        "statuses": {
+          "activate": [
+            "applicable",
+            "blocked"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ],
+          "recover": [
+            "applicable",
+            "blocked"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "request",
+          "recover",
+          "activate",
+          "member",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "structural_route_to_service_identity": false,
+      "variant": "true"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 6,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/06-false.json",
+      "input_sha256": "927713a7f8425bdce6f7dc62b45481989a83941720600c29e5558f45a737415c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 1
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00032066600033431314,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0004706310000983649,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X",
+          "usable_U"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "recover": [
+            "blocked"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "structural_route_to_service_identity": false,
+      "variant": "false"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 6,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G"
+          ],
+          "member": [
+            "usable_V"
+          ],
+          "recover": [
+            "material_V_X"
+          ],
+          "request": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/06-none.json",
+      "input_sha256": "4abbaa1426ecf0dca74caa75e6732e58d8d1b049f19fdb3bd10b2dabcb21b7a8",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "indeterminate": 1
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00033833599991339725,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0015768190000926552,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X",
+          "usable_U"
+        ],
+        "states": 2,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ],
+          "recover": [
+            "blocked",
+            "unknown"
+          ],
+          "request": [
+            "applicable"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "structural_route_to_service_identity": false,
+      "variant": "none"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [
+          "acquire",
+          "configure",
+          "prepare",
+          "delegate",
+          "admin"
+        ],
+        "witness_C": 9,
+        "witness_valid": true
+      },
+      "case": 7,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/07-full.json",
+      "input_sha256": "a2fe99c8684a4222691d484558dd3295165d595783bc5c274dd2c3c6604dfb34",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 14
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0011207069996999053,
+        "minimum_C_under_independent_ledger": 9,
+        "path_count": 3,
+        "reachable": true,
+        "search_seconds": 0.014371479000146792,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 9,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 8,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "acquire",
+          "prepare",
+          "configure",
+          "delegate",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "three_orders_match": true,
+      "variant": "full"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [
+          "configure",
+          "delegate",
+          "admin"
+        ],
+        "witness_C": 4,
+        "witness_valid": true
+      },
+      "case": 7,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 4.0,
+        "min_C": 4,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "acquire": [],
+          "admin": [
+            "delegated_B"
+          ],
+          "configure": [],
+          "delegate": [
+            "descriptor_B"
+          ],
+          "prepare": [
+            "secret_M_B"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "configure",
+          "delegate",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/07-reuse-service.json",
+      "input_sha256": "5a090784b21f0911d5a677b9bbf9b70e16c18ccddd8d94faf5811a344de06082",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 3
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.0003758719999495952,
+        "minimum_C_under_independent_ledger": 4,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.002177566000227671,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 4,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_C",
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 12,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "configure",
+          "delegate",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "reuse-service"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-service.json",
+      "input_sha256": "758005d7dd929ba99f9a1a0e524d8217e7ee765e9fa959c7ad14a1cbaf5b1131",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4
+        },
+        "complete": true,
+        "expansions": 4,
+        "materialize_seconds": 0.0004206309999972291,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0016151909999280178,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-service"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-descriptor.json",
+      "input_sha256": "0b4c52ec52e99a9efe94ad7450904114c2ede5407743ef9c349b2c5e6979f3c1",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.00036823900018134736,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0009312510001109331,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-descriptor"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_OTHER_CONTEXT",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-wrong-service-binding.json",
+      "input_sha256": "66d863b145ad96a922b0bd47cfe449d750580ae601aa95207fb72bf5f8cc8e74",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4
+        },
+        "complete": true,
+        "expansions": 4,
+        "materialize_seconds": 0.00040565500012235134,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0017426009999326197,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_OTHER_CONTEXT",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "wrong-service-binding"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "service_M_OTHER_CONTEXT",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-wrong-runtime-context.json",
+      "input_sha256": "38f978fa8076bcf2aa7acebf0ce3eec85187f7bbcddb5a77d8da7804d280235d",
+      "native": {
+        "attempt_status_counts": {},
+        "complete": true,
+        "expansions": 0,
+        "materialize_seconds": 0.00034075200028382824,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00013193699987823493,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "service_M_OTHER_CONTEXT",
+          "usable_R"
+        ],
+        "states": 1,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "wrong-runtime-context"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-effective_reset_right-False.json",
+      "input_sha256": "e4e9fdf4e4332bebdd639ffd2654c37293aec6beb38ae0ddf2b25e39326b2150",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.0003421060000619036,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0007688900000175636,
+        "truncation_reason": null
+      },
+      "notes": "Only (effective_reset_right, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-effective_reset_right-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-effective_reset_right-None.json",
+      "input_sha256": "636bdb0f03cc5bf97ae0ec0ac58685a2f0602f63bf003762685dea6bf84ecedd",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "indeterminate": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.00038634200018350384,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0007865620000302442,
+        "truncation_reason": null
+      },
+      "notes": "Only (effective_reset_right, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "unknown"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-effective_reset_right-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-directory_write_allowed-False.json",
+      "input_sha256": "39ad7c59d22e832100ba41f2b66e4e12101437886166601bb62e0a5345f86774",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.00033259399970120285,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0008962950000750425,
+        "truncation_reason": null
+      },
+      "notes": "Only (directory_write_allowed, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-directory_write_allowed-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-directory_write_allowed-None.json",
+      "input_sha256": "649f81ba2cc144f1940074288a44330b76de030b892aad85be8b6cbd4529556f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "indeterminate": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.0006658649999735644,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0007532029999310907,
+        "truncation_reason": null
+      },
+      "notes": "Only (directory_write_allowed, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "unknown"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-directory_write_allowed-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-password_policy_accepts-False.json",
+      "input_sha256": "2881de9f6d61aefcc9ea04644011c7029ad3ac7c849414dcdc9e91faff49167f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.000558200999876135,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0008826119997138449,
+        "truncation_reason": null
+      },
+      "notes": "Only (password_policy_accepts, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-password_policy_accepts-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-acquire-password_policy_accepts-None.json",
+      "input_sha256": "029d4cbbe6d4e33177de1d1be7bc9d0c609757f113e81c477ca4e9bd7f54816f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "indeterminate": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.00032283500013363664,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0007596350001222163,
+        "truncation_reason": null
+      },
+      "notes": "Only (password_policy_accepts, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "unknown"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-acquire-password_policy_accepts-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-secret_valid-False.json",
+      "input_sha256": "2eeb1e7a8e4708557dcf7791e0996bedec3568fbffc16272230e331f21f9675c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.0003654269999060489,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005230988000221259,
+        "truncation_reason": null
+      },
+      "notes": "Only (secret_valid, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-secret_valid-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-secret_valid-None.json",
+      "input_sha256": "eb4c95e45e24a6976c28b652b3d411ba957c10cd93e43af4878e04d732b8edb2",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.0003796870000769559,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.003102050000052259,
+        "truncation_reason": null
+      },
+      "notes": "Only (secret_valid, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-secret_valid-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-key_derivation_accepted-False.json",
+      "input_sha256": "60453fe033bccf758ac546b27c8f97548f1857daaaf2f1c98e020b199f8b1aba",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00034183099978690734,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0024275660002786026,
+        "truncation_reason": null
+      },
+      "notes": "Only (key_derivation_accepted, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-key_derivation_accepted-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-key_derivation_accepted-None.json",
+      "input_sha256": "4127800ea69d05922954725391690dbe3b258314fa3d079f2aa8b2dc542160cf",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00047083599974939716,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0027149749998898187,
+        "truncation_reason": null
+      },
+      "notes": "Only (key_derivation_accepted, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-key_derivation_accepted-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-key_encryption_compatible-False.json",
+      "input_sha256": "56716f68336ff278acca5e8ff03d565bb728e464194b6603422e68bdbfc53700",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00037384500001280685,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.002359697999963828,
+        "truncation_reason": null
+      },
+      "notes": "Only (key_encryption_compatible, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-key_encryption_compatible-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-key_encryption_compatible-None.json",
+      "input_sha256": "ecfcb43466e9d80a1329e97ae66f563413c803189e3413a1a360367545536814",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00037050700029794825,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00344593799991344,
+        "truncation_reason": null
+      },
+      "notes": "Only (key_encryption_compatible, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-key_encryption_compatible-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-service_authentication_accepted-False.json",
+      "input_sha256": "f7a7aa8d20caf1b24e33f2a8a798a7493a6789fe4b5cc704a036a4cd8097117f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00038319599980241037,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.002205398999649333,
+        "truncation_reason": null
+      },
+      "notes": "Only (service_authentication_accepted, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-service_authentication_accepted-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-service_authentication_accepted-None.json",
+      "input_sha256": "13b2037825eeb8502beadb524478e02dc6151102e1c2f3280945c18342f9feb4",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.0005584650002674607,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0037627550000252086,
+        "truncation_reason": null
+      },
+      "notes": "Only (service_authentication_accepted, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-service_authentication_accepted-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-network_kdc_reachable-False.json",
+      "input_sha256": "9c293fd8ce04481ad1963e2d8fdb9aa5e84e52bbbae9d78332945d52dce91dea",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.0003394980003577075,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0021942240000498714,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_kdc_reachable, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-network_kdc_reachable-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-prepare-network_kdc_reachable-None.json",
+      "input_sha256": "a7d021b9086d90eeb3282e566c8831ba740a24cca9abc1114872dd7dd25f04f5",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00042236199988110457,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0023814830001356313,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_kdc_reachable, S-1-5-21-1000-2000-3000-1580, S-1-5-21-1000-2000-3000-2075) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-prepare-network_kdc_reachable-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-configure-effective_descriptor_write-False.json",
+      "input_sha256": "d4d81c474434d87a55c987157807de82753f2868b02ef93bebb5a082051ae560",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.000468567000098119,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0022766380002394726,
+        "truncation_reason": null
+      },
+      "notes": "Only (effective_descriptor_write, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-configure-effective_descriptor_write-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-configure-effective_descriptor_write-None.json",
+      "input_sha256": "950f330f302e6272b1f3f7bb6beb4fa5a37634d81a0610bf407f137c48577119",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.0004685260000769631,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.001520479000191699,
+        "truncation_reason": null
+      },
+      "notes": "Only (effective_descriptor_write, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "unknown"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-configure-effective_descriptor_write-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-configure-directory_write_allowed-False.json",
+      "input_sha256": "446066d3ed650eb9f936032fa7c339a37ec366ba6cd227c90be1d6d0dd3a03b0",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.00036652800008596387,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0041564029997971375,
+        "truncation_reason": null
+      },
+      "notes": "Only (directory_write_allowed, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-configure-directory_write_allowed-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-configure-directory_write_allowed-None.json",
+      "input_sha256": "70a86191ef5152ce0b857a504c74ef6950db35dec1b739000f3db24c70fbff9f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.006262667000100919,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.007692228999985673,
+        "truncation_reason": null
+      },
+      "notes": "Only (directory_write_allowed, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "unknown"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-configure-directory_write_allowed-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-target_spn_binding-False.json",
+      "input_sha256": "9b2e01b4bed17baa9586ee2852ae5d19f837e244ccf70bd0b002d337196d3ed6",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.00036742900010722224,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.025326126999971166,
+        "truncation_reason": null
+      },
+      "notes": "Only (target_spn_binding, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-target_spn_binding-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-target_spn_binding-None.json",
+      "input_sha256": "2024fcfd4c13570e9bc722adc23f3b84c93c4300b455b286dec22a2ee563db24",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.004605274999903486,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.02038900899970031,
+        "truncation_reason": null
+      },
+      "notes": "Only (target_spn_binding, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked",
+            "unknown"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-target_spn_binding-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-delegation_policy_allows-False.json",
+      "input_sha256": "3532e70c7514bde7ffcb45bf80c7e4804c74574eacdc195981fcf082bc69515f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.0005661119998876529,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.014360883999870566,
+        "truncation_reason": null
+      },
+      "notes": "Only (delegation_policy_allows, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-delegation_policy_allows-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-delegation_policy_allows-None.json",
+      "input_sha256": "c2aba24cf92d8fe90372b3b5b398e2d1da9637ef3b19fa4d69940aadda0f0625",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.003533468000114226,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.007934699000088585,
+        "truncation_reason": null
+      },
+      "notes": "Only (delegation_policy_allows, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked",
+            "unknown"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-delegation_policy_allows-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-network_kdc_reachable-False.json",
+      "input_sha256": "a85d824a6ba7a96ab291f3f0f49888203aad2fd25253604e01539b302aafe54d",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.00039796800001568045,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005217975999585178,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_kdc_reachable, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-network_kdc_reachable-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-network_kdc_reachable-None.json",
+      "input_sha256": "aa49d75bd86cb718da31fa9e4d7f6d2bf28253b02a5a3cf957c4291bf0cf64f6",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.00032802300029288745,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.004129552999984298,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_kdc_reachable, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked",
+            "unknown"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-network_kdc_reachable-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-s4u_request_accepted-False.json",
+      "input_sha256": "017cd8b95d10d44cd1e3dfd44392f5a8cd02fb05439bf569292408e06fa86e06",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.00036983099971621414,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.004125316999761708,
+        "truncation_reason": null
+      },
+      "notes": "Only (s4u_request_accepted, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-s4u_request_accepted-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-delegate-s4u_request_accepted-None.json",
+      "input_sha256": "54260adea09028d8b077bfa133d950dbeac719cdf4e5cd58f66befd6e6ea527a",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.0009577179998814245,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00795101399990017,
+        "truncation_reason": null
+      },
+      "notes": "Only (s4u_request_accepted, S-1-5-21-1000-2000-3000-1580, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked",
+            "unknown"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-delegate-s4u_request_accepted-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-target_spn_binding-False.json",
+      "input_sha256": "f8a580f63b5264e3ddd02156f4ce058812e79877e43bac8e7446d3a768865839",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.00042500400013523176,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.007998802000201977,
+        "truncation_reason": null
+      },
+      "notes": "Only (target_spn_binding, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-target_spn_binding-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-target_spn_binding-None.json",
+      "input_sha256": "a11dffa6746245182fba0e6e49bb89fcc27e1a7d0ec6649518245dbb2fdfe32c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0005422799999905692,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.004415330000028916,
+        "truncation_reason": null
+      },
+      "notes": "Only (target_spn_binding, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-target_spn_binding-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-network_winrm_reachable-False.json",
+      "input_sha256": "b18e63bc9eb928925991ce8fa384a2c401d0e99a63056a88a3be485f9c842fcd",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0004345050001575146,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005204297000091174,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_winrm_reachable, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-network_winrm_reachable-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-network_winrm_reachable-None.json",
+      "input_sha256": "67fb1e8413e45848e3233b23dc9372d3d87f44ba8002189b9d7357b9b2facaa8",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.00032715399993321626,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005585135000274022,
+        "truncation_reason": null
+      },
+      "notes": "Only (network_winrm_reachable, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-network_winrm_reachable-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-service_winrm_running-False.json",
+      "input_sha256": "4e157b4834242f7bd59021a30268087cf5d59fef8056ae7306c726ecc587fd51",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.00033586599965929054,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005456666999634763,
+        "truncation_reason": null
+      },
+      "notes": "Only (service_winrm_running, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-service_winrm_running-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-service_winrm_running-None.json",
+      "input_sha256": "8fa52451b1d3669566bd1c15b067a0d0d88acac4efe6fb56b8ee0b0822e1628f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0005180869998184789,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.007216734999929031,
+        "truncation_reason": null
+      },
+      "notes": "Only (service_winrm_running, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-service_winrm_running-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-endpoint_authorized-False.json",
+      "input_sha256": "393b0b9b2ab466beec6f8871526cb0819140d148d8838b654a6c4ea3e0a2713c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0004889319998255814,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005576505000135512,
+        "truncation_reason": null
+      },
+      "notes": "Only (endpoint_authorized, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-endpoint_authorized-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-endpoint_authorized-None.json",
+      "input_sha256": "8c0900f29663e6c89b94674982f6a142d2592a3e960c20b79529c18b45fdb7af",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0005557370000133233,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.004536008000286529,
+        "truncation_reason": null
+      },
+      "notes": "Only (endpoint_authorized, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-endpoint_authorized-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-winrm_authentication_accepted-False.json",
+      "input_sha256": "44d626bb2000873427d9fdf692e35540996c43925851de54cf9f42a5df1b2839",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0006449500001508568,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.004201534999992873,
+        "truncation_reason": null
+      },
+      "notes": "Only (winrm_authentication_accepted, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-winrm_authentication_accepted-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-winrm_authentication_accepted-None.json",
+      "input_sha256": "21014e66deee5da79a1bd299e9d505675e0a286c69360ba71e99606e9cbbde00",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.00043633500035866746,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00472245400032989,
+        "truncation_reason": null
+      },
+      "notes": "Only (winrm_authentication_accepted, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-winrm_authentication_accepted-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-admin_execution_context-False.json",
+      "input_sha256": "f3f1fa575410b69d2700c839b35dca171f72e97c6dfde4f7f2411ad2be2fb2c7",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0012004919999526464,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.008685779000188631,
+        "truncation_reason": null
+      },
+      "notes": "Only (admin_execution_context, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to False; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-admin_execution_context-False"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 5,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-runtime-admin-admin_execution_context-None.json",
+      "input_sha256": "595c100243fe60f466040dbe268ca9ab1f0d02d9cc8b8e5705f4a3abdaada9c5",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 11,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 14,
+        "materialize_seconds": 0.0006661180000264721,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.005292958000154613,
+        "truncation_reason": null
+      },
+      "notes": "Only (admin_execution_context, S-1-5-21-1000-2000-3000-917, 10000000-0000-4000-8000-000000000027) changed to None; exact typed binding metadata retained.",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "delegated_B",
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 7,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked",
+            "unknown"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "applicable",
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "runtime-admin-admin_execution_context-None"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-known-M.json",
+      "input_sha256": "533eed5cd82943ae11b58af47eead56227b0b3d38527c28657c89b7a589d3c2e",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.0003660160000436008,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0012764550001520547,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-known-M"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-known-P.json",
+      "input_sha256": "bd569363e97cde7e83fef323190911f5c372ab6ae986374ac1fe4fa613a89d9c",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 8,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 11,
+        "materialize_seconds": 0.00031751400001667207,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0038636630001747108,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 6,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-known-P"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 0,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-usable-controller.json",
+      "input_sha256": "99665af262bb4c3f8a37e48c73b0ef9e7326d4e45a46ef54403243d70c560f7e",
+      "native": {
+        "attempt_status_counts": {
+          "blocked": 2
+        },
+        "complete": true,
+        "expansions": 2,
+        "materialize_seconds": 0.0003250310001021717,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.000736473999950249,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P"
+        ],
+        "states": 1,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-usable-controller"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 2,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-exact-reset-right.json",
+      "input_sha256": "5178de29679cd3d792eef2475ad901a9597badc78a070aa420f25f6aa7bb4229",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1,
+          "blocked": 2
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.00032481600010214606,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0012786490001417405,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "usable_R"
+        ],
+        "states": 2,
+        "statuses": {
+          "acquire": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-exact-reset-right"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-missing-exact-descriptor-right.json",
+      "input_sha256": "77c5f794ea92f074601e09143c21a87490a0459769e1454d986c797fb9eb0bed",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 2,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 5,
+        "materialize_seconds": 0.00036315300030764774,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0017774320003809407,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "service_M_B",
+          "usable_R"
+        ],
+        "states": 3,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "blocked"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "missing-exact-descriptor-right"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-spn-flag-false.json",
+      "input_sha256": "b6f4ee28631cfd579b86131e45fde189d092de247725b56a927eb17f9ef09a9f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00043930299989369814,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.003112553999926604,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "spn-flag-false"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-spn-flag-unknown.json",
+      "input_sha256": "47707eeb7a5f5c1e60b74ad350cea4dac6d2e3b32484f4a587ef8b2863e5c6ea",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.00034895199996753945,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.002492739999979676,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "spn-flag-unknown"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-spn-values-empty.json",
+      "input_sha256": "0c61792ad4e10527da0423b2f6365d166874ad290aad5ed5d84127ab07cf3264",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "blocked": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.000412174999837589,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.002562847000262991,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "spn-values-empty"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 8,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [
+          "delegate"
+        ],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/08-spn-values-unknown.json",
+      "input_sha256": "0bc0c554c1994fe22436f2e31683c6d041837ed1823720c8c8df73ce1f469291",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 4,
+          "indeterminate": 3
+        },
+        "complete": true,
+        "expansions": 7,
+        "materialize_seconds": 0.0003197569999429106,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0024747480001678923,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "descriptor_B",
+          "known_M",
+          "known_P",
+          "secret_M_B",
+          "usable_R"
+        ],
+        "states": 4,
+        "statuses": {
+          "acquire": [
+            "applicable"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "configure": [
+            "applicable"
+          ],
+          "delegate": [
+            "blocked"
+          ],
+          "prepare": [
+            "blocked",
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "spn-values-unknown"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "admin_H2",
+          "admin_H3",
+          "usable_U",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "admin-H1",
+          "admin-H2",
+          "admin-H3"
+        ],
+        "witness_C": 3,
+        "witness_valid": true
+      },
+      "case": 9,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "actions": [],
+        "reason": "multiple accumulated prerequisites",
+        "status": "unsupported"
+      },
+      "input_file": "evidence/f1-inputs/09-two-usable-actors-return.json",
+      "input_sha256": "23f3f366ba033c5b9b4329da2e1604b9cf78fd018de1f5f3d2ca638a4910c671",
+      "manual_evaluator_replay": {
+        "caveat": "Public supported multi-capability goal, two initially usable identities in one scope. Exact R01 novel-right-after-switch case is not expressible with existing actor-self mutation recipes; not claimed reproduced.",
+        "final_state": {
+          "admin_control": [
+            "10000000-0000-4000-8000-000000000002",
+            "10000000-0000-4000-8000-000000000003",
+            "10000000-0000-4000-8000-000000000004"
+          ],
+          "asrep_material": [],
+          "asrep_request_capability": [],
+          "authentication_control": [],
+          "authentication_unknown": [],
+          "control": [],
+          "controlled_service": [],
+          "credential_material": [],
+          "delegated_context": [],
+          "effective_member": [],
+          "interactive_session": [],
+          "known_identity": [],
+          "permission": [],
+          "rbcd_descriptor": [],
+          "rbcd_secret": [],
+          "recovered_secret": [],
+          "relationship_added": [],
+          "remote_command_execution": [],
+          "reset_password_control": [],
+          "service_ticket_material": [],
+          "usable_identity": [
+            [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000001"
+            ],
+            [
+              "S-1-5-21-1000-2000-3000-1102",
+              "10000000-0000-4000-8000-000000000001"
+            ]
+          ]
+        },
+        "goal": true,
+        "steps": [
+          {
+            "failed": [],
+            "request": {
+              "actor": "S-1-5-21-1000-2000-3000-1101",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1000-2000-3000-1101",
+              "target": "10000000-0000-4000-8000-000000000002",
+              "technique_id": "obtain_admin_execution_on_host"
+            },
+            "status": "applicable",
+            "unknown": []
+          },
+          {
+            "failed": [],
+            "request": {
+              "actor": "S-1-5-21-1000-2000-3000-1102",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1000-2000-3000-1102",
+              "target": "10000000-0000-4000-8000-000000000003",
+              "technique_id": "obtain_admin_execution_on_host"
+            },
+            "status": "applicable",
+            "unknown": []
+          },
+          {
+            "failed": [],
+            "request": {
+              "actor": "S-1-5-21-1000-2000-3000-1101",
+              "rbcd_binding": null,
+              "source": "S-1-5-21-1000-2000-3000-1101",
+              "target": "10000000-0000-4000-8000-000000000004",
+              "technique_id": "obtain_admin_execution_on_host"
+            },
+            "status": "applicable",
+            "unknown": []
+          }
+        ]
+      },
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 15
+        },
+        "complete": true,
+        "expansions": 15,
+        "materialize_seconds": 0.0002925539997704618,
+        "minimum_C_under_independent_ledger": 3,
+        "path_count": 6,
+        "reachable": true,
+        "search_seconds": 0.005557379000038054,
+        "truncation_reason": null
+      },
+      "notes": "Explicit replay order U:H1 -> V:H2 -> U:H3 tests returning to an already usable actor.",
+      "oracle": {
+        "min_C": 3,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "admin_H2",
+          "admin_H3",
+          "usable_U",
+          "usable_V"
+        ],
+        "states": 8,
+        "statuses": {
+          "admin-H1": [
+            "applicable"
+          ],
+          "admin-H2": [
+            "applicable"
+          ],
+          "admin-H3": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "admin-H1",
+          "admin-H2",
+          "admin-H3"
+        ]
+      },
+      "scope": "candidate completeness probe",
+      "variant": "two-usable-actors-return"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 4,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "member_U_G1",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [
+          "direct",
+          "material"
+        ],
+        "witness_C": 7,
+        "witness_valid": true
+      },
+      "case": 10,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "unsupported shared-work cost",
+        "diagnostic": null,
+        "edge_local_C": 7.0,
+        "min_C": null,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "direct": [],
+          "inherited": [
+            "member_U_G1"
+          ],
+          "material": [
+            "admin_H1"
+          ],
+          "member": []
+        },
+        "shared_units": [
+          "B"
+        ],
+        "status": "executed",
+        "witness": [
+          "direct",
+          "material"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/10-shared-work-prefix.json",
+      "input_sha256": "a14ddb093ec5ef79457383170ddefc718acd2b2fc842640546e761a7e234558f",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 15
+        },
+        "complete": true,
+        "expansions": 15,
+        "materialize_seconds": 0.00038946499989833683,
+        "minimum_C_under_independent_ledger": 5,
+        "path_count": 7,
+        "reachable": true,
+        "search_seconds": 0.0040551229999437055,
+        "truncation_reason": null
+      },
+      "notes": "Manual union-work ledger, not calibrated effort. AND-OR first support is deliberately not a C optimizer.",
+      "oracle": {
+        "min_C": 5,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "material_V",
+          "member_U_G1",
+          "usable_U"
+        ],
+        "states": 10,
+        "statuses": {
+          "direct": [
+            "applicable"
+          ],
+          "inherited": [
+            "applicable",
+            "blocked"
+          ],
+          "material": [
+            "applicable",
+            "blocked"
+          ],
+          "member": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "member",
+          "inherited",
+          "material"
+        ]
+      },
+      "scope": "synthetic cost probe",
+      "variant": "shared-work-prefix"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 1,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [
+          "admin"
+        ],
+        "witness_C": 1,
+        "witness_valid": true
+      },
+      "case": 11,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 1.0,
+        "min_C": 1,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "admin": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/11-true.json",
+      "input_sha256": "1dbf40c4ab3910ab6e3c65be8fb065879a81f1b2fd87f88e5f0b38e0c6bc2a43",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.0019445950001681922,
+        "minimum_C_under_independent_ledger": 1,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.0005827810000482714,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 1,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H1",
+          "usable_U"
+        ],
+        "states": 2,
+        "statuses": {
+          "admin": [
+            "applicable"
+          ]
+        },
+        "witness": [
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "true"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 1,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 11,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "admin": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/11-false.json",
+      "input_sha256": "0497cc01a41b285a3b471824835b65baa0188271c69cbde7df51bd0b54abc96a",
+      "known_false_veto_rejected_optimism": [
+        {
+          "assumption_metadata": {},
+          "assumption_value": true,
+          "conflicting_fact": {
+            "assumption_metadata": null,
+            "origin": "observed_evidence",
+            "predicate": "admin_channel",
+            "provenance_reference": "synthetic://r02/guards",
+            "rationale": "Synthetic declared guard; not observed frequency",
+            "scope": "r02/finite-fixture",
+            "subject": "S-1-5-21-1000-2000-3000-1101",
+            "target": "10000000-0000-4000-8000-000000000002",
+            "value": false
+          },
+          "predicate": "admin_channel",
+          "provenance_reference": "synthetic://r02/guards",
+          "rationale": "Synthetic declared guard; not observed frequency",
+          "reason": "known_false_veto",
+          "scope": "r02/finite-fixture",
+          "subject": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002"
+        }
+      ],
+      "native": {
+        "attempt_status_counts": {
+          "blocked": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.00036974200020267745,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00010702700001274934,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "usable_U"
+        ],
+        "states": 1,
+        "statuses": {
+          "admin": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "false"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 1,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "usable_U"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 11,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "admin": []
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/11-none.json",
+      "input_sha256": "f4dc02ed777830dd72b6b11d91d9a037930f56f7f9b2a1a6c7be944ab6f1a697",
+      "native": {
+        "attempt_status_counts": {
+          "indeterminate": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.00019370400013940525,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00010304700026608771,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "usable_U"
+        ],
+        "states": 1,
+        "statuses": {
+          "admin": [
+            "unknown"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "none"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 3,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "member_V_G1",
+          "secret_V_X",
+          "usable_V"
+        ],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_C": 2,
+        "witness_valid": true
+      },
+      "case": 12,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": 2.0,
+        "min_C": 2,
+        "reachable": true,
+        "reduced_dynamic_prerequisites": {
+          "activate": [],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/12-V-X-password.json",
+      "input_sha256": "16919ef17a2a5e8c9f481e578a5c0c2f8226fb89157be2046981f628ad885c2e",
+      "native": {
+        "attempt_status_counts": {
+          "applicable": 3
+        },
+        "complete": true,
+        "expansions": 3,
+        "materialize_seconds": 0.0030295239998849866,
+        "minimum_C_under_independent_ledger": 2,
+        "path_count": 1,
+        "reachable": true,
+        "search_seconds": 0.004073050999977568,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": 2,
+        "reachable": true,
+        "reachable_facts": [
+          "admin_H2",
+          "member_V_G1",
+          "secret_V_X",
+          "usable_V"
+        ],
+        "states": 4,
+        "statuses": {
+          "activate": [
+            "applicable"
+          ],
+          "admin": [
+            "applicable",
+            "blocked"
+          ],
+          "member": [
+            "applicable",
+            "blocked"
+          ]
+        },
+        "witness": [
+          "activate",
+          "member",
+          "admin"
+        ]
+      },
+      "scope": "supported",
+      "variant": "V-X-password"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 0,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "secret_V_Y"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 12,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/12-V-Y-password.json",
+      "input_sha256": "edbed2591407669b59bdeb183670d64329a7f17663aff3367e259d7c778f4808",
+      "native": {
+        "attempt_status_counts": {},
+        "complete": true,
+        "expansions": 0,
+        "materialize_seconds": 0.0004038070001115557,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 7.405499991364195e-05,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "secret_V_Y"
+        ],
+        "states": 1,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "V-Y-password"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 0,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "secret_W_X"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 12,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/12-W-X-password.json",
+      "input_sha256": "23af0ea3baa9fb6b437718adb48ef287223ee0f1c4b4ecfec4f4f057eb9b1413",
+      "native": {
+        "attempt_status_counts": {
+          "indeterminate": 1
+        },
+        "complete": true,
+        "expansions": 1,
+        "materialize_seconds": 0.0005612850000034086,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.0002856339997379109,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "secret_W_X"
+        ],
+        "states": 1,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "W-X-password"
+    },
+    {
+      "and_or": {
+        "C_status": "not optimized",
+        "actions_examined": 0,
+        "diagnostic": null,
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X"
+        ],
+        "status": "executed",
+        "witness": [],
+        "witness_C": null,
+        "witness_valid": true
+      },
+      "case": 12,
+      "comparison": {
+        "all_nonapplicable_have_no_effects": true,
+        "coverage_complete": true,
+        "min_C_matches": true,
+        "reachability_matches": true,
+        "witnesses_valid": true
+      },
+      "conditional_graph": {
+        "C_status": "exact additive unary domain",
+        "diagnostic": null,
+        "edge_local_C": null,
+        "min_C": null,
+        "reachable": false,
+        "reduced_dynamic_prerequisites": {
+          "activate": [
+            "secret_V_X"
+          ],
+          "admin": [
+            "member_V_G1"
+          ],
+          "member": [
+            "usable_V"
+          ]
+        },
+        "shared_units": [],
+        "status": "executed",
+        "witness": [],
+        "witness_valid": true
+      },
+      "input_file": "evidence/f1-inputs/12-V-X-material.json",
+      "input_sha256": "d266644a38c29957adda9c7f7288c67b7df61dc2d843eb7c61f2b5349a2fd163",
+      "native": {
+        "attempt_status_counts": {},
+        "complete": true,
+        "expansions": 0,
+        "materialize_seconds": 0.0003469589996711875,
+        "minimum_C_under_independent_ledger": null,
+        "path_count": 0,
+        "reachable": false,
+        "search_seconds": 0.00011637699981292826,
+        "truncation_reason": null
+      },
+      "notes": "",
+      "oracle": {
+        "min_C": null,
+        "reachable": false,
+        "reachable_facts": [
+          "material_V_X"
+        ],
+        "states": 1,
+        "statuses": {
+          "activate": [
+            "blocked"
+          ],
+          "admin": [
+            "blocked"
+          ],
+          "member": [
+            "blocked"
+          ]
+        },
+        "witness": []
+      },
+      "scope": "supported",
+      "variant": "V-X-material"
+    }
+  ],
+  "commit": "340e8e526e1e693d4c4b55635c459985eb08fa49",
+  "experiment": "AWG-R02/F1",
+  "oracle_self_checks": {
+    "AND_truth_table": [
+      {
+        "f": false,
+        "g": false,
+        "z": false
+      },
+      {
+        "f": false,
+        "g": true,
+        "z": false
+      },
+      {
+        "f": true,
+        "g": false,
+        "z": false
+      },
+      {
+        "f": true,
+        "g": true,
+        "z": true
+      }
+    ],
+    "unseeded_cycle_reachable": false
+  },
+  "python": "3.14.8",
+  "summary": {
+    "alternatives_scope": "Identical manually grounded finite actions; no production grounding, no calibrated C/P/I, AND-OR is reachability only.",
+    "group_count": 12,
+    "mismatches": [],
+    "variant_count": 78
+  },
+  "artifact_note": {
+    "kind": "compact projection of completed independent F1 output",
+    "full_output_sha256": "sha256:3283a5a3bf272fcbcdc6a7e640fd91ac6baa880a6a99bf6eff86227eaa2d371b",
+    "full_output_bytes": 1222180,
+    "omitted_fields": [
+      "cases[].native.attempts",
+      "cases[].native.paths"
+    ],
+    "reason": "Retain all case comparisons, reachability, costs, coverage, oracle/alternative witnesses; large native traces remain reproducible via frozen harness.",
+    "publication_correction": "Replaces accidentally transport-truncated non-JSON artifact in 2006fa1; no rerun or result change."
+  }
+}

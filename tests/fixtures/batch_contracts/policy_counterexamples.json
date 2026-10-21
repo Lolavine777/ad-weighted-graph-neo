@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0.0",
+  "title": "Source Prioritization Policy Counterexamples and Mathematical Proofs",
+  "description": "Formal counterexamples establishing why naive probability summation, zero-unrated assumptions, and raw hop counting violate security decision-making.",
+  "counterexamples": [
+    {
+      "id": "CE-01-PROBABILITY-SUMMATION",
+      "name": "Path Probability Summation Exceeds Unity and Distorts Risk",
+      "flawed_policy": "Sum probabilities of alternative attack paths from the same source: P_total = sum(P_i)",
+      "scenario": "Source Workstation-01 has two distinct attack paths to Domain Admins via Kerberoasting two different service accounts (SQL-Svc and Web-Svc).",
+      "paths": [
+        {
+          "path_id": "path-kerberoast-sql",
+          "target": "Domain Admins",
+          "steps": ["request_tgt", "kerberoast_sql_svc", "crack_ticket", "domain_admin_action"],
+          "conditional_p": 0.60
+        },
+        {
+          "path_id": "path-kerberoast-web",
+          "target": "Domain Admins",
+          "steps": ["request_tgt", "kerberoast_web_svc", "crack_ticket", "domain_admin_action"],
+          "conditional_p": 0.55
+        }
+      ],
+      "flawed_calculation": {
+        "formula": "0.60 + 0.55",
+        "result": 1.15,
+        "mathematical_violation": "Probability exceeds 1.0; violates Kolmogorov's axioms of probability theory."
+      },
+      "statistical_flaw": "Attack paths are not mutually exclusive events (A cap B != empty). Both paths share the common prerequisite of KDC reachability and local attacker offline cracking compute. Summing assumes complete mutual exclusivity, severely exaggerating the attacker success likelihood.",
+      "sound_policy": "Retain individual path likelihoods as conditional intervals [p_lower, p_upper] on Pareto-optimal Min-Effort candidates. Never sum path probabilities across alternative routes."
+    },
+    {
+      "id": "CE-02-UNRATED-AS-ZERO",
+      "name": "Treating Unrated Likelihood as Zero Causes Fatal Blindspots",
+      "flawed_policy": "Assign P=0 (or lowest rank) to paths with missing or unrated likelihood basis",
+      "scenario": "Source Host-A has two alternative avenues to compromise the Domain Controller.",
+      "paths": [
+        {
+          "path_id": "path-rbcd-unrated",
+          "target": "Domain Controller",
+          "effort": 2.0,
+          "likelihood_status": "unrated",
+          "likelihood_value": null,
+          "mechanism": "Resource-Based Constrained Delegation (RBCD) via machine account quota"
+        },
+        {
+          "path_id": "path-phishing-rated",
+          "target": "Domain Controller",
+          "effort": 12.0,
+          "likelihood_status": "rated",
+          "likelihood_value": [0.05, 0.10],
+          "mechanism": "Spearphishing DA over 3 hops with high effort"
+        }
+      ],
+      "flawed_ranking": {
+        "winner": "path-phishing-rated",
+        "rationale": "path-phishing-rated has P=[0.05, 0.10] > 0, while path-rbcd-unrated has P=0 (unrated treated as impossible)."
+      },
+      "security_consequence": "Catastrophic false negative. Defenders deploy mitigations against the noisy, high-effort 12-step phishing route while completely ignoring the trivial 2-step RBCD attack path that allows full DC takeover.",
+      "sound_policy": "Unrated paths retain likelihood_status='unrated' and participate fully in Min-Effort and Target Impact evaluations. A path with low effort (C=2) to a Catastrophic target is classified as Critical/High priority even when P is unrated."
+    },
+    {
+      "id": "CE-03-HOP-COUNT-VS-EFFORT",
+      "name": "Shortest Hop Count Misleading vs True Min-Effort",
+      "flawed_policy": "Prioritize sources based on fewest graph hops (BloodHound shortest-path default)",
+      "scenario": "Comparing two attack routes from Host-B to Domain Admins.",
+      "paths": [
+        {
+          "path_id": "path-single-hop-bruteforce",
+          "hops": 1,
+          "effort": 10.0,
+          "steps": ["online_password_bruteforce_da"],
+          "description": "Direct online password guessing against DA account; lockout risk and massive SOC detection."
+        },
+        {
+          "path_id": "path-three-hop-delegation",
+          "hops": 3,
+          "effort": 2.0,
+          "steps": ["read_laps_password", "winrm_local_admin", "extract_unconstrained_ticket"],
+          "description": "Three automated structural hops with near-zero friction and zero credential cracking."
+        }
+      ],
+      "flawed_ranking": {
+        "winner": "path-single-hop-bruteforce",
+        "rationale": "1 hop is shorter than 3 hops in unweighted graph traversal."
+      },
+      "security_consequence": "Defenders focus on the 1-hop path which is practically unfeasible due to account lockouts, while the attacker trivially walks the 3-hop low-effort delegation chain.",
+      "sound_policy": "Min-Effort uses additive task-based work-unit rubrics rather than structural edge counts. The 3-hop path with C=2.0 is correctly recognized as far easier than the 1-hop path with C=10.0."
+    },
+    {
+      "id": "CE-04-CROSS-TARGET-IMPACT-EQUIVALENCE",
+      "name": "Cross-Target Effort/Probability Equivalence Fallacy",
+      "flawed_policy": "Rank sources solely on minimum effort without conditioning on target consequence",
+      "scenario": "Source Workstation-01 reaches a Printer server in 1 step; Source Workstation-02 reaches the Primary DC in 2 steps.",
+      "sources": [
+        {
+          "source_id": "src-workstation-01",
+          "target": "PrintServer-01",
+          "impact": "Low",
+          "min_effort": 1.0
+        },
+        {
+          "source_id": "src-workstation-02",
+          "target": "DomainController-01",
+          "impact": "Catastrophic",
+          "min_effort": 2.0
+        }
+      ],
+      "flawed_ranking": {
+        "winner": "src-workstation-01",
+        "rationale": "Effort 1.0 is lower than effort 2.0."
+      },
+      "security_consequence": "Incident response triages a compromised printer workstation ahead of an imminent Active Directory domain takeover.",
+      "sound_policy": "Hierarchical lexicographical ranking: Target Impact (Catastrophic > High > Medium > Low) strictly dominates Min-Effort. Workstation-02 is ranked Critical Rank 1, while Workstation-01 is ranked Low."
+    }
+  ]
+}

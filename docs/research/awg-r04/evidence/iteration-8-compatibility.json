@@ -1,0 +1,82 @@
+{
+  "schema_version": "awg-r04-audit-source-compatibility/1",
+  "initial_clean_attempt": {
+    "revision": "0ca40af96406c741300d461428c6efb11b672e15",
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "1",
+      "skipped": "0",
+      "tests": "247",
+      "time": "109.632",
+      "timestamp": "2026-10-18T12:57:13.295454+02:00",
+      "hostname": "403d5e0687a2"
+    },
+    "classification": "Source authority correctly rejected query_cli.py drift; missing successor publication, not changed numeric decisions or invalid path."
+  },
+  "correction": "Append strict source successors, preserve previous/ancestor hash chain and current pin/tamper guards. No numeric adoption or authority broadening.",
+  "source_successors": [
+    {
+      "path": "docs/research/ratings/likelihood-v1/source-manifest-v11.json",
+      "bytes": 4339,
+      "sha256": "sha256:77e3ebf1bcf8f0783af66a0c9c73738405d390f3d1958ff30334da6150673670"
+    },
+    {
+      "path": "docs/research/ratings/scenario-basis-v1/source-manifest-v12.json",
+      "bytes": 4195,
+      "sha256": "sha256:a992f2ba53a9a7c66a74a2117429bc58026966ceb53d3ce3bd9b1563d3ef1718"
+    }
+  ],
+  "historical_numeric_and_manifests_unchanged": true,
+  "all_benchmarked_src_bytes_unchanged": true,
+  "post_benchmark_script_metadata_changes": {
+    "scripts/research/likelihood_catalog.py": {
+      "path": "scripts/research/likelihood_catalog.py",
+      "bytes": 20791,
+      "sha256": "sha256:2d9801e0f317a2f063ec2a176dd18afbdac2c692c923fa0e0716c4d01e9cb789"
+    },
+    "scripts/research/rating_source_successors.py": {
+      "path": "scripts/research/rating_source_successors.py",
+      "bytes": 2072,
+      "sha256": "sha256:c63750307894070a5944966903b67a1b9a18f40384c25517a3ad6497964173cf"
+    },
+    "scripts/research/scenario_rating_pack.py": {
+      "path": "scripts/research/scenario_rating_pack.py",
+      "bytes": 23496,
+      "sha256": "sha256:4514de177b01e5d31bbf8766e4afc3102e6c798f739d44f1d02e26d17112d74f"
+    }
+  },
+  "history_checks": {
+    "suite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "76",
+      "time": "164.524",
+      "timestamp": "2026-10-18T13:00:29.141589+02:00",
+      "hostname": "403d5e0687a2"
+    },
+    "scope": "Source successor negative controls plus likelihood catalog and scenario package tests, including raw probes and API/CLI/oracle replay. Selected suite, not whole suite."
+  },
+  "artifacts": {
+    "iteration-8-history.xml": {
+      "path": "docs/research/awg-r04/evidence/iteration-8-history.xml",
+      "bytes": 11414,
+      "sha256": "sha256:fb93510df2277c98c5e7e455efddf448512d334317bb842aa5e78d7523b9a974"
+    },
+    "iteration-8-first-closeout.xml": {
+      "path": "docs/research/awg-r04/evidence/iteration-8-first-closeout.xml",
+      "bytes": 36450,
+      "sha256": "sha256:4cd23513f19e9f9d5226138a3d6c0e3d21185a3a4a1bd5be3361c10937f502d6"
+    }
+  },
+  "uncollected_attempt": {
+    "log": {
+      "path": "/workspace/scratch/b1f06964c680/awg-r04/audit-history.log",
+      "bytes": 93,
+      "sha256": "sha256:a5bbcadb9373e4be6ebfa30fc6e051a9c6297ba208d45806998bd574ee9c41b9"
+    },
+    "classification": "Incorrect test filename, zero collected tests; corrected by audit-history-v2. Not an engine failure."
+  }
+}

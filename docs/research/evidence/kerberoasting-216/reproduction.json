@@ -1,0 +1,46 @@
+{
+  "base": "adee0896009d6180e68fc3d911a4d21aa22c9713",
+  "byte_identical": true,
+  "catalog": "0.4",
+  "human_cross_review": "pending Lolavine777",
+  "identical_input_config_revision": true,
+  "observed_exploit_success": false,
+  "private_inputs_committed": false,
+  "python": "3.14.7",
+  "runs": [
+    {
+      "bytes": 51779,
+      "exit_code": 0,
+      "file": "run-1.json",
+      "semantic_digest": "sha256:fd6d8bdf1b66c09347b1122a9b2ddbb0823e6c84103b7b505672de7db1c59980",
+      "sha256": "21ee92d7970f840b9174c12ea2f52622857803d53e4beb8851ee04dd4c372a88"
+    },
+    {
+      "bytes": 51779,
+      "exit_code": 0,
+      "file": "run-2.json",
+      "semantic_digest": "sha256:fd6d8bdf1b66c09347b1122a9b2ddbb0823e6c84103b7b505672de7db1c59980",
+      "sha256": "21ee92d7970f840b9174c12ea2f52622857803d53e4beb8851ee04dd4c372a88"
+    }
+  ],
+  "schema": "kerberoasting-216-reproduction/1",
+  "source_pin": "afd0f680fa9a327f4c1236c93fa9876accb1031e",
+  "validation": {
+    "focused_boundary_tests": 132,
+    "full_suite": {
+      "passed": 1977,
+      "seconds": 268.42,
+      "skipped": 11,
+      "source_pin": "afd0f680fa9a327f4c1236c93fa9876accb1031e"
+    },
+    "quality": [
+      "ruff check",
+      "ruff format --check",
+      "yamllint",
+      "check_repository",
+      "check_contract",
+      "compose config",
+      "git diff --check"
+    ]
+  }
+}

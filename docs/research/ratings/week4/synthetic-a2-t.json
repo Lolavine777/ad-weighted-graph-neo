@@ -1,0 +1,406 @@
+{
+  "metadata": {
+    "package_id": "package-week4-synthetic-a2-t",
+    "version": "1.0.0",
+    "evidence_class": "synthetic_test_only",
+    "description": "Synthetic fixture A2 under Ledger T: all three programs have identical effort 2, resulting in a 3-way Min-Effort tie."
+  },
+  "query": {
+    "query_metadata": {
+      "query_id": "query-week4-synthetic-a2-t",
+      "version": "1.0.0",
+      "scenario_id": "w4-two-routes-exact",
+      "scenario_version": "1.0.0",
+      "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+      "evaluation_mode": "scenario",
+      "work_boundary": "synthetic_two_routes",
+      "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+      "target_goal": {
+        "goal_id": "admin_host_c0",
+        "description": "Administrative control on Host C0",
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "success_event": "admin_execution_on_host_c0",
+        "required_predicates": [
+          "admin_control_host"
+        ]
+      },
+      "horizon": "fixed_snapshot_window",
+      "active_work_budget": 10
+    },
+    "facts_ledger": {
+      "predicate_layers": {
+        "actor_controlled_alice": 3,
+        "admin_channel_alice_host": 3,
+        "authentication_accepted_alice_host": 3,
+        "security_group_admins": 3,
+        "membership_usable_alice_admins": 3,
+        "effective_member_alice_admins": 3,
+        "admin_control_host": 3
+      },
+      "observed_facts": [
+        {
+          "predicate": "actor_controlled_alice",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/alice"
+        },
+        {
+          "predicate": "admin_channel_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/admin_channel"
+        },
+        {
+          "predicate": "authentication_accepted_alice_host",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/auth"
+        },
+        {
+          "predicate": "security_group_admins",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/sec_group"
+        },
+        {
+          "predicate": "membership_usable_alice_admins",
+          "layer": 3,
+          "truth_value": true,
+          "provenance_reference": "synthetic://golden/two-routes/facts/membership_usable"
+        }
+      ],
+      "false_facts": [],
+      "assumed_facts": [],
+      "unknown_facts": []
+    },
+    "target_impact_assessments": {
+      "10000000-0000-4000-8000-000000000002": {
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "success_event": "admin_execution_on_host_c0",
+        "rating_status": "rated",
+        "consequence_rating": "High",
+        "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+        "affected_business_services": [
+          "synthetic_host_service"
+        ],
+        "missing_basis_reasons": []
+      }
+    },
+    "bound_actions": [
+      {
+        "action_id": "action_direct_admin",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+        "referenced_work_unit_ids": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "admin_channel_alice_host",
+          "authentication_accepted_alice_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      },
+      {
+        "action_id": "action_member_admins",
+        "technique": "propagate_group_entitlement",
+        "technique_name": "propagate_group_entitlement",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "S-1-5-21-1000-2000-3000-2103",
+        "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+        "referenced_work_unit_ids": [],
+        "requires": [
+          "actor_controlled_alice",
+          "security_group_admins",
+          "membership_usable_alice_admins"
+        ],
+        "adds": [
+          "effective_member_alice_admins"
+        ],
+        "is_passive_closure": true
+      },
+      {
+        "action_id": "action_inherited_admin",
+        "technique": "obtain_admin_execution_on_host",
+        "technique_name": "obtain_admin_execution_on_host",
+        "actor_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "edge_id": "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716",
+        "referenced_work_unit_ids": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "requires": [
+          "actor_controlled_alice",
+          "effective_member_alice_admins",
+          "admin_channel_alice_host",
+          "authentication_accepted_alice_host"
+        ],
+        "adds": [
+          "admin_control_host"
+        ],
+        "is_passive_closure": false
+      }
+    ],
+    "work_units_ledger": {
+      "w-auth-context": {
+        "alias": "WU_AUTH_CONTEXT",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Establish shared authentication context for Alice towards Host C0",
+        "technical_source": "synthetic://rubric/w-auth-context",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-direct-admin": {
+        "alias": "WU_DIRECT_ADMIN",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Direct administrator execution on Host C0 after authentication context (Ledger T: cost 1)",
+        "technical_source": "synthetic://rubric/w-direct-admin-t",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ],
+        "missing_basis_reasons": []
+      },
+      "w-inherited-admin": {
+        "alias": "WU_INHERITED_ADMIN",
+        "rating_status": "rated",
+        "overlap_state": "independent",
+        "computed_cost": 1,
+        "effort_cost": 1,
+        "rubric_scores": {
+          "t1": 1,
+          "t2": 2,
+          "formula": "base",
+          "computed_cost": 1
+        },
+        "summary": "Inherited administrator execution on Host C0 via group membership",
+        "technical_source": "synthetic://rubric/w-inherited-admin",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ],
+        "missing_basis_reasons": []
+      }
+    },
+    "conditional_bounds_table": [
+      {
+        "prefix": [
+          "w-auth-context"
+        ],
+        "lower": "4/5",
+        "upper": "9/10",
+        "question_id": "q1",
+        "outcome_action_id": "action_direct_admin",
+        "technical_source": "synthetic://bounds/q1",
+        "basis_category": "synthetic_fixture",
+        "rationale": "Likelihood of establishing auth context given foothold",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ]
+      },
+      {
+        "prefix": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "lower": "1/2",
+        "upper": "3/4",
+        "question_id": "q2",
+        "outcome_action_id": "action_direct_admin",
+        "technical_source": "synthetic://bounds/q2",
+        "basis_category": "synthetic_fixture",
+        "rationale": "Likelihood of direct admin execution given auth context",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ]
+      },
+      {
+        "prefix": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "lower": "3/5",
+        "upper": "4/5",
+        "question_id": "q3",
+        "outcome_action_id": "action_inherited_admin",
+        "technical_source": "synthetic://bounds/q3",
+        "basis_category": "synthetic_fixture",
+        "rationale": "Likelihood of inherited admin execution given auth context and membership",
+        "applicable_queries": [
+          "query-week4-synthetic-a2-t"
+        ]
+      }
+    ]
+  },
+  "candidates": [
+    {
+      "candidate_id": "cand_direct",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_direct_admin"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-t",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_direct",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_member_direct",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_member_admins",
+        "action_direct_admin"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-t",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "transition_lineage": [
+        {
+          "step_index": 0,
+          "action_id": "action_member_admins",
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "S-1-5-21-1000-2000-3000-2103",
+          "edge_id": "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+          "origin": "observed_edge",
+          "derived_from_step": null,
+          "status": "applicable"
+        },
+        {
+          "step_index": 1,
+          "action_id": "action_direct_admin",
+          "technique_id": "obtain_admin_execution_on_host",
+          "actor": "S-1-5-21-1000-2000-3000-1101",
+          "source": "S-1-5-21-1000-2000-3000-1101",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "edge_id": "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67",
+          "origin": "observed_edge",
+          "derived_from_step": null,
+          "status": "applicable"
+        }
+      ],
+      "structural_routes": [
+        {
+          "route_id": "route_member_seg",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-2103"
+          ],
+          "edge_ids": [
+            "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ],
+          "action_step_indices": [
+            0
+          ]
+        },
+        {
+          "route_id": "route_direct_seg",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes"
+          ],
+          "action_step_indices": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "cand_member_inherited",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "bound_action_ids": [
+        "action_member_admins",
+        "action_inherited_admin"
+      ],
+      "scope_binding": {
+        "query_id": "query-week4-synthetic-a2-t",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "work_boundary": "synthetic_two_routes",
+        "horizon": "fixed_snapshot_window",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101"
+      },
+      "structural_routes": [
+        {
+          "route_id": "route_member_inherited",
+          "node_ids": [
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-2103",
+            "10000000-0000-4000-8000-000000000002"
+          ],
+          "edge_ids": [
+            "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+            "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+          ],
+          "provenance_locators": [
+            "synthetic://golden/two-routes",
+            "synthetic://golden/two-routes"
+          ]
+        }
+      ]
+    }
+  ]
+}

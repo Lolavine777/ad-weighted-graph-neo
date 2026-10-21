@@ -1,0 +1,2676 @@
+{
+  "synthetic-a2-e": {
+    "query_id": "query-week4-synthetic-a2-e",
+    "version": "1.0.0",
+    "parameter_audit": {
+      "query_metadata": {
+        "query_id": "query-week4-synthetic-a2-e",
+        "version": "1.0.0",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "evaluation_mode": "scenario",
+        "work_boundary": "synthetic_two_routes",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_goal": {
+          "goal_id": "admin_host_c0",
+          "description": "Administrative control on Host C0",
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "required_predicates": [
+            "admin_control_host"
+          ]
+        },
+        "horizon": "fixed_snapshot_window",
+        "active_work_budget": 10
+      },
+      "work_units_ledger": {
+        "w-auth-context": {
+          "alias": "WU_AUTH_CONTEXT",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Establish shared authentication context for Alice towards Host C0",
+          "technical_source": "synthetic://rubric/w-auth-context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-direct-admin": {
+          "alias": "WU_DIRECT_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 4,
+          "effort_cost": 4,
+          "rubric_scores": {
+            "t1": 3,
+            "t2": 3,
+            "formula": "base",
+            "computed_cost": 4
+          },
+          "summary": "Direct administrator execution on Host C0 after authentication context",
+          "technical_source": "synthetic://rubric/w-direct-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-inherited-admin": {
+          "alias": "WU_INHERITED_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Inherited administrator execution on Host C0 via group membership",
+          "technical_source": "synthetic://rubric/w-inherited-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ],
+          "missing_basis_reasons": []
+        }
+      },
+      "conditional_bounds_table": [
+        {
+          "prefix": [
+            "w-auth-context"
+          ],
+          "lower": "4/5",
+          "upper": "9/10",
+          "question_id": "q1",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q1",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of establishing auth context given foothold",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-direct-admin"
+          ],
+          "lower": "1/2",
+          "upper": "3/4",
+          "question_id": "q2",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q2",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of direct admin execution given auth context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-inherited-admin"
+          ],
+          "lower": "3/5",
+          "upper": "4/5",
+          "question_id": "q3",
+          "outcome_action_id": "action_inherited_admin",
+          "technical_source": "synthetic://bounds/q3",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of inherited admin execution given auth context and membership",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-e"
+          ]
+        }
+      ],
+      "target_impact_assessments": {
+        "10000000-0000-4000-8000-000000000002": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "rating_status": "rated",
+          "consequence_rating": "High",
+          "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+          "affected_business_services": [
+            "synthetic_host_service"
+          ],
+          "missing_basis_reasons": []
+        }
+      }
+    },
+    "search_metadata": {
+      "budget_limit": 10,
+      "candidates_evaluated": 3,
+      "is_truncated": false,
+      "truncation_reasons": [],
+      "caps_applied": {
+        "max_active_work_budget": 10,
+        "max_candidates": null,
+        "timeout_ms": null,
+        "max_expansions": null
+      },
+      "completeness_scope": "unspecified_subset",
+      "search_algorithm": "provided_candidate_assessment"
+    },
+    "eligible_candidates": {
+      "cand_direct": {
+        "candidate_id": "cand_direct",
+        "bound_action_ids": [
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_direct",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True"
+        },
+        "nominal_effort": 5,
+        "effort": 5,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 4,
+            "effort_cost": 4,
+            "rubric_scores": {
+              "t1": 3,
+              "t2": 3,
+              "formula": "base",
+              "computed_cost": 4
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context",
+            "technical_source": "synthetic://rubric/w-direct-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 3,
+            "t2": 3
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Likelihood of direct admin execution given auth context",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "3/4",
+            "question_id": "q2",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of direct admin execution given auth context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_direct": {
+        "candidate_id": "cand_member_direct",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              0
+            ]
+          },
+          {
+            "route_id": "route_direct_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              1
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True",
+          "effective_member_alice_admins": "True"
+        },
+        "nominal_effort": 5,
+        "effort": 5,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 4,
+            "effort_cost": 4,
+            "rubric_scores": {
+              "t1": 3,
+              "t2": 3,
+              "formula": "base",
+              "computed_cost": 4
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context",
+            "technical_source": "synthetic://rubric/w-direct-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 3,
+            "t2": 3
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Likelihood of direct admin execution given auth context",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "3/4",
+            "question_id": "q2",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of direct admin execution given auth context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_inherited": {
+        "candidate_id": "cand_member_inherited",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_inherited_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_inherited",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+              "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes",
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "effective_member_alice_admins": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True"
+        },
+        "nominal_effort": 2,
+        "effort": 2,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-inherited-admin": {
+            "alias": "WU_INHERITED_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Inherited administrator execution on Host C0 via group membership",
+            "technical_source": "synthetic://rubric/w-inherited-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-inherited-admin",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "12/25",
+          "18/25"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-inherited-admin']: synthetic_fixture — Likelihood of inherited admin execution given auth context and membership",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-inherited-admin"
+            ],
+            "lower": "3/5",
+            "upper": "4/5",
+            "question_id": "q3",
+            "outcome_action_id": "action_inherited_admin",
+            "technical_source": "synthetic://bounds/q3",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of inherited admin execution given auth context and membership",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-e"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      }
+    },
+    "pareto_frontier": [
+      "cand_direct",
+      "cand_member_direct",
+      "cand_member_inherited"
+    ],
+    "diagnostics": {},
+    "min_effort_to_da_baseline": {
+      "goal_id": "admin_host_c0",
+      "best_candidate_id": "cand_member_inherited",
+      "minimum_effort_value": 2,
+      "associated_likelihood_interval": [
+        "12/25",
+        "18/25"
+      ],
+      "associated_impact": "High",
+      "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+      "baseline_coverage": {
+        "is_truncated": false,
+        "truncation_reasons": [],
+        "completeness_scope": "unspecified_subset"
+      }
+    }
+  },
+  "synthetic-a2-t": {
+    "query_id": "query-week4-synthetic-a2-t",
+    "version": "1.0.0",
+    "parameter_audit": {
+      "query_metadata": {
+        "query_id": "query-week4-synthetic-a2-t",
+        "version": "1.0.0",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "evaluation_mode": "scenario",
+        "work_boundary": "synthetic_two_routes",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_goal": {
+          "goal_id": "admin_host_c0",
+          "description": "Administrative control on Host C0",
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "required_predicates": [
+            "admin_control_host"
+          ]
+        },
+        "horizon": "fixed_snapshot_window",
+        "active_work_budget": 10
+      },
+      "work_units_ledger": {
+        "w-auth-context": {
+          "alias": "WU_AUTH_CONTEXT",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Establish shared authentication context for Alice towards Host C0",
+          "technical_source": "synthetic://rubric/w-auth-context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-direct-admin": {
+          "alias": "WU_DIRECT_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Direct administrator execution on Host C0 after authentication context (Ledger T: cost 1)",
+          "technical_source": "synthetic://rubric/w-direct-admin-t",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-inherited-admin": {
+          "alias": "WU_INHERITED_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Inherited administrator execution on Host C0 via group membership",
+          "technical_source": "synthetic://rubric/w-inherited-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ],
+          "missing_basis_reasons": []
+        }
+      },
+      "conditional_bounds_table": [
+        {
+          "prefix": [
+            "w-auth-context"
+          ],
+          "lower": "4/5",
+          "upper": "9/10",
+          "question_id": "q1",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q1",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of establishing auth context given foothold",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-direct-admin"
+          ],
+          "lower": "1/2",
+          "upper": "3/4",
+          "question_id": "q2",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q2",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of direct admin execution given auth context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-inherited-admin"
+          ],
+          "lower": "3/5",
+          "upper": "4/5",
+          "question_id": "q3",
+          "outcome_action_id": "action_inherited_admin",
+          "technical_source": "synthetic://bounds/q3",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Likelihood of inherited admin execution given auth context and membership",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-t"
+          ]
+        }
+      ],
+      "target_impact_assessments": {
+        "10000000-0000-4000-8000-000000000002": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "rating_status": "rated",
+          "consequence_rating": "High",
+          "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+          "affected_business_services": [
+            "synthetic_host_service"
+          ],
+          "missing_basis_reasons": []
+        }
+      }
+    },
+    "search_metadata": {
+      "budget_limit": 10,
+      "candidates_evaluated": 3,
+      "is_truncated": false,
+      "truncation_reasons": [],
+      "caps_applied": {
+        "max_active_work_budget": 10,
+        "max_candidates": null,
+        "timeout_ms": null,
+        "max_expansions": null
+      },
+      "completeness_scope": "unspecified_subset",
+      "search_algorithm": "provided_candidate_assessment"
+    },
+    "eligible_candidates": {
+      "cand_direct": {
+        "candidate_id": "cand_direct",
+        "bound_action_ids": [
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_direct",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True"
+        },
+        "nominal_effort": 2,
+        "effort": 2,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context (Ledger T: cost 1)",
+            "technical_source": "synthetic://rubric/w-direct-admin-t",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Likelihood of direct admin execution given auth context",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "3/4",
+            "question_id": "q2",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of direct admin execution given auth context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_direct": {
+        "candidate_id": "cand_member_direct",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              0
+            ]
+          },
+          {
+            "route_id": "route_direct_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              1
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True",
+          "effective_member_alice_admins": "True"
+        },
+        "nominal_effort": 2,
+        "effort": 2,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context (Ledger T: cost 1)",
+            "technical_source": "synthetic://rubric/w-direct-admin-t",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "2/5",
+          "27/40"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Likelihood of direct admin execution given auth context",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "3/4",
+            "question_id": "q2",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of direct admin execution given auth context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_inherited": {
+        "candidate_id": "cand_member_inherited",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_inherited_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_inherited",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+              "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes",
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "effective_member_alice_admins": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True"
+        },
+        "nominal_effort": 2,
+        "effort": 2,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-inherited-admin": {
+            "alias": "WU_INHERITED_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Inherited administrator execution on Host C0 via group membership",
+            "technical_source": "synthetic://rubric/w-inherited-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-inherited-admin",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "12/25",
+          "18/25"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Likelihood of establishing auth context given foothold; ['w-auth-context', 'w-inherited-admin']: synthetic_fixture — Likelihood of inherited admin execution given auth context and membership",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "4/5",
+            "upper": "9/10",
+            "question_id": "q1",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of establishing auth context given foothold",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-inherited-admin"
+            ],
+            "lower": "3/5",
+            "upper": "4/5",
+            "question_id": "q3",
+            "outcome_action_id": "action_inherited_admin",
+            "technical_source": "synthetic://bounds/q3",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Likelihood of inherited admin execution given auth context and membership",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-t"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      }
+    },
+    "pareto_frontier": [
+      "cand_direct",
+      "cand_member_direct",
+      "cand_member_inherited"
+    ],
+    "diagnostics": {},
+    "min_effort_to_da_baseline": {
+      "goal_id": "admin_host_c0",
+      "best_candidate_id": "cand_direct",
+      "minimum_effort_value": 2,
+      "associated_likelihood_interval": [
+        "2/5",
+        "27/40"
+      ],
+      "associated_impact": "High",
+      "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+      "baseline_coverage": {
+        "is_truncated": false,
+        "truncation_reasons": [],
+        "completeness_scope": "unspecified_subset"
+      }
+    }
+  },
+  "synthetic-a2-ties": {
+    "query_id": "query-week4-synthetic-a2-ties",
+    "version": "1.0.0",
+    "parameter_audit": {
+      "query_metadata": {
+        "query_id": "query-week4-synthetic-a2-ties",
+        "version": "1.0.0",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "evaluation_mode": "scenario",
+        "work_boundary": "synthetic_two_routes",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_goal": {
+          "goal_id": "admin_host_c0",
+          "description": "Administrative control on Host C0",
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "required_predicates": [
+            "admin_control_host"
+          ]
+        },
+        "horizon": "fixed_snapshot_window",
+        "active_work_budget": 10
+      },
+      "work_units_ledger": {
+        "w-auth-context": {
+          "alias": "WU_AUTH_CONTEXT",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Establish shared authentication context for Alice towards Host C0",
+          "technical_source": "synthetic://rubric/w-auth-context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-direct-admin": {
+          "alias": "WU_DIRECT_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 4,
+          "effort_cost": 4,
+          "rubric_scores": {
+            "t1": 3,
+            "t2": 3,
+            "formula": "base",
+            "computed_cost": 4
+          },
+          "summary": "Direct administrator execution on Host C0 after authentication context",
+          "technical_source": "synthetic://rubric/w-direct-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-inherited-admin": {
+          "alias": "WU_INHERITED_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Inherited administrator execution on Host C0 via group membership",
+          "technical_source": "synthetic://rubric/w-inherited-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ],
+          "missing_basis_reasons": []
+        }
+      },
+      "conditional_bounds_table": [
+        {
+          "prefix": [
+            "w-auth-context"
+          ],
+          "lower": "1/1",
+          "upper": "1/1",
+          "question_id": "q1_point",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q1_point",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Exact point likelihood for tie-break testing",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-direct-admin"
+          ],
+          "lower": "1/2",
+          "upper": "1/2",
+          "question_id": "q2_point",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q2_point",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Exact point likelihood for tie-break testing",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-context",
+            "w-inherited-admin"
+          ],
+          "lower": "1/2",
+          "upper": "1/2",
+          "question_id": "q3_point",
+          "outcome_action_id": "action_inherited_admin",
+          "technical_source": "synthetic://bounds/q3_point",
+          "basis_category": "synthetic_fixture",
+          "rationale": "Exact point likelihood for tie-break testing",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-ties"
+          ]
+        }
+      ],
+      "target_impact_assessments": {
+        "10000000-0000-4000-8000-000000000002": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "rating_status": "rated",
+          "consequence_rating": "High",
+          "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+          "affected_business_services": [
+            "synthetic_host_service"
+          ],
+          "missing_basis_reasons": []
+        }
+      }
+    },
+    "search_metadata": {
+      "budget_limit": 10,
+      "candidates_evaluated": 3,
+      "is_truncated": false,
+      "truncation_reasons": [],
+      "caps_applied": {
+        "max_active_work_budget": 10,
+        "max_candidates": null,
+        "timeout_ms": null,
+        "max_expansions": null
+      },
+      "completeness_scope": "unspecified_subset",
+      "search_algorithm": "provided_candidate_assessment"
+    },
+    "eligible_candidates": {
+      "cand_direct": {
+        "candidate_id": "cand_direct",
+        "bound_action_ids": [
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_direct",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True"
+        },
+        "nominal_effort": 5,
+        "effort": 5,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 4,
+            "effort_cost": 4,
+            "rubric_scores": {
+              "t1": 3,
+              "t2": 3,
+              "formula": "base",
+              "computed_cost": 4
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context",
+            "technical_source": "synthetic://rubric/w-direct-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 3,
+            "t2": 3
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "1/2",
+          "1/2"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Exact point likelihood for tie-break testing; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Exact point likelihood for tie-break testing",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "1/1",
+            "upper": "1/1",
+            "question_id": "q1_point",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "1/2",
+            "question_id": "q2_point",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_direct": {
+        "candidate_id": "cand_member_direct",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_direct_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-direct-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              0
+            ]
+          },
+          {
+            "route_id": "route_direct_seg",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes"
+            ],
+            "action_step_indices": [
+              1
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True",
+          "effective_member_alice_admins": "True"
+        },
+        "nominal_effort": 5,
+        "effort": 5,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-direct-admin": {
+            "alias": "WU_DIRECT_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 4,
+            "effort_cost": 4,
+            "rubric_scores": {
+              "t1": 3,
+              "t2": 3,
+              "formula": "base",
+              "computed_cost": 4
+            },
+            "summary": "Direct administrator execution on Host C0 after authentication context",
+            "technical_source": "synthetic://rubric/w-direct-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-direct-admin",
+            "status": "rated",
+            "t1": 3,
+            "t2": 3
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "1/2",
+          "1/2"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Exact point likelihood for tie-break testing; ['w-auth-context', 'w-direct-admin']: synthetic_fixture — Exact point likelihood for tie-break testing",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "1/1",
+            "upper": "1/1",
+            "question_id": "q1_point",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-direct-admin"
+            ],
+            "lower": "1/2",
+            "upper": "1/2",
+            "question_id": "q2_point",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q2_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      },
+      "cand_member_inherited": {
+        "candidate_id": "cand_member_inherited",
+        "bound_action_ids": [
+          "action_member_admins",
+          "action_inherited_admin"
+        ],
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "program": [
+          "w-auth-context",
+          "w-inherited-admin"
+        ],
+        "structural_routes": [
+          {
+            "route_id": "route_member_inherited",
+            "node_ids": [
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ],
+            "edge_ids": [
+              "sha256:e2cd3c70f3965249626848c95819d3ded826e66056e60dcc519459d71a644456",
+              "sha256:96f8b42d2faeec14ace61d181e577b0f7d45e3950982bc1174e85fab9f4af716"
+            ],
+            "provenance_locators": [
+              "synthetic://golden/two-routes",
+              "synthetic://golden/two-routes"
+            ]
+          }
+        ],
+        "status": "feasible",
+        "gates_evaluation": {
+          "actor_controlled_alice": "True",
+          "admin_channel_alice_host": "True",
+          "admin_control_host": "True",
+          "authentication_accepted_alice_host": "True",
+          "effective_member_alice_admins": "True",
+          "membership_usable_alice_admins": "True",
+          "security_group_admins": "True"
+        },
+        "nominal_effort": 2,
+        "effort": 2,
+        "effort_status": "rated",
+        "unrated_work_units": [],
+        "work_unit_basis": {
+          "w-auth-context": {
+            "alias": "WU_AUTH_CONTEXT",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Establish shared authentication context for Alice towards Host C0",
+            "technical_source": "synthetic://rubric/w-auth-context",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-auth-context",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          },
+          "w-inherited-admin": {
+            "alias": "WU_INHERITED_ADMIN",
+            "rating_status": "rated",
+            "overlap_state": "independent",
+            "computed_cost": 1,
+            "effort_cost": 1,
+            "rubric_scores": {
+              "t1": 1,
+              "t2": 2,
+              "formula": "base",
+              "computed_cost": 1
+            },
+            "summary": "Inherited administrator execution on Host C0 via group membership",
+            "technical_source": "synthetic://rubric/w-inherited-admin",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ],
+            "missing_basis_reasons": [],
+            "work_unit_id": "w-inherited-admin",
+            "status": "rated",
+            "t1": 1,
+            "t2": 2
+          }
+        },
+        "impact": "High",
+        "consequence_rating": "High",
+        "impact_status": "rated",
+        "likelihood_interval": [
+          "1/2",
+          "1/2"
+        ],
+        "likelihood_status": "rated",
+        "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-context']: synthetic_fixture — Exact point likelihood for tie-break testing; ['w-auth-context', 'w-inherited-admin']: synthetic_fixture — Exact point likelihood for tie-break testing",
+        "conditional_bounds_basis": [
+          {
+            "prefix": [
+              "w-auth-context"
+            ],
+            "lower": "1/1",
+            "upper": "1/1",
+            "question_id": "q1_point",
+            "outcome_action_id": "action_direct_admin",
+            "technical_source": "synthetic://bounds/q1_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          },
+          {
+            "prefix": [
+              "w-auth-context",
+              "w-inherited-admin"
+            ],
+            "lower": "1/2",
+            "upper": "1/2",
+            "question_id": "q3_point",
+            "outcome_action_id": "action_inherited_admin",
+            "technical_source": "synthetic://bounds/q3_point",
+            "basis_category": "synthetic_fixture",
+            "rationale": "Exact point likelihood for tie-break testing",
+            "applicable_queries": [
+              "query-week4-synthetic-a2-ties"
+            ]
+          }
+        ],
+        "diagnostic_reasons": []
+      }
+    },
+    "pareto_frontier": [
+      "cand_member_inherited"
+    ],
+    "diagnostics": {},
+    "min_effort_to_da_baseline": {
+      "goal_id": "admin_host_c0",
+      "best_candidate_id": "cand_member_inherited",
+      "minimum_effort_value": 2,
+      "associated_likelihood_interval": [
+        "1/2",
+        "1/2"
+      ],
+      "associated_impact": "High",
+      "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+      "baseline_coverage": {
+        "is_truncated": false,
+        "truncation_reasons": [],
+        "completeness_scope": "unspecified_subset"
+      }
+    }
+  },
+  "synthetic-a2-diagnostics": {
+    "query_id": "query-week4-synthetic-a2-diagnostics",
+    "version": "1.0.0",
+    "parameter_audit": {
+      "query_metadata": {
+        "query_id": "query-week4-synthetic-a2-diagnostics",
+        "version": "1.0.0",
+        "scenario_id": "w4-two-routes-exact",
+        "scenario_version": "1.0.0",
+        "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+        "evaluation_mode": "scenario",
+        "work_boundary": "synthetic_two_routes",
+        "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+        "target_goal": {
+          "goal_id": "admin_execution_goal",
+          "description": "Administrative control goal",
+          "required_predicates": [
+            "admin_control_host"
+          ]
+        },
+        "horizon": "fixed_snapshot_window",
+        "active_work_budget": 10
+      },
+      "work_units_ledger": {
+        "w-auth-context": {
+          "alias": "WU_AUTH_CONTEXT",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Establish shared authentication context for Alice towards Host C0",
+          "technical_source": "synthetic://rubric/w-auth-context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-direct-admin": {
+          "alias": "WU_DIRECT_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 4,
+          "effort_cost": 4,
+          "rubric_scores": {
+            "t1": 3,
+            "t2": 3,
+            "formula": "base",
+            "computed_cost": 4
+          },
+          "summary": "Direct administrator execution on Host C0 after authentication context",
+          "technical_source": "synthetic://rubric/w-direct-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-inherited-admin": {
+          "alias": "WU_INHERITED_ADMIN",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Inherited administrator execution on Host C0 via group membership",
+          "technical_source": "synthetic://rubric/w-inherited-admin",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-unrated-friction": {
+          "alias": "WU_UNRATED_FRICTION",
+          "rating_status": "unrated",
+          "overlap_state": "independent",
+          "computed_cost": null,
+          "effort_cost": null,
+          "summary": "Work unit without empirical friction data",
+          "technical_source": "synthetic://rubric/w-unrated",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": [
+            "insufficient_empirical_friction_data"
+          ]
+        },
+        "w-auth-otherhost": {
+          "alias": "WU_AUTH_OTHERHOST",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 1,
+          "effort_cost": 1,
+          "rubric_scores": {
+            "t1": 1,
+            "t2": 2,
+            "formula": "base",
+            "computed_cost": 1
+          },
+          "summary": "Establish authentication context for Alice towards OtherHost X",
+          "technical_source": "synthetic://rubric/w-auth-otherhost",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": []
+        },
+        "w-direct-admin-otherhost": {
+          "alias": "WU_DIRECT_ADMIN_OTHERHOST",
+          "rating_status": "rated",
+          "overlap_state": "independent",
+          "computed_cost": 4,
+          "effort_cost": 4,
+          "rubric_scores": {
+            "t1": 3,
+            "t2": 3,
+            "formula": "base",
+            "computed_cost": 4
+          },
+          "summary": "Direct administrator execution on OtherHost X after authentication context",
+          "technical_source": "synthetic://rubric/w-direct-admin-otherhost",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ],
+          "missing_basis_reasons": []
+        }
+      },
+      "conditional_bounds_table": [
+        {
+          "prefix": [
+            "w-auth-context"
+          ],
+          "lower": "1/2",
+          "upper": "1/2",
+          "question_id": "q1",
+          "outcome_action_id": "action_direct_admin",
+          "technical_source": "synthetic://bounds/q1",
+          "basis_category": "synthetic_fixture",
+          "rationale": "auth context",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-otherhost"
+          ],
+          "lower": "1/2",
+          "upper": "1/2",
+          "question_id": "q_auth_otherhost",
+          "outcome_action_id": "action_unrated_impact_attempt",
+          "technical_source": "synthetic://bounds/q_auth_otherhost",
+          "basis_category": "synthetic_fixture",
+          "rationale": "authentication context for otherhost",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ]
+        },
+        {
+          "prefix": [
+            "w-auth-otherhost",
+            "w-direct-admin-otherhost"
+          ],
+          "lower": "1/2",
+          "upper": "1/2",
+          "question_id": "q_admin_otherhost",
+          "outcome_action_id": "action_unrated_impact_attempt",
+          "technical_source": "synthetic://bounds/q_admin_otherhost",
+          "basis_category": "synthetic_fixture",
+          "rationale": "administrative execution on otherhost",
+          "applicable_queries": [
+            "query-week4-synthetic-a2-diagnostics"
+          ]
+        }
+      ],
+      "target_impact_assessments": {
+        "10000000-0000-4000-8000-000000000002": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "success_event": "admin_execution_on_host_c0",
+          "rating_status": "rated",
+          "consequence_rating": "High",
+          "business_rationale": "Administrative control over Host C0 compromises host-level applications and data. In the synthetic test enterprise context, Host C0 is a departmental server without domain-wide Tier0 authority, so High consequence is appropriate rather than Critical.",
+          "affected_business_services": [
+            "synthetic_host_service"
+          ],
+          "missing_basis_reasons": []
+        },
+        "10000000-0000-4000-8000-000000000003": {
+          "target_asset_id": "10000000-0000-4000-8000-000000000003",
+          "success_event": "admin_execution_on_otherhost",
+          "rating_status": "unrated",
+          "consequence_rating": null,
+          "business_rationale": null,
+          "affected_business_services": [
+            "synthetic_service_x"
+          ],
+          "missing_basis_reasons": [
+            "no_business_consequence_rationale_available"
+          ]
+        }
+      }
+    },
+    "search_metadata": {
+      "budget_limit": 10,
+      "candidates_evaluated": 6,
+      "is_truncated": false,
+      "truncation_reasons": [],
+      "caps_applied": {
+        "max_active_work_budget": 10,
+        "max_candidates": null,
+        "timeout_ms": null,
+        "max_expansions": null
+      },
+      "completeness_scope": "unspecified_subset",
+      "search_algorithm": "provided_candidate_assessment"
+    },
+    "eligible_candidates": {},
+    "pareto_frontier": [],
+    "diagnostics": {
+      "cand_blocked_firewall": {
+        "reasons": [
+          "blocked",
+          "likelihood_unrated"
+        ],
+        "assessment": {
+          "candidate_id": "cand_blocked_firewall",
+          "bound_action_ids": [
+            "action_blocked_attempt"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "program": [
+            "w-auth-context"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_blocked",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ],
+              "edge_ids": [
+                "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+              ],
+              "provenance_locators": [
+                "synthetic://golden/two-routes"
+              ]
+            }
+          ],
+          "status": "blocked",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_control_host": "Unknown",
+            "blocked_firewall_host": "False"
+          },
+          "nominal_effort": 1,
+          "effort": null,
+          "effort_status": "ineligible",
+          "unrated_work_units": [],
+          "work_unit_basis": {
+            "w-auth-context": {
+              "alias": "WU_AUTH_CONTEXT",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 1,
+              "effort_cost": 1,
+              "rubric_scores": {
+                "t1": 1,
+                "t2": 2,
+                "formula": "base",
+                "computed_cost": 1
+              },
+              "summary": "Establish shared authentication context for Alice towards Host C0",
+              "technical_source": "synthetic://rubric/w-auth-context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-auth-context",
+              "status": "rated",
+              "t1": 1,
+              "t2": 2
+            }
+          },
+          "impact": "High",
+          "consequence_rating": "High",
+          "impact_status": "rated",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "likelihood_basis_summary": "Withheld: candidate execution is blocked by predicate gating; ['w-auth-context']: synthetic_fixture — auth context",
+          "conditional_bounds_basis": [
+            {
+              "prefix": [
+                "w-auth-context"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q1",
+              "outcome_action_id": "action_direct_admin",
+              "technical_source": "synthetic://bounds/q1",
+              "basis_category": "synthetic_fixture",
+              "rationale": "auth context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            }
+          ],
+          "diagnostic_reasons": [
+            "blocked",
+            "likelihood_unrated"
+          ]
+        }
+      },
+      "cand_unknown_service": {
+        "reasons": [
+          "likelihood_unrated",
+          "unknown"
+        ],
+        "assessment": {
+          "candidate_id": "cand_unknown_service",
+          "bound_action_ids": [
+            "action_unknown_attempt"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "program": [
+            "w-auth-context"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_unknown",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ],
+              "edge_ids": [
+                "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+              ],
+              "provenance_locators": [
+                "synthetic://golden/two-routes"
+              ]
+            }
+          ],
+          "status": "unknown",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_control_host": "Unknown",
+            "unknown_service_health": "Unknown"
+          },
+          "nominal_effort": 1,
+          "effort": null,
+          "effort_status": "ineligible",
+          "unrated_work_units": [],
+          "work_unit_basis": {
+            "w-auth-context": {
+              "alias": "WU_AUTH_CONTEXT",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 1,
+              "effort_cost": 1,
+              "rubric_scores": {
+                "t1": 1,
+                "t2": 2,
+                "formula": "base",
+                "computed_cost": 1
+              },
+              "summary": "Establish shared authentication context for Alice towards Host C0",
+              "technical_source": "synthetic://rubric/w-auth-context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-auth-context",
+              "status": "rated",
+              "t1": 1,
+              "t2": 2
+            }
+          },
+          "impact": "High",
+          "consequence_rating": "High",
+          "impact_status": "rated",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "likelihood_basis_summary": "Withheld: candidate execution gate status is unknown; ['w-auth-context']: synthetic_fixture — auth context",
+          "conditional_bounds_basis": [
+            {
+              "prefix": [
+                "w-auth-context"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q1",
+              "outcome_action_id": "action_direct_admin",
+              "technical_source": "synthetic://bounds/q1",
+              "basis_category": "synthetic_fixture",
+              "rationale": "auth context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            }
+          ],
+          "diagnostic_reasons": [
+            "unknown",
+            "likelihood_unrated"
+          ]
+        }
+      },
+      "cand_missing_likelihood_basis": {
+        "reasons": [
+          "likelihood_unrated"
+        ],
+        "assessment": {
+          "candidate_id": "cand_missing_likelihood_basis",
+          "bound_action_ids": [
+            "action_direct_admin"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "program": [
+            "w-auth-context",
+            "w-direct-admin"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_missing_likelihood",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ],
+              "edge_ids": [
+                "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+              ],
+              "provenance_locators": [
+                "synthetic://golden/two-routes"
+              ]
+            }
+          ],
+          "status": "feasible",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_channel_alice_host": "True",
+            "admin_control_host": "True",
+            "authentication_accepted_alice_host": "True"
+          },
+          "nominal_effort": 5,
+          "effort": 5,
+          "effort_status": "rated",
+          "unrated_work_units": [],
+          "work_unit_basis": {
+            "w-auth-context": {
+              "alias": "WU_AUTH_CONTEXT",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 1,
+              "effort_cost": 1,
+              "rubric_scores": {
+                "t1": 1,
+                "t2": 2,
+                "formula": "base",
+                "computed_cost": 1
+              },
+              "summary": "Establish shared authentication context for Alice towards Host C0",
+              "technical_source": "synthetic://rubric/w-auth-context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-auth-context",
+              "status": "rated",
+              "t1": 1,
+              "t2": 2
+            },
+            "w-direct-admin": {
+              "alias": "WU_DIRECT_ADMIN",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 4,
+              "effort_cost": 4,
+              "rubric_scores": {
+                "t1": 3,
+                "t2": 3,
+                "formula": "base",
+                "computed_cost": 4
+              },
+              "summary": "Direct administrator execution on Host C0 after authentication context",
+              "technical_source": "synthetic://rubric/w-direct-admin",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-direct-admin",
+              "status": "rated",
+              "t1": 3,
+              "t2": 3
+            }
+          },
+          "impact": "High",
+          "consequence_rating": "High",
+          "impact_status": "rated",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "likelihood_basis_summary": "Withheld: missing conditional prefix bounds in table; ['w-auth-context']: synthetic_fixture — auth context",
+          "conditional_bounds_basis": [
+            {
+              "prefix": [
+                "w-auth-context"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q1",
+              "outcome_action_id": "action_direct_admin",
+              "technical_source": "synthetic://bounds/q1",
+              "basis_category": "synthetic_fixture",
+              "rationale": "auth context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            }
+          ],
+          "diagnostic_reasons": [
+            "likelihood_unrated"
+          ]
+        }
+      },
+      "cand_assumed_gate_unrated_basis": {
+        "reasons": [
+          "likelihood_unrated"
+        ],
+        "assessment": {
+          "candidate_id": "cand_assumed_gate_unrated_basis",
+          "bound_action_ids": [
+            "action_assumed_gate_attempt"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "program": [
+            "w-auth-context",
+            "w-direct-admin"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_assumed_gate",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ],
+              "edge_ids": [
+                "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+              ],
+              "provenance_locators": [
+                "synthetic://golden/two-routes"
+              ]
+            }
+          ],
+          "status": "feasible",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_control_host": "True",
+            "runtime_session_alice": "True"
+          },
+          "nominal_effort": 5,
+          "effort": 5,
+          "effort_status": "rated",
+          "unrated_work_units": [],
+          "work_unit_basis": {
+            "w-auth-context": {
+              "alias": "WU_AUTH_CONTEXT",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 1,
+              "effort_cost": 1,
+              "rubric_scores": {
+                "t1": 1,
+                "t2": 2,
+                "formula": "base",
+                "computed_cost": 1
+              },
+              "summary": "Establish shared authentication context for Alice towards Host C0",
+              "technical_source": "synthetic://rubric/w-auth-context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-auth-context",
+              "status": "rated",
+              "t1": 1,
+              "t2": 2
+            },
+            "w-direct-admin": {
+              "alias": "WU_DIRECT_ADMIN",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 4,
+              "effort_cost": 4,
+              "rubric_scores": {
+                "t1": 3,
+                "t2": 3,
+                "formula": "base",
+                "computed_cost": 4
+              },
+              "summary": "Direct administrator execution on Host C0 after authentication context",
+              "technical_source": "synthetic://rubric/w-direct-admin",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-direct-admin",
+              "status": "rated",
+              "t1": 3,
+              "t2": 3
+            }
+          },
+          "impact": "High",
+          "consequence_rating": "High",
+          "impact_status": "rated",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "likelihood_basis_summary": "Withheld: missing conditional prefix bounds in table; ['w-auth-context']: synthetic_fixture — auth context",
+          "conditional_bounds_basis": [
+            {
+              "prefix": [
+                "w-auth-context"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q1",
+              "outcome_action_id": "action_direct_admin",
+              "technical_source": "synthetic://bounds/q1",
+              "basis_category": "synthetic_fixture",
+              "rationale": "auth context",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            }
+          ],
+          "diagnostic_reasons": [
+            "likelihood_unrated"
+          ]
+        }
+      },
+      "cand_unrated_effort": {
+        "reasons": [
+          "likelihood_unrated"
+        ],
+        "assessment": {
+          "candidate_id": "cand_unrated_effort",
+          "bound_action_ids": [
+            "action_unrated_effort_attempt"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000002",
+          "program": [
+            "w-unrated-friction"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_unrated_effort",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101",
+                "10000000-0000-4000-8000-000000000002"
+              ],
+              "edge_ids": [
+                "sha256:8f30ade289c16f75c747c8651362d8483c3ac7793c5a3f47b769fcbf110fca67"
+              ],
+              "provenance_locators": [
+                "synthetic://golden/two-routes"
+              ]
+            }
+          ],
+          "status": "feasible",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_channel_alice_host": "True",
+            "admin_control_host": "True"
+          },
+          "nominal_effort": null,
+          "effort": null,
+          "effort_status": "unrated",
+          "unrated_work_units": [
+            "w-unrated-friction"
+          ],
+          "work_unit_basis": {
+            "w-unrated-friction": {
+              "alias": "WU_UNRATED_FRICTION",
+              "rating_status": "unrated",
+              "overlap_state": "independent",
+              "computed_cost": null,
+              "effort_cost": null,
+              "summary": "Work unit without empirical friction data",
+              "technical_source": "synthetic://rubric/w-unrated",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [
+                "insufficient_empirical_friction_data"
+              ],
+              "work_unit_id": "w-unrated-friction",
+              "status": "unrated",
+              "rubric_scores": null,
+              "t1": null,
+              "t2": null
+            }
+          },
+          "impact": "High",
+          "consequence_rating": "High",
+          "impact_status": "rated",
+          "likelihood_interval": null,
+          "likelihood_status": "unrated",
+          "likelihood_basis_summary": "Withheld: missing conditional prefix bounds in table",
+          "conditional_bounds_basis": [],
+          "diagnostic_reasons": [
+            "likelihood_unrated"
+          ]
+        }
+      },
+      "cand_unrated_impact": {
+        "reasons": [
+          "impact_unrated"
+        ],
+        "assessment": {
+          "candidate_id": "cand_unrated_impact",
+          "bound_action_ids": [
+            "action_unrated_impact_attempt"
+          ],
+          "target_asset_id": "10000000-0000-4000-8000-000000000003",
+          "program": [
+            "w-auth-otherhost",
+            "w-direct-admin-otherhost"
+          ],
+          "structural_routes": [
+            {
+              "route_id": "route_unrated_impact",
+              "node_ids": [
+                "S-1-5-21-1000-2000-3000-1101"
+              ],
+              "edge_ids": [],
+              "provenance_locators": [],
+              "action_step_indices": [],
+              "semantic_lineage": [
+                {
+                  "step_index": 0,
+                  "action_id": "action_unrated_impact_attempt",
+                  "technique_id": "obtain_admin_execution_on_host",
+                  "actor": "S-1-5-21-1000-2000-3000-1101",
+                  "source": "S-1-5-21-1000-2000-3000-1101",
+                  "target": "10000000-0000-4000-8000-000000000003",
+                  "origin": "initial_attack_state",
+                  "derived_from_step": null,
+                  "status": "applicable"
+                }
+              ]
+            }
+          ],
+          "status": "feasible",
+          "gates_evaluation": {
+            "actor_controlled_alice": "True",
+            "admin_control_host": "True",
+            "target_x_controlled": "True"
+          },
+          "nominal_effort": 5,
+          "effort": 5,
+          "effort_status": "rated",
+          "unrated_work_units": [],
+          "work_unit_basis": {
+            "w-auth-otherhost": {
+              "alias": "WU_AUTH_OTHERHOST",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 1,
+              "effort_cost": 1,
+              "rubric_scores": {
+                "t1": 1,
+                "t2": 2,
+                "formula": "base",
+                "computed_cost": 1
+              },
+              "summary": "Establish authentication context for Alice towards OtherHost X",
+              "technical_source": "synthetic://rubric/w-auth-otherhost",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-auth-otherhost",
+              "status": "rated",
+              "t1": 1,
+              "t2": 2
+            },
+            "w-direct-admin-otherhost": {
+              "alias": "WU_DIRECT_ADMIN_OTHERHOST",
+              "rating_status": "rated",
+              "overlap_state": "independent",
+              "computed_cost": 4,
+              "effort_cost": 4,
+              "rubric_scores": {
+                "t1": 3,
+                "t2": 3,
+                "formula": "base",
+                "computed_cost": 4
+              },
+              "summary": "Direct administrator execution on OtherHost X after authentication context",
+              "technical_source": "synthetic://rubric/w-direct-admin-otherhost",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ],
+              "missing_basis_reasons": [],
+              "work_unit_id": "w-direct-admin-otherhost",
+              "status": "rated",
+              "t1": 3,
+              "t2": 3
+            }
+          },
+          "impact": null,
+          "consequence_rating": null,
+          "impact_status": "unrated",
+          "likelihood_interval": [
+            "1/4",
+            "1/4"
+          ],
+          "likelihood_status": "rated",
+          "likelihood_basis_summary": "Derived from prefix conditional bounds product; ['w-auth-otherhost']: synthetic_fixture — authentication context for otherhost; ['w-auth-otherhost', 'w-direct-admin-otherhost']: synthetic_fixture — administrative execution on otherhost",
+          "conditional_bounds_basis": [
+            {
+              "prefix": [
+                "w-auth-otherhost"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q_auth_otherhost",
+              "outcome_action_id": "action_unrated_impact_attempt",
+              "technical_source": "synthetic://bounds/q_auth_otherhost",
+              "basis_category": "synthetic_fixture",
+              "rationale": "authentication context for otherhost",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            },
+            {
+              "prefix": [
+                "w-auth-otherhost",
+                "w-direct-admin-otherhost"
+              ],
+              "lower": "1/2",
+              "upper": "1/2",
+              "question_id": "q_admin_otherhost",
+              "outcome_action_id": "action_unrated_impact_attempt",
+              "technical_source": "synthetic://bounds/q_admin_otherhost",
+              "basis_category": "synthetic_fixture",
+              "rationale": "administrative execution on otherhost",
+              "applicable_queries": [
+                "query-week4-synthetic-a2-diagnostics"
+              ]
+            }
+          ],
+          "diagnostic_reasons": [
+            "impact_unrated"
+          ]
+        }
+      }
+    },
+    "min_effort_to_da_baseline": {
+      "goal_id": "admin_execution_goal",
+      "best_candidate_id": "cand_assumed_gate_unrated_basis",
+      "minimum_effort_value": 5,
+      "associated_likelihood_interval": null,
+      "associated_impact": "High",
+      "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+      "baseline_coverage": {
+        "is_truncated": false,
+        "truncation_reasons": [],
+        "completeness_scope": "unspecified_subset"
+      }
+    }
+  }
+}

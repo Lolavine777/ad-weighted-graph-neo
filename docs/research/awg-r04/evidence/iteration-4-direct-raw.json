@@ -1,0 +1,679 @@
+{
+  "builtin_scope_basis": "Explicit contract 1.3 rule + independently collected raw Domain ObjectIdentifier; no label-based identity inference",
+  "builtin_sid_scoped_references": 19,
+  "checked_by_kind": {
+    "AdminTo": 5,
+    "CanPSRemote": 2,
+    "GenericAll": 30244,
+    "MemberOf": 15843,
+    "WriteDacl": 15
+  },
+  "checked_raw_references": 46254,
+  "checked_unique_edges": 46109,
+  "dataset_coverage_observations": {
+    "canonical_canrdp_edges": 0,
+    "computer_count": 100,
+    "direct_local_admin_references": 5,
+    "hosts_with_nonempty_local_admins": 1,
+    "hosts_with_nonempty_psremote": 1,
+    "rdp_group_references": 3,
+    "rdp_unknown_assessments": [
+      {
+        "id": "host-access:294fad7e044c2b52250d3ad769220c8f619840534944aa947fe7c3b9245ac463",
+        "kind": "CanRDP",
+        "provenance": [
+          {
+            "attribute": "RemoteDesktopUsers[]",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          },
+          {
+            "attribute": "UserRights",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "reason": "required UserRights evidence is incomplete",
+        "status": "unknown",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-1888",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      },
+      {
+        "id": "host-access:d1eee21d6d55528001c838e86deea4906baa5969184930f9f6f67e104e6c99c8",
+        "kind": "CanRDP",
+        "provenance": [
+          {
+            "attribute": "RemoteDesktopUsers[]",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          },
+          {
+            "attribute": "UserRights",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "reason": "required UserRights evidence is incomplete",
+        "status": "unknown",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2695",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      },
+      {
+        "id": "host-access:e8db803ec0d05e87f281831b7eb3de59ee56c5e69e1c4414a96bc0208eb99342",
+        "kind": "CanRDP",
+        "provenance": [
+          {
+            "attribute": "RemoteDesktopUsers[]",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          },
+          {
+            "attribute": "UserRights",
+            "collector": "sharphound",
+            "evidence_type": "unknown",
+            "raw_file": "snapshot:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812/20210920185958_computers.json",
+            "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+            "time_provenance_reason": "Explicit filename-based research collection-time convention; manifest collected_at is null and filename is not observed collection time.",
+            "timestamp": "2021-09-20T18:59:58Z",
+            "timestamp_status": "assumed"
+          }
+        ],
+        "reason": "required UserRights evidence is incomplete",
+        "status": "unknown",
+        "subject": "S-1-5-21-1271839998-3495686680-2211690266-2052",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      }
+    ],
+    "session_references": 0,
+    "user_count": 2493,
+    "users_dontreqpreauth_true": 176,
+    "users_hasspn_true": 51
+  },
+  "excluded_non_plain_sid_references": {
+    "GenericAll": 6819,
+    "MemberOf": 74,
+    "WriteDacl": 3382
+  },
+  "failures": [],
+  "graph_edges": 56367,
+  "graph_nodes": 3370,
+  "limitations": [
+    "Not a BloodHound runtime comparison or validation of AD exploitability.",
+    "No assertion for raw DOMAIN-prefixed aliases or GUID endpoints; exclusions counted. Raw builtin SIDs are explicitly domain-scoped.",
+    "Does not independently validate nested/GPO derivation, false-positive extras, weights, or absence/completeness of raw collection.",
+    "Random rows are only an audit sample; the forward assertions census the declared endpoint subset."
+  ],
+  "negative_controls": {
+    "removed_edge_detected": true,
+    "removed_provenance_detected": true,
+    "reversed_edge_detected": true
+  },
+  "raw_candidates_by_kind": {
+    "AdminTo": 5,
+    "CanPSRemote": 2,
+    "GenericAll": 37208,
+    "MemberOf": 15917,
+    "WriteDacl": 3397
+  },
+  "raw_files": {
+    "20210920185958_computers.json": "sha256:238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+    "20210920185958_domains.json": "sha256:b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+    "20210920185958_gpos.json": "sha256:2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+    "20210920185958_groups.json": "sha256:5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+    "20210920185958_ous.json": "sha256:f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+    "20210920185958_users.json": "sha256:8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa"
+  },
+  "raw_manifest_sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+  "revision": "633bfaf6d5cc8d3dc1c610e4d39abfff3e92b353",
+  "sample_seed": 297,
+  "samples": [
+    {
+      "edge_id": "sha256:1d560c78b7fa59d8be7bfcfa5fde1917db6429acca8f7893d24e5bf91c56f0cf",
+      "kind": "AdminTo",
+      "raw": [
+        {
+          "pointer": "#/computers/0/LocalAdmins/3",
+          "provenance_attribute": "LocalAdmins[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:75e8c4a63485d76797fc7bb5221b6f9a4614797dc77dd3d18f5e48d7b203b935",
+      "kind": "AdminTo",
+      "raw": [
+        {
+          "pointer": "#/computers/0/LocalAdmins/4",
+          "provenance_attribute": "LocalAdmins[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2408",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:b696005e87eff2415470013696dcc235b494617b1589a4dcbf2e20e76239c4aa",
+      "kind": "AdminTo",
+      "raw": [
+        {
+          "pointer": "#/computers/0/LocalAdmins/0",
+          "provenance_attribute": "LocalAdmins[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-500",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:5073fa4b10f8441f0693f586f7fe28c6d2a414242cb76b1af2341138c0829afc",
+      "kind": "AdminTo",
+      "raw": [
+        {
+          "pointer": "#/computers/0/LocalAdmins/2",
+          "provenance_attribute": "LocalAdmins[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:24d0ed079b876b406255c250a63c35604c95a68411c044fcde6f571a31d21e46",
+      "kind": "AdminTo",
+      "raw": [
+        {
+          "pointer": "#/computers/0/LocalAdmins/1",
+          "provenance_attribute": "LocalAdmins[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:03c7a99d6b13065168a9708c0e0b7d9cbbbcfff58cdebe94f0ec165a7e44d044",
+      "kind": "CanPSRemote",
+      "raw": [
+        {
+          "pointer": "#/computers/0/PSRemoteUsers/0",
+          "provenance_attribute": "PSRemoteUsers[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3296",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:9aca11cdb2a490e3b9b61f4452b25d5ddf5701742e06e12137b875d4404fe353",
+      "kind": "CanPSRemote",
+      "raw": [
+        {
+          "pointer": "#/computers/0/PSRemoteUsers/1",
+          "provenance_attribute": "PSRemoteUsers[]",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3385",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000"
+    },
+    {
+      "edge_id": "sha256:6e9fcda08ee6431fc28d8a01029be8da32935aed6a4d88d09575093a7e082fba",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/541/Aces/6",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1643"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1643"
+    },
+    {
+      "edge_id": "sha256:96a2e06f915f267e6caaf013614dd5fcd257a220a52c2144f94c08765508ed6b",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/2073/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3171"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2099",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3171"
+    },
+    {
+      "edge_id": "sha256:4156ea2e92dfc4e4b8019b0ab00d2d79c3950bce862b949bc8896dd6593e6fd8",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/683/Aces/3",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1780"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3593",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1780"
+    },
+    {
+      "edge_id": "sha256:cca99eda320474a7c807db1f9a45fb7ddace8ecac0b79aea4cbc041d71e19b0c",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/1278/Aces/3",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2377"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3605",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2377"
+    },
+    {
+      "edge_id": "sha256:78c3316856128577d6935cdaf0a23869ddd5fb747f91b118a41f6362d2f1dae3",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/682/Aces/6",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1782"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3714",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1782"
+    },
+    {
+      "edge_id": "sha256:2f9f59b496409e3c979701476ed988e25b337b05e5458a230f4a9c5c0470d40d",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/2021/Aces/5",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3121"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3915",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3121"
+    },
+    {
+      "edge_id": "sha256:9d1189c440845b1e919fcfe2a0e640c9d4fba7c88cc6ff76473ba02e9661a090",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/1310/Aces/9",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2412"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2412"
+    },
+    {
+      "edge_id": "sha256:faac5f3df765b9db86010d9e214d666d2d970603501a9b7da4e68b08f58529bf",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/1408/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2514"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3943",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2514"
+    },
+    {
+      "edge_id": "sha256:0b9e8563609c73e32cceb361032c4ca79326c37d979d502db57dde9335976741",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/computers/59/Aces/13",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_computers.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-4151"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-4151"
+    },
+    {
+      "edge_id": "sha256:0ef4c845bde4ecbf26820bf884f7f501327657f5e28e5a2285cbcea7e75831cc",
+      "kind": "GenericAll",
+      "raw": [
+        {
+          "pointer": "#/users/1324/Aces/2",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2424"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2424"
+    },
+    {
+      "edge_id": "sha256:2f1834a1bfec6160846a7d0b8cc81b5f1018823939715fc9c282b2fec9d3faab",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/249/Members/19",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3792"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1854",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3792"
+    },
+    {
+      "edge_id": "sha256:0697e29dee357b5459eeb4dc1c59a72ccce0b09fa43322182052e7c6b331fa66",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/users/861/PrimaryGroupSid",
+          "provenance_attribute": "PrimaryGroupSid",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-1964"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1964",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-513"
+    },
+    {
+      "edge_id": "sha256:b94d50d1d20e5c48f8a7cd947f0ef4126d9b71ad7f7c4a4372efefbf6fe22f29",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/217/Members/16",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3760"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2143",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3760"
+    },
+    {
+      "edge_id": "sha256:d89d418923f46dc1b05541bd3c3029a7c7cd5169b6d6bf728f096ead48b685a1",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/users/1047/PrimaryGroupSid",
+          "provenance_attribute": "PrimaryGroupSid",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-2143"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2143",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-513"
+    },
+    {
+      "edge_id": "sha256:6af6b3dc4ffb2f17d93161f156caaf7cd16123e2e3da4b27fe15b840883cc1cd",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/184/Members/16",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3726"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2401",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3726"
+    },
+    {
+      "edge_id": "sha256:de71af5d2cb254a0625456aea8e980a4cfe420da0c5c7a84ecd994b6d3d84b45",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/455/Members/14",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3998"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2551",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3998"
+    },
+    {
+      "edge_id": "sha256:54c80bfd228fb6a15e3256bbe215682c66954e6c358644c04367d8a3c6be4423",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/124/Members/10",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3667"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2568",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3667"
+    },
+    {
+      "edge_id": "sha256:e23f9edd86db759a19fe70cfcd558a4dfb4c3e59315eaa3b451d6d4e2ea02671",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/148/Members/10",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3669"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2661",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3669"
+    },
+    {
+      "edge_id": "sha256:e2cff618b50bacb991521601edd2cd584c30c5f0b95d866e9d0de5f4ddd3a3cc",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/users/1979/PrimaryGroupSid",
+          "provenance_attribute": "PrimaryGroupSid",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3077"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3077",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-513"
+    },
+    {
+      "edge_id": "sha256:9ca9712c6379643d5777e98f0ad2854f911eaf419c5e9395a86f59acd11f287a",
+      "kind": "MemberOf",
+      "raw": [
+        {
+          "pointer": "#/groups/347/Members/0",
+          "provenance_attribute": "Members[].MemberId",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-3896"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-3916",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-3896"
+    },
+    {
+      "edge_id": "sha256:73c695cfcc8c5358a48a6b18aa3e33d17c1942513524a2ffc7802e87d2ff468f",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/domains/0/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_domains.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266"
+    },
+    {
+      "edge_id": "sha256:da2a06190635e0064b8a3fbea17cb741700d41c9013110330ddea4900f4c4d6f",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/40/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+    },
+    {
+      "edge_id": "sha256:eab6ac29aa4300462dd0c5ef7f27cd22c68cf74a470aebf6d9874b6f6ffc23f5",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/27/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-516"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-516"
+    },
+    {
+      "edge_id": "sha256:3853dc5f45276fb989495bdbe56f89eeb04a3cceff202a3349c8a4719e2ba30b",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/17/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-518"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-518"
+    },
+    {
+      "edge_id": "sha256:0e33c67bd0fac7beebf68f94d77594948b46c15df9afc03e56877bba02fa854f",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/18/Aces/4",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-519"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+    },
+    {
+      "edge_id": "sha256:8e96133f83789f5e4180bec0809b6202eeed4159935b39f5f4af33593cff568e",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/users/3/Aces/9",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_users.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-502"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-502"
+    },
+    {
+      "edge_id": "sha256:3922a82e545dc0fe044014ace32830a961f4dd97022cc4a25ae83d6ba5c5f41b",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/40/Aces/7",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-512"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+    },
+    {
+      "edge_id": "sha256:18acb2ac2e7138589d417afb1fc6547088cc391a3ba510734a8e516938fc8c18",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/27/Aces/7",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-516"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-516"
+    },
+    {
+      "edge_id": "sha256:1c9582fcba7b6d695aece2dc00cf964713ee33a4c6fc41fcbfa8f32a7fb03fe7",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/18/Aces/7",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-519"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+    },
+    {
+      "edge_id": "sha256:eb188fe3bb65fe8182339dafb0419e1ac0a8a66d855efacfbf867d0f72b61ae4",
+      "kind": "WriteDacl",
+      "raw": [
+        {
+          "pointer": "#/groups/45/Aces/7",
+          "provenance_attribute": "Aces[].PrincipalSID",
+          "raw_file": "20210920185958_groups.json",
+          "record_id": "S-1-5-21-1271839998-3495686680-2211690266-521"
+        }
+      ],
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-521"
+    }
+  ],
+  "schema_version": "awg-r04-direct-raw-audit/1.0",
+  "scope": "Census of direct GenericAll/WriteDacl, explicit+primary MemberOf, LocalAdmins/AdminTo and PSRemoteUsers/CanPSRemote with plain SID endpoints; builtin SIDs explicitly domain-scoped per contract. No AWG imports. Each direct reference must have the right directed edge and raw/time provenance.",
+  "script_sha256": "sha256:92c6dfe6080bff880c627e896cdc74e1016e799e6a552fb165e030125a0a1614",
+  "snapshot_file_sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+}

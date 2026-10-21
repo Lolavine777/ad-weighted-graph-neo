@@ -1,0 +1,230 @@
+{
+  "status": "PASS",
+  "scope": "Policy/provenance preflight, canonical reconciliation and source-sheet diagnostic calculations; not final release acceptance.",
+  "source_head": "9b8aed43b8dd9f69efb338020f832c9c0b207b6d",
+  "engine_baseline": "12a221fb401d9ce0a38e008168dc0b62f116792d",
+  "runtime": {
+    "python": "3.12.14",
+    "platform": "linux",
+    "checkout": "text snapshot; baseline binary screenshots not downloaded"
+  },
+  "input_sha256": {
+    "rater-A.json": "078e9fa59198e97ad86b330c8481314cb1c2e407915ac187299761b91ccab90f",
+    "rater-B.json": "d8490da4bc25b304a382b1a52a9f1e328d7f57cbf1336a67b701ed0576946945"
+  },
+  "policy_sha256": "0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883",
+  "B_original_ai_sha256": "e06dbbf8ddb2f8a88fd79182739fc9bb73ca158a9080e1d19d67fbe92f046d79",
+  "source_values_unchanged": true,
+  "policy_preflight": "PASS",
+  "negative_preflight_checks_rejected": [
+    "deadline",
+    "policy_digest",
+    "archive"
+  ],
+  "coverage": {
+    "total_sheet1_records": 21,
+    "total_sheet2_records": 21,
+    "matched_pairs_count": 21,
+    "unmatched_sheet1_count": 0,
+    "unmatched_sheet2_count": 0,
+    "fully_rated_pairs_count": 21,
+    "pending_unrated_pairs_count": 0,
+    "proposed_consensus_count": 21,
+    "disagreement_count": 0,
+    "withheld_overlap_count": 0
+  },
+  "aggregate_metrics": {
+    "impact": {
+      "kappa": null,
+      "status": "degenerate_zero_variance",
+      "observed_agreement": 1.0,
+      "confusion_matrix": {
+        "High": {
+          "High": 1
+        }
+      },
+      "small_sample_size_warning": true,
+      "rated_pair_count": 1
+    },
+    "likelihood": {
+      "rated_pair_count": 11,
+      "mean_inter_rater_iou": 0.5813099943534726,
+      "high_epistemic_uncertainty_count": 0,
+      "high_epistemic_uncertainty_items": []
+    },
+    "effort": {
+      "rated_pair_count": 9,
+      "max_cost_delta": 0,
+      "mean_cost_delta": 0.0,
+      "cost_disagreement_count": 0,
+      "withheld_overlap_count": 0
+    }
+  },
+  "metric_interpretation": "Descriptive artifacts after exposure, not blind independent human inter-rater reliability.",
+  "canonical_engine_and_fraction_checks": {
+    "A": {
+      "source_a": {
+        "candidates": [
+          {
+            "candidate_id": "cand_seamless_01_direct_lidia",
+            "likelihood_interval": [
+              "42/125",
+              "171/250"
+            ],
+            "effort": 2,
+            "impact": "High"
+          },
+          {
+            "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+            "likelihood_interval": [
+              "588/3125",
+              "29241/50000"
+            ],
+            "effort": 3,
+            "impact": "High"
+          }
+        ],
+        "frontier": [
+          "cand_seamless_01_direct_lidia",
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "min_effort": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "best_candidate_id": "cand_seamless_01_direct_lidia",
+          "minimum_effort_value": 2,
+          "associated_likelihood_interval": [
+            "42/125",
+            "171/250"
+          ],
+          "associated_impact": "High",
+          "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+          "baseline_coverage": {
+            "is_truncated": false,
+            "truncation_reasons": [],
+            "completeness_scope": "unspecified_subset"
+          }
+        }
+      },
+      "source_b": {
+        "candidates": [
+          {
+            "candidate_id": "cand_seamless_source_b_01_ollie",
+            "likelihood_interval": [
+              "42/125",
+              "171/250"
+            ],
+            "effort": 2,
+            "impact": "High"
+          }
+        ],
+        "frontier": [
+          "cand_seamless_source_b_01_ollie"
+        ],
+        "min_effort": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "best_candidate_id": "cand_seamless_source_b_01_ollie",
+          "minimum_effort_value": 2,
+          "associated_likelihood_interval": [
+            "42/125",
+            "171/250"
+          ],
+          "associated_impact": "High",
+          "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+          "baseline_coverage": {
+            "is_truncated": false,
+            "truncation_reasons": [],
+            "completeness_scope": "unspecified_subset"
+          }
+        }
+      }
+    },
+    "B": {
+      "source_a": {
+        "candidates": [
+          {
+            "candidate_id": "cand_seamless_01_direct_lidia",
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ],
+            "effort": 2,
+            "impact": "High"
+          },
+          {
+            "candidate_id": "cand_seamless_02_alt_vajer_ollie",
+            "likelihood_interval": [
+              "81/800",
+              "7800849/10000000"
+            ],
+            "effort": 3,
+            "impact": "High"
+          }
+        ],
+        "frontier": [
+          "cand_seamless_01_direct_lidia",
+          "cand_seamless_02_alt_vajer_ollie"
+        ],
+        "min_effort": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "best_candidate_id": "cand_seamless_01_direct_lidia",
+          "minimum_effort_value": 2,
+          "associated_likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "associated_impact": "High",
+          "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+          "baseline_coverage": {
+            "is_truncated": false,
+            "truncation_reasons": [],
+            "completeness_scope": "unspecified_subset"
+          }
+        }
+      },
+      "source_b": {
+        "candidates": [
+          {
+            "candidate_id": "cand_seamless_source_b_01_ollie",
+            "likelihood_interval": [
+              "9/40",
+              "8379/10000"
+            ],
+            "effort": 2,
+            "impact": "High"
+          }
+        ],
+        "frontier": [
+          "cand_seamless_source_b_01_ollie"
+        ],
+        "min_effort": {
+          "goal_id": "terminal_compromise_seamless_dc",
+          "best_candidate_id": "cand_seamless_source_b_01_ollie",
+          "minimum_effort_value": 2,
+          "associated_likelihood_interval": [
+            "9/40",
+            "8379/10000"
+          ],
+          "associated_impact": "High",
+          "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+          "baseline_coverage": {
+            "is_truncated": false,
+            "truncation_reasons": [],
+            "completeness_scope": "unspecified_subset"
+          }
+        }
+      }
+    }
+  },
+  "research_fixtures_unchanged_sha256": {
+    "tests/fixtures/ranking/seamless_rater_1.json": "b409a2fff62f3036a1970eecdef5c8d886fa02aa190de338c8d7ad0435ef1e66",
+    "tests/fixtures/ranking/seamless_rater_2.json": "26bb9b58a3db12afa7386c114f4dca564c51f0987b7495344ade91308b32c3bf",
+    "tests/fixtures/ranking/seamless_parameter_bundle.json": "251771f39c888d525edde10e969f481836a4c3bbc48029ec8a4ed6cdeaf4cb04"
+  },
+  "full_pytest": "not_run",
+  "new_commit_CI": "not yet observed at artifact creation",
+  "final_parameter_dispositions": "pending",
+  "integrated_week3_acceptance": "pending",
+  "document_link_and_worklog_validation": "PASS for six changed Markdown documents",
+  "contract_validation": "PASS: contract and two synthetic fixtures validated",
+  "ruff": "not run locally; module unavailable; GitHub CI will run pinned Ruff 0.16.8"
+}

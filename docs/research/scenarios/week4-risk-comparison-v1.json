@@ -1,0 +1,209 @@
+{
+  "scenario_id": "week4-risk-comparison-v1",
+  "scenario_version": "1.0.0",
+  "status": "handcrafted_arithmetic_only_not_generated_acceptance",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-1001",
+  "target_asset_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "work_boundary": "intra_forest",
+  "horizon": "24h",
+  "active_work_budget": 6,
+  "evaluation_mode": "scenario",
+  "governance": {
+    "basis_category": "scenario_assumption",
+    "allow_scenario_fallback": true,
+    "review_status": "proposed_pending_b_review",
+    "reviewed_by": "Lolavine777 (TTS A)",
+    "review_reference": "Issue #248 reviewed risk-comparison specification"
+  },
+  "claim_limits": [
+    "Handcrafted arithmetic isolation only; DCSync generation is not established",
+    "Not #243, #248 generated-flow or #251 acceptance evidence",
+    "No accepted contextual binding and no empirical evidence",
+    "Records remain nonnumeric in the production provider"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "cand_risk_01_winrm",
+      "description": "Acquire Kerberos ticket then WinRM remote execution to target DC",
+      "consequence_rating": "High",
+      "steps": [
+        {
+          "step_index": 1,
+          "work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1101:default:intra_forest:1.0.0",
+          "technique": "acquire_ticket",
+          "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1001",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1101",
+          "method": "default",
+          "lower": "3/5",
+          "upper": "4/5"
+        },
+        {
+          "step_index": 2,
+          "work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-1101:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "technique": "remote_exec_winrm",
+          "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1101",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "method": "default",
+          "lower": "2/3",
+          "upper": "3/4"
+        }
+      ],
+      "frozen_expected_likelihood_product": {
+        "lower": "2/5",
+        "upper": "3/5",
+        "exact_lower_fraction": "2/5",
+        "exact_upper_fraction": "3/5",
+        "product_rationale": "(3/5) * (2/3) = 6/15 = 2/5; (4/5) * (3/4) = 12/20 = 3/5"
+      }
+    },
+    {
+      "candidate_id": "cand_risk_02_dcsync",
+      "description": "Write DACL modification then DCSync replication against target DC",
+      "consequence_rating": "Critical",
+      "steps": [
+        {
+          "step_index": 1,
+          "work_unit_id": "write_dacl:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1102:default:intra_forest:1.0.0",
+          "technique": "write_dacl",
+          "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1001",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1102",
+          "method": "default",
+          "lower": "1/2",
+          "upper": "2/3"
+        },
+        {
+          "step_index": 2,
+          "work_unit_id": "dcsync:S-1-5-21-1271839998-3495686680-2211690266-1102:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+          "technique": "dcsync",
+          "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1102",
+          "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "method": "default",
+          "lower": "1/5",
+          "upper": "3/8"
+        }
+      ],
+      "frozen_expected_likelihood_product": {
+        "lower": "1/10",
+        "upper": "1/4",
+        "exact_lower_fraction": "1/10",
+        "exact_upper_fraction": "1/4",
+        "product_rationale": "(1/2) * (1/5) = 1/10; (2/3) * (3/8) = 6/24 = 1/4"
+      }
+    }
+  ],
+  "pareto_analysis": {
+    "cand_risk_01_winrm": {
+      "impact": "High",
+      "likelihood_interval": [
+        "2/5",
+        "3/5"
+      ],
+      "likelihood_float_range": [
+        0.4,
+        0.6
+      ]
+    },
+    "cand_risk_02_dcsync": {
+      "impact": "Critical",
+      "likelihood_interval": [
+        "1/10",
+        "1/4"
+      ],
+      "likelihood_float_range": [
+        0.1,
+        0.25
+      ]
+    },
+    "dominance_relation": "incomparable",
+    "rationale": "Cand 1 has strictly higher likelihood (lower bound 2/5 > upper bound 1/4 of Cand 2); Cand 2 has strictly higher consequence (Critical > High). Neither dominates under conservative Pareto criteria.",
+    "expected_pareto_frontier": [
+      "cand_risk_01_winrm",
+      "cand_risk_02_dcsync"
+    ]
+  },
+  "reviewed_likelihood_records": [
+    {
+      "scenario_id": "week4-risk-comparison-v1",
+      "ordered_work_prefix": [
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1101:default:intra_forest:1.0.0"
+      ],
+      "outcome_work_unit_id": "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1101:default:intra_forest:1.0.0",
+      "outcome_technique": "acquire_ticket",
+      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1001",
+      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1101",
+      "method": "default",
+      "horizon": "24h",
+      "boundary": "intra_forest",
+      "lower": "3/5",
+      "upper": "4/5",
+      "basis_category": "scenario_assumption",
+      "rationale": "Reviewed ticket acquisition likelihood interval under default protocol",
+      "review_reference": "Issue #248 / #251 Pareto case definition",
+      "review_status": "proposed_pending_b_review",
+      "disposition": "unrated"
+    },
+    {
+      "scenario_id": "week4-risk-comparison-v1",
+      "ordered_work_prefix": [
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1101:default:intra_forest:1.0.0",
+        "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-1101:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "outcome_work_unit_id": "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-1101:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "outcome_technique": "remote_exec_winrm",
+      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1101",
+      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "method": "default",
+      "horizon": "24h",
+      "boundary": "intra_forest",
+      "lower": "2/3",
+      "upper": "3/4",
+      "basis_category": "scenario_assumption",
+      "rationale": "Reviewed WinRM execution conditional on successful ticket acquisition",
+      "review_reference": "Issue #248 / #251 Pareto case definition",
+      "review_status": "proposed_pending_b_review",
+      "disposition": "unrated"
+    },
+    {
+      "scenario_id": "week4-risk-comparison-v1",
+      "ordered_work_prefix": [
+        "write_dacl:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1102:default:intra_forest:1.0.0"
+      ],
+      "outcome_work_unit_id": "write_dacl:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1102:default:intra_forest:1.0.0",
+      "outcome_technique": "write_dacl",
+      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1001",
+      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1102",
+      "method": "default",
+      "horizon": "24h",
+      "boundary": "intra_forest",
+      "lower": "1/2",
+      "upper": "2/3",
+      "basis_category": "scenario_assumption",
+      "rationale": "Reviewed WriteDACL modification likelihood interval under default protocol",
+      "review_reference": "Issue #248 / #251 Pareto case definition",
+      "review_status": "proposed_pending_b_review",
+      "disposition": "unrated"
+    },
+    {
+      "scenario_id": "week4-risk-comparison-v1",
+      "ordered_work_prefix": [
+        "write_dacl:S-1-5-21-1271839998-3495686680-2211690266-1001:S-1-5-21-1271839998-3495686680-2211690266-1102:default:intra_forest:1.0.0",
+        "dcsync:S-1-5-21-1271839998-3495686680-2211690266-1102:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "outcome_work_unit_id": "dcsync:S-1-5-21-1271839998-3495686680-2211690266-1102:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+      "outcome_technique": "dcsync",
+      "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1102",
+      "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "method": "default",
+      "horizon": "24h",
+      "boundary": "intra_forest",
+      "lower": "1/5",
+      "upper": "3/8",
+      "basis_category": "scenario_assumption",
+      "rationale": "Reviewed DCSync replication conditional on successful WriteDACL modification",
+      "review_reference": "Issue #248 / #251 Pareto case definition",
+      "review_status": "proposed_pending_b_review",
+      "disposition": "unrated"
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "benchmark": {
+    "reported_hashes_per_second": 3564100000,
+    "source": {
+      "accessed": "2026-10-12",
+      "id": "benchmark-author-report",
+      "supports": "author-reported hashcat v6.2.6 RTX 4090 mode18200 benchmark, 3564.1 MH/s; scale sanity check only, not achieved distinct guesses or password coverage",
+      "url": "https://gist.github.com/Chick3nman/32e662a5bb63bc4f51b847bb422222fd"
+    },
+    "transfer_to_scenario": "refused: benchmark kernel, hardware, hash count, candidate length, verifier mode/etype, driver, attack strategy and overhead differ; H/s is not distinct candidate coverage"
+  },
+  "full_history_scope": "native ordered canonical work identities plus actor/source/target/auth, method, resource, scenario, snapshot, budget, policy and horizon; unrelated histories refused",
+  "natural_password": {
+    "bound": null,
+    "required": "joint conditional rank mass and completed compatible verifier coverage before deadline; include secret validity and no-match stop semantics"
+  },
+  "numeric_accepted": false,
+  "status": "proposed_pending_b_review",
+  "time": {
+    "campaign_minutes": 1440,
+    "elapsed_time_is_not_C": true,
+    "retry_independence": false,
+    "sum_event_deadlines_minutes": 1250
+  },
+  "transfers": [
+    {
+      "disposition": "new_event_specific_expert_scenario_proposal",
+      "event": "asrep_request",
+      "history": [],
+      "rationale": "New AI-assisted operational judgment for compatible AS-REP material acquisition, not transferred from reset-derived credential activation. Under stable reachable KDC and supported request/parser, propose 1%-10% residual whole-event failure allowance for request/response timeout, resource contention and material parsing within three requests/10 minutes. These allowances require B numeric adoption; specifications support event semantics only."
+    },
+    {
+      "disposition": "none",
+      "event": "recover_asrep_secret",
+      "history": [
+        "asrep_request"
+      ],
+      "rationale": "q=P(password rank is covered AND verifier completes and validates by deadline | acquisition, F/S, full history). A cap alone gives no completed-compute floor and unknown natural-password rank supplies no success mass. q is absent. uniform24 arithmetic remains an archived counterfactual fixture, never a natural-password estimate."
+    },
+    {
+      "disposition": "historical_activation_proposed_equivalence_only",
+      "event": "activate_recovered_identity",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "rationale": "Proposed transfer of the reviewed reset-derived Kerberos activation interval only after E1/E2 succeeded and the scenario declares unchanged valid password/account policy. Recovery lineage differs from reset lineage; the full new history is a separate explicit case. Password validity gates do not erase residual exchange/policy uncertainty."
+    },
+    {
+      "disposition": "historical_winrm_proposed_equivalence_only",
+      "event": "obtain_admin_execution_on_host",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret",
+        "activate_recovered_identity"
+      ],
+      "rationale": "Proposed transfer of the historical WinRM terminal interval to the same DC typed consequence, with an explicit WinRM scenario policy. The generated semantic method remains AdminTo. Generic unspecified admin_channel, RDP/session, DA membership or a different resource cannot borrow it. Full recovery/activation history and 24h horizon must be accepted separately."
+    }
+  ],
+  "uniform24": {
+    "at_cap": "1/16",
+    "at_floor": "1/32",
+    "at_population_cap": "1",
+    "cap_checks_per_second": "16384/1125",
+    "conclusion": "low q describes deliberately small coverage of uniform24, not AS-REP difficulty",
+    "disposition": "archived_counterfactual_arithmetic_only",
+    "floor_checks_per_second": "8192/1125",
+    "no_floor": "no positive lower bound",
+    "population_size": 16777216
+  },
+  "version": "2.0.0"
+}

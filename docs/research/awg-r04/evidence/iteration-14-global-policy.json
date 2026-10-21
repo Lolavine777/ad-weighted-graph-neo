@@ -1,0 +1,1413 @@
+{
+  "version": "awg-r04-global-policy-validation/1",
+  "runs": [
+    {
+      "label": "before",
+      "revision": "133517f74459ba6b0f0d505f2ed416f41e40ecf4",
+      "source_pins": {
+        "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+        "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+        "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+        "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+        "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+        "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+        "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+        "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+        "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+        "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+        "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+        "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+        "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+        "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+        "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+        "src/engine/batch.py": "sha256:58992f19dc729abc510bd12fc70264066fda08d868445889a702176436f8d8cf",
+        "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+        "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+        "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+        "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+        "src/engine/query.py": "sha256:b2d751ad2a7df3021095ee4cf2456c1b60385888b7c4ef89e4ea239205878685",
+        "src/engine/query_cli.py": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+        "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+        "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+        "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+        "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+        "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+        "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+        "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+        "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+        "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+        "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+        "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+        "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+        "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+        "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+        "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+        "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+        "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+        "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+        "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+        "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+        "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+        "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+        "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+        "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+        "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+        "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+        "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+        "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+        "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+        "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+        "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+        "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+        "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+        "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+        "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+        "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+        "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+        "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+        "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+        "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+        "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+        "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+        "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+        "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+        "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+        "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+        "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+        "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+      },
+      "source_pins_verified_against_git_objects": true,
+      "summary": {
+        "total_sources": 1,
+        "supported_sources": 1,
+        "unsupported_sources": 0,
+        "successful_sources": 0,
+        "sources_reaching_tier_0": 0,
+        "status_counts": {
+          "truncated_incomplete": 12
+        },
+        "declared_cells": 12,
+        "not_run_cells": [],
+        "evaluated_cells": 12,
+        "effort_rated_cells": 0,
+        "likelihood_rated_cells": 0,
+        "successful_cells": 0,
+        "policy": "min_effort_impact_pareto"
+      },
+      "rows": [
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 21,
+          "assumptions_sha256": "sha256:b960659645fe7a968ff594d32d0796387e3c4ae0bb9d0a7e2e4846f7d35c8999",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 7,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 7,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:47b82099e43a582a71c9afe29b30b53ca2afba39ffbfc793133c670a7e0dbd8d",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 31,
+          "assumptions_sha256": "sha256:c77a7c1b71b6801e70d5b0c24431b612bcb40592c4ce5b403c106199cc1c3f86",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 12,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 12,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:42a6ee3369731db4c5820b081c9f2466cfdad45b39036446c5a858a615ef93da",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 23,
+          "assumptions_sha256": "sha256:ecb2037b8274d14a0e08cd075bc82d1da3d49ce63f573c7436c49c886e93904b",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 8,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 8,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:725f71e5d62d361c403364b7c055d61836a59963bdf8f950157cea0b88d00717",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 17,
+          "assumptions_sha256": "sha256:e36f5c13f97d6a5952877102aa0aacb34dd9edfbe4df7217542bea91cf0cd512",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 5,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 5,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:35e94f63cd85067f8a031793b4bc647853ae707b6078e3ce9ac56c2891453b17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 29,
+          "assumptions_sha256": "sha256:6384de839fcfdc919c6cea97899a80c84eaa9d105e1ee94cbc3b9f4aed96283e",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 11,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 11,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:e9ee672357be7c1a140426d55bc48d8e5b52749cefb31795e06e32695c2306a4",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 19,
+          "assumptions_sha256": "sha256:ec04b5072b7bcd1aa2baf330fe5f163fe12785fc7bf4829c4329b14def632a6c",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 6,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 6,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:282b4bdf23dd6f853013a54fec1cf9bd37c150013e0f225b11ea4b0e7f1eac41",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 25,
+          "assumptions_sha256": "sha256:b144aa1d57256dbd5ce6e05f7eaf021b0460cde158bb7e4ddb19002bc2488f47",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 9,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 9,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:49e6bee274344be09d9d6d2eab38a17ec5a401944d9aa717a579b55e53b6b70e",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 17,
+          "assumptions_sha256": "sha256:e36f5c13f97d6a5952877102aa0aacb34dd9edfbe4df7217542bea91cf0cd512",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 5,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 5,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:35e94f63cd85067f8a031793b4bc647853ae707b6078e3ce9ac56c2891453b17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 17,
+          "assumptions_sha256": "sha256:e36f5c13f97d6a5952877102aa0aacb34dd9edfbe4df7217542bea91cf0cd512",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 5,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 5,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:35e94f63cd85067f8a031793b4bc647853ae707b6078e3ce9ac56c2891453b17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 27,
+          "assumptions_sha256": "sha256:52a81ae7bdd102aeb656ae64aa2aad9cdb48fb03e3e4c649c6e037b60b060d76",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 10,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 10,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:b8a68a7c82006e52d9938eb2068ac2af6ddd029ced0194f1b35ab9dd040792ff",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 17,
+          "assumptions_sha256": "sha256:e36f5c13f97d6a5952877102aa0aacb34dd9edfbe4df7217542bea91cf0cd512",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 5,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 5,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:35e94f63cd85067f8a031793b4bc647853ae707b6078e3ce9ac56c2891453b17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "indeterminate": 5993,
+            "blocked": 4,
+            "applicable": 3
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 5989,
+            "directory_write_allowed": 5989,
+            "network_rpc_reachable": 5989,
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 17,
+          "assumptions_sha256": "sha256:e36f5c13f97d6a5952877102aa0aacb34dd9edfbe4df7217542bea91cf0cd512",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 1,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_usable": 5,
+            "network_kdc_reachable": 1,
+            "secret_valid": 1,
+            "security_group": 5,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:35e94f63cd85067f8a031793b4bc647853ae707b6078e3ce9ac56c2891453b17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "attempt_statuses": {
+        "indeterminate": 71916,
+        "blocked": 48,
+        "applicable": 36
+      },
+      "indeterminate_transition_percent": 99.88333333333334,
+      "phase_seconds": {
+        "load": 3.261649209999632,
+        "native_batch_audit": 78.82041443300022
+      },
+      "native_audit_gzip_crc_and_uncompressed_digest_verified": true,
+      "audit": {
+        "compressed_bytes": 10455679,
+        "uncompressed_bytes": 717758093,
+        "uncompressed_sha256": "5d8a367caad6b65d9c6bf661b8ae7d89425145612c13337cae9add0eb0340e58",
+        "format": "lossless compact JSON in gzip; native dictionary unchanged"
+      },
+      "artifacts": {
+        "request.json": {
+          "path": "reports/generated/awg-r04-global-policy-v1/before/request.json",
+          "bytes": 11193,
+          "sha256": "sha256:273cbca854d40267f8394d7b84213669878b725fc2c0359c387b915bfbc74188"
+        },
+        "projection.json": {
+          "path": "reports/generated/awg-r04-global-policy-v1/before/projection.json",
+          "bytes": 311031,
+          "sha256": "sha256:166904ae8fe9b41bfac91b1c67203fd5cea52ca7a0d40ef7e44e25280e1e06b9"
+        },
+        "result.json.gz": {
+          "path": "reports/generated/awg-r04-global-policy-v1/before/result.json.gz",
+          "bytes": 10455679,
+          "sha256": "sha256:40f2ac125d4d5d355546d3f7396dbca3cb66e861f0100b82988680f273e0d2f4"
+        }
+      }
+    },
+    {
+      "label": "after",
+      "revision": "e5b63817a6dceacb1d8b803cbcf3dfc66c277849",
+      "source_pins": {
+        "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+        "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+        "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+        "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+        "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+        "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+        "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+        "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+        "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+        "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+        "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+        "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+        "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+        "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+        "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+        "src/engine/batch.py": "sha256:58992f19dc729abc510bd12fc70264066fda08d868445889a702176436f8d8cf",
+        "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+        "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+        "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+        "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+        "src/engine/query.py": "sha256:b2d751ad2a7df3021095ee4cf2456c1b60385888b7c4ef89e4ea239205878685",
+        "src/engine/query_cli.py": "sha256:b479ebb1e512c7db8d2c289cd045cc6a6784bee28e9111b22d5a569dcbe0166d",
+        "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+        "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+        "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+        "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+        "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+        "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+        "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+        "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+        "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+        "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+        "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+        "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+        "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+        "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+        "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+        "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+        "src/engine/remediation.py": "sha256:e71a398a3581e3520b18ff5468324e34c1898875ac3da8a0f18b06cbb7385408",
+        "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+        "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+        "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+        "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+        "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+        "src/engine/semantics/evaluator.py": "sha256:f660c0b60fb234d2367bc84f32a1f3560ab0c1777ab117eafd8c76a8753ea244",
+        "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+        "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+        "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+        "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+        "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+        "src/engine/semantics/scenario_policy.py": "sha256:e4452c578021349b1e7aa0664dbf842036b37e9d97b8d483df367e70881cd86c",
+        "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+        "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+        "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+        "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+        "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+        "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+        "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+        "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+        "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+        "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+        "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+        "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+        "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+        "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+        "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+        "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+        "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+        "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+        "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+      },
+      "source_pins_verified_against_git_objects": true,
+      "summary": {
+        "total_sources": 1,
+        "supported_sources": 1,
+        "unsupported_sources": 0,
+        "successful_sources": 0,
+        "sources_reaching_tier_0": 0,
+        "status_counts": {
+          "truncated_incomplete": 12
+        },
+        "declared_cells": 12,
+        "not_run_cells": [],
+        "evaluated_cells": 12,
+        "effort_rated_cells": 0,
+        "likelihood_rated_cells": 0,
+        "successful_cells": 0,
+        "policy": "min_effort_impact_pareto"
+      },
+      "rows": [
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-23212392ee4a12c66eb0dac6e110ae8f3ddaa98fbd9c4696973ba1e1320f79aa",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20445,
+          "assumptions_sha256": "sha256:cce714c94d2ccab8501a600669554f7df50db48cf8ea18a946439dc81dcbf2af",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5371,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 11,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 60,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:3a97d0ac896cb75f0b7d1d149715fd2cc89cc4f215c05ed985e0dbec69d2c6eb",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-7e419334c57e39a1ce46c2f1b59517d17e0b428c174e5776a9f6c236c6f78800",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 29319,
+          "assumptions_sha256": "sha256:16656268031d375e0ec9ee00b146d3e104c026adcdc74ef493b5894397f9b7bd",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 8709,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 3086,
+            "membership_usable": 16,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 4978,
+            "password_policy_accepts": 4978,
+            "secret_valid": 2490,
+            "security_group": 78,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:a02a7601cfbb88db2af76e490a91668c550203569904b90978dce0dc806ec723",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-0-a74f3bbfee0f031621a2fff866f17fb32658fe327436faf1ec613208243cea7e",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 29314,
+          "assumptions_sha256": "sha256:11b378074a9f518b6a139000033910de055ab8a203798f0be11450c001518d53",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 8712,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 3086,
+            "membership_usable": 12,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 4978,
+            "password_policy_accepts": 4978,
+            "secret_valid": 2490,
+            "security_group": 74,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:8987e5392e51d3fb24c339a87e7feca6ac7a365db8fe1da74019baa62e6ed91a",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-0bc09b80cfb26219c59b4551581fe5c1a69d1f521f0ef121f50630a1bb523a79",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 29082,
+          "assumptions_sha256": "sha256:3287de52e2e6a300db1abf7fd6eab94c0b75553282d61d9c961afa3c7b4caa7c",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 8486,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 3086,
+            "membership_usable": 9,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 4978,
+            "password_policy_accepts": 4978,
+            "secret_valid": 2490,
+            "security_group": 71,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:413487739baa508970fa89b97c9af22fa874f789f66ac48b36f08874d32e359e",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-408f203d0d6b35788a84ccadb600913ee44a3be76bf66d7e5358dff9f56400f4",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20445,
+          "assumptions_sha256": "sha256:6e8eec7f526b4475dcf55b069f4df7fa6818a9abc1982ac885df7d931dcca5b1",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 15,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 64,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:3a97d0ac896cb75f0b7d1d149715fd2cc89cc4f215c05ed985e0dbec69d2c6eb",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-42f0fb4570a3695532f820cabcaeedfef0040ceb5624631d5fe6b716b6892fcf",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20435,
+          "assumptions_sha256": "sha256:322dcfdfe8869865c1be42b223fe84237bf4790c9dd843aee9479b9d7f1baf84",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 10,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 59,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:91d1e3df08a5a2189093791345bb749dd2484418310998d52b31e25e4374b9b3",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-5954734787f72debba7144cc44efc732ff4eedff0f8565976c9fa249fc5b8df0",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20441,
+          "assumptions_sha256": "sha256:0644e34a71fd3f63ce11675a71711b030cfb769d15e695a823d89a6bcc1fa407",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 13,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 62,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:4689d62113b7122aafaa9c2279a7734da8a4e4b86891eecf8fe1cce777ca4e17",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-6a71f725d082ea2026a85add4e0d339dfe4870bad094f2c4e787cc91efc5d186",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20433,
+          "assumptions_sha256": "sha256:fa8411d5c7c9d650f9b9a0b5c55ffb5f4e05846d8d8b20a9fb276032d0c20c0f",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 9,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 58,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:a999a693ab0303dcf1b29175e30f7e4c66f5153b6051297a8c9ebc1f61418e45",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-7dc1647be806d8fc78bb50fc39240d542bb9b60d4103d28254faa69b8cc44947",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20433,
+          "assumptions_sha256": "sha256:fa8411d5c7c9d650f9b9a0b5c55ffb5f4e05846d8d8b20a9fb276032d0c20c0f",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 9,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 58,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:a999a693ab0303dcf1b29175e30f7e4c66f5153b6051297a8c9ebc1f61418e45",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-83005570664ac4bbe45148ea3b4a5d5ed4a8efdd3c22768871c28fa15cb054e2",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20443,
+          "assumptions_sha256": "sha256:327f437d44c02636a3de76c0e8a8c51c90a2fbe584c98091eeaf332627dfe8bc",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 14,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 63,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:c6beaea814c70f9b14c02512b304590f1b82b0c0aa401dc93cfe6ac8930b40e6",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-9cee5cd754b3c937a1a45c6f847030609209b01274cd9c468a1c49cfcd4e0a5c",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20433,
+          "assumptions_sha256": "sha256:fa8411d5c7c9d650f9b9a0b5c55ffb5f4e05846d8d8b20a9fb276032d0c20c0f",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 9,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 58,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:a999a693ab0303dcf1b29175e30f7e4c66f5153b6051297a8c9ebc1f61418e45",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        {
+          "source_id": "source-computer-93ff18b6a3a082340fd9879b2e95c368cf46211baf5a37a6a486e1c08211467e",
+          "goal_id": "auto-1-a4a136da032cf0b63f8e3dd2da5a0d68ce77e784258c0633b5486816ae87d13f",
+          "status": "truncated_incomplete",
+          "reached": false,
+          "C": null,
+          "expansions": 6000,
+          "attempt_statuses": {
+            "applicable": 5992,
+            "blocked": 4,
+            "indeterminate": 4
+          },
+          "unknown_predicates": {
+            "password_policy_accepts": 4,
+            "directory_write_allowed": 4,
+            "network_rpc_reachable": 4,
+            "security_group": 4,
+            "membership_usable": 4
+          },
+          "guarantees": {
+            "is_minimum_proven_over_scope": false,
+            "is_no_path_proven_over_scope": false
+          },
+          "assumptions_count": 20433,
+          "assumptions_sha256": "sha256:fa8411d5c7c9d650f9b9a0b5c55ffb5f4e05846d8d8b20a9fb276032d0c20c0f",
+          "assumed_predicate_counts": {
+            "asrep_request_accepted": 1,
+            "authentication_accepted": 2490,
+            "directory_write_allowed": 5363,
+            "kerberos_actor_authenticated": 1,
+            "kerberos_authentication_usable": 1,
+            "membership_change_allowed": 2551,
+            "membership_usable": 9,
+            "network_kdc_reachable": 2490,
+            "network_rpc_reachable": 2489,
+            "password_policy_accepts": 2489,
+            "secret_valid": 2490,
+            "security_group": 58,
+            "service_ticket_request_accepted": 1
+          },
+          "policy_metadata_sha256": "sha256:a999a693ab0303dcf1b29175e30f7e4c66f5153b6051297a8c9ebc1f61418e45",
+          "paths_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        }
+      ],
+      "attempt_statuses": {
+        "applicable": 71904,
+        "blocked": 48,
+        "indeterminate": 48
+      },
+      "indeterminate_transition_percent": 0.06666666666666667,
+      "phase_seconds": {
+        "load": 3.7564084559999174,
+        "native_batch_audit": 140.58597625499988
+      },
+      "native_audit_gzip_crc_and_uncompressed_digest_verified": true,
+      "audit": {
+        "compressed_bytes": 37439758,
+        "uncompressed_bytes": 1117172244,
+        "uncompressed_sha256": "d7bc0ec4db654d2b3109a414d97161d60a44eacbad429680e7e8633d6510cf74",
+        "format": "lossless compact JSON in gzip; native dictionary unchanged"
+      },
+      "artifacts": {
+        "request.json": {
+          "path": "reports/generated/awg-r04-global-policy-v1/after/request.json",
+          "bytes": 11193,
+          "sha256": "sha256:273cbca854d40267f8394d7b84213669878b725fc2c0359c387b915bfbc74188"
+        },
+        "projection.json": {
+          "path": "reports/generated/awg-r04-global-policy-v1/after/projection.json",
+          "bytes": 232839884,
+          "sha256": "sha256:ac7108865949a3e608f20b997e143cfd329a9544a48f402eb5785c09af78257c"
+        },
+        "result.json.gz": {
+          "path": "reports/generated/awg-r04-global-policy-v1/after/result.json.gz",
+          "bytes": 37439758,
+          "sha256": "sha256:97a98277c255df4b5abb94829cbeda67e0bbd61f846eef855ea47c1c6c1cc308"
+        }
+      }
+    }
+  ],
+  "same_request_bytes": true,
+  "changed_source_pins": [
+    "src/engine/semantics/scenario_policy.py"
+  ],
+  "finite_disconnected_padding_oracle": {
+    "before": [
+      {
+        "padding": 0,
+        "edges": 2,
+        "reached": true,
+        "status": "complete_success",
+        "C": 1.0,
+        "unknown": [],
+        "expansions": 3,
+        "assumptions_count": 15,
+        "assumptions_sha256": "sha256:66895a40ae7816f5c2991103401cc59acf364a8169ae9d709631525927a53425"
+      },
+      {
+        "padding": 201,
+        "edges": 203,
+        "reached": false,
+        "status": "indeterminate",
+        "C": null,
+        "unknown": [
+          "directory_write_allowed",
+          "network_rpc_reachable",
+          "password_policy_accepts"
+        ],
+        "expansions": 1,
+        "assumptions_count": 411,
+        "assumptions_sha256": "sha256:a832f3afc525d606b99cb8b8255aaab5860b6b739ff2b245b887973b710c0801"
+      }
+    ],
+    "after": [
+      {
+        "padding": 0,
+        "edges": 2,
+        "reached": true,
+        "status": "complete_success",
+        "C": 1.0,
+        "unknown": [],
+        "expansions": 3,
+        "assumptions_count": 15,
+        "assumptions_sha256": "sha256:66895a40ae7816f5c2991103401cc59acf364a8169ae9d709631525927a53425"
+      },
+      {
+        "padding": 201,
+        "edges": 203,
+        "reached": true,
+        "status": "complete_success",
+        "C": 1.0,
+        "unknown": [],
+        "expansions": 3,
+        "assumptions_count": 417,
+        "assumptions_sha256": "sha256:ada143ba8544c6ec56d69169c49420cba738ccac0e8ee5c4690b91740fbed882"
+      }
+    ]
+  },
+  "goal_queue_pilot": {
+    "version": "goal-queue-research-probe/1",
+    "production": false,
+    "source_revision": "e5b63817a6dceacb1d8b803cbcf3dfc66c277849",
+    "external_harness_sha256": "5d1148bd4e1f6151a5771c5f9b364de66c7120a8f1c5f699df1f2f9fa982a0ce",
+    "method": "Only monkeypatch pending queue in existing native planner. Reverse MemberOf hop distance of reset/usable owners; prefer usable owner, then shorter history and serial tie. Retains every queued state/candidate; not an admissible cost heuristic or new production engine.",
+    "guarantees": {
+      "is_minimum_proven_over_scope": false,
+      "is_no_path_proven_over_scope": false
+    },
+    "native_transition_replays": 1,
+    "phase_seconds_instrumented": 21.31780528299987,
+    "limits": "One automatic DA goal and three techniques. Logical-budget witness comparison only, not speed/optimality/full-domain evidence.",
+    "query_sha256": "sha256:513b881939d642805ec654b433a096b8044bacd8f6e89f47d8972324294c1eec",
+    "request_sha256": "sha256:9bc36320975d66d0045f2ff7a77f661fb4775fd4f9d7d2934471ab62b3404bdd",
+    "cell": {
+      "status": "truncated_success",
+      "control_level_attained": "admin_entitlement",
+      "min_effort": 1.0,
+      "likelihood_interval": null,
+      "likelihood_status": "unrated",
+      "impact": "Unknown",
+      "checkpoint_reached": false,
+      "final_goal_reached": true,
+      "optimization_scope": "best_in_generated_subset",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "expansions": 4995
+    },
+    "transitions": [
+      {
+        "request": {
+          "technique_id": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "rbcd_binding": null
+        },
+        "edge_id": "sha256:b1ba7341c1075b25a3e1a096006b2ca01901d347fc4b9b9d7494402f480b7b1b",
+        "derived_from_step": null,
+        "effects": {
+          "authentication_control": [
+            "S-1-5-21-1271839998-3495686680-2211690266-2014"
+          ],
+          "reset_password_control": [
+            "S-1-5-21-1271839998-3495686680-2211690266-2014"
+          ]
+        }
+      },
+      {
+        "request": {
+          "technique_id": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+          "rbcd_binding": null
+        },
+        "edge_id": null,
+        "derived_from_step": 0,
+        "effects": {
+          "usable_identity": [
+            [
+              "S-1-5-21-1271839998-3495686680-2211690266-2014",
+              "S-1-5-21-1271839998-3495686680-2211690266-4157"
+            ]
+          ]
+        }
+      },
+      {
+        "request": {
+          "technique_id": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "rbcd_binding": null
+        },
+        "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+        "derived_from_step": null,
+        "effects": {
+          "effective_member": [
+            [
+              "S-1-5-21-1271839998-3495686680-2211690266-2014",
+              "S-1-5-21-1271839998-3495686680-2211690266-512"
+            ]
+          ]
+        }
+      }
+    ],
+    "full_path_sha256": "sha256:cc0ae90a84aaf5bf623e147ba4d13d64e069f5c672bd924f4c08f51836f5d2d7",
+    "capture": {
+      "path": "reports/generated/awg-r04-goal-queue-v1/projection.json",
+      "bytes": 58407104,
+      "sha256": "sha256:bf6e8684120dca0a38c5599e7f437eafc797405a759eca43315bd75526e44b82"
+    }
+  },
+  "acceptance_v15": {
+    "path": "reports/research/week4-guided-exploration-acceptance-manifest-v15.json",
+    "bytes": 331748,
+    "sha256": "sha256:8967b072a5590775902cb9bfbc54f7200439ed15aee1b8c9ffea7ae1c1f0a4a2"
+  },
+  "limits": [
+    "Transition percentages are not source-goal coverage or AD accuracy. All12 incumbent cells remain budget-truncated with no witness.",
+    "Global policy replaces seven handcrafted facts, not measured probabilities; False and missing permission controls pass.",
+    "The queue probe is an external research instrument on one DA goal, not production functionality, a cost-optimal method, or an all12-goal speedup.",
+    "Single timings with different effective assumptions/applicable actions; no speed improvement claim."
+  ]
+}

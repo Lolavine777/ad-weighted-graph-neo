@@ -1,0 +1,582 @@
+{
+  "analysis_date": "2026-10-06",
+  "base_develop_revision": "8535d44771ec9ec1960b4e883103f83654cc1d4f",
+  "comparator_gate": {
+    "expected_exit_code": 2,
+    "raw_summary": "Reconciliation pending: legacy-comparison: export_complete is not verified true",
+    "raw_verdict": "NOT_MEASURABLE",
+    "status": "expected_not_measurable_pending_full_semantics_gate"
+  },
+  "comparison_contract_binding": {
+    "contract_version": "seamless-legacy-403-m1-common-v1",
+    "document": "docs/research/seamless-legacy-403-comparison-contract.md",
+    "refs": [
+      "#195",
+      "#194",
+      "#189",
+      "#184",
+      "#183",
+      "#47",
+      "#48"
+    ]
+  },
+  "generated_in_this_run": {
+    "assessment_counts": {
+      "unknown": 3
+    },
+    "canonical_graph_digest": "7d7ebe1f4a9e326f6c71fc0e188fd55188ff415db5486371fbf2e10b30922ec9",
+    "comparison_candidate_digest": "0095c5df4bd18081dfdf1c55ba00ce9cb0d525c43235faea70cdca8f7c1c766e",
+    "edge_counts": {
+      "AdminTo": 9,
+      "CanPSRemote": 2,
+      "GenericAll": 37044,
+      "MemberOf": 15917,
+      "WriteDacl": 3395
+    },
+    "node_counts": {
+      "Computer": 100,
+      "Domain": 1,
+      "GPO": 2,
+      "Group": 551,
+      "OU": 223,
+      "User": 2493
+    }
+  },
+  "head_commit": "c2426a68c1a01f5538eaccd7a41966d864e87ba3",
+  "m1_difference_ledger": [
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_users.json#/users/290/Aces/5"
+      ],
+      "side": "project_only",
+      "triple_digest": "7a85514d0cc30a33db089726e348a9e0468ad671f39a6d910a395b9a98662b28"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_users.json#/users/440/Aces/3"
+      ],
+      "side": "project_only",
+      "triple_digest": "ce7fa0c584340cc8bf043ab48ce338d395c32f7f1a294df22937cb423f47ad01"
+    },
+    {
+      "classification": "project_nested_admin_materialization",
+      "kind": "AdminTo",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/LocalAdmins/2",
+        "20210920185958_groups.json#/groups/40/Members/3"
+      ],
+      "side": "project_only",
+      "triple_digest": "1fe69e8ee3accb118c3f1f599e4df2df9c73b9d1e861691d66cf6b72c098f148"
+    },
+    {
+      "classification": "project_nested_admin_materialization",
+      "kind": "AdminTo",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/LocalAdmins/2",
+        "20210920185958_groups.json#/groups/40/Members/2"
+      ],
+      "side": "project_only",
+      "triple_digest": "ddb4d92c2502b1a464607198379afdd8825af8f42f458146dbe7101dc13f12d6"
+    },
+    {
+      "classification": "project_nested_admin_materialization",
+      "kind": "AdminTo",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/LocalAdmins/2",
+        "20210920185958_groups.json#/groups/40/Members/1"
+      ],
+      "side": "project_only",
+      "triple_digest": "97b3b0d3b3307fbe06aa580410583f65463ad776f6cc2e30dbcce02dc8e39368"
+    },
+    {
+      "classification": "project_nested_admin_materialization",
+      "kind": "AdminTo",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/LocalAdmins/2",
+        "20210920185958_groups.json#/groups/40/Members/0"
+      ],
+      "side": "project_only",
+      "triple_digest": "c9bb57378492d5f15ed3fed474338e05d1965e2cf3f0ed43ed2ace65d3739a99"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/61/Aces/11"
+      ],
+      "side": "project_only",
+      "triple_digest": "bdf99e2b7d4c0da3634c2bde0b59a1a8ac23522773a39b67062c28bf1b54c83f"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/64/Aces/4"
+      ],
+      "side": "project_only",
+      "triple_digest": "9f2bc14dfa43ea493a1b44e4bf3f5cb177c9c36d45f663f32e82dcdc73671b4b"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/322/Aces/3"
+      ],
+      "side": "project_only",
+      "triple_digest": "73378935fb73cedf9ab45be612673d4a97808b0406d30527d241678aa22f8040"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/414/Aces/5"
+      ],
+      "side": "project_only",
+      "triple_digest": "c3234d15ebc053694d3eaedec7b2f4ddbe9188c4b8cffea86a0951cb33cbbe9f"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/541/Aces/11"
+      ],
+      "side": "project_only",
+      "triple_digest": "58f4ed4959b2f6300e352f62e26b661d698b7cde4ad1ff535da94e3ecf6e2b53"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/57/Aces/4"
+      ],
+      "side": "project_only",
+      "triple_digest": "af1a6a6a1f3f74bb1d19914f34f244d34806f1af04831313b3888a9d2129f9f1"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/67/Aces/12"
+      ],
+      "side": "project_only",
+      "triple_digest": "63e087bc1dabfb7e47502efb3939db691a69a32ffc77532f5f1946818c85118d"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "GenericAll",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/95/Aces/4"
+      ],
+      "side": "project_only",
+      "triple_digest": "ad613e9aa6daed3fb6b2faee578bcbbcdaab60db2e8da72e41e744b46206b474"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "WriteDacl",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/40/Aces/4"
+      ],
+      "side": "project_only",
+      "triple_digest": "fec5f9b716247c2ed4869fd140f7a63137127585a6878e4aa64092799c88a174"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "WriteDacl",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/18/Aces/7"
+      ],
+      "side": "project_only",
+      "triple_digest": "c80e63e36958facf84b0a28c7dcae3b3e0d099ab2d5b380fcaa16c5c0573ac44"
+    },
+    {
+      "classification": "legacy_self_ace_filter",
+      "kind": "WriteDacl",
+      "project_assessment_status": null,
+      "raw_rule_pointers": [
+        "20210920185958_groups.json#/groups/2/Aces/1"
+      ],
+      "side": "project_only",
+      "triple_digest": "20b77aac61173cdc2b68a8c7de93884d2dc6a424b85695f4c32d1115be6f94d4"
+    },
+    {
+      "classification": "policy_difference_unknown_userrights",
+      "kind": "CanRDP",
+      "project_assessment_status": "unknown",
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/RemoteDesktopUsers/0"
+      ],
+      "side": "legacy_only",
+      "triple_digest": "1501c3621c53016425150d21e8800283bd74e3ab60ac6ccabfdd90c464866bf0"
+    },
+    {
+      "classification": "policy_difference_unknown_userrights",
+      "kind": "CanRDP",
+      "project_assessment_status": "unknown",
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/RemoteDesktopUsers/1"
+      ],
+      "side": "legacy_only",
+      "triple_digest": "777a189f16f8a63eb89811efc7ea1b8eae3ebc8a32805a2131d16078260ed865"
+    },
+    {
+      "classification": "policy_difference_unknown_userrights",
+      "kind": "CanRDP",
+      "project_assessment_status": "unknown",
+      "raw_rule_pointers": [
+        "20210920185958_computers.json#/computers/0/RemoteDesktopUsers/2"
+      ],
+      "side": "legacy_only",
+      "triple_digest": "11d7e1b9ba3c59b8c69295468562da9d6be01d16eddc5048a9e311d29d75c099"
+    }
+  ],
+  "m1_exact_sets": {
+    "legacy": {
+      "count": 56353,
+      "digest": "ceec36987eabcfb407640a1bf58c1a66746983b7f565e9a99a9b0f2d30b00617"
+    },
+    "legacy_only": {
+      "count": 3,
+      "digest": "96374bfbb5637ffdebf124a4a9553d362f2029d3b1d54221cf235d65fc41eda5"
+    },
+    "matching": {
+      "count": 56350,
+      "digest": "9ce763488163d010749eea1a7054a9cd8e3ca7ec1b3a81a100386c93322ed8b1"
+    },
+    "project": {
+      "count": 56367,
+      "digest": "0b0c82d6007157e229d5e2f44ded352e2a2c1167f3373dd898380b32e875b48d"
+    },
+    "project_only": {
+      "count": 17,
+      "digest": "74f00d529cf0ace296cbdeca15af00d295eeb5ac8833e639f926e5a3c06b0f92"
+    }
+  },
+  "multiplicity": {
+    "legacy": {
+      "by_kind": {
+        "AdminTo": {
+          "stored": 5,
+          "unique": 5
+        },
+        "AllExtendedRights": {
+          "stored": 2499,
+          "unique": 2499
+        },
+        "CanPSRemote": {
+          "stored": 2,
+          "unique": 2
+        },
+        "CanRDP": {
+          "stored": 3,
+          "unique": 3
+        },
+        "Contains": {
+          "stored": 2816,
+          "unique": 2816
+        },
+        "ExecuteDCOM": {
+          "stored": 1,
+          "unique": 1
+        },
+        "GenericAll": {
+          "stored": 37034,
+          "unique": 37034
+        },
+        "GenericWrite": {
+          "stored": 3166,
+          "unique": 3166
+        },
+        "GetChanges": {
+          "stored": 3,
+          "unique": 3
+        },
+        "GetChangesAll": {
+          "stored": 2,
+          "unique": 2
+        },
+        "GpLink": {
+          "stored": 2,
+          "unique": 2
+        },
+        "MemberOf": {
+          "stored": 15917,
+          "unique": 15917
+        },
+        "Owns": {
+          "stored": 3362,
+          "unique": 3362
+        },
+        "WriteDacl": {
+          "stored": 3392,
+          "unique": 3392
+        },
+        "WriteOwner": {
+          "stored": 3392,
+          "unique": 3392
+        }
+      },
+      "evidence_reason": "Complete nonempty provenance arrays are unavailable; stored edges do not measure raw evidence",
+      "evidence_status": "not_measurable",
+      "multiplicity_ratio": 1.0,
+      "stored_edges": 71596,
+      "stored_evidence_occurrences": null,
+      "unique_triples": 71596
+    },
+    "project": {
+      "by_kind": {
+        "AdminTo": {
+          "stored": 9,
+          "unique": 9
+        },
+        "CanPSRemote": {
+          "stored": 2,
+          "unique": 2
+        },
+        "GenericAll": {
+          "stored": 37044,
+          "unique": 37044
+        },
+        "MemberOf": {
+          "stored": 15917,
+          "unique": 15917
+        },
+        "WriteDacl": {
+          "stored": 3395,
+          "unique": 3395
+        }
+      },
+      "evidence_reason": null,
+      "evidence_status": "measured",
+      "multiplicity_ratio": 1.0,
+      "stored_edges": 56367,
+      "stored_evidence_occurrences": 56373,
+      "unique_triples": 56367
+    }
+  },
+  "per_slice_results": {
+    "AdminTo": {
+      "all_derived_have_derivation": true,
+      "all_derived_lack_direct_raw": true,
+      "coalesced_direct_and_derived_count": 1,
+      "digests": {
+        "direct_matching": "7a62fcf4ef9211829050a5ead2fb4aeafad9ba5009e376e3cbf37b5e180b4683",
+        "legacy_total": "7a62fcf4ef9211829050a5ead2fb4aeafad9ba5009e376e3cbf37b5e180b4683",
+        "project_derived_only": "de53d7ec8a7a4d4c9ec484ffc394768a1064de5759b8d562e90d37ec18d5bc4d",
+        "project_total": "a4be77a22b02ea059dec62097259a4abef3cc1097abceceafb8b557f173d572a"
+      },
+      "direct_exact_sets_equal": true,
+      "direct_matching_count": 5,
+      "disposition_derived": "accepted_policy_difference",
+      "disposition_direct": "equivalent_in_accepted_scope",
+      "legacy_only_direct_empty": true,
+      "legacy_total": 5,
+      "project_derived_only_count": 4,
+      "project_only_equals_derived_only": true,
+      "project_total": 9
+    },
+    "CanPSRemote": {
+      "digests": {
+        "matching": "3bd8da26d86dbf6200673c043b48b182c844c6d43748edc8cabd37fc0a26ea68"
+      },
+      "exact_sets_equal": true,
+      "legacy_count": 2,
+      "legacy_only_count": 0,
+      "legacy_only_empty": true,
+      "matching_count": 2,
+      "project_count": 2,
+      "project_only_count": 0,
+      "project_only_empty": true,
+      "status": "equivalent_in_accepted_scope"
+    },
+    "CanRDP": {
+      "all_assessments_reason_incomplete": true,
+      "all_assessments_status_unknown": true,
+      "all_raw_userrights_false": true,
+      "assessments_equal_raw_and_legacy": true,
+      "digests": {
+        "legacy_only": "96374bfbb5637ffdebf124a4a9553d362f2029d3b1d54221cf235d65fc41eda5"
+      },
+      "disposition": "accepted_policy_difference",
+      "legacy_equals_raw": true,
+      "legacy_structural_edges": 3,
+      "project_positive_edges_empty": true,
+      "project_positive_traversal_edges": 0,
+      "project_unknown_assessments_count": 3
+    },
+    "ForceChangePassword": {
+      "all_zero": true,
+      "disposition": "not_measurable",
+      "legacy_observations": 0,
+      "project_observations": 0,
+      "raw_observations": 0
+    },
+    "GenericAll": {
+      "digests": {
+        "legacy_total": "66b27d7990b7dcb10805f69301e321d36c2151835ec51fb7bf1bf59334b7fd27",
+        "nonself_matching": "66b27d7990b7dcb10805f69301e321d36c2151835ec51fb7bf1bf59334b7fd27",
+        "project_only_self": "f82f61c8dde719619fbb1a06a915b63b2f6d5ba13682375a7abf1b998754d5df",
+        "project_total": "2b42b1579b889706c4c829f42f404a4f4aa7a2c95e8b3cb0424208cc37844ca8"
+      },
+      "disposition_nonself": "equivalent_in_accepted_scope",
+      "disposition_self_ace": "accepted_policy_difference",
+      "legacy_equals_raw_unique_nonself": true,
+      "legacy_only_empty": true,
+      "legacy_self_count": 0,
+      "legacy_self_empty": true,
+      "legacy_total": 37034,
+      "nonself_exact_sets_equal": true,
+      "nonself_matching_count": 37034,
+      "project_equals_raw_unique": true,
+      "project_only_equals_raw_self": true,
+      "project_only_self_count": 10,
+      "project_total": 37044,
+      "raw_duplicate_occurrences": 164
+    },
+    "HasSession": {
+      "all_zero": true,
+      "disposition": "not_measurable",
+      "legacy_observations": 0,
+      "project_observations": 0,
+      "raw_observations": 0
+    },
+    "MemberOf": {
+      "digests": {
+        "legacy_memberof": "049130749db9649e7352a6061841c521098331899e7522ac4ddb3519e47aefc7",
+        "legacy_only": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "matching": "049130749db9649e7352a6061841c521098331899e7522ac4ddb3519e47aefc7",
+        "members": "7ae29beabb8c9e6050a29926c5a56dd99af9ce554c5ce85705c2c28c49d21f77",
+        "primarygroup": "b5430bf7724fb1521337c99d43abd8d0e208de59a27cb41f02f00f2662d80f66",
+        "project_memberof": "049130749db9649e7352a6061841c521098331899e7522ac4ddb3519e47aefc7",
+        "project_only": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "exact_sets_equal": true,
+      "legacy_count": 15917,
+      "legacy_only_count": 0,
+      "matching_count": 15917,
+      "members_count": 13324,
+      "overlap_count": 0,
+      "primary_group_count": 2593,
+      "project_count": 15917,
+      "project_only_count": 0,
+      "status": "equivalent_in_accepted_scope"
+    },
+    "WriteDacl": {
+      "digests": {
+        "legacy_total": "f53b9b23cc41eeb66d8b15f52d5f0b32655ec4c95f4fa987c289de38de2bb9a1",
+        "nonself_matching": "f53b9b23cc41eeb66d8b15f52d5f0b32655ec4c95f4fa987c289de38de2bb9a1",
+        "project_only_self": "aa7b9bcb44010d7c00bfd2cea99fc5a39f79007fa539a25d0b7ea640b25a8636",
+        "project_total": "f95c93fcf5569b0824d6885065ba5598845ddc5b69bc1552e0d2cf58b10bfa08"
+      },
+      "disposition_nonself": "equivalent_in_accepted_scope",
+      "disposition_self_ace": "accepted_policy_difference",
+      "legacy_equals_raw_unique_nonself": true,
+      "legacy_only_empty": true,
+      "legacy_self_count": 0,
+      "legacy_self_empty": true,
+      "legacy_total": 3392,
+      "nonself_exact_sets_equal": true,
+      "nonself_matching_count": 3392,
+      "project_equals_raw_unique": true,
+      "project_only_equals_raw_self": true,
+      "project_only_self_count": 3,
+      "project_total": 3395,
+      "raw_duplicate_occurrences": 2
+    },
+    "outside_m1": {
+      "counts_by_kind": {
+        "AllExtendedRights": 2499,
+        "Contains": 2816,
+        "ExecuteDCOM": 1,
+        "GenericWrite": 3166,
+        "GetChanges": 3,
+        "GetChangesAll": 2,
+        "GpLink": 2,
+        "Owns": 3362,
+        "WriteOwner": 3392
+      },
+      "disposition": "unsupported",
+      "outside_kinds": [
+        "AllExtendedRights",
+        "Contains",
+        "ExecuteDCOM",
+        "GenericWrite",
+        "GetChanges",
+        "GetChangesAll",
+        "GpLink",
+        "Owns",
+        "WriteOwner"
+      ],
+      "total_outside_relationships": 15243
+    }
+  },
+  "prerequisites_classification": {
+    "prerequisites": {
+      "identity-mapping.json": {
+        "classification": "external_input",
+        "digest": "202a91b951ff9292f57eeb535c65f02bb7063f5c28a6b27589acdc4ae45c570b",
+        "matches_accepted": true
+      },
+      "legacy-comparison.json": {
+        "classification": "external_input",
+        "digest": "7e170793f88abf39fc927b503aa60a26d6c8480e1a838be76da2840019e4f97d",
+        "matches_accepted": true
+      },
+      "legacy-nodes.json": {
+        "classification": "external_input",
+        "digest": "ed4a6aa7775a4bfb5994875243eaf11588cf03cf4301acc1f23ce62fae11839c",
+        "matches_accepted": true
+      },
+      "legacy-relationships.json": {
+        "classification": "external_input",
+        "digest": "4071dd8747a18aef4f30b074eeac163cbc7454cfe42a234367e81f8c488cdbf6",
+        "matches_accepted": true
+      },
+      "newingestion.js": {
+        "classification": "external_input",
+        "digest": "01e969d83e87217318603887c7f5818a82bc044eead26502f0daf78ac55cad3b",
+        "matches_accepted": true
+      },
+      "time-policy.json": {
+        "classification": "external_input",
+        "digest": "3540afa5ff3f4affd9deddd75f3da43409c5885af4ab9b7b2d17a97aac3a2e7b",
+        "matches_accepted": true
+      }
+    },
+    "raw_manifest": {
+      "classification": "external_input",
+      "digest": "a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+      "path": "data/samples/manifests/seamless-raw-v1.json",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+    }
+  },
+  "reproduction_task": "issue-196-final-clean-checkout-cross-reproduction",
+  "runtime_environment": {
+    "contract_version": "1.3.0",
+    "platform": "win32",
+    "python_version": "3.14.7",
+    "time_policy_digest": "3540afa5ff3f4affd9deddd75f3da43409c5885af4ab9b7b2d17a97aac3a2e7b"
+  },
+  "sanitization_statement": "Deterministic sanitized evidence. No authentic Active Directory identities, raw names, unhashed credentials, or secrets are present in this artifact.",
+  "schema_version": 1,
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+}

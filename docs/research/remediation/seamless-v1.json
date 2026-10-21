@@ -1,0 +1,110 @@
+{
+  "allowed_techniques": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "obtain_admin_execution_on_host"
+  ],
+  "assumptions": [
+    [
+      "network_kdc_reachable",
+      "X",
+      "V_A"
+    ],
+    [
+      "asrep_request_accepted",
+      "X",
+      "V_A"
+    ],
+    [
+      "recovery_success",
+      "X",
+      "V_A"
+    ],
+    [
+      "secret_valid",
+      "V_A",
+      "X"
+    ],
+    [
+      "network_kdc_reachable",
+      "V_A",
+      "X"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "X"
+    ],
+    [
+      "admin_channel",
+      "V_A",
+      "C0"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "C0"
+    ]
+  ],
+  "budget": {
+    "max_expansions": 1000,
+    "max_paths": 10,
+    "max_steps": 6
+  },
+  "expected": {
+    "admin_channel_deny": {
+      "complete": true,
+      "disconnected_pairs": 1,
+      "programs": 0
+    },
+    "before": {
+      "complete": true,
+      "programs": 1
+    },
+    "membership_only": {
+      "complete": true,
+      "disconnected_pairs": 0,
+      "programs": 1
+    },
+    "missing_recovery": {
+      "programs": 0,
+      "reachability": "unknown"
+    },
+    "require_preauth": {
+      "executor": "pending_B_effective_snapshot_fact_view",
+      "expected_new_material": false
+    },
+    "revoke_admin_right": {
+      "executor": "pending_B_effective_authorization_view",
+      "expected_host_goal": false
+    },
+    "step_cap": {
+      "programs": 0,
+      "reachability": "unknown",
+      "truncated": true
+    }
+  },
+  "limitations": [
+    "One source X, one host C0, four-technique allow-list",
+    "Eight declared runtime assumptions; no observed exploit or deployed fix",
+    "Snapshot-fact/ACL overlays are unimplemented B dependencies",
+    "No numeric C/P adoption, no full-snapshot exposure claim"
+  ],
+  "locators": {
+    "C0": "#/computers/0",
+    "G_DA": "#/groups/40",
+    "V_A": "#/users/1700",
+    "X": "#/computers/1"
+  },
+  "raw_manifest": {
+    "path": "data/samples/manifests/seamless-raw-v1.json",
+    "sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d"
+  },
+  "scenario_pin": {
+    "path": "docs/research/scenarios/week4-seamless-v1.json",
+    "sha256": "sha256:66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752"
+  },
+  "schema_version": "1.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+}

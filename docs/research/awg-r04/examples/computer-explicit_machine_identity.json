@@ -1,0 +1,150 @@
+{
+  "allowed_techniques": [
+    "scenario_reset_password",
+    "acquire_reset_identity",
+    "propagate_group_entitlement"
+  ],
+  "assumptions": [
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "password_policy_accepts",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "directory_write_allowed",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "network_rpc_reachable",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "network_kdc_reachable",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "authentication_accepted",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "security_group",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    },
+    {
+      "assumption_metadata": {
+        "declared_by": "security_analyst"
+      },
+      "origin": "declared_assumption",
+      "predicate": "membership_usable",
+      "provenance_reference": "scenario://awg-r04/computer-boundary",
+      "rationale": "Explicit synthetic runtime gate on public raw snapshot, not observed success",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    }
+  ],
+  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+  "budget": {
+    "max_expansions": 10000,
+    "max_paths": 1,
+    "max_steps": 3
+  },
+  "evaluation_mode": "scenario",
+  "initial_actor": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+  "initial_state": {
+    "admin_control": [],
+    "asrep_material": [],
+    "asrep_request_capability": [],
+    "authentication_control": [],
+    "authentication_unknown": [],
+    "control": [
+      "S-1-5-21-1271839998-3495686680-2211690266-4157"
+    ],
+    "controlled_service": [],
+    "credential_material": [],
+    "delegated_context": [],
+    "effective_member": [],
+    "interactive_session": [],
+    "known_identity": [],
+    "permission": [],
+    "rbcd_descriptor": [],
+    "rbcd_secret": [],
+    "recovered_secret": [],
+    "relationship_added": [],
+    "remote_command_execution": [
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "S-1-5-21-1271839998-3495686680-2211690266-4157"
+      ]
+    ],
+    "reset_password_control": [],
+    "service_ticket_material": [],
+    "usable_identity": [
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-4157",
+        "S-1-5-21-1271839998-3495686680-2211690266-4157"
+      ]
+    ]
+  },
+  "scenario_reference": "awg-r04-computer-boundary",
+  "source_foothold": "S-1-5-21-1271839998-3495686680-2211690266-4157",
+  "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+  "target_goal": {
+    "kind": "usable_identity_entitlement",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+  }
+}

@@ -1,0 +1,1203 @@
+{
+  "cases": [
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 3,
+          "partially_rated_candidates": 0,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": 4,
+          "generated_0002": 4,
+          "generated_0003": 1
+        },
+        "final_goal_reached": true,
+        "gap_codes": [],
+        "likelihoods": {
+          "generated_0001": [
+            "1/4",
+            "1/4"
+          ],
+          "generated_0002": [
+            "1/4",
+            "1/4"
+          ],
+          "generated_0003": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        "minimum_effort": 1,
+        "minimum_proven": true,
+        "numeric_requests": {
+          "C": {
+            "rated": 2,
+            "required": 2
+          },
+          "I": {
+            "rated": 1,
+            "required": 1
+          },
+          "P": {
+            "rated": 2,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [
+          "generated_0003"
+        ],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "complete",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\complete.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\complete.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 3,
+          "partially_rated_candidates": 0,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 3,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "final_goal_reached": true,
+        "gap_codes": [],
+        "likelihoods": {
+          "generated_0001": [
+            "1/8",
+            "1/8"
+          ],
+          "generated_0002": [
+            "1/8",
+            "1/8"
+          ],
+          "generated_0003": [
+            "3/8",
+            "3/8"
+          ]
+        },
+        "minimum_effort": 2,
+        "minimum_proven": true,
+        "numeric_requests": {
+          "C": {
+            "rated": 3,
+            "required": 3
+          },
+          "I": {
+            "rated": 1,
+            "required": 1
+          },
+          "P": {
+            "rated": 3,
+            "required": 3
+          }
+        },
+        "pareto_frontier": [
+          "generated_0003"
+        ],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "shared",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\shared.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\shared.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 5,
+          "unrated_candidates": 3
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "I",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 2
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "missing",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\missing.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\missing.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 3,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 3,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": 4,
+          "generated_0002": 4,
+          "generated_0003": 1
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "I",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "minimum_effort": 1,
+        "minimum_proven": true,
+        "numeric_requests": {
+          "C": {
+            "rated": 2,
+            "required": 2
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "effort_only",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\effort_only.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\effort_only.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 1,
+          "partially_rated_candidates": 2,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 1,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": 4,
+          "generated_0002": 4,
+          "generated_0003": 1
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "P",
+            "disposition": "refused",
+            "reason_code": "out_of_scope"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": [
+            "3/4",
+            "3/4"
+          ]
+        },
+        "minimum_effort": 1,
+        "minimum_proven": true,
+        "numeric_requests": {
+          "C": {
+            "rated": 2,
+            "required": 2
+          },
+          "I": {
+            "rated": 1,
+            "required": 1
+          },
+          "P": {
+            "rated": 1,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [
+          "generated_0003"
+        ],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "context_refused",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\context_refused.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\context_refused.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 5,
+          "unrated_candidates": 3
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "I",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 2
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "pending_production",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\pending_production.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\pending_production.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 3,
+          "total_unresolved_gaps": 5,
+          "unrated_candidates": 3
+        },
+        "canonical_work_units": 2,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "C",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          },
+          {
+            "dimension": "C",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          },
+          {
+            "dimension": "P",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          },
+          {
+            "dimension": "P",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          },
+          {
+            "dimension": "I",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null,
+          "generated_0002": null,
+          "generated_0003": null
+        },
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 2
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 2
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 2,
+        "paths": 3,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "api_cli_orchestration_equal": true,
+      "case": "synthetic_production_refused",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\synthetic_production_refused.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\synthetic_production_refused.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "invalid_input_diagnostic": true,
+        "output_artifact": false
+      },
+      "case": "integrity_error",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\integrity_error.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\integrity_error.config.json --graph E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\tests\\fixtures\\attack_scenarios\\graphs\\two-routes.json --label synthetic",
+      "evidence_class": "synthetic_test_only",
+      "exit_codes": [
+        1,
+        1
+      ],
+      "status": "PASS",
+      "two_runs_equal": false
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 1,
+          "total_unresolved_gaps": 9,
+          "unrated_candidates": 1
+        },
+        "canonical_work_units": 4,
+        "checkpoint_reached": false,
+        "efforts": {
+          "generated_0001": null
+        },
+        "final_goal_reached": true,
+        "gap_codes": [
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "C",
+            "disposition": "unrated",
+            "reason_code": "explicit_unrated_disposition"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "P",
+            "disposition": "unrated",
+            "reason_code": "missing_evidence"
+          },
+          {
+            "dimension": "I",
+            "disposition": "refused",
+            "reason_code": "prerequisite_gate_refusal"
+          }
+        ],
+        "likelihoods": {
+          "generated_0001": null
+        },
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 4
+          },
+          "I": {
+            "rated": 0,
+            "required": 1
+          },
+          "P": {
+            "rated": 0,
+            "required": 4
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 1,
+        "programs": [
+          [
+            "asrep_request",
+            "recover_asrep_secret",
+            "activate_recovered_identity",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "status": "success"
+      },
+      "case": "frozen243_assumed",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_assumed.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_assumed.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "indeterminate"
+      },
+      "case": "frozen243_raw",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_raw.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_raw.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "indeterminate"
+      },
+      "case": "frozen243_missing_recovery",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_missing_recovery.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_missing_recovery.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "blocked"
+      },
+      "case": "frozen243_asset_veto",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_asset_veto.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_asset_veto.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "no_path"
+      },
+      "case": "frozen243_off",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_off.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_off.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "blocked"
+      },
+      "case": "frozen243_no_request",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_no_request.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_no_request.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    },
+    {
+      "actual": {
+        "aggregate_summary": {
+          "fully_rated_candidates": 0,
+          "partially_rated_candidates": 0,
+          "total_candidates": 0,
+          "total_unresolved_gaps": 0,
+          "unrated_candidates": 0
+        },
+        "canonical_work_units": 0,
+        "checkpoint_reached": false,
+        "efforts": {},
+        "final_goal_reached": false,
+        "gap_codes": [],
+        "likelihoods": {},
+        "minimum_effort": null,
+        "minimum_proven": false,
+        "numeric_requests": {
+          "C": {
+            "rated": 0,
+            "required": 0
+          },
+          "I": {
+            "rated": 0,
+            "required": 0
+          },
+          "P": {
+            "rated": 0,
+            "required": 0
+          }
+        },
+        "pareto_frontier": [],
+        "passive_steps": 0,
+        "paths": 0,
+        "programs": [],
+        "status": "truncated"
+      },
+      "case": "frozen243_step_cap",
+      "command": "E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.venv\\Scripts\\python.exe -m src.engine.query_cli --query E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_step_cap.query.json --rating-resolution E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243_step_cap.config.json --snapshot E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\reports\\generated\\issue250\\frozen243.snapshot.json --label seamless --prerequisite E:\\copy-ad-weighted-graph\\ad-weighed-graph\\.worktrees\\issue-250\\data\\samples\\manifests\\seamless-raw-v1.json",
+      "evidence_class": "actual_private_dataset_conditional_prediction",
+      "exit_codes": [
+        0,
+        0
+      ],
+      "frozen_semantic_expectations": "PASS",
+      "status": "PASS",
+      "two_runs_equal": true
+    }
+  ],
+  "execution": {
+    "catalog": {
+      "technique_ids": [
+        "acquire_reset_identity",
+        "activate_recovered_identity",
+        "asrep_request",
+        "genericall_add_member",
+        "genericall_grant_write_dacl",
+        "genericall_reset_password",
+        "grant_new_object_right",
+        "kerberoast_request",
+        "obtain_admin_execution_on_host",
+        "open_remote_interactive_session",
+        "open_winrm_remote_session",
+        "propagate_group_entitlement",
+        "rbcd_acquire_secret",
+        "rbcd_configure_descriptor",
+        "rbcd_delegate_service",
+        "rbcd_prepare_service",
+        "rbcd_service_admin",
+        "recover_asrep_secret",
+        "recover_session_credential_material",
+        "recover_ticket_secret",
+        "reset_target_password",
+        "scenario_reset_password",
+        "scenario_winrm_admin"
+      ],
+      "version": "0.6"
+    },
+    "executed_at": "2026-10-09T18:07:19.878140+00:00",
+    "executor": "automated_acceptance_runner; not human sign-off",
+    "file_sha256": {
+      ".python-version": "a876e0b10411037a012498b9fe18d9bc1df32ed8b722a13564dc944ddcfd9135",
+      "configs/attack_semantics.yml": "73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "data/samples/manifests/seamless-raw-v1.json": "a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+      "docs/research/ratings/week4/synthetic-a2-diagnostics.json": "bee77c510e99a05d3edbeee7e417fb82943a51e7bab2d8192f958f8eec1f1441",
+      "docs/research/ratings/week4/synthetic-a2-e.json": "007755b020417dd763e0d137a8987359c2779125222693ac4e3c48f6cbf560c1",
+      "docs/research/ratings/week4/synthetic-a2-t.json": "53350f80707d7a6246824bf908728683cfb1c3253fab6b49fbd611b0f05cb651",
+      "docs/research/ratings/week4/synthetic-a2-ties.json": "c4a124162a959df66b24e4b9b1d563533416f860cb03fd1a0f0cb806cd36dc8c",
+      "docs/research/rbcd-229.md": "e4770678245a0ba420b20a120a8a34ffed904dbe92b436d7e60510577247b7df",
+      "docs/research/week4-extension-scenario-handoff.md": "b01973728fb548590f88d937207d944b5a84dc24102e1148e47d980a20f4d4e4",
+      "docs/research/week4-query-cli.md": "afd9a39988d8f45d69f4e1aecb0071561de12bdf9e87e6da1fa2cecfd2d4a652",
+      "docs/research/week4-query-result.schema.json": "42d928b1771cb9757cc605721a2b5095912a7ed3cb19316a91baf057a826ae13",
+      "docs/research/week4-query-scenario-mapping.md": "471cc5268a5cfaff6c2d652d124962d68660fc366d304bb7a9fc72a90a39b88b",
+      "docs/research/week4-scenarios.md": "f2bc65b0e53b6f2b4e12f564a300e3f48bda38b856317449d9d1d9d90bf2c42b",
+      "docs/research/week4-scoring-handoff.md": "38a51dded8166e51b5056c3c963d91a1659fe0eb69a31124b501c8ee1ba73395",
+      "pyproject.toml": "de4472d1848b876bc30164c2ec2fd4053fd8a82817fce613f9be4c1f410aee2f",
+      "requirements-dev.txt": "77b0803fae9921f6d018a6c999a3008ae7873bae7d130da32947e128507e09e8",
+      "requirements.txt": "8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "2053b5c84c84350e2b5a2ec217e3385e73f72913be5c07d9523a2b55ad954173",
+      "scripts/research/asrep_inputs.py": "7f790289de985688e2af75a425fea71fc7d5238d03d807e12291ab7be0f32aa4",
+      "scripts/research/attack_scenarios.py": "a239623325ed3d01200384075d9015dbc233d19e829c20eb25ed4553bc265be6",
+      "scripts/research/compare_query_runs.py": "0c151f57b5c1f2f755301f4d32b89455886fee121814e45cad557d6c64199a62",
+      "scripts/research/credential_bindings.py": "21bc3d8d98cb211fe66f7b45e0daed6d0406d798bb5fdd121a952dc47373269d",
+      "scripts/research/kerberoasting_probe.py": "2595ed5beb22bf3f526b9fbb0d9c2d207474fdb572bc25288a14abbfb85a323b",
+      "scripts/research/rbcd_inputs.py": "1e6b113322bbf804740bfc0d4f1facc31683e0ec93c033e845b02dde49e6bbe2",
+      "scripts/research/snapshot_facts_probe.py": "ab2657d6f2b2e60f1a52120eaaeb56519767d1b9d94f2ab5d7645e701cfb3822",
+      "scripts/research/week4_acceptance_runner.py": "9cb32be8d21b1b48f4ca30349ab4b5f1e29c9cd8726aa69d0c4e8f1d9eba5f01",
+      "scripts/research/week4_cli_acceptance.py": "367b93cf8c120169615d78fbe6942b797d6ab1c73dc376d25beaf75a5b846788",
+      "scripts/research/week4_scoring_eval.py": "490037ed9258246f5ef07a4bc8f66ea65e2a5a1e31eed6308e3539d814820207",
+      "src/__init__.py": "be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "7804a717398aa102d3677ec4e2690c1118e5e2c0cb5cf5d75d55e6920b8aa996",
+      "src/engine/graph.py": "df1f043927e2dedbef97a1b7cea937dff5c6165893cbef47ecf29332bff827e5",
+      "src/engine/query.py": "9b16257fe33dd333d7dc07cafb7fe19307fd99b8a54b7932e0a3b61fba0a9cb1",
+      "src/engine/query_cli.py": "50be16a3620c54a00aa1b36542dc14620d5eb82cb842badf0cc9b403005f04d9",
+      "src/engine/ranking/__init__.py": "6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "cc50a758053509766d0fa52316436aff9d9e49529aa5a1215ea374c77da34908",
+      "src/engine/ranking/assessment.py": "dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "1c13ed290f486fc7e0904bc9df2643db63c25a1a0a9d4509b5e728b22a8f3e39",
+      "src/engine/ranking/facts.py": "476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "9e6040ca3f09f92c5d410f2661569d9001ea360120a98dd57e4b596ab7de7247",
+      "src/engine/ranking/models.py": "936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "d68f3bbeb4ef67ad8fe3ab6f8a38506c8b1b7ae0830433ead10ce445c3a476d2",
+      "src/engine/ranking/replay.py": "6f4818305efe661f3fdee9da5b6ca75b9e79f127ec6cb293b6850c1ef1ee95b6",
+      "src/engine/ranking/resolution_service.py": "94ad9f0cb88250d0ce445be48f36d39fe0d9ddef8d48a16b9021d2bfc3172f60",
+      "src/engine/ranking/resolver.py": "3e9df833e077ba0c0b65271dd1b22b03658ed27819596784b45b777c63d5a641",
+      "src/engine/ranking/validation.py": "d62195f40c108aa19d954c86bfde4d8f4269661c7dcf72860c96d57202aa7f67",
+      "src/engine/ranking/verification.py": "04f77d877bcee5cd51de68d5186a4d15b9e4b6f1c35716f29d76088a2e6d6261",
+      "src/engine/search.py": "e2f10c5d5e54c535d3891becd7ee8df6a27b4bcc2d390b2bf1ef22204b6f5cca",
+      "src/engine/semantics/__init__.py": "9fa8d5df674073e13ceab0b30d949894c20d62d7340ee34a00ecf80a3864ce0d",
+      "src/engine/semantics/catalog.py": "090c1f1ee189769e22d49428890a0584f7bc34e529889a51800ea9ec4fd33952",
+      "src/engine/semantics/credentials.py": "fa8cefbb979e84fcc6ae7bd2ab44b785f3abeebe9e1601894e5175c4b803cc16",
+      "src/engine/semantics/evaluator.py": "0d4dd143f8f608cd6ae29f5619aca7cc71f0e89b9b858561283d1c2368531a05",
+      "src/engine/semantics/evidence_view.py": "a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "febc835609269d8fbcd0a4f07316a798b7a9e156463ef215a80cecf7690b3701",
+      "src/engine/semantics/rbcd_types.py": "e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/state.py": "2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/parser/__init__.py": "12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "4946cf68c97a33ddcecca1ddee214abc951990b62c7a6308d28b5664143b04a9",
+      "src/parser/cli.py": "7911a4f524fc62e8cd5cecc38d367876160602d9b5b2efaec1d601b0fcc9340b",
+      "src/parser/identity_fields.py": "70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "e22939b18af27aec573e245f871fde0fa663e7b2ea524b014ee9b41e3d04dca0",
+      "src/parser/snapshot_facts.py": "5a6c42517de41a67df88d2141c265fea564271ba714295ddf571ea9c0f8cef53",
+      "src/parser/well_known_principals.py": "41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8",
+      "tests/fixtures/asrep/oracle.json": "a23343ca83b9587dfb2e13a0f456e7250981b8a34a2be4163bfce0778ae08847",
+      "tests/fixtures/asrep/query-off.json": "6a76852523e21ec9dd2399b4e15798cc8d2103b576d0336ccc0a26db6ad95b77",
+      "tests/fixtures/asrep/query-raw.json": "00b6566f62b239328466b9ec0b2690bd2dcfca4a6d3ff4c7f630d7af336a9b6c",
+      "tests/fixtures/asrep/query.json": "76927bfacc9aa40e6c0800dfc0a1760efacb40e64f3eeb7ac2ce2e7074d93790",
+      "tests/fixtures/asrep/snapshot.json": "f2feab1d92c2f8a3745eb8e67dbd8edf798e5ab4fad914ebd07a7f7db1e08c62",
+      "tests/fixtures/attack_scenarios/graphs/acl-auth-host.json": "4e697582996bff87843cd6a0114ff20b92a16284611ffded084252fbbc24b061",
+      "tests/fixtures/attack_scenarios/graphs/active-group.json": "ceee16b84b8a915f9d28a7653811a314d4742ddf927222f770c0b53e111f5e7e",
+      "tests/fixtures/attack_scenarios/graphs/dacl-reset.json": "df90e5a21e1346860b82dff6ddf98c4aaf07fe6a02bc74a7af6516385ed4a4e9",
+      "tests/fixtures/attack_scenarios/graphs/direct-admin.json": "1b815c274d3f7712d6b5daa7cb76d99589e9ee81663428e7fb8b2aa349a552ff",
+      "tests/fixtures/attack_scenarios/graphs/force-auth-gap.json": "97da9d684e8c99676a06f48df8f52258d3e7f8339da440018398b5b1cc048b85",
+      "tests/fixtures/attack_scenarios/graphs/force-reset.json": "e84a5a24438700559f705cde34060386d18dbe36b71b4e3c3c9f20a1979cbd22",
+      "tests/fixtures/attack_scenarios/graphs/genericall-user.json": "47da98ef709c3d6dbd19f840c850406279e71b31c8d16164a07dc19007f697d6",
+      "tests/fixtures/attack_scenarios/graphs/membership-cycle-diamond.json": "2fefa07ac310802fd94f2f4321b06cbde04c142f2cd238594fb53dbfa8fc6f03",
+      "tests/fixtures/attack_scenarios/graphs/no-route.json": "5d87600f55fe0345f73960061e3bacc05975d7559d915635b1c0cf195405c205",
+      "tests/fixtures/attack_scenarios/graphs/psremote-command.json": "567f8549c031a7c982dfc6e918478bc3abc929e2f91314aacda572d411a3e601",
+      "tests/fixtures/attack_scenarios/graphs/rdp-session.json": "30d004bb9638391952c591e9e2bf893289056232cb7e69ba87e490eb84433113",
+      "tests/fixtures/attack_scenarios/graphs/session-material.json": "06f2292f3215108424e9760001ad459835770e4bc673bc1fc13146177f31a2a4",
+      "tests/fixtures/attack_scenarios/graphs/two-routes.json": "982816b924a73396961a54ab5b7c2e40140941aaa9bfa99a075649dde57457e7",
+      "tests/fixtures/attack_scenarios/seamless.json": "f5bae1ff2e82002f7a0098953c18455345e12e3a40b9b0ddb15a987ec976eeeb",
+      "tests/fixtures/attack_scenarios/suite.json": "bb19a64c2efd63b75babc398ea28cbc95685ff03b7b3c433acd5208df5c14dc9",
+      "tests/fixtures/attack_scenarios/week4-v1.json": "7355d50dc288f7ca9899fcc96b9adb3cc3ba73d6b4b302e5e168239c77a93c48",
+      "tests/fixtures/kerberoasting/query.json": "ceb89ba17d8cb3e13d01ffa25f247aaeb8c6f18ddb7094db8a037f548a2b82f4",
+      "tests/fixtures/kerberoasting/snapshot.json": "8dffd45e30bd6d4e185d0ee6b40c7115b5cd265b3e680f509dd17a124e99aea4",
+      "tests/fixtures/query_cli/two-routes-query.json": "92d3ceb85c1d387d42143f3cf9146f1f434f91b7c2af37c53d69191929e2109c",
+      "tests/fixtures/ranking/seamless_time_policy.json": "0dff9f0d84078ad39d304cc8807d7c91fc35a680cf5bfe008e4a65ab2acacc0a",
+      "tests/fixtures/ranking/week4_acceptance_oracle.json": "2ae590a339b28bb14e0f7bcd8b5e6eaa93bf119863d3c3adf37d105837c1974a",
+      "tests/fixtures/rbcd/oracle.json": "b04e9454d3eefe6b1fbd1683eaaebcb5eba480db594fb82d2b8c413483fc0b71",
+      "tests/fixtures/rbcd/query-off.json": "712462a79ec40a935500faf9958a8cba1a2c5cb8281c0a6a1efc08b6e381281e",
+      "tests/fixtures/rbcd/query-raw.json": "01a49fa4d6d5931cb17c3fb1e7868e0576fcf16d791400cf5badb36addedf7ee",
+      "tests/fixtures/rbcd/query.json": "d282b40ac82055413623e35692a8287db99df8d530e84d05bb438422469a285c",
+      "tests/fixtures/rbcd/snapshot.json": "5c9f400ab0a79bacd44a55fa87a73bd29a6fd530472ec3c4b8db94f3cc8ee005",
+      "tests/test_asrep.py": "01f1df0c528869fdd0c729ab87b7cb5f51e7433192d2a635048f618349ccadb0",
+      "tests/test_query_cli.py": "0976453bf9cd12d22a14188cf072524077682cafd0cb285705bd4057929d105f",
+      "tests/test_rbcd.py": "19720b539f173d639d4622619c1e314102a1e1c9b6c214d48dedff85b6e9d6ce",
+      "tests/test_week4_acceptance_checkout_bytes.py": "180c741622db5e4412b4de3a472cae502a4d37561f6d5a6cd855957059cb5faf",
+      "tests/test_week4_acceptance_manifest.py": "f7f185385dd1c5aaecf572f2696a65a52e7bf91d2c5d121986e18e6a57880a33",
+      "tests/test_week4_acceptance_review_regressions.py": "324d16edf7fce0e500418c67d7c541014195219c5523f345ac2b1b1dab6bfdab"
+    },
+    "remote_dependency_status": "not_queried_by_runner; see dated worklog",
+    "runtime": {
+      "installed_dependencies": {
+        "PyYAML": "6.0.3",
+        "Pygments": "2.21.0",
+        "colorama": "0.4.6",
+        "iniconfig": "2.3.0",
+        "networkx": "3.7",
+        "packaging": "26.3",
+        "pathspec": "1.1.1",
+        "pluggy": "1.6.0",
+        "pytest": "9.1.1",
+        "ruff": "0.16.8",
+        "yamllint": "1.38.0"
+      },
+      "machine": "AMD64",
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.14.7"
+    },
+    "source": {
+      "checkout_dirty": false,
+      "dirty_pinned_files": [],
+      "identity": "clean_commit",
+      "revision": "7e8f9c4e0f32c3a43b9a6ad377f6dff7ef5251ed"
+    },
+    "source_input_digest": "sha256:c34020c44812a49712e3b15bb135b6746957fe7d471756689d4c86065b660162"
+  },
+  "fixture_canonical_digests": {
+    "docs/research/public-rating-coverage.schema.json": "sha256:1028e1c09d768105f6e70a2704caeeb75a3e9a9b81e4defdab575c7fc4ae5c40",
+    "scripts/research/issue250_public_probe.py": "sha256:c9020679a37dd5f6a546ff9dc764b1a3309297d59b343eb304005ca5f7076392",
+    "tests/fixtures/rating_resolution/complete-shared.json": "sha256:bec86daaf1d7da9976bf2004160503a023d1ac70085ecb00f31328d787d43596",
+    "tests/fixtures/rating_resolution/complete.json": "sha256:1ac568c2ed7e105d7984a07091a20cf137d6939f5f3865856fa4b8ec7f580e20",
+    "tests/fixtures/rating_resolution/missing.json": "sha256:b055f854401d79ff5c5583ec18d2b01bd36b19070307bf21d56cc0215572ada5",
+    "tests/fixtures/rating_resolution/query.json": "sha256:3fcf69ef296ac27fd3058f236dcbba2505067d63420365840c7d35742a61dd14",
+    "tests/test_public_rating_integration.py": "sha256:7bacbb4cfd6a1132cf22b9458cbd12f5a1cb6caa37b6538369d95b3a4b7ca0d0"
+  },
+  "numeric_acceptance": "No production catalogs/equivalence accepted by this probe",
+  "remote_ci": "NOT EXECUTED; local evidence is not remote CI PASS",
+  "schema_version": "issue250-public-probe/1.0.0"
+}

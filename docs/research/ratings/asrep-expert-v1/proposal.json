@@ -1,0 +1,246 @@
+{
+  "actor_capability": "X has only declared AS-REP request capability initially; activation and host administration require preceding generated effects",
+  "author": "TTS A / Lolavine777 / Nguyen Dang Long; AI-assisted proposal",
+  "baseline_revision": "da21fbb545061c56c6dfff6ac489e7794a53ec73",
+  "basis_id": "asrep-expert-v1",
+  "budget": {
+    "max_expansions": 1000,
+    "max_paths": 10,
+    "max_steps": 6
+  },
+  "control_scope": "same X/V_A/C0 locator identities, authentication_context=X, intra_forest; no reset, RBCD, stolen token, or preexisting usable V_A",
+  "events": [
+    {
+      "actor": "X",
+      "blocker_if_rejected": "No scoped expert elicitation of AS-REP request/response/parser reliability for this actor and policy; protocol specifications alone cannot supply a percentage.",
+      "canonical_class": "asrep_material_request",
+      "derivation": "Proposed expert transfer of the historical bounded Kerberos exchange operational envelope, not its credential-acquisition outcome. No credential possession required. Reviewer must accept that request/parser/response residual failure after declared reachability and preauth compatibility is covered by the same broad envelope.",
+      "event": "Obtain valid compatible encrypted AS-REP material within three requests and ten minutes.",
+      "history": [],
+      "lower": "3/4",
+      "method": "ASRepTarget",
+      "source": "X",
+      "target": "V_A",
+      "technique": "asrep_request",
+      "uncertainty": "epistemic operational transfer; not a frequency, confidence interval, or mechanically implied by protocol semantics",
+      "upper": "49/50"
+    },
+    {
+      "actor": "X",
+      "blocker_if_rejected": "Real V_A password distribution/rank, AS-REP etype and achieved distinct-verification count are absent. Cannot transfer this interval to the original unmeasured-budget or a natural password population.",
+      "canonical_class": "asrep_password_recovery",
+      "derivation": "Under the explicit uniform conditional rank model and secret-independent completed compute coverage, q2 lies between 524288/16777216 and 1048576/16777216. This is exact model arithmetic, not a human-password estimate. The worker floor includes parsing/verifier correctness and overhead; without that commitment there is no positive lower bound.",
+      "event": "Recover and validate the password from E1 material before the one-job 20h deadline and guess cap.",
+      "history": [
+        "asrep_request"
+      ],
+      "lower": "1/32",
+      "method": "offline-asrep-etype23-uniform24-enumeration-v1",
+      "source": "X",
+      "target": "V_A",
+      "technique": "recover_asrep_secret",
+      "uncertainty": "scenario model and compute envelope; rank is stochastic within the declared population, with no inference from recovery_success=True",
+      "upper": "1/16"
+    },
+    {
+      "actor": "V_A",
+      "blocker_if_rejected": "No accepted equivalence of recovered-secret authentication with the historical reset-derived context, especially secret age/account policy after offline delay.",
+      "canonical_class": "recovered_identity_activation",
+      "derivation": "Proposed transfer of the reviewed reset-derived Kerberos activation interval only after E1/E2 succeeded and the scenario declares unchanged valid password/account policy. Recovery lineage differs from reset lineage; the full new history is a separate explicit case. Password validity gates do not erase residual exchange/policy uncertainty.",
+      "event": "Validate the recovered password and establish usable_identity(V_A,X) within three exchanges and ten minutes.",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret"
+      ],
+      "lower": "3/4",
+      "method": "RecoveredSecret",
+      "source": "V_A",
+      "target": "X",
+      "technique": "activate_recovered_identity",
+      "uncertainty": "epistemic expert transfer; no new independent elicitation or empirical calibration",
+      "upper": "49/50"
+    },
+    {
+      "actor": "V_A",
+      "blocker_if_rejected": "No accepted concrete terminal transport/policy equivalence and no independent conditional operational reliability judgment for the post-recovery history.",
+      "canonical_class": "host_admin_execution",
+      "derivation": "Proposed transfer of the historical WinRM terminal interval to the same DC typed consequence, with an explicit WinRM scenario policy. The generated semantic method remains AdminTo. Generic unspecified admin_channel, RDP/session, DA membership or a different resource cannot borrow it. Full recovery/activation history and 24h horizon must be accepted separately.",
+      "event": "Establish admin_control(C0) through the declared authenticated administration channel within three attempts and thirty minutes.",
+      "history": [
+        "asrep_request",
+        "recover_asrep_secret",
+        "activate_recovered_identity"
+      ],
+      "lower": "1/2",
+      "method": "AdminTo",
+      "source": "V_A",
+      "target": "C0",
+      "technique": "obtain_admin_execution_on_host",
+      "uncertainty": "epistemic expert transport/history transfer; no observed WinRM or exploit success",
+      "upper": "9/10"
+    }
+  ],
+  "horizon": "24h",
+  "human_numeric_elicitation_completed": false,
+  "independent_b_review": false,
+  "locators": {
+    "C0": "#/computers/0",
+    "G_DA": "#/groups/40",
+    "V_A": "#/users/1700",
+    "X": "#/computers/1"
+  },
+  "native_basis_category": "scenario_assumption",
+  "numeric_basis_class": "estimated_expert_scenario",
+  "policy_id": "asrep-uniform24-bounded-24h-v1",
+  "program": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "obtain_admin_execution_on_host"
+  ],
+  "recovery_metadata": {
+    "budget": "one-worker;524288-to-1048576-distinct-verifications;20h;no-restart",
+    "horizon": "24h",
+    "method": "offline-asrep-etype23-uniform24-enumeration-v1"
+  },
+  "refusal": [
+    "pending numeric review",
+    "original week4 scenario",
+    "different snapshot/source/actor/target/auth context",
+    "different ordered successful history",
+    "different recovery method/etype/population/compute floor/cap",
+    "different policy/horizon/retry/deadline",
+    "missing or contradictory context/provenance",
+    "known FALSE veto",
+    "unknown without applicable declared assumption",
+    "weaker or different typed goal",
+    "prototype empirical evidence",
+    "missing numeric event"
+  ],
+  "retry_policy": {
+    "by_technique": {
+      "activate_recovered_identity": {
+        "deadline_minutes": 10,
+        "max_attempts": 3
+      },
+      "asrep_request": {
+        "deadline_minutes": 10,
+        "max_attempts": 3
+      },
+      "obtain_admin_execution_on_host": {
+        "deadline_minutes": 30,
+        "max_attempts": 3
+      },
+      "recover_asrep_secret": {
+        "deadline_minutes": 1200,
+        "max_jobs": 1,
+        "max_verified_guesses": 1048576,
+        "min_verified_guesses": 524288
+      }
+    },
+    "campaign_deadline_hours": 24,
+    "policy_id": "asrep-uniform24-bounded-24h-v1",
+    "retry_dependence": "bounds cover the whole bounded event; never compute 1-(1-q)^3 or assume independent retries",
+    "stop": "first validated event success, authoritative denial, event deadline, campaign deadline, or compute cap; no budget renewal",
+    "transport": "terminal AdminTo executed through the historical authenticated WinRM administration scenario; additional policy declaration, not observed transport"
+  },
+  "review_decisions_required": [
+    "four separate numeric/history applicability decisions",
+    "uniform24 conditional population and compute commitment",
+    "request envelope and activation/WinRM transfer hypotheses",
+    "new C rubric applicability and exact typed High transfer",
+    "output numeric basis label and truthful B adoption reference"
+  ],
+  "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/264",
+  "reviewer": "nairyuuu",
+  "scenario_id": "week5-seamless-asrep-uniform24-v1",
+  "scenario_version": "1.0.0",
+  "schema_version": "asrep-expert-proposal/1.0.0",
+  "semantic_assumptions": [
+    [
+      "network_kdc_reachable",
+      "X",
+      "V_A"
+    ],
+    [
+      "asrep_request_accepted",
+      "X",
+      "V_A"
+    ],
+    [
+      "recovery_success",
+      "X",
+      "V_A"
+    ],
+    [
+      "secret_valid",
+      "V_A",
+      "X"
+    ],
+    [
+      "network_kdc_reachable",
+      "V_A",
+      "X"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "X"
+    ],
+    [
+      "admin_channel",
+      "V_A",
+      "C0"
+    ],
+    [
+      "authentication_accepted",
+      "V_A",
+      "C0"
+    ]
+  ],
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "sources": [
+    {
+      "id": "historical-expert",
+      "path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+      "supports": "previously human-adopted AI-assisted scenario exchange and WinRM intervals, not new full-history applicability"
+    },
+    {
+      "id": "historical-policy",
+      "path": "docs/research/ratings/week3-closeout/source-inputs/execution-policy.json",
+      "supports": "bounded retry/deadline definition, not retry independence"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "ms-kile",
+      "supports": "AS exchanges and password-based authentication mechanics only; no numeric q",
+      "url": "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-kile/ae60c948-fda8-45c2-b1d1-a71b484dd1f7"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "hashcat",
+      "supports": "etype23 AS-REP verifier format/mode 18200, no cracking throughput or password coverage",
+      "url": "https://hashcat.net/wiki/doku.php?id=example_hashes"
+    },
+    {
+      "accessed": "2026-10-12",
+      "id": "password-heterogeneity",
+      "supports": "password guessing success depends on population and side information; paper rates are not transferred to SEAMLESS",
+      "url": "https://www.usenix.org/conference/usenixsecurity24/presentation/xiu"
+    }
+  ],
+  "status": "proposed_pending_b_review",
+  "target_population": {
+    "class": "counterfactual_uniform24_password_policy",
+    "compute_cap": 1048576,
+    "compute_floor": 524288,
+    "compute_semantics": "counterfactual no-match verifications completed by 20h, independent of secret rank conditional on E1",
+    "distribution_evidence": "scenario-only model; no claim that the real V_A password follows this policy",
+    "material": "valid etype23 AS-REP; compatibility is declared, not observed in raw",
+    "order": "lexicographic 000000 through ffffff; no repeats or adaptive dictionary",
+    "population_size": 16777216,
+    "rank_distribution": "uniform conditional on E1 and the exact declared context",
+    "secret_format": "Aa0! followed by six lowercase hexadecimal characters",
+    "worker": "one reserved compatible verifier; at least 524288 complete verifications in 20h including overhead; no measured GPU rate asserted"
+  }
+}

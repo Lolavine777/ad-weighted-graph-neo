@@ -1,0 +1,382 @@
+{
+  "summary_version": "issue290-seamless-policy-summary/1.0.0",
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "code_version": "b5a2a505db5e2fab6ed2501a798e7ce13c6a7c28",
+  "elapsed_seconds": 57.18,
+  "total_sources_evaluated": 4,
+  "sources": [
+    {
+      "source_id": "SRC-C0-ASREP",
+      "source_label": "Computer X Foothold -> AS-REP Target (C0)",
+      "source_principal": "S-1-5-21-1271839998-3495686680-2211690266-4095",
+      "target_principal": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "expected_behavior": "Halted in standard mode at recover_asrep_secret (indeterminate); feasible in exploratory what-if with recovery_opt_in override.",
+      "evaluations": {
+        "evidence_only": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [
+            "raw_network_protocol_unresolved (requires scenario assumptions)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "network_kdc_reachable": 1,
+            "asrep_request_accepted": 1
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 0,
+          "policy_assumptions_count": 0,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "seamless_standard_scenario": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [
+            "offline_password_recovery_unresolved (requires explicit opt-in)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "recovery_success": 1,
+            "recovery_scope": 1
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 30,
+          "policy_assumptions_count": 30,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "exploratory_what_if": {
+          "feasible": true,
+          "status": "success",
+          "paths_count": 1,
+          "expansions": 4,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [],
+          "programs": [
+            [
+              "asrep_request",
+              "recover_asrep_secret",
+              "activate_recovered_identity",
+              "obtain_admin_execution_on_host"
+            ]
+          ],
+          "unresolved_conditions": {},
+          "failed_prerequisites": {},
+          "assumptions_count": 31,
+          "policy_assumptions_count": 31,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 1,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        }
+      }
+    },
+    {
+      "source_id": "SRC-KERBEROAST-SPN",
+      "source_label": "Computer X Foothold -> JEANNE_YANG SPN Candidate -> Usable Identity",
+      "source_principal": "S-1-5-21-1271839998-3495686680-2211690266-4095",
+      "target_principal": "S-1-5-21-1271839998-3495686680-2211690266-4095",
+      "expected_behavior": "Standard mode indeterminate at recover_ticket_secret; exploratory what-if succeeds with recovery_opt_in override.",
+      "evaluations": {
+        "evidence_only": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [
+            "raw_network_protocol_unresolved (requires scenario assumptions)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "kerberos_authentication_usable": 1,
+            "network_kdc_reachable": 1,
+            "service_ticket_request_accepted": 1
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 0,
+          "policy_assumptions_count": 0,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "seamless_standard_scenario": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [
+            "offline_password_recovery_unresolved (requires explicit opt-in)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "recovery_success": 1,
+            "recovery_scope": 1
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 8,
+          "policy_assumptions_count": 8,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "exploratory_what_if": {
+          "feasible": true,
+          "status": "success",
+          "paths_count": 1,
+          "expansions": 3,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [],
+          "programs": [
+            [
+              "kerberoast_request",
+              "recover_ticket_secret",
+              "activate_recovered_identity"
+            ]
+          ],
+          "unresolved_conditions": {},
+          "failed_prerequisites": {},
+          "assumptions_count": 9,
+          "policy_assumptions_count": 9,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 1,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        }
+      }
+    },
+    {
+      "source_id": "SRC-GINO-FANOUT",
+      "source_label": "GINO_ROSS Foothold -> Domain Users Search Fan-out -> Target C0",
+      "source_principal": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+      "target_principal": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "expected_behavior": "Free search hits 5,000 expansions due to fan-out at DOMAIN USERS. Classified strictly as search_fanout_blocker / expansion_limit_reached, not conflated with 'no_path'.",
+      "evaluations": {
+        "evidence_only": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 8,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [],
+          "programs": [],
+          "unresolved_conditions": {
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 0,
+          "policy_assumptions_count": 0,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "seamless_standard_scenario": {
+          "feasible": false,
+          "status": "truncated",
+          "paths_count": 0,
+          "expansions": 5000,
+          "truncated": true,
+          "truncation_reason": "expansion_limit_reached",
+          "blockers": [
+            "search_fanout_blocker (expansion_limit_reached)",
+            "distribution_group_cannot_default (requires scoped override)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "security_group": 818,
+            "membership_usable": 362,
+            "directory_write_allowed": 3683,
+            "password_policy_accepts": 2455,
+            "network_rpc_reachable": 1227
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 179,
+          "policy_assumptions_count": 179,
+          "rejected_assumptions_count": 45,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "exploratory_what_if": {
+          "feasible": false,
+          "status": "truncated",
+          "paths_count": 0,
+          "expansions": 5000,
+          "truncated": true,
+          "truncation_reason": "expansion_limit_reached",
+          "blockers": [
+            "search_fanout_blocker (expansion_limit_reached)",
+            "distribution_group_cannot_default (requires scoped override)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "security_group": 818,
+            "membership_usable": 362,
+            "directory_write_allowed": 3683,
+            "password_policy_accepts": 2455,
+            "network_rpc_reachable": 1227
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 179,
+          "policy_assumptions_count": 179,
+          "rejected_assumptions_count": 45,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        }
+      }
+    },
+    {
+      "source_id": "SRC-BORIS-DISTLIST",
+      "source_label": "BORIS_DILLARD Foothold -> HO-170-DISTLIST1 Direct Member",
+      "source_principal": "S-1-5-21-1271839998-3495686680-2211690266-1137",
+      "target_principal": "S-1-5-21-1271839998-3495686680-2211690266-4038",
+      "expected_behavior": "Standard mode rejects security_group assumption for HO-170-DISTLIST1 due to distribution list naming (status: indeterminate). Exploratory what-if accepts explicit override and succeeds in 1 path.",
+      "evaluations": {
+        "evidence_only": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 11,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [],
+          "programs": [],
+          "unresolved_conditions": {
+            "security_group": 11,
+            "membership_usable": 11
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 0,
+          "policy_assumptions_count": 0,
+          "rejected_assumptions_count": 0,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "seamless_standard_scenario": {
+          "feasible": false,
+          "status": "indeterminate",
+          "paths_count": 0,
+          "expansions": 125,
+          "truncated": false,
+          "truncation_reason": null,
+          "blockers": [
+            "distribution_group_cannot_default (requires scoped override)"
+          ],
+          "programs": [],
+          "unresolved_conditions": {
+            "security_group": 116,
+            "membership_usable": 116
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 14,
+          "policy_assumptions_count": 14,
+          "rejected_assumptions_count": 34,
+          "overrides_applied_count": 0,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        },
+        "exploratory_what_if": {
+          "feasible": true,
+          "status": "success",
+          "paths_count": 1,
+          "expansions": 9,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "blockers": [
+            "search_truncation (path_limit_reached)",
+            "distribution_group_cannot_default (requires scoped override)"
+          ],
+          "programs": [
+            [
+              "propagate_group_entitlement"
+            ]
+          ],
+          "unresolved_conditions": {
+            "security_group": 8,
+            "membership_usable": 8
+          },
+          "failed_prerequisites": {},
+          "assumptions_count": 16,
+          "policy_assumptions_count": 16,
+          "rejected_assumptions_count": 34,
+          "overrides_applied_count": 1,
+          "ratings": {
+            "effort": "unrated",
+            "impact": "unrated",
+            "likelihood": "unrated (assumptions do not assert P=1)",
+            "ranking_disposition": "unrated"
+          }
+        }
+      }
+    }
+  ]
+}

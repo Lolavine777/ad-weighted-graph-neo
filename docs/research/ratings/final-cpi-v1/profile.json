@@ -1,0 +1,391 @@
+{
+  "C_rubric": {
+    "elapsed_time": "separate budget, not measured by ordinal C",
+    "formula": "T1 + T2 - 2",
+    "passive": "no work/no q",
+    "shared": "same canonical identity once; no generic added preparation if operation already includes it",
+    "t1": {
+      "1": "standard existing tool/API",
+      "2": "customized protocol/security-descriptor or artifact workflow",
+      "3": "specialized research/development required"
+    },
+    "t2": {
+      "1": "automated bounded single exchange",
+      "2": "coordinated multi-operation submission/verification",
+      "3": "heavy extraction/compute/operational handling"
+    },
+    "zero_cost": "active automated work can have C=0 but still one success event"
+  },
+  "I_consequences": [
+    {
+      "class": "domain_identity_admin",
+      "rating": "High",
+      "rationale": "Control of domain identity/authentication/access-control services; preserves historical High for same DC. No Critical inference from label or invented business valuation.",
+      "typed_state": "admin_control(DC)"
+    },
+    {
+      "class": "host_admin",
+      "rating": "High",
+      "rationale": "Administrative confidentiality/integrity/availability control over configured technical asset, pending scoped mapping.",
+      "typed_state": "admin_control(host)"
+    },
+    {
+      "class": "identity_or_command_session",
+      "rating": "Medium",
+      "rationale": "Identity or command/session capability, without demonstrated administrative target control.",
+      "typed_state": "usable_identity or session_control"
+    },
+    {
+      "class": "encrypted_or_credential_material",
+      "rating": "Low",
+      "rationale": "Intermediate material opportunity, not achieved logon/control.",
+      "typed_state": "asrep_material or ticket_material or credential_material"
+    },
+    {
+      "class": "domain_group_checkpoint",
+      "rating": "High",
+      "rationale": "Domain administrative entitlement checkpoint only if usable token/role is declared; not admin_execution_on_DC.",
+      "typed_state": "effective_member(user,DA)"
+    }
+  ],
+  "assumption_profile": {
+    "initial_compromise": "supplied valid source capability; outside C/P boundary",
+    "known_false": "absolute_veto",
+    "mode": "unknown_only",
+    "origins": "declared_assumption, with exact scenario/auth/resource metadata",
+    "overrides": "rematerialize existing query with exact scope; numeric registry must be rebound for changed context",
+    "structure": "no invented edges"
+  },
+  "author": "TTS A / Lolavine777, AI-assisted",
+  "b_numeric_adoption": false,
+  "basis_hierarchy": [
+    "eligible_reviewed_empirical",
+    "previously_reviewed_exact_scope",
+    "B_adopted_expert_scenario",
+    "unsupported_or_unrated"
+  ],
+  "classes": [
+    {
+      "class_id": "directory_password_reset",
+      "cost": 1,
+      "lower": "3/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "reset_identity_activation",
+      "cost": 0,
+      "lower": "3/4",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 1,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "recovered_identity_activation",
+      "cost": 0,
+      "lower": "3/4",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "Pending recovered-secret equivalence, with lineage and offline age explicit; unchanged account/password within 24h and exact recovery prefix. Historical reset acceptance alone is insufficient.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 1,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "winrm_admin_execution",
+      "cost": 1,
+      "lower": "1/2",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "Historical elevated WinRM workflow given usable identity and unrestricted endpoint; three attempts/30m; session allocation/quota/command-completion uncertainty. Session preparation included in this work unit.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "9/10"
+    },
+    {
+      "class_id": "host_admin_execution",
+      "cost": 1,
+      "lower": "3/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New standard authenticated SMB/RPC administrative execution scenario, three attempts/30m; session allocation, command launch and verification failures. Generic AdminTo alone does not identify transport; selected SMB/RPC policy required.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "asrep_material_request",
+      "cost": 0,
+      "lower": "9/10",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New AS-REP compatible-material request judgment, three requests/10m; 1%-10% residual timeout/resource/parser whole-event failure allowance. No reset-activation probability transfer.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 1,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "99/100"
+    },
+    {
+      "class_id": "kerberoast_material_request",
+      "cost": 1,
+      "lower": "17/20",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New authenticated TGS service-ticket acquisition judgment, three requests/10m; service naming/referral/material-format workflow adds residual 2%-15% failure allowance. Not AS-REP request or password recovery.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "asrep_password_recovery",
+      "cost": 2,
+      "lower": null,
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "UNRATED_NO_BASIS",
+      "rationale": "Natural-password conditional rank mass and achieved compatible verifier coverage before deadline absent; hard compute cap does not establish success mass. #266 v2 audit applies; no uniform24 production transfer.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": null
+    },
+    {
+      "class_id": "kerberoast_password_recovery",
+      "cost": 3,
+      "lower": null,
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "UNRATED_NO_BASIS",
+      "rationale": "TGS etype/service-account password rank and achieved verifier coverage absent; AES and RC4 throughput/secret populations differ. No AS-REP numeric transfer or computer-secret short-password assumption.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 3,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": null
+    },
+    {
+      "class_id": "group_membership_mutation",
+      "cost": 1,
+      "lower": "4/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New bounded LDAP group mutation/read-back scenario, three attempts/15m; replication/read-back and token-refresh workflow allowance 2%-20%. Membership mutation does not establish a usable logon token or admin execution.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "grant_write_dacl",
+      "cost": 1,
+      "lower": "7/10",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New bounded ACL write/read-back scenario, three attempts/15m; correct ACE scope/inheritance and round-trip workflow allowance 2%-30%, conditioned on effective write already permitted.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "grant_generic_all",
+      "cost": 2,
+      "lower": "7/10",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New ACL construction/write/read-back scenario, three attempts/15m; correct principal/ACE ordering/inheritance with 5%-30% residual workflow failure. Grants permission only; no direct host compromise.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "rdp_interactive_session",
+      "cost": 1,
+      "lower": "3/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New RDP logon/session-establishment scenario, three attempts/30m; allocation/quota/interactive-logon completion allowance 5%-40%. NLA/reachability/authorization are preconditions; no admin effect.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "winrm_command_session",
+      "cost": 1,
+      "lower": "7/10",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New non-elevated WinRM command-session workflow, three attempts/30m; endpoint allocation and command completion allowance 5%-30%. Does not inherit administrative consequence or elevated WinRM interval.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "session_credential_material",
+      "cost": 3,
+      "lower": "1/4",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New accessible fresh HasSession material extraction/validation scenario, one job/30m; residual format, extraction and usable-material completion allowance 20%-75%, beyond separately conditioned host control/freshness/accessibility. This produces material, not identity activation.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 3,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "4/5"
+    },
+    {
+      "class_id": "rbcd_secret_acquisition",
+      "cost": 1,
+      "lower": "7/10",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New controlled service-principal secret reset/validation scenario, three attempts/15m; residual reset/verification completion allowance 5%-30%. Known secret lineage differs from natural password cracking.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 1,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    },
+    {
+      "class_id": "rbcd_service_preparation",
+      "cost": 2,
+      "lower": "4/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New existing owned service-principal SPN/service setup validation scenario, three attempts/15m; setup/verification allowance 2%-20%. No assumption of MachineAccountQuota or arbitrary new computer creation.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "49/50"
+    },
+    {
+      "class_id": "rbcd_descriptor_mutation",
+      "cost": 2,
+      "lower": "4/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New delegation descriptor encoding/write/read-back scenario, three attempts/15m; residual descriptor construction/round-trip allowance 1%-20%; effective rights and target policy separately conditioned.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "99/100"
+    },
+    {
+      "class_id": "rbcd_service_delegation",
+      "cost": 2,
+      "lower": "3/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New S4U service delegation scenario, three attempts/15m; ticket/service-name/delegation validation allowance 10%-40% after exact descriptor/service/secret preparation histories. Not a password-guessing event.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "9/10"
+    },
+    {
+      "class_id": "rbcd_admin_execution",
+      "cost": 2,
+      "lower": "3/5",
+      "numeric_basis_class": "estimated_expert_scenario",
+      "numeric_disposition": "PROPOSED_SCOPED_INTERVAL",
+      "rationale": "New delegated service-specific elevated execution/verification scenario, three attempts/30m; service ticket placement/command completion allowance 5%-40%. Delegation alone does not prove host-wide administration.",
+      "review_reference": "https://github.com/nairyuuu/ad-weighted-graph/issues/267",
+      "status": "proposed_pending_b_review",
+      "t1": 2,
+      "t2": 2,
+      "uncertainty": "epistemic AI-assisted scenario judgment, not empirical calibration, statistical confidence or completed human elicitation",
+      "upper": "19/20"
+    }
+  ],
+  "history_model": {
+    "id": "stable-no-depletion-distinct-work-v1",
+    "max_records": 5000,
+    "meaning": "Each conditional interval applies to every explicitly compiled full successful history in the frozen finite inventory, under unchanged resource/account/policy state and exclusive bounded retries. This is an explicit scenario invariance judgment requiring B adoption, not marginal reuse or probabilistic independence.",
+    "refuse": [
+      "repeated canonical work identity",
+      "unlisted operation",
+      "credential invalidation/reset of same secret after activation",
+      "different actor/source/method/resource/snapshot/policy/horizon",
+      "unsupported lineage",
+      "record expansion above cap",
+      "missing or conflicting authority"
+    ]
+  },
+  "horizon": "24h",
+  "human_numeric_elicitation_completed": false,
+  "profile_id": "final-cpi-bounded-domain-v1",
+  "reviewer": "nairyuuu",
+  "sources": [
+    {
+      "path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+      "supports": "historical reset/Kerberos/elevated WinRM values only in accepted source contexts; new histories pending"
+    },
+    {
+      "supports": "protocol semantics only, no q",
+      "url": "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+    },
+    {
+      "supports": "relationship mechanics only, no q",
+      "url": "https://bloodhound.readthedocs.io/en/latest/data-analysis/edges.html"
+    },
+    {
+      "supports": "DC technical control consequence; no probability",
+      "url": "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack"
+    },
+    {
+      "issue": "https://github.com/nairyuuu/ad-weighted-graph/pull/266",
+      "supports": "AS-REP v2 rank/compute audit; no recovery number adopted"
+    }
+  ],
+  "status": "proposed_pending_b_review",
+  "version": "1.0.0"
+}

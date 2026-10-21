@@ -1,0 +1,678 @@
+{
+  "schema_version": "1.0.0",
+  "evidence_class": "independent_assertions_synthetic_only",
+  "cases": {
+    "W4-M-POSITIVE": {
+      "expected": {
+        "status": "success",
+        "paths_count": 3,
+        "final_goal_reached": true,
+        "checkpoint_reached": false,
+        "programs": [
+          [
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ],
+          [
+            "propagate_group_entitlement",
+            "obtain_admin_execution_on_host"
+          ]
+        ],
+        "program_routes": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "S-1-5-21-1000-2000-3000-1101",
+              "S-1-5-21-1000-2000-3000-2103",
+              "10000000-0000-4000-8000-000000000002"
+            ]
+          ]
+        ]
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-X-S": {
+      "expected": {
+        "error_type": "ValueError",
+        "error_message_contains": "without declared usable_identity or control"
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-X-I": {
+      "expected": {
+        "status": "no_path",
+        "paths_count": 0,
+        "final_goal_reached": false
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-X-H-WRONG": {
+      "expected": {
+        "status": "blocked",
+        "paths_count": 0,
+        "final_goal_reached": false
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-X-H-VALID": {
+      "expected": {
+        "status": "success",
+        "paths_count": 3,
+        "final_goal_reached": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-C-F": {
+      "expected": {
+        "status": "checkpoint_reached_final_goal_blocked",
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-C-U": {
+      "expected": {
+        "status": "checkpoint_reached_final_goal_indeterminate",
+        "checkpoint_reached": true,
+        "final_goal_reached": false,
+        "paths_count": 0
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-DA-NEG-ASSET-POS": {
+      "expected": {
+        "status": "success",
+        "checkpoint_reached": false,
+        "final_goal_reached": true,
+        "paths_count": 1
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-DA-POS": {
+      "expected": {
+        "status": "success",
+        "checkpoint_reached": true,
+        "final_goal_reached": true,
+        "paths_count": 3
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-G-U": {
+      "expected": {
+        "status": "indeterminate",
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "indeterminate_attempts_present": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-G-A": {
+      "expected": {
+        "status": "success",
+        "final_goal_reached": true,
+        "paths_count": 1,
+        "assumption_backed": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-G-F": {
+      "expected": {
+        "status": "blocked",
+        "final_goal_reached": false,
+        "paths_count": 0,
+        "blocked_attempts_present": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-G-VETO": {
+      "expected": {
+        "status": "blocked",
+        "final_goal_reached": false,
+        "rejected_assumptions_count": 1,
+        "rejection_reasons": [
+          "known_false_veto"
+        ]
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-MIN-EFFORT-E": {
+      "expected": {
+        "minimum_effort_value": 2,
+        "best_candidate_id": "generated_0003",
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": true,
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        }
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-MIN-EFFORT-T": {
+      "expected": {
+        "minimum_effort_value": 2,
+        "tie_count": 3,
+        "all_best_candidates_count": 3,
+        "all_best_candidate_ids": [
+          "generated_0001",
+          "generated_0002",
+          "generated_0003"
+        ]
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-MIN-EFFORT-TIES": {
+      "expected": {
+        "pareto_frontier": [
+          "cand_member_inherited"
+        ],
+        "strictly_dominates": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-REUSE-ANTI-DOUBLE-COUNTING": {
+      "expected": {
+        "effort_d": 5,
+        "effort_md": 5,
+        "efforts_equal": true
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-REUSE-CONTEXT-SEPARATION": {
+      "expected": {
+        "effort": 5,
+        "effort_status": "rated",
+        "impact_status": "unrated",
+        "program": [
+          "w-auth-otherhost",
+          "w-direct-admin-otherhost"
+        ]
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-CAP-PATHS": {
+      "expected": {
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "optimization_scope": "best_in_generated_subset",
+        "is_minimum_proven_over_scope": false
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-CAP-EXP": {
+      "expected": {
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "is_minimum_proven_over_scope": false
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-CAP-STEPS": {
+      "expected": {
+        "truncated": true,
+        "truncation_reason": "step_limit_reached",
+        "is_minimum_proven_over_scope": false
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-SCORE-DIAGNOSTICS": {
+      "expected": {
+        "diagnostics_count": 6,
+        "pareto_frontier_count": 0,
+        "unrated_effort": null,
+        "unrated_effort_status": "unrated",
+        "unrated_likelihood": null,
+        "unrated_assumed_likelihood": null,
+        "unrated_impact": null
+      },
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-DEFECT-212-ADAPTER-REJECT": {
+      "expected": {
+        "paths_count": 3,
+        "candidates_received": 3,
+        "candidates_adapted": 2,
+        "candidates_rejected_by_adapter": 1,
+        "optimization_scope": "best_in_bound_subset",
+        "is_minimum_proven_over_scope": false,
+        "minimum_effort_value": 5
+      },
+      "known_observation": {
+        "paths_count": 3,
+        "candidates_received": 3,
+        "candidates_adapted": 2,
+        "candidates_rejected_by_adapter": 1,
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": true,
+        "minimum_effort_value": 5
+      },
+      "dependency": "Integrated #232 regression: adapter exclusions downgrade scope/proof; retained known signature detects recurrence",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-DEFECT-212-ZERO-ACTION": {
+      "expected": {
+        "paths_count": 1,
+        "path_transitions": 0,
+        "final_goal_reached": true,
+        "adapter_rejected": false,
+        "zero_new_work_disclosed": true,
+        "ranking_status": "not_applicable",
+        "disposition": "semantic_initial_goal_zero_work",
+        "likelihood_interval": null,
+        "impact": null,
+        "eligible_candidates": {},
+        "pareto_frontier": [],
+        "candidates_evaluated": 0,
+        "canonical_minimum_effort": null
+      },
+      "known_observation": {
+        "paths_count": 1,
+        "path_transitions": 0,
+        "final_goal_reached": true,
+        "adapter_rejected": true,
+        "zero_new_work_disclosed": false,
+        "optimization_scope": "no_rated_candidates",
+        "diagnostic_contains": "does not match query foothold"
+      },
+      "dependency": "Integrated #232 regression: semantic zero work; canonical ranking is not applicable",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-DEFECT-212-DOCS-SHAPE": {
+      "expected": {
+        "documentation_matches_output": true
+      },
+      "execution_status": "not_executed",
+      "dependency": "Manual public docs/API audit #212; field presence alone is insufficient",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-TECH-KERBEROASTING": {
+      "expected": {
+        "extension_off_status": "no_path",
+        "extension_off_paths": 0,
+        "extension_on_status": "success",
+        "extension_on_paths": 1,
+        "programs": [
+          [
+            "kerberoast_request",
+            "recover_ticket_secret",
+            "activate_recovered_identity",
+            "propagate_group_entitlement",
+            "scenario_winrm_admin"
+          ]
+        ],
+        "actors": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-1102"
+        ],
+        "asset_goal": true,
+        "checkpoint": true,
+        "truncated": false,
+        "assumption_backed": true,
+        "candidates_adapted": 1,
+        "effort_status": "unrated",
+        "effort": null,
+        "likelihood_status": "unrated",
+        "likelihood_interval": null,
+        "impact_status": "unrated",
+        "impact": null,
+        "minimum_effort_value": null,
+        "is_minimum_proven_over_scope": false,
+        "pareto_frontier": [],
+        "shared_inputs_equal": true,
+        "canonical_unchanged": true,
+        "milestones": [
+          {
+            "ticket_material": true,
+            "recovered_secret": false,
+            "activated_target": false,
+            "member": false,
+            "admin": false
+          },
+          {
+            "ticket_material": true,
+            "recovered_secret": true,
+            "activated_target": false,
+            "member": false,
+            "admin": false
+          },
+          {
+            "ticket_material": true,
+            "recovered_secret": true,
+            "activated_target": true,
+            "member": false,
+            "admin": false
+          },
+          {
+            "ticket_material": true,
+            "recovered_secret": true,
+            "activated_target": true,
+            "member": true,
+            "admin": false
+          },
+          {
+            "ticket_material": true,
+            "recovered_secret": true,
+            "activated_target": true,
+            "member": true,
+            "admin": true
+          }
+        ]
+      },
+      "dependency": "Integrated #230 generated synthetic chain; private-data replay and numeric basis remain separate",
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output; extension OFF has no applicable capability acquisition or asset route"
+    },
+    "W4-TECH-ASREP": {
+      "expected": {
+        "catalog_support": true,
+        "search_support": true,
+        "query_validator_behavior": ""
+      },
+      "pending_observation": {
+        "catalog_support": false,
+        "search_support": null,
+        "query_validator_behavior_contains": "unknown technique IDs in allowed_techniques: ['asrep_roasting']"
+      },
+      "dependency": "B #228 scoped implementation; #206/#208 domain mapping and private acceptance still pending",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-TECH-RBCD": {
+      "expected": {
+        "catalog_support": true,
+        "search_support": true,
+        "query_validator_behavior": ""
+      },
+      "pending_observation": {
+        "catalog_support": false,
+        "search_support": null,
+        "query_validator_behavior_contains": "unknown technique IDs in allowed_techniques: ['configure_rbcd']"
+      },
+      "dependency": "B #229; search support untested until concrete handoff",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-CLI-PACKAGE": {
+      "expected": {
+        "exit_code": 0,
+        "output_exit_code": 0,
+        "schema_version": "week4-query-result/0.2.0",
+        "status": "success",
+        "paths_count": 3,
+        "path_sequences": [
+          [
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Admins",
+              "Host"
+            ]
+          ],
+          [
+            [
+              "propagate_group_entitlement",
+              "Alice",
+              "Alice",
+              "Admins"
+            ],
+            [
+              "obtain_admin_execution_on_host",
+              "Alice",
+              "Alice",
+              "Host"
+            ]
+          ]
+        ],
+        "reachable_states_match_oracle": true,
+        "final_goal_reached": true,
+        "checkpoint_reached": false,
+        "complete": true,
+        "truncated": false,
+        "ranking_disposition": "evaluated",
+        "minimum_effort_value": 2,
+        "best_candidate_id": "generated_0003",
+        "optimization_scope": "exhaustive_within_scope",
+        "is_minimum_proven_over_scope": true,
+        "efforts": {
+          "generated_0001": 5,
+          "generated_0002": 5,
+          "generated_0003": 2
+        },
+        "likelihoods": {
+          "generated_0001": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0002": [
+            "2/5",
+            "27/40"
+          ],
+          "generated_0003": [
+            "12/25",
+            "18/25"
+          ]
+        },
+        "impacts": {
+          "generated_0001": "High",
+          "generated_0002": "High",
+          "generated_0003": "High"
+        },
+        "semantic_digest_valid": true,
+        "clean_tracked_source": true,
+        "comparison_exit_code": 0,
+        "two_runs_equal": true,
+        "runtime_compared": false,
+        "output_stdout_empty": true,
+        "invalid_exit_codes": {
+          "empty_state": 1,
+          "null_ranking": 1
+        },
+        "invalid_stdout_empty": true,
+        "invalid_diagnostics_present": true,
+        "invalid_artifacts_absent": true
+      },
+      "expectation_basis": "Accepted A scenario week4-v1.json two-routes variant 0; independent Ledger E; reviewed CLI schema 0.2 and fail-closed input contract. No expected value is taken from current execution."
+    },
+    "W4-SEAMLESS-DATASET-GATE": {
+      "expected": {
+        "authorized_trace_verified": true
+      },
+      "execution_status": "not_executed",
+      "dependency": "Authorized private raw and pinned trace required; filesystem presence is not policy verification",
+      "expectation_basis": "docs/research/week4-query-scenario-mapping.md; docs/research/week4-scenarios.md; docs/research/week4-scoring-handoff.md; docs/research/week4-extension-scenario-handoff.md"
+    },
+    "W4-K-MATERIAL": {
+      "expected": {
+        "status": "indeterminate",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [
+          "kerberoast_request"
+        ],
+        "ticket_material": true,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-KDC-F": {
+      "expected": {
+        "status": "blocked",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [],
+        "ticket_material": false,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-KDC-U": {
+      "expected": {
+        "status": "indeterminate",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [],
+        "ticket_material": false,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-AUTH-F": {
+      "expected": {
+        "status": "blocked",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [
+          "kerberoast_request",
+          "recover_ticket_secret"
+        ],
+        "ticket_material": true,
+        "recovered_secret": true,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-NO-AUTH": {
+      "expected": {
+        "status": "blocked",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [],
+        "ticket_material": false,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-FACT-F": {
+      "expected": {
+        "status": "blocked",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [],
+        "ticket_material": false,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-FACT-U": {
+      "expected": {
+        "status": "indeterminate",
+        "paths_count": 0,
+        "asset_goal": false,
+        "checkpoint": false,
+        "applied_prefix": [],
+        "ticket_material": false,
+        "recovered_secret": false,
+        "activated_target": false,
+        "canonical_unchanged": true
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output",
+      "dependency": "None for synthetic cutoff; not private or empirical evidence"
+    },
+    "W4-K-OVERLAP": {
+      "expected": {
+        "baseline_asset_goal": true,
+        "extension_asset_goal": true,
+        "new_asset_coverage": false,
+        "shared_inputs_equal": true,
+        "canonical_unchanged": true,
+        "scope": "generated_scope",
+        "shared_caps": {
+          "max_paths": 50,
+          "max_steps": 9,
+          "max_expansions": 5000
+        }
+      },
+      "expectation_basis": "A #218 K-MATERIAL/K-NO-AUTH/K-FACT/K-OVERLAP and scoped #216 accepted API mapping; not derived from engine output; existential same-asset witnesses require no exhaustive path enumeration; caps/truncation disclosed separately",
+      "dependency": "Same input/caps, owner-scope toggle only; no numeric superiority claim"
+    }
+  }
+}

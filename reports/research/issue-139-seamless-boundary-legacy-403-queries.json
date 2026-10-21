@@ -1,0 +1,209 @@
+{
+  "issue": 139,
+  "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+  "description": "Truy vấn chỉ đọc; kết quả đầy đủ giữ local. Chạy discovery rồi xác nhận exact identity trước các phép đo membership.",
+  "queries": [
+    {
+      "id": "runtime",
+      "track": "legacy",
+      "statement": "CALL dbms.components() YIELD name, versions, edition RETURN name, versions, edition",
+      "parameters": {},
+      "description": "Phiên bản Neo4j thực tế của database."
+    },
+    {
+      "id": "counts",
+      "track": "legacy",
+      "statement": "MATCH (n) RETURN count(n) AS nodes, count(DISTINCT n.objectid) AS unique_objectids",
+      "parameters": {},
+      "description": "Tổng node và objectid duy nhất; không suy equality của tập identity."
+    },
+    {
+      "id": "labels",
+      "track": "legacy",
+      "statement": "MATCH (n) RETURN labels(n) AS labels, count(n) AS count ORDER BY labels",
+      "parameters": {},
+      "description": "Population theo labels."
+    },
+    {
+      "id": "types",
+      "track": "legacy",
+      "statement": "MATCH ()-[r]->() RETURN type(r) AS type, count(r) AS count ORDER BY type",
+      "parameters": {},
+      "description": "Multiplicity lưu trữ theo relationship type."
+    },
+    {
+      "id": "groups",
+      "track": "legacy",
+      "statement": "MATCH (g:Group) RETURN g.objectid AS objectid, g.name AS name, labels(g) AS labels, properties(g) AS properties ORDER BY objectid",
+      "parameters": {},
+      "description": "Tập Group đầy đủ; giữ output local theo data policy."
+    },
+    {
+      "id": "all_nodes",
+      "track": "legacy",
+      "statement": "MATCH (n) RETURN n.objectid AS objectid, labels(n) AS labels ORDER BY objectid",
+      "parameters": {},
+      "description": "Tập identity mọi node; chưa kết luận parity toàn graph."
+    },
+    {
+      "id": "memberof",
+      "track": "legacy",
+      "statement": "MATCH (s)-[r:MemberOf]->(t) RETURN s.objectid AS source, t.objectid AS target, properties(r) AS properties ORDER BY source, target",
+      "parameters": {},
+      "description": "Tập MemberOf lưu trữ; direct/effective semantics toàn tập chưa nghiệm thu."
+    },
+    {
+      "id": "S-1-5-4-discovery",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE toString(n.objectid) CONTAINS $sid RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(n) AS properties ORDER BY objectid",
+      "parameters": {
+        "sid": "S-1-5-4"
+      },
+      "description": "Chỉ discovery; không dùng CONTAINS để kết luận identity."
+    },
+    {
+      "id": "S-1-5-4-exact",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE n.objectid = $exact_objectid RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(n) AS properties",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+      },
+      "description": "Xác nhận objectid chính xác và properties thực tế."
+    },
+    {
+      "id": "S-1-5-4-outgoing",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE n.objectid = $exact_objectid OPTIONAL MATCH (n)-[r:MemberOf]->(parent) RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, type(r) AS type, labels(parent) AS parent_labels, parent.objectid AS parent_objectid, parent.name AS parent_name, properties(r) AS relationship_properties ORDER BY parent_objectid",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+      },
+      "description": "MemberOf đi từ principal tới parent."
+    },
+    {
+      "id": "S-1-5-4-incoming",
+      "track": "legacy",
+      "statement": "MATCH (child)-[r:MemberOf]->(n) WHERE n.objectid = $exact_objectid RETURN labels(child) AS child_labels, child.objectid AS child_objectid, child.name AS child_name, type(r) AS type, labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(r) AS relationship_properties ORDER BY child_objectid",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+      },
+      "description": "MemberOf đi từ child tới principal."
+    },
+    {
+      "id": "S-1-5-4-direct",
+      "track": "legacy",
+      "statement": "MATCH (n)-[r]-(m) WHERE n.objectid = $exact_objectid RETURN n.objectid AS objectid, type(r) AS type, startNode(r).objectid AS source, endNode(r).objectid AS target, labels(m) AS other_labels, m.objectid AS other_objectid, m.name AS other_name, properties(r) AS relationship_properties ORDER BY type, source, target",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-4"
+      },
+      "description": "Mọi quan hệ trực tiếp quanh principal, bảo toàn chiều."
+    },
+    {
+      "id": "S-1-5-17-discovery",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE toString(n.objectid) CONTAINS $sid RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(n) AS properties ORDER BY objectid",
+      "parameters": {
+        "sid": "S-1-5-17"
+      },
+      "description": "Chỉ discovery; không dùng CONTAINS để kết luận identity."
+    },
+    {
+      "id": "S-1-5-17-exact",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE n.objectid = $exact_objectid RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(n) AS properties",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+      },
+      "description": "Xác nhận objectid chính xác và properties thực tế."
+    },
+    {
+      "id": "S-1-5-17-outgoing",
+      "track": "legacy",
+      "statement": "MATCH (n) WHERE n.objectid = $exact_objectid OPTIONAL MATCH (n)-[r:MemberOf]->(parent) RETURN labels(n) AS labels, n.objectid AS objectid, n.name AS name, type(r) AS type, labels(parent) AS parent_labels, parent.objectid AS parent_objectid, parent.name AS parent_name, properties(r) AS relationship_properties ORDER BY parent_objectid",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+      },
+      "description": "MemberOf đi từ principal tới parent."
+    },
+    {
+      "id": "S-1-5-17-incoming",
+      "track": "legacy",
+      "statement": "MATCH (child)-[r:MemberOf]->(n) WHERE n.objectid = $exact_objectid RETURN labels(child) AS child_labels, child.objectid AS child_objectid, child.name AS child_name, type(r) AS type, labels(n) AS labels, n.objectid AS objectid, n.name AS name, properties(r) AS relationship_properties ORDER BY child_objectid",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+      },
+      "description": "MemberOf đi từ child tới principal."
+    },
+    {
+      "id": "S-1-5-17-direct",
+      "track": "legacy",
+      "statement": "MATCH (n)-[r]-(m) WHERE n.objectid = $exact_objectid RETURN n.objectid AS objectid, type(r) AS type, startNode(r).objectid AS source, endNode(r).objectid AS target, labels(m) AS other_labels, m.objectid AS other_objectid, m.name AS other_name, properties(r) AS relationship_properties ORDER BY type, source, target",
+      "parameters": {
+        "exact_objectid": "SEAMLESS.INTERNAL-S-1-5-17"
+      },
+      "description": "Mọi quan hệ trực tiếp quanh principal, bảo toàn chiều."
+    },
+    {
+      "id": "project-runtime",
+      "track": "project",
+      "statement": "CALL dbms.components() YIELD name, versions, edition RETURN name, versions, edition",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-counts",
+      "track": "project",
+      "statement": "MATCH (n:Canonical) RETURN count(n) AS nodes, count(DISTINCT n.id) AS unique_ids",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-types",
+      "track": "project",
+      "statement": "MATCH (:Canonical)-[r]->(:Canonical) RETURN type(r) AS type, count(r) AS count ORDER BY type",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-groups",
+      "track": "project",
+      "statement": "MATCH (n:Canonical:Group) RETURN n.id AS id, n.label AS label, n.domain AS domain, n.is_boundary AS is_boundary ORDER BY id",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-boundary",
+      "track": "project",
+      "statement": "MATCH (n:Canonical) WHERE n.is_boundary = true RETURN labels(n) AS labels, properties(n) AS properties ORDER BY n.id",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-boundary_edges",
+      "track": "project",
+      "statement": "MATCH (n:Canonical)-[r]-(m:Canonical) WHERE n.is_boundary = true RETURN n.id AS id, type(r) AS type, startNode(r).id AS source, endNode(r).id AS target, properties(r) AS properties ORDER BY id",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-digests",
+      "track": "project",
+      "statement": "MATCH (n:Canonical) RETURN n.graph_digest AS graph_digest, n.snapshot_id AS snapshot_id, count(n) AS count",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-edge_digests",
+      "track": "project",
+      "statement": "MATCH (:Canonical)-[r]->(:Canonical) RETURN r.graph_digest AS graph_digest, r.snapshot_id AS snapshot_id, count(r) AS count",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    },
+    {
+      "id": "project-provenance",
+      "track": "project",
+      "statement": "MATCH (:Canonical)-[r]->(:Canonical) RETURN count(r) AS count, sum(CASE WHEN r.provenance_json IS NOT NULL THEN 1 ELSE 0 END) AS with_provenance",
+      "parameters": {},
+      "description": "Kiểm chứng structural projection của project; assessments vẫn ở JSON."
+    }
+  ]
+}

@@ -1,0 +1,839 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_pending_b_review",
+  "numeric_reuse_permitted": false,
+  "source_release_path": "docs/research/ratings/week3-closeout/reviewed-release.json",
+  "source_release_digest": "sha256:dbc188c641a9ab2a0247c13fb19d4a084d9934f573acb64a9ab6d0d3a99fd9a4",
+  "source_bundle_digest": "sha256:20f67e8604f6399b5b360e412bb30bf898f4d788f13b69c08c78ef2df73d3358",
+  "records": [
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q1",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_01_direct_lidia:q1",
+      "source_record_digest": "sha256:32b2ee63b577b22c0fe4f62e527869ffb9d16e2f037fda4d75858dcb24d02565",
+      "source_pair_digest": "sha256:385b0751a075e384ab478b22d0de0a47185475b5af4d5845c0e5ccfa9fd4a6d0",
+      "proposed_interval": [
+        "3/5",
+        "19/20"
+      ],
+      "canonical_class": "directory_password_reset",
+      "success_event": "Set the target user password and establish authentication_control; only scenario_reset_password also establishes reset_password_control.",
+      "required_active_work": "Authenticated directory reset request and response verification; excludes ticket activation.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "outcome_technique": "scenario_reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:c72314584a37c34547cc3aef6e6f5cea6e3d4a8c3645f621c18163efbe54824d",
+      "conditioning_previous_successes": [],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_reset_lidia",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "User",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q2",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_01_direct_lidia:q2",
+      "source_record_digest": "sha256:a224ffb1bcbfee5f1b0138576880d11a16ebc06c24782e65acd7d8c9be92d62d",
+      "source_pair_digest": "sha256:f89b44748bf728f59f5717f58f77b721f475fd1a5a507e1c26a6fb9c0d10bd34",
+      "proposed_interval": [
+        "3/4",
+        "49/50"
+      ],
+      "canonical_class": "reset_identity_activation",
+      "success_event": "Establish usable_identity for the reset user in the exact authentication context.",
+      "required_active_work": "Acquire and validate usable authentication after successful reset.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-c5237b545a85a49697021d56a0bbb4f1773a548d0953abd22e73725f9b68a05f:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-c5237b545a85a49697021d56a0bbb4f1773a548d0953abd22e73725f9b68a05f:intra_forest:1.0.0",
+        "outcome_technique": "acquire_reset_identity",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:aff9b8571e019a2957f05947cb01c1f104ef19496a477b4f6176493d169636fa",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_activate_lidia",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "Computer",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_01_direct_lidia:q3",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_01_direct_lidia:q3",
+      "source_record_digest": "sha256:4c2094cc1ea4c03d25b2d2852f92205dd5ae90b041ff879cbf6151054903ea7c",
+      "source_pair_digest": "sha256:a0661a9a9d82a560dd295ccb78727b2b3814697b51661641dde7bbaa85c2d301",
+      "proposed_interval": [
+        "1/2",
+        "9/10"
+      ],
+      "canonical_class": "winrm_admin_execution",
+      "success_event": "Establish admin_control through the declared group-to-host administrative WinRM mapping.",
+      "required_active_work": "Complete WinRM administrative execution after scoped usable identity and passive membership.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-c5237b545a85a49697021d56a0bbb4f1773a548d0953abd22e73725f9b68a05f:intra_forest:1.0.0",
+          "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-1d01dc4cb5490e0941616d38006425474e4d3dc4b25f3d3f070a4cc343616f64:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-1d01dc4cb5490e0941616d38006425474e4d3dc4b25f3d3f070a4cc343616f64:intra_forest:1.0.0",
+        "outcome_technique": "scenario_winrm_admin",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-3398",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:bf57ed5606a3d5755448b61d3457af45d703b9844fbb66adec68f2d9d113259c",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-c5237b545a85a49697021d56a0bbb4f1773a548d0953abd22e73725f9b68a05f:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-3398:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-3398:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_winrm_badblood_lidia",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "Computer",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 30
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/winrm/quotas"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q1",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q1",
+      "source_record_digest": "sha256:97eb9cae826fe2cfb1550e86558d1c3cbe5d689e1f0438d01fa8398846959e5e",
+      "source_pair_digest": "sha256:5d94574a601cd2ae02e5818e4e271c45a49995bf2cbc7b286230c5bcd1f09d3c",
+      "proposed_interval": [
+        "3/5",
+        "19/20"
+      ],
+      "canonical_class": "directory_password_reset",
+      "success_event": "Set the target user password and establish authentication_control; only scenario_reset_password also establishes reset_password_control.",
+      "required_active_work": "Authenticated directory reset request and response verification; excludes ticket activation.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "outcome_technique": "scenario_reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:8b3d606ac1442f237e2bffbd08a17d5d29adfd6b346b371ba2c3af2353ffe2c4",
+      "conditioning_previous_successes": [],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_reset_josefa",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "User",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q2",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q2",
+      "source_record_digest": "sha256:84a229ba6fa1863a58b89aded577dccac887a8d564d5510e06fbd1b5b8497b13",
+      "source_pair_digest": "sha256:032826dc129ead486a9ebfbd8a7bdd29716d457b86de846b42201b50dc958411",
+      "proposed_interval": [
+        "3/4",
+        "49/50"
+      ],
+      "canonical_class": "reset_identity_activation",
+      "success_event": "Establish usable_identity for the reset user in the exact authentication context.",
+      "required_active_work": "Acquire and validate usable authentication after successful reset.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+        "outcome_technique": "acquire_reset_identity",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:b79d481e5ad6d8b368e91a6eda7b345436263fcace2aa2a97b72ebc522eaecfc",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_activate_josefa",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "Computer",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q3",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q3",
+      "source_record_digest": "sha256:bbd50be3ccea864715e05308d39dd81807f56a6bf3b91aa7ee1613f6ee2c31f1",
+      "source_pair_digest": "sha256:0c720eaea583e6b2951af57c59f432fe495469b7b1b896be28c9603407c50656",
+      "proposed_interval": [
+        "3/5",
+        "19/20"
+      ],
+      "canonical_class": "directory_password_reset",
+      "success_event": "Set the target user password and establish authentication_control; only scenario_reset_password also establishes reset_password_control.",
+      "required_active_work": "Authenticated directory reset request and response verification; excludes ticket activation.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0",
+        "outcome_technique": "scenario_reset_password",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-1766",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-3790",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:9e54ef931eae8aecee2268394039aba0834e70ca106e50591fb9b38ecf81b0c3",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_reset_ollie",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "User",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 15
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/api/iads/nf-iads-iadsuser-setpassword"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q4",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q4",
+      "source_record_digest": "sha256:76c8041a7cc619fd2688f024433b2a4f9403a64450b13450d934796ce1743b29",
+      "source_pair_digest": "sha256:4d29472572cf7ce2a6843118ded6528a1c9c4ef32802f006232e64d3e5b7dafc",
+      "proposed_interval": [
+        "3/4",
+        "49/50"
+      ],
+      "canonical_class": "reset_identity_activation",
+      "success_event": "Establish usable_identity for the reset user in the exact authentication context.",
+      "required_active_work": "Acquire and validate usable authentication after successful reset.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-9da0dc7bb6a4a8503b316447118b5d58718f02b0a618ed4a70eec2d740503278:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-9da0dc7bb6a4a8503b316447118b5d58718f02b0a618ed4a70eec2d740503278:intra_forest:1.0.0",
+        "outcome_technique": "acquire_reset_identity",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:72145d20a93ba1d60515827379558b366f080f610f6e76a32c2066eabf65711d",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_activate_ollie",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "Computer",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 10
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    },
+    {
+      "binding_id": "source-a:cand_seamless_02_alt_vajer_ollie:q5",
+      "version": "1.0.0",
+      "status": "proposed_pending_b_review",
+      "numeric_reuse_permitted": false,
+      "source_question_id": "cand_seamless_02_alt_vajer_ollie:q5",
+      "source_record_digest": "sha256:e5a51f1c89624de52c1ffd28f9b9141f1880d7a307296db111cce09425a2d428",
+      "source_pair_digest": "sha256:8424312dbfd2bb242b29e33e260a46e128546a8f0d5df5782690cf7c3ba646bc",
+      "proposed_interval": [
+        "1/2",
+        "9/10"
+      ],
+      "canonical_class": "winrm_admin_execution",
+      "success_event": "Establish admin_control through the declared group-to-host administrative WinRM mapping.",
+      "required_active_work": "Complete WinRM administrative execution after scoped usable identity and passive membership.",
+      "generated_lookup_key": {
+        "dimension": "P",
+        "version": "1.0.0",
+        "scenario_id": "scenario-seamless-host-to-dc",
+        "scenario_version": "1.1.0",
+        "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+        "foothold_node_id": "S-1-5-21-1271839998-3495686680-2211690266-4131",
+        "ordered_work_prefix": [
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+          "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0",
+          "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-9da0dc7bb6a4a8503b316447118b5d58718f02b0a618ed4a70eec2d740503278:intra_forest:1.0.0",
+          "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-1d01dc4cb5490e0941616d38006425474e4d3dc4b25f3d3f070a4cc343616f64:intra_forest:1.0.0"
+        ],
+        "outcome_work_unit_id": "scenario_winrm_admin:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-1d01dc4cb5490e0941616d38006425474e4d3dc4b25f3d3f070a4cc343616f64:intra_forest:1.0.0",
+        "outcome_technique": "scenario_winrm_admin",
+        "actor_id": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "source_id": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "target_id": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "method": "default",
+        "budget": 6,
+        "horizon": "24h",
+        "boundary": "intra_forest",
+        "scope": "scenario-seamless-host-to-dc",
+        "auth_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "resource_context": null,
+        "policy_id": "week3-seamless-bounded-retry"
+      },
+      "generated_lookup_key_digest": "sha256:83ab0ec879987659a24f6d2f6714661c3e42cd8637b8fb926bdbbefe0bfbfa3f",
+      "conditioning_previous_successes": [
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:ctx-03bc3d0fdb3135eed4c4e1c79c0d58e802f1077d15e47199d393fc8645c407fe:intra_forest:1.0.0",
+        "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-2a4ff4cc92b8dc6e8f2c70da5d2827a99bcc7d24d3a03ff2c659b6ce7041d507:intra_forest:1.0.0",
+        "scenario_reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:ctx-ba451e0ae1d8da75e9a6a674214793fcfaa48905a7b050c695d7710a2d3f99a6:intra_forest:1.0.0",
+        "acquire_reset_identity:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:ctx-9da0dc7bb6a4a8503b316447118b5d58718f02b0a618ed4a70eec2d740503278:intra_forest:1.0.0"
+      ],
+      "historical_ordered_prefix": [
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-4131:S-1-5-21-1271839998-3495686680-2211690266-1766:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "reset_password:S-1-5-21-1271839998-3495686680-2211690266-1766:S-1-5-21-1271839998-3495686680-2211690266-2014:default:intra_forest:1.0.0",
+        "acquire_ticket:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0",
+        "remote_exec_winrm:S-1-5-21-1271839998-3495686680-2211690266-2014:S-1-5-21-1271839998-3495686680-2211690266-1000:default:intra_forest:1.0.0"
+      ],
+      "historical_outcome_action_id": "action_winrm_badblood_ollie",
+      "context": {
+        "actor_capability": "controlled foothold for first reset; prior successful reset-derived usable identity and scoped passive membership thereafter",
+        "target_class": "Computer",
+        "method_policy": "default preserves the historical abstraction; reset/API and WinRM mechanism are frozen by #181, not inferred from names",
+        "retry_policy": {
+          "policy_id": "week3-seamless-bounded-retry",
+          "version": "1.0.0",
+          "operational_horizon": "24h",
+          "scope": "Hai query SEAMLESS scenario 1.1.0 được khai báo trong phiếu A/B; không đổi graph, facts, routes hoặc success predicates.",
+          "by_mechanism": {
+            "reset_password": {
+              "max_attempts": 3,
+              "deadline_minutes": 15
+            },
+            "acquire_ticket": {
+              "max_attempts": 3,
+              "deadline_minutes": 10
+            },
+            "remote_exec_winrm": {
+              "max_attempts": 3,
+              "deadline_minutes": 30
+            }
+          },
+          "outcome_semantics": "Hoàn tất success event của bước trong thời hạn tính từ lần thử đầu tiên, với tối đa 3 lần thử tổng cộng. Bước không hoàn tất trong hạn là thất bại dù campaign còn thời gian. q_i conditioning trên foothold, scenario và toàn bộ các bước trước đã thành công.",
+          "uncertainty_basis": "Bất định xử lý/thực thi còn lại sau retry; không đếm lại prerequisite đã conditioning true. Khoảng số là nhận định kịch bản chưa hiệu chuẩn, không là tần suất đo hoặc khoảng tin cậy thống kê.",
+          "adopted_at": "2026-10-02T14:05:23+07:00",
+          "confirmation_record": "shared-review-confirmation.json",
+          "source": "../../seamless-parameter-basis-proposal.md",
+          "implementation_boundary": "Chính sách cho câu hỏi chấm. Engine hiện không mô phỏng retry hoặc timeout; nhân các q_i đã được điều kiện hóa theo chính sách này."
+        },
+        "event_execution_policy": {
+          "max_attempts": 3,
+          "deadline_minutes": 30
+        },
+        "target_population": "SEAMLESS v1 declared scenario only",
+        "control_scope": "same accepted #181 actor/source/target and authentication_context; no imported recovered-password or RBCD resource",
+        "resource_context": null
+      },
+      "evidence_class": "scenario_assumption",
+      "evidence_references": [
+        "https://learn.microsoft.com/en-us/windows/win32/winrm/quotas"
+      ],
+      "rationale": "Propose retaining the unchanged historical interval only for this exact generated identity and ordered history. The accepted #181 bridge maps these event predicates and structural sources. B must additionally accept the #246 context hash, authentication context, resource absence, retry policy and full key; implementation approval of #254 did not accept this equivalence.",
+      "non_applicability": [
+        "any generated key field or previous-success identity mismatch",
+        "different retry/deadline/budget/horizon",
+        "different actor/source/target or snapshot",
+        "AS-REP, TGS recovery, RBCD or transport-unspecified host execution"
+      ],
+      "review_reference": "docs/research/ratings/likelihood-v1/README.md",
+      "reviewer": "nairyuuu",
+      "review_disposition": "pending"
+    }
+  ]
+}

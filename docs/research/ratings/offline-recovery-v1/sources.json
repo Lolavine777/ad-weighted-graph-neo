@@ -1,0 +1,110 @@
+{
+  "schema_version": "offline-recovery-sources/1.0.0",
+  "accessed_at": "2026-10-13",
+  "guessing_reference": {
+    "source_id": "mazurek-ccs2013-table6-public",
+    "title": "Measuring Password Guessability for an Entire University",
+    "url": "https://pdl.cmu.edu/PDL-FTP/associated/ccs2013-real-passwords.pdf",
+    "locator": "Section 5.1; Table 6, printed page 181 / PDF page 10",
+    "attacker": "public / limited-knowledge; modified Weir algorithm; no in-organization password training",
+    "reported_guess_unit": "paper-reported algorithm guess number; equivalence to delivered distinct verifier work is an explicit model assumption",
+    "source_policy": "minimum 8 characters, four character classes and dictionary check; MTcomp8 has a stronger dictionary check",
+    "rounding_half_width": "1/2000",
+    "rows": [
+      {
+        "population": "CMUactive",
+        "held_out_n": 25459,
+        "points": [
+          {
+            "guesses": 1000000,
+            "reported_fraction": "1/1000"
+          },
+          {
+            "guesses": 1000000000,
+            "reported_fraction": "11/250"
+          },
+          {
+            "guesses": 1000000000000,
+            "reported_fraction": "27/100"
+          }
+        ]
+      },
+      {
+        "population": "MTsim",
+        "held_out_n": 1000,
+        "points": [
+          {
+            "guesses": 1000000,
+            "reported_fraction": "1/500"
+          },
+          {
+            "guesses": 1000000000,
+            "reported_fraction": "63/1000"
+          },
+          {
+            "guesses": 1000000000000,
+            "reported_fraction": "61/200"
+          }
+        ]
+      },
+      {
+        "population": "MTcomp8",
+        "held_out_n": 1000,
+        "points": [
+          {
+            "guesses": 1000000,
+            "reported_fraction": "0"
+          },
+          {
+            "guesses": 1000000000,
+            "reported_fraction": "37/1000"
+          },
+          {
+            "guesses": 1000000000000,
+            "reported_fraction": "263/1000"
+          }
+        ]
+      }
+    ],
+    "supports": "Aggregate source-population rank anchors and sampling/selection distinctions; not a SEAMLESS or service-account probability.",
+    "excluded_rows": "Knowledgeable attacker, plaintext-leak subsets and already-cracked subsets are not used. The 0.05 percentage-point allowance handles printed rounding only, not sampling/transport uncertainty."
+  },
+  "supporting_sources": [
+    {
+      "id": "ur-2015-guessability",
+      "url": "https://www.usenix.org/system/files/conference/usenixsecurity15/sec15-paper-ur.pdf",
+      "locator": "Sections 3.3, 4.2 and 4.3",
+      "supports": "Guessing strategy/configuration and candidate generation cost affect rank and delivered work; no numeric endpoints transferred from this paper."
+    },
+    {
+      "id": "microsoft-kerberoast-2024",
+      "url": "https://www.microsoft.com/en-us/security/blog/2024/10/11/microsofts-guidance-to-help-mitigate-kerberoasting/",
+      "locator": "Recommendations: long randomly generated service passwords; AES plus strong passwords",
+      "supports": "Separate manually set service passwords from generated passwords; 14 characters is a recommendation. Neither a 94-symbol uniform generator nor a 25–50% manual mixture weight is asserted by Microsoft."
+    },
+    {
+      "id": "hashcat-modes",
+      "url": "https://hashcat.net/wiki/doku.php?id=example_hashes",
+      "locator": "Modes 18200 and 13100",
+      "supports": "AS-REP etype23 and TGS etype23 are separate formats/modes; no throughput or success percentage."
+    },
+    {
+      "id": "rfc4757",
+      "url": "https://www.rfc-editor.org/rfc/rfc4757",
+      "locator": "Sections 2, 3 and 5",
+      "supports": "RC4-HMAC password/key and encrypted-material verification semantics, not rank mass or performance."
+    },
+    {
+      "id": "rfc3962",
+      "url": "https://www.rfc-editor.org/rfc/rfc3962",
+      "locator": "Section 4",
+      "supports": "AES string-to-key includes iteration/salt parameters; RC4 work envelope cannot be transferred to AES."
+    },
+    {
+      "id": "ptsecurity-2020",
+      "url": "https://global.ptsecurity.com/en/research/analytics/internal-pentests-2020/",
+      "locator": "Kerberoasting result reported per company",
+      "supports": "Exclusion example: company-level prevalence/success is not per-account bounded recovery probability; no numerical value used."
+    }
+  ]
+}

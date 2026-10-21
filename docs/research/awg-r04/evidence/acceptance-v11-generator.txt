@@ -1,0 +1,53 @@
+"""Append a compact, source-attested acceptance manifest; never rewrite history."""
+import argparse
+import copy
+import hashlib
+import json
+import runpy
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[4]
+sys.path.insert(0, str(ROOT))
+from scripts.research.week4_acceptance_runner import compute_digest, semantic_payload
+
+p = argparse.ArgumentParser(description=__doc__)
+p.add_argument('--native', type=Path, required=True)
+p.add_argument('--output', type=Path, required=True)
+a = p.parse_args()
+if a.output.exists():
+    raise ValueError('Preserve published manifest; choose a successor, never overwrite')
+raw = a.native.read_bytes()
+native = json.loads(raw)
+assert native['summary']['pass_count'] == 36
+assert native['summary']['unexpected_failure_count'] == 0
+cli = next(c for c in native['cases'] if c['case_id'] == 'W4-CLI-PACKAGE')
+assert cli['actual']['clean_tracked_source'] is True
+normalize = runpy.run_path(str(ROOT / 'tests/test_week4_acceptance_manifest.py'))[
+    'normalize_prerequisite_observation'
+]
+frozen = ROOT / 'reports/research/week4-maintainer-acceptance-cases-v3.json'
+assert normalize(semantic_payload(native)) == normalize(json.loads(frozen.read_text()))
+compact = copy.deepcopy(native)
+for case in compact['cases']:
+    if 'evidence' in case and case['case_id'] != 'W4-K-OVERLAP':
+        case['evidence_digest'] = compute_digest(case.pop('evidence'))
+assert semantic_payload(compact) == semantic_payload(native)
+previous = ROOT / 'reports/research/week4-guided-exploration-acceptance-manifest-v10.json'
+digest = lambda b: 'sha256:' + hashlib.sha256(b).hexdigest()
+compact['execution']['previous_acceptance_manifest'] = {
+    'path': previous.relative_to(ROOT).as_posix(), 'sha256': digest(previous.read_bytes())
+}
+compact['execution']['evidence_projection'] = {
+    'policy': 'Full K-overlap evidence retained; other case evidence replaced only by exact evidence_digest',
+    'full_local_capture': {'reference': str(a.native), 'sha256': digest(raw), 'bytes': len(raw)},
+    'frozen_cases': {'path': frozen.relative_to(ROOT).as_posix(), 'sha256': digest(frozen.read_bytes())},
+    'semantic_payload_equal_to_full_capture': True,
+    'normalized_semantic_payload_equal_to_frozen_v3': True,
+    'only_environment_normalization': 'Existing normalize_prerequisite_observation; no outcome or oracle changes',
+    'generator_sha256': digest(Path(__file__).read_bytes()),
+}
+a.output.parent.mkdir(parents=True, exist_ok=True)
+a.output.write_text(json.dumps(compact, ensure_ascii=False, sort_keys=True, indent=2)+'\n')
+print(json.dumps({'bytes':a.output.stat().st_size, 'sha256':digest(a.output.read_bytes()),
+                  'summary':compact['summary'], 'semantic_equality':True}))

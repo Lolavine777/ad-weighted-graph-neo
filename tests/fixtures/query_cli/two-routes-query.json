@@ -1,0 +1,107 @@
+{
+  "initial_actor": "Alice",
+  "initial_state": {
+    "control": [
+      "Alice"
+    ]
+  },
+  "target_goal": {
+    "target": "Host",
+    "required_state": {
+      "admin_control": [
+        "Host"
+      ]
+    }
+  },
+  "runtime_facts": [
+    {
+      "predicate": "admin_channel",
+      "subject": "Alice",
+      "target": "Host",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "Alice",
+      "target": "Host",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Giả định synthetic explicit cho Alice dùng AdminTo trực tiếp.",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "security_group",
+      "subject": "Alice",
+      "target": "Admins",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+      "evidence_ref": "bh-admin"
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "Alice",
+      "target": "Admins",
+      "value": true,
+      "origin": "declared_assumption",
+      "scope": "two-routes:fixed-snapshot-window",
+      "rationale": "Giả định synthetic explicit cho Nhánh thay thế dùng membership token usable.",
+      "evidence_ref": "bh-admin"
+    }
+  ],
+  "target": "Host",
+  "aliases": {
+    "Alice": "S-1-5-21-1000-2000-3000-1101",
+    "Bob": "S-1-5-21-1000-2000-3000-1102",
+    "Helpdesk": "S-1-5-21-1000-2000-3000-2101",
+    "Operators": "S-1-5-21-1000-2000-3000-2102",
+    "Admins": "S-1-5-21-1000-2000-3000-2103",
+    "Host": "10000000-0000-4000-8000-000000000002",
+    "OtherHost": "10000000-0000-4000-8000-000000000003"
+  },
+  "scenario_reference": "w4-two-routes-exact",
+  "budget": {
+    "max_paths": 1000,
+    "max_steps": 12,
+    "max_expansions": 100000
+  },
+  "allowed_techniques": [
+    "obtain_admin_execution_on_host",
+    "propagate_group_entitlement"
+  ],
+  "action_bindings": [
+    [
+      [
+        "obtain_admin_execution_on_host",
+        "Alice",
+        "Alice",
+        "Host"
+      ],
+      "action_direct_admin"
+    ],
+    [
+      [
+        "propagate_group_entitlement",
+        "Alice",
+        "Alice",
+        "Admins"
+      ],
+      "action_member_admins"
+    ],
+    [
+      [
+        "obtain_admin_execution_on_host",
+        "Alice",
+        "Admins",
+        "Host"
+      ],
+      "action_inherited_admin"
+    ]
+  ]
+}

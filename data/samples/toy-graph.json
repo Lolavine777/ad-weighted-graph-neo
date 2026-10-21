@@ -1,0 +1,174 @@
+{
+  "metadata": {
+    "synthetic": true,
+    "contract_version": "1.0.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "created_at": "2026-09-21T00:00:00Z",
+    "code_version": "synthetic-fixture/1.0",
+    "description": "Invented graph topology for configuration tests, not AD evidence."
+  },
+  "assessments": [],
+  "nodes": [
+    {
+      "id": "10000000-0000-4000-8000-000000000001",
+      "kind": "Computer",
+      "label": "SYNTHETIC-PC",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true,
+      "admincount": 0,
+      "distinguishedname": "CN=SYNTHETIC-PC,OU=Computers,DC=example,DC=test"
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-USER",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true,
+      "admincount": false,
+      "distinguishedname": "CN=SYNTHETIC-USER,OU=Users,DC=example,DC=test"
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-512",
+      "kind": "Group",
+      "label": "SYNTHETIC-TARGET",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "admincount": 1,
+      "distinguishedname": "CN=SYNTHETIC-TARGET,OU=Groups,DC=example,DC=test"
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-ISOLATED",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": false
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000001",
+      "kind": "Domain",
+      "label": "ALPHA.EXAMPLE",
+      "domain": "ALPHA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "20000000-0000-4000-8000-000000000002",
+      "kind": "Domain",
+      "label": "BETA.EXAMPLE",
+      "domain": "BETA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "domain:20000000-0000-4000-8000-000000000001:S-1-5-32-544",
+      "kind": "Group",
+      "label": "ALPHA-ADMINISTRATORS",
+      "domain": "ALPHA.EXAMPLE",
+      "is_boundary": false
+    },
+    {
+      "id": "domain:20000000-0000-4000-8000-000000000002:S-1-5-32-544",
+      "kind": "Group",
+      "label": "BETA-ADMINISTRATORS",
+      "domain": "BETA.EXAMPLE",
+      "is_boundary": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:18ec678f5efb6262c332dc248dd33a68af799b3d30494bff2eee504d71f8ed03",
+      "source": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "HasSession",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://toy-graph.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "session-1",
+          "attribute": "Sessions[]"
+        }
+      ]
+    },
+    {
+      "id": "sha256:dc95e8a04f6093fdabbb42eba0532ac13dd7b297078fce8d3b60c62d966c4b60",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://toy-graph.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "membership-1",
+          "attribute": "member"
+        },
+        {
+          "raw_file": "synthetic://toy-graph-secondary.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:05:00Z",
+          "evidence_type": "positive",
+          "record_id": "membership-duplicate-1",
+          "attribute": "member"
+        }
+      ]
+    },
+    {
+      "id": "sha256:471092492f59bece8eec52226d171979595cbd2a554280bc396097e483ffb327",
+      "source": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "kind": "GenericAll",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://toy-graph.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "ace-1",
+          "attribute": "nTSecurityDescriptor"
+        }
+      ]
+    },
+    {
+      "id": "sha256:c2afe9fa9c19b00afeb8fbc7ab808f6a17de8aab802960f34e4d0363743c39aa",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "domain:20000000-0000-4000-8000-000000000001:S-1-5-32-544",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://toy-graph.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "synthetic:4",
+          "attribute": "member"
+        }
+      ]
+    },
+    {
+      "id": "sha256:733bfd7e61f49db641eeb8b78650d92676fe1bbd9a881457f637f974cfc3d718",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "domain:20000000-0000-4000-8000-000000000002:S-1-5-32-544",
+      "kind": "MemberOf",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://toy-graph.json",
+          "collector": "synthetic-fixture/1.0",
+          "timestamp": "2026-09-15T00:00:00Z",
+          "evidence_type": "positive",
+          "record_id": "synthetic:5",
+          "attribute": "member"
+        }
+      ]
+    }
+  ]
+}

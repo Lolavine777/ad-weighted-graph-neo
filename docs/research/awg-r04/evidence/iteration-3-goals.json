@@ -1,0 +1,542 @@
+{
+  "schema_version": "awg-r04-goal-validation/1.0.0",
+  "baseline_commit": "7cb7e7245318ee82ac6d0f9a64d6949608f6e93c",
+  "source_state": "intentional working-tree implementation; exact modified/new source bytes pinned below",
+  "source_sha256": {
+    "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+    "docs/research/public-rating-coverage.schema.json": "sha256:d6b620810420015ba8ea5f82d2d2f40b3e63f8596267ae1854e15929582a0aa9",
+    "docs/research/target-manifest.schema.json": "sha256:002da403bc1f7b0c185724c0b4687b4ea3a5dd0f016a7949e644283c9e16eff9",
+    "scripts/research/compare_identity_goals.py": "sha256:f345c0cdaf252c028b19c64ab79371c1f05331c8cc6609d10567902386d4c02b",
+    "scripts/research/run_source_goal_batch_pilot.py": "sha256:e626d65ae5766fd754b4b5c98d5934ba05edd0839c34093e61a78c5a8e84b362",
+    "scripts/research/source_goal_batch.py": "sha256:e94c2d250a25ae8f2f092fe2549fe82b784d7f257cccb1d071543560504bb9c8",
+    "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+    "src/engine/batch.py": "sha256:bc50cca87ef2a2b6e7b6626f102237b4e18ea3cd28f25e585dbcba1715d9e66a",
+    "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+    "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+    "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+    "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+    "tests/test_identity_entitlement_goal.py": "sha256:3a53a726cab8cc4f31349b9bb2c1c445f60fe88a9a7001c22ad869ec86429e8c"
+  },
+  "tests": {
+    "public_goal": {
+      "tests": 25,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 6.651,
+      "sha256": "sha256:fbf47b17507fd1075cec564eac489bb1a48d8c4f1d08d0ac2ce5392193f72c24"
+    },
+    "integration": {
+      "tests": 177,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 38.982,
+      "sha256": "sha256:9c4825885abd971abcd1994f9cff87c040b3895f077eb9127afe7b68ad333987"
+    },
+    "broader_selected": {
+      "tests": 434,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 54.381,
+      "sha256": "sha256:9379559a28c461ef5a5583296c06359cbb8c41a1a195d074084c672867038e89"
+    }
+  },
+  "f1": {
+    "report_sha256": "sha256:3271cc267f023e76b3763d2bc6ef464b06e72a0c7dc650f37601dfe7a4b52412",
+    "summary": {
+      "alternatives_scope": "Identical manually grounded finite actions; no production grounding, no calibrated C/P/I, AND-OR is reachability only.",
+      "group_count": 12,
+      "mismatches": [],
+      "variant_count": 78
+    }
+  },
+  "full_snapshot_pilot": {
+    "allowed_techniques": [
+      "activate_recovered_identity",
+      "propagate_group_entitlement",
+      "obtain_admin_execution_on_host",
+      "scenario_winrm_admin"
+    ],
+    "caps": {
+      "max_expansions": 100,
+      "max_paths": 10,
+      "max_steps": 6
+    },
+    "evidence_only": {
+      "summary": {
+        "declared_cells": 15,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 15,
+        "likelihood_rated_cells": 0,
+        "not_run_cells": [],
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 1,
+        "status_counts": {
+          "complete_success": 1,
+          "indeterminate": 11,
+          "unsupported_source": 3
+        },
+        "successful_cells": 1,
+        "successful_sources": 1,
+        "supported_sources": 4,
+        "total_sources": 5,
+        "unsupported_sources": 1
+      }
+    },
+    "goal_ids": [
+      "goal-seamless-da-entitlement-v2",
+      "goal-seamless-ea-entitlement-v2",
+      "goal-seamless-dc-admin-v2"
+    ],
+    "graph_edges": 56367,
+    "graph_nodes": 3370,
+    "graph_scope": "full manifest-verified snapshot",
+    "kinds": [
+      "User",
+      "User",
+      "Computer",
+      "Computer",
+      "Group"
+    ],
+    "limitations": [
+      "Pilot source set only",
+      "Four declared techniques",
+      "Caps may truncate",
+      "Scenario assumptions are predicted outcomes, not observations",
+      "No production numeric adoption, full-source exposure, scalability or Top-K claim"
+    ],
+    "numeric_adoption": "none; no proposed registries loaded",
+    "profiles": [
+      "user_leaked_password",
+      "user_usable_identity",
+      "computer_control_admin",
+      "computer_control_user",
+      "unsupported"
+    ],
+    "raw_locators": {
+      "C0": "#/computers/0",
+      "G_DA": "#/groups/40",
+      "V_A": "#/users/1700"
+    },
+    "raw_manifest_digest": "sha256:bcba779c6b18e0c5fe9e04e8684195034aad5acf30017e4d068816438fb3c66b",
+    "raw_verified_before_and_after": true,
+    "request_digest": "sha256:7166356b8192fc500f8cadf5fa41a8f1f9b203b5bc3f2f402e27e75ff1bc3238",
+    "revision": "7cb7e7245318ee82ac6d0f9a64d6949608f6e93c",
+    "runtime": {
+      "evidence_only_seconds": 6.863283196999987,
+      "process_peak_rss_bytes": 526745600,
+      "python": "3.14.8",
+      "scenario_seconds": 9.398651457000028,
+      "total_seconds": 70.131082128
+    },
+    "scenario": {
+      "rows": [
+        {
+          "cells": {
+            "goal-seamless-da-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin-v2": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": 0.0,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "computer-admin"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin-v2": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 2,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "indeterminate",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "computer-user"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin-v2": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-ea-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 0,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "unsupported_source",
+              "truncated": false,
+              "truncation_reason": null
+            }
+          },
+          "source_id": "group-unsupported"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 19,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin-v2": {
+              "checkpoint_reached": true,
+              "expansions": 100,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_success",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            },
+            "goal-seamless-ea-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 100,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_incomplete",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            }
+          },
+          "source_id": "user-identity"
+        },
+        {
+          "cells": {
+            "goal-seamless-da-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 30,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "complete_success",
+              "truncated": false,
+              "truncation_reason": null
+            },
+            "goal-seamless-dc-admin-v2": {
+              "checkpoint_reached": true,
+              "expansions": 100,
+              "final_goal_reached": true,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_success",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            },
+            "goal-seamless-ea-entitlement-v2": {
+              "checkpoint_reached": false,
+              "expansions": 100,
+              "final_goal_reached": false,
+              "likelihood_status": "unrated",
+              "min_effort": null,
+              "status": "truncated_incomplete",
+              "truncated": true,
+              "truncation_reason": "expansion_limit_reached"
+            }
+          },
+          "source_id": "user-password"
+        }
+      ],
+      "summary": {
+        "declared_cells": 15,
+        "effort_rated_cells": 1,
+        "evaluated_cells": 15,
+        "likelihood_rated_cells": 0,
+        "not_run_cells": [],
+        "policy": "min_effort_impact_pareto",
+        "sources_reaching_tier_0": 3,
+        "status_counts": {
+          "complete_success": 3,
+          "indeterminate": 5,
+          "truncated_incomplete": 2,
+          "truncated_success": 2,
+          "unsupported_source": 3
+        },
+        "successful_cells": 5,
+        "successful_sources": 3,
+        "supported_sources": 4,
+        "total_sources": 5,
+        "unsupported_sources": 1
+      }
+    },
+    "scope_digest": "sha256:15577b9b923beab1c7ddd5d1ed2bdbe4c19ecd53e5e1c5cb8e13c743978ffaf0",
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+      "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+      "docs/research/target-manifest.schema.json": "sha256:002da403bc1f7b0c185724c0b4687b4ea3a5dd0f016a7949e644283c9e16eff9",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:e94c2d250a25ae8f2f092fe2549fe82b784d7f257cccb1d071543560504bb9c8",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:bc50cca87ef2a2b6e7b6626f102237b4e18ea3cd28f25e585dbcba1715d9e66a",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+      "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:8a3a4fd663195116aed2b236c7d3f26a20c8b0073f1bc27dac5d40365d55bf9c",
+      "src/engine/remediation.py": "sha256:b6aef7caac73161acbe80c25f9ffd320f4c250fce52200f414ca27f51e7dff75",
+      "src/engine/remediation_runner.py": "sha256:1d6bcb594465a8c2992095e37b4c6363f6bae10cfa4c1ee2f76ba23f026ce442",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:751530033903a12c47d715c6f82ebed7b2c45ca6e932f7ea9490cf3886cca903",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "source_scope": "five independently compromised profile scenarios; not all sources",
+    "version": "issue275-pilot-evidence/1.0.0"
+  },
+  "full_snapshot_goal_comparison": {
+    "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812",
+    "snapshot_file_sha256": "sha256:73f4380f938bf70338661c487e3c6467c4b012be1519995f4419a1143a45a9a8",
+    "source_pins": {
+      "configs/attack_semantics.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+      "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+      "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+      "docs/research/batch-query-request.schema.json": "sha256:d57417650b0b779aab303778ab7a33626542261e707a7d6b3c6cc8d13ec924cd",
+      "docs/research/batch-query-result.schema.json": "sha256:8c7897436dddd9db880c433f5d857fa253dba63092a44f2bea7df82fe3a00606",
+      "docs/research/target-manifest.schema.json": "sha256:002da403bc1f7b0c185724c0b4687b4ea3a5dd0f016a7949e644283c9e16eff9",
+      "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+      "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+      "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+      "scripts/research/source_goal_batch.py": "sha256:e94c2d250a25ae8f2f092fe2549fe82b784d7f257cccb1d071543560504bb9c8",
+      "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+      "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+      "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+      "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+      "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+      "src/engine/batch.py": "sha256:bc50cca87ef2a2b6e7b6626f102237b4e18ea3cd28f25e585dbcba1715d9e66a",
+      "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+      "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+      "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+      "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+      "src/engine/query.py": "sha256:d1a4e549f73bcb5e612c280a50e3491cb07589eb59973180864941c366299798",
+      "src/engine/query_cli.py": "sha256:bae5c2f2afd3815f9af493f059c88bd8549d148a133938fd73b8c7fae485ba49",
+      "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+      "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+      "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+      "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+      "src/engine/ranking/effort_registry.py": "sha256:163640476cc7eeb03d3583a720827a3e9885e5b1ac8d1b94da53c63037607efb",
+      "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+      "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+      "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+      "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+      "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+      "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+      "src/engine/ranking/resolution_service.py": "sha256:e00500d77136819983906c71030940845630b7840b48b47682064e6f9fa20a7f",
+      "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+      "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+      "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+      "src/engine/remediation.py": "sha256:b6aef7caac73161acbe80c25f9ffd320f4c250fce52200f414ca27f51e7dff75",
+      "src/engine/remediation_runner.py": "sha256:1d6bcb594465a8c2992095e37b4c6363f6bae10cfa4c1ee2f76ba23f026ce442",
+      "src/engine/search.py": "sha256:ce5cf5956bf169a6d2da6d13fec6af8bed07558f432dfbcc3adc151d2d533fa8",
+      "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+      "src/engine/semantics/catalog.py": "sha256:1b15ead2aafe68d8158b16dc058f42f585ac1c7b223ffb31e3fafc45be5fbde9",
+      "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+      "src/engine/semantics/evaluator.py": "sha256:751530033903a12c47d715c6f82ebed7b2c45ca6e932f7ea9490cf3886cca903",
+      "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+      "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+      "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+      "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+      "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+      "src/engine/semantics/scenario_policy.py": "sha256:1130d596ee13c79d9339d289dab3b35213b31e1b81842deb6939e99e380777c8",
+      "src/engine/semantics/state.py": "sha256:2d3d063b91a20a832fa1b15672fdb63332fa4df68d33ddf10e0db9a6efed6061",
+      "src/engine/semantics/transitions.py": "sha256:449d238519fa4dc13cad83d50c9226b1f6b18f7dd76c331b460bab047450dd10",
+      "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+      "src/engine/top_k.py": "sha256:5d5cdb6179f3d34dbe0025bab182d7b8a4b73d689cdbaa81626b8a0e0ad03a0b",
+      "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+      "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+      "src/parser/adapters/bloodhound_v3.py": "sha256:68b322116517215ac7f8e6838cc0e1362d5013875971e5888ecd765d78628b2a",
+      "src/parser/builder.py": "sha256:2a62178f5c5136994cf88084c7188f16c025a257c2dd33e0de7a3624229ae5d5",
+      "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+      "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+      "src/parser/inference.py": "sha256:0eacfcee8b70401e74a7715f0e67ecd40f59312b76d9fd3613117e313252d896",
+      "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+      "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+      "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+      "src/parser/reconciliation.py": "sha256:53792e88875a966e1eaf0ff0aa6c6cf365d3c8093d7ab152fdc8d570b797dbba",
+      "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+      "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+      "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+      "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+    },
+    "eligible_input_pairs": 5,
+    "selected_reset_edge_id": "sha256:55e1f890a4673f5022e18ec380bb91dbdb7b454fc245a2ac290ad9ff0c9fa659",
+    "runtime_gates": "seven declared positive assumptions",
+    "initial_state": "U already usable at declared Computer context; V is not initially usable",
+    "expected": {
+      "original_actor": false,
+      "any_usable_identity": true
+    },
+    "actual": {
+      "original_actor": {
+        "goal_reached": false,
+        "status": "truncated",
+        "complete": false,
+        "truncated": true,
+        "no_path_proven": false,
+        "expansions": 10000,
+        "seconds": 1.5714970459999904,
+        "programs": []
+      },
+      "any_usable_identity": {
+        "goal_reached": true,
+        "status": "success",
+        "complete": true,
+        "truncated": false,
+        "no_path_proven": false,
+        "expansions": 7490,
+        "seconds": 0.5091392799999994,
+        "programs": [
+          [
+            "scenario_reset_password",
+            "acquire_reset_identity",
+            "propagate_group_entitlement"
+          ]
+        ]
+      }
+    },
+    "limitations": [
+      "One selected source/goal",
+      "Three techniques",
+      "Explicit scenario gates",
+      "No new numeric basis",
+      "No global optimality or domain-wide exposure claim"
+    ]
+  },
+  "commands": [
+    "python -m pytest -q tests/test_identity_entitlement_goal.py",
+    "python scripts/research/awg_r03_validation.py --repo . --evidence-root FROZEN_R02 --output NEW_DIR --mode correctness",
+    "python -m scripts.research.run_source_goal_batch_pilot --raw-dir data/raw/SEAMLESS --target-manifest configs/targets/seamless-v2.json --output-dir NEW_DIR --sanitized-report NEW_REPORT.json",
+    "python -m scripts.research.compare_identity_goals --snapshot SNAPSHOT.json --output-dir NEW_DIR"
+  ],
+  "limitations": [
+    "Selected suites, not a whole-repository passing claim.",
+    "Full pilot timing includes setup and ran with other validation; no comparative speedup claim.",
+    "Legacy full-snapshot goal run truncated at 10000 expansions; not an unreachable proof.",
+    "Three-step full-snapshot witness depends on seven explicit runtime assumptions, not observed AD execution.",
+    "No new numeric C/P/I basis adopted; legacy impact is not inherited by new goal.",
+    "FCP/HasSession composition and fresh BloodHound comparator remain open."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "allowed_techniques": [
+    "scenario_reset_password",
+    "acquire_reset_identity",
+    "propagate_group_entitlement"
+  ],
+  "assumptions": [
+    {
+      "predicate": "password_policy_accepts",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "predicate": "directory_write_allowed",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "predicate": "network_rpc_reachable",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "value": true
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "predicate": "authentication_accepted",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "value": true
+    },
+    {
+      "predicate": "security_group",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    },
+    {
+      "predicate": "membership_usable",
+      "provenance_reference": "scenario://awg-r04/identity-goal",
+      "rationale": "Declared experimental gate, not observed evidence",
+      "scope": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "subject": "S-1-5-21-1271839998-3495686680-2211690266-2799",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "value": true
+    }
+  ],
+  "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+  "budget": {
+    "max_expansions": 10000,
+    "max_paths": 10,
+    "max_steps": 4
+  },
+  "initial_actor": "S-1-5-21-1271839998-3495686680-2211690266-1395",
+  "initial_state": {
+    "control": [
+      "S-1-5-21-1271839998-3495686680-2211690266-1395"
+    ],
+    "usable_identity": [
+      [
+        "S-1-5-21-1271839998-3495686680-2211690266-1395",
+        "S-1-5-21-1271839998-3495686680-2211690266-1000"
+      ]
+    ]
+  },
+  "scenario_reference": "r04-full-snapshot-identity-goal",
+  "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+  "target_goal": {
+    "kind": "usable_identity_entitlement",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+  }
+}

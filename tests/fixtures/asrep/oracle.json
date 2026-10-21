@@ -1,0 +1,64 @@
+{
+  "source": "#218 section 3, semantic mapping proposed for A review",
+  "program": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ],
+  "actors": [
+    "10000000-0000-4000-8000-000000000001",
+    "10000000-0000-4000-8000-000000000001",
+    "S-1-5-21-1000-2000-3000-1700",
+    "S-1-5-21-1000-2000-3000-1700",
+    "S-1-5-21-1000-2000-3000-1700"
+  ],
+  "states": [
+    [],
+    [
+      "material"
+    ],
+    [
+      "material",
+      "secret"
+    ],
+    [
+      "material",
+      "secret",
+      "usable"
+    ],
+    [
+      "material",
+      "secret",
+      "usable",
+      "member"
+    ],
+    [
+      "material",
+      "secret",
+      "usable",
+      "member",
+      "admin"
+    ]
+  ],
+  "cutoffs": {
+    "dontreqpreauth": 0,
+    "network_kdc_reachable": 0,
+    "asrep_request_accepted": 0,
+    "recovery_success": 1,
+    "secret_valid": 2,
+    "authentication_accepted": 2,
+    "membership_usable": 3,
+    "admin_execution_context": 4
+  },
+  "secret_program": [
+    "activate_recovered_identity",
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ],
+  "identity_program": [
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ]
+}

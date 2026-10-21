@@ -1,0 +1,154 @@
+{
+  "version": "awg-r04-goal-guided-closeout/1",
+  "validated_clean_revision": "a846394dea000d54b66a1a9616373eef00a7cb99",
+  "final_tests": {
+    "testsuite": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "593",
+      "time": "164.733",
+      "timestamp": "2026-10-19T10:28:55.755637+03:00",
+      "hostname": "bbd922fe3368"
+    },
+    "modules": {
+      "tests.test_asrep": 51,
+      "tests.test_attack_semantics_transitions": 45,
+      "tests.test_batch_scenario_policy": 10,
+      "tests.test_computer_foothold_boundary": 18,
+      "tests.test_engine": 30,
+      "tests.test_exposure": 18,
+      "tests.test_final_cpi_effort_release": 13,
+      "tests.test_identity_entitlement_goal": 25,
+      "tests.test_machine_identity_profile": 35,
+      "tests.test_prepared_graph_binding": 12,
+      "tests.test_query_cli": 65,
+      "tests.test_rating_source_successors": 14,
+      "tests.test_rbcd": 33,
+      "tests.test_remediation_prepared_reuse": 4,
+      "tests.test_reset_effort": 21,
+      "tests.test_source_goal_batch_contract": 44,
+      "tests.test_source_goal_batch_runner": 51,
+      "tests.test_week4_acceptance_checkout_bytes": 1,
+      "tests.test_week4_acceptance_manifest": 4,
+      "tests.test_week4_acceptance_review_regressions": 10,
+      "tests.test_machine_reset_effort": 16,
+      "tests.test_defender_brief": 7,
+      "tests.test_scenario_policy_composition": 7,
+      "tests.test_top_k_search": 36,
+      "tests.test_goal_guided_search": 23
+    },
+    "selected_modules": [
+      "tests/test_asrep.py",
+      "tests/test_attack_semantics_transitions.py",
+      "tests/test_batch_scenario_policy.py",
+      "tests/test_computer_foothold_boundary.py",
+      "tests/test_engine.py",
+      "tests/test_exposure.py",
+      "tests/test_final_cpi_effort_release.py",
+      "tests/test_identity_entitlement_goal.py",
+      "tests/test_machine_identity_profile.py",
+      "tests/test_prepared_graph_binding.py",
+      "tests/test_query_cli.py",
+      "tests/test_rating_source_successors.py",
+      "tests/test_rbcd.py",
+      "tests/test_remediation_prepared_reuse.py",
+      "tests/test_reset_effort.py",
+      "tests/test_source_goal_batch_contract.py",
+      "tests/test_source_goal_batch_runner.py",
+      "tests/test_week4_acceptance_checkout_bytes.py",
+      "tests/test_week4_acceptance_manifest.py",
+      "tests/test_week4_acceptance_review_regressions.py",
+      "tests/test_machine_reset_effort.py",
+      "tests/test_defender_brief.py",
+      "tests/test_scenario_policy_composition.py",
+      "tests/test_top_k_search.py",
+      "tests/test_goal_guided_search.py"
+    ],
+    "junit_sha256": "1f0b061ca4b2650deee882565d997473eb3e3ed298a2c5b96561a5aeb45e38a3",
+    "python": "3.14.8",
+    "packages": {
+      "networkx": "3.7",
+      "pytest": "9.1.1",
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "ruff": "0.16.8"
+    }
+  },
+  "suite_scope": "593 selected checks including the23new; overlaps earlier81/23 runs; not whole-suite",
+  "byte_verification": {
+    "source_pins": 70,
+    "acceptance_pins": 127,
+    "benchmark_revision": "29e52c4c3939b278537a53b61fc021cc65829b9d",
+    "acceptance_revision": "829965b34e4e75ffc5ff927d8839edcd042b120b",
+    "acceptance_v16_sha256": "3951d543abaa704cab2c50f84363a1eba47ce29a259539e1ab9ab038cc1e97de",
+    "all_equal_current": true
+  },
+  "native_week4": {
+    "clean_source": {
+      "checkout_dirty": false,
+      "dirty_pinned_files": [],
+      "identity": "clean_commit",
+      "revision": "829965b34e4e75ffc5ff927d8839edcd042b120b"
+    },
+    "summary": {
+      "blocked_run_count": 0,
+      "known_defect_count": 0,
+      "not_executed_count": 2,
+      "pass_count": 36,
+      "pending_count": 0,
+      "total_cases": 38,
+      "unexpected_failure_count": 0
+    },
+    "determinism": "two runs; frozen semantic digest e4f9a3f1779753650a45dbf4c671c8cf68363e100c4a9bc861850a0cb2cbbbec unchanged"
+  },
+  "checks": {
+    "ruff_check": "All checks passed!",
+    "ruff_format": "266 files already formatted",
+    "contract": "Contract and 2 synthetic fixture(s) validated.",
+    "repository_links": "docs/research/awg-r03-implementation/README.md: broken local link AWG-R03_Verification.zip",
+    "strict_source_authorities": "likelihood/scenario v14 verify_package PASS; updated source pins only, numeric/catalog/history preserved"
+  },
+  "first_attempts": "Initial native acceptance recorded default FIFO dataclass field in evidence; inactive field omitted by reporter, no frozen oracle/expected outcomes changed. All first logs retained. Earlier low-space/test-fixture attempts retained; final clean selected suite passes.",
+  "fullraw_product": {
+    "matched_2x3": {
+      "fifo_witnesses": 0,
+      "guided_witnesses": 2,
+      "guided_C": [
+        1,
+        1
+      ],
+      "native_replays": 2,
+      "same_request_and_normalized_queries": true,
+      "speedup_claim": false
+    },
+    "computer_all12": {
+      "witnesses": 4,
+      "truncated_without_witness": 8,
+      "native_replays": 4,
+      "C": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "first_witness_seconds": 30.34740187600005,
+      "expansions": 67989
+    },
+    "all_gzip_crc_size_sha256_and_native_source_pins_independently_verified": true,
+    "globally_minimum_proven": false,
+    "new_remediation_effectiveness_measurement": false
+  },
+  "jobs": "All3fullraw captures/native replays/integrity checks/acceptance/final593 selected tests complete.",
+  "publication": "Descendant adds docs/evidence only; leased feature fast-forward, no force/main/develop/parent changes.",
+  "next_action": {
+    "priority": "P0 one existing mined intervention with replay+alternative-route rediscovery and a fair defender comparison table",
+    "files": [
+      "scripts/exposure.py",
+      "src/engine/remediation_runner.py",
+      "scripts/run_bloodhound_baseline.py"
+    ],
+    "stop": "Ship reproducible demo/table rather than expand catalog or build production AND–OR; separate cut programs from source-goal reachability."
+  }
+}

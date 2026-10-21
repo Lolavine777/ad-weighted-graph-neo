@@ -1,0 +1,197 @@
+{
+  "version": "public-rating-resolution/1.1.0",
+  "mode": "automatic",
+  "policy": "synthetic_test_only",
+  "scope": {
+    "query_id": "synthetic-issue250",
+    "scenario_id": "w4-two-routes-exact",
+    "scenario_version": "1.0.0",
+    "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+    "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+    "work_boundary": "intra_forest",
+    "horizon": "24h",
+    "active_work_budget": 12,
+    "evaluation_mode": "scenario",
+    "target_goal": {
+      "goal_id": "admin",
+      "target_asset_id": "10000000-0000-4000-8000-000000000002",
+      "success_event": "admin_control_host"
+    }
+  },
+  "registries": {
+    "effort": {
+      "version": "1.0.0",
+      "sha256": "sha256:8eef140a361dd4f8023acd8b65691272d0c759dba1b03ebdddbe4081654346b5",
+      "data": [
+        {
+          "class_id": "synthetic-0",
+          "name": "Synthetic effort",
+          "description": "Algorithm test; no production numeric acceptance",
+          "t1": 3,
+          "t2": 3,
+          "review_status": "accepted",
+          "basis_category": "synthetic_test_only",
+          "review_reference": "synthetic://issue250/C",
+          "applicability": {
+            "techniques": [
+              "obtain_admin_execution_on_host"
+            ],
+            "source_ids": [
+              "S-1-5-21-1000-2000-3000-1101"
+            ],
+            "boundaries": [
+              "intra_forest"
+            ],
+            "scopes": [
+              "w4-two-routes-exact"
+            ]
+          }
+        },
+        {
+          "class_id": "synthetic-1",
+          "name": "Synthetic effort",
+          "description": "Algorithm test; no production numeric acceptance",
+          "t1": 1,
+          "t2": 2,
+          "review_status": "accepted",
+          "basis_category": "synthetic_test_only",
+          "review_reference": "synthetic://issue250/C",
+          "applicability": {
+            "techniques": [
+              "obtain_admin_execution_on_host"
+            ],
+            "source_ids": [
+              "S-1-5-21-1000-2000-3000-2103"
+            ],
+            "boundaries": [
+              "intra_forest"
+            ],
+            "scopes": [
+              "w4-two-routes-exact"
+            ]
+          }
+        }
+      ]
+    },
+    "likelihood": {
+      "version": "1.0.0",
+      "sha256": "sha256:301c89855b70446033820bbfbbc755a3a17539860c9bc2a2a8362d25d26e5153",
+      "data": [
+        {
+          "version": "1.0.0",
+          "scenario_id": "w4-two-routes-exact",
+          "scenario_version": "1.0.0",
+          "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+          "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+          "ordered_work_prefix": [
+            "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-094f05fcaede34c33cb58ec8164c44b6c4026e626f0549dd07f8fdf5c1bca9ff:intra_forest:1.0.0"
+          ],
+          "outcome_work_unit_id": "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-094f05fcaede34c33cb58ec8164c44b6c4026e626f0549dd07f8fdf5c1bca9ff:intra_forest:1.0.0",
+          "outcome_technique": "obtain_admin_execution_on_host",
+          "actor_id": "S-1-5-21-1000-2000-3000-1101",
+          "source_id": "S-1-5-21-1000-2000-3000-1101",
+          "target_id": "10000000-0000-4000-8000-000000000002",
+          "method": "AdminTo",
+          "budget": 12,
+          "horizon": "24h",
+          "boundary": "intra_forest",
+          "scope": "w4-two-routes-exact",
+          "auth_context": null,
+          "resource_context": null,
+          "policy_id": null,
+          "disposition": "rated",
+          "review_status": "accepted",
+          "lower": "1/4",
+          "upper": "1/4",
+          "basis_category": "synthetic_test_only",
+          "rationale": "Synthetic oracle",
+          "review_reference": "synthetic://issue250/P",
+          "provenance_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "version": "1.0.0",
+          "scenario_id": "w4-two-routes-exact",
+          "scenario_version": "1.0.0",
+          "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+          "foothold_node_id": "S-1-5-21-1000-2000-3000-1101",
+          "ordered_work_prefix": [
+            "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-86f7bff6fca02a088129b0d673d6fac1c90716bc0d8e0ff36df071769fe918b0:intra_forest:1.0.0"
+          ],
+          "outcome_work_unit_id": "obtain_admin_execution_on_host:S-1-5-21-1000-2000-3000-1101:10000000-0000-4000-8000-000000000002:ctx-86f7bff6fca02a088129b0d673d6fac1c90716bc0d8e0ff36df071769fe918b0:intra_forest:1.0.0",
+          "outcome_technique": "obtain_admin_execution_on_host",
+          "actor_id": "S-1-5-21-1000-2000-3000-1101",
+          "source_id": "S-1-5-21-1000-2000-3000-2103",
+          "target_id": "10000000-0000-4000-8000-000000000002",
+          "method": "AdminTo",
+          "budget": 12,
+          "horizon": "24h",
+          "boundary": "intra_forest",
+          "scope": "w4-two-routes-exact",
+          "auth_context": null,
+          "resource_context": null,
+          "policy_id": null,
+          "disposition": "rated",
+          "review_status": "accepted",
+          "lower": "3/4",
+          "upper": "3/4",
+          "basis_category": "synthetic_test_only",
+          "rationale": "Synthetic oracle",
+          "review_reference": "synthetic://issue250/P",
+          "provenance_digest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    },
+    "impact": {
+      "version": "1.0.0",
+      "sha256": "sha256:c44dc9ba138ae20d95d72ce9951b869d3d6d1dd159a30065db21033707de72eb",
+      "data": {
+        "version": "1.0.0",
+        "mappings": [
+          {
+            "mapping_id": "synthetic-equivalence",
+            "target_asset_id": "10000000-0000-4000-8000-000000000002",
+            "source_event": "synthetic_old_admin",
+            "destination_event": "admin_control_host",
+            "directionality": "directional",
+            "consequence_rating": "High",
+            "status": "reviewed",
+            "evidence_class": "synthetic_test_only",
+            "review_reference": "synthetic://issue250/I",
+            "source_release_canonical_digest": "sha256:3144726771a6b0be44c2ce7d02c32dd0445a9d97c6fe07d6ecd767ac8e209f12",
+            "applicability": {
+              "semantic_goal": {
+                "version": "semantic-goal/1.0.0",
+                "kind": "required_state",
+                "target_asset_id": "10000000-0000-4000-8000-000000000002",
+                "required_state": {
+                  "admin_control": [
+                    "10000000-0000-4000-8000-000000000002"
+                  ]
+                }
+              },
+              "goal_id": "admin",
+              "snapshot_id": "sha256:cc6b062c65d9266268673105c46c9b0ec199a17fedb70cb3ab64407361c389d3",
+              "boundary": "intra_forest",
+              "scenario_id": "w4-two-routes-exact",
+              "operational_horizon": "24h"
+            }
+          }
+        ]
+      }
+    },
+    "impact_source": {
+      "version": "1.0.0",
+      "sha256": "sha256:3144726771a6b0be44c2ce7d02c32dd0445a9d97c6fe07d6ecd767ac8e209f12",
+      "data": {
+        "target_impact_assessments": {
+          "10000000-0000-4000-8000-000000000002": {
+            "target_asset_id": "10000000-0000-4000-8000-000000000002",
+            "success_event": "synthetic_old_admin",
+            "rating_status": "rated",
+            "consequence_rating": "High"
+          }
+        }
+      }
+    }
+  }
+}

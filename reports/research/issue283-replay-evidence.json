@@ -1,0 +1,98 @@
+{
+  "finite": {
+    "direct_admin_denial": {
+      "baseline_unchanged": true,
+      "cells": [
+        {
+          "baseline_complete": true,
+          "baseline_programs": 3,
+          "goal": "host",
+          "replay": {
+            "cut": 2,
+            "retained": 1
+          },
+          "source": "alice"
+        },
+        {
+          "baseline_complete": true,
+          "baseline_programs": 1,
+          "goal": "host",
+          "replay": {
+            "retained": 1
+          },
+          "source": "bob"
+        }
+      ],
+      "rediscovery": "not_run"
+    },
+    "shared_channel": {
+      "baseline_unchanged": true,
+      "cells": [
+        {
+          "baseline_complete": true,
+          "baseline_programs": 3,
+          "goal": "host",
+          "replay": {
+            "cut": 3
+          },
+          "source": "alice"
+        },
+        {
+          "baseline_complete": true,
+          "baseline_programs": 1,
+          "goal": "host",
+          "replay": {
+            "cut": 1
+          },
+          "source": "bob"
+        }
+      ],
+      "rediscovery": "not_run"
+    },
+    "shared_membership": {
+      "baseline_unchanged": true,
+      "cells": [
+        {
+          "baseline_complete": true,
+          "baseline_programs": 3,
+          "goal": "host",
+          "replay": {
+            "cut": 2,
+            "retained": 1
+          },
+          "source": "alice"
+        },
+        {
+          "baseline_complete": true,
+          "baseline_programs": 1,
+          "goal": "host",
+          "replay": {
+            "cut": 1
+          },
+          "source": "bob"
+        }
+      ],
+      "rediscovery": "not_run"
+    }
+  },
+  "issue": 283,
+  "seamless": {
+    "case": {
+      "baseline_unchanged": true,
+      "cells": [
+        {
+          "baseline_complete": true,
+          "baseline_programs": 1,
+          "goal": "C0",
+          "replay": {
+            "cut": 1
+          },
+          "source": "declared-requester"
+        }
+      ],
+      "rediscovery": "not_run"
+    },
+    "scope": "one source, one host goal",
+    "verified_raw_files": 6
+  }
+}

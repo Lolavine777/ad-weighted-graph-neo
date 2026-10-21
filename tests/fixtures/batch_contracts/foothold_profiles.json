@@ -1,0 +1,199 @@
+{
+  "schema_version": "foothold-profiles/1.0.0",
+  "description": "Standardized test suite of valid initial foothold profiles and explicit unsupported cases.",
+  "profiles": [
+    {
+      "profile_id": "profile-user-leaked-password-bob",
+      "kind": "user_leaked_password",
+      "node_id": "S-1-5-21-1000-2000-3000-1102",
+      "node_kind": "User",
+      "initial_actor": "S-1-5-21-1000-2000-3000-1102",
+      "authentication_context": "10000000-0000-4000-8000-000000000002",
+      "is_supported": true,
+      "error_code": null,
+      "unsupported_reason": null,
+      "required_activation_technique": "activate_recovered_identity",
+      "activation_prerequisites": [
+        "actor_enabled",
+        "secret_valid",
+        "network_kdc_reachable",
+        "authentication_accepted"
+      ],
+      "provenance_reference": "foothold:declared_phishing_credential",
+      "declared_assumptions": [
+        {
+          "predicate": "secret_valid",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Leaked credential assumption"
+        },
+        {
+          "predicate": "network_kdc_reachable",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "KDC network reachability"
+        },
+        {
+          "predicate": "authentication_accepted",
+          "subject": "S-1-5-21-1000-2000-3000-1102",
+          "target": "10000000-0000-4000-8000-000000000002",
+          "value": true,
+          "rationale": "Kerberos authentication success"
+        }
+      ],
+      "description": "User Bob with a leaked password artifact; requires active activation and does not grant usable identity prior to activation.",
+      "initial_state_summary": {
+        "control": [],
+        "admin_control": [],
+        "usable_identity": [],
+        "known_identity": [
+          "S-1-5-21-1000-2000-3000-1102"
+        ],
+        "recovered_secret_count": 1,
+        "remote_command_execution": []
+      }
+    },
+    {
+      "profile_id": "profile-user-usable-identity-alice",
+      "kind": "user_usable_identity",
+      "node_id": "S-1-5-21-1000-2000-3000-1101",
+      "node_kind": "User",
+      "initial_actor": "S-1-5-21-1000-2000-3000-1101",
+      "authentication_context": "S-1-5-21-1000-2000-3000-1101",
+      "is_supported": true,
+      "error_code": null,
+      "unsupported_reason": null,
+      "required_activation_technique": null,
+      "activation_prerequisites": [],
+      "provenance_reference": "foothold:active_user_session",
+      "declared_assumptions": [],
+      "description": "User Alice with verified usable identity and control over the user principal.",
+      "initial_state_summary": {
+        "control": [
+          "S-1-5-21-1000-2000-3000-1101"
+        ],
+        "admin_control": [],
+        "usable_identity": [
+          [
+            "S-1-5-21-1000-2000-3000-1101",
+            "S-1-5-21-1000-2000-3000-1101"
+          ]
+        ],
+        "known_identity": [
+          "S-1-5-21-1000-2000-3000-1101"
+        ],
+        "recovered_secret_count": 0,
+        "remote_command_execution": []
+      }
+    },
+    {
+      "profile_id": "profile-computer-admin-host",
+      "kind": "computer_control_admin",
+      "node_id": "10000000-0000-4000-8000-000000000003",
+      "node_kind": "Computer",
+      "initial_actor": "10000000-0000-4000-8000-000000000003",
+      "authentication_context": "10000000-0000-4000-8000-000000000003",
+      "is_supported": true,
+      "error_code": null,
+      "unsupported_reason": null,
+      "required_activation_technique": null,
+      "activation_prerequisites": [],
+      "provenance_reference": "foothold:compromised_workstation",
+      "declared_assumptions": [],
+      "description": "Computer host OtherHost with local administrative/SYSTEM control; does not grant domain user identities.",
+      "initial_state_summary": {
+        "control": [
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        "admin_control": [
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        "usable_identity": [],
+        "known_identity": [],
+        "recovered_secret_count": 0,
+        "remote_command_execution": []
+      }
+    },
+    {
+      "profile_id": "profile-computer-user-host",
+      "kind": "computer_control_user",
+      "node_id": "10000000-0000-4000-8000-000000000003",
+      "node_kind": "Computer",
+      "initial_actor": "10000000-0000-4000-8000-000000000003",
+      "authentication_context": "10000000-0000-4000-8000-000000000003",
+      "is_supported": true,
+      "error_code": null,
+      "unsupported_reason": null,
+      "required_activation_technique": null,
+      "activation_prerequisites": [],
+      "provenance_reference": "foothold:low_priv_shell",
+      "declared_assumptions": [],
+      "description": "Computer host with unprivileged remote execution; does not grant admin or domain user identities.",
+      "initial_state_summary": {
+        "control": [
+          "10000000-0000-4000-8000-000000000003"
+        ],
+        "admin_control": [],
+        "usable_identity": [],
+        "known_identity": [],
+        "recovered_secret_count": 0,
+        "remote_command_execution": [
+          [
+            "10000000-0000-4000-8000-000000000003",
+            "10000000-0000-4000-8000-000000000003"
+          ]
+        ]
+      }
+    },
+    {
+      "profile_id": "profile-unsupported-group-helpdesk",
+      "kind": "unsupported",
+      "node_id": "S-1-5-21-1000-2000-3000-2101",
+      "node_kind": "Group",
+      "initial_actor": "S-1-5-21-1000-2000-3000-2101",
+      "authentication_context": "S-1-5-21-1000-2000-3000-2101",
+      "is_supported": false,
+      "error_code": "UNSUPPORTED_FOOTHOLD_KIND",
+      "unsupported_reason": "Node kind 'Group' cannot serve as an initial attack foothold. Groups are authorization objects, not execution actors or hosts.",
+      "required_activation_technique": null,
+      "activation_prerequisites": [],
+      "provenance_reference": null,
+      "declared_assumptions": [],
+      "description": "Attempted foothold on Group node, correctly rejected by policy.",
+      "initial_state_summary": {
+        "control": [],
+        "admin_control": [],
+        "usable_identity": [],
+        "known_identity": [],
+        "recovered_secret_count": 0,
+        "remote_command_execution": []
+      }
+    },
+    {
+      "profile_id": "profile-unsupported-ou-workstations",
+      "kind": "unsupported",
+      "node_id": "OU=Workstations,DC=example,DC=test",
+      "node_kind": "OU",
+      "initial_actor": "OU=Workstations,DC=example,DC=test",
+      "authentication_context": "OU=Workstations,DC=example,DC=test",
+      "is_supported": false,
+      "error_code": "UNSUPPORTED_FOOTHOLD_KIND",
+      "unsupported_reason": "Node kind 'OU' cannot serve as an initial attack foothold. OUs are structural containers, not execution actors or hosts.",
+      "required_activation_technique": null,
+      "activation_prerequisites": [],
+      "provenance_reference": null,
+      "declared_assumptions": [],
+      "description": "Attempted foothold on OU node, correctly rejected by policy.",
+      "initial_state_summary": {
+        "control": [],
+        "admin_control": [],
+        "usable_identity": [],
+        "known_identity": [],
+        "recovered_secret_count": 0,
+        "remote_command_execution": []
+      }
+    }
+  ]
+}

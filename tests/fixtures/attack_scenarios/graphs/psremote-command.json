@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "contract_version": "1.3.0",
+    "weight_profile": "unit",
+    "snapshot_id": "sha256:7d6becf54acda296ccc6f4073354bb2bb96cf6617a3c74f77ccfb11c44d8adc6",
+    "created_at": "2026-10-05T00:00:00Z",
+    "code_version": "synthetic-golden/1.0.0",
+    "synthetic": true
+  },
+  "nodes": [
+    {
+      "id": "10000000-0000-4000-8000-000000000002",
+      "kind": "Computer",
+      "label": "SYNTHETIC-Host",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "10000000-0000-4000-8000-000000000003",
+      "kind": "Computer",
+      "label": "SYNTHETIC-OtherHost",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1101",
+      "kind": "User",
+      "label": "SYNTHETIC-Alice",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-1102",
+      "kind": "User",
+      "label": "SYNTHETIC-Bob",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2101",
+      "kind": "Group",
+      "label": "SYNTHETIC-Helpdesk",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2102",
+      "kind": "Group",
+      "label": "SYNTHETIC-Operators",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    },
+    {
+      "id": "S-1-5-21-1000-2000-3000-2103",
+      "kind": "Group",
+      "label": "SYNTHETIC-Admins",
+      "domain": "EXAMPLE.TEST",
+      "is_boundary": false,
+      "enabled": true
+    }
+  ],
+  "edges": [
+    {
+      "id": "sha256:7ccf24cbf39efe558d3785e3187ad120081786f1b6c8f97ece59dbeca5ba6aa4",
+      "source": "S-1-5-21-1000-2000-3000-1101",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "kind": "CanPSRemote",
+      "weight": 1.0,
+      "provenance": [
+        {
+          "raw_file": "synthetic://golden/psremote-command",
+          "collector": "golden-fixture",
+          "timestamp": "2026-10-05T00:00:00Z",
+          "timestamp_status": "assumed",
+          "evidence_type": "positive"
+        }
+      ]
+    }
+  ],
+  "assessments": []
+}

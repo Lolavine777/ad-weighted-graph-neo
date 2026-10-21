@@ -1,0 +1,13 @@
+{
+  "evidence_class": "synthetic_test_only",
+  "basis": "Independent Week 4 Ledger E: shared auth=1, direct admin=4, inherited admin=1; membership is passive. Ordered semantic programs remain distinct.",
+  "program_efforts": {
+    "action_direct_admin": 5,
+    "action_member_admins/action_direct_admin": 5,
+    "action_member_admins/action_inherited_admin": 2
+  },
+  "best_program": "action_member_admins/action_inherited_admin",
+  "distinct_program_count": 3,
+  "boundary_effort_at_k2": 5,
+  "boundary_tie_count_at_k2": 2
+}

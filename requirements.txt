@@ -1,0 +1,3 @@
+# Runtime dependencies verified on the Python 3.14 baseline.
+networkx==3.7
+PyYAML==6.0.3

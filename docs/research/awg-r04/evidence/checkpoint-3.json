@@ -1,0 +1,71 @@
+{
+  "schema_version": "awg-r04-execution-checkpoint/1.0.0",
+  "production_source_commit": "4f009856f9071f02083f42e62de0f0608802abdd",
+  "reproducible_published_evidence": "iteration-2.json",
+  "environment_status": {
+    "execution_service": "transport_disconnected_recovery_unavailable",
+    "cause": "unknown",
+    "whole_suite": "interrupted_or_unobservable_no_final_junit",
+    "production_worktree_clean_before_suite": true,
+    "prototype_worktree": "/workspace/scratch/b1f06964c680/awg-r04/iteration3",
+    "prototype_committed": false
+  },
+  "goal_scope_probe": {
+    "classification": "Verified: original-actor entitlement is narrower than acquiring any usable identity with the target entitlement",
+    "production_search_defect": false,
+    "finite_cases": {
+      "original_actor_entitlement": false,
+      "specific_acquired_identity": true,
+      "any_usable_identity_python_predicate": true,
+      "activation_not_in_scope": false,
+      "authentication_known_false": false
+    },
+    "replay": "all returned witnesses verified",
+    "prototype": {
+      "existing_regression": {
+        "passed": 139,
+        "seconds": 20.88
+      },
+      "new_checks": {
+        "passed": 17,
+        "seconds": 0.3
+      },
+      "evidence_level": "observed complete local summaries; final source hashes/JUnit not uploaded before execution service loss",
+      "remaining": [
+        "public coverage schema and API export patch completion",
+        "numeric I exact binding and refusal controls",
+        "CLI/worker public transport",
+        "full raw successor goal run",
+        "broader regression and fresh F1"
+      ]
+    }
+  },
+  "remediation_profile": {
+    "unprofiled_speedup_claim": false,
+    "instrumented_seconds": 145.607,
+    "graph_load_included": false,
+    "query_scope": "one AS-REP fixed-snapshot source/goal and one runtime admin-channel denial",
+    "native_searches": 7,
+    "native_search_seconds_inclusive": 2.982,
+    "times_are_nested_inclusive": true,
+    "functions": {
+      "deepcopy": 57.727,
+      "canonical_value": 55.485,
+      "remediation._digest": 54.089,
+      "verify_package": 52.532,
+      "EngineGraph.to_canonical": 32.85,
+      "PreparedSemanticGraph.__init__": 20.13,
+      "EngineGraph.from_canonical": 19.239
+    },
+    "call_counts": {
+      "remediation._digest": 254,
+      "EngineGraph.to_canonical": 24,
+      "PreparedSemanticGraph.__init__": 12,
+      "EngineGraph.from_canonical": 3
+    },
+    "optimization_implemented": false,
+    "reproduce_harness": "RECOVERY.md describes the exact scope; recreate and rerun before optimizing if scratch artifacts are unavailable"
+  },
+  "final_decision": "keep and simplify native planner; no production AND-OR implementation justified yet",
+  "next_action": "recover execution and complete versioned same-usable-identity entitlement goal, then exact-output counterfactual preparation experiment"
+}

@@ -1,0 +1,37 @@
+{
+  "files": {
+    "README.md": "sha256:3ab96d85d02ebc9f14e540a13c0be180ebd3a81108a40fd34700dd333f6e6518",
+    "automatic-query.json": "sha256:ab9aa8e73ad5c7f09b1e1c893e2539b71866df37299ad22543ce1e22c005dcb2",
+    "coverage-matrix.json": "sha256:6b8144f2bc25188997d5378259c6739e15f8f3ccefca07b9e6b4bf47ec100a98",
+    "oracles.json": "sha256:a4b38d0961fd4523fcee6acf988d26a5a63d034331ad917c678ac590658e4d35",
+    "scenario-rating-pack.json": "sha256:c3f6f033aedfb0ec2d4376dc0195206363d0ddf25f2ec2bb74f1c26a13a2f15f",
+    "source-a-basis.json": "sha256:df24d93726a6fa72ad04700752ef318849852693d45000dcc1e0121ab53986b9",
+    "source-a-graph.json": "sha256:ded70c9658332b71906fc14523b38ca2b1354da69576e73ecea14a837c7fa9ab",
+    "source-a-oracles.json": "sha256:4ffec98f3c0bf9797c9eb1288e0092e7c655c5dc49bbe8fc720e010cb1d1b944",
+    "source-a-query.json": "sha256:2c64fef9d2f14312f30c249ab811e191c3103569661dd87bc0be3473d4e7a85f"
+  },
+  "historical_manifest_sha256": "sha256:0f35d28a7e883be6fa97320fffd97fc6332c7381dd736a2ab35c2018938d5603",
+  "package_id": "scenario-basis-v1",
+  "schema_version": "1.1.0",
+  "source_pins": {
+    "data/samples/manifests/seamless-raw-v1.json": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+    "docs/research/ratings/likelihood-v1/catalog.json": "sha256:30d67534d867bf397cacf6bfd1286cf823ba89d5ee859363d2874a5059b17cd8",
+    "docs/research/ratings/likelihood-v1/oracles.json": "sha256:f4add5e7af3978c9a3313a6b8ee6dc4cf732aecd9e14ca37b1cb3d75b71e96b4",
+    "docs/research/ratings/week3-closeout/parameter-selection.md": "sha256:651e61c7228e91e179efdf099ce234614048648cffb7289977de08429d56e66f",
+    "docs/research/ratings/week3-closeout/reviewed-release.json": "sha256:5cf9a00d50cc42d6c5828f06614a116684f7527a852447c44fc261d33e292d41",
+    "docs/research/ratings/week3-closeout/semantic-bridge-plan.json": "sha256:56029ba7f046ca74a7880bf6fa416b042ce314f8a5d5465206eb1e377256f390",
+    "docs/research/ratings/week3-closeout/source-inputs/execution-policy.json": "sha256:0398223f64910051cbc00d1d923ab29f2d1e67225831365e73f3fc2c3b438883",
+    "docs/research/ratings/week4/impact-equivalence-registry.json": "sha256:b5ee1ca987709d63ef330f1848306af6ebd3dd5ff82de6275805678995f0f400",
+    "docs/research/ratings/week4/reviewed-work-unit-classes.json": "sha256:37b10f5a3bea4f7679b34ebc6fa744aa94c58bf83a07accfd89fdfa374866443",
+    "docs/research/scenarios/week4-seamless-v1.json": "sha256:66c5ffef9a10d30d685f437b10d2998b0d57b96c2151c7eb9d00a0feeb0df752",
+    "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+    "scripts/research/asrep_inputs.py": "sha256:7f790289de985688e2af75a425fea71fc7d5238d03d807e12291ab7be0f32aa4",
+    "scripts/research/scenario_rating_pack.py": "sha256:91d292b4bd8ea06a3a1fa9d921324e694adc187ec018d0c67ab1afb5da0b7d58",
+    "src/engine/ranking/resolution_service.py": "sha256:fe1077c9941884cbf6fb7648f3c8cd6eba706b3758c380a6c6d9e2fa1140f50a",
+    "tests/fixtures/attack_scenarios/graphs/two-routes.json": "sha256:982816b924a73396961a54ab5b7c2e40140941aaa9bfa99a075649dde57457e7",
+    "tests/fixtures/ranking/seamless_time_policy.json": "sha256:0dff9f0d84078ad39d304cc8807d7c91fc35a680cf5bfe008e4a65ab2acacc0a",
+    "tests/test_public_rating_integration.py": "sha256:7ab2d44088e07fc7b8be43b7a9a486701c1e24adfb70403835157533329e6bd2",
+    "tests/test_scenario_rating_pack.py": "sha256:79ba51d002ee543e689685a4790ff6f1f9d00d81b6bc6265d5b4945920ec211c",
+    "tests/test_source_a_rating_pack.py": "sha256:f1894b423145241c9c6507b6a8831e6b08b18558193314958adc6f3968117092"
+  }
+}

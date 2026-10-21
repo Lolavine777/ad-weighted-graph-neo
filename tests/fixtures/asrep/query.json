@@ -1,0 +1,729 @@
+{
+  "source_foothold": "10000000-0000-4000-8000-000000000001",
+  "initial_actor": "10000000-0000-4000-8000-000000000001",
+  "initial_state": {
+    "control": [],
+    "known_identity": [
+      "S-1-5-21-1000-2000-3000-1700"
+    ],
+    "asrep_request_capability": [
+      [
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000001"
+      ]
+    ]
+  },
+  "authentication_context": "10000000-0000-4000-8000-000000000001",
+  "target": "10000000-0000-4000-8000-000000000002",
+  "target_goal": {
+    "target": "10000000-0000-4000-8000-000000000002",
+    "required_state": {
+      "admin_control": [
+        "10000000-0000-4000-8000-000000000002"
+      ]
+    }
+  },
+  "checkpoint_goal": {
+    "target": "S-1-5-21-1000-2000-3000-512",
+    "required_state": {
+      "effective_member": [
+        [
+          "S-1-5-21-1000-2000-3000-1700",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      ]
+    }
+  },
+  "assumptions": [
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-1700",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "asrep_request_accepted",
+      "subject": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-1700",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "recovery_success",
+      "subject": "10000000-0000-4000-8000-000000000001",
+      "target": "S-1-5-21-1000-2000-3000-1700",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture",
+        "method": "offline-password-prediction",
+        "budget": "unmeasured-budget",
+        "horizon": "fixed-snapshot-window"
+      }
+    },
+    {
+      "predicate": "secret_valid",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_kdc_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000001",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "security_group",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "membership_usable",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "S-1-5-21-1000-2000-3000-512",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "network_winrm_reachable",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "service_winrm_running",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "winrm_authentication_accepted",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "endpoint_authorized",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "admin_execution_context",
+      "subject": "S-1-5-21-1000-2000-3000-1700",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    },
+    {
+      "predicate": "host_admin_mapping",
+      "subject": "S-1-5-21-1000-2000-3000-512",
+      "target": "10000000-0000-4000-8000-000000000002",
+      "value": true,
+      "scope": "synthetic-228/H0",
+      "rationale": "Declared synthetic outcome, not observed success",
+      "provenance_reference": "synthetic://228/outcomes",
+      "assumption_metadata": {
+        "authentication_context": "10000000-0000-4000-8000-000000000001",
+        "declared_by": "synthetic-fixture"
+      }
+    }
+  ],
+  "allowed_techniques": [
+    "asrep_request",
+    "recover_asrep_secret",
+    "activate_recovered_identity",
+    "propagate_group_entitlement",
+    "scenario_winrm_admin"
+  ],
+  "budget": {
+    "max_paths": 50,
+    "max_steps": 9,
+    "max_expansions": 5000
+  },
+  "scenario_reference": "synthetic-228",
+  "ranking_query_id": "query-228",
+  "action_bindings": [
+    [
+      [
+        "activate_recovered_identity",
+        "S-1-5-21-1000-2000-3000-1700",
+        "S-1-5-21-1000-2000-3000-1700",
+        "10000000-0000-4000-8000-000000000001"
+      ],
+      "action_activate_recovered_identity"
+    ],
+    [
+      [
+        "asrep_request",
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000001",
+        "S-1-5-21-1000-2000-3000-1700"
+      ],
+      "action_asrep_request"
+    ],
+    [
+      [
+        "propagate_group_entitlement",
+        "S-1-5-21-1000-2000-3000-1700",
+        "S-1-5-21-1000-2000-3000-1700",
+        "S-1-5-21-1000-2000-3000-512"
+      ],
+      "action_propagate_group_entitlement"
+    ],
+    [
+      [
+        "recover_asrep_secret",
+        "10000000-0000-4000-8000-000000000001",
+        "10000000-0000-4000-8000-000000000001",
+        "S-1-5-21-1000-2000-3000-1700"
+      ],
+      "action_recover_asrep_secret"
+    ],
+    [
+      [
+        "scenario_winrm_admin",
+        "S-1-5-21-1000-2000-3000-1700",
+        "S-1-5-21-1000-2000-3000-512",
+        "10000000-0000-4000-8000-000000000002"
+      ],
+      "action_scenario_winrm_admin"
+    ]
+  ],
+  "ranking_query": {
+    "query_metadata": {
+      "query_id": "query-228",
+      "version": "1.0.0",
+      "scenario_id": "synthetic-228",
+      "scenario_version": "1.0.0",
+      "snapshot_id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "evaluation_mode": "scenario",
+      "work_boundary": "scoped-password-recovery",
+      "foothold_node_id": "10000000-0000-4000-8000-000000000001",
+      "horizon": "fixed-snapshot-window",
+      "active_work_budget": 10,
+      "target_goal": {
+        "goal_id": "admin-credential",
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "required_predicates": [
+          "admin"
+        ]
+      }
+    },
+    "facts_ledger": {
+      "predicate_layers": {
+        "known": 3,
+        "kdc_request": 3,
+        "request_ok": 3,
+        "recovery_ok": 3,
+        "recovery_scope": 3,
+        "valid": 3,
+        "kdc_activation": 3,
+        "activation_ok": 3,
+        "owner_enabled": 1,
+        "asset_enabled": 1,
+        "security_group": 3,
+        "membership_usable": 3,
+        "host_admin_mapping": 3,
+        "request_capability": 3,
+        "preauth_off": 1,
+        "network_winrm_reachable": 3,
+        "service_winrm_running": 3,
+        "winrm_authentication_accepted": 3,
+        "endpoint_authorized": 3,
+        "admin_execution_context": 3,
+        "material": 3,
+        "secret": 3,
+        "usable": 3,
+        "member": 3,
+        "admin": 3
+      },
+      "observed_facts": [
+        {
+          "predicate": "owner_enabled",
+          "layer": 1,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "asset_enabled",
+          "layer": 1,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "preauth_off",
+          "layer": 1,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        }
+      ],
+      "assumed_facts": [
+        {
+          "predicate": "known",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "kdc_request",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "request_ok",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "recovery_ok",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "recovery_scope",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "valid",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "kdc_activation",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "activation_ok",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "security_group",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "membership_usable",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "host_admin_mapping",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "request_capability",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "network_winrm_reachable",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "service_winrm_running",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "winrm_authentication_accepted",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "endpoint_authorized",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "admin_execution_context",
+          "layer": 3,
+          "truth_value": true,
+          "rationale": "Synthetic query declarations; not empirical probability",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "material",
+          "layer": 3,
+          "truth_value": false,
+          "rationale": "Caller-declared initial scenario state (including absence); not an observation",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "secret",
+          "layer": 3,
+          "truth_value": false,
+          "rationale": "Caller-declared initial scenario state (including absence); not an observation",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "usable",
+          "layer": 3,
+          "truth_value": false,
+          "rationale": "Caller-declared initial scenario state (including absence); not an observation",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "member",
+          "layer": 3,
+          "truth_value": false,
+          "rationale": "Caller-declared initial scenario state (including absence); not an observation",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        },
+        {
+          "predicate": "admin",
+          "layer": 3,
+          "truth_value": false,
+          "rationale": "Caller-declared initial scenario state (including absence); not an observation",
+          "provenance_reference": "synthetic://credential-binding/binding"
+        }
+      ],
+      "unknown_facts": [],
+      "false_facts": []
+    },
+    "bound_actions": [
+      {
+        "action_id": "action_asrep_request",
+        "technique": "asrep_request",
+        "technique_name": "asrep_request",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "target_id": "S-1-5-21-1000-2000-3000-1700",
+        "requires": [
+          "known",
+          "request_capability",
+          "preauth_off",
+          "owner_enabled",
+          "kdc_request",
+          "request_ok"
+        ],
+        "adds": [
+          "material"
+        ],
+        "is_passive_closure": false,
+        "referenced_work_unit_ids": [
+          "work_asrep_request"
+        ]
+      },
+      {
+        "action_id": "action_recover_asrep_secret",
+        "technique": "recover_asrep_secret",
+        "technique_name": "recover_asrep_secret",
+        "actor_id": "10000000-0000-4000-8000-000000000001",
+        "target_id": "S-1-5-21-1000-2000-3000-1700",
+        "requires": [
+          "material",
+          "recovery_scope",
+          "recovery_ok"
+        ],
+        "adds": [
+          "secret"
+        ],
+        "is_passive_closure": false,
+        "referenced_work_unit_ids": [
+          "work_recover_asrep_secret"
+        ]
+      },
+      {
+        "action_id": "action_activate_recovered_identity",
+        "technique": "activate_recovered_identity",
+        "technique_name": "activate_recovered_identity",
+        "actor_id": "S-1-5-21-1000-2000-3000-1700",
+        "target_id": "10000000-0000-4000-8000-000000000001",
+        "requires": [
+          "secret",
+          "owner_enabled",
+          "valid",
+          "kdc_activation",
+          "activation_ok"
+        ],
+        "adds": [
+          "usable"
+        ],
+        "is_passive_closure": false,
+        "referenced_work_unit_ids": [
+          "work_activate_recovered_identity"
+        ]
+      },
+      {
+        "action_id": "action_propagate_group_entitlement",
+        "technique": "propagate_group_entitlement",
+        "technique_name": "propagate_group_entitlement",
+        "actor_id": "S-1-5-21-1000-2000-3000-1700",
+        "target_id": "S-1-5-21-1000-2000-3000-512",
+        "requires": [
+          "usable",
+          "owner_enabled",
+          "security_group",
+          "membership_usable"
+        ],
+        "adds": [
+          "member"
+        ],
+        "is_passive_closure": true,
+        "referenced_work_unit_ids": []
+      },
+      {
+        "action_id": "action_scenario_winrm_admin",
+        "technique": "scenario_winrm_admin",
+        "technique_name": "scenario_winrm_admin",
+        "actor_id": "S-1-5-21-1000-2000-3000-1700",
+        "target_id": "10000000-0000-4000-8000-000000000002",
+        "requires": [
+          "usable",
+          "member",
+          "asset_enabled",
+          "host_admin_mapping",
+          "network_winrm_reachable",
+          "service_winrm_running",
+          "winrm_authentication_accepted",
+          "endpoint_authorized",
+          "admin_execution_context"
+        ],
+        "adds": [
+          "admin"
+        ],
+        "is_passive_closure": false,
+        "referenced_work_unit_ids": [
+          "work_scenario_winrm_admin"
+        ]
+      }
+    ],
+    "work_units_ledger": {
+      "work_asrep_request": {
+        "alias": "work_asrep_request",
+        "rating_status": "unrated",
+        "overlap_state": "independent",
+        "computed_cost": null,
+        "effort_cost": null,
+        "summary": "asrep_request owner=S-1-5-21-1000-2000-3000-1700 context=10000000-0000-4000-8000-000000000001; success=material",
+        "event_binding": {
+          "owner": "S-1-5-21-1000-2000-3000-1700",
+          "authentication_context": "10000000-0000-4000-8000-000000000001",
+          "success_event": "material",
+          "method_budget_horizon": null
+        },
+        "technical_source": "synthetic://credential-binding/event-binding",
+        "applicable_queries": [
+          "query-228"
+        ],
+        "missing_basis_reasons": [
+          "no_numeric_basis"
+        ]
+      },
+      "work_recover_asrep_secret": {
+        "alias": "work_recover_asrep_secret",
+        "rating_status": "unrated",
+        "overlap_state": "independent",
+        "computed_cost": null,
+        "effort_cost": null,
+        "summary": "recover_asrep_secret owner=S-1-5-21-1000-2000-3000-1700 context=10000000-0000-4000-8000-000000000001; success=secret",
+        "event_binding": {
+          "owner": "S-1-5-21-1000-2000-3000-1700",
+          "authentication_context": "10000000-0000-4000-8000-000000000001",
+          "success_event": "secret",
+          "method_budget_horizon": {
+            "authentication_context": "10000000-0000-4000-8000-000000000001",
+            "declared_by": "synthetic-fixture",
+            "method": "offline-password-prediction",
+            "budget": "unmeasured-budget",
+            "horizon": "fixed-snapshot-window"
+          }
+        },
+        "technical_source": "synthetic://credential-binding/event-binding",
+        "applicable_queries": [
+          "query-228"
+        ],
+        "missing_basis_reasons": [
+          "no_numeric_basis"
+        ]
+      },
+      "work_activate_recovered_identity": {
+        "alias": "work_activate_recovered_identity",
+        "rating_status": "unrated",
+        "overlap_state": "independent",
+        "computed_cost": null,
+        "effort_cost": null,
+        "summary": "activate_recovered_identity owner=S-1-5-21-1000-2000-3000-1700 context=10000000-0000-4000-8000-000000000001; success=usable",
+        "event_binding": {
+          "owner": "S-1-5-21-1000-2000-3000-1700",
+          "authentication_context": "10000000-0000-4000-8000-000000000001",
+          "success_event": "usable",
+          "method_budget_horizon": null
+        },
+        "technical_source": "synthetic://credential-binding/event-binding",
+        "applicable_queries": [
+          "query-228"
+        ],
+        "missing_basis_reasons": [
+          "no_numeric_basis"
+        ]
+      },
+      "work_scenario_winrm_admin": {
+        "alias": "work_scenario_winrm_admin",
+        "rating_status": "unrated",
+        "overlap_state": "independent",
+        "computed_cost": null,
+        "effort_cost": null,
+        "summary": "scenario_winrm_admin owner=10000000-0000-4000-8000-000000000002 context=10000000-0000-4000-8000-000000000001; success=admin",
+        "event_binding": {
+          "owner": "10000000-0000-4000-8000-000000000002",
+          "authentication_context": "10000000-0000-4000-8000-000000000001",
+          "success_event": "admin",
+          "method_budget_horizon": null
+        },
+        "technical_source": "synthetic://credential-binding/event-binding",
+        "applicable_queries": [
+          "query-228"
+        ],
+        "missing_basis_reasons": [
+          "no_numeric_basis"
+        ]
+      }
+    },
+    "conditional_bounds_table": [],
+    "target_impact_assessments": {
+      "10000000-0000-4000-8000-000000000002": {
+        "target_asset_id": "10000000-0000-4000-8000-000000000002",
+        "success_event": "admin_execution_on_C",
+        "rating_status": "unrated",
+        "consequence_rating": null,
+        "business_rationale": null,
+        "affected_business_services": [],
+        "missing_basis_reasons": [
+          "no_business_impact_basis"
+        ]
+      }
+    }
+  }
+}

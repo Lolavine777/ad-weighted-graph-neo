@@ -1,0 +1,105 @@
+{
+  "classes": {
+    "directory_password_reset": {
+      "C": {
+        "decision": "adopt",
+        "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned."
+      },
+      "P": {
+        "decision": "adopt",
+        "rationale": "Historical reset residual request processing/response completion; three attempts/15m; fresh replacement secret. Only named reset-context equivalence, excluding reachability/effective permission/password policy already conditioned."
+      },
+      "values": {
+        "cost": 1,
+        "lower": "3/5",
+        "t1": 1,
+        "t2": 2,
+        "upper": "19/20"
+      }
+    },
+    "reset_identity_activation": {
+      "C": {
+        "decision": "adopt",
+        "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge."
+      },
+      "P": {
+        "decision": "adopt",
+        "rationale": "Historical Kerberos activation given the exact preceding successful reset of this account; three exchanges/10m; excludes credential acquisition and no separate shared authentication charge."
+      },
+      "values": {
+        "cost": 0,
+        "lower": "3/4",
+        "t1": 1,
+        "t2": 1,
+        "upper": "49/50"
+      }
+    },
+    "winrm_admin_execution": {
+      "C": {
+        "decision": "adopt",
+        "rationale": "Historical elevated WinRM workflow given usable identity and unrestricted endpoint; three attempts/30m; session allocation/quota/command-completion uncertainty. Session preparation included in this work unit."
+      },
+      "P": {
+        "decision": "adopt",
+        "rationale": "Historical elevated WinRM workflow given usable identity and unrestricted endpoint; three attempts/30m; session allocation/quota/command-completion uncertainty. Session preparation included in this work unit."
+      },
+      "values": {
+        "cost": 1,
+        "lower": "1/2",
+        "t1": 1,
+        "t2": 2,
+        "upper": "9/10"
+      }
+    }
+  },
+  "history_model": {
+    "id": "stable-no-depletion-distinct-work-v1",
+    "max_records": 5000,
+    "meaning": "Each conditional interval applies to every explicitly compiled full successful history in the frozen finite inventory, under unchanged resource/account/policy state and exclusive bounded retries. This is an explicit scenario invariance judgment requiring B adoption, not marginal reuse or probabilistic independence.",
+    "refuse": [
+      "repeated canonical work identity",
+      "unlisted operation",
+      "credential invalidation/reset of same secret after activation",
+      "different actor/source/method/resource/snapshot/policy/horizon",
+      "unsupported lineage",
+      "record expansion above cap",
+      "missing or conflicting authority"
+    ]
+  },
+  "impact": {
+    "decision": "adopt",
+    "rating": "High",
+    "rationale": "Exact Source A typed administrative control of the pinned DC; does not certify a usable-identity/session/material goal."
+  },
+  "input_pins": {
+    "applicability-v1.1.json": "sha256:92b2557a8dc8ffc383c2120704e6d9f8be341a1e1c159f77efdef0b27e1ff1be",
+    "cohort.json": "sha256:e8fc2757054890209e0ab5112f261470ecbe11f8c76cf3c0ce3c7da350819003",
+    "profile.json": "sha256:0a07821f77987dadc487ebafc3de09a82a4761b9e6eaad51c63b9b35da26b3ae",
+    "source-a-inventory.json": "sha256:ac4160025569578988072a155f1196092a83904244b40faa6948082e8c162f7c",
+    "taxonomy.json": "sha256:bcd9b4176870b8ba301c373587a09c5a1403f3f4898ef3e4271f1f21ecfb5c3f"
+  },
+  "limitations": [
+    "AI-assisted expert scenario estimates, not empirical calibration.",
+    "Equal endpoints across exact full histories require explicit invariance adoption.",
+    "No natural-password recovery adoption; no global default or new raw edge.",
+    "Query pins include initial capability, facts, policy, history inventory and caps.",
+    "References and reviewer declarations are not cryptographic identity authentication."
+  ],
+  "query_pins": {
+    "josefa-full-generator": "sha256:9132e57b8dae53242e5658c3fdb8d5740e9140deb0626e4aad53278a3b677da3",
+    "lidia-full-generator": "sha256:9aa0ffcaca2ac0bf3380821c7e478f2201b28b3889ff1731717713ab1eb16dfe",
+    "source-a-full-generator": "sha256:07f8f6ad30ebe216dffd40e954d10480c1c9e3e9d69ede692416cb5806cf05fd",
+    "source-a-full-raw-four": "sha256:3341a37ad2ead8c6a5d150fd699da341fb2b93a810331a0c53226e75e1c7f2e6",
+    "source-a-projection": "sha256:84b1394410d334b868dc716ffc68a25efeea069594914cef24d3cf183094c129"
+  },
+  "release_id": "final-cpi-source-a-v1",
+  "review": {
+    "confirmation": "Adopt toàn bộ C/P/I trong bảng và exact bounded history model nói trên, chỉ trong phạm vi proposal/pins đã review. Natural-password AS-REP/TGS recovery và các classes khác không được adoption bởi quyết định này. Known-FALSE veto và production provider checks tiếp tục áp dụng.",
+    "purpose": "numeric_context_history_adoption",
+    "reference": "https://github.com/nairyuuu/ad-weighted-graph/pull/277#issuecomment-6138267056",
+    "reviewed_at": "2026-10-13T04:30:57Z",
+    "reviewer": "nairyuuu"
+  },
+  "status": "adopted",
+  "version": "final-cpi-numeric-release/1.0.0"
+}

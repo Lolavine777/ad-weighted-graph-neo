@@ -1,0 +1,15 @@
+extends: default
+ignore: |
+  .git/
+  .venv/
+  .tools/
+  .cache/
+  data/raw/
+  data/processed/
+  reports/generated/
+rules:
+  document-start: disable
+  line-length:
+    max: 140
+  truthy:
+    allowed-values: ['true', 'false']
