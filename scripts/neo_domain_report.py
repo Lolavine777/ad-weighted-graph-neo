@@ -8,7 +8,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 from scripts.defender_brief import remediation_outcome
-from scripts.neo_domain import TECHNIQUES, compact_witness, load_records, summarize
+from scripts.neo_domain import (
+    TECHNIQUES,
+    compact_witness,
+    load_records,
+    scenario_profile,
+    summarize,
+)
 from scripts.research.source_goal_batch import BatchQueryRequest
 from src.engine.batch import _atomic_json, _query_for_cell, execution_source_pins
 from src.engine.graph import EngineGraph
@@ -21,7 +27,6 @@ from src.engine.remediation_runner import (
     rank_interventions,
     run_remediation,
 )
-from src.engine.semantics.scenario_policy import load_policy_profile
 
 
 def observed_interventions(rows, graph):
@@ -58,7 +63,7 @@ def verify_interventions(graph, request, rows, inventory, *, output, limit):
     # Select a small rectangular product from the most shared supported witness edge.
     source_ids = sorted({pair[0] for pair in supported[0]["pairs"]})[:2]
     sources = {s.node_id: s for s in request.sources}
-    policy, effort = load_policy_profile("neo-standard-v1"), load_effort_profile("neo-c-v1")
+    policy, effort = scenario_profile(graph), load_effort_profile("neo-c-v1")
     cells = []
     for source in source_ids:
         for goal in request.resolve_target_goals():

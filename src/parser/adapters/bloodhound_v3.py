@@ -334,10 +334,11 @@ def _adapt_tree(
     domain_hint: str | None,
     host_scope: ScopeIdentity | None,
     record_kind: str,
+    domain_controller: bool = False,
     parent_key: str = "",
     root: bool = False,
 ) -> object:
-    host_local = parent_key.casefold() in _HOST_LOCAL_FIELDS
+    host_local = parent_key.casefold() in _HOST_LOCAL_FIELDS and not domain_controller
     if isinstance(value, list):
         return [
             _adapt_tree(
@@ -348,6 +349,7 @@ def _adapt_tree(
                 domain_hint=domain_hint,
                 host_scope=host_scope,
                 record_kind=record_kind,
+                domain_controller=domain_controller,
                 parent_key=parent_key,
             )
             for item in value
@@ -375,6 +377,7 @@ def _adapt_tree(
                     domain_hint=domain_hint,
                     host_scope=host_scope,
                     record_kind=record_kind,
+                    domain_controller=domain_controller,
                     parent_key=str(key),
                 )
         return result
@@ -405,7 +408,14 @@ def adapt_bloodhound_v3_records(records: Iterable[RawRecord]) -> tuple[RawRecord
             parsed = parse_qualified_sid(object_id) if isinstance(object_id, str) else None
             domain_hint = normalize_domain_name(parsed[0]) if parsed else domain_hint
         host_scope = None
+        domain_controller = False
         if record.kind.casefold() in {"computer", "computers", "host", "hosts"}:
+            domain = domains.get(domain_hint)
+            if domain is not None and domain.domain_sid is not None:
+                domain_controller = record.data.get("PrimaryGroupSID") in {
+                    domain.domain_sid + "-516",
+                    domain.domain_sid + "-521",
+                }
             object_id = lookup_raw_identifier(record.data)
             aliases = [
                 normalize_domain_name(_first(props, ("name", "DNSHostName", "dNSHostName"))),
@@ -424,6 +434,7 @@ def adapt_bloodhound_v3_records(records: Iterable[RawRecord]) -> tuple[RawRecord
             domain_hint=domain_hint,
             host_scope=host_scope,
             record_kind=record.kind,
+            domain_controller=domain_controller,
             root=True,
         )
         adapted.append(RawRecord(kind=record.kind, data=data, provenance=record.provenance))

@@ -120,14 +120,22 @@ def test_direct_local_admin_emits_host_bound_adminto_without_runtime_gate():
     assert "AdminTo" in _edge_kinds(graph)
 
 
-def test_historical_localgroups_match_the_complete_builtin_sid():
+@pytest.mark.parametrize(
+    "identifier",
+    [
+        f"HOST-{ADMINISTRATORS_SID}",
+        f"host:11111111-2222-3333-4444-555555555555:{ADMINISTRATORS_SID}",
+        f"domain:sid:S-1-5-21-1000-2000-3000:{ADMINISTRATORS_SID}",
+    ],
+)
+def test_historical_localgroups_match_the_complete_builtin_sid(identifier):
     graph = _builder(
         [
             _host(
                 {
                     "LocalGroups": [
                         {
-                            "ObjectIdentifier": f"HOST-{ADMINISTRATORS_SID}",
+                            "ObjectIdentifier": identifier,
                             "Results": [{"ObjectIdentifier": USER}],
                         }
                     ]

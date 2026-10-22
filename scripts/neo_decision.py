@@ -11,7 +11,7 @@ from multiprocessing import get_context
 from pathlib import Path
 
 from scripts.defender_brief import remediation_outcome
-from scripts.neo_domain import TECHNIQUES, build_survey, compact_witness
+from scripts.neo_domain import TECHNIQUES, build_survey, compact_witness, scenario_profile
 from scripts.research.source_goal_batch import BatchQueryRequest
 from src.engine.batch import _atomic_json, _query_for_cell, execution_source_pins
 from src.engine.graph import EngineGraph
@@ -22,7 +22,6 @@ from src.engine.ranking.effort_profiles import load_effort_profile
 from src.engine.ranking.resolution_service import canonical_digest
 from src.engine.remediation import ReplayBaseline, prepare_baseline, request_for_baseline
 from src.engine.remediation_runner import inventory_interventions, run_remediation
-from src.engine.semantics.scenario_policy import load_policy_profile
 
 SEED = "neo-decision-v1"
 
@@ -270,7 +269,7 @@ def main(argv=None):
                 graph,
                 TECHNIQUES,
                 request.common_budget,
-                scenario_policy=load_policy_profile("neo-standard-v1"),
+                scenario_policy=scenario_profile(graph),
                 effort_profile=load_effort_profile("neo-c-v1"),
                 search_order="neo_guided",
             )

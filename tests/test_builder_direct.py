@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from itertools import permutations
 
 import pytest
@@ -83,7 +84,7 @@ def _record(
     )
 
 
-def _builder() -> DirectGraphBuilder:
+def _builder(**kwargs) -> DirectGraphBuilder:
     return DirectGraphBuilder(
         metadata={
             "contract_version": "1.3.0",
@@ -91,7 +92,8 @@ def _builder() -> DirectGraphBuilder:
             "snapshot_id": SNAPSHOT,
             "created_at": CREATED,
             "code_version": "tests/direct-builder",
-        }
+        },
+        **kwargs,
     )
 
 
@@ -634,6 +636,48 @@ def test_unresolvable_relationship_is_atomic(policy, caplog):
     graph = _graph([record], error_policy=ErrorPolicy(policy))
     assert graph["nodes"] == []
     assert graph["edges"] == []
+
+
+def test_unresolved_member_can_be_assessed_without_losing_known_siblings():
+    user = _record("User", IDS["user"])
+    group = _record(
+        "Group",
+        IDS["group"],
+        data={"Members": [IDS["user"], "CN=STALE,DC=EXAMPLE,DC=TEST"]},
+    )
+    with pytest.raises(RecordError, match="unresolvable"):
+        _graph([user, group])
+    graph = _builder(retain_unresolved_members=True).build([user, group])
+    assert len(graph["nodes"]) == 2
+    assert [(e["source"], e["target"]) for e in graph["edges"]] == [(IDS["user"], IDS["group"])]
+    assert len(graph["assessments"]) == 1
+    assessment = graph["assessments"][0]
+    assert assessment["status"] == "unknown"
+    assert assessment["target"] == IDS["group"]
+    assert "CN=STALE" in assessment["reason"]
+    assert assessment["provenance"][0]["evidence_type"] == "unknown"
+    assert _builder(retain_unresolved_members=True).build([group, user]) == graph
+
+
+def test_partial_membership_does_not_hide_a_conflicting_collected_kind():
+    user = _record("User", IDS["user"])
+    group = _record(
+        "Group", IDS["group"], data={"Members": [{"MemberId": IDS["user"], "MemberType": "Group"}]}
+    )
+    with pytest.raises(RecordError, match="conflicts with collected node kind"):
+        _builder(retain_unresolved_members=True).build([user, group])
+
+
+def test_member_dn_requires_exact_observed_identity_and_stays_ambiguous_on_duplicates():
+    user = _record("User", IDS["user"])
+    dn = "CN=ALICE,OU=USERS,DC=EXAMPLE,DC=TEST"
+    user = replace(user, attributes={**user.attributes, "distinguishedname": dn})
+    group = _record("Group", IDS["group"], data={"Members": [dn.lower()]})
+    assert len(_graph([user, group])["edges"]) == 1
+    second = _record("User", IDS["target"])
+    second = replace(second, attributes={**second.attributes, "distinguishedname": dn})
+    with pytest.raises(RecordError, match="ambiguous"):
+        _builder(retain_unresolved_members=True).build([user, second, group])
 
 
 def test_host_access_arrays_use_evidence_backed_inference():

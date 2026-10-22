@@ -52,6 +52,16 @@ def test_child_domain_can_be_surveyed_without_an_enterprise_admins_group(graph):
         neo_domain.build_survey(graph, domain_sid="S-1-5-21-9-8-7")
 
 
+def test_snapshot_binding_does_not_change_neo_assumption_rules(graph):
+    profile = neo_domain.scenario_profile(graph)
+    original = NEO_STANDARD_PROFILE.canonical_dict()
+    assert profile.canonical_dict() == {
+        **original,
+        "bound_snapshot_id": graph.metadata["snapshot_id"],
+    }
+    assert NEO_STANDARD_PROFILE.canonical_dict() == original
+
+
 def test_native_evaluation_preserves_independent_capabilities_and_replays_slice(graph, monkeypatch):
     graph = survey_graph(graph)
     _, request = neo_domain.build_survey(graph)

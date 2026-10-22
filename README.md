@@ -7,7 +7,9 @@ Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụn
 Hướng khóa luận: phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng
 biện pháp giảm thiểu. Phải đánh giá ngoài SEAMLESS và đo ưu thế trên cùng phạm vi
 với BloodHound; chưa coi “tốt hơn BloodHound” là kết luận đã có.
-[Tiêu chí đánh giá và kiểm tra dataset mới](reports/neo/transfer-brief.md).
+[Kết quả ngoài SEAMLESS và tiêu chí đánh giá](reports/neo/transfer-brief.md):
+đã chạy GHOST/WRAITH với cùng bảng C; có ca C=3 và can thiệp được kiểm chứng.
+PHANTOM còn lỗi đầu vào; đối chứng BloodHound live chưa hoàn tất.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.

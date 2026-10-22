@@ -232,6 +232,28 @@ def test_host_local_sid_does_not_use_available_domain_sid():
         )
 
 
+@pytest.mark.parametrize("rid", ["516", "521", "515"])
+def test_builtin_group_on_dc_uses_observed_domain_scope_but_member_server_needs_host_guid(rid):
+    computer = _record(
+        "computers",
+        {
+            "ObjectIdentifier": DOMAIN_SID_A + "-1000",
+            "Properties": {"name": "SERVER.DOMAIN.LOCAL", "domain": "DOMAIN.LOCAL"},
+            "PrimaryGroupSID": DOMAIN_SID_A + "-" + rid,
+            "LocalGroups": [{"ObjectIdentifier": "DOMAIN.LOCAL-S-1-5-32-544", "Results": []}],
+        },
+    )
+    records = (_domain(), _group("Administrators", "DOMAIN.LOCAL-S-1-5-32-544"), computer)
+    if rid == "515":
+        with pytest.raises(RecordError, match="stable host GUID"):
+            adapt_bloodhound_v3_records(records)
+    else:
+        result = adapt_bloodhound_v3_records(records)
+        assert result[-1].data["LocalGroups"][0]["ObjectIdentifier"] == (
+            f"domain:sid:{DOMAIN_SID_A}:S-1-5-32-544"
+        )
+
+
 def test_host_scope_uses_computer_guid_when_observed():
     computer = _record(
         "computers",

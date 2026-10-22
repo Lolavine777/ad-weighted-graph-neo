@@ -35,6 +35,13 @@ TECHNIQUES = (
 )
 
 
+def scenario_profile(graph):
+    """Bind the unchanged neo scenario assumptions to the snapshot being evaluated."""
+    return replace(
+        load_policy_profile("neo-standard-v1"), bound_snapshot_id=graph.metadata["snapshot_id"]
+    )
+
+
 def build_survey(graph, *, max_expansions=1024, max_steps=12, domain_sid=None):
     inventory = inventory_exposure(graph, domain_sid=domain_sid)
     contexts = sorted(
@@ -95,7 +102,7 @@ def _initialize(snapshot, request):
     _request = BatchQueryRequest.from_dict(request)
     _sources = {s.node_id: s for s in _request.sources}
     _goals = {g.target_node_id: g for g in _request.resolve_target_goals()}
-    _policy, _effort = load_policy_profile("neo-standard-v1"), load_effort_profile("neo-c-v1")
+    _policy, _effort = scenario_profile(_graph), load_effort_profile("neo-c-v1")
 
 
 def _evaluate(pair):
@@ -225,7 +232,7 @@ def main(argv=None):
         "version": "neo-domain-survey/1",
         "request": request.to_dict(),
         "techniques": TECHNIQUES,
-        "scenario_policy": load_policy_profile("neo-standard-v1").canonical_dict(),
+        "scenario_policy": scenario_profile(graph).canonical_dict(),
         "effort_profile": load_effort_profile("neo-c-v1"),
         "snapshot_sha256": digest(args.snapshot.read_bytes()),
         "source_pins": execution_source_pins(),

@@ -374,6 +374,9 @@ def _aliases(records: Mapping[str, NormalizedRecord]) -> dict[str, set[str]]:
     result: defaultdict[str, set[str]] = defaultdict(set)
     for record_id, record in records.items():
         result[record_id.casefold()].add(record_id)
+        distinguished_name = record.attributes.get("distinguishedname")
+        if isinstance(distinguished_name, str) and distinguished_name.strip():
+            result[distinguished_name.strip().casefold()].add(record_id)
         raw_identifier = lookup_raw_identifier(record.raw.data)
         if isinstance(raw_identifier, str) and raw_identifier.strip():
             result[raw_identifier.strip().casefold()].add(record_id)
@@ -395,7 +398,8 @@ def _group_sid(value: object) -> str | None:
     if not isinstance(value, str):
         return None
     candidate = value.strip()
-    upper = candidate.upper()
+    scoped = parse_scoped_sid(candidate)
+    upper = scoped[1] if scoped is not None else candidate.upper()
     if upper in {
         ADMINISTRATORS_SID,
         REMOTE_DESKTOP_USERS_SID,

@@ -1,77 +1,79 @@
-# Ngoài SEAMLESS và đối chứng BloodHound
+# Ngoài SEAMLESS: nhập dữ liệu, tìm đường và thử can thiệp
 
-## Mục tiêu khóa luận
+Hướng khóa luận: phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng
+biện pháp giảm thiểu. Phạm vi hiện tại là snapshot tĩnh, phân tích từng miền,
+nguồn User/Computer độc lập và đích DA/EA thực sự có trong miền.
 
-Phân tích đường leo thang đặc quyền trong Active Directory có xét chi phí
-và kiểm chứng biện pháp giảm thiểu. Phạm vi chính: snapshot tĩnh, phân tích
-từng miền, nguồn User/Computer độc lập, đích DA và EA nếu có trong miền.
+## Kết quả đã chạy
 
-Neo phải nhận dataset mới qua cùng pipeline, không sửa SID, tên miền, điểm C
-hay thứ tự tìm kiếm riêng cho từng môi trường để tạo kết quả đẹp.
+Cùng bảng `neo-c-v1`, cùng bộ giả định `neo-standard-v1` được gắn vào snapshot
+đang xét, cùng 7 kỹ thuật và budget **1 witness / 12 bước / 1.024 expansions**.
+Không sửa điểm theo từng miền hoặc lọc nguồn theo việc đã tìm thấy đường hay chưa.
 
-## Chia dữ liệu và tiêu chí
+| Export ngoài SEAMLESS | Node / cạnh | Cặp đã chạy | Có witness, đủ C | Không có đường trong mô hình | Chưa kết luận |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| GHOST | 65 / 226 | 3 | 2 | 1 | 0 |
+| WRAITH | 150 / 758 | 72 | 8 | 58 | 6 |
+| PHANTOM | Chưa nhập được | 0 | — | — | — |
 
-| Vai trò | Dữ liệu | Cách sử dụng |
-| --- | --- | --- |
-| Phát triển | SEAMLESS | Sửa lỗi, chọn cấu hình và phân tích ví dụ |
-| Kiểm tra ngoài SEAMLESS | ad_sampledata, sau đó NORTH | Giữ bảng C và ngân sách chung; công bố cả ca không chạy được |
-| Test cuối | Một môi trường chưa dùng để điều chỉnh neo | Chốt nguồn, đích và cấu hình trước khi chạy; không tách ngẫu nhiên các node SEAMLESS để gọi là dataset độc lập |
+Hai export GHOST/WRAITH thuộc cùng corpus `ad_sampledata`; không tính thành hai
+bộ dữ liệu độc lập. Đã kiểm checksum đủ 31 file nguồn, 3.518.594 bytes.
+75 truy vấn đã chạy không có execution error. Cả 10 witness đã qua native replay:
+8 trường hợp vốn đã có quyền (C=0), hai trường hợp cần hành động (C=3).
 
-ad_sampledata/NORTH từng được khảo sát ở dự án cũ: gọi là kiểm tra ngoài SEAMLESS,
-không gọi là test mù. Test cuối chưa được chọn. Dữ liệu lab không chứng minh
-hiệu quả trên mọi AD đang vận hành.
+Sáu ca WRAITH chưa kết luận gồm **4 ca hết expansion budget** và **2 ca blocked
+vì còn thiếu điều kiện**. Các nghìn Unknown attempts là số lần thử nhánh,
+không phải số query chưa kết luận. Tám lượt dừng sau witness đầu tiên vẫn có
+bằng chứng tới đích; chưa chứng minh C tối ưu.
 
-## Đo ưu thế thay vì giả định ưu thế
+"Không có đường" ở bảng chỉ áp dụng cho đồ thị, kỹ thuật và giả định đang xét;
+không kết luận các nguồn đó an toàn trước mọi kỹ thuật AD. Giữ nguyên cả native
+flags và status gốc trong JSON; không cộng hai ca blocked vào nhóm kết luận âm.
 
-Đối chứng BloodHound phải pin phiên bản, dùng cùng byte nguồn, cùng miền,
-cùng nguồn–đích và công bố các loại quan hệ/kỹ thuật nằm trong phạm vi so sánh.
-Đối chiếu node/cạnh trước, giải thích chênh lệch rồi mới đối chiếu đường.
+## Ví dụ mới trên WRAITH
 
-| Điều muốn chứng minh | Phép đo |
-| --- | --- |
-| C hữu ích hơn số cạnh để chọn đường | Tìm ca thứ hạng khác nhau; giải thích công việc và C của cả hai; kiểm tra độ nhạy của điểm |
-| Theo dõi quyền phát sinh có giá trị | Đối chiếu chuỗi hành động và điều kiện trên cùng ca; xác minh bằng lab/ca có đáp án biết trước |
-| Can thiệp có hiệu quả | Tách số chuỗi cũ bị cắt, số cặp thực sự mất đường, C trước/sau và đường vòng |
-| Sản phẩm dùng được trên dataset mới | Tỉ lệ nhập thành công, lỗi nhập, witness kiểm chứng được, ca hết budget, thời gian và RAM |
+RODCMANAGER là thành viên Administrators. Nhóm này có WriteDacl lên DA và EA.
+Với từng đích, chuỗi tìm được là:
 
-Một lượt BFS trên canonical graph chỉ là baseline theo số cạnh, không được ghi
-thành kết quả chạy BloodHound. Số expansions của hai loại engine không cùng đơn vị.
-C của đường BloodHound phải được chuyển thành hành động và chấm bằng cùng rubric;
-không gán C theo số cạnh rồi gọi là so sánh chi phí. Chưa có chứng minh tối ưu toàn cục.
+| Công việc | C |
+| --- | ---: |
+| Dùng membership Administrators đã có | 0 |
+| Sửa DACL để cấp GenericAll trên nhóm đích | 2 |
+| Thêm bản thân vào nhóm đích | 1 |
+| Nhận entitlement từ membership vừa thêm | 0 |
+| Tổng | **3** |
 
-BloodHound đã có phân tích điều kiện, cạnh suy diễn và quản lý/khắc phục đường tấn công.
-Vì vậy, riêng “gắn trọng số” hay “tìm choke point” chưa đủ để tuyên bố tính mới.
-Đóng góp dự kiến của neo là mô hình trạng thái và công việc có giải thích,
-kèm đánh giá can thiệp tái lập; mức cải thiện phải được thực nghiệm xác nhận.
-Nguồn đối chiếu: [logic cạnh suy diễn](https://specterops.io/blog/2024/01/24/adcs-attack-paths-in-bloodhound-part-1/)
-và [phân biệt Community/Enterprise](https://specterops.io/platform/bloodhound-community-edition/).
+C là điểm công sức theo rubric, không phải thời gian hoặc xác suất đo thực tế.
+Hai query đã được thực hiện lại và đối chiếu witness, program và ledger.
 
-## Kiểm tra đầu vào đã chạy
+Can thiệp mô phỏng: gỡ **RODCMANAGER → Administrators**. Trên đúng một nguồn
+và hai đích DA/EA, engine cắt 2/2 chương trình gốc; tìm lại hoàn tất trong scope
+và không thấy bypass, cả hai đích trở thành unreachable trong mô hình.
+Gói kết quả lưu trên đĩa qua verifier độc lập bằng native search và replay.
+Không suy rộng thành mức giảm rủi ro toàn miền; chưa chấm ảnh hưởng vận hành.
 
-Đã tải và kiểm SHA-256 của đủ **31 file / 3.518.594 bytes** từ
-[mirror được pin](https://github.com/SquidSec/BloodBash/tree/a465568cc9058d2faa8d04c2dd3e600c68e9d2c7/SampleSharphoundADData).
-Đây là hash file JSON giải nén, không phải khẳng định về archive ZIP lịch sử.
+## Các thay đổi nhập liệu
 
-Đã sửa hai lỗi hẹp: nhận diện ID có tiền tố miền trong export hiện đại, và
-không dùng cờ ACL mặc định của bản ghi bổ sung rỗng để phủ định bản ghi đầy đủ.
-Mọi biểu diễn gốc vẫn được giữ; xung đột giữa các bản ghi đầy đủ vẫn báo lỗi.
+- Chỉ bỏ placeholder được đánh dấu sinh bổ sung, không chứa dữ liệu quan hệ
+  và không được tham chiếu; lưu audit từng record. Không bỏ tài khoản thật cô lập.
+- Danh tính ngoài miền lấy từ record đã quan sát trong corpus, giữ làm boundary
+  để nối SID/DN; không mang quan hệ của export ngoài miền vào phép phân tích.
+- DN phải khớp đối tượng đã quan sát; không đoán SID theo tên nhóm. Hai membership
+  GHOST trỏ tới DN cũ được giữ thành assessment riêng, các quan hệ hợp lệ còn lại vẫn chạy.
+- Nhóm Builtin được xác định theo phạm vi miền khi Computer có bằng chứng primary
+  group của DC/RODC; member server vẫn cần đúng thông tin host. Inference đọc được
+  cả ID scoped dạng canonical. [Tham chiếu nhóm AD](https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/manage/understand-security-groups).
 
-| Export | Kết quả hiện tại |
-| --- | --- |
-| PHANTOM | Lỗi nhập: quan hệ local SID thiếu host GUID để xác định phạm vi |
-| GHOST | Lỗi nhập: NETWORK SERVICE được gắn tiền tố miền nhưng thiếu host GUID |
-| WRAITH | Lỗi nhập: quan hệ local SID thiếu host GUID để xác định phạm vi |
+PHANTOM vẫn bị chặn bởi SID local trên member server thiếu host GUID. Raw còn
+có một SID gán cho hai tài khoản khác nhau; không tự chọn một bản ghi để vượt lỗi.
+SEAMLESS được nhập lại: nodes, edges, assessments và toàn bộ fact evidence
+khớp snapshot trước; vẫn 3.370 node / 56.367 cạnh.
 
-Chưa export nào trong ba export này qua được đầu vào; chưa chạy search hay chấm C
-trên chúng. Những lỗi này không được cộng vào query Unknown hoặc no-path.
-Ngoài ra, raw PHANTOM có SID `...-2186` xuất hiện với hai tên tài khoản,
-trạng thái enabled và container khác nhau; chưa có cơ sở tự chọn một bản ghi.
+371 test liên quan pass. Full suite đã thử nhưng dừng trước khi hoàn tất;
+không ghi nhận là full-suite pass. [Bằng chứng và lệnh thực tế](portability-results.json).
+[Audit trước sửa](transfer-audit.json) giữ nguyên kết quả lịch sử ở commit trước.
 
-Lệnh nhập chung đã dựng lại SEAMLESS và được đối chiếu với snapshot trước.
-292 test parser/neo liên quan pass; chưa chạy full suite. Bằng chứng:
-[audit máy đọc được](transfer-audit.json).
-
-## Tái lập kiểm tra ngoài SEAMLESS
+## Chạy lại
 
 ```sh
 .venv/bin/python -m scripts.download_ad_sampledata
@@ -79,16 +81,33 @@ Lệnh nhập chung đã dựng lại SEAMLESS và được đối chiếu với
   --raw-dir data/raw/ad_sampledata \
   --manifest data/samples/manifests/ad-sampledata-v1.json \
   --time-policy data/samples/time-policies/ad-sampledata-v1.json \
-  --export-prefix 20240305110427 \
-  --output-dir reports/generated/neo-ghost-import
+  --export-prefix 20240305111414 \
+  --output-dir reports/generated/wraith-import
+.venv/bin/python -m scripts.neo_domain \
+  --snapshot reports/generated/wraith-import/snapshot.json \
+  --domain-sid S-1-5-21-3702535222-3822678775-2090119576 \
+  --output-dir reports/generated/wraith-survey --workers 2
+.venv/bin/python -m scripts.neo_domain_report \
+  --snapshot reports/generated/wraith-import/snapshot.json \
+  --survey reports/generated/wraith-survey \
+  --output-dir reports/generated/wraith-remediation --interventions 1
 ```
 
-Lệnh thứ hai hiện trả mã 2 với `import_error`, chưa tạo snapshot. Prefix là
-`20240305110018` cho PHANTOM và `20240305111414` cho WRAITH. Manifest vẫn
-kiểm toàn bộ 31 file; các Domain record được giữ làm ngữ cảnh định danh.
-`scripts.neo_domain --domain-sid ...` đã cho chọn miền, và chỉ chọn DA/EA
-thực sự quan sát được, không bắt miền con phải có Enterprise Admins.
+Đổi prefix thành `20240305110427` và SID thành
+`S-1-5-21-2845847946-3451170323-4261139666` để chạy GHOST; dùng thư mục output mới.
+JSON lưu timestamp export thực tế và đủ lệnh/input pins nếu cần tái lập đúng bytes.
 
-Việc tiếp theo: xử lý phạm vi định danh của các export này với báo cáo rõ phần
-phân tích được; sau đó khóa cấu hình và chạy đối chứng. BloodHound live chưa chạy
-trong vòng đánh giá này; môi trường hiện tại chưa có Docker.
+## Đánh giá khóa luận tiếp theo
+
+SEAMLESS dùng phát triển; ad_sampledata/NORTH là kiểm tra ngoài SEAMLESS, từng
+được khảo sát ở dự án cũ nên không gọi là test mù. Test cuối cần một môi trường
+chưa dùng để điều chỉnh neo; không chia ngẫu nhiên node SEAMLESS để thay thế.
+
+Đối chứng BloodHound phải pin phiên bản, cùng byte nguồn và cùng phạm vi miền,
+nguồn–đích, quan hệ/kỹ thuật. Đối chiếu graph trước khi so đường. Một lượt BFS
+trên canonical graph không được ghi thành kết quả chạy BloodHound.
+Cần đo thứ hạng theo C khác số cạnh ở đâu, điều kiện và quyền phát sinh có giá trị
+gì, sau can thiệp còn bypass hay không; kèm độ nhạy điểm, thời gian và RAM.
+BloodHound đã có [logic cạnh suy diễn](https://specterops.io/blog/2024/01/24/adcs-attack-paths-in-bloodhound-part-1/)
+và [quản lý đường tấn công](https://specterops.io/platform/bloodhound-community-edition/).
+Chưa có đối chứng live mới và chưa kết luận neo tốt hơn BloodHound.

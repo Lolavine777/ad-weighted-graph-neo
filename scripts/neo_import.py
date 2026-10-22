@@ -6,6 +6,7 @@ import argparse
 import json
 import sys
 from collections import Counter
+from dataclasses import replace
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -19,6 +20,108 @@ from src.parser.cli import canonicalize_graph, load_time_policy
 from src.parser.snapshot_facts import serialize_snapshot
 
 KINDS = {"users", "computers", "groups", "domains", "gpos", "ous"}
+
+
+def _strings(value):
+    if isinstance(value, dict):
+        for item in value.values():
+            yield from _strings(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _strings(item)
+    elif isinstance(value, str):
+        yield value
+
+
+def _empty_generated(record):
+    properties = record.data.get("Properties", {})
+    return (
+        properties.get("reconcile") is False
+        and not set(properties) - {"name", "domain", "domainsid", "reconcile"}
+        and all(
+            value in (None, False, [], {})
+            for key, value in record.data.items()
+            if key not in {"ObjectIdentifier", "Properties"}
+        )
+    )
+
+
+def _reference_strings(record):
+    for key, value in record.data.items():
+        if key == "ObjectIdentifier":
+            continue
+        if key == "Properties":
+            for field, item in value.items():
+                if field not in {"name", "domain", "domainsid", "distinguishedname", "objectid"}:
+                    yield from _strings(item)
+        else:
+            yield from _strings(value)
+
+
+def prepare_records(records, export_prefix):
+    """Select one export and retain observed foreign identities as boundary objects.
+
+    Boundary identities supply SID/DN resolution, not relationships from another
+    export. Omit only explicit empty generated records with no references.
+    Every omission and boundary representation remains identifiable in the audit.
+    """
+    supported = [r for r in records if r.kind.casefold() in KINDS]
+    selected = [
+        r
+        for r in supported
+        if export_prefix is None
+        or r.provenance["raw_file"].rsplit("/", 1)[-1].startswith(export_prefix)
+    ]
+    if not selected:
+        raise ValueError("No supported records match the export prefix")
+    references = Counter(value.casefold() for r in selected for value in _reference_strings(r))
+    omitted = [
+        r
+        for r in selected
+        if _empty_generated(r) and references[r.data["ObjectIdentifier"].casefold()] == 0
+    ]
+    omitted_ids = {id(r) for r in omitted}
+    selected = [r for r in selected if id(r) not in omitted_ids]
+    audit = {
+        "omitted_unreferenced_empty_generated": [r.provenance for r in omitted],
+        "boundary_representations": [],
+        "selected_domain_sid": None,
+    }
+    if export_prefix is None:
+        return selected, audit
+    domains = [r for r in selected if r.kind.casefold() == "domains"]
+    if len(domains) != 1:
+        raise ValueError("An export prefix must select exactly one observed Domain record")
+    domain = domains[0].data["Properties"]["domain"].casefold()
+    audit["selected_domain_sid"] = domains[0].data["ObjectIdentifier"]
+    needed = {value.casefold() for r in selected for value in _strings(r.data)}
+    local = [
+        r
+        for r in selected
+        if not r.data.get("Properties", {}).get("domain")
+        or r.data["Properties"]["domain"].casefold() == domain
+    ]
+    for record in supported:
+        properties = record.data.get("Properties", {})
+        if properties.get("domain", "").casefold() == domain:
+            continue
+        aliases = [record.data.get("ObjectIdentifier"), properties.get("distinguishedname")]
+        if record.kind.casefold() != "domains" and not any(
+            isinstance(alias, str) and alias.casefold() in needed for alias in aliases
+        ):
+            continue
+        local.append(
+            replace(
+                record,
+                data={
+                    "ObjectIdentifier": record.data["ObjectIdentifier"],
+                    "Properties": properties,
+                    "is_boundary": True,
+                },
+            )
+        )
+        audit["boundary_representations"].append(record.provenance)
+    return local, audit
 
 
 def main(argv=None):
@@ -45,26 +148,17 @@ def import_snapshot(args):
     manifest = load_manifest(args.manifest)
     pins = execution_source_pins()
     loader = ManifestRawDataLoader(args.manifest, time_policy=load_time_policy(args.time_policy))
-    records, excluded = [], Counter()
-    for record in loader.load(args.raw_dir):
-        if (
-            args.export_prefix
-            and record.kind.casefold() != "domains"
-            and not record.provenance["raw_file"].rsplit("/", 1)[-1].startswith(args.export_prefix)
-        ):
-            excluded["other_exports"] += 1
-            continue
-        if record.kind.casefold() in KINDS:
-            records.append(record)
-        else:
-            excluded[record.kind] += 1
+    raw = list(loader.load(args.raw_dir))
+    excluded = Counter(r.kind for r in raw if r.kind.casefold() not in KINDS)
+    records, preparation = prepare_records(raw, args.export_prefix)
     normalized = IdentityNormalizer().normalize_records(adapt_bloodhound_v3_records(records))
     builder = DirectGraphBuilder(
+        retain_unresolved_members=True,
         metadata={
             "snapshot_id": manifest["snapshot_id"],
             "created_at": args.created_at or datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "code_version": "source-pins:" + digest(json.dumps(pins, sort_keys=True).encode()),
-        }
+        },
     )
     canonical, facts = builder.build_snapshot(normalized)
     payload = serialize_snapshot(canonicalize_graph(canonical), facts)
@@ -80,6 +174,7 @@ def import_snapshot(args):
         "runner_sha256": digest(Path(__file__).read_bytes()),
         "time_policy": json.loads(args.time_policy.read_text()) if args.time_policy else None,
         "export_prefix": args.export_prefix,
+        "preparation": preparation,
         "projection": "Existing six node kinds and direct relationships; snapshot facts retained",
         "excluded_record_kinds": dict(excluded),
         "nodes": dict(Counter(n["kind"] for n in graph.nodes())),

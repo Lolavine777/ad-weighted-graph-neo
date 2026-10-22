@@ -95,6 +95,10 @@ class _PreparedRecord:
     candidates: tuple[_EdgeCandidate, ...]
 
 
+class _UnresolvedReference(ValueError):
+    """An endpoint was not exported; kind conflicts and ambiguity remain errors."""
+
+
 def canonical_edge_id(source: str, target: str, kind: str) -> str:
     """Return the contract-defined ID for one logical edge."""
 
@@ -361,6 +365,11 @@ def _prepare(record: NormalizedRecord, contract: Mapping[str, object]) -> _Prepa
 
 def _alias_values(record: NormalizedRecord) -> set[str]:
     aliases = {record.id}
+    # Some collector membership references are DNs. Resolve only against a DN
+    # actually observed on an object; ambiguity remains an error in _resolve.
+    distinguished_name = record.attributes.get("distinguishedname")
+    if isinstance(distinguished_name, str) and distinguished_name.strip():
+        aliases.add(distinguished_name.strip())
     raw_identifier = lookup_raw_identifier(record.raw.data)
     if isinstance(raw_identifier, str) and raw_identifier.strip():
         aliases.add(raw_identifier.strip())
@@ -394,7 +403,9 @@ def _resolve(
     if len(matches) != 1:
         if not matches:
             if known is None:
-                raise ValueError(f"unresolvable {expected_kind or 'node'} reference {reference!r}")
+                raise _UnresolvedReference(
+                    f"unresolvable {expected_kind or 'node'} reference {reference!r}"
+                )
             sid, label = known
             if expected_kind != "Group":
                 raise ValueError(f"well-known principal {sid} conflicts with reference kind")
@@ -657,11 +668,15 @@ class DirectGraphBuilder(GraphBuilder):
         *,
         metadata: Mapping[str, object] | None = None,
         contract_path: Path = _DEFAULT_CONTRACT_PATH,
+        retain_unresolved_members: bool = False,
     ) -> None:
         if metadata is not None and not isinstance(metadata, Mapping):
             raise TypeError("metadata must be a mapping")
+        if type(retain_unresolved_members) is not bool:
+            raise TypeError("retain_unresolved_members must be boolean")
         self._metadata = dict(metadata or {})
         self._contract_path = Path(contract_path)
+        self._retain_unresolved_members = retain_unresolved_members
         try:
             self._contract = load_contract(self._contract_path)
         except (ValueError, OSError) as exc:
@@ -726,23 +741,55 @@ class DirectGraphBuilder(GraphBuilder):
                 aliases[alias.casefold()].add(item.node["id"])
 
         accepted: list[_PreparedRecord] = []
+        unresolved_assessments: dict[str, Assessment] = {}
         edge_provenance: dict[tuple[str, str, str], dict[str, Provenance]] = {}
         for item in prepared:
             resolved: list[tuple[_EdgeCandidate, str, str, list[Provenance]]] = []
             pending: dict[str, GraphNode] = {}
+            unresolved = []
             try:
                 for candidate in item.candidates:
-                    source = _resolve(
-                        candidate.source_ref,
-                        candidate.source_kind,
-                        aliases,
-                        tentative_nodes,
-                        pending,
-                        boundary_member_source=(
-                            candidate.kind == "MemberOf"
-                            and candidate.field.startswith("Members[].")
-                        ),
-                    )
+                    try:
+                        source = _resolve(
+                            candidate.source_ref,
+                            candidate.source_kind,
+                            aliases,
+                            tentative_nodes,
+                            pending,
+                            boundary_member_source=(
+                                candidate.kind == "MemberOf"
+                                and (
+                                    candidate.field == "Members"
+                                    or candidate.field.startswith("Members[].")
+                                )
+                            ),
+                        )
+                    except _UnresolvedReference:
+                        if not (
+                            self._retain_unresolved_members
+                            and candidate.kind == "MemberOf"
+                            and (
+                                candidate.field == "Members"
+                                or candidate.field.startswith("Members[].")
+                            )
+                        ):
+                            raise
+                        assessment = {
+                            "status": AssessmentStatus.UNKNOWN,
+                            "kind": "MemberOf",
+                            "target": item.record.id,
+                            "reason": "Unresolved MemberOf source: " + candidate.source_ref,
+                            "provenance": [
+                                {**p, "evidence_type": "unknown"}
+                                for p in _candidate_provenance(item.record, candidate)
+                            ],
+                        }
+                        assessment["id"] = (
+                            "sha256:"
+                            + hashlib.sha256(_canonical_json(assessment).encode()).hexdigest()
+                        )
+                        unresolved.append(cast(Assessment, assessment))
+                        continue
                     target = _resolve(
                         candidate.target_ref,
                         candidate.target_kind,
@@ -784,6 +831,7 @@ class DirectGraphBuilder(GraphBuilder):
                 continue
 
             accepted.append(item)
+            unresolved_assessments.update({a["id"]: a for a in unresolved})
             tentative_nodes.update(pending)
             for candidate, source, target, provenance in resolved:
                 key = (source, target, candidate.kind)
@@ -797,7 +845,7 @@ class DirectGraphBuilder(GraphBuilder):
         nodes = {node_id: tentative_nodes[node_id] for node_id in accepted_ids}
         metadata = self._metadata_for(item.record for item in accepted)
         edges: list[GraphEdge] = []
-        assessments: dict[str, Assessment] = {}
+        assessments: dict[str, Assessment] = unresolved_assessments
         derived_paths: dict[tuple[str, str, str], dict[str, DerivationPath]] = defaultdict(dict)
         derived_kinds: dict[tuple[str, str, str], set[str]] = defaultdict(set)
         weights = self._contract["profiles"][metadata["weight_profile"]]["weights"]
