@@ -1,0 +1,881 @@
+{
+  "version": "neo-localgroup-fix/1",
+  "base_commit": "5c6f7c2",
+  "date": "2026-10-22",
+  "evidence_root": "reports/generated/localgroup-fix-20261022",
+  "source_pin_changes": {
+    "src/parser/inference.py": {
+      "before": "sha256:d7cdea9dce288bcfb01677f6509a1404d213aa22d624a0b9c3f5781e62320463",
+      "after": "sha256:23b257becd2c6fcc3ae67cb93a2b1d7ee4f9fcadcace3c28bfa2ba159c337823"
+    }
+  },
+  "raw_manifest_sha256": "sha256:27a13df4e12582b42b921411150cd0c9ba2b4e3356f0a250fcd992b3cb823062",
+  "raw_files_verified": 31,
+  "selected_export": "20240305111414",
+  "fixed_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "fresh_pack_sha256": "sha256:dd3033dc781316476d4f447d0276926ba9ef34f0ee3cec1b12980349e2fffd7d",
+  "cohort_request_scenario_techniques_equal": true,
+  "budget": {
+    "max_paths": 10,
+    "max_steps": 12,
+    "max_expansions": 4096
+  },
+  "CE_baseline_reused": {
+    "root": "reports/generated/bh-live-20261022",
+    "summary_sha256": "sha256:f3ca6b009f9e30dbc927b1b4b3939566cc533764882c1abdb0ee19592136411d",
+    "evidence_manifest_sha256": "sha256:08ca4ba7be8e23bf0b06eaba6cbfc1ecbffaefaae40d0fe74861fcdb8fe0bca3",
+    "verified_files": {
+      "live-wraith-final/inventory.json": "sha256:951078c8220253274675651789747c5d4ef80bb05efc88ae49f142241beb93d8",
+      "live-wraith-final/queries.json": "sha256:390cab6cc7fcb7fd99318d8d565c02c94fc9de9bd951e55f139de1946edc7b51",
+      "live-wraith-final/parity.json": "sha256:6cbaba457e4068b15a5cb89cb62762a0a870a9835bafd9e5c80034f922de0fc9",
+      "live-seamless-final/queries.json": "sha256:fa2c868dee57c09c410e9cec98023fb5b315ab693ff94c0309e6e2562cc71249",
+      "native/seamless/cells.jsonl": "sha256:619d6f4c9c163996d1c15d5786983139951f5c217b3b50f5df43ad1e8aa99f83",
+      "native/wraith/cells.jsonl": "sha256:dcd610679299c9fb4313b2f5874e0fb637ef315800827b91b15f0668f63d6bf3",
+      "native/wraith-sessions/cells.jsonl": "sha256:49660c783395578ca425cc549d0840426350c69c04c1a995c84041884b63c8f4"
+    }
+  },
+  "graph": {
+    "before_nodes": 150,
+    "after_nodes": 150,
+    "nodes_and_assessments_equal": true,
+    "old_edges_unchanged": true,
+    "AdminTo_before": 10,
+    "AdminTo_after": 22,
+    "new_direct": [
+      {
+        "source": "DOMAIN ADMINS@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:092eff188a9e05f4ec87380b261920ef9f6be460637f41f06c389f306fce60ce",
+        "provenance": [
+          {
+            "attribute": "LocalGroups[].Results[]",
+            "collector": "SharpHound/2.3.3",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+            "record_id": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+            "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+            "timestamp": "2024-03-05T11:00:18Z",
+            "timestamp_status": "assumed"
+          }
+        ]
+      },
+      {
+        "source": "DOMAIN ADMINS@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:5a1beb23c9e427d76cf51c6c51e169df7d9ab8e4276388feb52adf21f0844a60",
+        "provenance": [
+          {
+            "attribute": "LocalGroups[].Results[]",
+            "collector": "SharpHound/2.3.3",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+            "record_id": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+            "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+            "timestamp": "2024-03-05T11:00:18Z",
+            "timestamp_status": "assumed"
+          }
+        ]
+      },
+      {
+        "source": "TRUSTER@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:d4e8d1f93b92ad0f62ad66afc974bdfe22c5795e657039358fdf984a99141e1d",
+        "provenance": [
+          {
+            "attribute": "LocalGroups[].Results[]",
+            "collector": "SharpHound/2.3.3",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+            "record_id": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+            "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+            "timestamp": "2024-03-05T11:00:18Z",
+            "timestamp_status": "assumed"
+          }
+        ]
+      },
+      {
+        "source": "TRUSTER@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:d84bf591bc98e6ba877b4332caca5d7f3f0315372444324d3f4a8aa861b0356c",
+        "provenance": [
+          {
+            "attribute": "LocalGroups[].Results[]",
+            "collector": "SharpHound/2.3.3",
+            "evidence_type": "positive",
+            "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+            "record_id": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+            "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+            "timestamp": "2024-03-05T11:00:18Z",
+            "timestamp_status": "assumed"
+          }
+        ]
+      }
+    ],
+    "new_derived": [
+      {
+        "source": "JACK@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:272858a01d4cf983ad2d07ce4e5c03d5a14f6cf2e6b5ec058ca141c6a43d9bb4",
+        "provenance_sha256": "sha256:b37be5e9107a8eecb6d8b2d74ea9addd54320caf6e863d2fbb3364ff1e17de74",
+        "derivation_sha256": "sha256:809d96349d3c74b8a337fb029f5eb50c3610b1d97689006ce7f8fd9a7fe150ff"
+      },
+      {
+        "source": "XADMIN@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:45c70c6f0508a5fc63d4acda41fe9dbb885ca8ee60d7d273a02da59c8e3b1fb2",
+        "provenance_sha256": "sha256:50f52838caa7aed0de5c7c49612623398c3c24ac03d864454337345f9cee9ab2",
+        "derivation_sha256": "sha256:bedec062d0fdd15465cee27f434851b979dfd0bd9fa245f04d3aa74cc613ba53"
+      },
+      {
+        "source": "XADMIN@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:4a80df26065026818ef3a461b3796955958b274afcfb66b7a50e918658536932",
+        "provenance_sha256": "sha256:b37be5e9107a8eecb6d8b2d74ea9addd54320caf6e863d2fbb3364ff1e17de74",
+        "derivation_sha256": "sha256:8225138e9aee5788425de95c6f135645017ff18dedb78868618ee1bb99e6e3ab"
+      },
+      {
+        "source": "ADMINISTRATOR@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:55b13b453a58370fedd1b25031a8ca2ea7185bad307822d53869811fd7b31726",
+        "provenance_sha256": "sha256:50f52838caa7aed0de5c7c49612623398c3c24ac03d864454337345f9cee9ab2",
+        "derivation_sha256": "sha256:78f6f6883b540a863ffaa5d7ceb5d4a6c23c2a38375c487b06b9328f79c963d7"
+      },
+      {
+        "source": "BM@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:a8e790034cdcd01a04712b1cc851e67ea7d4fd90cd20988747fa2b017350d8ce",
+        "provenance_sha256": "sha256:50f52838caa7aed0de5c7c49612623398c3c24ac03d864454337345f9cee9ab2",
+        "derivation_sha256": "sha256:181c4d56a6f2e543c4bc1c1eb3fd39f82779bbe77ce344f1677aa4b9c31167f4"
+      },
+      {
+        "source": "ADMINISTRATOR@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:d07b0eed8a2100b4e3dbd84c9ab641213205a570659eb39f54e2a6fb01301b4a",
+        "provenance_sha256": "sha256:b37be5e9107a8eecb6d8b2d74ea9addd54320caf6e863d2fbb3364ff1e17de74",
+        "derivation_sha256": "sha256:7747c4e4be12d85a0ead795cf9f86807f231b4edeacbba0875b2a9dd264ff8c0"
+      },
+      {
+        "source": "BM@WRAITH.CORP",
+        "target": "EXTCA01.WRAITH.CORP",
+        "edge_id": "sha256:ea7747d945b4dead1cedbdc89a0fd030ff6b8c3f64ce729523411affe838cba3",
+        "provenance_sha256": "sha256:b37be5e9107a8eecb6d8b2d74ea9addd54320caf6e863d2fbb3364ff1e17de74",
+        "derivation_sha256": "sha256:73ce08b1bba2cc1a46875b8b79cce3d0481c643cc390e05b6ef0456e864b2b66"
+      },
+      {
+        "source": "JACK@WRAITH.CORP",
+        "target": "UNCON.WRAITH.CORP",
+        "edge_id": "sha256:f3ac4b9dc42a2d51bbafb64dcdf812df8dd9bd789fe41a38eb74f6ff41e6b962",
+        "provenance_sha256": "sha256:50f52838caa7aed0de5c7c49612623398c3c24ac03d864454337345f9cee9ab2",
+        "derivation_sha256": "sha256:0f81961dab84165af0f97482e4c60a44769f5ae5c1f5b7ffcf1a3926800ce813"
+      }
+    ]
+  },
+  "strata": {
+    "seamless": {
+      "pairs": 10,
+      "before_reached": 10,
+      "after_reached": 10,
+      "CE_reached": 10
+    },
+    "wraith": {
+      "pairs": 10,
+      "before_reached": 6,
+      "after_reached": 8,
+      "CE_reached": 8
+    },
+    "wraith-sessions": {
+      "pairs": 6,
+      "before_reached": 6,
+      "after_reached": 6,
+      "CE_reached": 6
+    }
+  },
+  "unique_pairs": [
+    {
+      "pair_id": "ee5b245cc837d93e",
+      "source": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 109,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "fe8f268bb1185d29",
+      "source": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 5
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 5,
+        "expansions": 63,
+        "truncated": true,
+        "truncation_reason": "step_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "4de26bc8f5b34485",
+      "source": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 1
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 1,
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "081401205950b564",
+      "source": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 4
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 4,
+        "expansions": 51,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "4ad2a03ae094ff86",
+      "source": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 1
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 1,
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "e07d8a989ed25a5e",
+      "source": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 4
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 4,
+        "expansions": 51,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "d1f28168c92c42d6",
+      "source": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 55,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "a066c924153a1acb",
+      "source": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 5
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 5,
+        "expansions": 42,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "e5aed26c883d3f75",
+      "source": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 1
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 1,
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "18f9ee8a399f23c7",
+      "source": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "before": {
+        "reached": true,
+        "C": 4
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 4,
+        "expansions": 50,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "a244629cbbec3311",
+      "source": "EXTDC01.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "75b293546235918b",
+      "source": "EXTDC01.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "f4ef5e8f4106f27f",
+      "source": "XADMIN@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": true,
+        "C": 0
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 0,
+        "expansions": 20,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "bea948114eba3f04",
+      "source": "XADMIN@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": true,
+        "C": 0
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 0,
+        "expansions": 20,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "8c26de8d3cd2af06",
+      "source": "RODCMANAGER@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": true,
+        "C": 3
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 3,
+        "expansions": 35,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "468e68e43850ef0b",
+      "source": "RODCMANAGER@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": true,
+        "C": 3
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 3,
+        "expansions": 35,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "9ae3cb9294458a65",
+      "source": "TRUSTER@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": false,
+        "C": null
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 3,
+        "expansions": 24,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": false,
+      "candidate_summary_unchanged": false,
+      "top3_actions_unchanged": false
+    },
+    {
+      "pair_id": "64163e41f55ea321",
+      "source": "TRUSTER@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": false,
+        "C": null
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 3,
+        "expansions": 24,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": false,
+      "candidate_summary_unchanged": false,
+      "top3_actions_unchanged": false
+    },
+    {
+      "pair_id": "85faf6f54c1e94bf",
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": false,
+        "C": null
+      },
+      "after": {
+        "status": "blocked",
+        "reached": false,
+        "C": null,
+        "expansions": 1,
+        "truncated": false,
+        "truncation_reason": null
+      },
+      "CE_reached": false,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "9a0c745e67356ad0",
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "before": {
+        "reached": false,
+        "C": null
+      },
+      "after": {
+        "status": "blocked",
+        "reached": false,
+        "C": null,
+        "expansions": 1,
+        "truncated": false,
+        "truncation_reason": null
+      },
+      "CE_reached": false,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "84ec48dfabb21f84",
+      "source": "EXTCA01.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "b12485d0e9b4a8d3",
+      "source": "EXTCA01.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "9802acd99c3c8cc7",
+      "source": "UNCON.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    },
+    {
+      "pair_id": "e961422109f16d8f",
+      "source": "UNCON.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "before": {
+        "reached": true,
+        "C": 2
+      },
+      "after": {
+        "status": "success",
+        "reached": true,
+        "C": 2,
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached"
+      },
+      "CE_reached": true,
+      "best_route_unchanged": true,
+      "candidate_summary_unchanged": true,
+      "top3_actions_unchanged": true
+    }
+  ],
+  "totals": {
+    "unique_pairs": 24,
+    "before_reached": 20,
+    "after_reached": 22,
+    "CE_reached": 22,
+    "old_successes_lost": 0,
+    "changed_pair_ids": [
+      "64163e41f55ea321",
+      "9ae3cb9294458a65"
+    ]
+  },
+  "TRUSTER_replay": [
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "programs_replayed": 10,
+      "all_final_states_equal": true,
+      "best_route": [
+        {
+          "technique": "obtain_admin_execution_on_host",
+          "actor": "TRUSTER@WRAITH.CORP",
+          "source": "TRUSTER@WRAITH.CORP",
+          "target": "EXTCA01.WRAITH.CORP",
+          "edge_id": "sha256:d84bf591bc98e6ba877b4332caca5d7f3f0315372444324d3f4a8aa861b0356c"
+        },
+        {
+          "technique": "use_session_identity",
+          "actor": "TRUSTER@WRAITH.CORP",
+          "source": "EXTCA01.WRAITH.CORP",
+          "target": "BM@WRAITH.CORP",
+          "edge_id": "sha256:71be9853b9739e737e82aa55144caa68356b00d835934849002df776ea1f629d"
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "BM@WRAITH.CORP",
+          "source": "BM@WRAITH.CORP",
+          "target": "DOMAIN ADMINS@WRAITH.CORP",
+          "edge_id": "sha256:931de33bb642abb4d7d15f6e60529f5928f6df3cf269b86d335796fc03f41a08"
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "BM@WRAITH.CORP",
+          "source": "BM@WRAITH.CORP",
+          "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+          "edge_id": "sha256:4b0cdea0a6dadbecc80c8833b8a6d196c8f8c6f1533c3da93f05f0fbe1e5a86a"
+        }
+      ]
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "programs_replayed": 10,
+      "all_final_states_equal": true,
+      "best_route": [
+        {
+          "technique": "obtain_admin_execution_on_host",
+          "actor": "TRUSTER@WRAITH.CORP",
+          "source": "TRUSTER@WRAITH.CORP",
+          "target": "EXTCA01.WRAITH.CORP",
+          "edge_id": "sha256:d84bf591bc98e6ba877b4332caca5d7f3f0315372444324d3f4a8aa861b0356c"
+        },
+        {
+          "technique": "use_session_identity",
+          "actor": "TRUSTER@WRAITH.CORP",
+          "source": "EXTCA01.WRAITH.CORP",
+          "target": "BM@WRAITH.CORP",
+          "edge_id": "sha256:71be9853b9739e737e82aa55144caa68356b00d835934849002df776ea1f629d"
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "BM@WRAITH.CORP",
+          "source": "BM@WRAITH.CORP",
+          "target": "DOMAIN ADMINS@WRAITH.CORP",
+          "edge_id": "sha256:931de33bb642abb4d7d15f6e60529f5928f6df3cf269b86d335796fc03f41a08"
+        }
+      ]
+    }
+  ],
+  "CE_parity_after": {
+    "neo_nodes": 150,
+    "bh_nodes": 933,
+    "bh_core_nodes": 160,
+    "shared_ids": 149,
+    "neo_scoped_triples": 770,
+    "bh_common_node_scoped_triples": 757,
+    "shared_triples": 755,
+    "neo_only_by_kind": {
+      "WriteDacl": 3,
+      "AdminTo": 11,
+      "GenericAll": 1
+    },
+    "bh_only_common_by_kind": {
+      "MemberOf": 2
+    },
+    "bh_outside_neo_nodes_by_kind": {
+      "GenericAll": 2344,
+      "WriteDacl": 1004,
+      "MemberOf": 2
+    }
+  },
+  "verification": {
+    "tests": 228,
+    "ruff": "passed",
+    "full_suite": "not run; historical catalog/hash bindings outside scope",
+    "checkpoint_rows_verified": 26,
+    "native_replay_TRUSTER_programs": 20
+  },
+  "evidence_manifest_sha256": "sha256:7dc4e2883baa1c48933f0cb519e5651cdad01d74c29efdce1dc3cc7fac901156"
+}

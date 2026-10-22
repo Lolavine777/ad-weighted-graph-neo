@@ -418,6 +418,19 @@ def _group_sid(value: object) -> str | None:
     return None
 
 
+def _local_group_sid(host: NormalizedRecord, group: Mapping[str, Any]) -> str | None:
+    identifier = _first(group, "ObjectIdentifier")
+    # The short form is relative to its owning Computer, not an arbitrary SID suffix.
+    if (
+        host.kind == "Computer"
+        and is_valid_sid(host.id)
+        and isinstance(identifier, str)
+        and identifier.strip().upper() == f"{host.id.upper()}-544"
+    ):
+        return ADMINISTRATORS_SID
+    return _group_sid(_first(group, "ObjectIdentifier", "GroupSID", "GroupSid", "SID", "Name"))
+
+
 def _member_items(container: object) -> tuple[object, ...]:
     if isinstance(container, Mapping):
         for key in ("Results", "Members", "MemberIds", "MemberSIDs", "members"):
@@ -470,14 +483,15 @@ def _host_memberships(
                     )
                 )
 
+    if _field_collection_failure(data, "LocalGroups"):
+        return memberships
     local_groups = data.get("LocalGroups")
     for group_item in _items(local_groups):
         if not isinstance(group_item, Mapping):
             continue
         if _collection_failure(group_item):
             continue
-        raw_group = _first(group_item, "ObjectIdentifier", "GroupSID", "GroupSid", "SID", "Name")
-        group_sid = _group_sid(raw_group)
+        group_sid = _local_group_sid(host, group_item)
         if group_sid is None:
             continue
         members = _member_items(group_item.get("Results", group_item))
@@ -534,10 +548,7 @@ def _host_group_status(
         failed_group = any(
             isinstance(group_item, Mapping)
             and _collection_failure(group_item)
-            and _group_sid(
-                _first(group_item, "ObjectIdentifier", "GroupSID", "GroupSid", "SID", "Name")
-            )
-            == group_sid
+            and _local_group_sid(host, group_item) == group_sid
             for group_item in _items(host.raw.data["LocalGroups"])
         )
         if failed_group:
@@ -632,9 +643,7 @@ def _failed_host_membership_results(
     for group_item in _items(local_groups):
         if not isinstance(group_item, Mapping):
             continue
-        group_sid = _group_sid(
-            _first(group_item, "ObjectIdentifier", "GroupSID", "GroupSid", "SID", "Name")
-        )
+        group_sid = _local_group_sid(host, group_item)
         relationship = next(
             (relation for sid, relation in relations.values() if sid == group_sid), None
         )

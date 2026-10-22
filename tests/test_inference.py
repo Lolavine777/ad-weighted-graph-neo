@@ -1066,3 +1066,138 @@ def test_extract_primary_group_entry_shared_validation():
             {"Properties": {"primarygroupsid": GROUP}},
             record_kind="Group",
         )
+
+
+@pytest.mark.parametrize("identifier", [f"{HOST}-544", f" {HOST.lower()}-544 "])
+def test_localgroup_computer_sid_admin_is_bound_to_owning_host(identifier):
+    graph = _builder(
+        [
+            _host(
+                {
+                    "LocalGroups": [
+                        {
+                            "ObjectIdentifier": identifier,
+                            "Collected": True,
+                            "Results": [{"ObjectIdentifier": USER}],
+                        }
+                    ]
+                }
+            ),
+            _user(),
+        ]
+    )
+    edges = [e for e in graph["edges"] if e["kind"] == "AdminTo"]
+    assert len(edges) == 1
+    assert (edges[0]["source"], edges[0]["target"]) == (USER, HOST)
+    assert "derivation" not in edges[0]
+    assert edges[0]["provenance"]
+    assert all(
+        p["attribute"] == "LocalGroups[].Results[]"
+        and p["record_id"] == HOST
+        and p["evidence_type"] == "positive"
+        for p in edges[0]["provenance"]
+    )
+    assert _edge_kinds(graph) == {"AdminTo"}
+
+
+@pytest.mark.parametrize(
+    "identifier",
+    [
+        "S-1-5-21-1000-2000-3000-3102-544",  # Another host in the same domain.
+        "S-1-5-21-1000-2000-3000-544",  # A domain object RID, not the owning host.
+        "S-1-5-21-1000-2000-3000-4294967296-544",  # Invalid SID component.
+        f"{HOST}-0544",
+        f"{HOST}-544-1",
+        f"{HOST}-544junk",
+        f"{HOST}-555",
+        f"{HOST}-580",
+        HOST,
+        "not-a-sid-544",
+        544,
+        None,
+    ],
+)
+def test_localgroup_admin_suffix_does_not_authorize_other_or_invalid_ids(identifier):
+    graph = _builder(
+        [
+            _host(
+                {
+                    "LocalGroups": [
+                        {"ObjectIdentifier": identifier, "Results": [{"ObjectIdentifier": USER}]}
+                    ]
+                }
+            ),
+            _user(),
+        ]
+    )
+    assert "AdminTo" not in _edge_kinds(graph)
+
+
+@pytest.mark.parametrize("field", ["GroupSID", "Name"])
+def test_computer_sid_admin_alias_is_only_read_from_localgroup_object_identifier(field):
+    graph = _builder(
+        [
+            _host(
+                {"LocalGroups": [{field: f"{HOST}-544", "Results": [{"ObjectIdentifier": USER}]}]}
+            ),
+            _user(),
+        ]
+    )
+    assert "AdminTo" not in _edge_kinds(graph)
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        {"Collected": False},
+        {"FailureReason": "StatusAccessDenied"},
+        {"Status": "failed"},
+    ],
+)
+def test_failed_computer_sid_localgroup_remains_unknown_even_if_parent_complete(failure):
+    host = _host(
+        {
+            "LocalGroupsComplete": True,
+            "LocalGroups": [
+                {
+                    "ObjectIdentifier": f"{HOST}-544",
+                    "Results": [{"ObjectIdentifier": USER}],
+                    **failure,
+                }
+            ],
+        }
+    )
+    normalized = _normal(host)[0]
+    assert (
+        evaluate_local_group_membership(normalized, USER, ADMINISTRATORS_SID).status.value
+        == "unknown"
+    )
+    graph = _builder([host, _user()])
+    assert "AdminTo" not in _edge_kinds(graph)
+    assessment = next(a for a in graph["assessments"] if a.get("kind") == "AdminTo")
+    assert assessment["subject"] == USER and assessment["status"] == "unknown"
+
+
+def test_failed_localgroups_collection_cannot_authorize_from_nested_success():
+    host = _host(
+        {
+            "LocalGroups": {
+                "Collected": False,
+                "Results": [
+                    {
+                        "ObjectIdentifier": f"{HOST}-544",
+                        "Collected": True,
+                        "Results": [{"ObjectIdentifier": USER}],
+                    }
+                ],
+            }
+        }
+    )
+    graph = _builder([host, _user()])
+    assert "AdminTo" not in _edge_kinds(graph)
+    assessment = next(a for a in graph["assessments"] if a.get("kind") == "AdminTo")
+    assert assessment["subject"] == USER and assessment["status"] == "unknown"
+    assert (
+        evaluate_local_group_membership(_normal(host)[0], USER, ADMINISTRATORS_SID).status.value
+        == "unknown"
+    )

@@ -1,5 +1,8 @@
 # Đối chứng BloodHound CE trên SEAMLESS và WRAITH
 
+Cập nhật sau mốc bàn giao `5c6f7c2`: [bản sửa LocalGroup](localgroup-fix.md) đưa neo lên 22/24 cặp.
+Số liệu bên dưới giữ nguyên lượt đối chứng trước sửa để làm baseline.
+
 Đã chạy BloodHound CE thật ngày 22/10/2026 trên Docker Desktop local, từ `main@6d90f78`.
 **BloodHound có đường cho 22/24 cặp duy nhất; neo có witness cho 20/24.**
 Neo giúp diễn giải hành động, điều kiện và công sức, nhưng lượt này không chứng minh khả năng tìm đường hay chọn C tốt hơn BloodHound.
