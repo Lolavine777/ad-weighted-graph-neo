@@ -5,7 +5,7 @@ import json
 from dataclasses import replace
 
 import pytest
-from test_engine import ACTOR, GROUP
+from test_engine import ACTOR, GROUP, _edge
 from test_exposure import DC, DOMAIN
 from test_exposure import graph as graph_fixture
 
@@ -60,6 +60,38 @@ def test_snapshot_binding_does_not_change_neo_assumption_rules(graph):
         "bound_snapshot_id": graph.metadata["snapshot_id"],
     }
     assert NEO_STANDARD_PROFILE.canonical_dict() == original
+
+
+def test_no_session_input_is_explained_without_creating_session_or_identity(graph):
+    _, request = neo_domain.build_survey(graph, scenario="host-compromise")
+    before = graph.to_canonical()
+    coverage = neo_domain.input_coverage(graph, request, "host-compromise")
+    assert coverage["observed_session_edges"] == 0
+    assert coverage["computer_initial_capability"] == "local_admin_only"
+    assert any("không chứng minh máy an toàn" in n for n in coverage["notes"])
+    assert graph.to_canonical() == before
+    assert all(
+        not s.to_foothold_profile(graph=graph).initial_attack_state.usable_identity
+        for s in request.sources
+        if s.node_kind == "Computer"
+    )
+    _, identity_request = neo_domain.build_survey(graph)
+    identity = neo_domain.input_coverage(graph, identity_request, "identity")
+    assert not identity["notes"] and identity["observed_session_edges"] == 0
+
+
+def test_observed_session_is_counted_separately_from_declared_host_control(graph):
+    raw = graph.to_canonical()
+    raw["edges"].append(_edge(DC, ACTOR, "HasSession"))
+    graph = EngineGraph.from_canonical(raw)
+    _, request = neo_domain.build_survey(graph, scenario="host-compromise", source_ids=[DC])
+    coverage = neo_domain.input_coverage(graph, request, "host-compromise")
+    assert coverage["observed_session_edges"] == 1
+    assert coverage["selected_computers_with_observed_session"] == 1
+    assert not any("không có cạnh HasSession" in n for n in coverage["notes"])
+    assert (
+        not request.sources[0].to_foothold_profile(graph=graph).initial_attack_state.usable_identity
+    )
 
 
 def test_native_evaluation_preserves_independent_capabilities_and_replays_slice(graph, monkeypatch):

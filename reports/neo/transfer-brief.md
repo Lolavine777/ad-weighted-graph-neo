@@ -56,6 +56,21 @@ một chương trình thay thế. Native remediation runner đã chạy và ki�
 407 test liên quan pass; không chạy full suite cho bản sửa này.
 [Input pins, kết quả và witness](host-session-results.json).
 
+## Kiểm tra cấu hình trên SEAMLESS
+
+Kiểm tra cấu hình mới trên SEAMLESS: checksum đủ sáu file, cả 100 Computer đều có
+`Sessions: []`; canonical graph không có HasSession. Với tất cả 100 nguồn máy và
+5 User chọn bằng hash trước khi tìm đường: 10/10 cặp User có witness đủ C, C=1–5;
+200 cặp máy local-admin-only chưa có witness (196 blocked, 4 expansion cap),
+không có Unknown attempt hoặc execution error. Không coi đây là chứng minh máy an toàn.
+
+Đối chứng riêng 5 nguồn máy đã khai báo danh tính mạng: 9/10 cặp có witness đủ C,
+một cặp hết cap. Khác biệt ở capability ban đầu; không tự cấp thêm quyền để tăng số đường.
+CLI/brief mới nêu rõ capability và thiếu cạnh session ngay đầu kết quả. Giữ SEAMLESS
+cho quyền/C và WRAITH cho host/session; không tạo session giả trong SEAMLESS.
+[210 query, đối chứng 10 query và chẩn đoán](seamless-host-check.json).
+40 test liên quan chẩn đoán/runner/brief pass; core engine giữ nguyên.
+
 ## Ví dụ ACL trên WRAITH
 
 RODCMANAGER là thành viên Administrators. Nhóm này có WriteDacl lên DA và EA.

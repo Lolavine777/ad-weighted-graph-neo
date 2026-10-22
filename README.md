@@ -85,17 +85,21 @@ Use case 1, một máy đã bị chiếm với quyền local admin/SYSTEM:
 ```sh
 .venv/bin/python -m scripts.neo_domain \
   --snapshot reports/generated/neo-run-001/snapshot.json \
-  --scenario host-compromise --source COMPUTER_GUID \
+  --scenario host-compromise --source COMPUTER_ID \
   --output-dir reports/generated/neo-host-001 --workers 1
 ```
 
-Thay `COMPUTER_GUID` bằng ID máy trong snapshot. Neo tự tìm tới DA/EA và xuất
+Thay `COMPUTER_ID` bằng ID máy trong snapshot. Neo tự tìm tới DA/EA và xuất
 `goal-*.md` giải thích đường, C và các giả định. Kịch bản này giả định các session
 được báo cáo còn mới và có credential dùng được; host có quyền admin mới dùng được
 session. C cho lấy credential và xác thực là 2 theo rubric neo, chưa phải số đo thực tế.
 Không tự biến quyền local admin thành danh tính mạng của tài khoản máy.
 User source vẫn bắt đầu bằng danh tính User dùng được. Bỏ `--source` để chạy các
 nguồn độc lập; giữ `--scenario identity` để tái lập cấu hình khảo sát danh tính mạng.
+CLI và brief nêu quyền ban đầu cùng số cạnh session trước khi diễn giải kết quả.
+Raw SEAMLESS không có session: dùng bộ này cho đường quyền/C; WRAITH kiểm chứng
+nhánh host/session. [Lượt kiểm tra SEAMLESS](reports/neo/seamless-host-check.json)
+giữ riêng kết quả local-admin-only và danh tính tài khoản máy.
 
 Khảo sát mọi User/Computer đủ điều kiện của SEAMLESS tới DA/EA, mỗi nguồn là một
 scenario độc lập có danh tính mạng dùng được (không gộp quyền):

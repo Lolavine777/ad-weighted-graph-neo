@@ -47,6 +47,36 @@ def techniques_for(scenario):
     return HOST_SESSION_TECHNIQUES if scenario == "host-compromise" else TECHNIQUES
 
 
+def input_coverage(graph, request, scenario):
+    """Explain observed opportunities and declared capabilities before interpreting no-path."""
+    techniques_for(scenario)
+    computer_ids = {s.node_id for s in request.sources if s.node_kind == "Computer"}
+    sessions = [e for e in graph.edges() if e["kind"] == "HasSession"]
+    notes = []
+    if scenario == "host-compromise" and computer_ids:
+        notes.append(
+            "Nguồn Computer chỉ có quyền local admin/SYSTEM; "
+            "chưa khai báo danh tính mạng của tài khoản máy."
+        )
+        if not sessions:
+            notes.append(
+                "Snapshot không có cạnh HasSession; không kiểm chứng được nhánh qua session. "
+                "Không tìm thấy đường trong cấu hình này không chứng minh máy an toàn."
+            )
+    return {
+        "scenario": scenario,
+        "selected_computer_sources": len(computer_ids),
+        "observed_session_edges": len(sessions),
+        "selected_computers_with_observed_session": len(
+            computer_ids & {e["source"] for e in sessions}
+        ),
+        "computer_initial_capability": "local_admin_only"
+        if scenario == "host-compromise"
+        else "usable_machine_network_identity",
+        "notes": notes,
+    }
+
+
 def scenario_profile(graph, scenario="identity"):
     """Bind the unchanged neo scenario assumptions to the snapshot being evaluated."""
     techniques_for(scenario)
@@ -176,7 +206,12 @@ def _evaluate(pair):
         if len(_request.sources) == 1:
             from src.engine.query_report import render_query_brief
 
-            row["brief"] = render_query_brief(result, _graph)
+            scenario = (
+                "host-compromise" if _policy.profile_id == "neo-host-session-v1" else "identity"
+            )
+            coverage = input_coverage(_graph, _request, scenario)
+            row["input_coverage"] = coverage
+            row["brief"] = "\n\n".join(coverage["notes"] + [render_query_brief(result, _graph)])
         return row
     except Exception as error:
         return {**base, "status": "error", "error": f"{type(error).__name__}: {error}"}
@@ -272,10 +307,12 @@ def main(argv=None):
         scenario=args.scenario,
         source_ids=args.source,
     )
+    coverage = input_coverage(graph, request, args.scenario)
     config = {
         "version": "neo-domain-survey/1",
         "request": request.to_dict(),
         "scenario": args.scenario,
+        "input_coverage": coverage,
         "techniques": techniques_for(args.scenario),
         "scenario_policy": scenario_profile(graph, args.scenario).canonical_dict(),
         "effort_profile": load_effort_profile("neo-c-v1"),
@@ -303,6 +340,7 @@ def main(argv=None):
         _atomic_json(output / "inventory.json", inventory)
         rows = {}
     summarize(rows, request, 0)
+    print(json.dumps({"input_coverage": coverage}, ensure_ascii=False), flush=True)
     pairs = sorted(
         (s.node_id, g.target_node_id)
         for s in request.sources
@@ -334,9 +372,11 @@ def main(argv=None):
                 )
             if len(rows) % 25 == 0:
                 summary = summarize(rows, request, time.perf_counter() - started)
+                summary["input_coverage"] = coverage
                 _atomic_json(output / "summary.json", summary)
                 print(json.dumps(summary), flush=True)
     summary = summarize(rows, request, time.perf_counter() - started)
+    summary["input_coverage"] = coverage
     _atomic_json(output / "summary.json", summary)
     print(json.dumps(summary), flush=True)
     return 0
