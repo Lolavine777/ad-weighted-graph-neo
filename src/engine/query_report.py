@@ -20,6 +20,7 @@ ACTION_NAMES = {
     "obtain_admin_execution_on_host": "Thực thi với quyền quản trị host",
     "scenario_winrm_admin": "Thực thi quản trị qua WinRM",
     "open_winrm_remote_session": "Mở phiên lệnh WinRM (không tự cấp admin)",
+    "use_session_identity": "Lấy và dùng danh tính từ session trên máy đã kiểm soát",
 }
 
 CONDITION_NAMES = {
@@ -33,6 +34,10 @@ CONDITION_NAMES = {
     "authentication_accepted": "Xác thực được chấp nhận",
     "admin_channel": "Có kênh thực thi quản trị",
     "winrm_available": "WinRM hoạt động và truy cập được",
+    "session_fresh": "Session còn mới trong kịch bản snapshot tĩnh",
+    "session_present": "Session vẫn còn trên host",
+    "credential_accessible": "Có thể truy cập credential trên host",
+    "session_identity_usable": "Credential trong session dùng được để xác thực trong miền",
 }
 
 

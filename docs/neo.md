@@ -115,6 +115,7 @@ cũ; không chuyển trạng thái duyệt A/B hay xác suất lịch sử sang 
 | Sửa DACL để cấp GenericAll | `grant_new_object_right` | 2 / 2 | 2 |
 | Thực thi quản trị host | `obtain_admin_execution_on_host`, `scenario_winrm_admin` | 1 / 2 | 1 |
 | Phiên lệnh WinRM, không tự cấp admin | `open_winrm_remote_session` | 1 / 2 | 1 |
+| Lấy credential từ session và xác thực trong miền | `use_session_identity` | 2 / 2 | 2 |
 
 Membership đã có là suy diễn quyền, không tạo work unit. Hành động C=0 vẫn cần qua
 semantic checks. Tổng C tính trên hợp các work unit, giữ nguyên cách khử trùng hiện có;

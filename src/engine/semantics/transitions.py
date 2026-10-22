@@ -71,6 +71,8 @@ class TransitionResult:
 
 
 def effects_for(technique: Technique, request: TransitionRequest) -> AttackState:
+    if technique.id == "use_session_identity":
+        raise ValueError("session identity effects require context-aware semantic evaluation")
     actor, target = request.actor, request.target
     additions = AttackState()
     for effect in technique.effects:

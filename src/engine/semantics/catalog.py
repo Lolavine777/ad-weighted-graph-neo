@@ -79,6 +79,7 @@ PREDICATES = {
     "session_fresh",
     "session_present",
     "credential_accessible",
+    "session_identity_usable",
     "source_admin_control",
     "password_policy_accepts",
     "directory_write_allowed",
@@ -271,6 +272,9 @@ def validate_catalog(data: object) -> tuple[Technique, ...]:
                 allowed.add("ASRepMaterial")
             if effect is Effect.USABLE_IDENTITY:
                 allowed.add("RecoveredSecret")
+                if values["id"] == "use_session_identity":
+                    allowed.add("HasSession")
+                    targets = {"User"}
             if effect is Effect.ADMIN_CONTROL:
                 allowed.add("DeclaredHostAdmin")
             _require(values["relationship"] in allowed, "incompatible effect relationship")
@@ -284,6 +288,17 @@ def validate_catalog(data: object) -> tuple[Technique, ...]:
                     "authentication_context_matches",
                     "actor_enabled",
                     "secret_valid",
+                    "network_kdc_reachable",
+                    "authentication_accepted",
+                }
+            if values["id"] == "use_session_identity":
+                guards = {
+                    "source_admin_control",
+                    "session_fresh",
+                    "session_present",
+                    "credential_accessible",
+                    "session_identity_usable",
+                    "target_enabled",
                     "network_kdc_reachable",
                     "authentication_accepted",
                 }
@@ -331,6 +346,25 @@ def validate_catalog(data: object) -> tuple[Technique, ...]:
                 "session_present",
                 "credential_accessible",
             }
+        if values["id"] == "use_session_identity":
+            required = {
+                "source_admin_control",
+                "session_fresh",
+                "session_present",
+                "credential_accessible",
+                "session_identity_usable",
+                "target_enabled",
+                "network_kdc_reachable",
+                "authentication_accepted",
+            }
+            _require(
+                values["relationship"] == "HasSession"
+                and values["effects"] == (Effect.USABLE_IDENTITY,)
+                and set(values["source_kinds"]) == {"Computer"}
+                and set(values["target_kinds"]) == {"User"}
+                and set(values["prerequisites"]) == required,
+                "session identity recipe must preserve host and reusable-identity gates",
+            )
         _require(is_rbcd or required <= set(values["prerequisites"]), "missing required guards")
         artifact_definitions = {
             "ASRepTarget": ("asrep_request", Effect.ASREP_MATERIAL, {"User", "Computer"}, {"User"}),

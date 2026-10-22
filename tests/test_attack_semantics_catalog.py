@@ -104,13 +104,25 @@ def test_missing_edge_duplicate_id_and_unknown_fields(document):
     for mutation in ("missing", "duplicate", "unknown"):
         data = yaml.safe_load(yaml.safe_dump(document))
         if mutation == "missing":
-            data["techniques"].pop()
+            data["techniques"] = [
+                t for t in data["techniques"] if t["relationship"] != "HasSession"
+            ]
         elif mutation == "duplicate":
             data["techniques"].append(data["techniques"][0])
         else:
             data["techniques"][0]["observed_activity"] = []
         with pytest.raises(ValueError):
             validate_catalog(data)
+
+
+@pytest.mark.parametrize(
+    "predicate", ["source_admin_control", "session_identity_usable", "target_enabled"]
+)
+def test_session_identity_cannot_remove_acquisition_gates(document, predicate):
+    technique = next(t for t in document["techniques"] if t["id"] == "use_session_identity")
+    technique["prerequisites"].remove(predicate)
+    with pytest.raises(ValueError):
+        validate_catalog(document)
 
 
 @pytest.mark.parametrize("event_id", [True, 0, -1, "4724"])

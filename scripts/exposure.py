@@ -403,9 +403,9 @@ def overview_report(request, result, selection):
                 "tài khoản máy cần usable_identity đúng context. computer_usable_identity "
                 "khai báo riêng network identity có provenance; "
                 "không cấp host admin hoặc danh tính User.",
-                "HasSession hiện chỉ tạo credential_material chưa định kiểu, chưa nối thành "
-                "password/usable identity. no_path chỉ có hiệu lực trong capabilities/techniques "
-                "đã khai báo; không chứng minh Computer không thể leo thang ngoài model.",
+                "recover_session_credential_material chỉ tạo material chưa định kiểu. "
+                "use_session_identity cần quyền admin trên host và giả định/evidence về "
+                "session còn dùng được. no_path chỉ có hiệu lực trong scope đã khai báo.",
             ]
             if any(s["node_kind"] == "Computer" for s in request["sources"])
             else []

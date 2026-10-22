@@ -332,7 +332,8 @@ def test_executable_cli_inventories_and_runs_without_handwritten_targets(tmp_pat
     assert "chưa chấm" in (output / "overview.md").read_text()
     assert "không phải an toàn" in (output / "overview.md").read_text()
     assert "usable_identity đúng context" in (output / "overview.md").read_text()
-    assert "chưa nối thành" in (output / "overview.md").read_text()
+    overview = (output / "overview.md").read_text()
+    assert "use_session_identity" in overview and "session còn dùng được" in overview
     process = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
     assert process.returncode == 2 and "preserve prior run" in process.stderr
 

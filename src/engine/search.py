@@ -53,6 +53,7 @@ NEO_GUIDED_TECHNIQUES = frozenset(
         "obtain_admin_execution_on_host",
         "scenario_winrm_admin",
         "open_winrm_remote_session",
+        "use_session_identity",
     }
 )
 

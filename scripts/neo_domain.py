@@ -33,16 +33,37 @@ TECHNIQUES = (
     "genericall_grant_write_dacl",
     "reset_target_password",
 )
+HOST_SESSION_TECHNIQUES = TECHNIQUES + (
+    "obtain_admin_execution_on_host",
+    "open_winrm_remote_session",
+    "use_session_identity",
+)
+SCENARIOS = ("identity", "host-compromise")
 
 
-def scenario_profile(graph):
+def techniques_for(scenario):
+    if scenario not in SCENARIOS:
+        raise ValueError("Unknown neo scenario")
+    return HOST_SESSION_TECHNIQUES if scenario == "host-compromise" else TECHNIQUES
+
+
+def scenario_profile(graph, scenario="identity"):
     """Bind the unchanged neo scenario assumptions to the snapshot being evaluated."""
-    return replace(
-        load_policy_profile("neo-standard-v1"), bound_snapshot_id=graph.metadata["snapshot_id"]
-    )
+    techniques_for(scenario)
+    identifier = "neo-host-session-v1" if scenario == "host-compromise" else "neo-standard-v1"
+    return replace(load_policy_profile(identifier), bound_snapshot_id=graph.metadata["snapshot_id"])
 
 
-def build_survey(graph, *, max_expansions=1024, max_steps=12, domain_sid=None):
+def build_survey(
+    graph,
+    *,
+    max_expansions=1024,
+    max_steps=12,
+    domain_sid=None,
+    scenario="identity",
+    source_ids=None,
+):
+    techniques_for(scenario)
     inventory = inventory_exposure(graph, domain_sid=domain_sid)
     contexts = sorted(
         t["goal"]["target_node_id"]
@@ -55,10 +76,17 @@ def build_survey(graph, *, max_expansions=1024, max_steps=12, domain_sid=None):
     request, _ = build_request(
         graph,
         inventory,
+        source_ids=source_ids,
         authentication_context=context,
         user_profile="user_usable_identity",
-        computer_profile="computer_usable_identity",
-        machine_identity_provenance="scenario://neo-domain/independent-compromised-network-identity",
+        computer_profile="computer_control_admin"
+        if scenario == "host-compromise"
+        else "computer_usable_identity",
+        machine_identity_provenance=(
+            None
+            if scenario == "host-compromise"
+            else "scenario://neo-domain/independent-compromised-network-identity"
+        ),
         max_sources=0,
         max_targets=0,
         evaluation_mode="scenario",
@@ -96,13 +124,14 @@ def compact_witness(path, graph, catalog):
     return wire(reduced)
 
 
-def _initialize(snapshot, request):
-    global _graph, _request, _sources, _goals, _policy, _effort
+def _initialize(snapshot, request, scenario="identity"):
+    global _graph, _request, _sources, _goals, _policy, _effort, _techniques
     _graph = EngineGraph.from_snapshot(Path(snapshot).read_text(encoding="utf-8"))
     _request = BatchQueryRequest.from_dict(request)
     _sources = {s.node_id: s for s in _request.sources}
     _goals = {g.target_node_id: g for g in _request.resolve_target_goals()}
-    _policy, _effort = scenario_profile(_graph), load_effort_profile("neo-c-v1")
+    _policy, _effort = scenario_profile(_graph, scenario), load_effort_profile("neo-c-v1")
+    _techniques = techniques_for(scenario)
 
 
 def _evaluate(pair):
@@ -115,7 +144,7 @@ def _evaluate(pair):
             _sources[source],
             _goals[target],
             _graph,
-            TECHNIQUES,
+            globals().get("_techniques", TECHNIQUES),
             _request.common_budget,
             scenario_policy=_policy,
             effort_profile=_effort,
@@ -144,6 +173,10 @@ def _evaluate(pair):
             "prepare_seconds": prepared - started,
             "query_seconds": time.perf_counter() - prepared,
         }
+        if len(_request.sources) == 1:
+            from src.engine.query_report import render_query_brief
+
+            row["brief"] = render_query_brief(result, _graph)
         return row
     except Exception as error:
         return {**base, "status": "error", "error": f"{type(error).__name__}: {error}"}
@@ -204,6 +237,15 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--snapshot", type=Path, required=True)
     parser.add_argument("--domain-sid", help="Select an observed domain in a multi-domain snapshot")
+    parser.add_argument(
+        "--source", action="append", help="Select an independent foothold ID; omit for all"
+    )
+    parser.add_argument(
+        "--scenario",
+        choices=SCENARIOS,
+        default="identity",
+        help="identity: network account only; host-compromise: local admin and reusable sessions",
+    )
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--max-expansions", type=int, default=1024)
     parser.add_argument("--max-steps", type=int, default=12)
@@ -227,12 +269,15 @@ def main(argv=None):
         max_expansions=args.max_expansions,
         max_steps=args.max_steps,
         domain_sid=args.domain_sid,
+        scenario=args.scenario,
+        source_ids=args.source,
     )
     config = {
         "version": "neo-domain-survey/1",
         "request": request.to_dict(),
-        "techniques": TECHNIQUES,
-        "scenario_policy": scenario_profile(graph).canonical_dict(),
+        "scenario": args.scenario,
+        "techniques": techniques_for(args.scenario),
+        "scenario_policy": scenario_profile(graph, args.scenario).canonical_dict(),
         "effort_profile": load_effort_profile("neo-c-v1"),
         "snapshot_sha256": digest(args.snapshot.read_bytes()),
         "source_pins": execution_source_pins(),
@@ -272,7 +317,7 @@ def main(argv=None):
             max_workers=args.workers,
             mp_context=get_context("spawn"),
             initializer=_initialize,
-            initargs=(str(args.snapshot.resolve()), request.to_dict()),
+            initargs=(str(args.snapshot.resolve()), request.to_dict(), args.scenario),
         ) as pool,
     ):
         futures = [pool.submit(_evaluate, pair) for pair in pending]
@@ -283,6 +328,10 @@ def main(argv=None):
             )
             stream.flush()
             rows[(row["source"], row["target"])] = row
+            if "brief" in row:
+                (output / ("goal-" + canonical_digest(row["target"])[7:19] + ".md")).write_text(
+                    row["brief"], encoding="utf-8"
+                )
             if len(rows) % 25 == 0:
                 summary = summarize(rows, request, time.perf_counter() - started)
                 _atomic_json(output / "summary.json", summary)

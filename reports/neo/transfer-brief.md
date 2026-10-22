@@ -30,7 +30,33 @@ bằng chứng tới đích; chưa chứng minh C tối ưu.
 không kết luận các nguồn đó an toàn trước mọi kỹ thuật AD. Giữ nguyên cả native
 flags và status gốc trong JSON; không cộng hai ca blocked vào nhóm kết luận âm.
 
-## Ví dụ mới trên WRAITH
+## Bổ sung core use case 1: máy đã bị chiếm
+
+Lượt trên là kịch bản **danh tính mạng**. Lượt mới chọn `--scenario host-compromise`:
+Computer có quyền local admin/SYSTEM; session đã quan sát được giả định còn mới
+và có credential tái sử dụng trong miền. Engine vẫn phải tự đi đến host, kiểm tra
+quyền admin và thực hiện hành động lấy/dùng danh tính; không cấp sẵn User đích.
+[HasSession không tự bảo đảm credential còn tồn tại](https://bloodhound.specterops.io/resources/edges/has-session),
+nên các điều kiện này được ghi là giả định scenario, không phải bằng chứng khai thác.
+
+Trên cùng 75 cặp và cùng budget: **16 có witness đủ C**, gồm 8 quyền đã có và
+8 đường cần hành động. Sáu cặp mới đến từ ba máy EXTDC01/EXTCA01/UNCON qua
+session của BM đến DA/EA, C=2. Đây là thay đổi kịch bản và coverage kỹ thuật;
+không gọi là cải thiện thuật toán trên cùng điều kiện đầu vào. Chạy lại cấu hình
+identity cũ vẫn cho đúng 8 witness WRAITH như trước.
+
+Còn hai query EXCHANGE-ADMIN hết expansion cap. Chuỗi liên kết ngắn nhìn thấy
+qua JACK không thực hiện được vì JACK có `enabled=False`. Nếu bỏ node bị vô hiệu
+hóa, kiểm tra cấu trúc có 16/75 cặp nối được và cả 16 đều có witness ở lượt mới.
+Đây chỉ là chẩn đoán đồ thị, không chứng minh coverage toàn bộ kỹ thuật hoặc kết quả BloodHound.
+
+Use case một nguồn chạy độc lập và xuất [bản giải thích EXTCA01 → DA](host-session-example.md).
+Gỡ BM → EA cắt 1/2 chương trình gốc nhưng cả hai đích vẫn tới được; engine tìm
+một chương trình thay thế. Native remediation runner đã chạy và kiểm chứng.
+407 test liên quan pass; không chạy full suite cho bản sửa này.
+[Input pins, kết quả và witness](host-session-results.json).
+
+## Ví dụ ACL trên WRAITH
 
 RODCMANAGER là thành viên Administrators. Nhóm này có WriteDacl lên DA và EA.
 Với từng đích, chuỗi tìm được là:

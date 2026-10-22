@@ -44,6 +44,12 @@ OPERATIONS = {
         2,
         "Authenticated WinRM command session and verification; no elevation implied",
     ),
+    "use_session_identity": (
+        "HasSession",
+        2,
+        2,
+        "Acquire reusable session credentials and authenticate; conditional host/session scenario",
+    ),
 }
 
 
@@ -52,7 +58,7 @@ def load_effort_profile(identifier):
         return load_reset_effort_profile(identifier)
     return {
         "profile_id": NEO_PROFILE_ID,
-        "version": "1.1.0",
+        "version": "1.2.0",
         "dimension": "C",
         "formula": "T1 + T2 - 2",
         "basis": "estimated_expert_scenario",

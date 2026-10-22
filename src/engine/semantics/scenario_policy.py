@@ -369,6 +369,7 @@ TECHNIQUE_EDGE_KINDS: Mapping[str, str] = MappingProxyType(
         "open_winrm_remote_session": "CanPSRemote",
         "scenario_rdp_admin": "CanRDP",
         "scenario_winrm_admin": "CanPSRemote",
+        "use_session_identity": "HasSession",
     }
 )
 
@@ -907,7 +908,48 @@ NEO_STANDARD_PROFILE = ScenarioPolicyProfile(
     assume_missing_group_type_security=True,
 )
 
+# Explicit static vulnerable-host scenario, separate from the network-identity survey.
+# None of these rules supplies host admin control or fabricates a session edge.
+NEO_HOST_SESSION_PROFILE = ScenarioPolicyProfile(
+    profile_id="neo-host-session-v1",
+    version="1.0.0",
+    bound_snapshot_id=SEAMLESS_SNAPSHOT_ID,
+    evaluation_mode="seamless_standard_scenario",
+    rules=STANDARD_SEAMLESS_RULES
+    + tuple(
+        ApplicabilityRule(
+            rule_id="neo-session-" + predicate,
+            predicate=predicate,
+            taxonomy=RuleTaxonomy.TYPED,
+            subject_kind="Computer",
+            target_kind="User",
+            provenance_reference="policy://neo/host-session/v1/" + predicate,
+            rationale=rationale,
+        )
+        for predicate, rationale in (
+            ("session_present", "Reported session remains present in the static scenario"),
+            ("session_fresh", "Reported session remains fresh in the static scenario"),
+            (
+                "credential_accessible",
+                "Scenario assumes credential access is not blocked by host protections",
+            ),
+            (
+                "session_identity_usable",
+                "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+            ),
+        )
+    ),
+    forbidden_predicates=tuple(sorted(FORBIDDEN_PREDICATES)),
+    description=(
+        "Static host-compromise scenario: Computer sources have declared local admin control; "
+        "observed sessions are assumed fresh with accessible reusable domain credentials. "
+        "These are conditional assumptions, not observed credential recovery or P=1."
+    ),
+    assume_missing_group_type_security=True,
+)
+
 PROFILE_REGISTRY: dict[str, ScenarioPolicyProfile] = {
+    "neo-host-session-v1": NEO_HOST_SESSION_PROFILE,
     "neo-standard-v1": NEO_STANDARD_PROFILE,
     "seamless-standard-v1": SEAMLESS_STANDARD_PROFILE,
     "seamless_standard_scenario": SEAMLESS_STANDARD_PROFILE,

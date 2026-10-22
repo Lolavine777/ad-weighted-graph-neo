@@ -123,6 +123,13 @@ def evaluate(
     technique = next((t for t in catalog if t.id == request.technique_id), None)
     if technique is None:
         raise ValueError(f"unknown technique: {request.technique_id}")
+    if technique.id == "use_session_identity":
+        from .session import evaluate_session
+
+        prepared = (
+            graph if isinstance(graph, PreparedSemanticGraph) else PreparedSemanticGraph(graph)
+        )
+        return evaluate_session(prepared, state, request, context, technique)
     from .rbcd import OWNERS as RBCD_OWNERS
     from .rbcd import evaluate_rbcd
 

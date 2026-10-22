@@ -644,3 +644,19 @@ techniques:
     confidence: medium
     cost_factors: [rbcd_work_requires_basis]
     remediation: [Review delegation and resource authorization]
+
+  - id: use_session_identity
+    relationship: HasSession
+    semantic_class: credential_opportunity
+    source_kinds: [Computer]
+    target_kinds: [User]
+    action_required: true
+    prerequisites: [source_admin_control, session_fresh, session_present, credential_accessible,
+      session_identity_usable, target_enabled, network_kdc_reachable, authentication_accepted]
+    effects: [usable_identity]
+    failure_conditions: [host_not_controlled, session_stale_or_protected, identity_not_reusable]
+    expected_telemetry: []
+    attack_refs: [T1003, T1134]
+    confidence: medium
+    cost_factors: [session_freshness, reusable_credentials, authentication_scope]
+    remediation: [Reduce privileged sessions and protect credential material]

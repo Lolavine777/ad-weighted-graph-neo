@@ -1880,7 +1880,10 @@ def materialize_query(
 
     fallback_facts = None
     policy_metadata = q_dict.get("scenario_policy_metadata") or {}
-    if eval_mode == "scenario" and policy_metadata.get("profile_id") == "neo-standard-v1":
+    if eval_mode == "scenario" and policy_metadata.get("profile_id") in {
+        "neo-standard-v1",
+        "neo-host-session-v1",
+    }:
         from src.engine.semantics.scenario_policy import (
             PolicyAssumptionResolver,
             load_policy_profile,
@@ -1889,9 +1892,9 @@ def materialize_query(
         if not isinstance(policy_metadata.get("profile"), Mapping):
             raise ValueError("Neo scenario policy definition is missing")
         profile = load_policy_profile(policy_metadata["profile"])
-        if profile.profile_id != "neo-standard-v1" or profile.digest() != policy_metadata.get(
-            "profile_digest"
-        ):
+        if profile.profile_id != policy_metadata[
+            "profile_id"
+        ] or profile.digest() != policy_metadata.get("profile_digest"):
             raise ValueError("Neo scenario policy definition/digest mismatch")
         fallback_facts = PolicyAssumptionResolver(
             graph,
@@ -1908,6 +1911,20 @@ def materialize_query(
                     "password_policy_accepts",
                     "network_rpc_reachable",
                 }
+                | (
+                    {
+                        "session_fresh",
+                        "session_present",
+                        "credential_accessible",
+                        "session_identity_usable",
+                        "network_kdc_reachable",
+                        "authentication_accepted",
+                        "admin_channel",
+                        "winrm_available",
+                    }
+                    if profile.profile_id == "neo-host-session-v1"
+                    else set()
+                )
             ),
         )
 

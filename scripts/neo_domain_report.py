@@ -9,11 +9,11 @@ from pathlib import Path
 
 from scripts.defender_brief import remediation_outcome
 from scripts.neo_domain import (
-    TECHNIQUES,
     compact_witness,
     load_records,
     scenario_profile,
     summarize,
+    techniques_for,
 )
 from scripts.research.source_goal_batch import BatchQueryRequest
 from src.engine.batch import _atomic_json, _query_for_cell, execution_source_pins
@@ -54,7 +54,7 @@ def observed_interventions(rows, graph):
     ]
 
 
-def verify_interventions(graph, request, rows, inventory, *, output, limit):
+def verify_interventions(graph, request, rows, inventory, *, output, limit, scenario="identity"):
     if limit < 1:
         raise ValueError("Intervention limit must be positive")
     supported = [c for c in inventory if c["executor_supported"]]
@@ -63,7 +63,7 @@ def verify_interventions(graph, request, rows, inventory, *, output, limit):
     # Select a small rectangular product from the most shared supported witness edge.
     source_ids = sorted({pair[0] for pair in supported[0]["pairs"]})[:2]
     sources = {s.node_id: s for s in request.sources}
-    policy, effort = scenario_profile(graph), load_effort_profile("neo-c-v1")
+    policy, effort = scenario_profile(graph, scenario), load_effort_profile("neo-c-v1")
     cells = []
     for source in source_ids:
         for goal in request.resolve_target_goals():
@@ -73,7 +73,7 @@ def verify_interventions(graph, request, rows, inventory, *, output, limit):
                 sources[source],
                 goal,
                 graph,
-                TECHNIQUES,
+                techniques_for(scenario),
                 request.common_budget,
                 scenario_policy=policy,
                 effort_profile=effort,
@@ -133,14 +133,15 @@ def render_report(summary, rows, inventory, graph, remediation):
         not r.get("reached", False) and r.get("truncated", False) for r in rows.values()
     )
     lines = [
-        "# Khảo sát SEAMLESS: nguồn độc lập → DA/EA",
+        "# Khảo sát: nguồn độc lập → DA/EA",
         "",
         f"Nguồn: {summary['eligible_sources']}; cặp khai báo: {summary['declared_pairs']}; "
         f"đã ghi kết quả: {summary['recorded_pairs']}; chưa chạy: {summary['not_run_pairs']}.",
         f"Có witness: {summary['reached_pairs']}; đủ C: {summary['C_rated_reached_pairs']}; "
         f"chưa có witness và còn giới hạn: {unresolved}; lỗi: {summary['errors']}.",
         "Kết quả có witness cũng dừng ở path cap; C là best-found, chưa chứng minh minimum.",
-        "Mỗi nguồn là một giả định compromise riêng với danh tính mạng dùng được; không gộp quyền.",
+        "Mỗi nguồn là một giả định compromise riêng; "
+        "quyền ban đầu và giả định session theo scope.json.",
         "Đích là DA/EA theo SID quan sát. Không bao gồm toàn bộ tài sản hoặc mọi kỹ thuật AD.",
         "Budget mỗi query: " + json.dumps(summary.get("budget", {}), ensure_ascii=False) + ".",
         "",
@@ -251,7 +252,13 @@ def main(argv=None):
     _atomic_json(args.output_dir / "observed-interventions.json", inventory)
     remediation = (
         verify_interventions(
-            graph, request, rows, inventory, output=args.output_dir, limit=args.interventions
+            graph,
+            request,
+            rows,
+            inventory,
+            output=args.output_dir,
+            limit=args.interventions,
+            scenario=scope.get("scenario", "identity"),
         )
         if args.interventions
         else {"status": "not_executed", "reason": "Report only; interventions=0"}

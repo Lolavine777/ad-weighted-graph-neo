@@ -1,0 +1,3965 @@
+{
+  "schema_version": "neo-host-session-results/1.0.0",
+  "execution_parent_commit": "a47250bd66bb0d95d302f4713272c237c65e832b",
+  "created_at": "2026-10-22T06:42:20.231113+00:00",
+  "interpretation": "Changed declared scenario, not a speed or recall comparison. Computer local admin control and fresh reusable session credentials are explicit assumptions. Only DA/EA goals, static same-domain snapshots, best-found C.",
+  "source_pins": {
+    "configs/attack_semantics.yml": "sha256:41c8bacd4b1909ffcc5511c82ea8822b97ced5ef15e73e75311744e0213d0850",
+    "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+    "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+    "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+    "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+    "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+    "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+    "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+    "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+    "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+    "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+    "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+    "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+    "src/engine/batch.py": "sha256:4d4a10bf5d028f7fc14b69a6ec24073450f77c7595f50a3ac84001996e5aebc0",
+    "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+    "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+    "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+    "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+    "src/engine/query.py": "sha256:da57536a15b08bb43215506c9a522a4103b18d177778a000f46dccbc3e277e28",
+    "src/engine/query_cli.py": "sha256:f5d577e1794c931504901ea4f535f7a95091535e655af0e0c554720e3acd941c",
+    "src/engine/query_report.py": "sha256:d66af0b294719ccca71dab7de9d8bb4d3c345cfd9a285fb2510026cc41b0f888",
+    "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+    "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+    "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+    "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+    "src/engine/ranking/effort_profiles.py": "sha256:f54f112ff0484e645259e035a7e20aeebafa7a09f494d07fa6a110bca8a854ea",
+    "src/engine/ranking/effort_registry.py": "sha256:03b7dfede1f1975e4f246b9efbc60f414a963814a0959bc9409966ca72b5ed23",
+    "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+    "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+    "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+    "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+    "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+    "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+    "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+    "src/engine/ranking/resolution_service.py": "sha256:62599bdc26dd9e553bccab59ca531b419193c5f0a1b74dcc5c015905a90cc1b9",
+    "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+    "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+    "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+    "src/engine/remediation.py": "sha256:7f4efe55643581dbce981423cd0cd457df8570f7b871c9bad5753b1f92b3c096",
+    "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+    "src/engine/search.py": "sha256:97dbde931984ee2b2235b40ceb373c954ddc4df07f5a3549fe90aeaca67ade30",
+    "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+    "src/engine/semantics/catalog.py": "sha256:f4a618e6d9895f8d1b10bb0e694c146aa96085fc577a4d02817ff104bf26d99b",
+    "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+    "src/engine/semantics/evaluator.py": "sha256:20a198b3966aba00cc5d919cc195bf8f46cd9160f4898c7e9debd367ced1efa9",
+    "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+    "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+    "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+    "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+    "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+    "src/engine/semantics/scenario_policy.py": "sha256:df7fbe47510f103f1e97cd31358265f29baab6c72777dcba85f811ad464d6093",
+    "src/engine/semantics/session.py": "sha256:5e51b61502667055be63ebef7c7209665a902f0bebf0964facf1cc6000c397c0",
+    "src/engine/semantics/state.py": "sha256:2ba649c154682920c3387cd29db9abae67e885f656c664042b009882398bb59b",
+    "src/engine/semantics/transitions.py": "sha256:1519a5cfb891536a3f5e1d948a81e622f9b9029d7a23a3a7e10ceae16403a3e8",
+    "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+    "src/engine/top_k.py": "sha256:e2e2eb4e85ba5bc018326d7a1e98e20fe58bc847fcc9017d40018dd44f9583e0",
+    "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+    "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+    "src/parser/adapters/bloodhound_v3.py": "sha256:63e910eff1b88067133876412011f8ba1bc537bea5e1e10f749cbcc05cc20a71",
+    "src/parser/builder.py": "sha256:c8d3998de6d4ae521b65d95e9f478bef254c4cd72d170a909468dbe45622fdc1",
+    "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+    "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+    "src/parser/inference.py": "sha256:d7cdea9dce288bcfb01677f6509a1404d213aa22d624a0b9c3f5781e62320463",
+    "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+    "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+    "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+    "src/parser/reconciliation.py": "sha256:a687861a2eb575b183d928d445ab65f1c13f647d93ab318462c7cd80c842973e",
+    "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+    "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+    "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+    "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+  },
+  "datasets": [
+    {
+      "dataset": "ghost",
+      "snapshot_sha256": "sha256:da9decc93ae2bdca687d0b72ab2eaa47a9f82b8d9bebfa638f055706319bd1a5",
+      "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+      "scope_digest": "sha256:9e2228e4f231c763b79dbc9029ce1dfdd8e8d3a97b0d7c06fcbeeba03d0146a4",
+      "runner_sha256": "sha256:204fc81909b3723990764ee43f16580eb39a01ec844ed5d1f7ba2e257a9e9ee7",
+      "techniques": [
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "genericall_grant_write_dacl",
+        "reset_target_password",
+        "obtain_admin_execution_on_host",
+        "open_winrm_remote_session",
+        "use_session_identity"
+      ],
+      "scenario_policy": {
+        "assume_missing_group_type_security": true,
+        "bound_snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+        "description": "Static host-compromise scenario: Computer sources have declared local admin control; observed sessions are assumed fresh with accessible reusable domain credentials. These are conditional assumptions, not observed credential recovery or P=1.",
+        "evaluation_mode": "seamless_standard_scenario",
+        "forbidden_predicates": [
+          "actor_authenticated",
+          "actor_controlled",
+          "admin_control",
+          "control",
+          "controlled_service",
+          "delegated_context",
+          "rbcd_descriptor",
+          "rbcd_secret",
+          "recovery_success",
+          "relationship_exists",
+          "source_admin_control",
+          "source_authorized",
+          "usable_identity"
+        ],
+        "profile_id": "neo-host-session-v1",
+        "rules": [
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_kdc_reachable",
+            "provenance_reference": "policy://seamless/v1/network/kdc",
+            "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+            "rule_id": "rule-global-kdc-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_rpc_reachable",
+            "provenance_reference": "policy://seamless/v1/network/rpc",
+            "rationale": "MS-RPC port 135/dynamic RPC reachable for directory/SAMR operations",
+            "rule_id": "rule-global-rpc-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_winrm_reachable",
+            "provenance_reference": "policy://seamless/v1/network/winrm",
+            "rationale": "WinRM ports 5985/5986 reachable to servers configured for remote management",
+            "rule_id": "rule-global-winrm-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "service_winrm_running",
+            "provenance_reference": "policy://seamless/v1/service/winrm",
+            "rationale": "WinRM service is running and listening on target computer",
+            "rule_id": "rule-global-winrm-service-running",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "asrep_request_accepted",
+            "provenance_reference": "policy://seamless/v1/kerberos/asrep",
+            "rationale": "KDC standard AS-REQ accepted for accounts with DONT_REQ_PREAUTH flag",
+            "rule_id": "rule-global-asrep-request-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "service_ticket_request_accepted",
+            "provenance_reference": "policy://seamless/v1/kerberos/tgs",
+            "rationale": "KDC standard TGS-REQ accepted for accounts with valid SPN",
+            "rule_id": "rule-global-service-ticket-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "kerberos_authentication_usable",
+            "provenance_reference": "policy://seamless/v1/kerberos/auth",
+            "rationale": "Kerberos authentication package is functional on domain member systems",
+            "rule_id": "rule-global-kerberos-usable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "kerberos_actor_authenticated",
+            "provenance_reference": "policy://seamless/v1/kerberos/tgt",
+            "rationale": "Authenticated logon session holds a valid Kerberos TGT",
+            "rule_id": "rule-global-kerberos-actor-authenticated",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "admin_channel",
+            "provenance_reference": "policy://seamless/v1/host/admin-channel",
+            "rationale": "Administrative channel (SMB/WMI/WinRM) is available for local administrators",
+            "rule_id": "rule-typed-admin-channel",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "admin_execution_context",
+            "provenance_reference": "policy://seamless/v1/host/exec-context",
+            "rationale": "Host execution context permits remote code execution for administrators",
+            "rule_id": "rule-typed-admin-execution-context",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "endpoint_authorized",
+            "provenance_reference": "policy://seamless/v1/host/endpoint-auth",
+            "rationale": "Target endpoint authorizes connections from designated administrator accounts",
+            "rule_id": "rule-typed-endpoint-authorized",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "host_admin_mapping",
+            "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+            "rationale": "Local administrator group mapping corresponds to AdminTo entitlement",
+            "rule_id": "rule-typed-host-admin-mapping",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "authentication_accepted",
+            "provenance_reference": "policy://seamless/v1/auth/accepted",
+            "rationale": "Target validates and accepts valid domain credentials",
+            "rule_id": "rule-typed-auth-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "winrm_authentication_accepted",
+            "provenance_reference": "policy://seamless/v1/auth/winrm-accepted",
+            "rationale": "WinRM listener validates and accepts administrative credentials",
+            "rule_id": "rule-typed-winrm-auth-accepted",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "rdp_available",
+            "provenance_reference": "policy://seamless/v1/service/rdp",
+            "rationale": "Remote Desktop service is enabled and accepting connections",
+            "rule_id": "rule-typed-rdp-available",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "winrm_available",
+            "provenance_reference": "policy://seamless/v1/service/winrm-available",
+            "rationale": "WinRM PowerShell remoting endpoint is available",
+            "rule_id": "rule-typed-winrm-available",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "directory_write_allowed",
+            "provenance_reference": "policy://seamless/v1/directory/write",
+            "rationale": "Active Directory directory modification allowed under granted ACE rights",
+            "rule_id": "rule-typed-directory-write",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "password_policy_accepts",
+            "provenance_reference": "policy://seamless/v1/directory/password-policy",
+            "rationale": "Password reset value satisfies domain password complexity and length policy",
+            "rule_id": "rule-typed-password-policy-accepts",
+            "subject_kind": null,
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "membership_change_allowed",
+            "provenance_reference": "policy://seamless/v1/directory/member-add",
+            "rationale": "Modifying group member attribute allowed under granted object control ACE",
+            "rule_id": "rule-typed-membership-change",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "membership_usable",
+            "provenance_reference": "policy://seamless/v1/token/member-usable",
+            "rationale": "Group SID is incorporated into access token upon session logon",
+            "rule_id": "rule-typed-membership-usable",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "secret_valid",
+            "provenance_reference": "policy://seamless/v1/credential/secret-valid",
+            "rationale": "Target account secret is current, unexpired, and matches directory password hash",
+            "rule_id": "rule-typed-secret-valid",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "security_group",
+            "provenance_reference": "policy://seamless/v1/token/security-group",
+            "rationale": "Target group is a security-enabled group capable of token authorization",
+            "rule_id": "rule-typed-security-group",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_present",
+            "provenance_reference": "policy://neo/host-session/v1/session_present",
+            "rationale": "Reported session remains present in the static scenario",
+            "rule_id": "neo-session-session_present",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_fresh",
+            "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+            "rationale": "Reported session remains fresh in the static scenario",
+            "rule_id": "neo-session-session_fresh",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "credential_accessible",
+            "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+            "rationale": "Scenario assumes credential access is not blocked by host protections",
+            "rule_id": "neo-session-credential_accessible",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_identity_usable",
+            "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+            "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+            "rule_id": "neo-session-session_identity_usable",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "request": {
+        "batch_id": "auto-exposure",
+        "common_budget": {
+          "max_expansions": 1024,
+          "max_paths": 1,
+          "max_steps": 12
+        },
+        "evaluation_mode": "scenario",
+        "prioritization_policy": "min_effort_impact_pareto",
+        "schema_version": "batch-query-request/1.0.0",
+        "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+        "sources": [
+          {
+            "authentication_context": "S-1-5-21-2845847946-3451170323-4261139666-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-2845847946-3451170323-4261139666-1000",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-6ce2e19481ff7b23d1a60be894119c24f4b07d7f5fed82a3d034145f31a0aab8"
+          },
+          {
+            "authentication_context": "S-1-5-21-2845847946-3451170323-4261139666-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-2845847946-3451170323-4261139666-1104",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-7ea2dad890edf98d84acfb949095baaf499a2e4c598dbc693efa7e8beee47220"
+          },
+          {
+            "authentication_context": "S-1-5-21-2845847946-3451170323-4261139666-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-2845847946-3451170323-4261139666-500",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-7300364c79a51ca9632de34ee87eb425f2341c8910626eb8bba44290eee5a1a5"
+          }
+        ],
+        "target_goal_ids": null,
+        "target_manifest": {
+          "default_discovery_goals": [],
+          "description": "Snapshot-derived technical candidates; impact remains Unknown",
+          "domain_sid": "S-1-5-21-2845847946-3451170323-4261139666",
+          "manifest_id": "auto-exposure-targets",
+          "schema_version": "target-manifest/1.2.0",
+          "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+          "targets": [
+            {
+              "category": "tier_0_identity",
+              "checkpoint_goal": null,
+              "description": "Automatically selected technical goal; business impact is unreviewed.",
+              "display_name": "DOMAIN ADMINS@GHOST.CORP",
+              "goal_id": "auto-0-d59c82a0041f7d38e5b739630f6eefa2fe3a2dcbbab88ff8339f59281d9db758",
+              "goal_kind": "usable_identity_entitlement",
+              "impact_rating": "Unknown",
+              "provenance_locator": "canonical-node:S-1-5-21-2845847946-3451170323-4261139666-512",
+              "required_control_level": "admin_entitlement",
+              "required_state": {},
+              "target_node_id": "S-1-5-21-2845847946-3451170323-4261139666-512",
+              "target_node_kind": "Group",
+              "technical_consequence": "attacker_usable_group_entitlement"
+            }
+          ],
+          "version": "1.0.0"
+        }
+      },
+      "native_summary": {
+        "C_rated_reached_pairs": 2,
+        "declared_pairs": 3,
+        "elapsed_seconds": 0.7778269030000047,
+        "eligible_sources": 3,
+        "errors": 0,
+        "no_path_proven_pairs": 1,
+        "not_run_pairs": 0,
+        "reached_pairs": 2,
+        "recorded_pairs": 3,
+        "selected_targets": 1,
+        "source_kinds": {
+          "Computer": 1,
+          "User": 2
+        },
+        "status_counts": {
+          "blocked": 1,
+          "success": 2
+        },
+        "truncated_pairs": 2,
+        "unknown_attempts": {}
+      },
+      "useful_outcomes": {
+        "existing_entitlement_C0": 2,
+        "positive_C": 0,
+        "new_session_pairs": 0,
+        "without_witness_at_expansion_cap": 0
+      },
+      "structural_diagnostic": {
+        "all_nodes": 2,
+        "enabled_nodes_only": 2,
+        "meaning": "Directed graph connectivity only, not executable evidence or BloodHound results. Disabling a User removes the displayed route through JACK, not a proof of global no-path."
+      },
+      "rows": [
+        {
+          "source": "S-1-5-21-2845847946-3451170323-4261139666-1000",
+          "target": "S-1-5-21-2845847946-3451170323-4261139666-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "GHOST-DC01.GHOST.CORP",
+          "target_label": "DOMAIN ADMINS@GHOST.CORP"
+        },
+        {
+          "source": "S-1-5-21-2845847946-3451170323-4261139666-1104",
+          "target": "S-1-5-21-2845847946-3451170323-4261139666-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "BH@GHOST.CORP",
+          "target_label": "DOMAIN ADMINS@GHOST.CORP"
+        },
+        {
+          "source": "S-1-5-21-2845847946-3451170323-4261139666-500",
+          "target": "S-1-5-21-2845847946-3451170323-4261139666-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "ADMINISTRATOR@GHOST.CORP",
+          "target_label": "DOMAIN ADMINS@GHOST.CORP"
+        }
+      ]
+    },
+    {
+      "dataset": "wraith",
+      "snapshot_sha256": "sha256:2becf622a21303f8735848f5d71e16ac56c8a5860ddba5ac1475982838f76077",
+      "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+      "scope_digest": "sha256:f21f513a5e208f1a1ecc2abe13d2c296b8871b38583945756765296dbb97be19",
+      "runner_sha256": "sha256:204fc81909b3723990764ee43f16580eb39a01ec844ed5d1f7ba2e257a9e9ee7",
+      "techniques": [
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "genericall_grant_write_dacl",
+        "reset_target_password",
+        "obtain_admin_execution_on_host",
+        "open_winrm_remote_session",
+        "use_session_identity"
+      ],
+      "scenario_policy": {
+        "assume_missing_group_type_security": true,
+        "bound_snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+        "description": "Static host-compromise scenario: Computer sources have declared local admin control; observed sessions are assumed fresh with accessible reusable domain credentials. These are conditional assumptions, not observed credential recovery or P=1.",
+        "evaluation_mode": "seamless_standard_scenario",
+        "forbidden_predicates": [
+          "actor_authenticated",
+          "actor_controlled",
+          "admin_control",
+          "control",
+          "controlled_service",
+          "delegated_context",
+          "rbcd_descriptor",
+          "rbcd_secret",
+          "recovery_success",
+          "relationship_exists",
+          "source_admin_control",
+          "source_authorized",
+          "usable_identity"
+        ],
+        "profile_id": "neo-host-session-v1",
+        "rules": [
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_kdc_reachable",
+            "provenance_reference": "policy://seamless/v1/network/kdc",
+            "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+            "rule_id": "rule-global-kdc-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_rpc_reachable",
+            "provenance_reference": "policy://seamless/v1/network/rpc",
+            "rationale": "MS-RPC port 135/dynamic RPC reachable for directory/SAMR operations",
+            "rule_id": "rule-global-rpc-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "network_winrm_reachable",
+            "provenance_reference": "policy://seamless/v1/network/winrm",
+            "rationale": "WinRM ports 5985/5986 reachable to servers configured for remote management",
+            "rule_id": "rule-global-winrm-reachable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "service_winrm_running",
+            "provenance_reference": "policy://seamless/v1/service/winrm",
+            "rationale": "WinRM service is running and listening on target computer",
+            "rule_id": "rule-global-winrm-service-running",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "asrep_request_accepted",
+            "provenance_reference": "policy://seamless/v1/kerberos/asrep",
+            "rationale": "KDC standard AS-REQ accepted for accounts with DONT_REQ_PREAUTH flag",
+            "rule_id": "rule-global-asrep-request-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "service_ticket_request_accepted",
+            "provenance_reference": "policy://seamless/v1/kerberos/tgs",
+            "rationale": "KDC standard TGS-REQ accepted for accounts with valid SPN",
+            "rule_id": "rule-global-service-ticket-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "kerberos_authentication_usable",
+            "provenance_reference": "policy://seamless/v1/kerberos/auth",
+            "rationale": "Kerberos authentication package is functional on domain member systems",
+            "rule_id": "rule-global-kerberos-usable",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "kerberos_actor_authenticated",
+            "provenance_reference": "policy://seamless/v1/kerberos/tgt",
+            "rationale": "Authenticated logon session holds a valid Kerberos TGT",
+            "rule_id": "rule-global-kerberos-actor-authenticated",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "global"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "admin_channel",
+            "provenance_reference": "policy://seamless/v1/host/admin-channel",
+            "rationale": "Administrative channel (SMB/WMI/WinRM) is available for local administrators",
+            "rule_id": "rule-typed-admin-channel",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "admin_execution_context",
+            "provenance_reference": "policy://seamless/v1/host/exec-context",
+            "rationale": "Host execution context permits remote code execution for administrators",
+            "rule_id": "rule-typed-admin-execution-context",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "endpoint_authorized",
+            "provenance_reference": "policy://seamless/v1/host/endpoint-auth",
+            "rationale": "Target endpoint authorizes connections from designated administrator accounts",
+            "rule_id": "rule-typed-endpoint-authorized",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "host_admin_mapping",
+            "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+            "rationale": "Local administrator group mapping corresponds to AdminTo entitlement",
+            "rule_id": "rule-typed-host-admin-mapping",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "authentication_accepted",
+            "provenance_reference": "policy://seamless/v1/auth/accepted",
+            "rationale": "Target validates and accepts valid domain credentials",
+            "rule_id": "rule-typed-auth-accepted",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "winrm_authentication_accepted",
+            "provenance_reference": "policy://seamless/v1/auth/winrm-accepted",
+            "rationale": "WinRM listener validates and accepts administrative credentials",
+            "rule_id": "rule-typed-winrm-auth-accepted",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "rdp_available",
+            "provenance_reference": "policy://seamless/v1/service/rdp",
+            "rationale": "Remote Desktop service is enabled and accepting connections",
+            "rule_id": "rule-typed-rdp-available",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "winrm_available",
+            "provenance_reference": "policy://seamless/v1/service/winrm-available",
+            "rationale": "WinRM PowerShell remoting endpoint is available",
+            "rule_id": "rule-typed-winrm-available",
+            "subject_kind": null,
+            "target_kind": "Computer",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "directory_write_allowed",
+            "provenance_reference": "policy://seamless/v1/directory/write",
+            "rationale": "Active Directory directory modification allowed under granted ACE rights",
+            "rule_id": "rule-typed-directory-write",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "password_policy_accepts",
+            "provenance_reference": "policy://seamless/v1/directory/password-policy",
+            "rationale": "Password reset value satisfies domain password complexity and length policy",
+            "rule_id": "rule-typed-password-policy-accepts",
+            "subject_kind": null,
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "membership_change_allowed",
+            "provenance_reference": "policy://seamless/v1/directory/member-add",
+            "rationale": "Modifying group member attribute allowed under granted object control ACE",
+            "rule_id": "rule-typed-membership-change",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "membership_usable",
+            "provenance_reference": "policy://seamless/v1/token/member-usable",
+            "rationale": "Group SID is incorporated into access token upon session logon",
+            "rule_id": "rule-typed-membership-usable",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "secret_valid",
+            "provenance_reference": "policy://seamless/v1/credential/secret-valid",
+            "rationale": "Target account secret is current, unexpired, and matches directory password hash",
+            "rule_id": "rule-typed-secret-valid",
+            "subject_kind": null,
+            "target_kind": null,
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "security_group",
+            "provenance_reference": "policy://seamless/v1/token/security-group",
+            "rationale": "Target group is a security-enabled group capable of token authorization",
+            "rule_id": "rule-typed-security-group",
+            "subject_kind": null,
+            "target_kind": "Group",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_present",
+            "provenance_reference": "policy://neo/host-session/v1/session_present",
+            "rationale": "Reported session remains present in the static scenario",
+            "rule_id": "neo-session-session_present",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_fresh",
+            "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+            "rationale": "Reported session remains fresh in the static scenario",
+            "rule_id": "neo-session-session_fresh",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "credential_accessible",
+            "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+            "rationale": "Scenario assumes credential access is not blocked by host protections",
+            "rule_id": "neo-session-credential_accessible",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          },
+          {
+            "default_value": true,
+            "metadata": {},
+            "predicate": "session_identity_usable",
+            "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+            "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+            "rule_id": "neo-session-session_identity_usable",
+            "subject_kind": "Computer",
+            "target_kind": "User",
+            "taxonomy": "typed"
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "request": {
+        "batch_id": "auto-exposure",
+        "common_budget": {
+          "max_expansions": 1024,
+          "max_paths": 1,
+          "max_steps": 12
+        },
+        "evaluation_mode": "scenario",
+        "prioritization_policy": "min_effort_impact_pareto",
+        "schema_version": "batch-query-request/1.0.0",
+        "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+        "sources": [
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-ad0355b62efbd82bb305df9c73d61a40de76f2ff2cf97e99254f7677c92b045b"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1112",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1112",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-0d959a7f5696ebefdf63a468841dfef23e84bc94d5c5782d66ea735a86e0eeed"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1114",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1114",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-fa6dbc9e4242d4d1d4af938845248f67bea0f8bae285eeb40dab8144561b2d2a"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-4aac96866e8bfc74cef02a4cc03ba6ecef030107554a855959b11b12e71fda89"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-0971dc2c409548088efbd4cc3250a1936654839d8a5e3656f5ecb5e01a917ab2"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1123",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1123",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-67bfc906090d0c1739d8a5baaf54f6b481d7d544b5b1cf32aced8adc984e6f21"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1169",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1169",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-08b32f37297aab46e7195a4660075b097099bb5c96e15dbca94eeb20f3ad54ec"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1180",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1180",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-a4354ff65262eeae45f641171fc9813a91f53929c6c2f6827ccffe792ac6ad7c"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1181",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1181",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-c21a5fe30453ddaf0436772aaba6027603a36ff4a80c4431502ed116f6eaaebf"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1186",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1186",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-580b7ce2c2b9719c81733a138a80b80ec8d9fe8b58e965312319752161658e90"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+            "node_kind": "Computer",
+            "profile_kind": "computer_control_admin",
+            "source_id": "source-computer-6f8ad5117c19fb119171d8116be18a14b1019664a861042260756d9a955bc9f8"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-8dee9eaa45ea1ff3d695667c8b823678ffc71d740a44d69c5f03f56799ccb2ab"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-9f6cfa74afb876203fa879a5d5ada8cd086193f59fc10f1b28c3be3e0f928f5c"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-9dd4f6dcb0f89460fc0c59a58b6bced2886fc3380341fa7df3c0b06c0587b483"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1154",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-54657a2c32daf4ae9b8a46fdcc5015058906941bfdb3db36bd4aa7964132f2f5"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1155",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-2fc19585c5d6a0724cf9d78018dc70c63f39ac95a756a36ac81cf5ea71a81dcf"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1156",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-f15c77cedf4bc2cd387f01d4e5134235983a79003f6b6091e3d5b1ba4f28f7db"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1157",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-4eca6e608dd702285feb62e8522743013e7c005022068736c3763d77fcf81d05"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1158",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-2f08d521ace00f265d89d1671382a07bbb6ff96d3cc8eeb0dd9a3d1d0801b94d"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1159",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-3020d80f8689ec4986587973d325585afffb2fa4002d8cef2e0841add359aeef"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1160",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-15ef13d1cdc57977e688839186bc0beaca7f3dc629bd05b8272a535381201fab"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1161",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-820bb7d5c4169c21c86ccec6ee69667298cd06d40ba1d0dfa8aa9d2c4ebb18bb"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1162",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-da7b3f38c215d7fe8efca53bb810a238cc06470838e6d36c7574577eae36acdb"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1163",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-2cdb382d85788ee0f61916e01e43052e0fb291feb206763d2d8e30255ba6aa70"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1164",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-764835c809ec77ab6a2bfc5a01ddb4566e8868a755a5a1bfa37708bea4bbf4a1"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-52fcfb323fbc33e7f001327f61677831a33afeb3dc92ccc7a98f9b428304141e"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1168",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-74fc6effb16fb04040522883f27a2b6e99e54837a0093ddac7ff95b14532c16d"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1171",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-20284e7615ff1a23fd7a9aa9dedf342b327a804e0e4fd496c44676572effac1f"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1174",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-929378d4d2d439a28fd6325ddccba2f9ea074adea3fe99b195f358072de3874e"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1175",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-85fcdc4105d70998f47ca7c011695438f03819f27cabf970f693d2dbb6423ae8"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1179",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-65dcf90d48940eac09b2aeefd2d9f89fa13ab248f2dc1a7706773d7c94c378a0"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1182",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-ca4b7ce17efa64798bff944b7892ca697424376026757c556a65cf35acf8f699"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1183",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-cbb1cd5acc8b980bb718639c40c6ec73ff88a776b9d1e7f23c8a6b952671b569"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1184",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-c60b97f8f0930bd5d581e4b5d57b37fd859ba4fc68ca8358dd2e1f1adafcd8b4"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-1185",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-b5091bfc0e3fed6e02850f0d159f46165b5246b2d7214cfe1a954a075a8ae2cb"
+          },
+          {
+            "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+            "custom_budget": null,
+            "declared_assumptions": [],
+            "description": "Independent declared compromise scenario; not observed compromise",
+            "node_id": "S-1-5-21-3702535222-3822678775-2090119576-500",
+            "node_kind": "User",
+            "profile_kind": "user_usable_identity",
+            "source_id": "source-user-87a0bc7ed58aa6e89e94bc37462bba8f47e3835b3021388c3e87b59abad5c5f7"
+          }
+        ],
+        "target_goal_ids": null,
+        "target_manifest": {
+          "default_discovery_goals": [],
+          "description": "Snapshot-derived technical candidates; impact remains Unknown",
+          "domain_sid": "S-1-5-21-3702535222-3822678775-2090119576",
+          "manifest_id": "auto-exposure-targets",
+          "schema_version": "target-manifest/1.2.0",
+          "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+          "targets": [
+            {
+              "category": "tier_0_identity",
+              "checkpoint_goal": null,
+              "description": "Automatically selected technical goal; business impact is unreviewed.",
+              "display_name": "ENTERPRISE ADMINS@WRAITH.CORP",
+              "goal_id": "auto-0-281ce51a50f8ac58ee33113eb0a882430c4f00811e6b9214138a75aac9ce28b4",
+              "goal_kind": "usable_identity_entitlement",
+              "impact_rating": "Unknown",
+              "provenance_locator": "canonical-node:S-1-5-21-3702535222-3822678775-2090119576-519",
+              "required_control_level": "admin_entitlement",
+              "required_state": {},
+              "target_node_id": "S-1-5-21-3702535222-3822678775-2090119576-519",
+              "target_node_kind": "Group",
+              "technical_consequence": "attacker_usable_group_entitlement"
+            },
+            {
+              "category": "tier_0_identity",
+              "checkpoint_goal": null,
+              "description": "Automatically selected technical goal; business impact is unreviewed.",
+              "display_name": "DOMAIN ADMINS@WRAITH.CORP",
+              "goal_id": "auto-0-95906788682e781a8b8ea4b5900f695cfee41990c249eb1efe0dd2b86a3f55f7",
+              "goal_kind": "usable_identity_entitlement",
+              "impact_rating": "Unknown",
+              "provenance_locator": "canonical-node:S-1-5-21-3702535222-3822678775-2090119576-512",
+              "required_control_level": "admin_entitlement",
+              "required_state": {},
+              "target_node_id": "S-1-5-21-3702535222-3822678775-2090119576-512",
+              "target_node_kind": "Group",
+              "technical_consequence": "attacker_usable_group_entitlement"
+            }
+          ],
+          "version": "1.0.0"
+        }
+      },
+      "native_summary": {
+        "C_rated_reached_pairs": 14,
+        "declared_pairs": 72,
+        "elapsed_seconds": 2.3968566570000007,
+        "eligible_sources": 36,
+        "errors": 0,
+        "no_path_proven_pairs": 56,
+        "not_run_pairs": 0,
+        "reached_pairs": 14,
+        "recorded_pairs": 72,
+        "selected_targets": 2,
+        "source_kinds": {
+          "Computer": 11,
+          "User": 25
+        },
+        "status_counts": {
+          "blocked": 16,
+          "no_path": 40,
+          "success": 14,
+          "truncated": 2
+        },
+        "truncated_pairs": 16,
+        "unknown_attempts": {
+          "directory_write_allowed": 1622,
+          "password_policy_accepts": 1318
+        }
+      },
+      "useful_outcomes": {
+        "existing_entitlement_C0": 6,
+        "positive_C": 8,
+        "new_session_pairs": 6,
+        "without_witness_at_expansion_cap": 2
+      },
+      "structural_diagnostic": {
+        "all_nodes": 18,
+        "enabled_nodes_only": 14,
+        "meaning": "Directed graph connectivity only, not executable evidence or BloodHound results. Disabling a User removes the displayed route through JACK, not a proof of global no-path."
+      },
+      "rows": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "EXTDC01.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+          "witness_sha256": "sha256:cfddd92265c855e0a03e43e30e9b2d9a4d120d8d02524b22a84ed2bc09d2971c",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "EXTDC01.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+          "witness_sha256": "sha256:25ceb8c6e9ec596e631d2afac80f344947a74b52358f0726dc7c700a6aabf70a",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "XADMIN@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "XADMIN@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1112",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {
+            "password_policy_accepts": 1,
+            "directory_write_allowed": 1
+          },
+          "failed": {
+            "computer_actor_authenticated": 2,
+            "target_enabled": 1
+          },
+          "source_label": "EXTRODC01.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1112",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {
+            "password_policy_accepts": 1,
+            "directory_write_allowed": 1
+          },
+          "failed": {
+            "computer_actor_authenticated": 2,
+            "target_enabled": 1
+          },
+          "source_label": "EXTRODC01.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "BM@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "BM@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1114",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "EXTSRV01.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1114",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "EXTSRV01.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 3,
+          "expansions": 7,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "RODCMANAGER@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 3,
+          "expansions": 7,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "RODCMANAGER@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "EXTCA01.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+          "witness": {
+            "nodes": [
+              "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "S-1-5-21-3702535222-3822678775-2090119576-512"
+            ],
+            "edges": [
+              {
+                "id": "sha256:71be9853b9739e737e82aa55144caa68356b00d835934849002df776ea1f629d",
+                "kind": "HasSession",
+                "provenance": [
+                  {
+                    "attribute": "PrivilegedSessions[].UserSID",
+                    "collector": "SharpHound/2.3.3",
+                    "evidence_type": "positive",
+                    "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+                    "record_id": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+                    "timestamp": "2024-03-05T11:00:18Z",
+                    "timestamp_status": "assumed"
+                  },
+                  {
+                    "attribute": "RegistrySessions[].UserSID",
+                    "collector": "SharpHound/2.3.3",
+                    "evidence_type": "positive",
+                    "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_computers.json",
+                    "record_id": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+                    "timestamp": "2024-03-05T11:00:18Z",
+                    "timestamp_status": "assumed"
+                  }
+                ],
+                "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                "weight": 1.0
+              },
+              {
+                "id": "sha256:931de33bb642abb4d7d15f6e60529f5928f6df3cf269b86d335796fc03f41a08",
+                "kind": "MemberOf",
+                "provenance": [
+                  {
+                    "attribute": "Members[].ObjectIdentifier",
+                    "collector": "SharpHound/2.3.3",
+                    "evidence_type": "positive",
+                    "raw_file": "snapshot:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227/20240305111414_groups.json",
+                    "record_id": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                    "time_provenance_reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated.",
+                    "timestamp": "2024-03-05T11:00:18Z",
+                    "timestamp_status": "assumed"
+                  }
+                ],
+                "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                "weight": 1.0
+              }
+            ],
+            "cost": 2.0,
+            "transition_history": [
+              {
+                "result": {
+                  "request": {
+                    "technique_id": "use_session_identity",
+                    "actor": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "rbcd_binding": null
+                  },
+                  "technique": {
+                    "id": "use_session_identity",
+                    "relationship": "HasSession",
+                    "semantic_class": "credential_opportunity",
+                    "source_kinds": [
+                      "Computer"
+                    ],
+                    "target_kinds": [
+                      "User"
+                    ],
+                    "action_required": true,
+                    "prerequisites": [
+                      "source_admin_control",
+                      "session_fresh",
+                      "session_present",
+                      "credential_accessible",
+                      "session_identity_usable",
+                      "target_enabled",
+                      "network_kdc_reachable",
+                      "authentication_accepted"
+                    ],
+                    "effects": [
+                      "usable_identity"
+                    ],
+                    "failure_conditions": [
+                      "host_not_controlled",
+                      "session_stale_or_protected",
+                      "identity_not_reusable"
+                    ],
+                    "expected_telemetry": [],
+                    "attack_refs": [
+                      "T1003",
+                      "T1134"
+                    ],
+                    "confidence": "medium",
+                    "cost_factors": [
+                      "session_freshness",
+                      "reusable_credentials",
+                      "authentication_scope"
+                    ],
+                    "remediation": [
+                      "Reduce privileged sessions and protect credential material"
+                    ]
+                  },
+                  "status": "applicable",
+                  "before": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "effective_member": [],
+                    "permission": [],
+                    "admin_control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [],
+                    "relationship_added": []
+                  },
+                  "additions": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                    ],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [],
+                    "effective_member": [],
+                    "permission": [],
+                    "admin_control": [],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                      ]
+                    ],
+                    "relationship_added": []
+                  },
+                  "failed": [],
+                  "unknown": [],
+                  "satisfied": [
+                    "endpoints_present",
+                    "source_kind",
+                    "target_kind",
+                    "authentication_context_present",
+                    "session_identity_scope",
+                    "relationship_exists",
+                    "source_admin_control",
+                    "target_enabled",
+                    "session_fresh",
+                    "session_present",
+                    "credential_accessible",
+                    "session_identity_usable",
+                    "network_kdc_reachable",
+                    "authentication_accepted"
+                  ],
+                  "decisions": [
+                    {
+                      "predicate": "endpoints_present",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "source_kind",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "target_kind",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "authentication_context_present",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "session_identity_scope",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "relationship_exists",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "source_admin_control",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "target_enabled",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "Session acquisition checks branch state and context"
+                    },
+                    {
+                      "predicate": "session_fresh",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "session_fresh",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Reported session remains fresh in the static scenario",
+                        "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+                        "assumption_metadata": {
+                          "rule_id": "neo-session-session_fresh",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Reported session remains fresh in the static scenario"
+                    },
+                    {
+                      "predicate": "session_present",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "session_present",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Reported session remains present in the static scenario",
+                        "provenance_reference": "policy://neo/host-session/v1/session_present",
+                        "assumption_metadata": {
+                          "rule_id": "neo-session-session_present",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Reported session remains present in the static scenario"
+                    },
+                    {
+                      "predicate": "credential_accessible",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "credential_accessible",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Scenario assumes credential access is not blocked by host protections",
+                        "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+                        "assumption_metadata": {
+                          "rule_id": "neo-session-credential_accessible",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Scenario assumes credential access is not blocked by host protections"
+                    },
+                    {
+                      "predicate": "session_identity_usable",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "session_identity_usable",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+                        "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+                        "assumption_metadata": {
+                          "rule_id": "neo-session-session_identity_usable",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact"
+                    },
+                    {
+                      "predicate": "network_kdc_reachable",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "network_kdc_reachable",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+                        "provenance_reference": "policy://seamless/v1/network/kdc",
+                        "assumption_metadata": {
+                          "rule_id": "rule-global-kdc-reachable",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet"
+                    },
+                    {
+                      "predicate": "authentication_accepted",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "authentication_accepted",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Target validates and accepts valid domain credentials",
+                        "provenance_reference": "policy://seamless/v1/auth/accepted",
+                        "assumption_metadata": {
+                          "rule_id": "rule-typed-auth-accepted",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Target validates and accepts valid domain credentials"
+                    }
+                  ],
+                  "snapshot_evidence": [],
+                  "capability_provenance": [],
+                  "after": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                    ],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "effective_member": [],
+                    "permission": [],
+                    "admin_control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                      ]
+                    ],
+                    "relationship_added": []
+                  },
+                  "assumption_backed_facts": [
+                    {
+                      "predicate": "session_fresh",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Reported session remains fresh in the static scenario",
+                      "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+                      "assumption_metadata": {
+                        "rule_id": "neo-session-session_fresh",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    },
+                    {
+                      "predicate": "session_present",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Reported session remains present in the static scenario",
+                      "provenance_reference": "policy://neo/host-session/v1/session_present",
+                      "assumption_metadata": {
+                        "rule_id": "neo-session-session_present",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    },
+                    {
+                      "predicate": "credential_accessible",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Scenario assumes credential access is not blocked by host protections",
+                      "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+                      "assumption_metadata": {
+                        "rule_id": "neo-session-credential_accessible",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    },
+                    {
+                      "predicate": "session_identity_usable",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+                      "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+                      "assumption_metadata": {
+                        "rule_id": "neo-session-session_identity_usable",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    },
+                    {
+                      "predicate": "network_kdc_reachable",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+                      "provenance_reference": "policy://seamless/v1/network/kdc",
+                      "assumption_metadata": {
+                        "rule_id": "rule-global-kdc-reachable",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    },
+                    {
+                      "predicate": "authentication_accepted",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Target validates and accepts valid domain credentials",
+                      "provenance_reference": "policy://seamless/v1/auth/accepted",
+                      "assumption_metadata": {
+                        "rule_id": "rule-typed-auth-accepted",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    }
+                  ],
+                  "evidence_backed_facts": []
+                },
+                "edge_id": "sha256:71be9853b9739e737e82aa55144caa68356b00d835934849002df776ea1f629d",
+                "derived_from_step": null
+              },
+              {
+                "result": {
+                  "request": {
+                    "technique_id": "propagate_group_entitlement",
+                    "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                    "rbcd_binding": null
+                  },
+                  "technique": {
+                    "id": "propagate_group_entitlement",
+                    "relationship": "MemberOf",
+                    "semantic_class": "entitlement",
+                    "source_kinds": [
+                      "User",
+                      "Group",
+                      "Computer"
+                    ],
+                    "target_kinds": [
+                      "Group"
+                    ],
+                    "action_required": false,
+                    "prerequisites": [
+                      "actor_controlled",
+                      "source_authorized",
+                      "actor_enabled",
+                      "security_group",
+                      "membership_usable"
+                    ],
+                    "effects": [
+                      "effective_member"
+                    ],
+                    "failure_conditions": [
+                      "group_not_security_enabled",
+                      "token_or_scope_incompatible"
+                    ],
+                    "expected_telemetry": [],
+                    "attack_refs": [],
+                    "confidence": "medium",
+                    "cost_factors": [
+                      "authorization_context"
+                    ],
+                    "remediation": [
+                      "Review security group membership"
+                    ]
+                  },
+                  "status": "applicable",
+                  "before": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                    ],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "effective_member": [],
+                    "permission": [],
+                    "admin_control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                      ]
+                    ],
+                    "relationship_added": []
+                  },
+                  "additions": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [],
+                    "effective_member": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-512"
+                      ]
+                    ],
+                    "permission": [],
+                    "admin_control": [],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [],
+                    "relationship_added": []
+                  },
+                  "failed": [],
+                  "unknown": [],
+                  "satisfied": [
+                    "actor_controlled",
+                    "source_authorized",
+                    "actor_enabled",
+                    "security_group",
+                    "membership_usable"
+                  ],
+                  "decisions": [
+                    {
+                      "predicate": "actor_controlled",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "actor_controlled satisfied in branch state/context for S-1-5-21-3702535222-3822678775-2090119576-1113"
+                    },
+                    {
+                      "predicate": "source_authorized",
+                      "satisfied": true,
+                      "origin": "technical_rule",
+                      "fact": null,
+                      "rationale": "source is actor or actor is effective member of group"
+                    },
+                    {
+                      "predicate": "actor_enabled",
+                      "satisfied": true,
+                      "origin": "observed_evidence",
+                      "fact": null,
+                      "rationale": "node S-1-5-21-3702535222-3822678775-2090119576-1113 enabled=True in snapshot"
+                    },
+                    {
+                      "predicate": "security_group",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "security_group",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Group DOMAIN ADMINS@WRAITH.CORP is a verified security group (well_known_identity_allowlist)",
+                        "provenance_reference": "policy://seamless/v1/token/security-group",
+                        "assumption_metadata": {
+                          "rule_id": "rule-typed-security-group",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0",
+                          "group_label": "DOMAIN ADMINS@WRAITH.CORP",
+                          "group_kind": "security_group",
+                          "classification_basis": "well_known_identity_allowlist",
+                          "identity_provenance": "reviewed well-known security identity (S-1-5-21-3702535222-3822678775-2090119576-512): Domain Admins (MS-SAMR 2.2.1.1.5)"
+                        }
+                      },
+                      "rationale": "Group DOMAIN ADMINS@WRAITH.CORP is a verified security group (well_known_identity_allowlist)"
+                    },
+                    {
+                      "predicate": "membership_usable",
+                      "satisfied": true,
+                      "origin": "declared_assumption",
+                      "fact": {
+                        "predicate": "membership_usable",
+                        "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                        "value": true,
+                        "origin": "declared_assumption",
+                        "scope": "seamless-policy:neo-host-session-v1",
+                        "rationale": "Group membership is incorporated into session token",
+                        "provenance_reference": "policy://seamless/v1/token/member-usable",
+                        "assumption_metadata": {
+                          "rule_id": "rule-typed-membership-usable",
+                          "profile_id": "neo-host-session-v1",
+                          "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                          "policy_version": "1.0.0"
+                        }
+                      },
+                      "rationale": "Group membership is incorporated into session token"
+                    }
+                  ],
+                  "snapshot_evidence": [],
+                  "capability_provenance": [],
+                  "after": {
+                    "rbcd_secret": [],
+                    "controlled_service": [],
+                    "rbcd_descriptor": [],
+                    "delegated_context": [],
+                    "known_identity": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                    ],
+                    "authentication_unknown": [],
+                    "asrep_request_capability": [],
+                    "asrep_material": [],
+                    "service_ticket_material": [],
+                    "recovered_secret": [],
+                    "control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "effective_member": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-512"
+                      ]
+                    ],
+                    "permission": [],
+                    "admin_control": [
+                      "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                    ],
+                    "interactive_session": [],
+                    "remote_command_execution": [],
+                    "credential_material": [],
+                    "authentication_control": [],
+                    "reset_password_control": [],
+                    "usable_identity": [
+                      [
+                        "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                        "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                      ]
+                    ],
+                    "relationship_added": []
+                  },
+                  "assumption_backed_facts": [
+                    {
+                      "predicate": "security_group",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Group DOMAIN ADMINS@WRAITH.CORP is a verified security group (well_known_identity_allowlist)",
+                      "provenance_reference": "policy://seamless/v1/token/security-group",
+                      "assumption_metadata": {
+                        "rule_id": "rule-typed-security-group",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0",
+                        "group_label": "DOMAIN ADMINS@WRAITH.CORP",
+                        "group_kind": "security_group",
+                        "classification_basis": "well_known_identity_allowlist",
+                        "identity_provenance": "reviewed well-known security identity (S-1-5-21-3702535222-3822678775-2090119576-512): Domain Admins (MS-SAMR 2.2.1.1.5)"
+                      }
+                    },
+                    {
+                      "predicate": "membership_usable",
+                      "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                      "value": true,
+                      "origin": "declared_assumption",
+                      "scope": "seamless-policy:neo-host-session-v1",
+                      "rationale": "Group membership is incorporated into session token",
+                      "provenance_reference": "policy://seamless/v1/token/member-usable",
+                      "assumption_metadata": {
+                        "rule_id": "rule-typed-membership-usable",
+                        "profile_id": "neo-host-session-v1",
+                        "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                        "policy_version": "1.0.0"
+                      }
+                    }
+                  ],
+                  "evidence_backed_facts": []
+                },
+                "edge_id": "sha256:931de33bb642abb4d7d15f6e60529f5928f6df3cf269b86d335796fc03f41a08",
+                "derived_from_step": null
+              }
+            ],
+            "final_state": {
+              "rbcd_secret": [],
+              "controlled_service": [],
+              "rbcd_descriptor": [],
+              "delegated_context": [],
+              "known_identity": [
+                "S-1-5-21-3702535222-3822678775-2090119576-1113"
+              ],
+              "authentication_unknown": [],
+              "asrep_request_capability": [],
+              "asrep_material": [],
+              "service_ticket_material": [],
+              "recovered_secret": [],
+              "control": [
+                "S-1-5-21-3702535222-3822678775-2090119576-1120"
+              ],
+              "effective_member": [
+                [
+                  "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "S-1-5-21-3702535222-3822678775-2090119576-512"
+                ]
+              ],
+              "permission": [],
+              "admin_control": [
+                "S-1-5-21-3702535222-3822678775-2090119576-1120"
+              ],
+              "interactive_session": [],
+              "remote_command_execution": [],
+              "credential_material": [],
+              "authentication_control": [],
+              "reset_password_control": [],
+              "usable_identity": [
+                [
+                  "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                ]
+              ],
+              "relationship_added": []
+            },
+            "scenario_reference": "batch-cell:sha256:5ad65fcdfabca3c6d348bfe99b8129422f349bd3d73efed1611e456dae9249e2",
+            "runtime_context": {
+              "facts": [
+                {
+                  "predicate": "authentication_accepted",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Target validates and accepts valid domain credentials",
+                  "provenance_reference": "policy://seamless/v1/auth/accepted",
+                  "assumption_metadata": {
+                    "rule_id": "rule-typed-auth-accepted",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "credential_accessible",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Scenario assumes credential access is not blocked by host protections",
+                  "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+                  "assumption_metadata": {
+                    "rule_id": "neo-session-credential_accessible",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "membership_usable",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Group membership is incorporated into session token",
+                  "provenance_reference": "policy://seamless/v1/token/member-usable",
+                  "assumption_metadata": {
+                    "rule_id": "rule-typed-membership-usable",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "network_kdc_reachable",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+                  "provenance_reference": "policy://seamless/v1/network/kdc",
+                  "assumption_metadata": {
+                    "rule_id": "rule-global-kdc-reachable",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "security_group",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Group DOMAIN ADMINS@WRAITH.CORP is a verified security group (well_known_identity_allowlist)",
+                  "provenance_reference": "policy://seamless/v1/token/security-group",
+                  "assumption_metadata": {
+                    "rule_id": "rule-typed-security-group",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0",
+                    "group_label": "DOMAIN ADMINS@WRAITH.CORP",
+                    "group_kind": "security_group",
+                    "classification_basis": "well_known_identity_allowlist",
+                    "identity_provenance": "reviewed well-known security identity (S-1-5-21-3702535222-3822678775-2090119576-512): Domain Admins (MS-SAMR 2.2.1.1.5)"
+                  }
+                },
+                {
+                  "predicate": "session_fresh",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Reported session remains fresh in the static scenario",
+                  "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+                  "assumption_metadata": {
+                    "rule_id": "neo-session-session_fresh",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "session_identity_usable",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+                  "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+                  "assumption_metadata": {
+                    "rule_id": "neo-session-session_identity_usable",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                },
+                {
+                  "predicate": "session_present",
+                  "subject": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                  "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                  "value": true,
+                  "origin": "declared_assumption",
+                  "scope": "seamless-policy:neo-host-session-v1",
+                  "rationale": "Reported session remains present in the static scenario",
+                  "provenance_reference": "policy://neo/host-session/v1/session_present",
+                  "assumption_metadata": {
+                    "rule_id": "neo-session-session_present",
+                    "profile_id": "neo-host-session-v1",
+                    "profile_digest": "sha256:c9ddeb4417a97ecb579943fab9594ad62d77202db794771ea1ed797ce8187784",
+                    "policy_version": "1.0.0"
+                  }
+                }
+              ],
+              "authentication_context": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "rbcd_bindings": [],
+              "withheld_relationships": []
+            }
+          },
+          "witness_sha256": "sha256:b2e6ea56bab1cf6ba2ed553778f7ca7d9f247be47a5443b7d6ef4308ddf90e8e",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "EXTCA01.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+          "witness_sha256": "sha256:fc80c45ecf71b6dbca9b4d90f652d4ecc155cc77c4fe5777b286cc6e9943781f",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "UNCON.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+          "witness_sha256": "sha256:20dddc47d0b9b42b144bc4c0255e5f81bbe6383524e1b2da4ee83ff755ba2907",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 2,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "UNCON.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+          "witness_sha256": "sha256:1d82ec14e068fbfc62695d6d2b77302f9c2b370b079ce7060c413352c0aa2925",
+          "actions": [
+            {
+              "technique_id": "use_session_identity",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "rbcd_binding": null
+            },
+            {
+              "technique_id": "propagate_group_entitlement",
+              "actor": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+              "rbcd_binding": null
+            }
+          ]
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1123",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 5,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 5
+          },
+          "source_label": "EXTEXCH01.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1123",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 5,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 5
+          },
+          "source_label": "EXTEXCH01.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1154",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXC658051@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1154",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXC658051@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1155",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX7EA9F2A@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1155",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX7EA9F2A@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1156",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX69CCCDD@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1156",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX69CCCDD@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1157",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXABC60D0@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1157",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXABC60D0@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1158",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXF48EA85@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1158",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOXF48EA85@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1159",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX5B9D5FF@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1159",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX5B9D5FF@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1160",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX2B7B5D1@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1160",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX2B7B5D1@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1161",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX3741A31@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1161",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX3741A31@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1162",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX94A5D11@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1162",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX94A5D11@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1163",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX3FCFECE@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1163",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX3FCFECE@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1164",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX64077ED@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1164",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "HEALTHMAILBOX64077ED@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TRUSTER@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TRUSTER@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1168",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "DU@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1168",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "DU@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1169",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 3,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 3
+          },
+          "source_label": "EXTCA02.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1169",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 3,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 3
+          },
+          "source_label": "EXTCA02.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1171",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "truncated",
+          "reached": false,
+          "C": null,
+          "expansions": 1024,
+          "truncated": true,
+          "truncation_reason": "expansion_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {
+            "password_policy_accepts": 658,
+            "directory_write_allowed": 810
+          },
+          "failed": {
+            "target_enabled": 658
+          },
+          "source_label": "EXCHANGE-ADMIN@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1171",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "truncated",
+          "reached": false,
+          "C": null,
+          "expansions": 1024,
+          "truncated": true,
+          "truncation_reason": "expansion_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {
+            "password_policy_accepts": 658,
+            "directory_write_allowed": 810
+          },
+          "failed": {
+            "target_enabled": 658
+          },
+          "source_label": "EXCHANGE-ADMIN@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1174",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TESTER@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1174",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TESTER@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1175",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "T1-ADMIN@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1175",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "T1-ADMIN@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1179",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGET@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1179",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGET@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1180",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TEST.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1180",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TEST.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1181",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "VICTIMCOMPUTERA.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1181",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "VICTIMCOMPUTERA.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1182",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "VICTIMUSERB@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1182",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "VICTIMUSERB@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1183",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGETUSERB@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1183",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGETUSERB@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1184",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "VICTIMUSERC@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1184",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "VICTIMUSERC@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1185",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 8,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGETUSERD@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1185",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 8,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "source_label": "TARGETUSERD@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1186",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TARGETUSERD2",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1186",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TARGETUSERD2",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-500",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "ADMINISTRATOR@WRAITH.CORP",
+          "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-500",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 1,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "source_label": "ADMINISTRATOR@WRAITH.CORP",
+          "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+        }
+      ]
+    }
+  ],
+  "identity_regression": {
+    "native_summary": {
+      "C_rated_reached_pairs": 8,
+      "declared_pairs": 72,
+      "elapsed_seconds": 2.4072190470000123,
+      "eligible_sources": 36,
+      "errors": 0,
+      "no_path_proven_pairs": 60,
+      "not_run_pairs": 0,
+      "reached_pairs": 8,
+      "recorded_pairs": 72,
+      "selected_targets": 2,
+      "source_kinds": {
+        "Computer": 11,
+        "User": 25
+      },
+      "status_counts": {
+        "blocked": 2,
+        "no_path": 58,
+        "success": 8,
+        "truncated": 4
+      },
+      "truncated_pairs": 12,
+      "unknown_attempts": {
+        "directory_write_allowed": 2940,
+        "password_policy_accepts": 1980
+      }
+    },
+    "previous_summary": "reports/neo/portability-results.json",
+    "result": "Same 8 WRAITH successes with the legacy network-identity scenario; 4 queries remain at expansion cap."
+  },
+  "seamless_control": {
+    "C": {
+      "all_best_candidate_ids": [
+        "generated_0001"
+      ],
+      "associated_impact": null,
+      "associated_likelihood_interval": null,
+      "baseline_coverage": {
+        "caps_applied": {
+          "max_active_work_budget": 12,
+          "max_candidates": 1,
+          "max_expansions": 1024,
+          "max_steps": 12,
+          "timeout_ms": null
+        },
+        "completeness_scope": "partial_truncated",
+        "is_truncated": true,
+        "truncation_reasons": [
+          "candidate_limit_reached"
+        ]
+      },
+      "best_candidate_id": "generated_0001",
+      "coverage_disclosure": "Baseline evaluated over candidate set within active work budget; does not guarantee global minimum if unrated work units or unvisited paths exist.",
+      "goal_id": "sha256:bca4f2ea26d1f7e33d8924d3a8c943396b5ed25d11dfe2d4e8e199812d3363ee",
+      "minimum_effort_value": 1,
+      "tie_count": 1
+    },
+    "expansions": 14,
+    "source": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+    "status": "success",
+    "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+    "witness_sha256": "sha256:2a9f62e41aa69295316a9906ec0eb283dba90da28f2ab4a63630f014407fd809",
+    "actions": [
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+        "rbcd_binding": null,
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-513",
+        "technique_id": "propagate_group_entitlement"
+      },
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+        "rbcd_binding": null,
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+        "target": "S-1-5-11",
+        "technique_id": "propagate_group_entitlement"
+      },
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+        "rbcd_binding": null,
+        "source": "S-1-5-11",
+        "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+        "technique_id": "propagate_group_entitlement"
+      },
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-1103",
+        "rbcd_binding": null,
+        "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "technique_id": "scenario_reset_password"
+      },
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "rbcd_binding": null,
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+        "technique_id": "acquire_reset_identity"
+      },
+      {
+        "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "rbcd_binding": null,
+        "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+        "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+        "technique_id": "propagate_group_entitlement"
+      }
+    ]
+  },
+  "single_host": {
+    "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+    "summary": {
+      "C_rated_reached_pairs": 2,
+      "declared_pairs": 2,
+      "elapsed_seconds": 0.6373902619999967,
+      "eligible_sources": 1,
+      "errors": 0,
+      "no_path_proven_pairs": 0,
+      "not_run_pairs": 0,
+      "reached_pairs": 2,
+      "recorded_pairs": 2,
+      "selected_targets": 2,
+      "source_kinds": {
+        "Computer": 1
+      },
+      "status_counts": {
+        "success": 2
+      },
+      "truncated_pairs": 2,
+      "unknown_attempts": {}
+    },
+    "briefs": [
+      {
+        "file": "goal-0da2aedb7ba1.md",
+        "sha256": "sha256:7d1fc6373ecf40390492b9e8b87713e80c9dc67595081608fb8b916156b1ff17"
+      },
+      {
+        "file": "goal-72f23049409c.md",
+        "sha256": "sha256:02f5feba33d95b34ed6cab6b80a922dbfdb8d596e7eba5823fdbb46eb09991b4"
+      }
+    ]
+  },
+  "remediation": {
+    "summary": {
+      "outcomes": [
+        {
+          "edits": [
+            "Loại quan hệ MemberOf: BM@WRAITH.CORP → ENTERPRISE ADMINS@WRAITH.CORP"
+          ],
+          "intervention": "domain-observed:sha256:0eeb6e83a40735d7110ed6900d806e39c58ec2111a77937efe2f99e7b1d217bf",
+          "new_after_programs": 1,
+          "pairs_disconnected": {
+            "denominator": 2,
+            "numerator": 0,
+            "percent": 0.0,
+            "scope": "observed_corpus_only"
+          },
+          "programs_cut": {
+            "denominator": 2,
+            "numerator": 1,
+            "percent": 50.0,
+            "scope": "observed_corpus_only"
+          },
+          "reachable_after": 2,
+          "reachable_before": 2,
+          "unresolved_after": 0
+        }
+      ],
+      "pairs": 2,
+      "ranking": [
+        {
+          "configured_goals": [
+            "auto-0-281ce51a50f8ac58ee33113eb0a882430c4f00811e6b9214138a75aac9ce28b4",
+            "auto-0-95906788682e781a8b8ea4b5900f695cfee41990c249eb1efe0dd2b86a3f55f7"
+          ],
+          "defender_cost": null,
+          "intervention": "domain-observed:sha256:0eeb6e83a40735d7110ed6900d806e39c58ec2111a77937efe2f99e7b1d217bf",
+          "operational_impact": null,
+          "policy": "defensive-complete-scope-first/2",
+          "quantities": {
+            "incomplete_observations": 4,
+            "observed_programs_cut": 1,
+            "proven_disconnected_pairs": 0,
+            "remaining_exposed_sources": 1,
+            "unresolved_after_pairs": 0
+          },
+          "rank": 1,
+          "rationale": "Prefer complete evidence, then more proven disconnections, fewer unresolved after pairs, fewer exposed sources, more observed cuts; tie by intervention ID."
+        }
+      ],
+      "scope": "Selected observed witness support only; not all domain pairs",
+      "sources": 1,
+      "status": "executed"
+    },
+    "native_package_sha256": "sha256:40a2f25ee3cdb8bb9264933cd3ce118bd358ae13d42de3b1e1e2e0c466b4aae6",
+    "native_package_local": "reports/generated/neo-uc1-host-002/one-host-remediation/intervention-0.json",
+    "native_report_summary": {
+      "affected_sources": [
+        "source-computer-4aac96866e8bfc74cef02a4cc03ba6ecef030107554a855959b11b12e71fda89"
+      ],
+      "evaluated_pairs": 2,
+      "exposed_sources_after": [
+        "source-computer-4aac96866e8bfc74cef02a4cc03ba6ecef030107554a855959b11b12e71fda89"
+      ],
+      "exposed_sources_before": [
+        "source-computer-4aac96866e8bfc74cef02a4cc03ba6ecef030107554a855959b11b12e71fda89"
+      ],
+      "fully_disconnected_sources": [],
+      "goals_still_reachable": [
+        "auto-0-281ce51a50f8ac58ee33113eb0a882430c4f00811e6b9214138a75aac9ce28b4",
+        "auto-0-95906788682e781a8b8ea4b5900f695cfee41990c249eb1efe0dd2b86a3f55f7"
+      ],
+      "limitations": [
+        "Declared finite scope; no global choke-point or campaign probability claim.",
+        "Returned-path inventory is observed-corpus only; defender costs are unrated.",
+        "Old packets are refused; fresh automatic C only; P/I comparison remains pending.",
+        "Transport evaluated_pairs counts represented cells; analytics counts execution."
+      ],
+      "pairs_disconnected": {
+        "denominator": 2,
+        "numerator": 0,
+        "percent": 0.0,
+        "scope": "observed_corpus_only"
+      },
+      "programs_cut": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "observed_corpus_only"
+      },
+      "proven_disconnected_pairs": [],
+      "requested_pairs": 2,
+      "routes_cut": {
+        "denominator": 2,
+        "numerator": 1,
+        "percent": 50.0,
+        "scope": "observed_corpus_only"
+      },
+      "truncated_pairs": 2,
+      "unknown_pairs": 0,
+      "unsupported_pairs": 0
+    },
+    "scope": "One source EXTCA01, two goals DA/EA; not a domain-wide risk reduction."
+  },
+  "validation": {
+    "focused_tests": "407 passed",
+    "full_suite": "not run for this change",
+    "tests_log_sha256": "sha256:0aeea3070d3059f6a5c2ee1ec7fad5d86db5cc0e472602bbf15ebca7c5f554ef",
+    "checks": [
+      "ruff check",
+      "ruff format --check",
+      "repository",
+      "contract"
+    ]
+  },
+  "reproduce": [
+    "python -m scripts.neo_domain --snapshot SNAPSHOT --domain-sid DOMAIN_SID --scenario host-compromise --output-dir NEW_OUTPUT --workers 2",
+    "python -m scripts.neo_domain --snapshot SNAPSHOT --domain-sid DOMAIN_SID --scenario identity --output-dir LEGACY_OUTPUT --workers 2",
+    "python -m scripts.neo_domain --snapshot WRAITH_SNAPSHOT --domain-sid S-1-5-21-3702535222-3822678775-2090119576 --scenario host-compromise --source S-1-5-21-3702535222-3822678775-2090119576-1120 --output-dir ONE_HOST_OUTPUT --workers 1",
+    "python -m scripts.neo_domain_report --snapshot WRAITH_SNAPSHOT --survey ONE_HOST_OUTPUT --output-dir REMEDIATION_OUTPUT --interventions 1"
+  ],
+  "retained_trace_scope": "Native full representative EXTCA01 -> DA witness plus SHA256/action lists for the other five new session witnesses. Full generated cells remain local; all queries reproduce from pinned source, snapshot, scenario and request."
+}
