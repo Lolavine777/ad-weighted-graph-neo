@@ -89,6 +89,7 @@ def build_survey(
     *,
     max_expansions=1024,
     max_steps=12,
+    max_paths=1,
     domain_sid=None,
     scenario="identity",
     source_ids=None,
@@ -120,7 +121,7 @@ def build_survey(
         max_sources=0,
         max_targets=0,
         evaluation_mode="scenario",
-        budget={"max_paths": 1, "max_steps": max_steps, "max_expansions": max_expansions},
+        budget={"max_paths": max_paths, "max_steps": max_steps, "max_expansions": max_expansions},
     )
     targets = {inventory["domain_sid"] + "-512", inventory["domain_sid"] + "-519"}
     request["target_manifest"]["targets"] = [
@@ -203,6 +204,32 @@ def _evaluate(pair):
             "prepare_seconds": prepared - started,
             "query_seconds": time.perf_counter() - prepared,
         }
+        if _request.common_budget.max_paths > 1:
+            from src.engine.top_k import effort_programs
+
+            programs, _ = effort_programs(result)
+            row["candidate_summary"] = [
+                {
+                    "candidate_id": p["candidate_id"],
+                    "program_id": p["program_id"],
+                    "C": p["effort"],
+                    "steps": len(
+                        result.paths[
+                            int(p["candidate_id"].rsplit("_", 1)[1]) - 1
+                        ].transition_history
+                    ),
+                }
+                for p in programs
+            ]
+            row["top_k"] = result.top_k_result
+            row["ranked_witnesses"] = [
+                compact_witness(
+                    result.paths[int(p["candidate_id"].rsplit("_", 1)[1]) - 1],
+                    _graph,
+                    result.materialized_query.catalog,
+                )
+                for p in (result.top_k_result or {}).get("programs", [])
+            ]
         if len(_request.sources) == 1:
             from src.engine.query_report import render_query_brief
 
@@ -284,6 +311,12 @@ def main(argv=None):
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--max-expansions", type=int, default=1024)
     parser.add_argument("--max-steps", type=int, default=12)
+    parser.add_argument(
+        "--max-paths",
+        type=int,
+        default=1,
+        help="Candidate witness cap per query; the neo C profile returns Top-3",
+    )
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument(
         "--max-cells", type=int, help="Optional execution slice; scope stays all sources"
@@ -294,15 +327,17 @@ def main(argv=None):
         args.workers < 1
         or args.max_expansions < 1
         or args.max_steps < 1
+        or args.max_paths < 1
         or (args.max_cells is not None and args.max_cells < 1)
     ):
-        parser.error("workers, max-expansions, max-steps and max-cells must be positive")
+        parser.error("workers, max-expansions, max-steps, max-paths and max-cells must be positive")
     started = time.perf_counter()
     graph = EngineGraph.from_snapshot(args.snapshot.read_text(encoding="utf-8"))
     inventory, request = build_survey(
         graph,
         max_expansions=args.max_expansions,
         max_steps=args.max_steps,
+        max_paths=args.max_paths,
         domain_sid=args.domain_sid,
         scenario=args.scenario,
         source_ids=args.source,

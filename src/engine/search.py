@@ -66,12 +66,15 @@ class _NeoGoalQueue:
     Distances are hints only; semantics still checks every attempted transition.
     """
 
-    def __init__(self, items, relationships, target, catalog):
+    def __init__(self, items, relationships, target, catalog, nodes):
         kinds = {str(t.relationship) for t in catalog}
+        self.techniques = {t.id for t in catalog}
+        self.nodes, self.target = nodes, target
         reverse = {}
         for relation in relationships:
-            if relation.kind in kinds:
-                reverse.setdefault(relation.target, set()).add(relation.source)
+            if relation.kind not in kinds or not self._supports_hint(relation):
+                continue
+            reverse.setdefault(relation.target, set()).add(relation.source)
         self.distance = {target: 0}
         pending = deque([target])
         while pending:
@@ -84,6 +87,23 @@ class _NeoGoalQueue:
         self.serial = 0
         for item in items:
             self.append(item)
+
+    def _supports_hint(self, relation):
+        endpoints = (self.nodes[relation.source], self.nodes[relation.target])
+        if any(n["kind"] == "User" and n.get("enabled") is False for n in endpoints):
+            return False
+        if self.nodes[self.target]["kind"] == "Group" and endpoints[1]["kind"] == "Computer":
+            # Object ACL control does not acquire a Computer identity. A host is
+            # useful here only through an enabled host/session chain. This orders
+            # attempts; every candidate remains eligible for semantic evaluation.
+            return "use_session_identity" in self.techniques and (
+                relation.kind == "AdminTo"
+                and "obtain_admin_execution_on_host" in self.techniques
+                or relation.kind == "GenericAll"
+                and endpoints[0]["kind"] == "Group"
+                and "scenario_winrm_admin" in self.techniques
+            )
+        return True
 
     def __bool__(self):
         return bool(self.heap)
@@ -98,6 +118,8 @@ class _NeoGoalQueue:
 
     def action_priority(self, candidate):
         _, relation, technique, next_actor, _, _ = candidate
+        if technique.id != "acquire_reset_identity" and not self._supports_hint(relation):
+            return math.inf, 1
         return self._priority(
             TransitionRequest(technique.id, next_actor, relation.source, relation.target)
         )
@@ -606,7 +628,9 @@ def generate_attack_paths(
         targets = [n for n in nodes.values() if target_predicate(n)]
         if len(targets) != 1 or not {t.id for t in selected_catalog} <= NEO_GUIDED_TECHNIQUES:
             raise ValueError("neo_guided requires one target and supported neo techniques")
-        pending = _NeoGoalQueue(initial, edge_by_relationship, targets[0]["id"], selected_catalog)
+        pending = _NeoGoalQueue(
+            initial, edge_by_relationship, targets[0]["id"], selected_catalog, nodes
+        )
     elif search_order == "goal_guided":
         targets = [n for n in nodes.values() if target_predicate(n)]
         if len(targets) != 1 or targets[0]["kind"] != "Group":

@@ -53,6 +53,62 @@ def test_high_fanout_does_not_consume_budget_before_visiting_useful_child():
     assert replay_path(guided.paths[0], graph) == guided.paths[0].final_state
 
 
+def computer_acl_decoys(count):
+    graph, query = inputs("inherited")
+    raw = graph.to_canonical()
+    raw["edges"] = [_edge(ACTOR, OTHER, "GenericAll"), _edge(OTHER, GROUP, "MemberOf")]
+    host = next(n for n in raw["nodes"] if n["id"] == HOST)
+    for index in range(count):
+        node = {**host, "id": f"70000000-0000-4000-8000-{index:012d}"}
+        raw["nodes"].append(node)
+        raw["edges"].extend(
+            [
+                _edge(ACTOR, node["id"], "GenericAll"),
+                _edge(node["id"], GROUP, "MemberOf"),
+            ]
+        )
+        query["assumptions"].append(
+            {
+                "predicate": "directory_write_allowed",
+                "subject": ACTOR,
+                "target": node["id"],
+                "value": True,
+                "scope": "neo-finite",
+                "rationale": "Real ACL mutation, no machine identity",
+                "provenance_reference": "synthetic://neo-computer-decoy",
+            }
+        )
+    query["target"] = GROUP
+    query["target_goal"] = {"target": GROUP, "kind": "usable_identity_entitlement"}
+    query["initial_state"]["usable_identity"] = [[ACTOR, HOST]]
+    query["allowed_techniques"].remove(ADMIN)
+    query["allowed_techniques"] += ["genericall_grant_write_dacl", "grant_new_object_right"]
+    return type(graph).from_canonical(raw), query
+
+
+def test_computer_acl_is_not_a_shortcut_to_the_machine_identity():
+    graph, query = computer_acl_decoys(20)
+    query["budget"] = {"max_paths": 1, "max_steps": 4, "max_expansions": 6}
+    result = run_attack_query(bind(graph, {**query, "search_order": "neo_guided"}), graph)
+    assert result.final_goal_reached and result.expansions <= 6
+    assert result.min_effort["minimum_effort_value"] == 1
+    assert not result.best_path.final_state.admin_control
+    assert replay_path(result.best_path, graph) == result.best_path.final_state
+
+
+def test_computer_hint_change_keeps_all_programs_and_C_under_exhaustive_budget():
+    graph, query = computer_acl_decoys(1)
+    query["budget"] = {"max_paths": 100, "max_steps": 4, "max_expansions": 2000}
+    query["top_k"] = 100
+    fifo = run_attack_query(bind(graph, query), graph)
+    guided = run_attack_query(bind(graph, {**query, "search_order": "neo_guided"}), graph)
+    assert len(fifo.paths) > 1
+    assert {program_key(p) for p in fifo.paths} == {program_key(p) for p in guided.paths}
+    assert [(p["program_id"], p["effort"]) for p in fifo.top_k_result["programs"]] == [
+        (p["program_id"], p["effort"]) for p in guided.top_k_result["programs"]
+    ]
+
+
 @pytest.mark.parametrize("value", [None, False])
 def test_guidance_cannot_supply_missing_or_false_authentication(value):
     graph, query = inputs("inherited")

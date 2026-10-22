@@ -43,6 +43,8 @@ def test_all_eligible_sources_are_selected_without_reachability_filter(graph):
     assert request.common_budget.max_steps == 12
     _, shallow = neo_domain.build_survey(graph, max_steps=5)
     assert shallow.common_budget.max_steps == 5
+    _, alternatives = neo_domain.build_survey(graph, max_paths=10)
+    assert alternatives.common_budget.max_paths == 10
 
 
 def test_child_domain_can_be_surveyed_without_an_enterprise_admins_group(graph):

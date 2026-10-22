@@ -113,6 +113,15 @@ scenario độc lập có danh tính mạng dùng được (không gộp quyền
 Mặc định 1.024 expansions, 12 bước và một witness mỗi cặp; hết cap không phải
 no-path. Thêm `--resume` để tiếp tục cùng scope, hoặc dùng `--max-cells` để chia lượt.
 Đổi độ sâu bằng `--max-steps`; giới hạn quá ngắn có thể bỏ sót chuỗi hợp lệ.
+Thêm `--max-paths 10` để tìm tối đa 10 chương trình mỗi cặp và lấy Top-3 theo C.
+Với một `--source`, brief hiển thị các lựa chọn; JSON giữ điểm của các candidate
+và witness của Top-3. Đây là thứ hạng trong tập đã tìm được, chưa phải Top-3 toàn cục.
+Neo-guided v2 giảm ưu tiên các nhánh sửa ACL trên Computer không dẫn tới danh tính
+hoặc host/session trong catalog đang bật. Chỉ đổi thứ tự thử, không bỏ nhánh hoặc cấp quyền.
+Trên đúng 9 ca SEAMLESS từng hết cap, 7 ca nay có witness sau 14–42 expansions
+với cùng cap 1.024; hai ca BADBLOOD còn hết cap. Chưa chạy lại toàn miền để suy rộng.
+[Khảo sát search và ranking C](reports/neo/search-quality.json).
+[Ví dụ Top-3 theo C](reports/neo/ranking-C-example.md) giữ thao tác và ledger thực tế.
 Trên SEAMLESS, cùng 5.180 cặp nguồn–đích: sau sửa tìm được đường và C cho
 5.171 cặp (trước: 255); còn 9 cặp hết lượt tìm, không ghi nhận Unknown.
 Số liệu và giới hạn: [kết quả discovery](reports/neo/domain-discovery-fix.json).

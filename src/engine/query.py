@@ -333,7 +333,7 @@ class MaterializedQuery:
             "version": {
                 "fifo": "fifo/1",
                 "goal_guided": "goal-guided-membership/1",
-                "neo_guided": "neo-guided-topology/1",
+                "neo_guided": "neo-guided-topology/2",
             }[effective],
             "fallback_reason": "unsupported_goal_or_catalog"
             if self.search_order != effective
