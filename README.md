@@ -92,6 +92,20 @@ Số liệu và giới hạn: [kết quả discovery](reports/neo/domain-discove
 với các facts đã dùng, được native replay kiểm tra. Không lưu lặp toàn bộ graph/facts
 cho hàng nghìn query. Cần output directory mới khi đổi budget hoặc code.
 
+## Chọn đường theo C và thử can thiệp
+
+```sh
+.venv/bin/python -m scripts.neo_decision \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-decision-001
+```
+
+Chọn cố định 3 User và 2 Computer, tìm tối đa 3 chuỗi tới mỗi đích DA/EA,
+xếp theo C, thử gỡ một membership đặc quyền rồi tìm lại đường vòng.
+Output có `report.md`, brief/ledger từng cặp và các gói kiểm chứng native.
+Thêm `--resume` để nối tiếp cùng code/snapshot. Kết quả SEAMLESS:
+[bản đọc ngắn](reports/neo/decision-brief.md).
+
 - Một foothold → tự chọn mục tiêu quan trọng: [demo exposure](docs/research/awg-r04/DEMO.md).
 - Nhiều nguồn độc lập → ưu tiên rủi ro, thử can thiệp và tìm bypass: [runner remediation](docs/research/awg-r04/DEMO.md).
 - Thiết kế và giới hạn hiện tại, datasets, số đo và ưu tiên nghiên cứu: [ghi chú neo](docs/neo.md).
