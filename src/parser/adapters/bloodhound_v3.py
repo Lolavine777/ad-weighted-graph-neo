@@ -384,7 +384,14 @@ def _adapt_tree(
 def adapt_bloodhound_v3_records(records: Iterable[RawRecord]) -> tuple[RawRecord, ...]:
     """Adapt v3-style qualified identifiers using two-pass snapshot scope evidence."""
     materialized = tuple(records)
-    if not any(record.provenance.get("schema_version") == "3" for record in materialized):
+    if not any(
+        record.provenance.get("schema_version") == "3"
+        or (
+            isinstance(object_id := lookup_raw_identifier(record.data), str)
+            and parse_qualified_sid(object_id) is not None
+        )
+        for record in materialized
+    ):
         return materialized
     domains = _domain_context(materialized)
     hosts = _host_context(materialized)

@@ -4,6 +4,11 @@ Từ một User hoặc Computer bị chiếm, tìm đường tấn công có đi
 Repo này dùng lịch sử Git mới và workflow cá nhân.
 Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụng; evidence lịch sử được giữ nguyên để đối chiếu.
 
+Hướng khóa luận: phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng
+biện pháp giảm thiểu. Phải đánh giá ngoài SEAMLESS và đo ưu thế trên cùng phạm vi
+với BloodHound; chưa coi “tốt hơn BloodHound” là kết luận đã có.
+[Tiêu chí đánh giá và kiểm tra dataset mới](reports/neo/transfer-brief.md).
+
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
 P/I thiếu vẫn được hiển thị là chưa chấm.

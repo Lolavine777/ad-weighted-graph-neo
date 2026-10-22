@@ -45,6 +45,13 @@ def test_all_eligible_sources_are_selected_without_reachability_filter(graph):
     assert shallow.common_budget.max_steps == 5
 
 
+def test_child_domain_can_be_surveyed_without_an_enterprise_admins_group(graph):
+    _, request = neo_domain.build_survey(graph, domain_sid=DOMAIN)
+    assert [g.target_node_id for g in request.resolve_target_goals()] == [DOMAIN + "-512"]
+    with pytest.raises(ValueError, match="observed canonical Domain"):
+        neo_domain.build_survey(graph, domain_sid="S-1-5-21-9-8-7")
+
+
 def test_native_evaluation_preserves_independent_capabilities_and_replays_slice(graph, monkeypatch):
     graph = survey_graph(graph)
     _, request = neo_domain.build_survey(graph)

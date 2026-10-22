@@ -165,7 +165,20 @@ def _reconcile_group(key: tuple[str, ...], records: list[RawRecord]) -> Reconcil
     ordered = tuple(sorted(records, key=_sort_key))
     merged: dict[str, JSONValue] = {}
     for record in ordered:
-        merged = _merge_mapping(merged, record.data, path=(), record=record)
+        data = record.data
+        if _default_acl_stub(record) and any(
+            not _default_acl_stub(other)
+            and other.provenance.get("raw_file") == record.provenance.get("raw_file")
+            and other.data.get("reconcile") is not False
+            and other.data.get("Properties")
+            and "IsACLProtected" in other.data
+            for other in ordered
+        ):
+            # SharpHound's explicitly non-reconciled generated group carries a
+            # default False here, not a second observation of ACL protection.
+            # Retain its original bytes/provenance in representations below.
+            data = {field: value for field, value in data.items() if field != "IsACLProtected"}
+        merged = _merge_mapping(merged, data, path=(), record=record)
 
     merged.pop("reconcile", None)
     object_id = min(cast(str, _object_identifier(record)) for record in ordered)
@@ -201,10 +214,37 @@ def _reconcile_single(record: RawRecord) -> ReconciledRecord:
 def _representation(record: RawRecord) -> RawRepresentation:
     role = (
         RepresentationKind.SUPPLEMENTAL
-        if record.data.get("reconcile") is False
+        if record.data.get("reconcile") is False or _default_acl_stub(record)
         else RepresentationKind.FULL
     )
     return RawRepresentation(record=record, kind=role)
+
+
+def _default_acl_stub(record: RawRecord) -> bool:
+    """Recognize only the explicit generated-group shape, never sparse full records."""
+    data = record.data
+    properties = data.get("Properties")
+    return (
+        record.kind.casefold() in {"group", "groups"}
+        and isinstance(properties, Mapping)
+        and properties.get("reconcile") is False
+        and not set(properties) - {"name", "domain", "domainsid", "reconcile"}
+        and data.get("Aces") == []
+        and data.get("Members") == []
+        and data.get("IsACLProtected") is False
+        and data.get("IsDeleted") is False
+        and data.get("ContainedBy") is None
+        and not set(data)
+        - {
+            "Properties",
+            "Members",
+            "Aces",
+            "ObjectIdentifier",
+            "IsDeleted",
+            "IsACLProtected",
+            "ContainedBy",
+        }
+    )
 
 
 def _object_identifier(record: RawRecord) -> str | None:

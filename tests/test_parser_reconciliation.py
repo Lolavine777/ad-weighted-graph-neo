@@ -166,6 +166,49 @@ def test_non_empty_scalar_conflict_is_reported_instead_of_selected():
         reconcile_raw_records([first, second])
 
 
+def nested_default_stub(duplicate_representations):
+    full, supplemental = duplicate_representations
+    first, second = deepcopy(full.data), deepcopy(supplemental.data)
+    first["IsACLProtected"] = True
+    second.pop("reconcile")
+    second.update(IsDeleted=False, IsACLProtected=False, ContainedBy=None)
+    second["Properties"] = {**first["Properties"], "reconcile": False}
+    return (
+        _record(first, record_locator="#/data/0"),
+        _record(second, record_locator="#/data/1"),
+    )
+
+
+def test_generated_group_default_does_not_override_full_acl_observation(duplicate_representations):
+    full, stub = nested_default_stub(duplicate_representations)
+    logical = reconcile_raw_records([full, stub])[0]
+    assert logical.data["IsACLProtected"] is True
+    assert logical.data["Members"] == full.data["Members"]
+    assert logical.data["Aces"] == full.data["Aces"]
+    assert logical.representations[1].kind is RepresentationKind.SUPPLEMENTAL
+    assert logical.representations[1].record.data["IsACLProtected"] is False
+    assert reconcile_raw_records([stub, full])[0] == logical
+
+
+@pytest.mark.parametrize("change", ["missing_marker", "members", "extra_fact", "other_file"])
+def test_acl_disagreement_requires_the_explicit_same_file_default_shape(
+    duplicate_representations, change
+):
+    full, stub = nested_default_stub(duplicate_representations)
+    data, raw_file = deepcopy(stub.data), stub.provenance["raw_file"]
+    if change == "missing_marker":
+        data["Properties"].pop("reconcile")
+    elif change == "members":
+        data["Members"] = full.data["Members"]
+    elif change == "extra_fact":
+        data["Properties"]["enabled"] = False
+    else:
+        raw_file += ".other"
+    changed = _record(data, record_locator="#/data/1", raw_file=raw_file)
+    with pytest.raises(ReconciliationConflictError, match="IsACLProtected"):
+        reconcile_raw_records([full, changed])
+
+
 def test_unknown_list_fields_do_not_gain_union_semantics():
     first = _record(
         {"ObjectIdentifier": "G-LIST", "UnknownValues": ["first"]},

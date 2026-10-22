@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from dataclasses import replace
 from itertools import permutations
 
 import pytest
@@ -91,6 +92,14 @@ def _group(name, sid, *, members=None, aces=None, domain="DOMAIN.LOCAL"):
         },
         record_id=name,
     )
+
+
+def test_modern_export_with_qualified_ids_uses_observed_domain_scope():
+    records = [_domain(), _group("Admins", "DOMAIN.LOCAL-S-1-5-32-544")]
+    records = [replace(r, provenance={**r.provenance, "schema_version": "6"}) for r in records]
+    adapted = adapt_bloodhound_v3_records(records)
+    assert adapted[1].data["ObjectIdentifier"] == f"domain:sid:{DOMAIN_SID_A}:S-1-5-32-544"
+    assert records[1].data["ObjectIdentifier"] == "DOMAIN.LOCAL-S-1-5-32-544"
 
 
 def test_global_and_domain_account_sids_remain_unscoped():

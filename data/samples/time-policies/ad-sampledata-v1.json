@@ -1,0 +1,5 @@
+{
+  "timestamp": "2024-03-05T11:00:18Z",
+  "status": "assumed",
+  "reason": "Explicit research reference time from the first export filename; not an observed collection timestamp for the three domain exports. No temporal comparison is evaluated."
+}

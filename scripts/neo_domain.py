@@ -1,4 +1,4 @@
-"""Survey every eligible SEAMLESS source to DA/EA with native independent queries."""
+"""Survey eligible AD sources to observed DA/EA groups with native independent queries."""
 
 from __future__ import annotations
 
@@ -35,13 +35,16 @@ TECHNIQUES = (
 )
 
 
-def build_survey(graph, *, max_expansions=1024, max_steps=12):
-    inventory = inventory_exposure(graph)
-    context = next(
+def build_survey(graph, *, max_expansions=1024, max_steps=12, domain_sid=None):
+    inventory = inventory_exposure(graph, domain_sid=domain_sid)
+    contexts = sorted(
         t["goal"]["target_node_id"]
         for t in inventory["targets"]
         if t["selection_reason"] == "observed_dc_group_membership"
     )
+    if not contexts:
+        raise ValueError("Survey requires an observed DC Computer for authentication context")
+    context = contexts[0]
     request, _ = build_request(
         graph,
         inventory,
@@ -58,8 +61,8 @@ def build_survey(graph, *, max_expansions=1024, max_steps=12):
     request["target_manifest"]["targets"] = [
         t for t in request["target_manifest"]["targets"] if t["target_node_id"] in targets
     ]
-    if len(request["target_manifest"]["targets"]) != 2:
-        raise ValueError("Survey requires observed DA and EA groups")
+    if not request["target_manifest"]["targets"]:
+        raise ValueError("Survey requires an observed DA or EA group")
     return inventory, BatchQueryRequest.from_dict(request)
 
 
@@ -193,6 +196,7 @@ def summarize(rows, request, elapsed):
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--snapshot", type=Path, required=True)
+    parser.add_argument("--domain-sid", help="Select an observed domain in a multi-domain snapshot")
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--max-expansions", type=int, default=1024)
     parser.add_argument("--max-steps", type=int, default=12)
@@ -212,7 +216,10 @@ def main(argv=None):
     started = time.perf_counter()
     graph = EngineGraph.from_snapshot(args.snapshot.read_text(encoding="utf-8"))
     inventory, request = build_survey(
-        graph, max_expansions=args.max_expansions, max_steps=args.max_steps
+        graph,
+        max_expansions=args.max_expansions,
+        max_steps=args.max_steps,
+        domain_sid=args.domain_sid,
     )
     config = {
         "version": "neo-domain-survey/1",
