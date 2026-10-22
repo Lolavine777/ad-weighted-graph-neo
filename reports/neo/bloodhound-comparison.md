@@ -108,6 +108,7 @@ Lần chạy thăm dò, request/response cuối và timing riêng từng request
 
 Ba can thiệp được thử **độc lập**, mỗi lần bắt đầu từ graph nguyên vẹn và cùng foothold ban đầu, tìm mới tới cả DA và EA.
 Đây là sửa graph mô phỏng trên database thí nghiệm, không thực thi thay đổi trên Active Directory.
+Mỗi query khởi tạo lại foothold; không mô phỏng credential đã bị lấy từ trước, và kết thúc session không được coi là tự thu hồi credential đã đánh cắp.
 Neo dựng lại facts theo graph đã sửa và replay witness mới; CE chạy lại shortestPath qua API, không chỉ kiểm đường cũ.
 
 | Can thiệp | Neo sau can thiệp | BloodHound sau can thiệp | Diễn giải |
