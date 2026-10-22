@@ -1,0 +1,1936 @@
+{
+  "version": "neo-bloodhound-native-results/1",
+  "date": "2026-10-22",
+  "query_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "bloodhound_status": "not_run",
+  "strata": {
+    "seamless": {
+      "summary": {
+        "C_rated_reached_pairs": 10,
+        "declared_pairs": 10,
+        "elapsed_seconds": 208.77319333800006,
+        "eligible_sources": 5,
+        "errors": 0,
+        "input_coverage": {
+          "computer_initial_capability": "usable_machine_network_identity",
+          "notes": [],
+          "observed_session_edges": 0,
+          "scenario": "identity",
+          "selected_computer_sources": 2,
+          "selected_computers_with_observed_session": 0
+        },
+        "no_path_proven_pairs": 0,
+        "not_run_pairs": 0,
+        "reached_pairs": 10,
+        "recorded_pairs": 10,
+        "selected_targets": 2,
+        "source_kinds": {
+          "Computer": 2,
+          "User": 3
+        },
+        "status_counts": {
+          "success": 10
+        },
+        "truncated_pairs": 10,
+        "unknown_attempts": {}
+      },
+      "scope_digest": "sha256:25fdc33407f4caa1c281ca9b1c401eedd53c6987ce967fa2b01591080171da5d",
+      "checkpoint_sha256": "sha256:994c208ffa0adb80e1067b16bf0e930471eb72c8bb72261cad341fbd50a3c6a3",
+      "rows": [
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 109,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:bab52ae24502f337dd6942f15270a93f6ae63a00f2320f811a1c91a7bceb787e",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:33b75a14149138193a22151de883033cdeecefeef887206b0eef060bbda17ad1",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:ff9188899471145f45feef1969a036351e60833de6d01bee3abd0b05404f8e18",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:92878c59f974fb6a61318682c041a30d34e4078bb8795f551dbaa61ba922e99b",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:5b74da05162c601f07906b9faf8eab123df33b7edda52dff71c58c29a7e01d01",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:1919dbb3f20f22dfc98e23fb223e40993939b06fac4bfb1b5d51f5cc7f405cb9",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:7ab84b00afebc1b4f47215e34a1ffb631195d749bf327e320aa1831ee220c888",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:1a09d3139a2e753fdada5e8d7c6ac68adfb70451e68dc00c37cbbe02b9471d03",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:9c0bf7ecff920b6a3a9a7964234bf7c84c5e3e4c79fe3078baf48524b5eb1874",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:e331135152a0a647ee03c732fb45b994bd41bd75d337fa1e3b385583457c879f",
+              "C": 3,
+              "steps": 8
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:0e6ce25a338591819f1f056fc840ed3c9918831e293ddb5ca656834630ed1995"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 5,
+          "expansions": 63,
+          "truncated": true,
+          "truncation_reason": "step_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:1bf06296f02775ef511eb651384e07a804ae85e2669e9487a9ecf41a323aa249",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:80d5e805f2b367ddf5d6c12ac0ab7b15eb6d974a4337af4d9cb33838551b42ac",
+              "C": 6,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:3fbd90816cbfdbea87b7147f7308193f7d9429677c7a1b5cb438c9b75057a801",
+              "C": 6,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:4f930e2222f4168c96192181fb064065cf0cdb9e0ad5852be1a91ddea78d1704",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:288d2d668366af371bdc1221537da9fc27ea01fde4480ea5f72f9d3437611dd5",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:c8f85c1d1d4b9faac75bbfc8fd960c8f4cdcd4052b2ba39ce53b51452acc6144",
+              "C": 8,
+              "steps": 12
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:3d15b83bc638a7e807aa40457ccd8ef03457a449ec94687465b1b2ba820734b0",
+              "C": 8,
+              "steps": 12
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:5418e7b28de8b2d2eda95db4795d0054aff732f9fc0d9fc1e9b0810a3b14a545",
+              "C": 8,
+              "steps": 12
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:3f3543ee03f8978a2a08171de5d5b719db24aabf31e09d74455addfe235d543c",
+              "C": 8,
+              "steps": 12
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:6b13db72e214c353a4f551e31d5623c8a05f21e020d31fdbaed3e0e28fe43f86",
+              "C": 8,
+              "steps": 12
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:e495cfd11576f7ffbd4d5d15f839d952d354412fb8694f3d8707a09aa4cfcbdb"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 1,
+          "expansions": 103,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:215ed457d77d215ae1bd6ee28734860eac22b84896cb36f19e8173594f91aaab",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:f4806a18638effc587e2285a0ef3214c782286c7df2881f1b58f1761fc2463b2",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:c8930de8a333190bc5cbc474dbadb6c00626f98eee369ee6e454ee196a9b60b7",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:5f1ad25e80915af4626160cbeca94b523e27080ad1662a5e719240f6b11bc540",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:ca95fef74a16b2d071f83a6c3d012f5f26e9d70207f3b0dc3575152ff180380d",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:6f6c6ed85f2cebf302a178f88d5c7ad8ae141990496865c76630b6c3d5386b83",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:18a8d97e125606ea55aa62f170ed32486fc550aa85351c6cc26e854f23267144",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:6ef7d00c107e4e8e2e3c1538462ba105dfda94ddb58519913ba8e34c2fbcad07",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:4403f26191f7cb9971633b6434cea017b2bfb26c649ca6fdea50d5e8b8d634b7",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:d1f53828f483d9f4329d3387e7947c69fd9b4031bc550ffc86a9957a080a2a16",
+              "C": 2,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:baa7b4e25b218b12296b61bac3d6da936e6cfb3a86aba1d2958e8f2f9fa6d6d7"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 4,
+          "expansions": 51,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:e3534b69429f6838871fdd8ebecf3df60a7e509ffc3a0b490a8aa6e0606c772a",
+              "C": 4,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:e41aad68c27b0094c04402e445ea003599ae84dcacf5fbc436032a031154ded5",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:d41258dd7f1800cfab72e2ce01713c40d548aaf285039715b905825f43321328",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:d91900a77958f9ee639db616718ddf35e7e559e485299600e8ccdd912ba6ce09",
+              "C": 6,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:d861ec2cd641951db02d7628f0d9e7acc59ccaa9cd9766e6ebb1d908f4dfb0e4",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:ff55d47b8e0f0f0d63990689acb430b93d0e8a7ddcdf5824376acf9bb012fecb",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:e81a9300618fb08bc1571db04661b614919f258164a6149d41ad502b21ee6c4d",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:29bc351a255f44ca4c926805dfd97aa2d73ae7bff97da793a982efaf56e31a0f",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:20b4a45bd40e23e4a82e2f56c6b1814334485b985ace4fd9bf6e201c2f28a25e",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:2e094fe3ab11610f531451f7328909a7eeea7cea18697ebdbf74a469b6c3f8fa",
+              "C": 9,
+              "steps": 12
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:a871af6b5f68249338467f4db67015aae229a405e6cedb30451dbec7e8228214"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 1,
+          "expansions": 103,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:07dd82a210a6ab69740c1bee0f2ec140e21db8192d665942481d5575df11167c",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:8dbb8d8b7d0b9aac661e2bc278dc61c43aae24e93e02e21eee56eba407091f9f",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:e4a30e2187ce3a0031e5fa8fe0e6889c13a75d4c268bfe8c2b968047084fd569",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:a9d6fac0cee34968202caf8a74c56c09144eab52770747aa9ae569b80ed5c04e",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:c05957d000438e4e302643a68da9065f9500c5f40e39510ee113e0de472a7dd8",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:f56c1dfda7a1dbae7d34be4acfd9d216e636b758a53772ff8d92d23d9be278e7",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:1599d4afd2fc498f14b3fb0e594ef49a8a9d30702c977a55e6c6c2b182a656f3",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:e80da22f8f1b6cb74d5a4c155301a0b31ef8aab4b5b7ee2083c641e8b25ac212",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:2dac9ad806cfc513d5bcaba0eca61e8152d19877b901effc2ba014e9eed3ba3c",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:db3e90f22187ecb16d3497f67f9dc20efaee2b6bb617cf44db1398fea8ad904f",
+              "C": 2,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:c3e7bb24fb21aba0edf2d2774e2deec72c1d9793c35ea8e0866354332ac9f558"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 4,
+          "expansions": 51,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:a78d0ca8598eb270d5b58d99a099b0b2687454adc3b20a67c348e0249ee59d28",
+              "C": 4,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:53c41e55ec41a56350d5a2a22523a246bd27c1ac8ba58cc36406b0c61ff855b2",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:11d6457d421b16568ad6c361306f94e3ab4222190633a16863223f1edb92a472",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:a036371c84637c4411f4456c42fb68ea6ce2d9154d74228d26781c94add78d61",
+              "C": 6,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:dc34a2503f2c93fa20b4102175764da48bee619acb211deaaec03d0117ab8342",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:356e412d414e5ca3cad877e7b7083b6964f4611c654d1ecc5aabce0b06746034",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:4b1b8ff68a55b6eaba447b2e7e7afef4df682f3caf8a9c60269403ec2f38cfde",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:9d12ef25a2dfe19d23a8adf04da522427085e274c54cb3972cfe63d6c1fd2cbe",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:f67ef9644c126002b1b9d61a9f1418e649feb6941dce8c0e5852511878e1ce4e",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:69ceccbf1044e9952232dc3f37ebe5fadf46d2d6e7fe0f564adb83f281614556",
+              "C": 9,
+              "steps": 12
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:c55b144634ef0d2aa7683c26e9e500d45c08b6ad69132eeb1cd1294bd4c2d922"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 55,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:712bbe47e9439a54edc1ffb6efe990b562aaadba751e634e5d0f8e67805d190d",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:9fa9d4852c94c43fd1d8de2cdaa8cfe05eba0c0488066818ff474ff87db636a2",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:a005aee1c071d3e918412fcacd922d4b88b25c6019f68d154a4983934f70e16b",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:8b3ce1cae3a71a33b56cd91695a15c9ba09850ba0210132b211f7a25cadffc32",
+              "C": 3,
+              "steps": 8
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:b3906bf801a713cb548a36c48397d3ca17328e8195979713e3d4f0edd4665b73",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:e008a6ec0b8beb4201b36626f04af124d7caba61a81840293ad40ae72f358745",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:728930447b3f9e8ed63546fb02e7848b06741e6ab49a03d08ea0a44a92b7bf51",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:d93230be96408239655b1726f10740c31a171f663c2587417e97aa2b7b595ba5",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:37671f1d3e0f14f625a634ba6fc429d9f1c2b23b799046df426dbff198df7fca",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:57b5920083de0c3a53edc64237a766b525be2c67db2d417df982072459a15f1b",
+              "C": 6,
+              "steps": 10
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:1bef1a5df05aeaa2bc82a2a2be88fdcbc30440b6a024b85d82224563addef022"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 5,
+          "expansions": 42,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:05c5de985f7735b9039169e322e603d3e192104e1dbc867768bb548f9eb304c8",
+              "C": 5,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:d43921545889339daca9553fadeecb2a78b63775ee1f29e39e66f90ede2aa234",
+              "C": 6,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:06ee464c6c1d185fb9243c112f3129801ac9f8a393ec77977f7359aaa1e1694b",
+              "C": 6,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:b30c4348f19fdd7a1b4b92d365812094b408306415d8bcc5a2417f60e3f6b522",
+              "C": 7,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:b5e5aee858db3de25c0d71c42c6cfd471f26f1f77defdb3248cbe4051db41919",
+              "C": 8,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:bd3447b0c46b0670afb323866d743f8dc8b16d3c8d628fd8aa580171cfdae6ca",
+              "C": 8,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:ff91634345a90bcf648c0216c7f7b76ae6d4a2d919d294a71ef291156e3b923e",
+              "C": 8,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:1517892a79b7d4d6956a88e0510af28b558269f4e38f1468e89a81fac222c8b4",
+              "C": 8,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:96778d6e924bf3cf40d9730ebafc5ec4d239f6a7c3f08d20e7a00f2b7d2fde15",
+              "C": 8,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:9923a7784f79e595944e23f87638c058658608e86e21ac91c2eb673c1924b5e6",
+              "C": 10,
+              "steps": 12
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:3534473a33f1fd37d3558b1f57c4a60f287dc073d579cbde129bed288ec5577d"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 1,
+          "expansions": 103,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:99e3bf36e8431b9907102624294ad202c0be238daa2bc64d6e57dceea93b0afb",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:81024c157fe44705d5349c512e8d478f6fd4a153659d840bc05704e798f48f81",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:dff225247a168d9aaefb31a121ec3dcf73418bc785ca5503f0223077997b4408",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:298a4515a44fd0d66a8e6d71edd0898e1098ec1839e3bf1fc31d1abe7c2942e5",
+              "C": 1,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:ccdc19976a29cf3fd23c1a6f6f30110879db447afb6b7567e1be389493b990e0",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:34969115e29f3db5228242d31419201d6091703cc306318e734f0913808118cd",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:fffc2fdb834226c151e858bbb6cb47331e03334014c7be5e3e6e77c53ff8ac81",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:0f517079556c92742f3a9445dce96e2c4595ccdffadc766249a35c11e7059e46",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:668c8b70ab0341f3a2dbecdc3fcdd149e278c50c35d786842f9bcf9178184eae",
+              "C": 2,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:bd29d6f63d213240760180fd48908b395753d3bdfaf525ad368c5c2c9a5daedc",
+              "C": 2,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:27470f6d92b74033d7cf716b1e7a5b8893bdd1b6a8980d1115d05723f2acd5b7"
+        },
+        {
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 4,
+          "expansions": 50,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:0ddc77579eed084458c525469346fc43c0a27ce109d087dcc916ecc3022b8596",
+              "C": 4,
+              "steps": 9
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:36e448cc14815921c38c1ab18e3a12c1114c1f017393b44079a2e7256834ed7e",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:2a8f28a67eaa08569cf1e2d6335f7a436b44ae0ba25de14ec49015544ef89193",
+              "C": 5,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:af580acc89217c72155f737d7a2a576c1352a3eff4bac0d7c0dde3be8cba21af",
+              "C": 6,
+              "steps": 10
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:5a5b2ca8c9400bbcfd92d8621aa5a7320d09041bd486efe735b01c89524644fc",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:8c1561670cf8b3c4858c0a70c3c4117ae637a8799e85151f0fdb456727e55a2e",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:6c28e74e7dd0f319b25f6dc96d88050c8a7971a8fe1fb52d22e3b6d97f6d516e",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:90ba0add8a0202920d49f68fde4a6aedc6aa8ff11c2b84deaf42da9c1b2e884f",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:cbe0850da3cfa13eb7251d5a15020916170f6bfd865e753e0152e90df7811b2e",
+              "C": 7,
+              "steps": 11
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:b509e2355c7f96be533d3c9557b2fd83b43d3ed2bb86bfed2f99de8bedf7fcea",
+              "C": 9,
+              "steps": 12
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:cdea07dc759d101975f48cdb0571b40969fbb50e5b8cc4e10794885822dd5088"
+        }
+      ]
+    },
+    "wraith": {
+      "summary": {
+        "C_rated_reached_pairs": 6,
+        "declared_pairs": 10,
+        "elapsed_seconds": 4.817520005000006,
+        "eligible_sources": 5,
+        "errors": 0,
+        "input_coverage": {
+          "computer_initial_capability": "local_admin_only",
+          "notes": [
+            "Nguồn Computer chỉ có quyền local admin/SYSTEM; chưa khai báo danh tính mạng của tài khoản máy."
+          ],
+          "observed_session_edges": 3,
+          "scenario": "host-compromise",
+          "selected_computer_sources": 2,
+          "selected_computers_with_observed_session": 1
+        },
+        "no_path_proven_pairs": 4,
+        "not_run_pairs": 0,
+        "reached_pairs": 6,
+        "recorded_pairs": 10,
+        "selected_targets": 2,
+        "source_kinds": {
+          "Computer": 2,
+          "User": 3
+        },
+        "status_counts": {
+          "blocked": 2,
+          "no_path": 2,
+          "success": 6
+        },
+        "truncated_pairs": 6,
+        "unknown_attempts": {}
+      },
+      "scope_digest": "sha256:04c1737c26c093c0d9fb5c7616776111133995264a7a59719034a714506d91ef",
+      "checkpoint_sha256": "sha256:e30452adaaa809992e66fcfdd4f0e02cf0dcb6d6cc3aed28bded6c3ea3e671bb",
+      "rows": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:246bd090d4a0a0b5deba409043db037f5d1fd1573dcec02f4d9304109a997958",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:d5556b987fcfdfaec11770d833c431547afda36f988217ef790c3a94c3e9ea61",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:a9b4a403790954e436564df8559cfb9ffc86d82ae0b5a5fd2d5b9288fa63be47",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:1783f7658364e674635223b64c464ea3bdd59780e9534c190d8ab89472fc4fd7",
+              "C": 4,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:3000a657bbaa2235ee0db699de4943eee2900770fe9b915c0de92b78befdb18e",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:448926acf17f01f8167b01f0dd16ed9b028f503f01f7d0b4836fd7a3271b4161",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:cfb1f038744add2a5a6d5aa9fd6cde5ee6979ee469972a78c4062f255f84360f",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:31d629ecc3fff2d94215663cc6fe1574cdd28f3a88e26abaf1f10cdabd2fe897",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:3ff8bd6967546786919534e5de6f766cf86437882259ded0a11f4b5defdd73ba",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:f5da64f6294e6796b3955b127c882f902ca4bebac817d3e84a244c24600f98ba",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:f4ad273e7c746a194dae89eace2fdc1234dbecc5d1f669d3af33ae6af1317966"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:5a683c164e546a92137291b4c994e84a0be2feecab7863ef43428bc69840a2d3",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:72d57d53e2139afcc0657b959e5c0a5067b6bd2efe69cd10fc25530c69bbd8eb",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:09a31b90c1173b35c9f21c64b3dee4c14b5b6287b9f68a31c90ea4505109c544",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:a0cae434ff992be3ae67644cb9a4fc08ae01484834ce37a56d50101f45012f8f",
+              "C": 4,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:40235491499cf59933d11335cb0bae0396fba2b1aced3542854faf91bb66dd6b",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:34c5154bf80256decf3865d9620c71e63ae38eafafc04de08cd1c3f21d2592f6",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:8d8b20619f1ef190d69bb2cf9e81d8201a2cf96fd7d76570f2d289b13e1c815b",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:5c2b2ba65ce156531ead61b5ef79310af111c944a738e2803244bd9a21524672",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:3386ddb7603b4973fd7e4675a7a594f2f2900cad6cab8873b69cf67bb247718d",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:61abff1ebbb60572395dd97ea56817521737233dd01ae146502bd35f96cefd9c",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:4f6c50f7114e8dd4408b625e0462b89a2c34b947cd0503a61d945d33798e0ba7"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 20,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:f549aadf9546e4fd1475b0c7744b3c11fd87eb6412a3446084aa150eb263272e",
+              "C": 0,
+              "steps": 1
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:51d163f469c5de36a4187d0c7ec04fe78f4a2437d4acceef8b7862a7a72c611d",
+              "C": 0,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:31de1afb829dc7caa479dde2051488683215a4887f2c976624842da30b94b363",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:0b662ca365adb08165d0568084f56973ebbbd1b250e44f4e6cc391a0510e3a70",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:e6afd4fe5e0c9e2dc90c7921ff865c4863238a8808bafe7a5f709c012f9fffff",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:8c687bc9fd598cccb1bbe1588ee9649bf895d2ad6042b9650c6cff59b3365fe0",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:76b85e480081fc11355620c83ac240d6d1b4ab751496a354756478ef1c503b5d",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:b212f460f5031db08f15fc9829f3c3e90902407a709bae5d7772d6e8e2ea65ee",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:eeedc9f977e20d7efcb116d8eba671653a5bf0a1b97695ff1c8160a33a424e75",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:6278787316f141a491170f5b31854f727615c46d39dab73f69abc8fa3c58d2a9",
+              "C": 6,
+              "steps": 6
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:3b63ab9a0ce98d61e8cdbf0889c7c87f48b89020007e68e8f98ee5fd28a085c0"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 0,
+          "expansions": 20,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:1194d28a3364fc9a70cba8fa9e3344db0efdcdce9f6f2b3bcf6bdfbe957f70b3",
+              "C": 0,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:2b7213d21e62e57a3a641948364c3ddcdeebff0b7d8ee3941df3e3c8e45bee80",
+              "C": 0,
+              "steps": 1
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:aedb7af634c1b50338dc0f176cced7fd6a3e089aaa2736730452a34489d91661",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:1cec377e7f1e7844b4a9c010ea9ac9f8edaa100e8d02c2fb65e7ee162a1732b4",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:a7854bf74f67642aff887b5e6954f8eff9c26838a41b4c301b36daa1e91df484",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:a7ed3c113dcf37998892585ea9fd4bc3159a02c96db74eace60125fb81c1028d",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:069aad42a012af65cad803e519d449e5554d625ab4a003747312e9692643f4b0",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:9f22d12bbac516c1dc445857210c12ab5e2c0c69b8d6cfe9de2479a6d37d7e5c",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:cd16f9be637a844168d8a8c1b603fbc0ef4fd4de0c4a87cb2b3f5baa418484e2",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:6841d76fa348c52ebf29698559f9a6527196d56aadf440f3028ee5c122544a99",
+              "C": 6,
+              "steps": 6
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:f283a37db01e7076928bfbdc8779908f6b3974296cf87eb8c7d38b621fce7841"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 3,
+          "expansions": 35,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:83afca0b9098f2965403053a318befa752771b973709439fd2f81e2efa9a1f61",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:92c901a4215892a1841dad42f4bb096da81a22ee051287ee3b2b83e6706b4cbb",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:0be98a1f1968edec570355f2f1c6d553c192d9bd8728b89d40d61250313a83ac",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:48901b02df1644b7dd7760a740ce5d3f2ca40a3d09e5114fa478d54a7e9d86aa",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:bfa8b77a03dcc04912d22050e44bdf76f56b859c25d2dfd176516d31920bcce6",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:09c266acf1b012ffcb76d688ea5e8b69360f4418e5579bb8f593c5de225cef2d",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:68a0f8207c2b28e4a4408cdc5b1a6a2b9dd7d3b5aae22293298142a718d68c8b",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:80a519ec9ead7656226ed81508d459ac7d190051e8297f6a18a0c9f4f2d53b20",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:15e753b9091ec30c3cd6943c321957db48cc00d0d288d71a021f99a6714ec7c5",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:37f966d7ad03970edf081cbd864866da4a6e12d1266f7b3ddb72e90a8bffb01f",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:bd24bea2688193e1dbccc4f6f41a3097fb1c8c5ce4ec119f3241d3a593f37bd3"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "success",
+          "reached": true,
+          "C": 3,
+          "expansions": 35,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:0cdf92e8bb9cbeeeb84c58ebd3f5c188f3b0cbf194adf17a66d7de748eeae2da",
+              "C": 3,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:551aebc70ca557a9def46f3f4b5a2107745adf837a11b812bb533f07b4056927",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:ea718242cd0d659ff9f17d12bd310c365a4576e65eecd59e76bbb140ffc56ece",
+              "C": 4,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:f0b3dc2e6e0389d6c6372c68ace2697529d528dd7a639aa7d0974536b700e4aa",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:0192981fa0910e8479d739615c3a5c4fbd95370edbf3c2f7dfef907d87e6446a",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:d58363fb98f421669b87769b2beaf9f7993839eda0f8398536f65c41c462fa3c",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:fc332cff94fe076013e12b121a8ef8150ba5cde231ca0c8252972222f3d0a543",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:4152e3665c867aa33f239afd731fe3a9859fa2249a2d8a3887cdefcd09c5347a",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:02051efd3e049abfa063ce7ad4d906562ca49124fdf1cf7024aed02c130223de",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:9f63c95e59cf1a9fe2a1e8878626c15f6d4e132f36fb828d67dea1f377edf3ba",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:b18c4b5d7f73ef9056aa28d304cd5483c7e932dc62359539ca4498d552e61e5e"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [],
+          "first_discovered_C": null,
+          "witness_sha256": null
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "User",
+          "status": "no_path",
+          "reached": false,
+          "C": null,
+          "expansions": 2,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [],
+          "first_discovered_C": null,
+          "witness_sha256": null
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "candidate_summary": [],
+          "first_discovered_C": null,
+          "witness_sha256": null
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "blocked",
+          "reached": false,
+          "C": null,
+          "expansions": 1,
+          "truncated": false,
+          "truncation_reason": null,
+          "minimum_proven": false,
+          "no_path_proven": true,
+          "unknown": {},
+          "failed": {
+            "computer_actor_authenticated": 1
+          },
+          "candidate_summary": [],
+          "first_discovered_C": null,
+          "witness_sha256": null
+        }
+      ]
+    },
+    "wraith-sessions": {
+      "summary": {
+        "C_rated_reached_pairs": 6,
+        "declared_pairs": 6,
+        "elapsed_seconds": 3.7529674119998617,
+        "eligible_sources": 3,
+        "errors": 0,
+        "input_coverage": {
+          "computer_initial_capability": "local_admin_only",
+          "notes": [
+            "Nguồn Computer chỉ có quyền local admin/SYSTEM; chưa khai báo danh tính mạng của tài khoản máy."
+          ],
+          "observed_session_edges": 3,
+          "scenario": "host-compromise",
+          "selected_computer_sources": 3,
+          "selected_computers_with_observed_session": 3
+        },
+        "no_path_proven_pairs": 0,
+        "not_run_pairs": 0,
+        "reached_pairs": 6,
+        "recorded_pairs": 6,
+        "selected_targets": 2,
+        "source_kinds": {
+          "Computer": 3
+        },
+        "status_counts": {
+          "success": 6
+        },
+        "truncated_pairs": 6,
+        "unknown_attempts": {}
+      },
+      "scope_digest": "sha256:1294ceb76c1bacb691196f9dab107b2c07464cc7178139225b5e9a70645a6e88",
+      "checkpoint_sha256": "sha256:582e54b5571f48e05770f90d7c764148845cb3ca7063eaa1af9e6b36a8cfc3ba",
+      "rows": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:246bd090d4a0a0b5deba409043db037f5d1fd1573dcec02f4d9304109a997958",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:d5556b987fcfdfaec11770d833c431547afda36f988217ef790c3a94c3e9ea61",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:a9b4a403790954e436564df8559cfb9ffc86d82ae0b5a5fd2d5b9288fa63be47",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:1783f7658364e674635223b64c464ea3bdd59780e9534c190d8ab89472fc4fd7",
+              "C": 4,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:3000a657bbaa2235ee0db699de4943eee2900770fe9b915c0de92b78befdb18e",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:448926acf17f01f8167b01f0dd16ed9b028f503f01f7d0b4836fd7a3271b4161",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:cfb1f038744add2a5a6d5aa9fd6cde5ee6979ee469972a78c4062f255f84360f",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:31d629ecc3fff2d94215663cc6fe1574cdd28f3a88e26abaf1f10cdabd2fe897",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:3ff8bd6967546786919534e5de6f766cf86437882259ded0a11f4b5defdd73ba",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:f5da64f6294e6796b3955b127c882f902ca4bebac817d3e84a244c24600f98ba",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:f4ad273e7c746a194dae89eace2fdc1234dbecc5d1f669d3af33ae6af1317966"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:5a683c164e546a92137291b4c994e84a0be2feecab7863ef43428bc69840a2d3",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:72d57d53e2139afcc0657b959e5c0a5067b6bd2efe69cd10fc25530c69bbd8eb",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:09a31b90c1173b35c9f21c64b3dee4c14b5b6287b9f68a31c90ea4505109c544",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:a0cae434ff992be3ae67644cb9a4fc08ae01484834ce37a56d50101f45012f8f",
+              "C": 4,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:40235491499cf59933d11335cb0bae0396fba2b1aced3542854faf91bb66dd6b",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:34c5154bf80256decf3865d9620c71e63ae38eafafc04de08cd1c3f21d2592f6",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:8d8b20619f1ef190d69bb2cf9e81d8201a2cf96fd7d76570f2d289b13e1c815b",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:5c2b2ba65ce156531ead61b5ef79310af111c944a738e2803244bd9a21524672",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:3386ddb7603b4973fd7e4675a7a594f2f2900cad6cab8873b69cf67bb247718d",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:61abff1ebbb60572395dd97ea56817521737233dd01ae146502bd35f96cefd9c",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:4f6c50f7114e8dd4408b625e0462b89a2c34b947cd0503a61d945d33798e0ba7"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:a7de5b368455b3877e8f899203d33a27d2dfbdfce9c703237752d9a1d6227dd2",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:0099cb0ec0a2438b288849e2e20dc8b8d2d1a0acb2d7c47d02651235185337f9",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:0b5bc345c6fddea18bd67292228259abf0fadaec7e7556db550dbcb0f9c5ad69",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:0d59415f7ae5194dbd5e32bfd99adeee3266d5b12fc9e9e09b0e183aed61dbd7",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:d9bc507bc8639d6d715c0bab0e954c9d04b65b81c72138ccd711e521efe3e373",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:8a362321cd04f6ab68c4b0c56118ca12ac8bd2a357cd58ed676581701cd8630b",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:d6aa8ea606baddef876d03ed758b58cef2243e278a98ee3a1bdabb609770451b",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:3708efb086d3389190edf9793881218e8446b35a29318098fb8a46bff248eb57",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:6b8f2906b5efea14e30fb81767b7bd16cdc435d597c9dc833d9a70f6ad10f05b",
+              "C": 8,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:7ba97b08698864ac1ac9b9e916dd41663f0ab0352b7859f8e6f9b6dc256f4e96",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:e0287c7e6e66b5329627a2ed3f9c2c70be92597773afa9d39e2470611fd793f9"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:914063cd4fcd906fd78322fcfb85df0d0eecbd1c7c65b0af9667b8fc9c39f5b0",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:06946aa5d530c1e0f1c9b477fe093af57b0d0827418e9655fd315dde34b877ae",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:6957725127f6ef441dcb659d22e9a91ab353ce8aba3edff7ed2db775bf72ab1d",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:cf65aead9c4e16618fea5ec27fdb28c2513f47969a7431a1b4296a30ad342c73",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:618af9e8c7423e97d0ff9b65a641cef6ab135d30a2413aaa8f5b20633a21637e",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:b3d1d9123352d0e704aced0d7a29483ce99844cad560c651140bd058499486b4",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:136a32f7e60ceadf18818d46c5d7e7c604f1840d3988f602e450a33ba1addb96",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:25cb9131d55a03eee9616515e669cd52bce6c719dcc721adebe831871faf739b",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:803c9e86d8a169749117e619b5b71751a05f4baf3939857e441bbc31a0c8e7d7",
+              "C": 8,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:2c8a73682df2e7f2f0ada994650b4cb66bb9fe83b443ff960a5a281e91694729",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:6fa53d34611b34a4dc6a9c5ff888f503fbfcb5853c14dfb4ea83694f1efb2d5d"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:980f2ed0ecd384f063634f7143c72d0349ba08405e2dac2f4f95d2ba545c11d4",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:c59d575eddaef31725b80eb6a359837e1bfac6e227c36d5929e5a5701a7c380d",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:06829185ab5f1ad17ad9141fb665229e835f0035d417fef433d6047c0734bfac",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:55a35dcbfa7257dff5d14523c360b70003bbc18aade40ec5f5cea08d8ffa2692",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:a26897a85eabba16e2ff9f567c0cb5bf04e4904b3ba714092f689bf4ce0823b9",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:20a4fb63349f123b25cebc15bc830ffc8f42028984b7a8ce7e472509b691e11e",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:df422bf5dccca1a87a7c4f3cbb04a53a75fb5d0b75fd3a7fd5c5f8cdc08eae3c",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:7682e88a7269cc0923e90cfa49cd2795b7a97cfdddc75aaf75a799a2038d6f9b",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:195e328d2586b44f690b8fce6b42f82b037131c480fd1ac18b9a9cd6520f1066",
+              "C": 8,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:1b44f9604f707a7d8778849fe2f4f96253f0993b0c1af79d16e4fa8b0d6e3286",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:cd59a8a43d8e36a18184569b02a961dee026d3ec33523301014b5f8ba25cfcd0"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "source_kind": "Computer",
+          "status": "success",
+          "reached": true,
+          "C": 2,
+          "expansions": 22,
+          "truncated": true,
+          "truncation_reason": "path_limit_reached",
+          "minimum_proven": false,
+          "no_path_proven": false,
+          "unknown": {},
+          "failed": {},
+          "candidate_summary": [
+            {
+              "candidate_id": "generated_0002",
+              "program_id": "sha256:43e0bf6064a02cedec2db30f5893a6632dfdf19e9303fa5805b64fc74db8edc1",
+              "C": 2,
+              "steps": 3
+            },
+            {
+              "candidate_id": "generated_0001",
+              "program_id": "sha256:ea86eb732652e39a0c3706f6edc1d0375baf7be00d71b06878487ac27e88d76c",
+              "C": 2,
+              "steps": 2
+            },
+            {
+              "candidate_id": "generated_0003",
+              "program_id": "sha256:05295be3c876732a4372fca55a90f5f7785e2379639e5f6a95e991ef34c67c11",
+              "C": 4,
+              "steps": 4
+            },
+            {
+              "candidate_id": "generated_0004",
+              "program_id": "sha256:4fa39ba05b033cceb6b6f85109197ec4386862c7d33c5b46bc1f0741d9d1b75b",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0005",
+              "program_id": "sha256:df264586964dad57dddb26b15f419f7c3453cb28c7d35699c732dbbd8c7310e8",
+              "C": 5,
+              "steps": 5
+            },
+            {
+              "candidate_id": "generated_0006",
+              "program_id": "sha256:07c6cd8fe744cc827f8a879ad10c81bda4e41eaac2826ab016d59cb3962e5b60",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0007",
+              "program_id": "sha256:ff7533cb2bc3610442b3b38fe697690360d61fbe72814d7e6892d6dcb83cc5bb",
+              "C": 6,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0008",
+              "program_id": "sha256:25416e98c010b7548dbd39d788c1f126afc6e4ac1e52b3c783d0875f24c542fb",
+              "C": 7,
+              "steps": 6
+            },
+            {
+              "candidate_id": "generated_0010",
+              "program_id": "sha256:8cb56f752bbf2867fd8cc5238fea1bcab7be7a8a9a3c2b1bc366012e213f694e",
+              "C": 8,
+              "steps": 7
+            },
+            {
+              "candidate_id": "generated_0009",
+              "program_id": "sha256:0456b94c3c0a2b6e4b1bbb93a157ec15e9fa06bb4188ce7b9a2c080f01e8ea6e",
+              "C": 8,
+              "steps": 7
+            }
+          ],
+          "first_discovered_C": null,
+          "witness_sha256": "sha256:e6bb068f83dece2cb768afaa67ff9e5efc59d8b69f170faa180f7add573f6541"
+        }
+      ]
+    }
+  },
+  "unique_pairs": 24,
+  "unique_reached": 20,
+  "full_suite_run": false,
+  "focused_tests_passed": 91
+}

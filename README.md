@@ -10,6 +10,8 @@ với BloodHound; chưa coi “tốt hơn BloodHound” là kết luận đã c�
 [Kết quả ngoài SEAMLESS và tiêu chí đánh giá](reports/neo/transfer-brief.md):
 đã chạy GHOST/WRAITH với cùng bảng C; có ca C=3 và can thiệp được kiểm chứng.
 PHANTOM còn lỗi đầu vào; đối chứng BloodHound live chưa hoàn tất.
+[Bộ đối chứng cố định và cách chạy](reports/neo/bloodhound-comparison.md)
+tách rõ kết quả neo khỏi BloodHound chưa chạy; không mở rộng engine.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
