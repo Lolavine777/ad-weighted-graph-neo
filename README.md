@@ -9,9 +9,9 @@ biện pháp giảm thiểu. Phải đánh giá ngoài SEAMLESS và đo ưu th�
 với BloodHound; chưa coi “tốt hơn BloodHound” là kết luận đã có.
 [Kết quả ngoài SEAMLESS và tiêu chí đánh giá](reports/neo/transfer-brief.md):
 đã chạy GHOST/WRAITH với cùng bảng C; có ca C=3 và can thiệp được kiểm chứng.
-PHANTOM còn lỗi đầu vào; đối chứng BloodHound live chưa hoàn tất.
+PHANTOM còn lỗi đầu vào; đối chứng BloodHound CE live đã hoàn tất trên bộ nhỏ cố định.
 [Bộ đối chứng cố định và cách chạy](reports/neo/bloodhound-comparison.md)
-tách rõ kết quả neo khỏi BloodHound chưa chạy; không mở rộng engine.
+ghi nhận BloodHound 22/24 và neo 20/24 cặp có đường, giới hạn nhập liệu của neo và bypass sau can thiệp.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.

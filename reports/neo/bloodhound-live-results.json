@@ -1,0 +1,1537 @@
+{
+  "version": "neo-bloodhound-live/1",
+  "date": "2026-10-22",
+  "base_commit": "6d90f78",
+  "evidence_root": "reports/generated/bh-live-20261022",
+  "fixed_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "live_pack_sha256": "sha256:ed9589484a905f77f04c05ae8bd6dcf0be970c2caefb83bfb414d3137d84cec9",
+  "effort_basis": "conditional action mapping under neo-c-v1; not empirical time, not edge count; no claim that shortest paths are executable",
+  "cohort_unchanged": true,
+  "engine_and_preset_unchanged": true,
+  "datasets": {
+    "seamless": {
+      "raw_files_verified": 6,
+      "ce_files_uploaded": 6,
+      "strata": {
+        "seamless": {
+          "pairs": 10,
+          "neo_reached": 10,
+          "bloodhound_reached": 10,
+          "ce_enabled_seconds": {
+            "median": 0.00788029155228287,
+            "min": 0.0060893751215189695,
+            "max": 0.01059933309443295
+          },
+          "neo_query_seconds_including_10_programs_and_replay": {
+            "median": 7.134769562981091,
+            "min": 6.761324916034937,
+            "max": 7.4697044170461595
+          }
+        }
+      },
+      "graph_parity": {
+        "counts": {
+          "bh_common_node_scoped_triples": 56343,
+          "bh_core_nodes": 3370,
+          "bh_nodes": 3374,
+          "bh_only_common_by_kind": {},
+          "bh_outside_neo_nodes_by_kind": {},
+          "neo_nodes": 3370,
+          "neo_only_by_kind": {
+            "GenericAll": 10,
+            "WriteDacl": 3
+          },
+          "neo_scoped_triples": 56356,
+          "shared_ids": 3370,
+          "shared_triples": 56343
+        },
+        "type_mismatches": 0,
+        "enabled_mismatches": 0,
+        "id_alias_collisions": 0,
+        "neo_only_nodes": 0,
+        "bh_only_core_nodes": 0
+      }
+    },
+    "wraith": {
+      "raw_files_verified": 31,
+      "ce_files_uploaded": 12,
+      "strata": {
+        "wraith": {
+          "pairs": 10,
+          "neo_reached": 6,
+          "bloodhound_reached": 8,
+          "ce_enabled_seconds": {
+            "median": 0.005776750040240586,
+            "min": 0.00513112498447299,
+            "max": 0.007096125045791268
+          },
+          "neo_query_seconds_including_10_programs_and_replay": {
+            "median": 0.21610389603301883,
+            "min": 0.004955417010933161,
+            "max": 0.357798625016585
+          }
+        },
+        "wraith-sessions": {
+          "pairs": 6,
+          "neo_reached": 6,
+          "bloodhound_reached": 6,
+          "ce_enabled_seconds": {
+            "median": 0.005106749944388866,
+            "min": 0.004823625087738037,
+            "max": 0.005955500062555075
+          },
+          "neo_query_seconds_including_10_programs_and_replay": {
+            "median": 0.2520690836245194,
+            "min": 0.22161149978637695,
+            "max": 0.3210077499970794
+          }
+        }
+      },
+      "graph_parity": {
+        "counts": {
+          "bh_common_node_scoped_triples": 757,
+          "bh_core_nodes": 160,
+          "bh_nodes": 933,
+          "bh_only_common_by_kind": {
+            "AdminTo": 4,
+            "MemberOf": 2
+          },
+          "bh_outside_neo_nodes_by_kind": {
+            "GenericAll": 2344,
+            "MemberOf": 2,
+            "WriteDacl": 1004
+          },
+          "neo_nodes": 150,
+          "neo_only_by_kind": {
+            "AdminTo": 3,
+            "GenericAll": 1,
+            "WriteDacl": 3
+          },
+          "neo_scoped_triples": 758,
+          "shared_ids": 149,
+          "shared_triples": 751
+        },
+        "type_mismatches": 1,
+        "enabled_mismatches": 1,
+        "id_alias_collisions": 0,
+        "neo_only_nodes": 1,
+        "bh_only_core_nodes": 12
+      }
+    }
+  },
+  "pairs": {
+    "seamless:ee5b245cc837d93e": {
+      "dataset": "seamless",
+      "pair_id": "ee5b245cc837d93e",
+      "source": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 109,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.275828167097643
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "ME-111-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "LEE_YATES@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "LEE_YATES@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DA-ASA-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "C": 0
+          }
+        ],
+        "seconds": 0.01059933309443295,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:fe8f268bb1185d29": {
+      "dataset": "seamless",
+      "pair_id": "fe8f268bb1185d29",
+      "source": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 5,
+        "status": "success",
+        "expansions": 63,
+        "truncated": true,
+        "truncation_reason": "step_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.459022124996409
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 6,
+        "C": 5,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "reset password",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 1
+          }
+        ],
+        "seconds": 0.007811292074620724,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:4de26bc8f5b34485": {
+      "dataset": "seamless",
+      "pair_id": "4de26bc8f5b34485",
+      "source": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 1,
+        "status": "success",
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.007857125019655
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": 1,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "C": 0
+          }
+        ],
+        "seconds": 0.008022083900868893,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:081401205950b564": {
+      "dataset": "seamless",
+      "pair_id": "081401205950b564",
+      "source": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 4,
+        "status": "success",
+        "expansions": 51,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.092326083919033
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 6,
+        "C": 5,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "reset password",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 1
+          }
+        ],
+        "seconds": 0.007000334095209837,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:4ad2a03ae094ff86": {
+      "dataset": "seamless",
+      "pair_id": "4ad2a03ae094ff86",
+      "source": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 1,
+        "status": "success",
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.005418375134468
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": 1,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "C": 0
+          }
+        ],
+        "seconds": 0.006656707962974906,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:e07d8a989ed25a5e": {
+      "dataset": "seamless",
+      "pair_id": "e07d8a989ed25a5e",
+      "source": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 4,
+        "status": "success",
+        "expansions": 51,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.1772130420431495
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 6,
+        "C": 5,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "reset password",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 1
+          }
+        ],
+        "seconds": 0.0060893751215189695,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:d1f28168c92c42d6": {
+      "dataset": "seamless",
+      "pair_id": "d1f28168c92c42d6",
+      "source": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 55,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 6.761324916034937
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": null,
+        "C_mapping_limit": "GenericAll -> Computer has no equivalent identity action in the frozen scope",
+        "action_mapping": [],
+        "seconds": 0.0072949170134961605,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:a066c924153a1acb": {
+      "dataset": "seamless",
+      "pair_id": "a066c924153a1acb",
+      "source": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 5,
+        "status": "success",
+        "expansions": 42,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 6.9718745411373675
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": 5,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "reset password",
+            "target": "NOELLE_WILLIS@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "NOELLE_WILLIS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "HO-170-DISTLIST1@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 1
+          }
+        ],
+        "seconds": 0.00811291579157114,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:e5aed26c883d3f75": {
+      "dataset": "seamless",
+      "pair_id": "e5aed26c883d3f75",
+      "source": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 1,
+        "status": "success",
+        "expansions": 103,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.434406250016764
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 5,
+        "C": 1,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN COMPUTERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "LIDIA_ALFORD@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+            "C": 0
+          }
+        ],
+        "seconds": 0.007949291029945016,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "seamless:18f9ee8a399f23c7": {
+      "dataset": "seamless",
+      "pair_id": "18f9ee8a399f23c7",
+      "source": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "strata": [
+        "seamless"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 4,
+        "status": "success",
+        "expansions": 50,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 7.4697044170461595
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 6,
+        "C": 4,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN COMPUTERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "reset password",
+            "target": "TINA_JOYNER@SEAMLESS.INTERNAL",
+            "C": 1
+          },
+          {
+            "action": "authenticate with reset identity",
+            "target": "TINA_JOYNER@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+            "C": 1
+          }
+        ],
+        "seconds": 0.009968416998162866,
+        "evidence": "reports/generated/bh-live-20261022/live-seamless-final/queries.json"
+      }
+    },
+    "wraith:a244629cbbec3311": {
+      "dataset": "wraith",
+      "pair_id": "a244629cbbec3311",
+      "source": "EXTDC01.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.21570275002159178
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.006626833928748965,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:75b293546235918b": {
+      "dataset": "wraith",
+      "pair_id": "75b293546235918b",
+      "source": "EXTDC01.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.21650504204444587
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.006020167144015431,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:f4ef5e8f4106f27f": {
+      "dataset": "wraith",
+      "pair_id": "f4ef5e8f4106f27f",
+      "source": "XADMIN@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 0,
+        "status": "success",
+        "expansions": 20,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.35511320806108415
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 1,
+        "C": 0,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.0056770420633256435,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:bea948114eba3f04": {
+      "dataset": "wraith",
+      "pair_id": "bea948114eba3f04",
+      "source": "XADMIN@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 0,
+        "status": "success",
+        "expansions": 20,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.352119917050004
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 1,
+        "C": 0,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.005367249948903918,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:8c26de8d3cd2af06": {
+      "dataset": "wraith",
+      "pair_id": "8c26de8d3cd2af06",
+      "source": "RODCMANAGER@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 3,
+        "status": "success",
+        "expansions": 35,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.357798625016585
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 3,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@WRAITH.CORP",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 1
+          }
+        ],
+        "seconds": 0.006090249866247177,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:468e68e43850ef0b": {
+      "dataset": "wraith",
+      "pair_id": "468e68e43850ef0b",
+      "source": "RODCMANAGER@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 3,
+        "status": "success",
+        "expansions": 35,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.3577466250862926
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 3,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "use existing group entitlement",
+            "target": "ADMINISTRATORS@WRAITH.CORP",
+            "C": 0
+          },
+          {
+            "action": "grant GenericAll through DACL",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "add actor to group and use membership",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 1
+          }
+        ],
+        "seconds": 0.005876458017155528,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:9ae3cb9294458a65": {
+      "dataset": "wraith",
+      "pair_id": "9ae3cb9294458a65",
+      "source": "TRUSTER@WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": false,
+        "C": null,
+        "status": "no_path",
+        "expansions": 2,
+        "truncated": false,
+        "truncation_reason": null,
+        "no_path_proven": true,
+        "minimum_proven": false,
+        "query_seconds": 0.005664165830239654
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 3,
+        "C": 3,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "authenticated administrative execution",
+            "target": "UNCON.WRAITH.CORP",
+            "C": 1
+          },
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.007096125045791268,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:64163e41f55ea321": {
+      "dataset": "wraith",
+      "pair_id": "64163e41f55ea321",
+      "source": "TRUSTER@WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": false,
+        "C": null,
+        "status": "no_path",
+        "expansions": 2,
+        "truncated": false,
+        "truncation_reason": null,
+        "no_path_proven": true,
+        "minimum_proven": false,
+        "query_seconds": 0.005949708865955472
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 3,
+        "C": 3,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "authenticated administrative execution",
+            "target": "UNCON.WRAITH.CORP",
+            "C": 1
+          },
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.005296208895742893,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:85faf6f54c1e94bf": {
+      "dataset": "wraith",
+      "pair_id": "85faf6f54c1e94bf",
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": false,
+        "C": null,
+        "status": "blocked",
+        "expansions": 1,
+        "truncated": false,
+        "truncation_reason": null,
+        "no_path_proven": true,
+        "minimum_proven": false,
+        "query_seconds": 0.004955417010933161
+      },
+      "bloodhound": {
+        "structural_path": false,
+        "enabled_path": false,
+        "http_status": 404,
+        "hops": null,
+        "C": null,
+        "C_mapping_limit": null,
+        "action_mapping": [],
+        "seconds": 0.005442542023956776,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:9a0c745e67356ad0": {
+      "dataset": "wraith",
+      "pair_id": "9a0c745e67356ad0",
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith"
+      ],
+      "neo": {
+        "reached": false,
+        "C": null,
+        "status": "blocked",
+        "expansions": 1,
+        "truncated": false,
+        "truncation_reason": null,
+        "no_path_proven": true,
+        "minimum_proven": false,
+        "query_seconds": 0.00561954197473824
+      },
+      "bloodhound": {
+        "structural_path": false,
+        "enabled_path": false,
+        "http_status": 404,
+        "hops": null,
+        "C": null,
+        "C_mapping_limit": null,
+        "action_mapping": [],
+        "seconds": 0.00513112498447299,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:84ec48dfabb21f84": {
+      "dataset": "wraith",
+      "pair_id": "84ec48dfabb21f84",
+      "source": "EXTCA01.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.31405595783144236
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.005049749976024032,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:b12485d0e9b4a8d3": {
+      "dataset": "wraith",
+      "pair_id": "b12485d0e9b4a8d3",
+      "source": "EXTCA01.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.3210077499970794
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.005163749912753701,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:9802acd99c3c8cc7": {
+      "dataset": "wraith",
+      "pair_id": "9802acd99c3c8cc7",
+      "source": "UNCON.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.2504868330433965
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "ENTERPRISE ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.004823625087738037,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    },
+    "wraith:e961422109f16d8f": {
+      "dataset": "wraith",
+      "pair_id": "e961422109f16d8f",
+      "source": "UNCON.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP",
+      "strata": [
+        "wraith-sessions"
+      ],
+      "neo": {
+        "reached": true,
+        "C": 2,
+        "status": "success",
+        "expansions": 22,
+        "truncated": true,
+        "truncation_reason": "path_limit_reached",
+        "no_path_proven": false,
+        "minimum_proven": false,
+        "query_seconds": 0.25365133420564234
+      },
+      "bloodhound": {
+        "structural_path": true,
+        "enabled_path": true,
+        "http_status": 200,
+        "hops": 2,
+        "C": 2,
+        "C_mapping_limit": null,
+        "action_mapping": [
+          {
+            "action": "acquire reusable session credential and authenticate",
+            "target": "BM@WRAITH.CORP",
+            "C": 2
+          },
+          {
+            "action": "use existing group entitlement",
+            "target": "DOMAIN ADMINS@WRAITH.CORP",
+            "C": 0
+          }
+        ],
+        "seconds": 0.005709166871383786,
+        "evidence": "reports/generated/bh-live-20261022/live-wraith-final/queries.json"
+      }
+    }
+  },
+  "remediation": [
+    {
+      "case": "rodc-membership",
+      "restore_verified": true,
+      "restored_relationship_data_digest": "sha256:888b76bd9ca515f3fde76d10131221e36efb227e3c474f8e6b9b4aa5268d5ec0",
+      "neo_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": true,
+          "C": 3,
+          "expansions": 23,
+          "truncated": true,
+          "no_path_proven": false
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": true,
+          "C": 3,
+          "expansions": 23,
+          "truncated": true,
+          "no_path_proven": false
+        }
+      ],
+      "bloodhound_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": true,
+          "seconds": 0.007602583151310682,
+          "empty_confirmed": false
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": true,
+          "seconds": 0.006664082873612642,
+          "empty_confirmed": false
+        }
+      ]
+    },
+    {
+      "case": "extca-session",
+      "restore_verified": true,
+      "restored_relationship_data_digest": "sha256:888b76bd9ca515f3fde76d10131221e36efb227e3c474f8e6b9b4aa5268d5ec0",
+      "neo_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": false,
+          "C": null,
+          "expansions": 3,
+          "truncated": false,
+          "no_path_proven": true
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": false,
+          "C": null,
+          "expansions": 3,
+          "truncated": false,
+          "no_path_proven": true
+        }
+      ],
+      "bloodhound_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": false,
+          "seconds": 0.007212667027488351,
+          "empty_confirmed": true
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": false,
+          "seconds": 0.006431167013943195,
+          "empty_confirmed": true
+        }
+      ]
+    },
+    {
+      "case": "bm-da-membership",
+      "restore_verified": true,
+      "restored_relationship_data_digest": "sha256:888b76bd9ca515f3fde76d10131221e36efb227e3c474f8e6b9b4aa5268d5ec0",
+      "neo_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": true,
+          "C": 2,
+          "expansions": 23,
+          "truncated": true,
+          "no_path_proven": false
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": true,
+          "C": 5,
+          "expansions": 49,
+          "truncated": true,
+          "no_path_proven": false
+        }
+      ],
+      "bloodhound_after": [
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+          "reached": true,
+          "seconds": 0.0061972918920218945,
+          "empty_confirmed": false
+        },
+        {
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+          "reached": true,
+          "seconds": 0.005384540883824229,
+          "empty_confirmed": false
+        }
+      ]
+    }
+  ],
+  "unique_totals": {
+    "pairs": 24,
+    "neo_reached": 20,
+    "bloodhound_reached": 22,
+    "bloodhound_action_mapped": 21,
+    "neo_preexisting_C0": 2
+  },
+  "shortest_tie_audit": [
+    {
+      "pair_id": "081401205950b564",
+      "all_shortest_paths": 7,
+      "conditional_C_counts": {
+        "4": 6,
+        "5": 1
+      },
+      "truncated": false
+    },
+    {
+      "pair_id": "e07d8a989ed25a5e",
+      "all_shortest_paths": 7,
+      "conditional_C_counts": {
+        "4": 6,
+        "5": 1
+      },
+      "truncated": false
+    }
+  ],
+  "verification": {
+    "focused_tests": 151,
+    "full_suite": "not run; historical catalog/taxonomy binding failures outside experiment scope",
+    "ruff": "passed",
+    "native_checkpoint_records": 26,
+    "ce_requests": 52,
+    "ce_negative_confirmed_on_neo4j": 4,
+    "sources_and_budgets_equal_fixed_pack": true
+  },
+  "reproduction": {
+    "exit_code": 0,
+    "evidence_root": "reports/generated/bh-live-20261022-verified",
+    "recipe_sha256": "sha256:5e3ac8ad1348f3b71d65bac484df28d4d9c0bdcea80ee6ead8f2333821e22bb3",
+    "evidence_manifest_sha256": "sha256:8cedd31fc72e74ad71edd41a756237a24e24a283aaab736a1f1d0a74454e1076",
+    "inherited_wrong_endpoint_and_auth_overrides_ignored": true,
+    "native_26_rows_equal_in_status_C_expansions_limits": true,
+    "ce_52_statuses_equal": true,
+    "parity_counts_equal": true,
+    "three_remediation_outcomes_equal_and_restored": true,
+    "active_projects": [
+      "neo-bh-seamless-20261022-verified",
+      "neo-bh-wraith-20261022-verified"
+    ],
+    "previous_experiment_projects_stopped_volumes_retained": true
+  },
+  "evidence_manifest_sha256": "sha256:08ca4ba7be8e23bf0b06eaba6cbfc1ecbffaefaae40d0fe74861fcdb8fe0bca3",
+  "essential_evidence_sha256": {
+    "docker-final.txt": "sha256:67c29acb571f567caec529378f82d5de8ee83658ddee739acfcfeafcad3d8b1b",
+    "docker-images-mounts.txt": "sha256:ea2e318846a926e4bb3f5cf68bfd67037bb45b2809cafc2bc17aa01673564e01",
+    "inputs/seamless/import.json": "sha256:d6d4341b6af78ee21802c79d9943d98a2c8c42fbfa148b53180ec4d36fe30cb8",
+    "inputs/wraith/import.json": "sha256:676f5c104f11f802441fa2103b47fd9410d7833dc9b65048dfafbe8830f8999c",
+    "live-remediation-final/remediation.json": "sha256:8b43956c0c33dcc37ae59e0f1329e18f8c767cee714a04634c4ea20218e6b0d1",
+    "live-remediation-final/run.json": "sha256:bcd92fecc780e973f0e4a7da0b80a3ef346aa5c931a37000342f8e4bc0362522",
+    "live-seamless-final/parity.json": "sha256:bde4574b4faa66d53ab37ba8024520b7a2cf094580a70a92a0f817075802d6c7",
+    "live-seamless-final/queries.json": "sha256:fa2c868dee57c09c410e9cec98023fb5b315ab693ff94c0309e6e2562cc71249",
+    "live-seamless-final/run.json": "sha256:99373ded259fd88bdcd41d2dca92c43500955c106380f57bb28d266eb32898cd",
+    "live-wraith-final/parity.json": "sha256:6cbaba457e4068b15a5cb89cb62762a0a870a9835bafd9e5c80034f922de0fc9",
+    "live-wraith-final/queries.json": "sha256:390cab6cc7fcb7fd99318d8d565c02c94fc9de9bd951e55f139de1946edc7b51",
+    "live-wraith-final/run.json": "sha256:fbd3cd103fed02f167af8f50b514ed57f0ba8b75a5aafcf5b9876f3d5a2d711a",
+    "native/seamless/cells.jsonl": "sha256:619d6f4c9c163996d1c15d5786983139951f5c217b3b50f5df43ad1e8aa99f83",
+    "native/seamless/scope.json": "sha256:e00cad7a7cb5b93fbdc3916c5db11e206c3bddd2c1e61ee8395b9a9f82553747",
+    "native/wraith/cells.jsonl": "sha256:dcd610679299c9fb4313b2f5874e0fb637ef315800827b91b15f0668f63d6bf3",
+    "native/wraith/scope.json": "sha256:c67ec46b0a7fafa5672aa401cd9b90866e584fdf4efef225082032e6bae026fe",
+    "native/wraith-sessions/cells.jsonl": "sha256:49660c783395578ca425cc549d0840426350c69c04c1a995c84041884b63c8f4",
+    "native/wraith-sessions/scope.json": "sha256:ee28d82fc2ca944b1bf7289587f152b22a0f9d0d1598209a93ec4db82aafc4d5",
+    "primary-groups.json": "sha256:14c02506d6ceda14759c2c194318090c0214384b0a0be6b482fb547934f51a6e",
+    "pytest-final.log": "sha256:91534da6a26b1d23be29b10e450b0cb60284d6edeef24f8667dd31f0910f1350",
+    "ruff-final.log": "sha256:82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "seamless-ingest.json": "sha256:1dbb383bd41a64e88cae64399991031dd583f7c5dd097dda2bd87a5495e24264",
+    "wraith-ingest.json": "sha256:6c3f136bf16e1619d58a365f0f7cacbf2b12e91540ee2f167d266314497038aa"
+  }
+}

@@ -287,3 +287,32 @@ def test_all_runs_historical_ab_snapshots_without_raw_seamless(monkeypatch, tmp_
     monkeypatch.setattr(runner, "ingest_snapshot", lambda name, *args: targets.append(name) or {})
     runner.main()
     assert targets == ["a-sharphound", "a-python", "b-run-1", "b-run-2", "b-run-3", "dataset_b"]
+
+
+def test_wraith_selects_only_pinned_export_and_verifies_bytes(tmp_path, monkeypatch):
+    from src.data.manifest import generate_manifest
+
+    raw = tmp_path / "ad_sampledata"
+    raw.mkdir()
+    for index in range(12):
+        (raw / f"20240305111414_{index}.json").write_text("{}")
+    (raw / "20240305110018_users.json").write_text("{}")
+    manifest_path = tmp_path / "manifest.json"
+    manifest = generate_manifest(
+        raw, dataset_id="test", collector_name="test", collector_version=None, collected_at=None
+    )
+    manifest_path.write_text(json.dumps(manifest))
+    config = dict(
+        runner.SNAPSHOTS["wraith"],
+        raw_root=raw,
+        manifest_path=manifest_path,
+        snapshot_id=manifest["snapshot_id"],
+    )
+    monkeypatch.setitem(runner.SNAPSHOTS, "wraith", config)
+    files = runner.resolve_snapshot_files("wraith")
+    assert len(files) == 12
+    assert all(p.name.startswith("20240305111414_") for p in files)
+    assert runner.verify_snapshot_integrity("wraith", files) == manifest["snapshot_id"]
+    files[0].write_text("tampered")
+    with pytest.raises(runner.ManifestError, match="(size|SHA-256) mismatch"):
+        runner.verify_snapshot_integrity("wraith", files)

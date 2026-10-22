@@ -20,8 +20,8 @@ services:
     environment:
       NEO4J_AUTH: neo4j/bloodhoundcommunityedition
     ports:
-      - "127.0.0.1:17474:7474"
-      - "127.0.0.1:17687:7687"
+      - "127.0.0.1:${NEO4J_WEB_PORT:-17474}:7474"
+      - "127.0.0.1:${NEO4J_BOLT_PORT:-17687}:7687"
     volumes:
       - seamless-neo4j:/data
     healthcheck:
@@ -39,7 +39,7 @@ services:
       bhe_graph_driver: neo4j
       bhe_recreate_default_admin: "false"
     ports:
-      - "127.0.0.1:18080:8080"
+      - "127.0.0.1:${BLOODHOUND_PORT:-18080}:8080"
     depends_on:
       app-db:
         condition: service_healthy

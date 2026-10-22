@@ -72,6 +72,18 @@ SNAPSHOTS = {
         "expected_files": 6,
         "manifest_path": ROOT / "data/samples/manifests/seamless-raw-v1.json",
     },
+    "wraith": {
+        "dataset_id": "ad-sampledata-v1:wraith:20240305111414",
+        "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+        "archive_name": "a8bfbcf9-4226-40ed-a0c4-a2cc05dbc708.zip (WRAITH.CORP)",
+        "archive_sha256": "2adb4bd1a7286869c00b0e2698dc5275b9520178fd8a07ead4cdcdb5159161ba",
+        "collector": "SharpHound v2.3.3 (C#)",
+        "raw_root": ROOT / "data/raw/ad_sampledata",
+        "file_pattern": "20240305111414_*.json",
+        "expected_files": 12,
+        "manifest_path": ROOT / "data/samples/manifests/ad-sampledata-v1.json",
+        "manifest_prefix": "20240305111414_",
+    },
     "a-sharphound": {
         "dataset_id": "a-sharphound",
         "snapshot_id": "sha256:ca5f09dd0272f607354086c53d255967eec51b7dab2d5bf9d3bbdd902f3d6f63",
@@ -177,7 +189,13 @@ def verify_snapshot_integrity(snapshot_key: str, files: list[Path]) -> str:
 
     if manifest_path.exists():
         manifest = load_manifest(manifest_path)
-        expected_files = {entry["relative_path"]: entry for entry in manifest["files"]}
+        expected_files = {
+            entry["relative_path"]: entry
+            for entry in manifest["files"]
+            if entry["relative_path"].startswith(cfg.get("manifest_prefix", ""))
+        }
+        if len(expected_files) != cfg["expected_files"]:
+            raise ManifestError(f"Manifest selection count mismatch for '{snapshot_key}'")
         if len(files) != len(expected_files):
             raise ManifestError(
                 f"Snapshot '{snapshot_key}' file count mismatch: "
@@ -540,7 +558,7 @@ def main() -> None:
         parser.error("--all requires --reset-volumes to isolate each snapshot")
 
     targets = (
-        [key for key in SNAPSHOTS if key != "seamless"]
+        [key for key in SNAPSHOTS if key not in {"seamless", "wraith"}]
         if args.all
         else [args.snapshot or "a-sharphound"]
     )
