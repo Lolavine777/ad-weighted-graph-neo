@@ -515,7 +515,9 @@ Ordered replay đạt goal với policy hiện tại, không thêm fact. Đây l
 budget độ sâu bỏ sót ít nhất một đường; ordered replay không tính vào 255 discovery.
 Chưa có đối chứng BloodHound live mới.
 
-Tái lập lượt rộng, có checkpoint hash và resume cùng code/snapshot/budget:
+Lượt 5 bước dưới đây dùng code `5f8d333` và report helper tại `3bcc1f5`.
+Để tái lập số liệu lịch sử này, dùng commit `3bcc1f5`; code mới có mặc định khác.
+Checkpoint chỉ resume được cùng code/snapshot/budget:
 
 ```sh
 .venv/bin/python -m scripts.neo_domain \
@@ -552,3 +554,53 @@ qua independent verifier. Ruff, repository, contract và diff checks pass.
 coverage DA/EA và khả năng phân hoá C. Những thay đổi policy/facts hoặc mở thêm
 loại intervention cần được trao đổi trước; kết quả domain hiện tại là baseline
 để đánh giá cải tiến, chưa phải bằng chứng hoàn thiện toàn miền.
+
+## Sửa bỏ sót do budget và áp dụng policy cho danh tính mới
+
+Code thực thi: `daf1c87`; snapshot, 2.590 nguồn độc lập, DA/EA và bảy kỹ thuật
+không đổi. Bản sửa áp dụng hai rule **đã có** (`password_policy_accepts`,
+`network_rpc_reachable`) khi engine chuyển sang danh tính vừa chiếm được.
+Rule definitions, quyền quan sát và bảng C không đổi; fact False, đối tượng disabled
+và evidence-only vẫn chặn như trước. Thứ tự search production không đổi.
+
+Đường hợp lệ cần 6–9 bước bị giới hạn 5 bước cắt ngang. Mẫu cố định 80 cặp chọn
+20 nguồn theo SHA256 nhỏ nhất trong mỗi nhóm User/Computer × DA/EA, không lọc
+kết quả: 5 bước/256 expansions tìm được 6 cặp; 8 bước được 41; 12 bước được 70.
+Sau sửa binding, 12 bước/256 expansions được 79; cặp còn lại tìm được ở expansion
+364 khi cap là 1.024. Mẫu này cân bằng loại nguồn/đích, không dùng để ước lượng
+prevalence toàn miền. Vì vậy đã chạy lại đủ 5.180 cặp với 12 bước/1.024 expansions.
+
+| Đích | Cặp đã chạy | Có đường trước | Có đường và C sau | Còn hết lượt tìm |
+| --- | ---: | ---: | ---: | ---: |
+| DA | 2.590 | 248 | 2.588 | 2 |
+| EA | 2.590 | 7 | 2.583 | 7 |
+| Tổng | 5.180 | 255 | 5.171 | 9 |
+
+Tìm thêm 4.916 cặp; giữ đủ 255 cặp đã tìm được trước. Không có lỗi thực thi và
+không ghi nhận Unknown trong các nhánh đã thử. Chín cặp còn lại đều hết 1.024
+expansions; chưa được native engine chứng minh no-path. Hai cặp trong số đó bắt đầu
+ở DC BADBLOOD, không có đường trên projection bốn quan hệ directory đang xét;
+đây là chẩn đoán cấu trúc riêng, không tự đổi trạng thái proof của query.
+
+Ca SEAMLESS thực: nguồn `-1104` chiếm lần lượt `-1324`, `-2799` rồi đạt DA,
+8 bước, C=2, 37 expansions. Đây là discovery được native replay kiểm tra,
+không phải ordered probe. Nó kiểm tra cả tình huống một foothold tiếp tục chiếm
+nhiều danh tính. Test hồi quy riêng kiểm chuỗi hai lần reset và từng fact False.
+
+[Evidence JSON](../reports/neo/domain-discovery-fix.json) giữ source/snapshot pins,
+phân bố C, selection, các lượt ablation và chín cặp còn lại. C vẫn là best-found;
+chưa chứng minh minimum. Lượt chạy đã resume sau khi phiên xử lý dừng, kiểm
+checksum trước khi nối tiếp; `elapsed_seconds` là đoạn resume cuối, không phải
+tổng thời gian. Không suy speedup từ hai lượt có budget và coverage khác nhau.
+Evidence remediation của lượt cũ vẫn gắn với code/budget cũ; chưa chạy lại trong lượt này.
+
+```sh
+.venv/bin/python -m scripts.neo_domain \
+  --snapshot reports/generated/neo-uc1/native/snapshot.json \
+  --output-dir reports/generated/neo-domain-12-1024 \
+  --max-steps 12 --max-expansions 1024 --workers 8
+```
+
+Validation: 389 focused tests pass, 1 optional raw-remediation test skip; chưa chạy
+full suite. Native replay, source/snapshot integrity, Ruff, repository và contract
+checks pass. Dùng output directory mới; thêm `--resume` khi tiếp tục cùng scope.
