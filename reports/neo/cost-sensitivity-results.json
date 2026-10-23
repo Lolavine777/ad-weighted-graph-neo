@@ -1,0 +1,761 @@
+{
+  "aggregates": {
+    "acl_grant_+1": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 2,
+        "4": 2,
+        "5": 3,
+        "6": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 2,
+      "witness_pairs": 22
+    },
+    "acl_grant_-1": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 10,
+        "3": 5,
+        "4": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "activation_+1": {
+      "best_C_changed": 10,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "2": 9,
+        "3": 4,
+        "4": 2,
+        "5": 3,
+        "7": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "baseline": {
+      "best_C_changed": 0,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 4,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "dacl_control_+1": {
+      "best_C_changed": 0,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 4,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "dacl_control_-1": {
+      "best_C_changed": 0,
+      "best_set_changed": 12,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 4,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 4,
+      "witness_pairs": 22
+    },
+    "host_execution_+1": {
+      "best_C_changed": 2,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 2,
+        "4": 5,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "host_execution_-1": {
+      "best_C_changed": 2,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 10,
+        "3": 2,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "membership_+1": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 2,
+        "4": 2,
+        "5": 3,
+        "6": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "membership_-1": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 10,
+        "3": 5,
+        "4": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "reset_+1": {
+      "best_C_changed": 10,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "2": 9,
+        "3": 4,
+        "4": 2,
+        "5": 3,
+        "7": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "reset_-1": {
+      "best_C_changed": 10,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 7,
+        "2": 6,
+        "3": 9
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "reset_dearer_acl_cheaper": {
+      "best_C_changed": 9,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 2,
+        "2": 6,
+        "3": 5,
+        "4": 3,
+        "6": 2,
+        "7": 2
+      },
+      "pairs_with_strict_reversals": 2,
+      "strict_rank_reversals": 2,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "session_+1": {
+      "best_C_changed": 8,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 2,
+        "3": 8,
+        "4": 5,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "session_-1": {
+      "best_C_changed": 8,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 9,
+        "2": 4,
+        "3": 2,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 2,
+      "witness_pairs": 22
+    },
+    "session_dearer_directory_cheaper": {
+      "best_C_changed": 20,
+      "best_set_changed": 12,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 7,
+        "1": 7,
+        "3": 6,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 2,
+      "strict_rank_reversals": 12,
+      "top_3_set_changed": 4,
+      "witness_pairs": 22
+    },
+    "winrm_command_+1": {
+      "best_C_changed": 0,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 4,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "winrm_command_-1": {
+      "best_C_changed": 0,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "minimum_C_distribution": {
+        "0": 2,
+        "1": 3,
+        "2": 8,
+        "3": 4,
+        "4": 3,
+        "5": 2
+      },
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    }
+  },
+  "all_baseline_best_programs_remain_best_under_every_probe": true,
+  "base_commit": "6645cda40700d9198d43fca415921892b64e000f",
+  "baseline_profile": {
+    "classes": {
+      "acquire_reset_identity": {
+        "cost": 0,
+        "method": "AuthenticationControl",
+        "reason": "Use the freshly reset credential",
+        "t1": 1,
+        "t2": 1
+      },
+      "genericall_add_member": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Directory membership mutation and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "genericall_grant_write_dacl": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Grant DACL control and verify the write",
+        "t1": 1,
+        "t2": 2
+      },
+      "genericall_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "grant_new_object_right": {
+        "cost": 2,
+        "method": "WriteDacl",
+        "reason": "Construct and verify an object permission grant",
+        "t1": 2,
+        "t2": 2
+      },
+      "obtain_admin_execution_on_host": {
+        "cost": 1,
+        "method": "AdminTo",
+        "reason": "Authenticated administrative execution",
+        "t1": 1,
+        "t2": 2
+      },
+      "open_winrm_remote_session": {
+        "cost": 1,
+        "method": "CanPSRemote",
+        "reason": "Authenticated WinRM command session and verification; no elevation implied",
+        "t1": 1,
+        "t2": 2
+      },
+      "reset_target_password": {
+        "cost": 1,
+        "method": "ForceChangePassword",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "scenario_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "scenario_winrm_admin": {
+        "cost": 1,
+        "method": "DeclaredHostAdmin",
+        "reason": "Elevated WinRM execution and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "use_session_identity": {
+        "cost": 2,
+        "method": "HasSession",
+        "reason": "Acquire reusable session credentials and authenticate; conditional host/session scenario",
+        "t1": 2,
+        "t2": 2
+      }
+    },
+    "profile_id": "neo-c-v1",
+    "version": "1.2.0"
+  },
+  "budget": {
+    "max_expansions": 4096,
+    "max_paths": 10,
+    "max_steps": 12,
+    "search_order": "neo_guided"
+  },
+  "date": "2026-10-23",
+  "distinct_pairs": 24,
+  "evidence_manifest_sha256": "sha256:ba6c493d23176318b6e52b2e415ca635ce91cba7054799f6c91359c5f8aaaf08",
+  "evidence_root": "reports/generated/neo-C-sensitivity-20261023",
+  "execution_source_pins_sha256": "sha256:5d8f634bbd643f60366be7978df3471547d437112b1dad5d9906d6ebcc5cc34b",
+  "family_count_vector_diversity_per_ranked_pair": {
+    "2": 4,
+    "4": 2,
+    "5": 6,
+    "7": 8,
+    "8": 2
+  },
+  "final_results": "reports/generated/neo-C-sensitivity-20261023/analysis-verified/results.json",
+  "final_results_sha256": "sha256:a4fdf5121715ba945df22465b0eaad3325fffa649ce1ebab691ce4c036875921",
+  "hypothetical_class_overrides": {
+    "acl_grant_+1": {
+      "grant_new_object_right": {
+        "C": 3,
+        "t1": 2,
+        "t2": 3
+      }
+    },
+    "acl_grant_-1": {
+      "grant_new_object_right": {
+        "C": 1,
+        "t1": 2,
+        "t2": 1
+      }
+    },
+    "activation_+1": {
+      "acquire_reset_identity": {
+        "C": 1,
+        "t1": 1,
+        "t2": 2
+      }
+    },
+    "baseline": {},
+    "dacl_control_+1": {
+      "genericall_grant_write_dacl": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "dacl_control_-1": {
+      "genericall_grant_write_dacl": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      }
+    },
+    "host_execution_+1": {
+      "obtain_admin_execution_on_host": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "scenario_winrm_admin": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "host_execution_-1": {
+      "obtain_admin_execution_on_host": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_winrm_admin": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      }
+    },
+    "membership_+1": {
+      "genericall_add_member": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "membership_-1": {
+      "genericall_add_member": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      }
+    },
+    "reset_+1": {
+      "genericall_reset_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "reset_target_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "scenario_reset_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "reset_-1": {
+      "genericall_reset_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "reset_target_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_reset_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      }
+    },
+    "reset_dearer_acl_cheaper": {
+      "acquire_reset_identity": {
+        "C": 1,
+        "t1": 1,
+        "t2": 2
+      },
+      "genericall_add_member": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "genericall_reset_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "grant_new_object_right": {
+        "C": 1,
+        "t1": 2,
+        "t2": 1
+      },
+      "reset_target_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "scenario_reset_password": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "session_+1": {
+      "use_session_identity": {
+        "C": 3,
+        "t1": 2,
+        "t2": 3
+      }
+    },
+    "session_-1": {
+      "use_session_identity": {
+        "C": 1,
+        "t1": 2,
+        "t2": 1
+      }
+    },
+    "session_dearer_directory_cheaper": {
+      "genericall_add_member": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "genericall_grant_write_dacl": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "genericall_reset_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "grant_new_object_right": {
+        "C": 1,
+        "t1": 2,
+        "t2": 1
+      },
+      "obtain_admin_execution_on_host": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "reset_target_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_reset_password": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      },
+      "scenario_winrm_admin": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      },
+      "use_session_identity": {
+        "C": 3,
+        "t1": 2,
+        "t2": 3
+      }
+    },
+    "winrm_command_+1": {
+      "open_winrm_remote_session": {
+        "C": 2,
+        "t1": 1,
+        "t2": 3
+      }
+    },
+    "winrm_command_-1": {
+      "open_winrm_remote_session": {
+        "C": 0,
+        "t1": 1,
+        "t2": 1
+      }
+    }
+  },
+  "joint_probes": 2,
+  "limits": [
+    "Fixed discovered candidate sets only; no search under perturbed costs.",
+    "All real-data C values remain best-found; no global sensitivity or blind-evaluation claim.",
+    "No-path cells remain unranked, not zero-cost; no P/I inference or empirical error model.",
+    "RODCMANAGER candidate sets omit its known host/session bypass; not all alternatives are tested.",
+    "WinRM command family has no observed work units; its two probes are unexercised in this cohort.",
+    "Program observations are per source-goal pair, not independent attack routes or sampled forests.",
+    "No full suite, new CE run, intervention/source-ranking sensitivity, or unseen-AD evaluation in this pass."
+  ],
+  "negative_cells": [
+    {
+      "discovery": {
+        "expansions": 1,
+        "minimum_proven": false,
+        "programs": 0,
+        "reached": false,
+        "status": "blocked",
+        "truncated": false,
+        "unknown_attempts": 0
+      },
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "ENTERPRISE ADMINS@WRAITH.CORP"
+    },
+    {
+      "discovery": {
+        "expansions": 1,
+        "minimum_proven": false,
+        "programs": 0,
+        "reached": false,
+        "status": "blocked",
+        "truncated": false,
+        "unknown_attempts": 0
+      },
+      "source": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "DOMAIN ADMINS@WRAITH.CORP"
+    }
+  ],
+  "pack_sha256": "sha256:ca4f057ae0ad85757316961c12f291607680fe7eaac1f911af3c518af16dcae3",
+  "pair_program_observations_after_pair_dedup": 220,
+  "price_tables": 18,
+  "protocol_commit": "0e1d8c3",
+  "protocol_sha256": "sha256:9476ec0048a346ba0d16ce8da0ed13e16a42c2faf9f9079978e434b0b9fa215a",
+  "ranked_pairs": 22,
+  "raw_inputs": {
+    "seamless": {
+      "files_verified": 6,
+      "manifest_sha256": "sha256:a18d7a2a8b4cf283069da46d00368ffbe6a1eab6ad92a5c89b5a531809f5da9d",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+    },
+    "wraith": {
+      "files_verified": 31,
+      "manifest_sha256": "sha256:27a13df4e12582b42b921411150cd0c9ba2b4e3356f0a250fcd992b3cb823062",
+      "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227"
+    }
+  },
+  "replayed_AD_query_program_observations": 240,
+  "rerun_program_sets_and_metrics_equal_initial_canonical_run": true,
+  "runner_sha256": "sha256:75ff451381e925c8388023a9118751883c2447625b9e3e0ae34c1b497f666f79",
+  "single_family_probes": 15,
+  "snapshot_sha256": {
+    "seamless": "sha256:1f77895ad8f2985ee33dcd2835f356fcbbeef2b071b981d747576ebfd8fc9791",
+    "wraith": "sha256:bc27b352825266a51607d9b3b6ee322e4d56ee64626a457ba5853c0665c2680b"
+  },
+  "stratum_queries": 26,
+  "synthetic_control": {
+    "baseline": {
+      "best_C_changed": false,
+      "best_program_ids": [
+        "sha256:f1d11d3eb1228ff4741801a67c84d0653d68c67ae1c73509842f00000e5cc469"
+      ],
+      "best_set_changed": false,
+      "best_set_disjoint": false,
+      "minimum_C": 1,
+      "strict_rank_reversals": 0,
+      "top_3_ids": [
+        "sha256:f1d11d3eb1228ff4741801a67c84d0653d68c67ae1c73509842f00000e5cc469",
+        "sha256:59eb4373839364562590e95504979ee1a1056effc0d5b04d96ce7373a92411a7",
+        "sha256:5ebec28793bc5b70b453a6b033a25226a82db77a4be02f005f3d07bd6ad41639"
+      ],
+      "top_3_set_changed": false
+    },
+    "reset_dearer_acl_cheaper": {
+      "best_C_changed": false,
+      "best_program_ids": [
+        "sha256:0002e6a07b91035d6e49358c5488698c1258f88555fdd6b2a2ac5fe835d8d22c",
+        "sha256:1e36e71cf778f2bddc0e1be4f914d20d6f30c4a479c182b61fba5c29be6b5107",
+        "sha256:279fe53e97e0d620d8e5801996a4877dfd40ee1da52739c25d02c121cbf6fd94",
+        "sha256:28c7c8e6dbbf5e03787218032f54065da42e052b2c1396822a5beae37f556296",
+        "sha256:28dbecce8a5f6f436a4c82334f103608e1a8d719e3b5af4edda66b85b8a21cf4",
+        "sha256:3dba9a4c7ccbba2da099abdd525813b34edbe53d4cc317fd2094f8dcf83d67ab",
+        "sha256:9001c41b726e1ea55b85bf09594494d5d6b991d72707cbc2e4dfcb062d9b5c60",
+        "sha256:9f7984deef4efd9247838c6ca5aff535cd302d990e2fca18f06d0ff3937c057a",
+        "sha256:b47f1aea3d0ca6bc9c4c82f7483fe67bea72cc5657012032548804c9a30e8f36",
+        "sha256:d1b69bf5a285a1fada2156f763d1cff5d05d1d42a4fa826376db4a0c80a000e6"
+      ],
+      "best_set_changed": true,
+      "best_set_disjoint": true,
+      "minimum_C": 1,
+      "strict_rank_reversals": 60,
+      "top_3_ids": [
+        "sha256:9f7984deef4efd9247838c6ca5aff535cd302d990e2fca18f06d0ff3937c057a",
+        "sha256:b47f1aea3d0ca6bc9c4c82f7483fe67bea72cc5657012032548804c9a30e8f36",
+        "sha256:9001c41b726e1ea55b85bf09594494d5d6b991d72707cbc2e4dfcb062d9b5c60"
+      ],
+      "top_3_set_changed": true
+    }
+  },
+  "technique_work_unit_occurrences_across_pair_programs": {
+    "acquire_reset_identity": 140,
+    "genericall_add_member": 118,
+    "genericall_grant_write_dacl": 147,
+    "grant_new_object_right": 237,
+    "obtain_admin_execution_on_host": 20,
+    "scenario_reset_password": 140,
+    "use_session_identity": 82
+  },
+  "unranked_pairs": 2,
+  "validation": {
+    "checks": [
+      "native replay for every generated path",
+      "baseline public C equals unique-work sum",
+      "independent count-vector repricing matches all minimum values/tie sets",
+      "protocol bytes match the pre-experiment commit",
+      "ruff check/format",
+      "yamllint",
+      "repository/contract checks",
+      "git diff --check"
+    ],
+    "focused_tests": "171 passed in 14.77s; includes 11 experiment tests",
+    "independent_review": "Scope-guard issue fixed and tested; no remaining accounting/ranking blocker"
+  },
+  "version": "neo-C-sensitivity-summary/1"
+}
