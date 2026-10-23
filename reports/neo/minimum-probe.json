@@ -1,0 +1,1210 @@
+{
+  "dependency_lock_sha256": "sha256:19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4",
+  "effort_profile": {
+    "basis": "estimated_expert_scenario",
+    "classes": {
+      "acquire_reset_identity": {
+        "cost": 0,
+        "method": "AuthenticationControl",
+        "reason": "Use the freshly reset credential",
+        "t1": 1,
+        "t2": 1
+      },
+      "genericall_add_member": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Directory membership mutation and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "genericall_grant_write_dacl": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Grant DACL control and verify the write",
+        "t1": 1,
+        "t2": 2
+      },
+      "genericall_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "grant_new_object_right": {
+        "cost": 2,
+        "method": "WriteDacl",
+        "reason": "Construct and verify an object permission grant",
+        "t1": 2,
+        "t2": 2
+      },
+      "obtain_admin_execution_on_host": {
+        "cost": 1,
+        "method": "AdminTo",
+        "reason": "Authenticated administrative execution",
+        "t1": 1,
+        "t2": 2
+      },
+      "open_winrm_remote_session": {
+        "cost": 1,
+        "method": "CanPSRemote",
+        "reason": "Authenticated WinRM command session and verification; no elevation implied",
+        "t1": 1,
+        "t2": 2
+      },
+      "reset_target_password": {
+        "cost": 1,
+        "method": "ForceChangePassword",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "scenario_reset_password": {
+        "cost": 1,
+        "method": "GenericAll",
+        "reason": "Standard password reset and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "scenario_winrm_admin": {
+        "cost": 1,
+        "method": "DeclaredHostAdmin",
+        "reason": "Elevated WinRM execution and verification",
+        "t1": 1,
+        "t2": 2
+      },
+      "use_session_identity": {
+        "cost": 2,
+        "method": "HasSession",
+        "reason": "Acquire reusable session credentials and authenticate; conditional host/session scenario",
+        "t1": 2,
+        "t2": 2
+      }
+    },
+    "dimension": "C",
+    "formula": "T1 + T2 - 2",
+    "profile_id": "neo-c-v1",
+    "reference": "docs/neo.md#chi-phi-c-cho-neo",
+    "scope": "Same-domain actions in one authentication context; no retries or elapsed time",
+    "version": "1.2.0"
+  },
+  "fixture_template_sha256": "sha256:6032e6ec1972173e3ca2cfe94d887065e6ec4ecf3f30eefd16c2d0dc811ee221",
+  "oracles": {
+    "free_membership": {
+      "certain_minimum_C": 0,
+      "minimum_provable": true,
+      "possible_minimum_C": 0
+    },
+    "reset_auth_false": {
+      "certain_minimum_C": 3,
+      "minimum_provable": true,
+      "possible_minimum_C": 3
+    },
+    "reset_auth_unknown": {
+      "certain_minimum_C": 3,
+      "minimum_provable": false,
+      "possible_minimum_C": 1
+    },
+    "two_routes": {
+      "certain_minimum_C": 1,
+      "minimum_provable": true,
+      "possible_minimum_C": 1
+    }
+  },
+  "references": {
+    "free_membership": {
+      "certain": {
+        "C": 0.0,
+        "edge_ids": [
+          "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+          "sha256:05bd9e6632b845b506bab2ad2aaba885667ed7e3027c01ae6f2690828c9efbaa",
+          "sha256:0986f1236c53d7f5a7fe9fefe50402b8d3346e56e0c20ec3f13ab6c2cac7698d"
+        ],
+        "graph_hops": 3,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-2101",
+          "S-1-5-21-1000-2000-3000-2102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "minimum_provable": true,
+      "possible": {
+        "C": 0.0,
+        "edge_ids": [
+          "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+          "sha256:05bd9e6632b845b506bab2ad2aaba885667ed7e3027c01ae6f2690828c9efbaa",
+          "sha256:0986f1236c53d7f5a7fe9fefe50402b8d3346e56e0c20ec3f13ab6c2cac7698d"
+        ],
+        "graph_hops": 3,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-2101",
+          "S-1-5-21-1000-2000-3000-2102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "scope": "Two serial routes only; preconditions conditioned before Dijkstra"
+    },
+    "reset_auth_false": {
+      "certain": {
+        "C": 3.0,
+        "edge_ids": [
+          "sha256:3fc93768a99161e83b8cf6542c0a11d8c211e22592b9458e91175558808547d2"
+        ],
+        "graph_hops": 1,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "minimum_provable": true,
+      "possible": {
+        "C": 3.0,
+        "edge_ids": [
+          "sha256:3fc93768a99161e83b8cf6542c0a11d8c211e22592b9458e91175558808547d2"
+        ],
+        "graph_hops": 1,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "scope": "Two serial routes only; preconditions conditioned before Dijkstra"
+    },
+    "reset_auth_unknown": {
+      "certain": {
+        "C": 3.0,
+        "edge_ids": [
+          "sha256:3fc93768a99161e83b8cf6542c0a11d8c211e22592b9458e91175558808547d2"
+        ],
+        "graph_hops": 1,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "minimum_provable": false,
+      "possible": {
+        "C": 1.0,
+        "edge_ids": [
+          "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+          "sha256:05bd9e6632b845b506bab2ad2aaba885667ed7e3027c01ae6f2690828c9efbaa",
+          "sha256:806918153acae98696e01b112a037c952c517834f216cd4a0146966063989942",
+          "sha256:a086b801c53d3532e998972b1e78d064084461256a5fd380d5cccad2adccbdb3"
+        ],
+        "graph_hops": 4,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-2101",
+          "S-1-5-21-1000-2000-3000-2102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "scope": "Two serial routes only; preconditions conditioned before Dijkstra"
+    },
+    "two_routes": {
+      "certain": {
+        "C": 1.0,
+        "edge_ids": [
+          "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+          "sha256:05bd9e6632b845b506bab2ad2aaba885667ed7e3027c01ae6f2690828c9efbaa",
+          "sha256:806918153acae98696e01b112a037c952c517834f216cd4a0146966063989942",
+          "sha256:a086b801c53d3532e998972b1e78d064084461256a5fd380d5cccad2adccbdb3"
+        ],
+        "graph_hops": 4,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-2101",
+          "S-1-5-21-1000-2000-3000-2102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "minimum_provable": true,
+      "possible": {
+        "C": 1.0,
+        "edge_ids": [
+          "sha256:3e885df3b5b056473da99bebc9b76de772a3cb9808c8013979c68c7c68481e84",
+          "sha256:05bd9e6632b845b506bab2ad2aaba885667ed7e3027c01ae6f2690828c9efbaa",
+          "sha256:806918153acae98696e01b112a037c952c517834f216cd4a0146966063989942",
+          "sha256:a086b801c53d3532e998972b1e78d064084461256a5fd380d5cccad2adccbdb3"
+        ],
+        "graph_hops": 4,
+        "hop_only": {
+          "graph_hops": 1,
+          "mapped_C": 3
+        },
+        "nodes": [
+          "S-1-5-21-1000-2000-3000-1101",
+          "S-1-5-21-1000-2000-3000-2101",
+          "S-1-5-21-1000-2000-3000-2102",
+          "S-1-5-21-1000-2000-3000-1102",
+          "S-1-5-21-1000-2000-3000-512"
+        ]
+      },
+      "scope": "Two serial routes only; preconditions conditioned before Dijkstra"
+    }
+  },
+  "rows": [
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 12,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:526fb0aad3486caf502cbc63fb6a4c7a785a366f10e923e67e424995c2789d4e",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 0,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 1,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 45,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:47bd5fdcd7d55c88d40adc3772338110f26086d579d4fb1613c8fa190d8681c0",
+      "programs": 10,
+      "query_sha256": "sha256:1ffdce2ff2717da0097068546d7dcd42d84ad35269c4199c466852b4b1af5d79",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 1,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 110,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:fda74be0e38dcf1062354118b92e6499cf8790d20fe7d2ad4d687bac8906f2e8",
+      "programs": 56,
+      "query_sha256": "sha256:fd018f868cd859939afebaea66c159639c9e4c5d4d3ec293ae8b96fad4a1557a",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 3,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:e24feb0a69e9b07f8475e2bb7ccbfcdd5e77eb73cc8a4671a87e82693d9430d3",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 0,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 1,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 30,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:f98a72392a56bfc08cb2f4981087b3709b7f031e1363cbdedc5e5c13da25bbb6",
+      "programs": 10,
+      "query_sha256": "sha256:7171f6b411253c40573dd7e4b97b879aaf009cff58264d763c4b8ff49309094b",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 1,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "scenario_reset_password",
+        "acquire_reset_identity",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 110,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:fda74be0e38dcf1062354118b92e6499cf8790d20fe7d2ad4d687bac8906f2e8",
+      "programs": 56,
+      "query_sha256": "sha256:da02791517f84233fd079f7db76c92f51a11628dbe42c8057b631805618b3147",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 12,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:f6d64aaa51e9a53a12a5e2ca8f060597b015c2758a3e5a280b5c097952d9751b",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 45,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:13b748382207ff5fe83a354f4ed0def519ce8071cbc80289828b13fd3a8e74dd",
+      "programs": 10,
+      "query_sha256": "sha256:30c8593c0ff535c4872f36c20133507541a9b4b1b52882387a4015a95cb6cc01",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 68,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a",
+      "programs": 20,
+      "query_sha256": "sha256:b10b0f8abca2412beb3c28fd97f8690ae9a715c6d9c855e1bfde59d58faf8d3f",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 3,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:8a90bd89e3cbd9c675be7dfa25d6811860b2cc8a13bbe9148e62f62c9f6b82d9",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 40,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4",
+      "programs": 10,
+      "query_sha256": "sha256:00b24befdbcff1452513443bb2e0e65925a5811782428006cb0c3199267306c1",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "reset_auth_false",
+      "expansions": 68,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a",
+      "programs": 20,
+      "query_sha256": "sha256:e82df131b6d74ebe7a51d7b7153c03b8cc6358eb84e603c27f5c35189c827993",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 12,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:83d743dffbf6279e24105822c88150978be6e239475663c570ff0233ee5acdf3",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 45,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:13b748382207ff5fe83a354f4ed0def519ce8071cbc80289828b13fd3a8e74dd",
+      "programs": 10,
+      "query_sha256": "sha256:7eba3b297d5094e222676d7e042603b1882e18f28ad5e641e98017d8b64daf87",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 4
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 68,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a",
+      "programs": 20,
+      "query_sha256": "sha256:08d343f5c86bc0ed6fe42bd176249eb35d86ba2f0775b0627cce73e39e2faa9c",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 15
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 3,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:75e49d03eb6bcc082fc161cb0753158d33048bae50593758514f5c04b2eeab02",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 40,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4",
+      "programs": 10,
+      "query_sha256": "sha256:eb7f95ed68abe2e9c30dbf652c52df227654d74db621ded3e15108eee3a5fafc",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 9
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "reset_auth_unknown",
+      "expansions": 68,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a",
+      "programs": 20,
+      "query_sha256": "sha256:1432eb45cad101399d2bd5fcd94e92a5ee3926e06335d18c0d3c82b451ccdea2",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 15
+    },
+    {
+      "C": 0,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 10,
+      "first_C": 0,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:a0da3f8fb758b634d8b6d0197932fa80d3324959b65d72fb7c51ea32ea538657",
+      "programs": 1,
+      "query_sha256": "sha256:526fb0aad3486caf502cbc63fb6a4c7a785a366f10e923e67e424995c2789d4e",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 0,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 28,
+      "first_C": 0,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:20650f8a52e7d286e59db91662bb9f13822b04ce722e3b871c0e81b65f19aab8",
+      "programs": 10,
+      "query_sha256": "sha256:1ffdce2ff2717da0097068546d7dcd42d84ad35269c4199c466852b4b1af5d79",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 0,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 38,
+      "first_C": 0,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:cf4469484d164a8ecd3b8d880d2faecbec4705497cd7a3da52ca64cb7a0b55f6",
+      "programs": 20,
+      "query_sha256": "sha256:fd018f868cd859939afebaea66c159639c9e4c5d4d3ec293ae8b96fad4a1557a",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "fifo",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 3,
+      "first_C": 3,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:e24feb0a69e9b07f8475e2bb7ccbfcdd5e77eb73cc8a4671a87e82693d9430d3",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 0,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 0,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 22,
+      "first_C": 3,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:19b7dfd9178c9fbe82500cb9facb5aa33f937e90361b0089d46cdf8a168d324d",
+      "programs": 10,
+      "query_sha256": "sha256:7171f6b411253c40573dd7e4b97b879aaf009cff58264d763c4b8ff49309094b",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 0,
+      "best_steps": [
+        "propagate_group_entitlement",
+        "propagate_group_entitlement",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "free_membership",
+      "expansions": 38,
+      "first_C": 3,
+      "graph_sha256": "sha256:d2122506593e058c8a386290a24b4457df84c718b2378f301ef1e3a0ac382ada",
+      "minimum_proven": true,
+      "program_set_sha256": "sha256:cf4469484d164a8ecd3b8d880d2faecbec4705497cd7a3da52ca64cb7a0b55f6",
+      "programs": 20,
+      "query_sha256": "sha256:da02791517f84233fd079f7db76c92f51a11628dbe42c8057b631805618b3147",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 1,
+        "possible": 1
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": false,
+      "truncation_reason": null,
+      "unknown_attempts": 0
+    },
+    {
+      "C": null,
+      "best_steps": [],
+      "budget": {
+        "max_expansions": 1,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "case": "two_routes",
+      "expansions": 1,
+      "first_C": null,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "programs": 0,
+      "query_sha256": "sha256:49acac105f1fb0bfd2af58fa3a83a8f3cc5ab0d526ce18b351c5407bcc10038b",
+      "rating_exclusions": [],
+      "reached": false,
+      "reference_routes_with_native_replay": {
+        "certain": 0,
+        "possible": 0
+      },
+      "status": "truncated",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "unknown_attempts": 0
+    },
+    {
+      "C": 3,
+      "best_steps": [
+        "grant_new_object_right",
+        "genericall_add_member",
+        "propagate_group_entitlement"
+      ],
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 3
+      },
+      "case": "two_routes",
+      "expansions": 14,
+      "first_C": 3,
+      "graph_sha256": "sha256:28bf5dd70320d38701243aac46266fa6e0f0ddabef79614405a9d5311cf66972",
+      "minimum_proven": false,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e",
+      "programs": 1,
+      "query_sha256": "sha256:58a10b23a5a16b4a890e337eb3ebadc775dee02e50ed41b73ee9699c3666c295",
+      "rating_exclusions": [],
+      "reached": true,
+      "reference_routes_with_native_replay": {
+        "certain": 0,
+        "possible": 0
+      },
+      "status": "success",
+      "strategy": "neo_guided",
+      "truncated": true,
+      "truncation_reason": "step_limit_reached",
+      "unknown_attempts": 0
+    }
+  ],
+  "runner_sha256": "sha256:e420d904f239b456a6f6c6298da0f539eecc14224395a8c8886eec56aab5ec49",
+  "source_pins": {
+    "configs/attack_semantics.yml": "sha256:41c8bacd4b1909ffcc5511c82ea8822b97ced5ef15e73e75311744e0213d0850",
+    "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+    "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+    "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+    "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+    "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+    "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+    "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+    "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+    "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+    "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+    "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+    "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+    "src/engine/batch.py": "sha256:4d4a10bf5d028f7fc14b69a6ec24073450f77c7595f50a3ac84001996e5aebc0",
+    "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+    "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+    "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+    "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+    "src/engine/query.py": "sha256:30f5fac0e188080976ded4b8c042f7aef9efb08b8a2164cfc655a2db6e68585f",
+    "src/engine/query_cli.py": "sha256:f5d577e1794c931504901ea4f535f7a95091535e655af0e0c554720e3acd941c",
+    "src/engine/query_report.py": "sha256:d66af0b294719ccca71dab7de9d8bb4d3c345cfd9a285fb2510026cc41b0f888",
+    "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+    "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+    "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+    "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+    "src/engine/ranking/effort_profiles.py": "sha256:f54f112ff0484e645259e035a7e20aeebafa7a09f494d07fa6a110bca8a854ea",
+    "src/engine/ranking/effort_registry.py": "sha256:03b7dfede1f1975e4f246b9efbc60f414a963814a0959bc9409966ca72b5ed23",
+    "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+    "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+    "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+    "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+    "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+    "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+    "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+    "src/engine/ranking/resolution_service.py": "sha256:62599bdc26dd9e553bccab59ca531b419193c5f0a1b74dcc5c015905a90cc1b9",
+    "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+    "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+    "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+    "src/engine/remediation.py": "sha256:7f4efe55643581dbce981423cd0cd457df8570f7b871c9bad5753b1f92b3c096",
+    "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+    "src/engine/search.py": "sha256:fc09b0aaa92be762b8003e050e103f0a0992532a4d9509ee50af5556cb4abcf9",
+    "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+    "src/engine/semantics/catalog.py": "sha256:f4a618e6d9895f8d1b10bb0e694c146aa96085fc577a4d02817ff104bf26d99b",
+    "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+    "src/engine/semantics/evaluator.py": "sha256:20a198b3966aba00cc5d919cc195bf8f46cd9160f4898c7e9debd367ced1efa9",
+    "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+    "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+    "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+    "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+    "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+    "src/engine/semantics/scenario_policy.py": "sha256:df7fbe47510f103f1e97cd31358265f29baab6c72777dcba85f811ad464d6093",
+    "src/engine/semantics/session.py": "sha256:5e51b61502667055be63ebef7c7209665a902f0bebf0964facf1cc6000c397c0",
+    "src/engine/semantics/state.py": "sha256:2ba649c154682920c3387cd29db9abae67e885f656c664042b009882398bb59b",
+    "src/engine/semantics/transitions.py": "sha256:1519a5cfb891536a3f5e1d948a81e622f9b9029d7a23a3a7e10ceae16403a3e8",
+    "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+    "src/engine/top_k.py": "sha256:e2e2eb4e85ba5bc018326d7a1e98e20fe58bc847fcc9017d40018dd44f9583e0",
+    "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+    "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+    "src/parser/adapters/bloodhound_v3.py": "sha256:63e910eff1b88067133876412011f8ba1bc537bea5e1e10f749cbcc05cc20a71",
+    "src/parser/builder.py": "sha256:c8d3998de6d4ae521b65d95e9f478bef254c4cd72d170a909468dbe45622fdc1",
+    "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+    "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+    "src/parser/inference.py": "sha256:23b257becd2c6fcc3ae67cb93a2b1d7ee4f9fcadcace3c28bfa2ba159c337823",
+    "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+    "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+    "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+    "src/parser/reconciliation.py": "sha256:a687861a2eb575b183d928d445ab65f1c13f647d93ab318462c7cd80c842973e",
+    "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+    "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+    "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+    "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+  },
+  "synthetic": true,
+  "version": "neo-minimum-probe/1"
+}

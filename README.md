@@ -16,6 +16,9 @@ ghi nhận trước sửa: BloodHound 22/24 và neo 20/24 cặp có đường, c
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
+[Thử nghiệm minimum-C có đáp án tính tay](reports/neo/minimum-probe.md)
+cho thấy đường đầu C=3 có thể bỏ sót đường dài hơn C=1; tăng cap tìm được minimum
+trong mô hình nhỏ, chưa giải yêu cầu minimum trên dữ liệu thật.
 P/I thiếu vẫn được hiển thị là chưa chấm.
 Quyền điều khiển máy không tự cấp danh tính mạng của tài khoản máy.
 
