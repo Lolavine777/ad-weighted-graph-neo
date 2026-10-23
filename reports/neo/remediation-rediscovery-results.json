@@ -1,0 +1,459 @@
+{
+  "version": "neo-remediation-rediscovery-summary/1",
+  "base_commit": "c0200ddd19e9e8cbb57d25fde571b47da4e47158",
+  "evidence_root": "reports/generated/neo-remediation-rediscovery-20261023-verified",
+  "results_sha256": "sha256:35a40f558f0cb72d2a84e40ee4eb4f902638e00c5cdb5357ea5ef25c1c115797",
+  "snapshot_sha256": "sha256:bc27b352825266a51607d9b3b6ee322e4d56ee64626a457ba5853c0665c2680b",
+  "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227",
+  "raw_manifest_sha256": "sha256:27a13df4e12582b42b921411150cd0c9ba2b4e3356f0a250fcd992b3cb823062",
+  "fixed_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "runner_sha256": "sha256:dd7ac7ef5830d6f515465feb9c88ac946da6ea0c59dfd52917ca7db14c3d9ef9",
+  "execution_source_pins_sha256": "sha256:2e0cc6852f2f20d89091a9782045bf19b02d3b63dc4f4e213d367400a6245de5",
+  "scenario": "neo-host-session-v1; user usable identity or computer local-admin-only",
+  "effort_profile": "neo-c-v1",
+  "effort_profile_sha256": "sha256:3c5a9b349768c9bea7463f0d5110fff22969b75bb7090c852c7099a9c2367b7c",
+  "budget": {
+    "max_expansions": 4096,
+    "max_paths": 10,
+    "max_steps": 12
+  },
+  "bloodhound": "historical baseline only; no Docker/service calls",
+  "method": "Independent copied-record edits; baseline rebuild must exactly match supplied snapshot; existing parser regenerates inferred edges; native fresh-foothold rediscovery, not old-witness survival.",
+  "reproduce": [
+    ".venv/bin/python",
+    "-m",
+    "scripts.neo_remediation",
+    "--snapshot",
+    "reports/generated/neo-remediation-post-localgroup-20261023/inputs/wraith/snapshot.json",
+    "--output-dir",
+    "reports/generated/neo-remediation-demo-001"
+  ],
+  "prerequisites": "Manifest-verified WRAITH raw in data/raw/ad_sampledata or --raw-dir; output directory must be new.",
+  "cases": [
+    {
+      "case": "rodc-membership",
+      "removed_observations": {
+        "Members": 1
+      },
+      "removed_edges": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "kind": "MemberOf",
+          "target": "domain:sid:S-1-5-21-3702535222-3822678775-2090119576:S-1-5-32-544"
+        }
+      ],
+      "updated_derivations": [],
+      "added_edges": 0,
+      "queries": [
+        {
+          "strategy": "neo_guided",
+          "goal": "DA",
+          "query_sha256": "sha256:2d272c8348d4da995a77f46e47dc0b764a143ffa959e1ebcedcfe82c8cc9c557",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "reachable",
+            "expansions": 35,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "bypass",
+            "expansions": 23,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_guided",
+          "goal": "EA",
+          "query_sha256": "sha256:be4bd5b753cfe61f74d3b0054da195b0119d3e11c116524d937161f2ee98caf6",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "reachable",
+            "expansions": 35,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "bypass",
+            "expansions": 23,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "DA",
+          "query_sha256": "sha256:abee847dd31afebadf74ccf435a6e50f79bf2d6a81b76e60e135b78a8c28be0a",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "reachable",
+            "expansions": 4096,
+            "truncation_reason": "expansion_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {
+              "directory_write_allowed": 210
+            }
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "bypass",
+            "expansions": 57,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "EA",
+          "query_sha256": "sha256:c35a165a81e2ba1858edd6633fbdd4bbc494f2b367388e1239199c8b43dec05a",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "reachable",
+            "expansions": 4096,
+            "truncation_reason": "expansion_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {
+              "directory_write_allowed": 210
+            }
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 3,
+            "outcome": "bypass",
+            "expansions": 57,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        }
+      ]
+    },
+    {
+      "case": "extca-session",
+      "removed_observations": {
+        "PrivilegedSessions": 2,
+        "RegistrySessions": 1
+      },
+      "removed_edges": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "kind": "HasSession",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+        }
+      ],
+      "updated_derivations": [],
+      "added_edges": 0,
+      "queries": [
+        {
+          "strategy": "neo_guided",
+          "goal": "DA",
+          "query_sha256": "sha256:bd81c1b6b30fa3c646322d47e440160a588f8e4203f19d5aa15c34552080823f",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 22,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "blocked",
+            "reached": false,
+            "C": null,
+            "outcome": "blocked_in_scope",
+            "expansions": 3,
+            "truncation_reason": null,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_guided",
+          "goal": "EA",
+          "query_sha256": "sha256:3d42294b8ee45bfcd8b92373b572a5571fb63f10046a3e50ce4b477191c2bc33",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 22,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "blocked",
+            "reached": false,
+            "C": null,
+            "outcome": "blocked_in_scope",
+            "expansions": 3,
+            "truncation_reason": null,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "DA",
+          "query_sha256": "sha256:fd10584148671912fbae45fd63de46028cbfde6393acb3659d5d4d1f3e8e6cf8",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 25,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "blocked",
+            "reached": false,
+            "C": null,
+            "outcome": "blocked_in_scope",
+            "expansions": 3,
+            "truncation_reason": null,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "EA",
+          "query_sha256": "sha256:f89d89d51c088a2b618be599009da0f655594de2cc5139015b89790f7dc5b03b",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 25,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "blocked",
+            "reached": false,
+            "C": null,
+            "outcome": "blocked_in_scope",
+            "expansions": 3,
+            "truncation_reason": null,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "unknown": {}
+          }
+        }
+      ]
+    },
+    {
+      "case": "bm-da-membership",
+      "removed_observations": {
+        "Members": 1
+      },
+      "removed_edges": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "kind": "MemberOf",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "kind": "AdminTo",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-11203"
+        },
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "kind": "AdminTo",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-1120"
+        }
+      ],
+      "updated_derivations": [
+        {
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+          "kind": "AdminTo",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+          "before_paths": 2,
+          "after_paths": 1
+        }
+      ],
+      "added_edges": 0,
+      "queries": [
+        {
+          "strategy": "neo_guided",
+          "goal": "DA",
+          "query_sha256": "sha256:bd81c1b6b30fa3c646322d47e440160a588f8e4203f19d5aa15c34552080823f",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 22,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 5,
+            "outcome": "bypass",
+            "expansions": 49,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_guided",
+          "goal": "EA",
+          "query_sha256": "sha256:3d42294b8ee45bfcd8b92373b572a5571fb63f10046a3e50ce4b477191c2bc33",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 22,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "bypass",
+            "expansions": 23,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "DA",
+          "query_sha256": "sha256:fd10584148671912fbae45fd63de46028cbfde6393acb3659d5d4d1f3e8e6cf8",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 25,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 5,
+            "outcome": "bypass",
+            "expansions": 4096,
+            "truncation_reason": "expansion_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        },
+        {
+          "strategy": "neo_refine",
+          "goal": "EA",
+          "query_sha256": "sha256:f89d89d51c088a2b618be599009da0f655594de2cc5139015b89790f7dc5b03b",
+          "before": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "reachable",
+            "expansions": 25,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          },
+          "after": {
+            "status": "success",
+            "reached": true,
+            "C": 2,
+            "outcome": "bypass",
+            "expansions": 26,
+            "truncation_reason": "path_limit_reached",
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "unknown": {}
+          }
+        }
+      ]
+    }
+  ],
+  "validation": {
+    "queries": 24,
+    "witnesses_replayed": 200,
+    "C_ledgers_checked": 200,
+    "related_tests_passed": 251,
+    "related_tests_skipped": 0,
+    "full_suite_run": false,
+    "tests_log": "reports/generated/neo-remediation-rediscovery-tests-final.log",
+    "tests_log_sha256": "sha256:910b8e130cbcf95497059932d3c113ea247cefb74f4dcd99cda3effce4d79c82",
+    "ruff": "check and format check passed for new runner/tests",
+    "diff_check": "passed",
+    "independent_artifact_audit": "reports/generated/neo-remediation-rediscovery-audit.json",
+    "audit_sha256": "sha256:9d239de9f6f058266b4ce5687992918615f1b0a3f7588ab3bae3867a18eb87e9",
+    "before_after_query_identical": true,
+    "strategies_differ_only_in_search_order": true,
+    "snapshots_reloadable": true,
+    "baseline_unchanged": true
+  },
+  "limits": [
+    "All successful runs are capped best-found, not globally minimum C.",
+    "RODCMANAGER neo_refine before each goal: expansion cap and 210 directory_write_allowed Unknown attempts; C=3 witness remains valid.",
+    "BM membership removal, DA neo_refine: expansion cap at 4096, valid C=5 bypass.",
+    "Session removal: four complete, non-truncated no-path results, 3 expansions each, no Unknown; blocked only within declared local-admin-only scope.",
+    "Fresh foothold does not retain previously stolen credentials; removing a session does not revoke them.",
+    "Same previously inspected WRAITH dataset; no blind test or new BloodHound comparison.",
+    "Legacy projection-only remediation helpers are unchanged; use this record-rebuild demo for these three cases."
+  ]
+}

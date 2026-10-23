@@ -131,6 +131,33 @@ Raw SEAMLESS không có session: dùng bộ này cho đường quyền/C; WRAITH
 nhánh host/session. [Lượt kiểm tra SEAMLESS](reports/neo/seamless-host-check.json)
 giữ riêng kết quả local-admin-only và danh tính tài khoản máy.
 
+Use case 2, sửa một membership/session rồi tìm lại bypass tới DA/EA, không cần Docker:
+
+```sh
+.venv/bin/python -m scripts.neo_remediation \
+  --snapshot reports/generated/neo-remediation-post-localgroup-20261023/inputs/wraith/snapshot.json \
+  --output-dir reports/generated/neo-remediation-demo-001
+```
+
+Cần snapshot WRAITH sau sửa LocalGroup và bộ raw đúng manifest ở `data/raw/ad_sampledata` (hoặc truyền `--raw-dir`).
+Runner đối chiếu bản dựng nền với snapshot, sửa bản sao record trong bộ nhớ và dùng lại parser để cập nhật cả cạnh suy diễn.
+Chạy độc lập đúng ba can thiệp với cả `neo_guided`/`neo_refine`, cùng preset host/session, techniques, bảng `neo-c-v1` và budget 10 programs / 12 steps / 4.096 expansions.
+Mỗi lượt tìm mới từ foothold ban đầu; mọi witness được replay và đối chiếu C với ledger.
+
+| Can thiệp và nguồn | C DA/EA trước | C DA/EA sau, cả hai strategy | Kết luận và giới hạn |
+| --- | --- | --- | --- |
+| RODCMANAGER, gỡ Administrators | 3 / 3 | 3 / 3 | Còn bypass; C best-found |
+| EXTCA01, bỏ session BM | 2 / 2 | Không có / Không có | Đã chặn trong scope, 3 expansions/đích, không truncated |
+| EXTCA01, gỡ BM khỏi DA | 2 / 2 | 5 / 2 | Còn bypass; refine tới DA hết 4.096 expansions, C best-found |
+
+[Kết quả và hash evidence](reports/neo/remediation-rediscovery-results.json): 24 lượt, 200 witness replay/ledger hợp lệ.
+Đã sửa cách dựng graph remediation của demo: gỡ BM→DA cũng bỏ hai AdminTo phụ thuộc và bỏ nhánh suy diễn qua DA trên EXTDC01, giữ hỗ trợ qua EA.
+Session EXTCA01→BM có ba observation trùng nguồn hỗ trợ; demo bỏ cả hai PrivilegedSessions và một RegistrySessions.
+Evidence lớn nằm trong `reports/generated/neo-remediation-rediscovery-20261023-verified/`; BloodHound chỉ là baseline lịch sử, không chạy lại.
+Không có âm tính chưa kết luận trong ba ca này; chưa chứng minh C tối thiểu cho các ca thành công vì còn cap.
+Riêng refine trước can thiệp RODCMANAGER có 210 Unknown/đích ở `directory_write_allowed`; các nhánh này còn thiếu điều kiện, witness C=3 vẫn replay hợp lệ.
+No-path chỉ áp dụng snapshot/catalog/scenario local-admin-only đã khai báo, không bao phủ danh tính mạng tài khoản máy hoặc credential đã bị lấy trước can thiệp.
+
 Khảo sát mọi User/Computer đủ điều kiện của SEAMLESS tới DA/EA, mỗi nguồn là một
 scenario độc lập có danh tính mạng dùng được (không gộp quyền):
 
