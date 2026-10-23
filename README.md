@@ -19,6 +19,8 @@ Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum kh
 [Thử nghiệm minimum-C có đáp án tính tay](reports/neo/minimum-probe.md)
 cho thấy đường đầu C=3 có thể bỏ sót đường dài hơn C=1; tăng cap tìm được minimum
 trong mô hình nhỏ, chưa giải yêu cầu minimum trên dữ liệu thật.
+[Pilot C-first trên dữ liệu thật](reports/neo/cost-first-pilot.md) không được đưa
+vào core: có cải thiện ở mô hình nhỏ nhưng làm giảm số cặp có witness trong budget.
 P/I thiếu vẫn được hiển thị là chưa chấm.
 Quyền điều khiển máy không tự cấp danh tính mạng của tài khoản máy.
 
