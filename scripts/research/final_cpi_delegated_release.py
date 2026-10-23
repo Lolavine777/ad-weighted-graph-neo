@@ -207,13 +207,19 @@ def signature():
     if COHORT.exists():
         paths.add(COHORT)
     paths.update(raw.rglob("*.json"))
-    return canonical_digest(
-        {
-            str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
-            for p in sorted(paths)
-            if p != RELEASE
-        }
-    )
+    pins = {
+        str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+        for p in sorted(paths)
+        if p != RELEASE
+    }
+    catalog = "configs/attack_semantics.yml"
+    if catalog in pins:
+        from scripts.research.likelihood_catalog import published_catalog
+
+        publication = read(ROOT / "docs/research/ratings/likelihood-v1/catalog.json")
+        published_catalog(publication, ROOT)
+        pins[catalog] = publication["source_pins"][catalog].removeprefix("sha256:")
+    return canonical_digest(pins)
 
 
 @lru_cache(maxsize=1)

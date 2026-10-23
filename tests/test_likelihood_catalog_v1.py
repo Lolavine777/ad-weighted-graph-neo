@@ -12,13 +12,17 @@ ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "docs/research/ratings/likelihood-v1"
 
 
-def test_every_supported_technique_has_an_explicit_disposition():
+def test_every_published_technique_has_an_explicit_disposition():
+    from scripts.research.likelihood_catalog import published_catalog
+
     assert (PACK / "catalog.json").is_file(), "Likelihood Catalog v1 is missing"
     data = json.loads((PACK / "catalog.json").read_text())
     actions = {item["technique_id"]: item for item in data["actions"]}
     assert len(actions) == len(data["actions"])
-    assert set(actions) == {tech.id for tech in load_catalog()}
-    for tech in load_catalog():
+    owners = published_catalog(data)
+    assert set(actions) == {tech.id for tech in owners}
+    assert {tech.id for tech in load_catalog()} - set(actions) == {"use_session_identity"}
+    for tech in owners:
         entry = actions[tech.id]
         assert entry["relationship"] == tech.relationship
         assert entry["required_gates"] == list(tech.prerequisites)
@@ -45,6 +49,7 @@ def test_catalog_package_verifies_without_running_candidate_search():
     assert report["passive_actions"] == 1
     assert report["numeric_activated"] == 0
     assert report["pending_bindings"] == 8
+    assert report["live_actions_without_published_disposition"] == ["use_session_identity"]
 
 
 def test_generated_min_effort_matches_frozen_oracle_and_pending_gates():

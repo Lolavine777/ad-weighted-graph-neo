@@ -22,6 +22,7 @@ docs/research/ratings/week3-closeout/semantic-bridge-plan.json text eol=lf
 docs/research/ratings/week3-closeout/search-integration-plan.json text eol=lf
 data/samples/manifests/seamless-raw-v1.json text eol=lf
 tests/fixtures/attack_scenarios/** text eol=lf
+tests/fixtures/attack_scenarios/week4-source-archive.zip -text
 # Exact-byte Week 4 ratings bindings must survive a Windows core.autocrlf=true checkout.
 docs/research/ratings/week4/** text eol=lf
 

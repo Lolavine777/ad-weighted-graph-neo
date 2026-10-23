@@ -14,6 +14,8 @@ import sys
 from copy import deepcopy
 from pathlib import Path
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
@@ -31,6 +33,7 @@ from src.engine.semantics.models import StructuralRelationship  # noqa: E402
 from src.engine.semantics.transitions import TransitionRequest  # noqa: E402
 
 DEFAULT = ROOT / "tests/fixtures/attack_scenarios/suite.json"
+ARCHIVED_CATALOG = DEFAULT.with_name("catalog-v0.6.yml")
 PAIRS = {"effective_member", "interactive_session", "remote_command_execution", "usable_identity"}
 RELATIONS = {"permission", "relationship_added"}
 FIELDS = set(AttackState.__dataclass_fields__)
@@ -165,6 +168,25 @@ def load_suite(path=DEFAULT):
     return suite
 
 
+def validate_catalog_binding(suite, current, archived=ARCHIVED_CATALOG):
+    """Allow unreferenced additions while keeping frozen owners and catalog metadata intact."""
+    expected = suite["bindings"]["catalog_digest"]
+    if expected == file_digest(current):
+        return
+    if expected != file_digest(archived):
+        raise ValueError("catalog digest mismatch; no matching archived catalog")
+    old, new = (yaml.safe_load(path.read_text(encoding="utf-8")) for path in (archived, current))
+    if {k: v for k, v in old.items() if k != "techniques"} != {
+        k: v for k, v in new.items() if k != "techniques"
+    }:
+        raise ValueError("catalog metadata changed; review oracle before rebinding")
+    previous = {t["id"]: t for t in old["techniques"]}
+    live = {t["id"]: t for t in new["techniques"]}
+    owners = {t for case in suite["scenarios"] for t in case["oracle_scope"]["techniques"]}
+    if any(t not in previous or previous[t] != live.get(t) for t in owners):
+        raise ValueError("catalog owner changed; review oracle before rebinding")
+
+
 def validate_suite(suite, base):
     """Executable schema v1: reject every unknown field, type and broken binding."""
     keys(suite, {"schema_version", "bindings", "graphs", "evidence", "scenarios"})
@@ -178,6 +200,9 @@ def validate_suite(suite, base):
     if bindings["contract_version"] != "1.3.0" or bindings["catalog_version"] != "0.6":
         raise ValueError("incompatible semantic/graph contract version")
     for name, filename in (("contract", "contract.yml"), ("catalog", "attack_semantics.yml")):
+        if name == "catalog":
+            validate_catalog_binding(suite, ROOT / "configs" / filename)
+            continue
         if bindings[name + "_digest"] != file_digest(ROOT / "configs" / filename):
             raise ValueError(f"{name} digest mismatch; review oracle before rebinding")
     catalog = {t.id: t for t in load_catalog()}

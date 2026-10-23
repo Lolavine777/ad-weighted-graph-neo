@@ -491,11 +491,19 @@ def validate_result(result):
 
 
 def check():
+    from scripts.research.attack_scenarios import validate_catalog_binding
+
     catalog = read(DOC / "catalog-v1.json")
     schema_validate("catalog", catalog)
-    require(
-        catalog["semantic_catalog_sha256"] == sha(ROOT / "configs/attack_semantics.yml"),
-        "semantic catalog drift",
+    validate_catalog_binding(
+        {
+            "bindings": {"catalog_digest": catalog["semantic_catalog_sha256"]},
+            "scenarios": [
+                {"oracle_scope": {"techniques": entry["techniques"]}}
+                for entry in catalog["entries"]
+            ],
+        },
+        ROOT / "configs/attack_semantics.yml",
     )
     techniques = {t.id: t for t in load_catalog()}
     ids = [e["id"] for e in catalog["entries"]]

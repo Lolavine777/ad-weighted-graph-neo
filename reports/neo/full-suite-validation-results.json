@@ -1,0 +1,251 @@
+{
+  "archived_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+  "base_commit": "c0200ddd19e9e8cbb57d25fde571b47da4e47158",
+  "diagnostics": {
+    "after_collection_fix": {
+      "errors": 131,
+      "failed": 57,
+      "passed": 3660,
+      "skipped": 8,
+      "summary": "57 failed, 3660 passed, 8 skipped, 131 errors, 99 subtests passed in 353.19s (0:05:53)"
+    },
+    "baseline": "Collection failed: two catalog digest mismatch errors",
+    "initial_focused_validation": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 297,
+      "skipped": 1,
+      "summary": "297 passed, 1 skipped in 65.89s (0:01:05)"
+    },
+    "interrupted_receipt_diagnostic": {
+      "errors": 8,
+      "failed": 0,
+      "passed": 1198,
+      "skipped": 1,
+      "summary": "1198 passed, 1 skipped, 8 errors, 11 subtests passed in 402.80s (0:06:42)"
+    },
+    "interrupted_scope_diagnostic": {
+      "errors": 39,
+      "failed": 1,
+      "passed": 1148,
+      "skipped": 1,
+      "summary": "1 failed, 1148 passed, 1 skipped, 39 errors in 299.41s (0:04:59)"
+    },
+    "release_scope_validation": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 31,
+      "skipped": 0,
+      "summary": "31 passed in 81.06s (0:01:21)"
+    }
+  },
+  "full_suite": {
+    "command": ".venv/bin/python -m pytest -q --junitxml=reports/generated/neo-full-suite-20261023T1606Z/final.xml",
+    "errors": 0,
+    "failed": 0,
+    "isolated_worktree": true,
+    "junit_suites": [
+      {
+        "errors": "0",
+        "failures": "0",
+        "name": "pytest",
+        "skipped": "8",
+        "tests": "3959",
+        "time": "739.493",
+        "timestamp": "2026-10-24T00:06:14.804419+07:00"
+      }
+    ],
+    "passed": 3852,
+    "skip_reasons": [
+      "SKIPPED [1] tests/test_convert_seamless_ce.py:105: set AWG_TEST_RAW_SEAMLESS=1 for pinned raw self-check",
+      "SKIPPED [1] tests/test_guided_seamless_acceptance.py:29: Set GUIDED_SEAMLESS_RAW_DIR to authorized pinned SEAMLESS raw inputs",
+      "SKIPPED [1] tests/test_manifest.py:149: Windows junction test",
+      "SKIPPED [2] tests/test_manifest.py:166: filesystem already aliases the two names",
+      "SKIPPED [1] tests/test_remediation_contract.py:274: Set REMEDIATION_SEAMLESS_RAW_DIR to manifest-verified private inputs",
+      "SKIPPED [1] tests/test_remediation_executor.py:362: Set REMEDIATION_SEAMLESS_RAW_DIR to manifest-verified private inputs",
+      "SKIPPED [1] tests/test_remediation_runner_cli.py:56: Set REMEDIATION284_RUN_RAW_PILOT to authorized manifest-verified raw directory"
+    ],
+    "skipped": 8,
+    "source_files_unchanged_during_run": 1218,
+    "summary": "3852 passed, 8 skipped, 99 subtests passed in 739.53s (0:12:19)",
+    "validated_changes_match_main_checkout": true,
+    "working_tree_was_clean": false
+  },
+  "independent_review": {
+    "blocking_findings_remaining": 0,
+    "published_receipt_signature": "sha256:af7295e402ca069331894c43b96980906c28a6d20dc0d43860596b42a6390a07",
+    "reconstructed_and_published_receipt_digest": "sha256:f180932d25e60108e62a5bee71daeac99f5a0657e13bd73c2fcf5dd9aa250aa0"
+  },
+  "integrated_main_parent": "c5656be51df977b59b0439df926c9ccccc5f66b3",
+  "limits": [
+    "Historical rating coverage excludes use_session_identity; no new numeric approval.",
+    "Archive source hashes certify historical bytes; current source identity is recorded separately.",
+    "Concurrent remediation files from another chat were excluded from the isolated run and this commit.",
+    "New holdout evaluation remains pending; no fresh live BloodHound comparison in this run.",
+    "Remote CI status must be checked for the final pushed revision."
+  ],
+  "local_evidence_sha256": {
+    "reports/generated/neo-full-suite-20261023T1606Z/after-collection-fix.log": "sha256:51e2c72811637565761bbbce5ec324216466faa55c02df4b4401f052c6a7f54b",
+    "reports/generated/neo-full-suite-20261023T1606Z/after-collection-fix.xml": "sha256:231a3096bec6a172b30b49e499bef26ca831fd9cdc2169cad8645b2b66137c79",
+    "reports/generated/neo-full-suite-20261023T1606Z/collected.txt": "sha256:428fad17b200d9f36e94b0df30b5ee2dd07cca2da2236aaad4a8ca93e9ffdc9f",
+    "reports/generated/neo-full-suite-20261023T1606Z/delegated-diagnostic.log": "sha256:4229abe144ae094d2b8fe0f24a6544654c4ac1137dc958ed8861bf0d7f9780d6",
+    "reports/generated/neo-full-suite-20261023T1606Z/delivery-diagnostic.log": "sha256:b7db750753c4bad8a3f0169695f87b67f5611bef1e5348b33fe190c159b1c062",
+    "reports/generated/neo-full-suite-20261023T1606Z/final.log": "sha256:04c7f18d7e880574181c3065bc287ac24f4246108ff7994d5b77824e09fef0f7",
+    "reports/generated/neo-full-suite-20261023T1606Z/final.xml": "sha256:066523fb67139a81b8d6dd644af76843a6c870422923ac3c8a28c651d9d35221",
+    "reports/generated/neo-full-suite-20261023T1606Z/focused-final.log": "sha256:7a87d25e67c5b44d11fd59dd76d91dc55f877d0817d715affcad93567c3d3c11",
+    "reports/generated/neo-full-suite-20261023T1606Z/focused.log": "sha256:1fe2adf910e4ca1ff93125b17eed269fe6f2caace5f0eb72850e8de2e02b965b",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-diagnostic.log": "sha256:e1b9e8e1a36c1b6981cd39a932a7385ef7c10253e4f02134adf27628386e7eb0",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-diagnostic.xml": "sha256:6d0fc05fbf4bd344f3e8969bb1fe2fec494b87a626d498f3a2ed47f6d41c71a1",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-receipt-diagnostic.log": "sha256:9f93ceb76312417003169e272356939a49b280b3c0d97417ab5c4e75dea62b11",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-receipt-diagnostic.xml": "sha256:77ba4d6cdffeac8f7c1268e6512d87a8c9f0f1752e1014b913b8bc7ed01b695e",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-receipt-tree.json": "sha256:10e3ebfc6ec906d911674527be2ee1f8173bffa829e96c2b45a3d3a9d09bfbf2",
+    "reports/generated/neo-full-suite-20261023T1606Z/interrupted-tree.json": "sha256:59f3600013523bce8bf8469d2cffe793880ef7f44f1d0f9b3be769e2626f7b75",
+    "reports/generated/neo-full-suite-20261023T1606Z/isolation.json": "sha256:1534cae3e8d24e901df42f893e5c9733c4b7bfa204af478c48269175888ccd6b",
+    "reports/generated/neo-full-suite-20261023T1606Z/junit.xml": "sha256:8fa4f146b49de815792e87e8eccf75b092e9d127f107224a8783cf5be949ee1c",
+    "reports/generated/neo-full-suite-20261023T1606Z/preserved-baseline.json": "sha256:231b1264c8aab0c4d2b7365c0c829c18f8561085bd6ab69f5b332a97f287cd6f",
+    "reports/generated/neo-full-suite-20261023T1606Z/pytest.log": "sha256:28d16f1559e23979a975b2e78ccde33a84b68a223d6299e54c67adacbef1ad72",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-0.log": "sha256:82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-1.log": "sha256:8353ad5b56c6727c044110e0e216b744385f912169aa22f846bac2ddc2d62801",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-2.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-3.log": "sha256:4834fd329599846a843260f22bf516c608983dccc944be7874869bb0bbc662bb",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-4.log": "sha256:e12c6e6a4edaab279ec0ed01749fa4b770fce88217fadf8c9a16101065cb9628",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-5.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality-6.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/generated/neo-full-suite-20261023T1606Z/quality.json": "sha256:29f8eb5f6b83f95be195d228289ebdec0f96633a8091b8c43f1424ac5e0b9fd5",
+    "reports/generated/neo-full-suite-20261023T1606Z/raw-opt-in.log": "sha256:2f737d424698df81100cd2c17dadb928d15ccca334d7cbdf3dd624658e1b72f7",
+    "reports/generated/neo-full-suite-20261023T1606Z/raw-opt-in.xml": "sha256:2839f22b8ebc6245ff094638c050a9773361e8ea35257ed9edbc03aff7e20cd1",
+    "reports/generated/neo-full-suite-20261023T1606Z/release-scope-focused.log": "sha256:211863143ca75d066a040e10b6be4591db828bd5cb47cd1fd9291e7bfecf7b39",
+    "reports/generated/neo-full-suite-20261023T1606Z/staged-secrets.log": "sha256:7b3adb77892aea7bf33e15e0142c871b38ded32eefd456a0eb33c897d0e94bc5",
+    "reports/generated/neo-full-suite-20261023T1606Z/start.json": "sha256:03c1a63519732eb0679eb52f0bc69b631896602d4e2053c6457d00ac9e616857",
+    "reports/generated/neo-full-suite-20261023T1606Z/subset-diagnostic.log": "sha256:5f4d82104008b95afb8d6264ec1fbbdebe33c10100699f72d3f01a0a7c682187",
+    "reports/generated/neo-full-suite-20261023T1606Z/tested-tree.json": "sha256:81e3d6bdacdb2f9ae93cb4811ad989d17ff3c548a24ced06d015ba8e7d5b9849"
+  },
+  "preserved_baseline": {
+    "byte_identical_files": 387,
+    "scope": [
+      "docs/research/ratings",
+      "docs/research/evidence",
+      "reports/research",
+      "tests/fixtures",
+      "src",
+      "configs"
+    ]
+  },
+  "python": "3.14.7 (main, Aug  5 2026, 15:35:18) [Clang 22.1.3 ]",
+  "quality_checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "ruff",
+        "check",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "quality-0.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "quality-1.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "yamllint",
+        "."
+      ],
+      "exit_code": 0,
+      "log": "quality-2.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/check_repository.py"
+      ],
+      "exit_code": 0,
+      "log": "quality-3.log"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "scripts/check_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "quality-4.log"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "log": "quality-5.log"
+    },
+    {
+      "command": [
+        "docker",
+        "compose",
+        "--env-file",
+        ".env.example",
+        "--profile",
+        "graph",
+        "config",
+        "--quiet"
+      ],
+      "exit_code": 0,
+      "log": "quality-6.log"
+    }
+  ],
+  "raw_opt_in": {
+    "command": "AWG_TEST_RAW_SEAMLESS=1 REMEDIATION_SEAMLESS_RAW_DIR=data/raw/SEAMLESS .venv/bin/python -m pytest tests/test_convert_seamless_ce.py tests/test_bloodhound_baseline_runner.py tests/test_remediation_contract.py::test_manifest_verified_seamless_runtime_controls tests/test_golden_catalog_binding.py tests/test_final_cpi_profiles.py::test_frozen_all_23_cohort_does_not_expand_with_live_catalog -q",
+    "errors": 0,
+    "failed": 0,
+    "junit_suites": [
+      {
+        "errors": "0",
+        "failures": "0",
+        "name": "pytest",
+        "skipped": "0",
+        "tests": "58",
+        "time": "14.592",
+        "timestamp": "2026-10-24T00:11:36.696416+07:00"
+      }
+    ],
+    "passed": 58,
+    "skip_reasons": [],
+    "skipped": 0,
+    "summary": "58 passed in 14.60s"
+  },
+  "recorded_at_utc": "2026-10-23T17:20:07.332852+00:00",
+  "schema_version": "neo-full-suite-validation/1.0.0",
+  "scope": "Historical evidence compatibility and regression validation only",
+  "tested_change_pins": {
+    ".gitattributes": "sha256:f3fd90ced5c0a9082dd45759f338f9a48b8fdf3db2abce4a3d89388cd490b321",
+    "reports/neo/source-manifest.json": "sha256:a858cb9acf45771e8748ea23b53e8ec94521019c3c94d7d3e7a115b09422f4c8",
+    "scripts/research/attack_scenarios.py": "sha256:c52c4992d9a8de022e7b5a4fd74fe8151daaf7c3553c48b5eb3141000fe8f577",
+    "scripts/research/attack_scenarios_seamless.py": "sha256:ba06773e6edc86259cb519cc01a745641740cb3bdfafbe246ba476684ce2be8c",
+    "scripts/research/final_cpi_delegated_release.py": "sha256:8fae46c795ca5f98ec4d6e8527f85e4579b1d746c2c212079ab6017254327419",
+    "scripts/research/final_cpi_extension.py": "sha256:e5972dfd51acecbe288e2f35d6f167f7a931836871fe22e7589fe811b57e94a1",
+    "scripts/research/final_cpi_profiles.py": "sha256:51306be8abff7a0c30f9ed7d48a8fb2e5ee420ff2db33d0f6fc65db4df102870",
+    "scripts/research/likelihood_catalog.py": "sha256:5b04b3207a5a3b3d0bb45c8b07c8a9d409b09f65af5790d719590decbb34d8a1",
+    "scripts/research/remediation_acceptance.py": "sha256:ddc786a9e8cba13e575a95562cff942cd009e3b017638ea019d944de917a57ef",
+    "tests/fixtures/attack_scenarios/catalog-v0.6.yml": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
+    "tests/fixtures/attack_scenarios/week4-source-archive.zip": "sha256:347e58b25dc41d3fbb5381618ca21c4256fc9315ffa15f83948fa12b777331f8",
+    "tests/test_attack_scenarios.py": "sha256:aeee85c4c975648797d6f8c181d735755746b85eae53e07b9db4e87c8a1b648b",
+    "tests/test_final_cpi_profiles.py": "sha256:e77acf6531d3a39290142d0d8aa0acde0b106ba7effe55d0f8f93e377f4da4a5",
+    "tests/test_golden_catalog_binding.py": "sha256:a1784f248a0f411c742b7e592fb95b44b27ac833ab343d35388f66461c32c37c",
+    "tests/test_likelihood_catalog_v1.py": "sha256:904853e26b3205fdb45f92101ba6ff4e857d5195a313489ddbf7ed804c4216ea",
+    "tests/test_scenario_rating_pack.py": "sha256:7e3d440537a1834bce5fa4aab456ff07cd29038f5797c64a2cf0c8c16a7e0253",
+    "tests/test_week4_scenarios.py": "sha256:525c640fe737d230ddb47faa8ff74b1936896f0c33e801f102cfcf3cc79d2400"
+  }
+}

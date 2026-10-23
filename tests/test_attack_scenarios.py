@@ -357,8 +357,8 @@ def test_catalog_scope_covers_all_accepted_owners_and_eight_structural_kinds():
     from src.engine.semantics.credentials import OWNERS
     from src.engine.semantics.rbcd import OWNERS as RBCD_OWNERS
 
-    # Extension owners have their independent #216/#229 oracle; core expected programs stay frozen.
-    assert ids | OWNERS | RBCD_OWNERS == {t.id for t in load_catalog()}
+    # Extension oracles and host/session regressions keep the core expected programs frozen.
+    assert ids | OWNERS | RBCD_OWNERS | {"use_session_identity"} == {t.id for t in load_catalog()}
     kinds = set()
     for g in SUITE["graphs"].values():
         graph = json.loads((DEFAULT.parent / g["path"]).read_text(encoding="utf-8"))

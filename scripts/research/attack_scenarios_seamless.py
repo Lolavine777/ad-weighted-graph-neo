@@ -16,7 +16,11 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from scripts.research.attack_scenarios import file_digest, keys  # noqa: E402
+from scripts.research.attack_scenarios import (  # noqa: E402
+    file_digest,
+    keys,
+    validate_catalog_binding,
+)
 from scripts.research.reviewed_parameter_release import verify_release  # noqa: E402
 from scripts.research.week3_semantic_bridge_probe import (  # noqa: E402
     PLAN,
@@ -63,7 +67,17 @@ def load_binding(path=DEFAULT):
     for pin in binding["input_pins"]:
         keys(pin, {"path", "file_digest"})
         path = (ROOT / pin["path"]).resolve()
-        if not path.is_relative_to(ROOT) or file_digest(path) != pin["file_digest"]:
+        if not path.is_relative_to(ROOT):
+            raise ValueError("integration binding file digest mismatch")
+        if pin["path"] == "configs/attack_semantics.yml":
+            validate_catalog_binding(
+                {
+                    "bindings": {"catalog_digest": pin["file_digest"]},
+                    "scenarios": [{"oracle_scope": {"techniques": binding["expected_techniques"]}}],
+                },
+                path,
+            )
+        elif file_digest(path) != pin["file_digest"]:
             raise ValueError("integration binding file digest mismatch")
     if set(binding["expected_techniques"]) - {t.id for t in load_catalog()}:
         raise ValueError("unknown integration technique")

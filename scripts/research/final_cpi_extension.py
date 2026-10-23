@@ -261,7 +261,9 @@ def prepare_extension(case, graph, raw_dir):
             {a["technique_id"] for a in actions} | {"propagate_group_entitlement"}
         )
         if case["id"].endswith("all-generator"):
-            query["allowed_techniques"] = sorted(t.id for t in load_catalog())
+            query["allowed_techniques"] = sorted(
+                row["technique_id"] for row in read(PACKAGE / "taxonomy.json")["actions"]
+            )
     query.update(scenario_reference=scenario, evaluation_mode="scenario", budget=case["budget"])
     query["rating_resolution"] = copy.deepcopy(template["rating_resolution"])
     scope = query["rating_resolution"]["scope"]

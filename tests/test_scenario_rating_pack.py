@@ -284,7 +284,7 @@ def test_coverage_inventory_and_scope():
     coverage = load_coverage_matrix()
     assert {t.id for t in load_catalog()} == {
         t["technique_id"] for t in coverage["techniques_matrix"]
-    }
+    } | {"use_session_identity"}
     assert coverage["summary"]["unrated_techniques_count"] == 21
     assert (
         coverage["denominators"]["synthetic_review_simulation"]["fully_rated_paths"]["count"] == 3

@@ -13,7 +13,6 @@ from scripts.research.issue250_public_probe import ROOT, envelope, read
 from src.engine.graph import EngineGraph
 from src.engine.ranking.resolution_service import canonical_digest
 from src.engine.ranking.resolver import generate_rating_lookup_key_p, generate_work_unit_id
-from src.engine.semantics import load_catalog
 from src.parser.snapshot_facts import graph_digest
 
 PACKAGE = ROOT / "docs/research/ratings/final-cpi-v1"
@@ -22,8 +21,12 @@ REVIEW = "https://github.com/nairyuuu/ad-weighted-graph/issues/267"
 
 
 def validate_package():
+    """Check the frozen proposal against its publication catalog, not later action extensions."""
+    from scripts.research.likelihood_catalog import published_catalog
+
     profile, taxonomy = read(PACKAGE / "profile.json"), read(PACKAGE / "taxonomy.json")
-    owners = {t.id: t for t in load_catalog()}
+    published = read(ROOT / "docs/research/ratings/likelihood-v1/catalog.json")
+    owners = {t.id: t for t in published_catalog(published, ROOT)}
     rows = {a["technique_id"]: a for a in taxonomy["actions"]}
     if rows.keys() != owners.keys():
         raise ValueError("Taxonomy ownership drift")
@@ -436,7 +439,9 @@ def bind_source_a(case_id):
     scope["target_goal"]["goal_id"] = "final-cpi-dc-admin"
     query["budget"] = case["budget"]
     if case["techniques"] == "all_23":
-        query["allowed_techniques"] = sorted(t.id for t in load_catalog())
+        query["allowed_techniques"] = sorted(
+            row["technique_id"] for row in read(PACKAGE / "taxonomy.json")["actions"]
+        )
     initial = []
     if case["source"].endswith("_user"):
         label = "lidia" if "lidia" in case["source"] else "josefa"

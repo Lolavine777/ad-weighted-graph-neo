@@ -18,7 +18,7 @@ from src.engine.graph import EngineGraph
 from tests.source_a_identity import identity_source_a
 
 
-def test_taxonomy_covers_engine_and_recovery_remains_a_gap():
+def test_taxonomy_covers_published_catalog_and_recovery_remains_a_gap():
     assert validate_package() == {"active": 22, "likelihood_classes": 20, "passive": 1}
     profile = read(PACKAGE / "profile.json")
     assert profile["b_numeric_adoption"] is False
@@ -27,6 +27,15 @@ def test_taxonomy_covers_engine_and_recovery_remains_a_gap():
         "asrep_password_recovery",
         "kerberoast_password_recovery",
     }
+
+
+def test_frozen_all_23_cohort_does_not_expand_with_live_catalog():
+    from scripts.research.final_cpi_profiles import bind_source_a
+
+    query, _ = bind_source_a("source-a-full-generator")
+    expected = sorted(row["technique_id"] for row in read(PACKAGE / "taxonomy.json")["actions"])
+    assert len(expected) == 23
+    assert query["allowed_techniques"] == expected
 
 
 def test_histories_require_exact_lineage_and_fail_on_expansion_cap():

@@ -59,11 +59,37 @@ def _read(root, path):
     return json.loads((root / path).read_text(encoding="utf-8"))
 
 
+def published_catalog(data, root=ROOT):
+    """Bind published coverage only while its current owner definitions remain unchanged."""
+    from scripts.research.attack_scenarios import validate_catalog_binding
+
+    root = Path(root)
+    expected = data["source_pins"]["configs/attack_semantics.yml"]
+    current = root / "configs/attack_semantics.yml"
+    path = current
+    if "sha256:" + hashlib.sha256(current.read_bytes()).hexdigest() != expected:
+        path = root / "tests/fixtures/attack_scenarios/catalog-v0.6.yml"
+    _require(
+        "sha256:" + hashlib.sha256(path.read_bytes()).hexdigest() == expected,
+        "published catalog source pin mismatch",
+    )
+    owners = load_catalog(path)
+    validate_catalog_binding(
+        {
+            "bindings": {"catalog_digest": expected},
+            "scenarios": [{"oracle_scope": {"techniques": [owner.id for owner in owners]}}],
+        },
+        current,
+        path,
+    )
+    return owners
+
+
 def validate_catalog(data, root=ROOT):
     """Reject missing owners, passive/active confusion and unsupported numeric defaults."""
     _require(data["status"] == PENDING and data["version"] == "1.0.0", "catalog governance")
     _require(set(data["required_context"]) == CONTEXT, "incomplete required context")
-    owners = load_catalog(root / "configs/attack_semantics.yml")
+    owners = published_catalog(data, root)
     actions = {a["technique_id"]: a for a in data["actions"]}
     _require(len(actions) == len(data["actions"]), "duplicate action")
     _require(set(actions) == {t.id for t in owners}, "supported-action coverage drift")
@@ -465,6 +491,10 @@ def verify_package(root=ROOT):
         "status": PENDING,
         "source_baseline": NEO_SOURCE_MANIFEST.as_posix(),
         "archived_source_drift": archived_source_drift,
+        "live_actions_without_published_disposition": sorted(
+            {t.id for t in load_catalog(root / "configs/attack_semantics.yml")}
+            - {action["technique_id"] for action in catalog["actions"]}
+        ),
     }
 
 

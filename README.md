@@ -16,6 +16,7 @@ ghi nhận trước sửa: BloodHound 22/24 và neo 20/24 cặp có đường, c
 [Kiểm lại remediation sau sửa](reports/neo/remediation-post-localgroup.md) xác nhận ba kết quả cũ; TRUSTER còn bypass qua UNCON khi chỉ bỏ session BM trên EXTCA01.
 [Độ nhạy bảng C](reports/neo/cost-sensitivity.md) đã đo trên 220 quan sát chương trình theo cặp; Top-3 có thể đổi do ties, kết quả chỉ áp dụng trong candidate set đã tìm được.
 [Protocol holdout](reports/neo/holdout-evaluation-protocol.md) chốt đánh giá trên môi trường chưa dùng để chỉnh neo; chưa có kết quả holdout.
+[Kiểm tra toàn bộ regression](reports/neo/full-suite-validation.md): 3.852 tests và 99 subtests pass trong worktree cố định, 8 skips; giữ nguyên evidence và phạm vi rating lịch sử.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.

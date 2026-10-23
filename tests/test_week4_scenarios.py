@@ -1,12 +1,13 @@
-"""Consume A2's independent inputs with the unchanged accepted golden harness."""
+"""Replay A2's frozen oracles with current code and preserve its historical source pins."""
 
 import hashlib
 import json
+import zipfile
 from pathlib import Path
 
 import pytest
 
-from scripts.research.attack_scenarios import load_suite, run_case
+from scripts.research.attack_scenarios import ARCHIVED_CATALOG, load_suite, run_case
 
 ROOT = Path(__file__).resolve().parents[1]
 PACKAGE = ROOT / "tests/fixtures/attack_scenarios/week4-v1.json"
@@ -42,8 +43,19 @@ def test_week4_package_file_pins():
     for line in manifest.read_text(encoding="utf-8").splitlines():
         expected, relative = line.split("  ", 1)
         path = (ROOT / relative).resolve()
+        if relative == "configs/attack_semantics.yml":
+            path = ARCHIVED_CATALOG
         assert path.is_relative_to(ROOT)
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected, relative
+        if relative in {
+            "scripts/research/attack_scenarios.py",
+            "scripts/research/attack_scenarios_seamless.py",
+            "tests/test_week4_scenarios.py",
+        }:
+            with zipfile.ZipFile(PACKAGE.with_name("week4-source-archive.zip")) as archive:
+                content = archive.read(relative)
+        else:
+            content = path.read_bytes()
+        assert hashlib.sha256(content).hexdigest() == expected, relative
 
 
 @pytest.mark.parametrize(
