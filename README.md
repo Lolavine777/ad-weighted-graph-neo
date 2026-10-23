@@ -32,10 +32,16 @@ Quyền điều khiển máy không tự cấp danh tính mạng của tài kho�
 
 Cần Python 3.14 và uv.
 
+Chạy các lệnh từ thư mục gốc repo. Dùng thư mục output mới cho mỗi lượt;
+raw đã đúng manifest có thể được tái sử dụng mà không tải lại.
+
 ```sh
 uv venv --python 3.14 .venv
 uv pip sync --python .venv/bin/python requirements-neo.lock
 ```
+
+[Biên bản kiểm chứng cài mới](reports/neo/clean-checkout-results.json)
+ghi môi trường, checksum, kiểm thử và các demo đã tái lập.
 
 ## SEAMLESS → foothold → Domain Admins → attack path
 
@@ -135,12 +141,21 @@ giữ riêng kết quả local-admin-only và danh tính tài khoản máy.
 Use case 2, sửa một membership/session rồi tìm lại bypass tới DA/EA, không cần Docker:
 
 ```sh
+.venv/bin/python -m scripts.download_ad_sampledata
+.venv/bin/python -m scripts.neo_import \
+  --raw-dir data/raw/ad_sampledata \
+  --manifest data/samples/manifests/ad-sampledata-v1.json \
+  --time-policy data/samples/time-policies/ad-sampledata-v1.json \
+  --export-prefix 20240305111414 --output-dir reports/generated/neo-inputs/wraith
 .venv/bin/python -m scripts.neo_remediation \
-  --snapshot reports/generated/neo-remediation-post-localgroup-20261023/inputs/wraith/snapshot.json \
+  --snapshot reports/generated/neo-inputs/wraith/snapshot.json \
   --output-dir reports/generated/neo-remediation-demo-001
 ```
 
-Cần snapshot WRAITH sau sửa LocalGroup và bộ raw đúng manifest ở `data/raw/ad_sampledata` (hoặc truyền `--raw-dir`).
+Các bước trên tải bộ lab public đã pin, kiểm 31 file theo manifest rồi dựng snapshot WRAITH bằng parser hiện tại.
+Nếu đã có raw đúng manifest, downloader chỉ kiểm lại; có thể dùng `--raw-dir` khi dữ liệu nằm ở nơi khác.
+Đọc `reports/generated/neo-remediation-demo-001/results.json`: mỗi hàng giữ case,
+trước/sau, strategy và kết luận `bypass`, `blocked_in_scope` hoặc `inconclusive`.
 Runner đối chiếu bản dựng nền với snapshot, sửa bản sao record trong bộ nhớ và dùng lại parser để cập nhật cả cạnh suy diễn.
 Chạy độc lập đúng ba can thiệp với cả `neo_guided`/`neo_refine`, cùng preset host/session, techniques, bảng `neo-c-v1` và budget 10 programs / 12 steps / 4.096 expansions.
 Mỗi lượt tìm mới từ foothold ban đầu; mọi witness được replay và đối chiếu C với ledger.

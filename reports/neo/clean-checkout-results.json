@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "executed_on": "2026-10-24",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "tested_revision": "0f8baf837bb1d5e4ff4e53e1bebd620c2fea0a48",
+  "tested_tree": "971662e9e9b68623c73d18fb3d2cd20b8b3cb882",
+  "checkout": {
+    "method": "Exact shallow Git checkout reconstructed through GitHub Git objects; CLI clone transport was unavailable because Git credentials were absent.",
+    "tracked_blobs_verified": 1223,
+    "blob_mismatches": 0,
+    "git_fsck_passed": true,
+    "clean_before_validation": true,
+    "clean_after_validation": true
+  },
+  "environment": {
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "python": "3.14.8",
+    "uv": "0.12.23",
+    "fresh_venv": true,
+    "installed_packages": 15,
+    "lockfile_sha256": "sha256:19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4",
+    "pip_check_passed": true
+  },
+  "raw_inputs": {
+    "SEAMLESS": {
+      "manifest": "data/samples/manifests/seamless-raw-v1.json",
+      "verified_files": 6
+    },
+    "ad_sampledata": {
+      "manifest": "data/samples/manifests/ad-sampledata-v1.json",
+      "verified_files": 31
+    },
+    "downloaded_into_empty_raw_directories": true
+  },
+  "checks": {
+    "full_pytest": {
+      "command": ".venv/bin/python -m pytest -q",
+      "status": "passed",
+      "exit_code": 0,
+      "collected_tests": 3870,
+      "terminal_summary": "The redirected terminal log did not retain its final summary; individual pass/skip/subtest counts and elapsed time are not asserted."
+    },
+    "ruff_check": "passed",
+    "ruff_format_check": "passed: 657 files",
+    "yamllint": "passed",
+    "check_repository": "passed: 1223 files at tested revision",
+    "check_contract": "passed: contract and 2 synthetic fixtures",
+    "proposal_static_checks": "passed: Ruff, formatting, yamllint, repository check (1224 files) and contract"
+  },
+  "readme_smoke_runs": {
+    "synthetic_query": {
+      "exit_code": 0,
+      "programs": 3,
+      "expansions": 4,
+      "best_C": 2,
+      "minimum_proven": true
+    },
+    "seamless_baseline": {
+      "exit_code": 0,
+      "nodes": 3370,
+      "edges": 56367,
+      "native_replay_and_API_CLI_parity": true,
+      "runs": [
+        {
+          "search_order": "fifo",
+          "best_C": null,
+          "expansions": 6000,
+          "witnesses": 0,
+          "truncated": true
+        },
+        {
+          "search_order": "goal_guided",
+          "best_C": 1,
+          "expansions": 4995,
+          "witnesses": 1,
+          "truncated": true
+        },
+        {
+          "search_order": "neo_guided",
+          "best_C": 1,
+          "expansions": 6,
+          "witnesses": 1,
+          "truncated": true
+        }
+      ]
+    },
+    "refinement": {
+      "exit_code": 0,
+      "results": [
+        {
+          "C": 1,
+          "expansions": 256,
+          "truncated": true,
+          "minimum_proven": false,
+          "target_group": "512"
+        },
+        {
+          "C": 5,
+          "expansions": 256,
+          "truncated": true,
+          "minimum_proven": false,
+          "target_group": "519"
+        }
+      ]
+    },
+    "wraith_import": {
+      "exit_code": 0,
+      "nodes": 150,
+      "edges": 770,
+      "AdminTo": 22,
+      "snapshot_sha256": "sha256:42f43e63a22fe01d99e4120a2c506d49692a4838fe10ae9862b1fa19fad7d2e2"
+    },
+    "remediation": {
+      "exit_code": 0,
+      "query_runs": 24,
+      "replayed_programs": 200,
+      "ledger_checked_programs": 200,
+      "baseline_unchanged": true,
+      "strategies": [
+        "neo_guided",
+        "neo_refine"
+      ],
+      "outcomes": [
+        {
+          "case": "rodc-membership",
+          "before_C_DA_EA": [
+            3,
+            3
+          ],
+          "after_C_DA_EA": [
+            3,
+            3
+          ],
+          "verdict": "bypass"
+        },
+        {
+          "case": "extca-session",
+          "before_C_DA_EA": [
+            2,
+            2
+          ],
+          "after_C_DA_EA": [
+            null,
+            null
+          ],
+          "verdict": "blocked_in_scope",
+          "after_expansions_per_goal": 3,
+          "after_truncated": false
+        },
+        {
+          "case": "bm-da-membership",
+          "before_C_DA_EA": [
+            2,
+            2
+          ],
+          "after_C_DA_EA": [
+            5,
+            2
+          ],
+          "verdict": "bypass"
+        }
+      ]
+    }
+  },
+  "packaging_fix": {
+    "reproduced": "The old README remediation command exits 1 with FileNotFoundError for a historical generated snapshot absent from a clean checkout.",
+    "resolution": "README now downloads pinned ad_sampledata, imports the WRAITH export and uses the freshly generated snapshot. The corrected sequence completed successfully.",
+    "engine_or_scoring_changes": false
+  },
+  "limits": [
+    "All runs used public lab files and offline graph evaluation; no live AD or new BloodHound run.",
+    "Data and large generated evidence are excluded from Git.",
+    "C remains best-found where truncated; this verifies packaging and reproducibility, not a new minimum-C or BloodHound superiority claim.",
+    "Remediation uses the existing local-admin-only scenario with an independent fresh foothold per query."
+  ],
+  "evidence_sha256": {
+    "requirements-neo.lock": "sha256:19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4",
+    "reports/generated/toy-query.json": "sha256:da7273da02cc0bc2600d34e823c90b29bc88c0bac22e5722e83d59131824739d",
+    "reports/generated/toy-query.md": "sha256:c24ee8289d2d1abb8fbf477baf30e2a11fdea4cafc7e8e3ada00e86e77169092",
+    "reports/generated/neo-run-001/summary.json": "sha256:6c899f5d6777262adb47d7379e7eeed0439d73df1686ec949095bcf9de2bc548",
+    "reports/generated/neo-refine-demo/cells.jsonl": "sha256:4e62f448cfde0919f5f5c7f14eaba8d555a61ebe15c148e4ad2c5a8afc4ac1bb",
+    "reports/generated/neo-inputs/wraith/import.json": "sha256:b90209d57ce5cbd1611fc86c4aea033d334e15db531d57b38c15a84fe9e9be8f",
+    "reports/generated/neo-remediation-demo-001/results.json": "sha256:6b4dcc2f8416699a0ac76f786792b3eb6aaa85187c71bd69f8d223f4d601b58b",
+    "reports/generated/clean-checkout-20261024/baseline.log": "sha256:6c899f5d6777262adb47d7379e7eeed0439d73df1686ec949095bcf9de2bc548",
+    "reports/generated/clean-checkout-20261024/install.log": "sha256:f39b63790683d8fd5c617314398888db90df902660584b6c3e87431d0e9aa5ae",
+    "reports/generated/clean-checkout-20261024/pip-check.log": "sha256:319051fd1be0215c42f8a8c168e59997fac56f0e39c98a08deafb7745e8f624e",
+    "reports/generated/clean-checkout-20261024/pytest-collection.log": "sha256:2546f6a6f441573fb4f84642b2a0761639e0c99e0480127d2e969dc4aa90f65c",
+    "reports/generated/clean-checkout-20261024/pytest.log": "sha256:22a66b9618735c7c8a8bb6f273fe28baa0652cfe550b8108e29ee69c58be693e",
+    "reports/generated/clean-checkout-20261024/quality.log": "sha256:bc9276997dee1d8a167a9eb4790c79c261c69213c33ab37da09de0ee13d67da9",
+    "reports/generated/clean-checkout-20261024/readme-remediation-before.log": "sha256:66ce18f69cfcd5cc45079cfbf2c4106a99fd56ebb68bce36a19a237d992d352e",
+    "reports/generated/clean-checkout-20261024/refine.log": "sha256:dc8d0fbf42d30dc0d2fcdf58d9d7d3930c54216d4b9acaf4b4c39960e905c44f",
+    "reports/generated/clean-checkout-20261024/remediation.log": "sha256:1a2cc9802490c4e55a44794ae22020597c410a1ff156a22e9d17e65edaf1ae7f",
+    "reports/generated/clean-checkout-20261024/seamless-download.log": "sha256:c4b5b342fdf215a3d0857dcc1aa605480c2719ce907ad7e1b614af5697d93976",
+    "reports/generated/clean-checkout-20261024/toy.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reports/generated/clean-checkout-20261024/wraith-download.log": "sha256:b9c38c1666d37846f9530b9f42cc75df50cb31c0369b20474aaac3b5269ed3ca",
+    "reports/generated/clean-checkout-20261024/wraith-import.log": "sha256:ada100aab10cb91b648e7b916c621796d4cbdd1d560bd4d8948a681326a1776c"
+  }
+}
