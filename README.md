@@ -13,6 +13,7 @@ PHANTOM còn lỗi đầu vào; đối chứng BloodHound CE live đã hoàn t�
 [Bộ đối chứng cố định và cách chạy](reports/neo/bloodhound-comparison.md)
 ghi nhận trước sửa: BloodHound 22/24 và neo 20/24 cặp có đường, cùng các bypass sau can thiệp.
 [Bản sửa LocalGroup theo host](reports/neo/localgroup-fix.md) khép lỗi nhập liệu đã đo: neo đạt 22/24, TRUSTER→DA/EA có C=3, giữ nguyên các kết quả cũ.
+[Kiểm lại remediation sau sửa](reports/neo/remediation-post-localgroup.md) xác nhận ba kết quả cũ; TRUSTER còn bypass qua UNCON khi chỉ bỏ session BM trên EXTCA01.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
@@ -107,7 +108,7 @@ kết quả vẫn là best-found, không tự nâng thành minimum đã chứng 
 
 ## Các use case
 
-Use case 1, một máy đã bị chiếm với quyền local admin/SYSTEM:
+Use case 1, một máy đã bị chiếm với quyền local admin (preset local-admin-only):
 
 ```sh
 .venv/bin/python -m scripts.neo_domain \

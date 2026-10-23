@@ -652,7 +652,7 @@ techniques:
     target_kinds: [User]
     action_required: true
     prerequisites: [source_admin_control, session_fresh, session_present, credential_accessible,
-      session_identity_usable, target_enabled, network_kdc_reachable, authentication_accepted]
+                    session_identity_usable, target_enabled, network_kdc_reachable, authentication_accepted]
     effects: [usable_identity]
     failure_conditions: [host_not_controlled, session_stale_or_protected, identity_not_reusable]
     expected_telemetry: []

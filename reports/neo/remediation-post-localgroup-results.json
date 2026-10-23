@@ -1,0 +1,316 @@
+{
+  "base_commit": "e22fd59069f4ff247ec2874ad0e5e6e8ab94d679",
+  "budget": {
+    "max_expansions": 4096,
+    "max_paths": 10,
+    "max_steps": 12
+  },
+  "cases": [
+    {
+      "case": "rodc-membership",
+      "pairs": [
+        {
+          "after": {
+            "C": 3,
+            "expansions": 23,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+        },
+        {
+          "after": {
+            "C": 3,
+            "expansions": 23,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        }
+      ],
+      "relationship_data_digest": "sha256:4dce0075a7175514d87ae6c3b2b8757f14357c687bb63251f44ac1c3b70a96f6",
+      "restore_verified": true
+    },
+    {
+      "case": "extca-session",
+      "pairs": [
+        {
+          "after": {
+            "C": null,
+            "expansions": 3,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "reached": false,
+            "status": "blocked",
+            "truncated": false,
+            "unknown": {}
+          },
+          "before": {
+            "C": 2,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 404,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+        },
+        {
+          "after": {
+            "C": null,
+            "expansions": 3,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "reached": false,
+            "status": "blocked",
+            "truncated": false,
+            "unknown": {}
+          },
+          "before": {
+            "C": 2,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 404,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        }
+      ],
+      "relationship_data_digest": "sha256:4dce0075a7175514d87ae6c3b2b8757f14357c687bb63251f44ac1c3b70a96f6",
+      "restore_verified": true
+    },
+    {
+      "case": "bm-da-membership",
+      "pairs": [
+        {
+          "after": {
+            "C": 2,
+            "expansions": 25,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 2,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+        },
+        {
+          "after": {
+            "C": 5,
+            "expansions": 49,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 2,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        }
+      ],
+      "relationship_data_digest": "sha256:4dce0075a7175514d87ae6c3b2b8757f14357c687bb63251f44ac1c3b70a96f6",
+      "restore_verified": true
+    },
+    {
+      "case": "single-session",
+      "pairs": [
+        {
+          "after": {
+            "C": 3,
+            "expansions": 23,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+        },
+        {
+          "after": {
+            "C": 3,
+            "expansions": 23,
+            "minimum_proven": false,
+            "no_path_proven": false,
+            "reached": true,
+            "status": "success",
+            "truncated": true,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 200,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        }
+      ],
+      "relationship_data_digest": "sha256:4dce0075a7175514d87ae6c3b2b8757f14357c687bb63251f44ac1c3b70a96f6",
+      "restore_verified": true
+    },
+    {
+      "case": "both-sessions",
+      "pairs": [
+        {
+          "after": {
+            "C": null,
+            "expansions": 34,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "reached": false,
+            "status": "no_path",
+            "truncated": false,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 404,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+        },
+        {
+          "after": {
+            "C": null,
+            "expansions": 34,
+            "minimum_proven": false,
+            "no_path_proven": true,
+            "reached": false,
+            "status": "no_path",
+            "truncated": false,
+            "unknown": {}
+          },
+          "before": {
+            "C": 3,
+            "reached": true,
+            "status": "success"
+          },
+          "ce_after": 404,
+          "ce_before": 200,
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+        }
+      ],
+      "relationship_data_digest": "sha256:4dce0075a7175514d87ae6c3b2b8757f14357c687bb63251f44ac1c3b70a96f6",
+      "restore_verified": true
+    }
+  ],
+  "ce_inventory_multiset_unchanged": true,
+  "ce_paths": 28,
+  "ce_requests": 32,
+  "date": "2026-10-23",
+  "diagnostic_runner_sha256": "sha256:a919d6b30857aaba340b5a1f8daf1d58f80365d81082cfb326c5119c3724efe1",
+  "evidence_manifest_sha256": "sha256:57730fe3ce636db14c1818107eafbf2bbd96d62aaed999ff4c4445f8e969b717",
+  "evidence_root": "reports/generated/neo-remediation-post-localgroup-20261023",
+  "fixed_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "fresh_pack_sha256": "sha256:37883ae40279808e9b5a5c5e29ec9afa0774142ef42a5bd2a7c71b6ea9e0b8a5",
+  "graph_parity": {
+    "bh_common_node_scoped_triples": 757,
+    "bh_core_nodes": 160,
+    "bh_nodes": 933,
+    "bh_only_common_by_kind": {
+      "MemberOf": 2
+    },
+    "bh_outside_neo_nodes_by_kind": {
+      "GenericAll": 2344,
+      "MemberOf": 2,
+      "WriteDacl": 1004
+    },
+    "neo_nodes": 150,
+    "neo_only_by_kind": {
+      "AdminTo": 11,
+      "GenericAll": 1,
+      "WriteDacl": 3
+    },
+    "neo_scoped_triples": 770,
+    "shared_ids": 149,
+    "shared_triples": 755
+  },
+  "integration_parent_commit": "ec4bfdf8f12a5535cda319a7c3f81b2ce529fe12",
+  "limits": [
+    "Fresh foothold for each independent edit, not credential revocation after prior theft.",
+    "No-path proof applies only to declared snapshot, catalog and scenario; local admin does not include machine network identity.",
+    "C is conditional ordinal effort and best-found; successful queries hit 10-program cap.",
+    "TRUSTER follow-up is a diagnostic selected after inspecting the corrected graph, not added to the fixed comparison cohort.",
+    "No full suite, full-domain rerun or blind dataset evaluation in this pass."
+  ],
+  "original_three_outcomes_and_C_unchanged": true,
+  "raw_inputs": {
+    "files_verified": 31,
+    "manifest_sha256": "sha256:27a13df4e12582b42b921411150cd0c9ba2b4e3356f0a250fcd992b3cb823062",
+    "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227"
+  },
+  "snapshot_sha256": "sha256:bc27b352825266a51607d9b3b6ee322e4d56ee64626a457ba5853c0665c2680b",
+  "validation": {
+    "catalog_yaml_change": "one continuation-line indentation fix; parsed YAML equality verified",
+    "diagnostic_E2E": "Final runner passed with Python -O; every retained native witness replayed by compact_witness",
+    "focused_tests": "193 passed in 5.92s after integration (includes catalog reuse and remote minimum/refinement tests)",
+    "production_engine_parser_policy_rating_semantics_unchanged": true,
+    "quality_checks": [
+      "ruff check .",
+      "ruff format --check .",
+      "yamllint .",
+      "scripts/check_repository.py",
+      "scripts/check_contract.py",
+      "git diff --check"
+    ]
+  },
+  "version": "neo-remediation-post-localgroup/1"
+}
