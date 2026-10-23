@@ -67,6 +67,25 @@ Exposure chọn `neo_guided` khi dùng profile neo; catalog ngoài nhóm techniq
 sẽ ghi rõ fallback FIFO. `--search-order fifo` giữ cách tìm cũ.
 Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
 
+Để tìm đường rẻ hơn sau khi đã có witness, chọn `neo_refine`. Chế độ này dùng
+guided trước, rồi tìm cải tiến C trong phần ngân sách còn lại; chỉ giữ cải tiến
+nghiêm ngặt và không làm mất kết quả tốt nhất ban đầu. Ví dụ một nguồn SEAMLESS:
+
+```sh
+.venv/bin/python -m scripts.neo_domain \
+  --snapshot reports/generated/neo-run-001/snapshot.json \
+  --source S-1-5-21-1271839998-3495686680-2211690266-1815 \
+  --search-order neo_refine --max-paths 10 --max-expansions 256 --workers 1 \
+  --output-dir reports/generated/neo-refine-demo
+```
+
+[Kết quả kiểm chứng](reports/neo/refinement-results.json): cùng cap 256 expansions,
+giữ 22/24 cặp có witness, hai cặp SEAMLESS giảm C=2→1 ở cả cap 1 và 10 witness.
+451 test liên quan pass; đã replay 528 chương trình thật và chạy CLI/worker E2E.
+Chưa chạy full suite. Refinement tốn thêm lượt tìm kiếm; mặc định vẫn `neo_guided`.
+Chỉ áp dụng với bảng `neo-c-v1` chuẩn và techniques neo hỗ trợ. Khi còn cap/gap,
+kết quả vẫn là best-found, không tự nâng thành minimum đã chứng minh.
+
 Đối chiếu bộ 10 query trên snapshot vừa dựng; đổi `--max-paths 1` thành `3` để khảo sát nhiều đường:
 
 ```sh

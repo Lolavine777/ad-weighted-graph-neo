@@ -71,27 +71,11 @@ def load_effort_profile(identifier):
     }
 
 
-def bind_effort_profile(query, graph, profile):
-    if profile.get("profile_id") != NEO_PROFILE_ID:
-        return bind_reset_effort(query, graph, profile)
-    if profile != load_effort_profile(NEO_PROFILE_ID):
-        raise ValueError("Effort profile definition changed")
-    updated = deepcopy(dict(query))
-    if updated.get("rating_resolution") is not None:
-        raise ValueError("effort_profile conflicts with explicit rating_resolution")
-
-    from src.engine.query import materialize_query
-
-    material = materialize_query(updated, graph)
-    if material.semantic_goal is None:
-        raise ValueError("neo-c-v1 requires a typed target_goal")
-    if not material.scenario_reference:
-        raise ValueError("neo-c-v1 requires an explicit scenario_reference")
+def _neo_records(graph, material, profile):
     actor, target = material.initial_actor, material.target
     context = material.runtime_context.authentication_context
     participants = [graph.node(n) for n in (actor, target, context)]
     domains = {str(n.get("domain") or "").strip().casefold() for n in participants}
-    audit = {"profile_id": NEO_PROFILE_ID, "profile_digest": canonical_digest(profile)}
     if (
         len(domains) != 1
         or "" in domains
@@ -99,12 +83,7 @@ def bind_effort_profile(query, graph, profile):
         or participants[0]["kind"] not in {"User", "Computer"}
         or participants[2]["kind"] != "Computer"
     ):
-        updated["effort_profile_metadata"] = {
-            **audit,
-            "status": "not_applicable",
-            "reason": "Requires same-domain source, typed goal and Computer authentication context",
-        }
-        return updated
+        return None
 
     domain = next(iter(domains))
     node_ids = sorted(
@@ -145,6 +124,59 @@ def bind_effort_profile(query, graph, profile):
                 },
             }
         )
+    return records
+
+
+def validate_neo_refinement_profile(material, graph):
+    """Cost ordering uses precisely the bound neo rubric, without custom work rules."""
+    profile = load_effort_profile(NEO_PROFILE_ID)
+    expected = _neo_records(graph, material, profile)
+    config = material.rating_resolution or {}
+    registry = config.get("registries", {}).get("effort", {})
+    scope = config.get("scope", {})
+    if (
+        expected is None
+        or not material.scenario_reference
+        or set(config.get("registries", {})) != {"effort"}
+        or registry.get("data") != expected
+        or registry.get("sha256") != canonical_digest(expected)
+        or config.get("policy") != "production"
+        or scope.get("policy_id") != NEO_PROFILE_ID
+        or scope.get("work_boundary") != "intra_forest"
+        or scope.get("scenario_id") != material.scenario_reference
+        or scope.get("snapshot_id") != graph.metadata["snapshot_id"]
+        or scope.get("foothold_node_id") != material.initial_actor
+    ):
+        raise ValueError("neo_refine requires the unchanged bound neo-c-v1 profile")
+
+
+def bind_effort_profile(query, graph, profile):
+    if profile.get("profile_id") != NEO_PROFILE_ID:
+        return bind_reset_effort(query, graph, profile)
+    if profile != load_effort_profile(NEO_PROFILE_ID):
+        raise ValueError("Effort profile definition changed")
+    updated = deepcopy(dict(query))
+    if updated.get("rating_resolution") is not None:
+        raise ValueError("effort_profile conflicts with explicit rating_resolution")
+
+    from src.engine.query import materialize_query
+
+    material = materialize_query(updated, graph)
+    if material.semantic_goal is None:
+        raise ValueError("neo-c-v1 requires a typed target_goal")
+    if not material.scenario_reference:
+        raise ValueError("neo-c-v1 requires an explicit scenario_reference")
+    audit = {"profile_id": NEO_PROFILE_ID, "profile_digest": canonical_digest(profile)}
+    records = _neo_records(graph, material, profile)
+    if records is None:
+        updated["effort_profile_metadata"] = {
+            **audit,
+            "status": "not_applicable",
+            "reason": "Requires same-domain source, typed goal and Computer authentication context",
+        }
+        return updated
+    actor, target = material.initial_actor, material.target
+    scenario, snapshot = material.scenario_reference, graph.metadata["snapshot_id"]
     goal = material.semantic_goal.to_dict()
     updated["rating_resolution"] = {
         "version": "public-rating-resolution/1.1.0",
@@ -183,3 +215,22 @@ def bind_effort_profile(query, graph, profile):
     # Reuse the existing C-only selector. Missing P/I do not exclude these paths.
     updated.setdefault("top_k", 3)
     return updated
+
+
+def neo_history_cost(history, next_action=None):
+    """Exact neo C union in one fixed method/authentication/scenario context.
+
+    The query boundary excludes custom work/preparation rules. Passive steps
+    add no unit; zero-cost active units remain valid. Final public scoring is
+    still authoritative and independently checks every returned program.
+    """
+
+    def work(request):
+        return (request.technique_id, request.actor, request.source, request.target)
+
+    paid = {work(step.result.request) for step in history if step.result.technique.action_required}
+    if next_action is not None:
+        request, technique = next_action
+        if technique.action_required:
+            paid.add(work(request))
+    return sum(OPERATIONS[key[0]][1] + OPERATIONS[key[0]][2] - 2 for key in paid)

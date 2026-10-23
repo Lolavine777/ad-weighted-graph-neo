@@ -1,0 +1,2390 @@
+{
+  "version": "neo-refinement-results/1",
+  "date": "2026-10-23",
+  "base_commit": "6055cae78448e61684312daeaa148d7c3e84e78b",
+  "algorithm": "guided seed then repeated strict C ceilings, one shared expansion budget",
+  "default_search": "neo_guided",
+  "source_pins": {
+    "configs/attack_semantics.yml": "sha256:41c8bacd4b1909ffcc5511c82ea8822b97ced5ef15e73e75311744e0213d0850",
+    "configs/contract.yml": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "configs/targets/seamless-v2.json": "sha256:d58d3e692c24df603371aef78652490ada3cd48df9c65299a1364abfceffbd63",
+    "docs/research/batch-query-request.schema.json": "sha256:428b0e31393a42c19f3fb50db7ea58f17f444d37955fed11dbb30cd7e39c7201",
+    "docs/research/batch-query-result.schema.json": "sha256:f2d6549609953ca200eb8b88c3f3799e5d74a2f7690825533af48507580c96b2",
+    "docs/research/target-manifest.schema.json": "sha256:a70faa520f6f094f42c17f59179d4d4bf93ff92cf1a8fc4accff840c72cf1bda",
+    "requirements-tests.txt": "sha256:a603cf388e022db0a759e83deca59669d0ba70d8eff4eb8dd066f8c5e7d9525d",
+    "requirements.txt": "sha256:8cc5d78b3d9261d9b800be1e36b947843b2cb5bd2b693280aade4dbfad99f89f",
+    "scripts/check_contract.py": "sha256:10e223f8c5d22af3d6ca84851f812e0eae5dc9b8c7b68344fea916b79caf43cc",
+    "scripts/research/source_goal_batch.py": "sha256:d064b8647818897b4898c9e89494834647a2e5c7fb8af570b28d232645265bbc",
+    "src/__init__.py": "sha256:be6500a9bf29b09aa81cb84abe1bca4424a106eb9303a4d116d4b7ec4cf4fe44",
+    "src/data/__init__.py": "sha256:7c416fe27da09eedffab1061c88ad906230c2f045f6943ea6fd9e56a457ae495",
+    "src/data/manifest.py": "sha256:1833056b49caf578e2728c51a4dd4603ff999bb4abe6c58f720357f7031ef192",
+    "src/engine/__init__.py": "sha256:78208f2c7c6f0c4f46d5f05e8f0cf356b203d414cb90209bd8c27a8a8cde87de",
+    "src/engine/__main__.py": "sha256:7b28fccfcc6cd621f444809085ad658b176fb9425e660c49e86ae0117d860b5a",
+    "src/engine/batch.py": "sha256:4d4a10bf5d028f7fc14b69a6ec24073450f77c7595f50a3ac84001996e5aebc0",
+    "src/engine/batch_cli.py": "sha256:aa4b24d68acbd96d62545c11b263d8df320b7ad4755e1b11c531d9be7e6c371c",
+    "src/engine/exploration.py": "sha256:a3561d42037eaf4b44dd7f06bd593128b32ff66940cc61ce822be3ff1dd2cb5f",
+    "src/engine/graph.py": "sha256:9a9e00c13fa4bbeb2e3fe921249d624be0a850f99913d1b6e3697053a28c8751",
+    "src/engine/program_identity.py": "sha256:dac98bad8af6b6c6ffee6c53b2d52540f6daea6ae45348f0e128d6f8cb232740",
+    "src/engine/query.py": "sha256:3508eeedb008742537d5b4a9283b7daf21df8910ba08001c45253bbbf9ae00da",
+    "src/engine/query_cli.py": "sha256:8fcbec39aec8d869eb51f96acdfc1f862b1785c65fca4fe887ff1e20bae784a3",
+    "src/engine/query_report.py": "sha256:d66af0b294719ccca71dab7de9d8bb4d3c345cfd9a285fb2510026cc41b0f888",
+    "src/engine/ranking/__init__.py": "sha256:6995963b8df9aa2f5c44f7f7d9996039d31965301fb3a1dba96202e411f8a6d9",
+    "src/engine/ranking/adapter_145.py": "sha256:5461ef092c04b4e8ed0338950f2a0081c671f06dc889e802e279468d535c4c54",
+    "src/engine/ranking/assessment.py": "sha256:dd46fafa1995e907c4cd562257f0e49067b293009995f6107cc285296f8b1d1f",
+    "src/engine/ranking/cli.py": "sha256:b6717ec5bc2d50f406736ab8bac4b66280ecbb5f55c1abdcaf3ac38474a49e4f",
+    "src/engine/ranking/effort_profiles.py": "sha256:63b8486429c6005691f1dd5d85295179a4103c869a8383eee6de880a14dccb91",
+    "src/engine/ranking/effort_registry.py": "sha256:03b7dfede1f1975e4f246b9efbc60f414a963814a0959bc9409966ca72b5ed23",
+    "src/engine/ranking/facts.py": "sha256:476d434fb0adfe383d22a2e6577e37ad7cd5c0d4028e16e225e13a8a38047fd1",
+    "src/engine/ranking/frontier.py": "sha256:06ff84f3db154dfaf04b5477443a16842232244b7a8badf1b05e5593507f2140",
+    "src/engine/ranking/likelihood.py": "sha256:7994852a6e4aa75724cf933755ec1fdb21b6b11b62311eeaf1a87aec1b0a381e",
+    "src/engine/ranking/models.py": "sha256:936761b7e1f246f04fad4c36e8bd62ed2bc5d2fbf02f7cfae592f6d7eb144377",
+    "src/engine/ranking/orchestration.py": "sha256:b234540e55933d8879f302e760dfa31db5758dc018d7d6ffe223af44180d8ed3",
+    "src/engine/ranking/replay.py": "sha256:e2671acde1ad9d97784f5ed2020446bd609d47c7a989551bcf8099648e9c7e15",
+    "src/engine/ranking/reset_effort.py": "sha256:50a75eb6b848f74f3083e01f5fb3805995f4d56b9c14eb583890789cdec21eb1",
+    "src/engine/ranking/resolution_service.py": "sha256:62599bdc26dd9e553bccab59ca531b419193c5f0a1b74dcc5c015905a90cc1b9",
+    "src/engine/ranking/resolver.py": "sha256:b03a2569c28df8626af26f99dbc8f2deb18f95aa1cce37e94601227230c22240",
+    "src/engine/ranking/validation.py": "sha256:e9b216fdde0ec0529c888c0c46df1de4b776c0f2c17e3030cff747c11b1283aa",
+    "src/engine/ranking/verification.py": "sha256:0a9054ca62f548d806a7a45a1446cb2ec5cd4c4ada8d65088370d4c760642e61",
+    "src/engine/remediation.py": "sha256:7f4efe55643581dbce981423cd0cd457df8570f7b871c9bad5753b1f92b3c096",
+    "src/engine/remediation_runner.py": "sha256:2522f7915af51fc6aad5e1894dd09caaa61375a5bbfc6423c05b321b4960f858",
+    "src/engine/search.py": "sha256:bb1836d0937e34b8b0930b67d1149166d01dc73381867e9768959be5f6d8cfc2",
+    "src/engine/semantics/__init__.py": "sha256:bbe9296904e45522947ec3294b239a2f780b24851bbfb877210273406d86ed2b",
+    "src/engine/semantics/catalog.py": "sha256:f4a618e6d9895f8d1b10bb0e694c146aa96085fc577a4d02817ff104bf26d99b",
+    "src/engine/semantics/credentials.py": "sha256:51e3ee7f004ea3cf3e6c3d14043915dd58908540ee0ce26cc6520b82792d071d",
+    "src/engine/semantics/evaluator.py": "sha256:20a198b3966aba00cc5d919cc195bf8f46cd9160f4898c7e9debd367ced1efa9",
+    "src/engine/semantics/evidence_view.py": "sha256:a137bd9732dd049d011dc35dba7c27dfeebaf17476fd2c1cada0f7ce9a6fb41b",
+    "src/engine/semantics/models.py": "sha256:5b1d8f2ae1c087b4d75d6692de0ec7d0fd33e510bca73945e0334421b78a8c05",
+    "src/engine/semantics/projection_runtime.py": "sha256:b0f370a4dfde757b62a0d65761f492dcfb849be2567cd7a1a0dc5b35f719d91b",
+    "src/engine/semantics/rbcd.py": "sha256:c389a9d96a88c54aa916b21f61610b77ebbcbe64540ce26e3c669605f5f01732",
+    "src/engine/semantics/rbcd_types.py": "sha256:e818408c9404754cd7a67b6e39d302154bb71be8f01d78e10cb97f9163e08067",
+    "src/engine/semantics/scenario_policy.py": "sha256:df7fbe47510f103f1e97cd31358265f29baab6c72777dcba85f811ad464d6093",
+    "src/engine/semantics/session.py": "sha256:5e51b61502667055be63ebef7c7209665a902f0bebf0964facf1cc6000c397c0",
+    "src/engine/semantics/state.py": "sha256:2ba649c154682920c3387cd29db9abae67e885f656c664042b009882398bb59b",
+    "src/engine/semantics/transitions.py": "sha256:1519a5cfb891536a3f5e1d948a81e622f9b9029d7a23a3a7e10ceae16403a3e8",
+    "src/engine/semantics/week3.py": "sha256:3b42af0df172af619677749b7ea8d6f7e697a373949c5ee3883f69281883ab3b",
+    "src/engine/top_k.py": "sha256:e2e2eb4e85ba5bc018326d7a1e98e20fe58bc847fcc9017d40018dd44f9583e0",
+    "src/parser/__init__.py": "sha256:12dcd41fed8109dd444c0e13806a33a909a6651c172f43fdf9f39e1b4e801cc3",
+    "src/parser/adapters/__init__.py": "sha256:f34eca65d48731f73562d43c4d57a861737804fec81da0d406217644f854f0d4",
+    "src/parser/adapters/bloodhound_v3.py": "sha256:63e910eff1b88067133876412011f8ba1bc537bea5e1e10f749cbcc05cc20a71",
+    "src/parser/builder.py": "sha256:c8d3998de6d4ae521b65d95e9f478bef254c4cd72d170a909468dbe45622fdc1",
+    "src/parser/cli.py": "sha256:61ee3729ffe44b5cbbd8b70ce5fc35efb7a14dfd48b48834ecbdb5a3a8295a12",
+    "src/parser/identity_fields.py": "sha256:70ee89607c2506a3c8997ee4249f1e810cf99b6c5ef4b5c361ab0d0b841d0cac",
+    "src/parser/inference.py": "sha256:23b257becd2c6fcc3ae67cb93a2b1d7ee4f9fcadcace3c28bfa2ba159c337823",
+    "src/parser/lineage.py": "sha256:2a9011c98a3017fb3861157b99269ffd3b879e5a4a841933b28645c1fdd1a9c2",
+    "src/parser/loader.py": "sha256:aa69c287a5cae0ee1ae44c59e14d328522d8d598ee3652e60c949d8ee87b0fe5",
+    "src/parser/normalizer.py": "sha256:29beeb63c2513fb0b950595195862fd5114c823eb412add72396bbe8cc9b7819",
+    "src/parser/reconciliation.py": "sha256:a687861a2eb575b183d928d445ab65f1c13f647d93ab318462c7cd80c842973e",
+    "src/parser/scopes.py": "sha256:5a76282616933410d8da24e3a03dc311347b7c7d11136b187aba41cdf15a97af",
+    "src/parser/serialization.py": "sha256:4cd6dd06af3b596a1b13df6c34b60bb0b40d92bd1cfbfa13ca6766b4485fe50e",
+    "src/parser/snapshot_facts.py": "sha256:6bc8567dcb49c6f0995cc03e891f9bcdeb5883c752fab20c714f5878e2d853d2",
+    "src/parser/well_known_principals.py": "sha256:41c038d412d3d3dc662c463dc253f6527d00baae0d8b7055808301d80627ffd8"
+  },
+  "probe_sha256": "sha256:4bfad83e8a65373d03c52eeae6ed6f5795d3cd3a0ba43b31d440aabb12cd3dbc",
+  "domain_runner_sha256": "sha256:8c32a96c3bbd2dd15581f5d6fa55ab61f9e08b158f10cdc0045dd44585446499",
+  "fixed_pack_sha256": "sha256:187813032c5ed8f58a79c33549b14bfccf23d1ec7fb8b8a8208d28b02599e229",
+  "snapshots": {
+    "seamless": {
+      "AdminTo": 9,
+      "edges": 56367,
+      "nodes": 3370,
+      "sha256": "sha256:6a6408f056f42a8d062678ed816c0ee16696062852b17036c518ae4d6878e506",
+      "snapshot_id": "sha256:e0601d763eeea285d268ec9e468d321c50c9d7faba53c8e7442a2fcc4159c812"
+    },
+    "wraith": {
+      "AdminTo": 22,
+      "edges": 770,
+      "nodes": 150,
+      "sha256": "sha256:ae9c00455229bc6716299970ebe08155ec64a790abc9dbacec5602b6b825c3b6",
+      "snapshot_id": "sha256:10d29ec2b278ecf0b12e51dfaed95333f13c5d14933d3720500f38d6914b2227"
+    }
+  },
+  "budget": {
+    "max_expansions": 256,
+    "max_steps": 12,
+    "max_paths": [
+      1,
+      10
+    ]
+  },
+  "unique_pair_counts": {
+    "1": {
+      "unique_pairs": 24,
+      "guided_reached": 22,
+      "refined_reached": 22,
+      "lower_C": 2,
+      "lost_witnesses": 0,
+      "worse_C": 0
+    },
+    "10": {
+      "unique_pairs": 24,
+      "guided_reached": 22,
+      "refined_reached": 22,
+      "lower_C": 2,
+      "lost_witnesses": 0,
+      "worse_C": 0
+    }
+  },
+  "cohort_query_runs": 104,
+  "cohort_programs_replayed": 528,
+  "pairs": [
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+      "source_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 20,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:a0b974c261fb79e5d2cd3c38eb87ade1b43a21c018405f51119ffaed6a4011fd"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:9d294c4058e606abdd91fccbee1aa89ccc66d87f3cadeac5f2fba84ff92d5f85"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+      "source_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 32,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:850092aa96a1f2abe049bc153bd9a70bccfc4edb1e14da083eb58e86bcdd86ff"
+      },
+      "refined": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:18677bf54f235f6b0f07b22ad627edf946d76631b9ebd6e468ede515139c6d74"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+      "source_label": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 14,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:028c3863c30e9afe886f44a463642381025a3ed201bbd28e733843c47e23d750"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:08621d15570238dd3182404e58f05b8d854ff1e8ec67b57f3e8ed3183409ef8c"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+      "source_label": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 25,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:1294a4642b032e284f18c063ec0a8d9a60f73e20ffb0d104bb7a7e916dc96b17"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:2ade6a9d360ea6b393886c0855bbf5b1e6c3e9d91e89c911f990001c91b9b4a2"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+      "source_label": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 14,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:4f750f70b0f9812b6f0310a262c92b857d798cdf8f33828f5b2a41d1ff03a92a"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:10232dcbc6679dbf8f8a29f6ba3d38c3327d3ac52f21b8249f862a4bc0d98e0a"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+      "source_label": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 25,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:d10dfc2fe382d712e4912c83b1ae3e0345a623b8e5877cbcea74f9764a9afbbc"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:f9f1060be09dd65a774a9eb3362cb7481c0de4f8fae80a15bde591b9289b6bd0"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+      "source_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 18,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:2b0de3bf7aef00a1cfef07cb49f6feac88e7363e7d462c4517659dce0adb57e4"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:2d837676451b4ad0c226b5a217b4c84775599b4cf866848658fc52b4d058dad4"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+      "source_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 16,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:ab4e82d903424855a8efd9c41d7ef01b14f47b320295f5c06bad7798f87fe9ca"
+      },
+      "refined": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:6683155cf1d63721fb1fe3be3d0330b763f673476972bfc9b5d4a7c3ba97fc56"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+      "source_label": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 14,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:4c29527483f585486efd7b20cd49c17d52f454e2218f788596a1b729ea63ec68"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:fbbd08b4f88c826054e45724735d6d780a8285b54584bf749bf1536df1b6b3a6"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+      "source_label": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 1,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 24,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:e8b9b29154c55be98601625140b247509730e940e7da335581c07fead3477bde"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:ee1e9a2afa48b119ca910beaddbc3617fcc2075fbb959f4db674a4fafe5cb76e"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+      "source_label": "EXTDC01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:bfe3e3f51f5da82c15bc3956a8532d1e3805531f41a9aec31e6edcdba59c2dac"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 4,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:44f95b6e278cc9cbe51f8532ec68c8064e05444d901174d8b200aca2c37bcd2a"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+      "source_label": "EXTDC01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:26baeba795c8a3990fcb9490e194680425d55edf3a53050e2c4fa1a7d66d4eac"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 4,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:1194a6dcb10623ccad8461bcae389466a608b0e5411e218dced03f80714a2628"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+      "source_label": "XADMIN@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 1,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:fd73f6c65782b218dea693ee4007f68145b4dc4346b62ff217e3681c0538f696"
+      },
+      "refined": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 1,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:d96311295b74493aaab4956607b1fb74af2f2d28c913bdc0f409721d6c4c5cd4"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+      "source_label": "XADMIN@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 1,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:457648e3326d99935fc08b6439fb56148ab41268513d0045be9bcb48283f9bf4"
+      },
+      "refined": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 1,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:5d78aef56029ee8a0e10c20c232e1a46f265254d6de3b1034b29d6d3db93ed79"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+      "source_label": "RODCMANAGER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 7,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:1dc58988a602201ebcf549ea1a343e054b792eef43995d3434dbb5c1d094b6ef"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 15,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:079a38f2c03d8dbcfdff49a53bfb0f69749b794a6323bce5e02c6841b69e8fa2"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+      "source_label": "RODCMANAGER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 7,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:5a479fab31b46af07009d01bcc88dded4922fe3e9d6879f323862ba1933121d4"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 15,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:69c650729f8102542a06b142ba6ffb3934a34619cbc104332797231095a35b3c"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+      "source_label": "EXTCA01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:d82c1052825576b714fdd9672839fd19f1e365da37f8ec9c9e8975d909c3e81e"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 5,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:f5dd5f056ad57f2230fcffa01edd66647aaf87be144e0d8f2570ad66b056ee28"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+      "source_label": "EXTCA01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:05e025ab6375f6795fe42581dbaf531084ca927294963113ec4803b792e9989b"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 5,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:26c3e98973ccb8b8cdaa890e77481a98a26362fae1a4ef77e32ac3a7e50904b9"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+      "source_label": "UNCON.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:0bb800678b985aee35052f321cd0c2a70f9d6392dafa9fae9d1d4abdb356b17e"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 3,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:169f8cd6232e524052921cd0bdbcbcaff85cdf33d0203502d89cfd1ef9b877e0"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+      "source_label": "UNCON.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 2,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:7eb4425eee067084ea575dab86dd31504f6333a32c3600f1295fe656ec887fd1"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 3,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:ea7e267dd78efcdc07f7adc22bd936af750382692ae58e1d1e30c6241a921fe0"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "source_label": "TRUSTER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 4,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:837db81c504209204a732fdeb271100963d8359c597b1611f21f51297a3ad3d8"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 38,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:d0950963d0ef373c564b9d67154343ecd484386991ebee2db18a25b3bc9ff9c7"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "source_label": "TRUSTER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 4,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:f46104c268e5f783612de4cb9a2c5fea258dff3787884ee861df514647fb7c4a"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 38,
+        "programs": 1,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:177e8d0d1a11f0eeabf56c1d2a41205f75a0b9588f4042f3b88f6315ebff78d0"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+      "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:e1f34055c046be0ac2992fbe81186c5e41f6231bedc098a767b7fa858c258e10"
+      },
+      "refined": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:362eaab1f3f9910342b365f93678a5783a1756fab425a7855dade9120a04e814"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+      "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 1,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:0f165b54f5fa45619bb5c769ac4dc876af86afd7d42855f9b5c15e1368cfc0d9"
+      },
+      "refined": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:cff8d2bde1eb21800f83ed7e2810637e2103a1c4cbe6c59c87244b6913198d9d"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+      "source_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 109,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:8b4ed48a89455acd9597fb378ccc68f5ebdcf5448a0decf64239c00f1382ca6d"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:4254a605315220e143cba70c007e9acaed86cdab301a05cb44ae5aeab1f5847a"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+      "source_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 63,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "step_limit_reached",
+        "query_sha256": "sha256:490b867dde3c7ae0f6b74b3d7e2dfc2c8575e5af4a60b320a02873d002607b66"
+      },
+      "refined": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:567250f4212a679897ec3e40874040a3b644388b9f8d40ca3548ace6ff3febf6"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+      "source_label": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 103,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:a799fe63d5f711ae28a596a592a334f0b1cb28e07f8daee6144fa1e5caab145b"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:fd3912492d5a5035945915445f3ad0649b91ef42cf10d6022c67ead79b728df2"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2091",
+      "source_label": "BENNY_LONG@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 51,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:9602228d0ba1e5e6eeb0d73ecbd14e620093879a0544d28f01383cb04d6a3990"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:38b0ee418a83ab441ed48c4338d7064dc634f4c31b578a651f08c2966e454c95"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+      "source_label": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 103,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:3b2a2db0b792dbe6278544b54d161bf38d4a95bca085842d0d7450c65672b24d"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:c871b8d4266e0c9da999d7fe189af75ae350a76cbe231bd055373979090afbca"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-2976",
+      "source_label": "EVAN_LOTT@SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 51,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:bbefc031b9f8c788a063453f43f1c12a23abbc424196b2637993f919bbcc1b80"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:a97cce00baa5c2aae4533734ddbd2491aebcf61a36b47834bee95331afe6854c"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+      "source_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 55,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:4beb52cea7fb7a2c0a7bb1f905a0950f8bbc89d3e564ee50d6230ca31b688016"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:ea7d5085f8e1afb63e9325210b74b86841d42baff71acc6beda0e0b5d72b53c5"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+      "source_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 42,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:077a489cd2037c83b25318c1f5179e2429c78ac25724a8eee1d61357f79cab42"
+      },
+      "refined": {
+        "C": 5,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:4eca72cb329b0929e79f3f7bef839ae583d3d90e8a356c88074ee4dd73612ef1"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+      "source_label": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+      "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 103,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:2fcf1dfabd08fed1121bb58047aeae91c68c02c6dbe8dbace95624663462ca24"
+      },
+      "refined": {
+        "C": 1,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:7b17708977425e70e01fa88f1e7e9a02feed7cf349fd082fa6b113ceaacd129b"
+      }
+    },
+    {
+      "source": "S-1-5-21-1271839998-3495686680-2211690266-4118",
+      "source_label": "OGCWAPPS1000000.SEAMLESS.INTERNAL",
+      "target": "S-1-5-21-1271839998-3495686680-2211690266-519",
+      "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
+      "max_paths": 10,
+      "strata": [
+        "seamless"
+      ],
+      "guided": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 50,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:41d5bd95c6c03abf2954f59b5aea1c14aeaddb42b3d73e4f9c6ff20a96c88e6a"
+      },
+      "refined": {
+        "C": 4,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:57da29337fdba0a3d90296cb316c74900ac36d7d00c6a4f3bab126d003e7b6c1"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+      "source_label": "EXTDC01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:2f7b53c6146b269f48d24580177962c8f4e745c89bf12aaa39b5cb4ebc5777f9"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 24,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:8dd84b70a40e0f2730a2db4e035e49103bcab67ca7add17f93846112e8e39e33"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+      "source_label": "EXTDC01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith",
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:23ec5bde89fc7d62040cf9d4092a6c0ee5b2f88f0d9316506a45131252e48112"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 24,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:773d4a978587cf1880922acd977224c9fc892136ec75292dc4362904070537a5"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+      "source_label": "XADMIN@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 20,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:aabec4c583a49b11f9a5d0c14bd60d6558cd3edc4946920ed7f51f05435a74e8"
+      },
+      "refined": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 20,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:7805206cb5379855b38302898c494979b1904c57ca0b2c1f1a135784c8a04c3a"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+      "source_label": "XADMIN@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 20,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:4e60e1e66eb8e4da10c88f93ff051e0bbff0b01cd53826da2aa6aa847048f240"
+      },
+      "refined": {
+        "C": 0,
+        "reached": true,
+        "status": "success",
+        "expansions": 20,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:ec2da4ecb0ca0862e4675d13bb37e089d3a1a41a4d6f554ed252a03efa30a0ce"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+      "source_label": "RODCMANAGER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 35,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:54d6c02fdbc1e164cc3a970e9fb05a54e7f59edb87db920d9b9e78aebf28e246"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 15,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:03afb5ad7a0932393b696d48ea2c2fba0c859cbabb9737bc9a15091bd6967e23"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+      "source_label": "RODCMANAGER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 35,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:4a922277f0b58345a995bd379e253851c1b15078fe778bba20b7f18da0d82ed8"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 256,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 15,
+        "truncation_reason": "expansion_limit_reached",
+        "query_sha256": "sha256:cd7433418c0c89f607f0808fbd33f82e77564c8a9fb84f79fe34b84e45296acb"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+      "source_label": "EXTCA01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:80a8d93852b7a9e92c7129b04cd72a2ad3d0fcfe5e6dc3fa30eb62f809cb8798"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 25,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:e67390044ad4fc4fbb3b5a351d58da2911cc64d487f014f957c9e1538033ca6f"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+      "source_label": "EXTCA01.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:abd7108ac9d951412e6467a11b3cc0f70efcde89a80d241203606821d049f325"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 25,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:257c763588fe9472440d0513098a23db9797b78eef6b7769bda0b757761c9586"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+      "source_label": "UNCON.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:ba26c058878f99c3489015866177a35f02ce49753944c99bdfe9d795f2be5b1e"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 23,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:27e0f2793fdca1b7de374d0042f5608a2c40197311f57e16b26af8b0e1f056bc"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-11203",
+      "source_label": "UNCON.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith-sessions"
+      ],
+      "guided": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 22,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:844f79a3b13c80bb9722c9d3923af50b0eced0532ed3ef9e3dad3b08d11207a9"
+      },
+      "refined": {
+        "C": 2,
+        "reached": true,
+        "status": "success",
+        "expansions": 23,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:a71abcbf5de129207d853e2b10f8352e74f60bc5a7a6fcce6eac1395369978b3"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "source_label": "TRUSTER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 24,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:8f9fbf265c946566724bcc8f4bd0306359fe198518ffd25d56d1689b8460430d"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 58,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:a6891c52847e2a32655cbfe6795616d1dd707aa28af9efc677bfd941ea355d23"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+      "source_label": "TRUSTER@WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 24,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:cc71d8e0c98d588631baf5e5d41a070339e730bc1737a1e4fbd9795fbe7d2086"
+      },
+      "refined": {
+        "C": 3,
+        "reached": true,
+        "status": "success",
+        "expansions": 58,
+        "programs": 10,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": "path_limit_reached",
+        "query_sha256": "sha256:7ffb104a37a6db7d864e7b50aaf6652b322d7f5af9ea6423d949a964a40547f9"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+      "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-512",
+      "target_label": "DOMAIN ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:627d219295770daeec15ec1b338f39cafea4133fd6034b09426af69e9e84d4cf"
+      },
+      "refined": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:f5adde5b7c23174821cec201cc4450adc7128adb2a038cf46e6a6d195f3aa03a"
+      }
+    },
+    {
+      "source": "S-1-5-21-3702535222-3822678775-2090119576-1188",
+      "source_label": "TARGETCOMPUTERC.WRAITH.CORP",
+      "target": "S-1-5-21-3702535222-3822678775-2090119576-519",
+      "target_label": "ENTERPRISE ADMINS@WRAITH.CORP",
+      "max_paths": 10,
+      "strata": [
+        "wraith"
+      ],
+      "guided": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:fde7eb1863e261b11456f5028631c35ad428c17ad00a55f292add6ccc5c33bb0"
+      },
+      "refined": {
+        "C": null,
+        "reached": false,
+        "status": "blocked",
+        "expansions": 1,
+        "programs": 0,
+        "minimum_proven": false,
+        "unknown_attempts": 0,
+        "truncation_reason": null,
+        "query_sha256": "sha256:e1926c547226ce5d7d8cd3e59bf2f01e8f885b1b64c636932ba99817a6759d0c"
+      }
+    }
+  ],
+  "hero_witnesses": [
+    {
+      "source": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "guided_C": 2,
+      "refined_C": 1,
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "initial_state": {
+        "admin_control": [],
+        "asrep_material": [],
+        "asrep_request_capability": [],
+        "authentication_control": [],
+        "authentication_unknown": [],
+        "control": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1815"
+        ],
+        "controlled_service": [],
+        "credential_material": [],
+        "delegated_context": [],
+        "effective_member": [],
+        "interactive_session": [],
+        "known_identity": [
+          "S-1-5-21-1271839998-3495686680-2211690266-1815"
+        ],
+        "permission": [],
+        "rbcd_descriptor": [],
+        "rbcd_secret": [],
+        "recovered_secret": [],
+        "relationship_added": [],
+        "remote_command_execution": [],
+        "reset_password_control": [],
+        "service_ticket_material": [],
+        "usable_identity": [
+          [
+            "S-1-5-21-1271839998-3495686680-2211690266-1815",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ]
+        ]
+      },
+      "trace": [
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "actor_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "source_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-513",
+          "target_label": "DOMAIN USERS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:8de1b24fd75e283170dffd5f47c17c89ba3fd675bcc1f684895f3831feb1a758",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "actor_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+          "source_label": "DOMAIN USERS@SEAMLESS.INTERNAL",
+          "target": "S-1-5-11",
+          "target_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:ffa61bb38730e885f1df20d239a1f2e448e3be1c097957ab5c4534f466cbc9be",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "actor_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+          "source": "S-1-5-11",
+          "source_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "target_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:4a737230456ed4b03103d6ec254fd4385075a97e2de3ff63d2242abaf7462da8",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-1815",
+          "actor_label": "SCOTTY_HARTMAN@SEAMLESS.INTERNAL",
+          "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "source_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:0400dd303db5ed171b16727c1384709ddf20314c0e57879b7a9a0b8556002aa5",
+          "derived_from_step": null,
+          "active": true
+        },
+        {
+          "technique": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "actor_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "target_label": "BADBLOOD.SEAMLESS.INTERNAL",
+          "edge_id": null,
+          "derived_from_step": 3,
+          "active": true
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "actor_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+          "derived_from_step": null,
+          "active": false
+        }
+      ],
+      "manual_active_work_C": 1,
+      "evidence_sha256": "sha256:8f68c43b621942ac4cecbf9ffa1e3bb7bc7f83f08e59f827bf2628a8c1d55996"
+    },
+    {
+      "source": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+      "target": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+      "guided_C": 2,
+      "refined_C": 1,
+      "authentication_context": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+      "initial_state": {
+        "admin_control": [],
+        "asrep_material": [],
+        "asrep_request_capability": [],
+        "authentication_control": [],
+        "authentication_unknown": [],
+        "control": [],
+        "controlled_service": [],
+        "credential_material": [],
+        "delegated_context": [],
+        "effective_member": [],
+        "interactive_session": [],
+        "known_identity": [
+          "S-1-5-21-1271839998-3495686680-2211690266-4096"
+        ],
+        "permission": [],
+        "rbcd_descriptor": [],
+        "rbcd_secret": [],
+        "recovered_secret": [],
+        "relationship_added": [],
+        "remote_command_execution": [],
+        "reset_password_control": [],
+        "service_ticket_material": [],
+        "usable_identity": [
+          [
+            "S-1-5-21-1271839998-3495686680-2211690266-4096",
+            "S-1-5-21-1271839998-3495686680-2211690266-1000"
+          ]
+        ]
+      },
+      "trace": [
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "actor_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "source_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-515",
+          "target_label": "DOMAIN COMPUTERS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:fb7eb140d8483b6aff4457652ef056a254deab1d0303225a19a475e3cbf478fb",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "actor_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-515",
+          "source_label": "DOMAIN COMPUTERS@SEAMLESS.INTERNAL",
+          "target": "S-1-5-11",
+          "target_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:cab3345e45c3cffbd13626cc4758069cc00760ea636eafce5d54adf36d631e19",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "actor_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "source": "S-1-5-11",
+          "source_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+          "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "target_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:4a737230456ed4b03103d6ec254fd4385075a97e2de3ff63d2242abaf7462da8",
+          "derived_from_step": null,
+          "active": false
+        },
+        {
+          "technique": "scenario_reset_password",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-4096",
+          "actor_label": "ITSWWEBS1000000.SEAMLESS.INTERNAL",
+          "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+          "source_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "target_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:0400dd303db5ed171b16727c1384709ddf20314c0e57879b7a9a0b8556002aa5",
+          "derived_from_step": null,
+          "active": true
+        },
+        {
+          "technique": "acquire_reset_identity",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "actor_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-1000",
+          "target_label": "BADBLOOD.SEAMLESS.INTERNAL",
+          "edge_id": null,
+          "derived_from_step": 3,
+          "active": true
+        },
+        {
+          "technique": "propagate_group_entitlement",
+          "actor": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "actor_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+          "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+          "target": "S-1-5-21-1271839998-3495686680-2211690266-512",
+          "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+          "edge_id": "sha256:250b099e406031037200bdf0d23277cc7d4fe7cc6f6ddad0d310a6be7f904d75",
+          "derived_from_step": null,
+          "active": false
+        }
+      ],
+      "manual_active_work_C": 1,
+      "evidence_sha256": "sha256:359b55225a40264c6b7fe2e7db0b04311f6d6b8c490a097e8e187b6cd4a22661"
+    }
+  ],
+  "finite_rows": [
+    {
+      "case": "two_routes",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 3,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "two_routes",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 1,
+      "expansions": 30,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:f98a72392a56bfc08cb2f4981087b3709b7f031e1363cbdedc5e5c13da25bbb6"
+    },
+    {
+      "case": "two_routes",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 1,
+      "expansions": 110,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:fda74be0e38dcf1062354118b92e6499cf8790d20fe7d2ad4d687bac8906f2e8"
+    },
+    {
+      "case": "two_routes",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 1,
+      "expansions": 15,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:84373e2ae0565f1652afec8ab2dcd60f4c68a129d6f060e905c08645a419c73f"
+    },
+    {
+      "case": "two_routes",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 1,
+      "expansions": 32,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:f98a72392a56bfc08cb2f4981087b3709b7f031e1363cbdedc5e5c13da25bbb6"
+    },
+    {
+      "case": "two_routes",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 1,
+      "expansions": 110,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:fda74be0e38dcf1062354118b92e6499cf8790d20fe7d2ad4d687bac8906f2e8"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 3,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 40,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 68,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 13,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 50,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4"
+    },
+    {
+      "case": "reset_auth_false",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 68,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 3,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 40,
+      "minimum_proven": false,
+      "unknown_attempts": 9,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 68,
+      "minimum_proven": false,
+      "unknown_attempts": 15,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 13,
+      "minimum_proven": false,
+      "unknown_attempts": 1,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 50,
+      "minimum_proven": false,
+      "unknown_attempts": 10,
+      "program_set_sha256": "sha256:fd061f6ddfcd9c2612d8e48faba6d2b2d90ec6d362d934005c2d06ca5cfab6d4"
+    },
+    {
+      "case": "reset_auth_unknown",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 68,
+      "minimum_proven": false,
+      "unknown_attempts": 15,
+      "program_set_sha256": "sha256:875a7afcb9f5314de9a69f1f95363bb5c004a58599f81e6a88a172e2714b211a"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 3,
+      "expansions": 3,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:2f46360530edc79d956c75e19852cd8ecf3773937b18973c67c3a08ed08df55e"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 0,
+      "expansions": 22,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:19b7dfd9178c9fbe82500cb9facb5aa33f937e90361b0089d46cdf8a168d324d"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_guided",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 0,
+      "expansions": 38,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:cf4469484d164a8ecd3b8d880d2faecbec4705497cd7a3da52ca64cb7a0b55f6"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1,
+        "max_steps": 12
+      },
+      "C": 0,
+      "expansions": 11,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:a0da3f8fb758b634d8b6d0197932fa80d3324959b65d72fb7c51ea32ea538657"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 10,
+        "max_steps": 12
+      },
+      "C": 0,
+      "expansions": 22,
+      "minimum_proven": false,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:19b7dfd9178c9fbe82500cb9facb5aa33f937e90361b0089d46cdf8a168d324d"
+    },
+    {
+      "case": "free_membership",
+      "strategy": "neo_refine",
+      "budget": {
+        "max_expansions": 20000,
+        "max_paths": 1000,
+        "max_steps": 12
+      },
+      "C": 0,
+      "expansions": 38,
+      "minimum_proven": true,
+      "unknown_attempts": 0,
+      "program_set_sha256": "sha256:cf4469484d164a8ecd3b8d880d2faecbec4705497cd7a3da52ca64cb7a0b55f6"
+    }
+  ],
+  "validation": {
+    "focused_tests_passed": 451,
+    "new_tests": 26,
+    "ruff": "passed",
+    "repository": "passed",
+    "contract": "passed",
+    "full_suite_run": false,
+    "CLI_and_spawn_worker": "passed",
+    "resume_after_strategy_change": "rejected_CHECKPOINT_SCOPE_MISMATCH"
+  },
+  "limits": [
+    "Exploratory fixed cohort, not a blind test or a full-domain rerun",
+    "No new BloodHound live run or remediation run",
+    "Unknown attempts in refinement side branches do not erase feasible C-rated seeds",
+    "Capped results remain best-found; no new minimum proof",
+    "Extra work may increase runtime; timings are single runs, not a speed benchmark"
+  ],
+  "evidence_root": "reports/generated",
+  "evidence_sha256": {
+    "refinement-256-001/results.json": "sha256:4cad3dac422b31075e3aabe1e81341c78bddcf75a27a4cc4f35d7b9b89dc73fc",
+    "refinement-256-001/seamless-081401205950b564-1-neo_guided.json": "sha256:123ca360203a28f353594d8abd570f6a5b55dedfb695e849bb3268ad8cc20128",
+    "refinement-256-001/seamless-081401205950b564-1-neo_refine.json": "sha256:12378e1ad27176464deeda7d5155740b416cf2d7acdb33f25288d20de9125073",
+    "refinement-256-001/seamless-081401205950b564-10-neo_guided.json": "sha256:18d063d006d3f0a771c1b94071f362b3b936eb2b3694c427fbb93c3e53370da9",
+    "refinement-256-001/seamless-081401205950b564-10-neo_refine.json": "sha256:fffa987fca22a3b83b4566f0da55d6ba12e684ef2a0f7cae32330e293b18c9e5",
+    "refinement-256-001/seamless-18f9ee8a399f23c7-1-neo_guided.json": "sha256:e7630cf9893be18d3ed96f1f5543c4eb7521cf8778d3466c0ef7f3e4884d0ff5",
+    "refinement-256-001/seamless-18f9ee8a399f23c7-1-neo_refine.json": "sha256:d8c9181747e15fc0fe9dc4671b30e60687c31777055736e2ea8c79d58851f687",
+    "refinement-256-001/seamless-18f9ee8a399f23c7-10-neo_guided.json": "sha256:fc9f1adb3135361e94447360cd41d37a72116b6d3f4f2f55cc36d15b47a0b3c5",
+    "refinement-256-001/seamless-18f9ee8a399f23c7-10-neo_refine.json": "sha256:c72e92b5ed03346cc5e42027da466c6e9d701aebab0ea04194524732d33ce4ec",
+    "refinement-256-001/seamless-4ad2a03ae094ff86-1-neo_guided.json": "sha256:8adbf9f26bf81f58997a4a7b2ee5b93ed2904b8a892276d69a35a4e12956a484",
+    "refinement-256-001/seamless-4ad2a03ae094ff86-1-neo_refine.json": "sha256:9d4de96c1b6f540fb6372dd7a044353aa276aacf0cb1b14a8bf6f5f7950a7af5",
+    "refinement-256-001/seamless-4ad2a03ae094ff86-10-neo_guided.json": "sha256:eb7fb0d1d74982de7391979689cf842de396ff5aae0925beb7e4e19ff6f8c2fa",
+    "refinement-256-001/seamless-4ad2a03ae094ff86-10-neo_refine.json": "sha256:56292f52d2788a87d42a8c5216b4c4abfff9a46dc9ddd909118f5303ac4c9fa7",
+    "refinement-256-001/seamless-4de26bc8f5b34485-1-neo_guided.json": "sha256:9de47376048f8df8b04878971ecd06d3c04337a78f7c86bc0110081406d8962c",
+    "refinement-256-001/seamless-4de26bc8f5b34485-1-neo_refine.json": "sha256:258913c4fe5aac2b043ec46d1ecef095f9d486b58b973213b7984f07e0cff6d1",
+    "refinement-256-001/seamless-4de26bc8f5b34485-10-neo_guided.json": "sha256:95bbebf401ffa4978fb61b795116a8b0a4f67f0f7c011360373aeab30f258850",
+    "refinement-256-001/seamless-4de26bc8f5b34485-10-neo_refine.json": "sha256:967e5c5213858d1bd9399de90bc5e2b554f64e69aa68ffa09d158ae8734aa396",
+    "refinement-256-001/seamless-a066c924153a1acb-1-neo_guided.json": "sha256:48b49d102ba4e541ae399d06c88fd4717632cad61c58cc2a4e3a187f07015b30",
+    "refinement-256-001/seamless-a066c924153a1acb-1-neo_refine.json": "sha256:5ddab0a19a678823bc968e81642b905b9dd241251e00696b7a7770c757d88447",
+    "refinement-256-001/seamless-a066c924153a1acb-10-neo_guided.json": "sha256:4058be0acc50a8e159d92a7b516a2aa077b8dcbfb3971cb256699597dec353e0",
+    "refinement-256-001/seamless-a066c924153a1acb-10-neo_refine.json": "sha256:5272f649df8f6f0a4810770f4e0dd8ffdc7b34d291cd62f1199bc016d7fcd428",
+    "refinement-256-001/seamless-d1f28168c92c42d6-1-neo_guided.json": "sha256:2471f6b2a83720b6d0814060eccfbc69d1628c642cf3c0d93f7591c6481f393e",
+    "refinement-256-001/seamless-d1f28168c92c42d6-1-neo_refine.json": "sha256:359b55225a40264c6b7fe2e7db0b04311f6d6b8c490a097e8e187b6cd4a22661",
+    "refinement-256-001/seamless-d1f28168c92c42d6-10-neo_guided.json": "sha256:f1063d663370d2d6e8ad2f892401c6f014781ec88267b3cc7c7d1312788f5b33",
+    "refinement-256-001/seamless-d1f28168c92c42d6-10-neo_refine.json": "sha256:0160ab4d892cbcb1ab02bfb775591ebbda79a02cd8925ca6c9c7b0425dc4a952",
+    "refinement-256-001/seamless-e07d8a989ed25a5e-1-neo_guided.json": "sha256:b4244ddf6909e1527cbaaadeb7b89ed6ec950e440cfcb275df11bb0c59294d0c",
+    "refinement-256-001/seamless-e07d8a989ed25a5e-1-neo_refine.json": "sha256:11a0bc280da5bd73fb7f5d9d3eea36268d139e0ab0fe39bebcc11a1b76432bf6",
+    "refinement-256-001/seamless-e07d8a989ed25a5e-10-neo_guided.json": "sha256:6bafffd82bc91dcc1f0b470304c137acd0d9c8371fb548e3d1bf96baf7f7789b",
+    "refinement-256-001/seamless-e07d8a989ed25a5e-10-neo_refine.json": "sha256:d19162ee7f6374f655ff576498cca9a5956025e917b63fd725ea0d4ac5431508",
+    "refinement-256-001/seamless-e5aed26c883d3f75-1-neo_guided.json": "sha256:e3142dd32fa033ef9bb812d27ee367a13932c70b10e95cafec20fd5ccc0cbc77",
+    "refinement-256-001/seamless-e5aed26c883d3f75-1-neo_refine.json": "sha256:c19ab773c5fbbc64a4c5c533626b388f414067301554426fe2e177f8ec26da1e",
+    "refinement-256-001/seamless-e5aed26c883d3f75-10-neo_guided.json": "sha256:3889224eba4d9ff9c3ac9b5bdcdff08f7f09b5e2b926f15ba312de42971472d2",
+    "refinement-256-001/seamless-e5aed26c883d3f75-10-neo_refine.json": "sha256:92ad73a9244e7099608b7912ab6a8b8132bc8cf73539e1d21e6eea455b89a78b",
+    "refinement-256-001/seamless-ee5b245cc837d93e-1-neo_guided.json": "sha256:62c2b7f9602f52c42f745e332c3609995a6f5dc70b5b2d3e85f82dc7cc4a1ec0",
+    "refinement-256-001/seamless-ee5b245cc837d93e-1-neo_refine.json": "sha256:8f68c43b621942ac4cecbf9ffa1e3bb7bc7f83f08e59f827bf2628a8c1d55996",
+    "refinement-256-001/seamless-ee5b245cc837d93e-10-neo_guided.json": "sha256:730f27ecf775f73cca18e526114b8661d3f9d21908359f4ea7a2a4a100c619b0",
+    "refinement-256-001/seamless-ee5b245cc837d93e-10-neo_refine.json": "sha256:ef1a9f4107cae360fa016b0f269a7dd02fd6c2b484e27996568d08197d0c0224",
+    "refinement-256-001/seamless-fe8f268bb1185d29-1-neo_guided.json": "sha256:486ea07395a4a68626fd3d48c7339232192d11e092e7e0b82f305348b98ae8b8",
+    "refinement-256-001/seamless-fe8f268bb1185d29-1-neo_refine.json": "sha256:dbd35c4ab71cb6d1281adc143196226eb070639238423bf01d87213cefd254f4",
+    "refinement-256-001/seamless-fe8f268bb1185d29-10-neo_guided.json": "sha256:84ad0cd5ab746e0f9065ec589719904767b25d1046560915c7a2b9fa50339f6a",
+    "refinement-256-001/seamless-fe8f268bb1185d29-10-neo_refine.json": "sha256:fde80eadb3508a8afcf54bf86c38548e386e6b65cdfe255ecab10073f632ddf0",
+    "refinement-256-001/wraith-468e68e43850ef0b-1-neo_guided.json": "sha256:f1d473458997796b1471ba3ea395abdbc5aaf7d176c3577592ce58ab334cb506",
+    "refinement-256-001/wraith-468e68e43850ef0b-1-neo_refine.json": "sha256:775f30d288f0ed1ff53811ca8063dfca431d2279b784981b79f05742ae3032c7",
+    "refinement-256-001/wraith-468e68e43850ef0b-10-neo_guided.json": "sha256:1bbc0bbea4fb7ce218191f827682a32d3477e537876f2c12835fea1abc5e3c39",
+    "refinement-256-001/wraith-468e68e43850ef0b-10-neo_refine.json": "sha256:323405b66dcd21c39e4685e0817228a0e14e2c6003e94048f0bbbdcd3874f311",
+    "refinement-256-001/wraith-64163e41f55ea321-1-neo_guided.json": "sha256:c1f5fd0304ff8e94258d6193e6722480b4de4d419712a8c5ea9e83aca8c4e114",
+    "refinement-256-001/wraith-64163e41f55ea321-1-neo_refine.json": "sha256:c3bba7ea5c63aff68932bb644818c5ad07ec22167c5f55674d175ba5dc7badb3",
+    "refinement-256-001/wraith-64163e41f55ea321-10-neo_guided.json": "sha256:331f81727a6d92fcf8e56c6223aa576fbdc2e34e287554e398bf591d89ebbdc8",
+    "refinement-256-001/wraith-64163e41f55ea321-10-neo_refine.json": "sha256:9d2fdd24c0def921f050fdf7dda7883f0797bb2f230523c80d07c62f0fa7b6b6",
+    "refinement-256-001/wraith-75b293546235918b-1-neo_guided.json": "sha256:20ac0486ec28c9617eb349336000bc518d9dc25ed2605a4db80f03e26397290e",
+    "refinement-256-001/wraith-75b293546235918b-1-neo_refine.json": "sha256:2c6e4ae84661dedfd4b5c81ab3110dbc8dce1e4fda22d2bddc5bde6b29ea32db",
+    "refinement-256-001/wraith-75b293546235918b-10-neo_guided.json": "sha256:58fdb75c52eb463e4135916e6f28068fa34808db8e7b9156090f00b99f24aea7",
+    "refinement-256-001/wraith-75b293546235918b-10-neo_refine.json": "sha256:a33d4c5f9f4ef393e9bd9fba2fc18958e6425e3dc8687725a9d4d559b6f87a9f",
+    "refinement-256-001/wraith-85faf6f54c1e94bf-1-neo_guided.json": "sha256:6f681b70685d80620237a5ba347c35eda279e9578c216adb9d53b4f17bd52632",
+    "refinement-256-001/wraith-85faf6f54c1e94bf-1-neo_refine.json": "sha256:931b8b121ae20a03e53f87a4271b7b3f92ecea30caef6fca503198523dc12637",
+    "refinement-256-001/wraith-85faf6f54c1e94bf-10-neo_guided.json": "sha256:43c83ec76715c4e62e9c83cfc81031c5a29297d06420fdc520330dea7f756558",
+    "refinement-256-001/wraith-85faf6f54c1e94bf-10-neo_refine.json": "sha256:fbc3b0aabaa673e2c954ebafef837ec641e3fb7c7091f99e09f336b37b4b2e5b",
+    "refinement-256-001/wraith-8c26de8d3cd2af06-1-neo_guided.json": "sha256:afbb2478a8de124a144ea0392129ffc1830294210b974641a6d2d214500eaf6b",
+    "refinement-256-001/wraith-8c26de8d3cd2af06-1-neo_refine.json": "sha256:337effd48445a931b57af8beb7b3bee657f8796bc32996c03d4c10594ef579cf",
+    "refinement-256-001/wraith-8c26de8d3cd2af06-10-neo_guided.json": "sha256:016d4cb8647befa46f7793873e6e448c5091acc81217fbf52f531b80dc742d0e",
+    "refinement-256-001/wraith-8c26de8d3cd2af06-10-neo_refine.json": "sha256:1106a8c0d4a30716f77e164e024c4a5faa69031f94098d9a9f0c56ecebf6a092",
+    "refinement-256-001/wraith-9a0c745e67356ad0-1-neo_guided.json": "sha256:6dc160411ba286640f34269527c49f82a31894c8ac0a32eec68ae0521ca1c3fe",
+    "refinement-256-001/wraith-9a0c745e67356ad0-1-neo_refine.json": "sha256:4f4bbe2065c7cf9cf71baff9105ad3d1a76b414e66be302a9421dd36b797bd24",
+    "refinement-256-001/wraith-9a0c745e67356ad0-10-neo_guided.json": "sha256:33653b8f4bf6791dbb4c127836bf5e5e9a8fde6dfa02b12a07d9f513e374efd7",
+    "refinement-256-001/wraith-9a0c745e67356ad0-10-neo_refine.json": "sha256:8b152eff7cd0e76a5050d7a7dc9cd36708e72e97741244d4aa1d5556ef837961",
+    "refinement-256-001/wraith-9ae3cb9294458a65-1-neo_guided.json": "sha256:eb021cefa422b2e1275ebe9a604b68fe55a04926b8b786bb03ff0dadaf2593f2",
+    "refinement-256-001/wraith-9ae3cb9294458a65-1-neo_refine.json": "sha256:0c6ef496ea167e714ef0ab5d6c4faed48213ce74e1bcfe0d3acacd26220b9441",
+    "refinement-256-001/wraith-9ae3cb9294458a65-10-neo_guided.json": "sha256:34a1566c5e1922ee45d9f04b26d138e5846da6d643005e171f4e8b6cd308a661",
+    "refinement-256-001/wraith-9ae3cb9294458a65-10-neo_refine.json": "sha256:96be603bb221765356e28645b842f7240ce36eaeb6ded14c83e581b74f55b304",
+    "refinement-256-001/wraith-a244629cbbec3311-1-neo_guided.json": "sha256:ec4ebab7aa89a705cec79257263c2ea68448efa85effaf916ca0dc67c43aab81",
+    "refinement-256-001/wraith-a244629cbbec3311-1-neo_refine.json": "sha256:7b501304dd433406a12c3de6c898d39f100e194349bd928298da3ffbffcd26c0",
+    "refinement-256-001/wraith-a244629cbbec3311-10-neo_guided.json": "sha256:762b42f9ed0f3d6fa0390db8623ec09e645e6a094412a20ae0c2b4a3d5e00107",
+    "refinement-256-001/wraith-a244629cbbec3311-10-neo_refine.json": "sha256:ef01a9acf63a802f3901c6598454e8bd7f1c3e8a12e2fa07d639df8409f3cc0e",
+    "refinement-256-001/wraith-bea948114eba3f04-1-neo_guided.json": "sha256:cbdf6eaefdb21e314121436241124dcd0b80153c829113c97a7f79d2b0dc2f6a",
+    "refinement-256-001/wraith-bea948114eba3f04-1-neo_refine.json": "sha256:62aed09e2195ece8465a99ec0d07a6d39a35ef9294c961d006a4b8fa92ba0a0a",
+    "refinement-256-001/wraith-bea948114eba3f04-10-neo_guided.json": "sha256:9142eb8a79b31346440755ae81021c95ad1759b36b5d67bff53041b8e5983348",
+    "refinement-256-001/wraith-bea948114eba3f04-10-neo_refine.json": "sha256:d7082ae765187db3c00846d670cfd1f392bed77f9173ff208ec0384848d2059c",
+    "refinement-256-001/wraith-f4ef5e8f4106f27f-1-neo_guided.json": "sha256:3e2d0f33a4e648100a51389ef9f792e6424c60c6942cd90da00e8e00b6f7104a",
+    "refinement-256-001/wraith-f4ef5e8f4106f27f-1-neo_refine.json": "sha256:64bca608f54e929c1bd15c19ac347b02ae663599423ff19b8de93fe3b18f59e5",
+    "refinement-256-001/wraith-f4ef5e8f4106f27f-10-neo_guided.json": "sha256:27fc71c1cb55047675c28bf60e3a8a19d1bf0e311dbf0e5dc2e21b95390e84d3",
+    "refinement-256-001/wraith-f4ef5e8f4106f27f-10-neo_refine.json": "sha256:639ca4096fa108590a573d51aa681a3e43e1618bea297216fcc84d8adc986755",
+    "refinement-256-001/wraith-sessions-75b293546235918b-1-neo_guided.json": "sha256:94432f700bf026728baa119ae42e4e9450f509f1c97c3d3e9c71e5e4a1d03889",
+    "refinement-256-001/wraith-sessions-75b293546235918b-1-neo_refine.json": "sha256:33feb01c2607f7e4a4d9c3f6b24eacb9c6cc502f68844fb477cde4da20e65827",
+    "refinement-256-001/wraith-sessions-75b293546235918b-10-neo_guided.json": "sha256:2c1cb04f4f9d9bf5e2e0509789ad7e0bc19b0ae0e2447fd788a069216aedee2b",
+    "refinement-256-001/wraith-sessions-75b293546235918b-10-neo_refine.json": "sha256:9544ff108e02ba6b0d387c637532d1d6918b3964a68f73a9c950603de1c982fa",
+    "refinement-256-001/wraith-sessions-84ec48dfabb21f84-1-neo_guided.json": "sha256:2c493f16105557c7f691d43b442ec9d0344cc8a5f9f26889575a207334f54063",
+    "refinement-256-001/wraith-sessions-84ec48dfabb21f84-1-neo_refine.json": "sha256:ee04895cf365aec6af3ebe51bb89814f819c25ac3da1a5f9cb44b22f24d08935",
+    "refinement-256-001/wraith-sessions-84ec48dfabb21f84-10-neo_guided.json": "sha256:68c07576b33525da157c635271acf91e39612b498c82772ca7b66187141a0611",
+    "refinement-256-001/wraith-sessions-84ec48dfabb21f84-10-neo_refine.json": "sha256:2cea1bf276e32521fe8c6b062bf21f605b66162723f10b0ed353c68db849c7e2",
+    "refinement-256-001/wraith-sessions-9802acd99c3c8cc7-1-neo_guided.json": "sha256:2c36527a73c5373b9223ed480a049c731e40ce057bfa37342c642fbf5cbef438",
+    "refinement-256-001/wraith-sessions-9802acd99c3c8cc7-1-neo_refine.json": "sha256:d2b68aa7bce3732f09d1d30cd9e1ec020a7517640ccd73c5ed46a8636fa4860d",
+    "refinement-256-001/wraith-sessions-9802acd99c3c8cc7-10-neo_guided.json": "sha256:6c7d8f96bc00b70af9e1c29d714145eef9b5e226d61ec088fbc522fffbdce0ae",
+    "refinement-256-001/wraith-sessions-9802acd99c3c8cc7-10-neo_refine.json": "sha256:e6f711bfd9825f87fd1ac7cf36c149eff263ae360078cccb076b47778a38d530",
+    "refinement-256-001/wraith-sessions-a244629cbbec3311-1-neo_guided.json": "sha256:a1d4751282078cabb60ad0d584efe612693ec5317e3e914df94283d3ef526147",
+    "refinement-256-001/wraith-sessions-a244629cbbec3311-1-neo_refine.json": "sha256:338a3825c9c2f27f3d86e5536a5d83f25d1b871dd2f607cf7618703e69467f7b",
+    "refinement-256-001/wraith-sessions-a244629cbbec3311-10-neo_guided.json": "sha256:ec95142a6143f32706cfb6c96857eaa3255de0b50b57b763612d2000f2e67c08",
+    "refinement-256-001/wraith-sessions-a244629cbbec3311-10-neo_refine.json": "sha256:f97f221c513ac7c240f6bc35d8d1dbfc0e5881ceb5df90975643443c9f92c6ef",
+    "refinement-256-001/wraith-sessions-b12485d0e9b4a8d3-1-neo_guided.json": "sha256:acbf4fa725f303806fcbe1a14a8845bc63bcc2808d856c9658c6fe35a6f1c20d",
+    "refinement-256-001/wraith-sessions-b12485d0e9b4a8d3-1-neo_refine.json": "sha256:6e8c324664cd23508c2383b8f7ede39a56146eb2ae3f4b31dd1d47de305203c4",
+    "refinement-256-001/wraith-sessions-b12485d0e9b4a8d3-10-neo_guided.json": "sha256:6b693a19990ddf57c7808d3c3adc6007eb5d3b44d3f707ebde1c947ad5e103b1",
+    "refinement-256-001/wraith-sessions-b12485d0e9b4a8d3-10-neo_refine.json": "sha256:4e4faf3e3b5607c7192f545ce22b9897c9cda02ae562873443c11f43b2e433e2",
+    "refinement-256-001/wraith-sessions-e961422109f16d8f-1-neo_guided.json": "sha256:0cc22ef180538c7e253961cfe7662317cf19af09fdb22a561844f843c5034552",
+    "refinement-256-001/wraith-sessions-e961422109f16d8f-1-neo_refine.json": "sha256:b2407f3c1a20176d781069c745b66b2637bcf97dca80144068ee8794432ae9bf",
+    "refinement-256-001/wraith-sessions-e961422109f16d8f-10-neo_guided.json": "sha256:4e1b97f129f6d43ff8ad074f4d1748403bf3420047a8a092a7f726b70870c593",
+    "refinement-256-001/wraith-sessions-e961422109f16d8f-10-neo_refine.json": "sha256:c9615c3992bf13e7325f02baa50f29d104902346ab87eed16994cb7ed375b5f8",
+    "refinement-domain-e2e-001/cells.jsonl": "sha256:d361ad75933427a3b193bcc7b567bbe34132ab323be3646ccc447cabff4e6fb4",
+    "refinement-domain-e2e-001/goal-9619ac766bfd.md": "sha256:e0fa23955347239e85f10b71a643c3be5429e882e8f6c277bb312117d076e41e",
+    "refinement-domain-e2e-001/inventory.json": "sha256:28a41ca7528c35d1e742b319a4866b0dc58261017539cc8398cd2a84b4335a69",
+    "refinement-domain-e2e-001/scope.json": "sha256:eb7c01dfb7ed7b8f092346b62cc05234f20b18447554b4daa02227f4034e8859",
+    "refinement-domain-e2e-001/summary.json": "sha256:c43cd79842a17b54e77a4539c581f695a73bdca5b89e61c2adfacf6e5bbfbe69"
+  },
+  "reproduce": {
+    "cohort": ".venv/bin/python -m scripts.neo_refinement_probe --seamless-snapshot PATH_TO_SEAMLESS_SNAPSHOT --wraith-snapshot PATH_TO_CURRENT_WRAITH_SNAPSHOT --max-expansions 256 --output-dir reports/generated/refinement-repeat",
+    "finite": ".venv/bin/python -m scripts.neo_refinement_probe --output-dir reports/generated/refinement-finite-repeat",
+    "test_modules": [
+      "tests/test_neo_refinement.py",
+      "tests/test_neo_domain.py",
+      "tests/test_neo_minimum_probe.py",
+      "tests/test_neo_search.py",
+      "tests/test_neo_effort.py",
+      "tests/test_neo_host_session.py",
+      "tests/test_identity_entitlement_goal.py",
+      "tests/test_top_k_search.py",
+      "tests/test_engine.py",
+      "tests/test_goal_guided_search.py",
+      "tests/test_search_actor_scheduling.py",
+      "tests/test_search_prepared_reuse.py",
+      "tests/test_query_cli.py",
+      "tests/test_engine_path_ranking_conformance.py"
+    ],
+    "snapshot_recipe": "reports/neo/localgroup-fix.md; WRAITH export 20240305111414; use new output directories"
+  }
+}

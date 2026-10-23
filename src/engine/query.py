@@ -315,7 +315,7 @@ class MaterializedQuery:
         from src.engine.search import NEO_GUIDED_TECHNIQUES
 
         techniques = {t.id for t in self.catalog}
-        if self.search_order == "neo_guided":
+        if self.search_order in {"neo_guided", "neo_refine"}:
             supported = self.semantic_goal is not None and techniques <= NEO_GUIDED_TECHNIQUES
         else:
             supported = isinstance(self.semantic_goal, UsableIdentityEntitlementGoal) and (
@@ -334,6 +334,7 @@ class MaterializedQuery:
                 "fifo": "fifo/1",
                 "goal_guided": "goal-guided-membership/1",
                 "neo_guided": "neo-guided-topology/2",
+                "neo_refine": "neo-guided-c-improvement/1",
             }[effective],
             "fallback_reason": "unsupported_goal_or_catalog"
             if self.search_order != effective
@@ -364,6 +365,10 @@ class MaterializedQuery:
         engine_graph = (
             graph if isinstance(graph, EngineGraph) else EngineGraph.from_canonical(graph)
         )
+        if self.search_strategy["effective"] == "neo_refine":
+            from src.engine.ranking.effort_profiles import validate_neo_refinement_profile
+
+            validate_neo_refinement_profile(self, engine_graph)
         return generate_attack_paths(
             engine_graph,
             self.initial_actor,

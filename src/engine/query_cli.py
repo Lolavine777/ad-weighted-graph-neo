@@ -218,7 +218,9 @@ def main(argv: list[str] | None = None) -> int:
         "--top-k", type=int, help="Number of effort-ranked programs; independent of caps"
     )
     parser.add_argument("--context", dest="authentication_context")
-    parser.add_argument("--search-order", choices=("fifo", "goal_guided", "neo_guided"))
+    parser.add_argument(
+        "--search-order", choices=("fifo", "goal_guided", "neo_guided", "neo_refine")
+    )
     for name in ("initial-state", "target-goal", "runtime-facts", "assumptions"):
         parser.add_argument(f"--{name}", help="JSON override file")
     for name in ("max-paths", "max-steps", "max-expansions"):

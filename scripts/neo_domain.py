@@ -155,14 +155,16 @@ def compact_witness(path, graph, catalog):
     return wire(reduced)
 
 
-def _initialize(snapshot, request, scenario="identity"):
+def _initialize(snapshot, request, scenario="identity", search_order="neo_guided"):
     global _graph, _request, _sources, _goals, _policy, _effort, _techniques
+    global _search_order
     _graph = EngineGraph.from_snapshot(Path(snapshot).read_text(encoding="utf-8"))
     _request = BatchQueryRequest.from_dict(request)
     _sources = {s.node_id: s for s in _request.sources}
     _goals = {g.target_node_id: g for g in _request.resolve_target_goals()}
     _policy, _effort = scenario_profile(_graph, scenario), load_effort_profile("neo-c-v1")
     _techniques = techniques_for(scenario)
+    _search_order = search_order
 
 
 def _evaluate(pair):
@@ -179,7 +181,7 @@ def _evaluate(pair):
             _request.common_budget,
             scenario_policy=_policy,
             effort_profile=_effort,
-            search_order="neo_guided",
+            search_order=globals().get("_search_order", "neo_guided"),
         )
         if error is not None:
             raise ValueError(str(error))
@@ -312,6 +314,12 @@ def main(argv=None):
     parser.add_argument("--max-expansions", type=int, default=1024)
     parser.add_argument("--max-steps", type=int, default=12)
     parser.add_argument(
+        "--search-order",
+        choices=("neo_guided", "neo_refine"),
+        default="neo_guided",
+        help="neo_refine keeps guided witnesses then seeks cheaper paths in the remaining budget",
+    )
+    parser.add_argument(
         "--max-paths",
         type=int,
         default=1,
@@ -347,6 +355,7 @@ def main(argv=None):
         "version": "neo-domain-survey/1",
         "request": request.to_dict(),
         "scenario": args.scenario,
+        "search_order": args.search_order,
         "input_coverage": coverage,
         "techniques": techniques_for(args.scenario),
         "scenario_policy": scenario_profile(graph, args.scenario).canonical_dict(),
@@ -390,7 +399,12 @@ def main(argv=None):
             max_workers=args.workers,
             mp_context=get_context("spawn"),
             initializer=_initialize,
-            initargs=(str(args.snapshot.resolve()), request.to_dict(), args.scenario),
+            initargs=(
+                str(args.snapshot.resolve()),
+                request.to_dict(),
+                args.scenario,
+                args.search_order,
+            ),
         ) as pool,
     ):
         futures = [pool.submit(_evaluate, pair) for pair in pending]

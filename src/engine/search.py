@@ -8,7 +8,7 @@ import math
 from bisect import bisect_right
 from collections import deque
 from collections.abc import Callable, Iterator, Mapping, Sequence
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from functools import lru_cache
 from itertools import islice
 from typing import Any, Protocol
@@ -36,8 +36,8 @@ from .graph import EngineGraph
 
 
 def validate_search_order(value: str) -> None:
-    if value not in ("fifo", "goal_guided", "neo_guided"):
-        raise ValueError("search_order must be fifo, goal_guided or neo_guided")
+    if value not in ("fifo", "goal_guided", "neo_guided", "neo_refine"):
+        raise ValueError("search_order must be fifo, goal_guided, neo_guided or neo_refine")
 
 
 NEO_GUIDED_TECHNIQUES = frozenset(
@@ -496,6 +496,69 @@ def _relationship_sort_key(rel):
     return rel.source, rel.kind, rel.target, repr(getattr(rel, "binding", None))
 
 
+def _refine_attack_paths(graph, actor, *, budget, catalog, **kwargs):
+    """Keep guided's feasible seed and seek strict C improvements in its remainder.
+
+    Reuse the same guided planner with a decreasing paid-work ceiling. This is
+    bounded improvement, not cost-first search or a new minimum proof. Partial
+    searches never erase the seed. No extra expansion budget is allocated.
+    """
+    from src.engine.ranking.effort_profiles import neo_history_cost
+
+    selected = tuple(load_catalog() if catalog is None else catalog)
+    canonical = {t.id: t for t in load_catalog()}
+    if not {t.id for t in selected} <= NEO_GUIDED_TECHNIQUES or any(
+        t != canonical[t.id] for t in selected
+    ):
+        raise ValueError("neo_refine requires unchanged supported neo techniques")
+    common = {**kwargs, "catalog": selected, "search_order": "neo_guided"}
+    seed = generate_attack_paths(graph, actor, budget=budget, **common)
+    if seed.complete or not seed.paths:
+        return seed
+    domain = str(graph.node(actor).get("domain") or "").strip().casefold()
+    costed_nodes = {
+        n["id"]
+        for n in graph.nodes()
+        if str(n.get("domain") or "").strip().casefold() == domain and not n["is_boundary"]
+    }
+    if any(
+        not {s.result.request.actor, s.result.request.source, s.result.request.target}
+        <= costed_nodes
+        for p in seed.paths
+        for s in p.transition_history
+        if s.result.technique.action_required
+    ):
+        return seed  # No C bound may be inferred from a work unit outside the profile.
+    paths, attempts = list(seed.paths), list(seed.attempts)
+    expansions = seed.expansions
+    bound = min(neo_history_cost(p.transition_history) for p in paths)
+    reason = seed.truncation_reason
+    while bound > 0 and expansions < budget.max_expansions:
+        remaining = replace(budget, max_paths=1, max_expansions=budget.max_expansions - expansions)
+        result = generate_attack_paths(
+            graph, actor, budget=remaining, _effort_ceiling=bound, **common
+        )
+        attempts.extend(result.attempts)
+        expansions += result.expansions
+        if result.truncated:
+            reason = result.truncation_reason
+        if not result.paths:
+            break
+        better = result.paths[0]
+        improved = neo_history_cost(better.transition_history)
+        if improved >= bound:
+            raise AssertionError("Refinement did not strictly improve C")
+        paths.append(better)
+        bound = improved
+    # Stable ties retain guided's discovery order. New strictly cheaper paths
+    # displace the most expensive candidates only when the output cap requires it.
+    if len(paths) > len(seed.paths):
+        paths.sort(key=lambda p: neo_history_cost(p.transition_history))
+    return AttackSearchResult(
+        tuple(paths[: budget.max_paths]), tuple(attempts), expansions, True, reason
+    )
+
+
 def generate_attack_paths(
     graph: EngineGraph,
     actor: str,
@@ -508,6 +571,7 @@ def generate_attack_paths(
     scenario_reference: str | None = None,
     catalog: Sequence[Technique] | None = None,
     search_order: str = "fifo",
+    _effort_ceiling: int | None = None,
 ) -> AttackSearchResult:
     """Expand branch-local AttackState using the repository's existing semantics API.
 
@@ -525,6 +589,32 @@ def generate_attack_paths(
     because the predicate cannot establish which asset is already satisfied.
     """
     validate_search_order(search_order)
+    if search_order == "neo_refine":
+        return _refine_attack_paths(
+            graph,
+            actor,
+            budget=budget,
+            catalog=catalog,
+            initial_state=initial_state,
+            runtime_context=runtime_context,
+            target_predicate=target_predicate,
+            success_state_predicate=success_state_predicate,
+            scenario_reference=scenario_reference,
+        )
+    if _effort_ceiling is not None:
+        if search_order != "neo_guided" or type(_effort_ceiling) is not int or _effort_ceiling < 1:
+            raise ValueError(
+                "Internal effort ceiling requires guided search and a positive integer"
+            )
+        from src.engine.ranking.effort_profiles import neo_history_cost
+
+        domain = str(graph.node(actor).get("domain") or "").strip().casefold()
+        costed_nodes = {
+            n["id"]
+            for n in graph.nodes()
+            if str(n.get("domain") or "").strip().casefold() == domain and not n["is_boundary"]
+        }
+
     # EngineGraph has already validated the exact graph/facts binding. Reuse its
     # owned semantic view, while keeping callback-visible nodes isolated.
     evaluation_graph = graph.to_prepared()
@@ -727,6 +817,12 @@ def generate_attack_paths(
                 relationship.target,
                 getattr(relationship, "binding", None),
             )
+            if _effort_ceiling is not None and (
+                technique.action_required
+                and not {request.actor, request.source, request.target} <= costed_nodes
+                or neo_history_cost(history, (request, technique)) >= _effort_ceiling
+            ):
+                continue
             result = evaluate_semantic_transition(
                 evaluation_graph,
                 state,
