@@ -36,8 +36,8 @@ from .graph import EngineGraph
 
 
 def validate_search_order(value: str) -> None:
-    if value not in ("fifo", "goal_guided", "neo_guided"):
-        raise ValueError("search_order must be fifo, goal_guided or neo_guided")
+    if value not in ("fifo", "goal_guided", "neo_guided", "neo_cost"):
+        raise ValueError("search_order must be fifo, goal_guided, neo_guided or neo_cost")
 
 
 NEO_GUIDED_TECHNIQUES = frozenset(
@@ -136,6 +136,63 @@ class _NeoGoalQueue:
 
     def popleft(self):
         return heapq.heappop(self.heap)[-1]
+
+
+class _NeoCostQueue(_NeoGoalQueue):
+    """Order work by paid C union; topology breaks ties without pruning.
+
+    All actions share one fixed method per technique, authentication context,
+    scenario and policy. Thus (technique, actor, source, target) identifies the
+    same unit as the final resolver. Custom work/preparation rules are excluded
+    at the query boundary. Goals join the frontier and are returned on pop.
+    """
+
+    def __init__(self, items, relationships, target, catalog, nodes):
+        from src.engine.ranking.effort_profiles import load_effort_profile
+
+        canonical = {t.id: t for t in load_catalog()}
+        if any(t != canonical[t.id] for t in catalog):
+            raise ValueError("neo_cost requires unchanged neo technique definitions")
+        self.costs = {
+            key: value["cost"] for key, value in load_effort_profile("neo-c-v1")["classes"].items()
+        }
+        super().__init__(items, relationships, target, catalog, nodes)
+
+    def work(self, request):
+        return (request.technique_id, request.actor, request.source, request.target)
+
+    def paid(self, history):
+        return frozenset(
+            self.work(step.result.request)
+            for step in history
+            if step.result.technique.action_required
+        )
+
+    def action_cost(self, candidate, history):
+        _, relation, technique, next_actor, _, _ = candidate
+        paid = self.paid(history)
+        work = self.work(
+            TransitionRequest(technique.id, next_actor, relation.source, relation.target)
+        )
+        return sum(self.costs[w[0]] for w in paid) + (
+            self.costs[technique.id] if technique.action_required and work not in paid else 0
+        )
+
+    def append(self, item):
+        terminal = isinstance(item, PathResult)
+        history = item.transition_history if terminal else item[4]
+        cost = sum(self.costs[w[0]] for w in self.paid(history))
+        hint = self._priority(history[-1].result.request) if history else (math.inf, 1)
+        if not terminal and len(item) == 8:
+            candidates, start = item[7]
+            cost = self.action_cost(candidates[start], history)
+            hint = self.action_priority(candidates[start])
+        heapq.heappush(self.heap, (cost, *hint, len(history), self.serial, item))
+        self.serial += 1
+
+    def terminal_paths(self):
+        # Preserve already generated witnesses if the evaluation budget ends.
+        return (entry[-1] for entry in sorted(self.heap) if isinstance(entry[-1], PathResult))
 
 
 class _GoalQueue:
@@ -624,11 +681,12 @@ def generate_attack_paths(
     # actor, state, target-sequence, observed edges, transition trace, used actions,
     # and the transition that first introduced each derived relationship.
     initial = [(actor, initial_state, (actor,), (), (), frozenset(), {})]
-    if search_order == "neo_guided":
+    if search_order in {"neo_guided", "neo_cost"}:
         targets = [n for n in nodes.values() if target_predicate(n)]
         if len(targets) != 1 or not {t.id for t in selected_catalog} <= NEO_GUIDED_TECHNIQUES:
-            raise ValueError("neo_guided requires one target and supported neo techniques")
-        pending = _NeoGoalQueue(
+            raise ValueError("neo guidance requires one target and supported neo techniques")
+        queue_class = _NeoCostQueue if search_order == "neo_cost" else _NeoGoalQueue
+        pending = queue_class(
             initial, edge_by_relationship, targets[0]["id"], selected_catalog, nodes
         )
     elif search_order == "goal_guided":
@@ -661,8 +719,20 @@ def generate_attack_paths(
                 if len(paths) >= budget.max_paths
                 else "expansion_limit_reached"
             )
+            if search_order == "neo_cost" and expansions >= budget.max_expansions:
+                for path in pending.terminal_paths():
+                    signature = program_key(path)
+                    if signature not in path_signatures and len(paths) < budget.max_paths:
+                        path_signatures.add(signature)
+                        paths.append(path)
             break
         branch = pending.popleft()
+        if isinstance(branch, PathResult):
+            signature = program_key(branch)
+            if signature not in path_signatures:
+                path_signatures.add(signature)
+                paths.append(branch)
+            continue
         current_actor, state, path_nodes, path_edges, history, used, origins = branch[:7]
         if len(history) >= budget.max_steps:
             has_candidates = any(
@@ -702,6 +772,12 @@ def generate_attack_paths(
                 )
             )
             start_index = 0
+            if search_order == "neo_cost" and candidates:
+                candidates.sort(
+                    key=lambda c: (pending.action_cost(c, history), pending.action_priority(c))
+                )
+                pending.append((*branch[:7], (candidates, 0)))
+                continue
             if search_order == "neo_guided":
                 candidates.sort(key=pending.action_priority)
         advanced = False
@@ -737,6 +813,10 @@ def generate_attack_paths(
             attempts.append(result)
             expansions += 1
             if result.status is not Status.APPLICABLE:
+                if search_order == "neo_cost":
+                    if idx + 1 < len(candidates):
+                        pending.append((*branch[:7], (candidates, idx + 1)))
+                    break
                 continue
 
             next_state = apply_transition(state, result)
@@ -888,11 +968,14 @@ def generate_attack_paths(
                         terminal_target if terminal_target != relationship.target else None
                     ),
                 )
-                signature = program_key(path)
-                if signature in path_signatures:
-                    continue
-                path_signatures.add(signature)
-                paths.append(path)
+                if search_order == "neo_cost":
+                    pending.append(path)
+                else:
+                    signature = program_key(path)
+                    if signature in path_signatures:
+                        continue
+                    path_signatures.add(signature)
+                    paths.append(path)
                 if len(paths) >= budget.max_paths:
                     has_more_in_branch = idx + 1 < len(candidates)
                     has_more_pending = bool(pending)
@@ -914,7 +997,7 @@ def generate_attack_paths(
                     )
                 )
             advanced = True
-            if search_order == "neo_guided":
+            if search_order in {"neo_guided", "neo_cost"}:
                 # Resume siblings later rather than spending the whole budget
                 # on one high-fanout state before visiting a useful child.
                 if idx + 1 < len(candidates):
@@ -927,7 +1010,9 @@ def generate_attack_paths(
                 if truncation_reason is None:
                     truncation_reason = "expansion_limit_reached"
 
-        if expansions >= budget.max_expansions or len(paths) >= budget.max_paths:
+        if search_order != "neo_cost" and (
+            expansions >= budget.max_expansions or len(paths) >= budget.max_paths
+        ):
             break
 
         if len(history) >= budget.max_steps and advanced:

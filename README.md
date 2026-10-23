@@ -1,5 +1,9 @@
 # AD Weighted Graph neo
 
+> Nhánh thử nghiệm C-first; không khuyến nghị thay search mặc định.
+> C-first khớp đáp án mô hình nhỏ nhưng làm mất witness trong budget trên SEAMLESS/WRAITH.
+> Xem [kết quả và quyết định trên main](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/main/reports/neo/cost-first-pilot.md).
+
 Từ một User hoặc Computer bị chiếm, tìm đường tấn công có điều kiện tới tài sản quan trọng, giải thích công sức C và kiểm tra đường thay thế sau remediation.
 Repo này dùng lịch sử Git mới và workflow cá nhân.
 Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụng; evidence lịch sử được giữ nguyên để đối chiếu.
