@@ -1,0 +1,195 @@
+{
+  "version": "neo-holdout-public-data-research/1",
+  "recorded_at_utc": "2026-10-24T04:27:18.111312+00:00",
+  "status": "research_complete_no_candidate_cleared_for_holdout",
+  "evaluation_code_commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "preparation_commit": "efeb9134e70104933d22a875d9df3abfca34b28e",
+  "preparation_record": "reports/neo/holdout-local-preparation-20261024.json",
+  "raw_downloads": 0,
+  "new_raw_opened": false,
+  "holdout_query_runs": 0,
+  "holdout_remediation_runs": 0,
+  "eligible_holdout_datasets": [],
+  "candidate_order": [
+    "goodhound-detectionlab",
+    "mylab-certeu"
+  ],
+  "candidates": [
+    {
+      "id": "goodhound-detectionlab",
+      "decision": "preferred_candidate_pending_provenance",
+      "source": "https://github.com/idnahacks/GoodHound",
+      "source_commit": "c2d8915619d54c752425e6e3fdee3ac8499b32f2",
+      "provenance_document": "https://github.com/idnahacks/GoodHound/blob/c2d8915619d54c752425e6e3fdee3ac8499b32f2/Sample%20SharpHound%20Output/README.md",
+      "archive": {
+        "path": "Sample SharpHound Output/20211017151337_BloodHound.zip",
+        "git_blob_sha1": "d7bb8cd6ed79796e6413d9d3a3ca45892b70dfdd",
+        "bytes": 112732,
+        "sha256": null,
+        "downloaded": false
+      },
+      "environment_author_description": "DetectionLab populated with BadBlood; sample SharpHound output for import into BloodHound.",
+      "reuse": {
+        "repository_license": "GPL version 3",
+        "license_git_blob_sha1": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+        "license_url": "https://github.com/idnahacks/GoodHound/blob/c2d8915619d54c752425e6e3fdee3ac8499b32f2/LICENSE",
+        "sample_documentation_encourages_import": true,
+        "redistribution_performed": false
+      },
+      "collector": {
+        "name_author_declared": "SharpHound",
+        "version": null,
+        "schema_version": null
+      },
+      "collection_time": {
+        "observed": null,
+        "timezone": null,
+        "unverified_filename_token": "20211017151337",
+        "archive_added_to_git_at": "2021-10-17T16:20:48Z",
+        "archive_added_commit": "14fcc53cfa1644bd24e3aa59bf7221d61acc6bcb",
+        "note": "Filename token and Git publication time are not a verified collection timestamp."
+      },
+      "limitations": [
+        "Author warns the BadBlood sample lacks session data; raw session coverage has not been inspected.",
+        "Different documented lab source from SEAMLESS is a provenance lead, not proof of graph independence from a renamed/copied export.",
+        "No reference found in audited project history; undocumented prior use remains unconfirmed."
+      ],
+      "missing_for_protocol": [
+        "collector version/schema provenance before raw analysis",
+        "collection timestamp/timezone or a documented upstream collection-time convention",
+        "sufficient provenance to establish independent lab/export and no prior tuning use in base or neo"
+      ]
+    },
+    {
+      "id": "mylab-certeu",
+      "decision": "secondary_candidate_pending_provenance_and_data_permission",
+      "source": "https://github.com/lucky-luk3/CERT-EU_2026-Spotting-liars-in-your-domain",
+      "source_commit": "7e344786da553f16bc8f234eb871aeee33eb6c88",
+      "provenance_document": "https://github.com/lucky-luk3/CERT-EU_2026-Spotting-liars-in-your-domain/blob/7e344786da553f16bc8f234eb871aeee33eb6c88/README.md",
+      "environment_author_description": "MYLAB.LOCAL synthetic lab; example SharpHound collection in mylab/.",
+      "reuse": "README advertises CC BY 4.0 and explicitly names the notebook and two Python modules in its license section. It describes the sample as synthetic, but does not clearly state that the same grant covers raw mylab/ data; do not assume.",
+      "collector": {
+        "name_author_declared": "SharpHound",
+        "version": null,
+        "schema_version": null
+      },
+      "collection_time": {
+        "observed": null,
+        "timezone": null,
+        "unverified_filename_token": "20250316212118",
+        "published_in_git_at": "2026-10-08T09:57:46Z",
+        "note": "A 2026 conference repository does not establish a 2026 collection date."
+      },
+      "raw_file_metadata": {
+        "20250316212118_computers.json": {
+          "git_blob_sha1": "75d1f23bce66cc8d194721981e87bac357c25b29",
+          "bytes": 594788
+        },
+        "20250316212118_containers.json": {
+          "git_blob_sha1": "558432d798ab4ba35a0cd2e7214a34474f319d9a",
+          "bytes": 356610
+        },
+        "20250316212118_domains.json": {
+          "git_blob_sha1": "afedd47dad3d55fe5a6e4040acfde997f3e9272c",
+          "bytes": 5148
+        },
+        "20250316212118_gpos.json": {
+          "git_blob_sha1": "7f59e40771b05b6f542ea1026303968027c67f04",
+          "bytes": 4374
+        },
+        "20250316212118_groups.json": {
+          "git_blob_sha1": "7a9d51e8e916d2f6b51dc78789eb9d1b5993745d",
+          "bytes": 3406731
+        },
+        "20250316212118_ous.json": {
+          "git_blob_sha1": "c67755c63b8d8d60df0db953bc0aa91dbd4cbae9",
+          "bytes": 616039
+        },
+        "20250316212118_users.json": {
+          "git_blob_sha1": "8e0c97ccd9bc346271d8727a2c5fce0c355bee74",
+          "bytes": 13857638
+        }
+      },
+      "raw_downloaded": false,
+      "missing_for_protocol": [
+        "explicit raw-data reuse permission",
+        "collector version/schema provenance",
+        "collection timestamp/timezone provenance",
+        "independent lab and prior-use confirmation beyond absence in local history"
+      ]
+    }
+  ],
+  "other_sources_screened": [
+    {
+      "source": "https://bloodhound.specterops.io/get-started/quickstart/ce-ingest-sample-data",
+      "decision": "excluded_known_ad_sampledata_family_or_out_of_scope_entra",
+      "reason": "Official quickstart points to ad_sampledata and Entra samples; neither supplies a documented new independent AD lab for this protocol."
+    },
+    {
+      "source": "https://github.com/Artifice-Sec/Bloodhound-Sample-Data",
+      "decision": "excluded_mirror",
+      "reason": "ad_example_data.zip has exactly the same Git blob as official ad_sampledata.zip; a second host/name does not establish independence.",
+      "matched_git_blob_sha1": "3cf41914734846047f2357d407281616d2e5a0aa"
+    },
+    {
+      "source": "https://github.com/pushou/Bloodhound-CE-Sample-Data",
+      "decision": "excluded_same_goadv2_lab_release",
+      "source_commit": "4d365b8774b6ac5db44a510db8bdfbb2151de48b",
+      "reason": "README identifies one GOADv2 lab collection release with SharpHound 2.3.3 and BloodHound.py CE. ESSOS/SEVENKINGDOMS archives alongside the already-used NORTH export do not establish an independent new lab."
+    },
+    {
+      "source": "https://github.com/sp00ks-git/bloodhound-dummy-data",
+      "decision": "not_eligible_missing_provenance_and_permission",
+      "reason": "Root inventory has only one ZIP, with no README or license; collector/schema, environment independence, collection time and reuse conditions are unverified."
+    },
+    {
+      "source": "https://github.com/AUCyberLab/ADSynth",
+      "decision": "outside_current_export_protocol",
+      "source_commit": "d7019d08c1496f63b32098f4aa386247e265e62a",
+      "reason": "BSD-3-Clause graph generator with reproducibility support, but its documented JSONL/OpenGraph outputs are not an observed SharpHound AD export. Adding generation or an adapter would change scope; not performed."
+    }
+  ],
+  "prior_use_audit": {
+    "available_local_git_refs_total": 561,
+    "checkouts": [
+      {
+        "repository": "ad-weighted-graph",
+        "head": "0bfc85e413e67ded291cb7303ad567e3dfc6e544",
+        "available_ref_count": 169
+      },
+      {
+        "repository": "ad-weighted-graph-neo",
+        "head": "2566a964526c93c8297e6cd8de73278a9073221b",
+        "available_ref_count": 10
+      },
+      {
+        "repository": "identity-graph",
+        "head": "996ee35d154051abee4eb3c940c91264b68cb5fb",
+        "available_ref_count": 191
+      },
+      {
+        "repository": "identity-graph-268",
+        "head": "9b262f9559113f88084506f55f67db7bbd959d6d",
+        "available_ref_count": 191
+      }
+    ],
+    "reference_matches": 0,
+    "method": "Search tracked contents, every available local Git ref via git log --all -G, and local filenames for candidate names, archive timestamps and the GoodHound archive Git blob.",
+    "limit": "No matches is not a human attestation of no prior tuning use and cannot justify a blind-holdout label."
+  },
+  "next_required_information": "Upstream collection/schema/time provenance for GoodHound; clarify MYLAB raw reuse if using that alternative. Existing protocol remains unchanged; no automatic waiver or substitution.",
+  "contacts_sent": false,
+  "validation": {
+    "raw_or_benchmark_tests_run": false,
+    "method": "Metadata consistency assertions, unchanged evaluation source/config diff, report JSON parsing, protocol links, and repository checks.",
+    "repository_check_exit_code": 0,
+    "diff_check_exit_code": 0
+  },
+  "evidence_directory": "reports/generated/holdout-dataset-research-20261024",
+  "claim_boundaries": [
+    "Dataset discovery and metadata research only, not an evaluated holdout.",
+    "No import compatibility or coverage result without raw inspection.",
+    "No speed, minimum-C, remediation or BloodHound superiority claim."
+  ],
+  "evidence_manifest_sha256": "sha256:6e9eb0a7b234eaea28686e6ede4b9b2bec9239d7ed4256eec21918f861d63207"
+}

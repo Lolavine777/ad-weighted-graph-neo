@@ -11,6 +11,10 @@ Chưa tìm thấy export mới đủ điều kiện trong các vị trí dữ li
 Cần nguồn/quyền dùng, collector/schema, thời điểm và xác nhận lịch sử sử dụng trước khi xét một export là holdout.
 Chuẩn bị này không khép yêu cầu minimum-C của đề gốc hoặc chứng minh ưu thế so với BloodHound.
 
+[Rà soát nguồn công khai ngày 24/10/2026](holdout-public-data-research-20261024.json) đã pin hai ứng viên GoodHound/DetectionLab và MYLAB của demo CERT-EU 2026, đồng thời loại các bản mirror/cùng lab cũ và dữ liệu sai scope.
+Chưa ứng viên nào đủ điều kiện holdout: còn thiếu xác nhận collector/schema, thời điểm thu thập và lịch sử sử dụng; MYLAB cần làm rõ quyền tái sử dụng raw.
+Chỉ đọc tài liệu và metadata GitHub, không tải/mở raw mới hoặc chạy đánh giá; không dùng ngày commit hay timestamp trong tên file làm thời điểm thu thập đã xác nhận.
+
 ## Điều kiện đầu vào
 
 Môi trường holdout phải do chủ sở hữu cho phép dùng trong nghiên cứu và chưa được dùng để chỉnh parser, search, scenario hoặc bảng C của neo.
