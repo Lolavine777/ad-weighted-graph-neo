@@ -412,7 +412,7 @@ def test_cli_transport_reproduction_and_automatic_ratings(tmp_path, automatic):
         subprocess.run(
             [*args, "--output", str(path)], cwd=ROOT, check=True, capture_output=True, text=True
         )
-        package = json.loads(path.read_text())
+        package = json.loads(path.read_text(encoding="utf-8"))
         validate_transport(package)
         assert package["semantic"]["top_k"]["returned_count"] == 2
         assert package["reproducibility"]["semantic_sha256"] == digest(
@@ -429,7 +429,7 @@ def test_cli_transport_reproduction_and_automatic_ratings(tmp_path, automatic):
         capture_output=True,
         text=True,
     )
-    base_acceptance = json.loads(base_path.read_text())["acceptance"]
+    base_acceptance = json.loads(base_path.read_text(encoding="utf-8"))["acceptance"]
     acceptance = packages[0]["acceptance"]
     assert (
         acceptance["resolved_dependencies"].items()

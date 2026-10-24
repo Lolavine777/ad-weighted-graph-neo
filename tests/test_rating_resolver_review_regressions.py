@@ -137,7 +137,9 @@ def test_conflicting_explicit_work_identity_fails_in_both_orders():
 
 def explicit_case():
     packet = json.loads(
-        (Path(__file__).parents[1] / "docs/research/ratings/week4/synthetic-a2-e.json").read_text()
+        (Path(__file__).parents[1] / "docs/research/ratings/week4/synthetic-a2-e.json").read_text(
+            encoding="utf-8"
+        )
     )["query"]
     action = packet["bound_actions"][0]
     step = declared_step(
@@ -315,7 +317,7 @@ def test_generated_search_path_reaches_the_canonical_evaluator():
         json.loads(
             (
                 Path(__file__).parents[1] / "tests/fixtures/attack_scenarios/graphs/two-routes.json"
-            ).read_text()
+            ).read_text(encoding="utf-8")
         )
     )
     runtime = RuntimeContext(
@@ -560,7 +562,7 @@ def reviewed_bundle():
     return json.loads(
         (
             Path(__file__).parents[1] / "docs/research/ratings/week3-closeout/reviewed-release.json"
-        ).read_text()
+        ).read_text(encoding="utf-8")
     )
 
 

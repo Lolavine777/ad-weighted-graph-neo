@@ -108,12 +108,15 @@ def test_api_subprocess_cli_and_orchestration_agree(tmp_path, simulate, case):
             cwd=ROOT,
             capture_output=True,
             text=True,
+            encoding="utf-8",
             check=True,
         )
         result = json.loads(process.stdout)
         assert result["semantic"]["ranking_result"] == wire(api.ranking_result)
         assert result["semantic"]["rating_coverage"] == api.rating_coverage
-        schema = json.loads((ROOT / "docs/research/public-rating-coverage.schema.json").read_text())
+        schema = json.loads(
+            (ROOT / "docs/research/public-rating-coverage.schema.json").read_text(encoding="utf-8")
+        )
         Draft202012Validator(schema).validate(result["semantic"]["rating_coverage"])
         result.pop("runtime")
         results.append(result)
@@ -306,7 +309,7 @@ def test_source_manifest_cannot_omit_authoritative_pin(tmp_path):
 
     shutil.copytree(ROOT / PACKAGE, tmp_path / PACKAGE)
     manifest_path = tmp_path / PACKAGE / "source-manifest-v2.json"
-    manifest = json.loads(manifest_path.read_text())
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     for name in manifest["source_pins"]:
         target = tmp_path / name
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -363,4 +366,4 @@ def test_export_cannot_overwrite_pending_package(tmp_path):
         text=True,
     )
     assert result.returncode != 0
-    assert export.read_text() == "existing pending artifact"
+    assert export.read_text(encoding="utf-8") == "existing pending artifact"

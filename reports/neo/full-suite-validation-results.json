@@ -1,4 +1,115 @@
 {
+  "additional_validation_20261024": {
+    "base_commit": "e261412d5b8cd2003590bd32128060471324bd51",
+    "evidence_sha256": {
+      "reports/generated/neo-validation-20261024T0311Z/adjacent.log": "sha256:86f69ebdfbcec5bcf909d096aaef6c0dcba07d7082a4c7e4fab7ea5da44c1368",
+      "reports/generated/neo-validation-20261024T0311Z/adjacent.xml": "sha256:8bf424c41cdac206891d5c32a07d5b14efc289300815f18a2efe554a4ac0e4d7",
+      "reports/generated/neo-validation-20261024T0311Z/ci-result.json": "sha256:c44d0543d93653e59659678ed8bd812a65c137e46e6fad8ce2a45f700c5d1e56",
+      "reports/generated/neo-validation-20261024T0311Z/cp1252_pytest.py": "sha256:39de10807f0edc23f5d0508595fe9d18b417b5d92c8eeb2d58c2b03d6141bacc",
+      "reports/generated/neo-validation-20261024T0311Z/guided-blocked-evidence/raw-integrity-after.json": "sha256:8d3143713d5b79d5b9aaad086af2e2356fb411240a893866bfeba2097c8f6fb2",
+      "reports/generated/neo-validation-20261024T0311Z/guided-blocked-evidence/raw-integrity-before.json": "sha256:8d3143713d5b79d5b9aaad086af2e2356fb411240a893866bfeba2097c8f6fb2",
+      "reports/generated/neo-validation-20261024T0311Z/guided-blocked-evidence/summary.json": "sha256:10c007e045a4bafd986e5358d9ed7932371e414d3d132bf12f1e071a3d11c905",
+      "reports/generated/neo-validation-20261024T0311Z/linux-current.log": "sha256:945b894b9815aabbf0f91499993bcd5e696c5a8dca3457858d24bf357c71a381",
+      "reports/generated/neo-validation-20261024T0311Z/prerequisite-guard.log": "sha256:a4ec16e8b3198fbc45e4f632a4ada73e1d98f93ae963f3dfa950e57005db65e7",
+      "reports/generated/neo-validation-20261024T0311Z/quality-0.log": "sha256:82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "reports/generated/neo-validation-20261024T0311Z/quality-1.log": "sha256:acf961694764e02c45b7cc99462afb80d82b19924ea97d417fe9f9b44322a2dc",
+      "reports/generated/neo-validation-20261024T0311Z/quality-2.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reports/generated/neo-validation-20261024T0311Z/quality-3.log": "sha256:3f33c3e3d2913f21a2db96dabd9afb62fd50188b5f52a242e2f1f563dff6cf59",
+      "reports/generated/neo-validation-20261024T0311Z/quality-4.log": "sha256:e12c6e6a4edaab279ec0ed01749fa4b770fce88217fadf8c9a16101065cb9628",
+      "reports/generated/neo-validation-20261024T0311Z/quality-5.log": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reports/generated/neo-validation-20261024T0311Z/quality.json": "sha256:fa890a1bed9b193d3af3cd0468120888d4af2c7faa7258d92b5563f128d87f5b",
+      "reports/generated/neo-validation-20261024T0311Z/raw-opt-ins-recheck.log": "sha256:e8256868f579da4b3a7c700814b270a9a05c51abca9c7722c3352995ea3df066",
+      "reports/generated/neo-validation-20261024T0311Z/raw-opt-ins-recheck.xml": "sha256:825ff0a4145f0d1405efb3794fa176b05979c47b296c46f3a856e1273399cd56",
+      "reports/generated/neo-validation-20261024T0311Z/raw-opt-ins.log": "sha256:a0ea3382a868590fd9b85456db2f769f6c4c93eaf447f071c9ddf5cd8a293c75",
+      "reports/generated/neo-validation-20261024T0311Z/raw-opt-ins.xml": "sha256:37e655abff67f7087d11003aa0289c97c94821c0ba61cda7f2a0409f4b837976",
+      "reports/generated/neo-validation-20261024T0311Z/start.json": "sha256:46dd99a8d0cff3f6c55f901eabe4a4e51be5cf05df78ae16c15ee17becdeb3f9",
+      "reports/generated/neo-validation-20261024T0311Z/windows-current.log": "sha256:fa8a4b6d198656b8e15e81a6bbecdc4be714d96c0e6c7ab56fb9d8cbd4a65fc1",
+      "reports/generated/neo-validation-20261024T0311Z/windows-expanded.log": "sha256:f6f71412d05ef83426bda06cf132cab17c0305c62fb15b91f355f6f8eddbda45",
+      "reports/generated/neo-validation-20261024T0311Z/windows-expanded.xml": "sha256:b98f09a3c15341020a16ca3c2edb77253008a29fa5eadc5439d904472d156ea6",
+      "reports/generated/neo-validation-20261024T0311Z/windows-fixed.log": "sha256:436f9c4ba1f865a3a8255c316bc550088664fde03b55c20ac22cc8b8d9f76a71",
+      "reports/generated/neo-validation-20261024T0311Z/windows-fixed.xml": "sha256:00e6c4caccb695b64141a95e30ba502241ffaa15075154cc165d2ecee04e16e6",
+      "reports/generated/neo-validation-20261024T0311Z/windows-reproduction.log": "sha256:3e89793008326e240fc065d0ea72665e20e1c08b30df297d2f91577f3efed6de",
+      "reports/generated/neo-validation-20261024T0311Z/windows-reproduction.xml": "sha256:c37b19fe609da889846434708b5c59745db60e2933882d8dd95b9fca1eda99ea"
+    },
+    "expanded_cp1252_regressions": "187 passed, 1 skipped in 41.81s",
+    "frozen_evidence_unchanged": true,
+    "guided_acceptance": {
+      "blocked_check": "B_exact_snapshot_nodes",
+      "failed_checks": 0,
+      "missing_prerequisites": [
+        "GUIDED_SEAMLESS_SOURCE_LABEL",
+        "GUIDED_SEAMLESS_TARGET_LABEL"
+      ],
+      "passed_checks": 19,
+      "status": "BLOCKED"
+    },
+    "local_windows_fixed": "14 passed in 5.03s",
+    "local_windows_reproduction": "13 failed, 1 passed in 4.37s",
+    "prior_ci": {
+      "conclusion": "failure",
+      "headSha": "e261412d5b8cd2003590bd32128060471324bd51",
+      "jobs": [
+        {
+          "completedAt": "2026-10-24T03:08:07Z",
+          "conclusion": "success",
+          "name": "compose",
+          "startedAt": "2026-10-24T03:08:00Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:08:19Z",
+          "conclusion": "success",
+          "name": "quality",
+          "startedAt": "2026-10-24T03:08:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:31:21Z",
+          "conclusion": "failure",
+          "name": "tests (windows-latest)",
+          "startedAt": "2026-10-24T03:08:01Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:19:05Z",
+          "conclusion": "success",
+          "name": "tests (ubuntu-latest)",
+          "startedAt": "2026-10-24T03:08:01Z",
+          "status": "completed"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40057048164"
+    },
+    "prior_ci_test_results": {
+      "linux": "3723 passed, 147 skipped in 646.68s",
+      "windows": "13 failed, 3709 passed, 148 skipped in 1357.45s"
+    },
+    "raw_files_unchanged": true,
+    "raw_opt_in_first_attempt": "1 failed, 4 passed in 101.46s; guided runner BLOCKED by missing labels",
+    "raw_opt_in_recheck": "4 passed, 1 skipped in 76.88s",
+    "recorded_at_utc": "2026-10-24T03:36:18.252202+00:00",
+    "remaining": [
+      "Updated Windows CI",
+      "Configured guided Case B acceptance",
+      "Unseen authorized holdout dataset"
+    ],
+    "remote_ci_for_fix": "Pending next push; local default-decoder simulation is not a completed Windows CI run",
+    "scope": "Explicit UTF-8 JSON/pipe decoding and byte-exact remediation catalog checkout; no engine, semantic, numeric, or search changes",
+    "source_pins": {
+      ".gitattributes": "sha256:26237370109d357b78a7fe16d1508cbeccbcc6d7d6cde503ab3676be12567490",
+      "README.md": "sha256:5825c5ab5ad4d786b4d54b43c4e12fc26ff503f83745c8813f3d2efcaf80766f",
+      "reports/neo/source-manifest.json": "sha256:ad064876d887ebabeb641557be0b378c392d9ed3b8a519637eb5ed08d1a62168",
+      "scripts/neo_cost_sensitivity.py": "sha256:d844de1abfa153ed255e743c0a62fb20aec92a4397e420979b7b5d8d418309d2",
+      "tests/test_guided_seamless_acceptance.py": "sha256:58ee4f8c9184e1247d4113c6b877fcba748909640fb4c47bee21b70b4cfec1f6",
+      "tests/test_neo_cost_sensitivity.py": "sha256:1c49f01a8eb066020f9296d7bcd37e20a12048c6a024cc7daeaa4e64a332d9cf",
+      "tests/test_rating_resolver_review_regressions.py": "sha256:93fb0960f9d3b5cd3333113bc26b63fe577e32090b259f45d630ae076a8acbd4",
+      "tests/test_scenario_rating_pack.py": "sha256:f9fbc383b5a99f1d8376efa5cc95a5b6253582511e5d86af9b018c200b602fd7",
+      "tests/test_source_a_rating_pack.py": "sha256:b460ef492ef102fdb2de0e235fd529f706b833c9020e86cefb5e55c2b7464f42",
+      "tests/test_top_k_search.py": "sha256:03df72c7edf5795d942fed9c91516c27aed0cfd22d984b0ee3a9e4c4c3b310db",
+      "tests/test_week4_acceptance_checkout_bytes.py": "sha256:c9130df3de42bf3d05bbe90b2f84021b7b1626afdf0359940bbcaeca504c22b1"
+    }
+  },
   "archived_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
   "base_commit": "c0200ddd19e9e8cbb57d25fde571b47da4e47158",
   "diagnostics": {

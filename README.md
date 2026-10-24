@@ -92,7 +92,8 @@ nghiêm ngặt và không làm mất kết quả tốt nhất ban đầu. Ví d�
 [Kết quả kiểm chứng](reports/neo/refinement-results.json): cùng cap 256 expansions,
 giữ 22/24 cặp có witness, hai cặp SEAMLESS giảm C=2→1 ở cả cap 1 và 10 witness.
 451 test liên quan pass; đã replay 528 chương trình thật và chạy CLI/worker E2E.
-Chưa chạy full suite. Refinement tốn thêm lượt tìm kiếm; mặc định vẫn `neo_guided`.
+[Lượt full suite sau đó](reports/neo/full-suite-validation.md) đã bao gồm mã refinement.
+Refinement tốn thêm lượt tìm kiếm; mặc định vẫn `neo_guided`.
 Chỉ áp dụng với bảng `neo-c-v1` chuẩn và techniques neo hỗ trợ. Khi còn cap/gap,
 kết quả vẫn là best-found, không tự nâng thành minimum đã chứng minh.
 

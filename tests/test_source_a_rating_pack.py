@@ -34,9 +34,11 @@ def test_frozen_numeric_basis_matches_historical_source_without_rescoring():
     from src.engine.ranking.resolution_service import canonical_digest
     from src.engine.ranking.resolver import generate_work_unit_id
 
-    basis = json.loads((ROOT / PACKAGE / "source-a-basis.json").read_text())
+    basis = json.loads((ROOT / PACKAGE / "source-a-basis.json").read_text(encoding="utf-8"))
     historical = json.loads(
-        (ROOT / "docs/research/ratings/week3-closeout/reviewed-release.json").read_text()
+        (ROOT / "docs/research/ratings/week3-closeout/reviewed-release.json").read_text(
+            encoding="utf-8"
+        )
     )
     query, _ = build_source_a_query()
     regs = query["rating_resolution"]["registries"]
@@ -131,7 +133,7 @@ def test_frozen_source_a_exact_products_remain_independent_numeric_expectations(
 
     from scripts.research.scenario_rating_pack import PACKAGE, ROOT
 
-    oracle = json.loads((ROOT / PACKAGE / "source-a-oracles.json").read_text())
+    oracle = json.loads((ROOT / PACKAGE / "source-a-oracles.json").read_text(encoding="utf-8"))
     for record in oracle["exact_products"].values():
         lo, hi = Fraction(1), Fraction(1)
         for a, b in record["q_intervals"]:

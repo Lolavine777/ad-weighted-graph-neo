@@ -94,11 +94,13 @@ def test_no_witness_does_not_become_a_zero_cost_program():
 
 @pytest.mark.parametrize("scenario", ["identity", "host-compromise"])
 def test_fixed_scope_checked_before_real_query_compilation(monkeypatch, tmp_path, scenario):
+    import io
     import json
     from types import SimpleNamespace
 
     from scripts import neo_cost_sensitivity as probe
 
+    monkeypatch.setattr(io, "text_encoding", lambda encoding, stacklevel=2: encoding or "cp1252")
     pack = json.loads(
         (probe.ROOT / "reports/neo/bloodhound-query-pack.json").read_text(encoding="utf-8")
     )

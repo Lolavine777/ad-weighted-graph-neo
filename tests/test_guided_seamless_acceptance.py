@@ -27,6 +27,10 @@ def test_manifest_verified_seamless_guided_exploration():
     raw_dir = os.environ.get("GUIDED_SEAMLESS_RAW_DIR")
     if not raw_dir:
         pytest.skip("Set GUIDED_SEAMLESS_RAW_DIR to authorized pinned SEAMLESS raw inputs")
+    if not os.environ.get("GUIDED_SEAMLESS_SOURCE_LABEL") or not os.environ.get(
+        "GUIDED_SEAMLESS_TARGET_LABEL"
+    ):
+        pytest.skip("Set GUIDED_SEAMLESS_SOURCE_LABEL and GUIDED_SEAMLESS_TARGET_LABEL for Case B")
     root = Path(__file__).resolve().parents[1]
     result = run_acceptance(Path(raw_dir), root / "reports/generated/issue287/pytest-final")
     assert result["status"] == "PASS", result["matrix"]

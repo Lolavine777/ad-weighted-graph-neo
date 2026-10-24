@@ -144,8 +144,10 @@ def programs_for(query, graph):
 
 def run(args):
     args.output_dir.mkdir(parents=True, exist_ok=False)
-    pack = json.loads(args.pack.read_text())
-    fixed = json.loads((ROOT / "reports/neo/bloodhound-query-pack.json").read_text())
+    pack = json.loads(args.pack.read_text(encoding="utf-8"))
+    fixed = json.loads(
+        (ROOT / "reports/neo/bloodhound-query-pack.json").read_text(encoding="utf-8")
+    )
     prices = variants()
     graph, query = fixture("two_routes")
     synthetic, _ = programs_for(
@@ -164,7 +166,7 @@ def run(args):
         ("seamless", args.seamless_snapshot),
         ("wraith", args.wraith_snapshot),
     ]:
-        graph = EngineGraph.from_snapshot(snapshot.read_text())
+        graph = EngineGraph.from_snapshot(snapshot.read_text(encoding="utf-8"))
         strata = [dataset_name, "wraith-sessions"] if dataset_name == "wraith" else [dataset_name]
         for name in strata:
             dataset = pack["datasets"][name]

@@ -20,6 +20,11 @@ def test_acceptance_pins_survive_autocrlf_checkout(tmp_path):
                 encoding="utf-8"
             )
         )
+        | {
+            "docs/research/remediation/catalog-v1.json": json.loads(
+                (ROOT / "tests/fixtures/remediation/request-v1.json").read_text(encoding="utf-8")
+            )["catalog_digest"]
+        }
     )
     # Use the tracked blobs and actual attributes, rather than normalizing bytes
     # in Python. This also catches newly pinned fixtures lacking an LF policy.

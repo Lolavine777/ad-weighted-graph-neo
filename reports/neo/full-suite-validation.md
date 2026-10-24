@@ -45,3 +45,18 @@ Follow-up checks passed: 39 native release/delivery tests, 157 affected tests, 4
 The public CLI/API comparison also passes with a simulated Windows default decoder, and the Windows-shaped receipt signature matches the original published signature.
 The full-suite result above retains its original source snapshot; the follow-up has separate source and evidence hashes in the structured record.
 Remote CI for the follow-up revision was pending when this record was written.
+
+The completed [CI run on `e261412`](https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40057048164) passed Linux (3723 tests, 147 skips), quality, and Compose; Windows finished with 13 failures, 3709 passes, and 148 skips.
+All 13 Windows failures were reproduced locally through existing offline regression tests using cp1252 defaults for file and subprocess text decoding, plus Git's actual `core.autocrlf=true` checkout conversion.
+Explicit UTF-8 decoding repairs the JSON and pipe comparisons, while a `-text` attribute preserves the original pinned remediation catalog bytes.
+The repaired reproduction passed all 14 cases, and the expanded affected modules passed 187 tests with one raw-data prerequisite skip under the same decoder simulation.
+The current source manifest was refreshed through its generator, and independent review found no blocking findings.
+These are local portability checks; updated Windows CI remains pending.
+
+Five raw-data opt-in tests were also exercised on the six manifest-verified SEAMLESS files.
+The first attempt recorded four passing tests and one assertion failure because guided acceptance returned `BLOCKED`, with 19 acceptance checks passing and no failed acceptance checks.
+Case B lacked its explicitly required source and target labels; no substitute nodes were selected.
+The opt-in test now requires the three inputs already documented in the guided-exploration guide before invoking acceptance.
+The recheck passed four tests and explicitly skipped guided acceptance for the missing labels; that skip does not turn the retained blocked runner result into a pass.
+All six raw files remained byte-identical, and the blocked evidence was preserved in the unique local namespace `reports/generated/neo-validation-20261024T0311Z/`.
+Configured guided Case B acceptance and the unseen holdout evaluation remain pending.
