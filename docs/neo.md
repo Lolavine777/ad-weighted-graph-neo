@@ -99,43 +99,85 @@ Không sửa checksum lịch sử để che drift.
 
 ## Chi phi C cho neo
 
-Profile opt-in `neo-c-v1` dùng bảng công sức C cho hành động thay vì khai báo từng cặp
-reset của actor ban đầu. C là điểm tương đối theo scenario, không phải thời gian hay P.
-Giữ công thức `C = T1 + T2 - 2`: T1 là độ phức tạp công cụ (1: chuẩn, 2: tùy biến,
-3: cần nghiên cứu); T2 là công sức thao tác (1: trao đổi đơn giản, 2: nhiều thao tác
-và xác minh, 3: xử lý/tính toán nặng). Đây là các ước lượng được chọn cho neo từ rubric
-cũ; không chuyển trạng thái duyệt A/B hay xác suất lịch sử sang scope mới.
+Profile opt-in `neo-c-v1` dùng bảng công sức C cho hành động thay vì khai báo từng cặp reset của actor ban đầu.
+C là **chỉ số công sức quy ước theo scenario**: dùng để so phần việc của các chương trình khả thi trong cùng phạm vi, không phải thời gian, xác suất thành công hay mức thiệt hại.
+Giữ công thức mỗi work unit `C = T1 + T2 - 2`, với hai tiêu chí có trọng số bằng nhau theo lựa chọn thiết kế của neo:
 
-| Hành động | Techniques | T1 / T2 | C |
-| --- | --- | --- | --- |
-| Reset mật khẩu | `genericall_reset_password`, `reset_target_password`, `scenario_reset_password` | 1 / 2 | 1 |
-| Dùng danh tính vừa reset | `acquire_reset_identity` | 1 / 1 | 0 |
-| Thêm thành viên nhóm | `genericall_add_member` | 1 / 2 | 1 |
-| Cấp quyền sửa DACL | `genericall_grant_write_dacl` | 1 / 2 | 1 |
-| Sửa DACL để cấp GenericAll | `grant_new_object_right` | 2 / 2 | 2 |
-| Thực thi quản trị host | `obtain_admin_execution_on_host`, `scenario_winrm_admin` | 1 / 2 | 1 |
-| Phiên lệnh WinRM, không tự cấp admin | `open_winrm_remote_session` | 1 / 2 | 1 |
-| Lấy credential từ session và xác thực trong miền | `use_session_identity` | 2 / 2 | 2 |
+- **T1 - độ phức tạp công cụ:** 1 là quy trình/công cụ chuẩn; 2 là cần tùy biến cách dùng hoặc cấu hình công cụ cho thao tác; 3 là cần nghiên cứu/triển khai mới.
+- **T2 - công sức thao tác:** 1 là trao đổi đơn giản khi đã có đủ vật liệu; 2 là nhiều thao tác và xác minh thay đổi hoặc kết quả thực thi; 3 là xử lý/tính toán nặng.
 
-Membership đã có là suy diễn quyền, không tạo work unit. Hành động C=0 vẫn cần qua
-semantic checks. Tổng C tính trên hợp các work unit, giữ nguyên cách khử trùng hiện có;
-không cộng riêng một bước chuẩn bị chung khi thao tác đã bao gồm nó.
+T1 xét cách thực hiện, T2 xét phần việc thực hiện/xác minh; không đếm số câu lệnh, số gói tin hay số prerequisite để suy điểm.
+Nhập tham số thông thường như đích hoặc credential chưa đủ để nâng T1 lên 2; mức 2 dự trù tùy biến quy trình/cấu hình ngoài thao tác chuẩn đã giả định cho action đó.
+Trừ 2 đặt mức nền `(1,1)` về 0; mỗi mức tăng ở một tiêu chí thêm một điểm theo quy ước, không phải một đơn vị thời gian đo được.
+11 action hiện hành chỉ dùng `(1,1)`, `(1,2)`, `(2,2)`, tương ứng C=0,1,2; mức 3 của thang chưa được gán trong profile này, còn tổng chương trình có thể lớn hơn 2.
+Đây là các ước lượng được chọn cho neo từ rubric cũ, không chuyển trạng thái duyệt A/B hoặc xác suất lịch sử sang scope mới.
+Nhãn metadata `estimated_expert_scenario` ghi loại cơ sở ước lượng, không chứng nhận đã có hội đồng chuyên gia độc lập.
+
+### Lý do giữ các mức điểm
+
+Bảng dưới chốt cách diễn giải `neo-c-v1` version `1.2.0`, ánh xạ đủ `OPERATIONS` trong [effort_profiles.py](../src/engine/ranking/effort_profiles.py), giữ nguyên giá và công thức.
+Phần lý giải là phân tích của dự án có hỗ trợ LLM, đối chiếu tài liệu chính thức Microsoft ngày 24/10/2026.
+**Nguồn mô tả đặc tính hành động và điều kiện áp dụng; T1/T2/C là quyết định của neo, không phải điểm được Microsoft xác nhận.**
+T2=2 ở các thao tác thay đổi/thực thi dự trù cả thao tác và xác minh, kể cả khi một công cụ có thể gói chúng trong một lần gọi.
+
+| Hành động / technique | T1 / T2 | C | Lý do chọn mức của neo | Giả định chính | Nguồn mô tả đặc tính |
+| --- | --- | --- | --- | --- | --- |
+| Reset mật khẩu: `genericall_reset_password`, `reset_target_password`, `scenario_reset_password` | 1 / 2 | 1 | Công cụ chuẩn, đổi mật khẩu rồi xác minh; quyền đầu vào khác nhau nhưng cùng họ công việc | Có quyền reset hiệu lực; policy chấp nhận; chưa tính việc chiếm quyền đó | [Set-ADAccountPassword](https://learn.microsoft.com/en-us/powershell/module/activedirectory/set-adaccountpassword?view=windowsserver2025-ps) |
+| Dùng danh tính vừa reset: `acquire_reset_identity` | 1 / 1 | 0 | Xác thực chuẩn bằng credential vừa có, đặt ở mức sàn; không làm lại công việc reset | Đúng context, KDC tới được, danh tính được chấp nhận | [Kerberos và việc tái dùng ticket](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview) |
+| Thêm thành viên nhóm: `genericall_add_member` | 1 / 2 | 1 | Thao tác directory chuẩn, ghi membership rồi xác minh | Security group, quyền ghi và membership được phép; entitlement vẫn qua gate riêng | [Add-ADGroupMember](https://learn.microsoft.com/en-us/powershell/module/activedirectory/add-adgroupmember?view=windowsserver2025-ps) |
+| Cấp WriteDacl: `genericall_grant_write_dacl` | 1 / 2 | 1 | Ước lượng một thao tác cấp quyền cố định bằng quy trình chuẩn khi đã có GenericAll | Quy trình cấp quyền sẵn có và quyền ghi hiệu lực; không tính lại quyền GenericAll | [Quyền AD](https://learn.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_rights_enum), [cấu hình ACE](https://learn.microsoft.com/en-us/windows/win32/ad/setting-access-rights-on-an-object) |
+| Sửa DACL để cấp GenericAll: `grant_new_object_right` | 2 / 2 | 2 | Dự trù tùy biến cấu hình ACE cho đích và xác minh quyền mới | Đã có WriteDacl; chọn đúng principal/quyền/phạm vi; không tính việc dùng quyền mới ở đây | [Quyền AD](https://learn.microsoft.com/en-us/windows/win32/api/iads/ne-iads-ads_rights_enum), [cấu hình ACE](https://learn.microsoft.com/en-us/windows/win32/ad/setting-access-rights-on-an-object) |
+| Thực thi quản trị host: `obtain_admin_execution_on_host`, `scenario_winrm_admin` | 1 / 2 | 1 | Kênh quản trị chuẩn, xác thực và xác minh thực thi với quyền yêu cầu | Đã có authorization; kênh dùng được; WinRM admin cần execution context phù hợp | [WinRM: xác thực và quyền của phiên](https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/winrm-security) |
+| Phiên lệnh WinRM: `open_winrm_remote_session` | 1 / 2 | 1 | Cùng mức quy trình chuẩn và xác minh phiên lệnh; không tự cộng điểm theo mức đặc quyền | Endpoint cho phép; phiên chạy theo quyền danh tính, không tự cấp admin | [WinRM: xác thực và quyền của phiên](https://learn.microsoft.com/en-us/powershell/scripting/security/remoting/winrm-security) |
+| Lấy credential từ session và xác thực: `use_session_identity` | 2 / 2 | 2 | Dự trù công cụ phù hợp vật liệu session, lấy danh tính tái dùng được rồi xác thực | Có host admin, session còn dùng được, credential truy cập được và được chấp nhận; không bao gồm vượt bảo vệ credential | [Credential Guard và giới hạn truy cập secret](https://learn.microsoft.com/en-us/windows/security/identity-protection/credential-guard/how-it-works) |
+
+WinRM là ví dụ kênh chuẩn để giải thích hàng thực thi host; `obtain_admin_execution_on_host` vẫn dùng gate `admin_channel` trừu tượng, không mặc nhiên là WinRM hoặc tự xác nhận cấu hình dịch vụ.
+Chênh T1 giữa hai hàng ACL là giả định về quy trình công cụ của neo, không suy ra từ tên quyền hoặc độ mạnh của GenericAll so với WriteDacl.
+Cả hai đều có thể dùng API chuẩn; tài liệu không chứng minh thao tác thứ hai luôn khó hơn, nên giữ chênh lệch này như một giả định công khai của bảng giá, chưa coi là hiệu chỉnh thực nghiệm.
+Tương tự, giá session chỉ áp dụng khi các gate cho phép; session có mặt không bảo đảm lấy được credential, và gặp cơ chế bảo vệ không có nghĩa tự tăng C để coi hành động khả thi.
+
+### Cộng điểm và tránh cộng trùng
+
+Với chương trình khả thi, `C(program) = sum(C(u) for u in U(program))`, trong đó `U` là hợp các work unit có ID duy nhất, không phải danh sách cạnh hoặc số bước.
+[Resolver](../src/engine/ranking/resolver.py) tạo ID theo technique, actor, target và context gồm nguồn quyền, method, authentication/resource context, policy/scenario, kèm boundary và ledger version; [assessment](../src/engine/ranking/assessment.py) cộng mỗi ID một lần.
+Cùng work unit được tham chiếu lại không tạo thêm điểm; khác actor/đích/context không tự gộp chỉ vì cùng technique hoặc cùng giá.
+Gộp action trong một hàng bảng chỉ để diễn giải, không biến các technique ID khác nhau thành một work unit.
+Không cộng riêng phần xác minh đã nằm trong giá action, hoặc tự thêm phí chuẩn bị chung; nếu một ledger khai báo shared preparation thì hợp work-unit IDs tính nó một lần.
+Work unit chưa có giá hoặc overlap chưa giải quyết làm C thiếu, không tự nhận C=0.
+
+Membership đã có qua `propagate_group_entitlement` là suy diễn quyền, không tạo work unit.
+`acquire_reset_identity` vẫn là một active work unit C=0, phải qua semantic checks và vẫn được tính vào giới hạn work unit; điểm sàn không có nghĩa không làm gì hoặc không mất thời gian.
+Thêm work unit mới có C>0 làm tổng tăng; thêm work unit C=0 hoặc dùng lại cùng ID không làm tăng tổng, nhưng có thể vẫn ảnh hưởng khả năng thực hiện và budget.
+
+### Ví dụ đã có và giới hạn so sánh
+
+- **Điểm bằng nhau:** S01 của [rubric review](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/d68b09a2f02c7895adb2f6462b59b6b51eff2052/reports/neo/rubric-review.md) có hai route khác nhau, mỗi chương trình gồm hai reset C=1 và hai activation C=0, cùng tổng C=2.
+  Tie chỉ nói rubric chưa phân biệt công sức của hai chương trình, không nói chúng tương đương về cấu trúc hoặc mọi đặc tính thực tế.
+- **Thêm việc có giá:** S02 cùng báo cáo có profile C=5 và biến thể cùng route thêm `genericall_grant_write_dacl` C=1 nên thành C=6.
+  Đây là tính nhất quán của phép cộng trên phần việc công bố, không chứng minh thao tác thêm là cần thiết hoặc hai state tương đương.
+- **Hai trường hợp C=0:** Q8 ở phần khảo sát SEAMLESS bên dưới có reset 1 + dùng danh tính 0 + membership passive 0 = 1, dù có hai active work units.
+  T02 trong rubric review có entitlement sẵn nên không thêm work unit, tổng 0; cả hai khác hẳn C thiếu do action chưa được chấm.
+- **Không cộng trùng:** [kiểm thử shared preparation hiện có](../tests/test_rating_resolver.py) cho hai action tham chiếu cùng preparation ID C=1, ledger giữ đúng một preparation C=1, không phải 2.
+  Đó là minh họa cơ chế ledger chung, không bổ sung phí preparation vào neo; ngược lại, hai lần dùng session ở host/context khác nhau trong [ví dụ WRAITH đã công bố](../reports/neo/cost-sensitivity.md#ví-dụ-đảo-thứ-hạng-nhưng-không-thay-minimum) là hai work unit riêng, tổng C=4.
+
+[Nghiên cứu rubric và JSON kèm theo](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/d68b09a2f02c7895adb2f6462b59b6b51eff2052/reports/neo/rubric-review.md) đã rà soát 9 cặp/30 summary, chưa có căn cứ đổi giá; đây là kiểm tính nhất quán có hỗ trợ AI, không phải 9 xác nhận thực nghiệm độc lập.
+Giữ tổng cộng như một giả định thiết kế bán định lượng: C=4 không có nghĩa gấp đôi công sức thực tế của C=2, và thứ tự giữa các họ công việc khác nhau còn phụ thuộc bảng giá.
+Chỉ so trực tiếp khi giữ cùng profile và scope/scenario thích hợp; khi đối chiếu các phương án của một bài toán cần cùng foothold, goal và context, giữ cả route và thành phần công việc để giải thích tie.
+Top-K trong candidate set bị cap vẫn là best-found nếu thiếu proof; ví dụ synthetic tính từ cùng bảng giá kiểm được phép cộng, không tự xác nhận giá đúng hoặc chứng minh ưu thế BloodHound.
 
 Scope là cùng miền, cùng authentication context, snapshot và scenario đã chọn.
 Actor, nguồn quyền và đích hành động phải thuộc tập node trong miền đó, không phải boundary.
-Giá áp dụng cả quyền qua nhóm, quyền vừa sửa và danh tính thu được giữa đường;
-việc cấp giá không cấp capability hay biến prerequisite Unknown/False thành True.
+Giá áp dụng cả quyền qua nhóm, quyền vừa sửa và danh tính thu được giữa đường; việc cấp giá không cấp capability hay biến prerequisite Unknown/False thành True.
 Goal vẫn phân biệt danh tính thuộc nhóm đặc quyền với quyền thực thi trên host.
 Techniques ngoài bảng tiếp tục chưa chấm C, không tự nhận C=0.
 
-API Python dùng `load_effort_profile("neo-c-v1")` và `bind_effort_profile(query, graph, profile)`
-tại `src.engine.ranking.effort_profiles`. Batch/exposure nhận `--effort-profile neo-c-v1`.
+API Python dùng `load_effort_profile("neo-c-v1")` và `bind_effort_profile(query, graph, profile)` tại `src.engine.ranking.effort_profiles`.
+Batch/exposure nhận `--effort-profile neo-c-v1`.
 Các profile reset cũ còn dùng được để tái lập benchmark; runner neo mặc định bảng C mới.
 Thay đổi này mở coverage C; chưa đổi search, thêm P/I hay mở roaming context.
 
-Ví dụ kỳ vọng trên mô hình hữu hạn: quyền qua nhóm → reset → dùng danh tính →
-quản trị host có C=2; sửa DACL → reset → dùng danh tính → quản trị host có C=4.
-Độ nhạy của các mức điểm và coverage nhiều nguồn trên SEAMLESS cần đo riêng.
+Ví dụ hữu hạn đã có trong [test neo C](../tests/test_neo_effort.py): quyền qua nhóm → reset → dùng danh tính → quản trị host có C=0+1+0+1=2; sửa DACL → reset → dùng danh tính → quản trị host có C=2+1+0+1=4.
+[Độ nhạy đã công bố](../reports/neo/cost-sensitivity.md) chỉ reprice candidate set cố định, không xác nhận trọng số bằng đo công sức thực tế.
 
 Kiểm tra đầu tiên với raw SEAMLESS đã kiểm manifest: baseline machine-to-DA giữ
 witness C=1 sau 4.995 expansions và qua native replay/API–CLI parity.
