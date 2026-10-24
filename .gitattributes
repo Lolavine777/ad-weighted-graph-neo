@@ -59,4 +59,6 @@ reports/research/issue250-*.json text eol=lf
 # Keep archived rating packages byte-identical on Windows checkouts.
 docs/research/ratings/scenario-basis-v1/** -text
 docs/research/ratings/likelihood-v1/** -text
+docs/research/ratings/week3-closeout/** -text
+docs/research/ratings/week4-maintainer-v1/** -text
 reports/neo/*.json text eol=lf

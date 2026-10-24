@@ -330,11 +330,11 @@ def test_executable_discovery_creates_goals_and_records_identity_declaration(tmp
     for technique in TECHNIQUES:
         command.extend(["--technique", technique])
     subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=True)
-    req = json.loads((output / "request.json").read_text())
+    req = json.loads((output / "request.json").read_text(encoding="utf-8"))
     assert req["schema_version"] == "batch-query-request/1.1.0"
-    result = json.loads((output / "result.json").read_text())
+    result = json.loads((output / "result.json").read_text(encoding="utf-8"))
     assert result["summary"]["successful_cells"] >= 1
-    assert "computer_usable_identity" in (output / "overview.md").read_text()
+    assert "computer_usable_identity" in (output / "overview.md").read_text(encoding="utf-8")
     assert req["sources"][0]["identity_provenance_reference"] == PROVENANCE
     assert GROUP in {t["target_node_id"] for t in req["target_manifest"]["targets"]}
     subprocess.run(command + ["--resume"], cwd=ROOT, capture_output=True, text=True, check=True)

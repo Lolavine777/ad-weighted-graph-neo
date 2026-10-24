@@ -99,7 +99,9 @@ def test_fixed_scope_checked_before_real_query_compilation(monkeypatch, tmp_path
 
     from scripts import neo_cost_sensitivity as probe
 
-    pack = json.loads((probe.ROOT / "reports/neo/bloodhound-query-pack.json").read_text())
+    pack = json.loads(
+        (probe.ROOT / "reports/neo/bloodhound-query-pack.json").read_text(encoding="utf-8")
+    )
     snapshot = tmp_path / "snapshot.json"
     snapshot.write_text("{}")
     pack["datasets"]["seamless"]["snapshot_sha256"] = probe.digest(snapshot.read_bytes())

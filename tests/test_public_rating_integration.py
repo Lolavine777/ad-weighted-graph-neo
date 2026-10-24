@@ -143,6 +143,7 @@ def test_ordinary_state_goal_gets_native_replay_in_public_automatic_resolution(t
         ],
         cwd=ROOT,
         text=True,
+        encoding="utf-8",
         capture_output=True,
         check=True,
     )

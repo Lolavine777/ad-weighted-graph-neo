@@ -2,6 +2,8 @@
 
 import copy
 from fractions import Fraction
+from pathlib import Path, PureWindowsPath
+from unittest.mock import patch
 
 import pytest
 
@@ -11,7 +13,9 @@ from scripts.research.final_cpi_profiles import PACKAGE, ROOT, read
 from src.engine import run_attack_query
 
 
-def test_numeric_receipt_inputs_are_separate_from_executable_replay_pins(tmp_path, monkeypatch):
+def test_numeric_receipt_inputs_are_portable_and_separate_from_executable_pins(
+    tmp_path, monkeypatch
+):
     monkeypatch.setattr(release, "ROOT", tmp_path)
     monkeypatch.setattr(release, "COHORT", tmp_path / "declared-cohort.json")
     for name in release.MODEL_INPUTS:
@@ -22,6 +26,13 @@ def test_numeric_receipt_inputs_are_separate_from_executable_replay_pins(tmp_pat
     profile.parent.mkdir(parents=True, exist_ok=True)
     profile.write_text('{"cost":1}')
     before = release.signature()
+    relative_to = Path.relative_to
+    with patch.object(
+        Path,
+        "relative_to",
+        lambda self, *args, **kwargs: PureWindowsPath(relative_to(self, *args, **kwargs)),
+    ):
+        assert release.signature() == before
     source = tmp_path / "src/engine/query.py"
     source.parent.mkdir(parents=True, exist_ok=True)
     source.write_text("# unrelated source refresh\n")

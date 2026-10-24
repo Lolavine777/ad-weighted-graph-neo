@@ -16,7 +16,7 @@ def test_every_published_technique_has_an_explicit_disposition():
     from scripts.research.likelihood_catalog import published_catalog
 
     assert (PACK / "catalog.json").is_file(), "Likelihood Catalog v1 is missing"
-    data = json.loads((PACK / "catalog.json").read_text())
+    data = json.loads((PACK / "catalog.json").read_text(encoding="utf-8"))
     actions = {item["technique_id"]: item for item in data["actions"]}
     assert len(actions) == len(data["actions"])
     owners = published_catalog(data)
@@ -72,7 +72,7 @@ def test_generated_min_effort_matches_frozen_oracle_and_pending_gates():
 def test_catalog_rejects_incomplete_or_misclassified_coverage(change):
     from scripts.research.likelihood_catalog import validate_catalog
 
-    data = json.loads((PACK / "catalog.json").read_text())
+    data = json.loads((PACK / "catalog.json").read_text(encoding="utf-8"))
     if change == "omit":
         data["actions"].pop()
     elif change == "duplicate":
@@ -96,7 +96,7 @@ def test_catalog_rejects_incomplete_or_misclassified_coverage(change):
 def test_binding_proposals_cannot_activate_or_change_context(change):
     from scripts.research.likelihood_catalog import validate_bindings
 
-    data = json.loads((PACK / "bindings.json").read_text())
+    data = json.loads((PACK / "bindings.json").read_text(encoding="utf-8"))
     record = data["records"][1]
     if change == "status":
         record["status"] = "accepted"
@@ -125,7 +125,7 @@ def test_binding_proposals_cannot_activate_or_change_context(change):
 def test_binding_semantics_and_json_types_are_exact(field):
     from scripts.research.likelihood_catalog import validate_bindings
 
-    data = json.loads((PACK / "bindings.json").read_text())
+    data = json.loads((PACK / "bindings.json").read_text(encoding="utf-8"))
     record = data["records"][0]
     if field == "budget":
         record["generated_lookup_key"]["budget"] = 6.0
@@ -166,7 +166,7 @@ def test_refreeze_cannot_bypass_semantic_or_coverage_checks(tmp_path, change):
 
     from scripts.research.likelihood_catalog import PACKAGE, verify_package
 
-    catalog = json.loads((PACK / "catalog.json").read_text())
+    catalog = json.loads((PACK / "catalog.json").read_text(encoding="utf-8"))
     sources = list(catalog["source_pins"])
     sources += [str(PACK.relative_to(ROOT) / p.name) for p in PACK.glob("*.json")]
     for source in sources:
@@ -176,16 +176,16 @@ def test_refreeze_cannot_bypass_semantic_or_coverage_checks(tmp_path, change):
     copied_pack = tmp_path / PACKAGE
     if change == "I_scope":
         path = copied_pack / "release-dispositions.json"
-        data = json.loads(path.read_text())
+        data = json.loads(path.read_text(encoding="utf-8"))
         data["I"][0]["scope"]["required_predicates"] = ["group_membership_only"]
         path.write_text(json.dumps(data))
     elif change == "source_pin_omission":
         path = copied_pack / "catalog.json"
-        data = json.loads(path.read_text())
+        data = json.loads(path.read_text(encoding="utf-8"))
         data["source_pins"].pop("src/engine/search.py")
         path.write_text(json.dumps(data))
     path = copied_pack / "manifest.json"
-    manifest = json.loads(path.read_text())
+    manifest = json.loads(path.read_text(encoding="utf-8"))
     for name in manifest["files"]:
         manifest["files"][name] = (
             "sha256:" + hashlib.sha256((copied_pack / name).read_bytes()).hexdigest()

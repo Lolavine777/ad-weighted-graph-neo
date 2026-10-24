@@ -293,7 +293,7 @@ def test_auto_candidates_counterfactual_distinguishes_bypass_and_pair_disconnect
     )
     assert summary["pairs"] == 2 and summary["evaluated_interventions"] == 3
     reports = [
-        json.loads((tmp_path / p["path"]).read_text())["report"]["summary"]
+        json.loads((tmp_path / p["path"]).read_text(encoding="utf-8"))["report"]["summary"]
         for p in summary["packages"]
     ]
     assert any(
@@ -326,13 +326,13 @@ def test_executable_cli_inventories_and_runs_without_handwritten_targets(tmp_pat
         "propagate_group_entitlement",
     ]
     subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=True)
-    summary = json.loads((output / "summary.json").read_text())
+    summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
     assert summary["batch"]["successful_cells"] == 1
     assert summary["selection"]["selected_targets"] > 3
-    assert "chưa chấm" in (output / "overview.md").read_text()
-    assert "không phải an toàn" in (output / "overview.md").read_text()
-    assert "usable_identity đúng context" in (output / "overview.md").read_text()
-    overview = (output / "overview.md").read_text()
+    assert "chưa chấm" in (output / "overview.md").read_text(encoding="utf-8")
+    assert "không phải an toàn" in (output / "overview.md").read_text(encoding="utf-8")
+    assert "usable_identity đúng context" in (output / "overview.md").read_text(encoding="utf-8")
+    overview = (output / "overview.md").read_text(encoding="utf-8")
     assert "use_session_identity" in overview and "session còn dùng được" in overview
     process = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
     assert process.returncode == 2 and "preserve prior run" in process.stderr
@@ -370,8 +370,8 @@ def test_checkpoint_interval_preserves_all_decisions_and_reduces_whole_cache_wri
         data["reproducibility"]["runtime"].pop("elapsed_seconds")
         data["reproducibility"]["runtime"].pop("checkpoint_interval", None)
     assert before == after
-    assert json.loads((tmp_path / "per-cell.json").read_text()) == json.loads(
-        (tmp_path / "grouped.json").read_text()
+    assert json.loads((tmp_path / "per-cell.json").read_text(encoding="utf-8")) == json.loads(
+        (tmp_path / "grouped.json").read_text(encoding="utf-8")
     )
 
 
@@ -398,7 +398,7 @@ def test_checkpoint_interruption_resume_keeps_binding_and_missing_cells(
             run_source_goal_batch(
                 req, graph, allowed_techniques=TECHNIQUES, checkpoint=path, checkpoint_interval=3
             )
-    assert len(json.loads(path.read_text())["cells"]) == 3
+    assert len(json.loads(path.read_text(encoding="utf-8"))["cells"]) == 3
     resumed = run_source_goal_batch(
         req,
         graph,
@@ -410,7 +410,10 @@ def test_checkpoint_interruption_resume_keeps_binding_and_missing_cells(
     fresh = run_source_goal_batch(req, graph, allowed_techniques=TECHNIQUES)
     assert resumed.source_goal_matrix == fresh.source_goal_matrix
     assert resumed.reproducibility["runtime"]["reused_cells"] == 3
-    assert len(json.loads(path.read_text())["cells"]) == len(req["target_manifest"]["targets"]) * 2
+    assert (
+        len(json.loads(path.read_text(encoding="utf-8"))["cells"])
+        == len(req["target_manifest"]["targets"]) * 2
+    )
     bad = copy.deepcopy(req)
     bad["sources"][0]["profile_kind"] = "user_leaked_password"
     with pytest.raises(ValueError, match="CHECKPOINT_SCOPE_MISMATCH"):
@@ -453,8 +456,8 @@ def test_cli_resume_advances_budget_without_losing_previous_reports(tmp_path, gr
     command[command.index("--max-cells") + 1] = "100"
     command.append("--resume")
     subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=True)
-    result = json.loads((output / "result.json").read_text())
-    summary = json.loads((output / "summary.json").read_text())
+    result = json.loads((output / "result.json").read_text(encoding="utf-8"))
+    summary = json.loads((output / "summary.json").read_text(encoding="utf-8"))
     assert result["reproducibility"]["runtime"]["reused_cells"] == 1
     assert result["summary"]["successful_cells"] == 1
     assert not result["summary"]["not_run_cells"]

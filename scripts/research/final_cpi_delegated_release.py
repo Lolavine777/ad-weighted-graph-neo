@@ -208,7 +208,7 @@ def signature():
         paths.add(COHORT)
     paths.update(raw.rglob("*.json"))
     pins = {
-        str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
+        p.relative_to(ROOT).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
         for p in sorted(paths)
         if p != RELEASE
     }

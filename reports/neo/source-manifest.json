@@ -47,7 +47,7 @@
     "tests/fixtures/attack_scenarios/graphs/two-routes.json": "sha256:982816b924a73396961a54ab5b7c2e40140941aaa9bfa99a075649dde57457e7",
     "tests/fixtures/ranking/seamless_time_policy.json": "sha256:0dff9f0d84078ad39d304cc8807d7c91fc35a680cf5bfe008e4a65ab2acacc0a",
     "tests/frozen_rating_inputs.py": "sha256:5e71b237c4d1dca5a15e6e452198888b333e3e065bbd0192e6e229f705682fa9",
-    "tests/test_public_rating_integration.py": "sha256:792c567de57dfec52b43464e1482cf676c71da3658f76f2092643615ed2bb2a4",
+    "tests/test_public_rating_integration.py": "sha256:a31d11820d13d6bab755d5cc12e69dfe199cb0c51bf48259591c730fc8b95d2c",
     "tests/test_scenario_rating_pack.py": "sha256:7e3d440537a1834bce5fa4aab456ff07cd29038f5797c64a2cf0c8c16a7e0253",
     "tests/test_source_a_rating_pack.py": "sha256:d4d83a32cbfa933528169aa9baf29c306a7c7a008353a64187610f091c9045de"
   }

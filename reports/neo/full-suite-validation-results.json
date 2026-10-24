@@ -247,5 +247,48 @@
     "tests/test_likelihood_catalog_v1.py": "sha256:904853e26b3205fdb45f92101ba6ff4e857d5195a313489ddbf7ed804c4216ea",
     "tests/test_scenario_rating_pack.py": "sha256:7e3d440537a1834bce5fa4aab456ff07cd29038f5797c64a2cf0c8c16a7e0253",
     "tests/test_week4_scenarios.py": "sha256:525c640fe737d230ddb47faa8ff74b1936896f0c33e801f102cfcf3cc79d2400"
+  },
+  "windows_portability_followup": {
+    "base_commit": "0f8baf837bb1d5e4ff4e53e1bebd620c2fea0a48",
+    "checks": {
+      "windows-ci-followup.log": "157 passed in 49.76s",
+      "windows-path-followup.log": "39 passed in 204.20s (0:03:24)",
+      "windows-public-cli.log": "45 passed in 4.20s",
+      "windows-source-integrity.log": "29 passed in 2.40s"
+    },
+    "ci_for_followup": "pending",
+    "evidence_sha256": {
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-ci-followup.log": "sha256:5a5e6ddcdd9fa60e9de4375076434877c00810d7aeeaeebaaf30d53078f2d17b",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-ci-followup.xml": "sha256:64577142079065ac69aa13d12a6308a5371fae062f231298e798d76033dc1280",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-ci.log": "sha256:e62efc23d41d1f388731e569ee18ae49a54b7f595321afc6b2fed54900e15515",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-path-followup.log": "sha256:c1867c44698e244efaf70339ec5962091d5bdc181b89701ed495c908c548f170",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-path-followup.xml": "sha256:21ac105300332291c3fcffbcce726a3b007a116abb3435b6710ca01adaceba1b",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-public-cli.log": "sha256:ac940701d7e6269bfd5f292a43da5e6b5a372b09a842d5ff8e1f66b34eebb56f",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-public-cli.xml": "sha256:8ca157f9dc337f96b71bdbaf7deca92eccab5e5e16a6e58829902e6c026aa916",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-source-integrity.log": "sha256:a19e1088281557269f807fc09f4aea67d6bda628424bfbf2b4394e41b1b1f658",
+      "reports/generated/neo-full-suite-20261023T1606Z/windows-source-integrity.xml": "sha256:14d31f8b78827b231ed2f199c5052e0340d4994b4953840f10324a8435bacc4f"
+    },
+    "prior_ci": {
+      "linux": "success",
+      "url": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/39994488065",
+      "windows": "cancelled after emitting failures at 15-minute limit"
+    },
+    "receipt_signature_unchanged": "sha256:af7295e402ca069331894c43b96980906c28a6d20dc0d43860596b42a6390a07",
+    "recorded_at_utc": "2026-10-24T03:05:24.454268+00:00",
+    "scope": "Path identity, test decoding, permission-error simulation, archived checkout bytes, and CI time allowance; no historical data, numeric decisions, or semantic budgets changed",
+    "source_pins": {
+      ".gitattributes": "sha256:dc63f04dd3735f245019b122b1c69780eec27e59e2bff25efc016b709a6a8b7e",
+      ".github/workflows/ci.yml": "sha256:6b6ccc5a111948dffae86d2e7aaed909cd6f0235c5cd224899aa7aefe4516b57",
+      "reports/neo/source-manifest.json": "sha256:dd8369514c66feb4d72dc23dc3aa6f1064e37643166e10a86f53e6f33111d0b1",
+      "scripts/research/final_cpi_delegated_release.py": "sha256:d621b55e4ec8f24b3030282e62321d4f3bad39654c6c1deba16d40c99c35008c",
+      "tests/test_contract_reuse.py": "sha256:518f424d7626e8d50e5a9034f81aad6156a2b21bf035f524f2c1bfdd947a0a12",
+      "tests/test_exposure.py": "sha256:e0687f2418ae7ea7d9e90b3008769b09c554369a80edfd55aece8a0390480660",
+      "tests/test_final_cpi_delegated_release.py": "sha256:29594569a0a1d20137bb39ba85de28a5fcb8d42a0bc991bce5556e20a8ca0fb6",
+      "tests/test_likelihood_catalog_v1.py": "sha256:ecdd72be9156a02ca831b7e152bfa1ee6f33b6017dc6108fee89d30fff15c27f",
+      "tests/test_machine_identity_profile.py": "sha256:248ebf7614d6d67fea8090453a7890aea70035217e4021237d26d2549955f887",
+      "tests/test_neo_cost_sensitivity.py": "sha256:5c6f28acf147d894afda0bd2c64c83c13d115225a67cd8e8ddb32bfa3ae7c32a",
+      "tests/test_public_rating_integration.py": "sha256:a31d11820d13d6bab755d5cc12e69dfe199cb0c51bf48259591c730fc8b95d2c",
+      "tests/test_week4_acceptance_checkout_bytes.py": "sha256:7fa1b2afeb2f2b6e50a58e17deab4428378a2d82ddfa15d2cd7f66b5b623174d"
+    }
   }
 }

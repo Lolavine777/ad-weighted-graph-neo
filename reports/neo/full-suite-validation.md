@@ -34,5 +34,14 @@ The local evidence namespace is `reports/generated/neo-full-suite-20261023T1606Z
 Reproduce the default suite with `.venv/bin/python -m pytest -q`; the structured record includes the full opt-in raw-data command and all quality commands.
 The source remained unchanged during the isolated run, and all 17 validation files matched the integrated checkout before recording the result.
 Concurrent remediation files from another chat were excluded from that isolated run and from this change.
-The final integrated revision still needs its own remote CI result.
+For commit `0f8baf8`, Linux CI passed; Windows emitted portability failures and exceeded the 15-minute job limit.
 An unseen holdout dataset and a fresh live BloodHound comparison were not evaluated in this validation run.
+
+The Windows follow-up normalizes numeric-receipt path keys to POSIX separators, makes test file/CLI decoding explicitly UTF-8, and injects a permission error instead of relying on platform-specific chmod behavior.
+Two additional frozen artifact directories now retain exact Git blob bytes during Windows checkout.
+The checkout regression reproduces the original `parameter-decisions-final.json` digest mismatch before that attribute fix and passes afterward.
+The test job limit is now 30 minutes; no test or semantic budget was reduced.
+Follow-up checks passed: 39 native release/delivery tests, 157 affected tests, 45 public integration tests, and 29 source/archive checks; these sets overlap.
+The public CLI/API comparison also passes with a simulated Windows default decoder, and the Windows-shaped receipt signature matches the original published signature.
+The full-suite result above retains its original source snapshot; the follow-up has separate source and evidence hashes in the structured record.
+Remote CI for the follow-up revision was pending when this record was written.

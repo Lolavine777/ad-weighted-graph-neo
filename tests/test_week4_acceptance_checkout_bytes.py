@@ -1,6 +1,7 @@
 """Exercise Git's Windows checkout conversion for every acceptance byte pin."""
 
 import hashlib
+import json
 import subprocess
 from pathlib import Path
 
@@ -11,7 +12,15 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def test_acceptance_pins_survive_autocrlf_checkout(tmp_path):
-    pins = file_pins() | HISTORICAL_SOURCE_MANIFESTS
+    pins = (
+        file_pins()
+        | HISTORICAL_SOURCE_MANIFESTS
+        | json.loads(
+            (ROOT / "docs/research/ratings/asrep-expert-v1/historical-pins.json").read_text(
+                encoding="utf-8"
+            )
+        )
+    )
     # Use the tracked blobs and actual attributes, rather than normalizing bytes
     # in Python. This also catches newly pinned fixtures lacking an LF policy.
     subprocess.run(

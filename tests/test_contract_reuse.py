@@ -293,15 +293,12 @@ def test_verify_search_envelope_snapshot_mismatch_fails_closed():
 
 
 def test_unreadable_contract_file_raises_value_error(tmp_path):
-    """File on disk with permission denied (chmod 000) raises ValueError consistently."""
+    """Permission errors are wrapped consistently, including on Windows and as root."""
     bad_perm_file = tmp_path / "noperm_contract.yml"
     bad_perm_file.write_text("version: '1.3.0'\n", encoding="utf-8")
-    bad_perm_file.chmod(0o000)
-    try:
+    with patch.object(Path, "read_bytes", side_effect=PermissionError("permission denied")):
         with pytest.raises(ValueError, match="unable to load graph contract"):
             load_contract(bad_perm_file)
-    finally:
-        bad_perm_file.chmod(0o644)
 
 
 def test_malformed_yaml_syntax_raises_value_error(tmp_path):
