@@ -112,6 +112,112 @@
   },
   "archived_catalog_sha256": "sha256:73d46a1d077870379e3fcc40ae5883acbb46e8160c86bb627b9dfc04a5d4d241",
   "base_commit": "c0200ddd19e9e8cbb57d25fde571b47da4e47158",
+  "ci_and_guided_confirmation_20261024": {
+    "ci": {
+      "conclusion": "success",
+      "headSha": "2566a964526c93c8297e6cd8de73278a9073221b",
+      "jobs": [
+        {
+          "completedAt": "2026-10-24T03:37:43Z",
+          "conclusion": "success",
+          "databaseId": 120768378191,
+          "name": "quality",
+          "startedAt": "2026-10-24T03:37:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:48:56Z",
+          "conclusion": "success",
+          "databaseId": 120768378242,
+          "name": "tests (ubuntu-latest)",
+          "startedAt": "2026-10-24T03:37:24Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:37:32Z",
+          "conclusion": "success",
+          "databaseId": 120768378254,
+          "name": "compose",
+          "startedAt": "2026-10-24T03:37:25Z",
+          "status": "completed"
+        },
+        {
+          "completedAt": "2026-10-24T03:59:26Z",
+          "conclusion": "success",
+          "databaseId": 120768378275,
+          "name": "tests (windows-latest)",
+          "startedAt": "2026-10-24T03:37:24Z",
+          "status": "completed"
+        }
+      ],
+      "status": "completed",
+      "url": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795"
+    },
+    "ci_test_results": {
+      "linux": {
+        "failed": 0,
+        "passed": 3723,
+        "seconds": 673.25,
+        "skipped": 147
+      },
+      "windows": {
+        "failed": 0,
+        "passed": 3722,
+        "seconds": 1281.77,
+        "skipped": 148
+      }
+    },
+    "configured_guided_acceptance": {
+      "blocked_checks": 0,
+      "case_b_scope": "Existing documented Baseline Case B; no new node selection",
+      "command": "GUIDED_SEAMLESS_RAW_DIR=data/raw/SEAMLESS GUIDED_SEAMLESS_SOURCE_LABEL=OLA_CARSON GUIDED_SEAMLESS_TARGET_LABEL=BADBLOOD .venv/bin/python -m pytest tests/test_guided_seamless_acceptance.py -q",
+      "failed_checks": 0,
+      "label_source": {
+        "path": "docs/guided-exploration.md",
+        "sha256": "sha256:cca8ab8ab78a821c329d90e5c6dd9730122c6563a2dff49474c69e3ab4f69149"
+      },
+      "passed_checks": 24,
+      "private_artifact_count": 34,
+      "pytest_result": "3 passed in 34.29s",
+      "raw_file_pins": {
+        "data/raw/SEAMLESS/20210920185958_computers.json": "sha256:238727bdc1b5cf38eb9d886fb99ef836ba61e9ccdc151dafb6e505b58f263514",
+        "data/raw/SEAMLESS/20210920185958_domains.json": "sha256:b3ebcff4a331a5242f1ba73315c20d103066899d4ecf729d078a71c615634a21",
+        "data/raw/SEAMLESS/20210920185958_gpos.json": "sha256:2b75382843971599a4c22ff4b4b69ff09ba4cee5bc0e898bfb91dfe88ff5e815",
+        "data/raw/SEAMLESS/20210920185958_groups.json": "sha256:5a2cf74db6f6d5fede6e28c0af35c68d5855429d1141c50e442e6355bc2a0bb8",
+        "data/raw/SEAMLESS/20210920185958_ous.json": "sha256:f9e552c4cb1cbc667a79fc176e621d9a31c7161e98dc32a83a76d19160f0d39e",
+        "data/raw/SEAMLESS/20210920185958_users.json": "sha256:8318da1ff08bfd634daf60ae3b01ec2be9708d8411f1263c6078ff2ef4a46cfa"
+      },
+      "raw_files_unchanged": true,
+      "status": "PASS"
+    },
+    "evidence_sha256": {
+      "reports/generated/neo-validation-20261024T0814Z/ci-result.json": "sha256:fe092e724c20998442dfbae932a220125b3158cfd50447ae926f7bb974e21179",
+      "reports/generated/neo-validation-20261024T0814Z/guided-artifact-pins.json": "sha256:e51cdb8519b61997730d20223ee141855a0ccf92d2d4c8a64ef435edc8002f84",
+      "reports/generated/neo-validation-20261024T0814Z/guided-configured-evidence/raw-integrity-after.json": "sha256:8d3143713d5b79d5b9aaad086af2e2356fb411240a893866bfeba2097c8f6fb2",
+      "reports/generated/neo-validation-20261024T0814Z/guided-configured-evidence/raw-integrity-before.json": "sha256:8d3143713d5b79d5b9aaad086af2e2356fb411240a893866bfeba2097c8f6fb2",
+      "reports/generated/neo-validation-20261024T0814Z/guided-configured-evidence/summary.json": "sha256:c7ad33bb5c329f3045add6f9568348278793ad035ac3ad66e1005f1908c89c51",
+      "reports/generated/neo-validation-20261024T0814Z/guided-configured.log": "sha256:0ad86225f116d981c5bfc834c96d3d51b38da8a27a1d4cd8c42d8b7049d2ccf2",
+      "reports/generated/neo-validation-20261024T0814Z/guided-configured.xml": "sha256:1eca1816d8077864771a4ba429dbd77ce7766e0e73250e8dd2ee7b787c93324a",
+      "reports/generated/neo-validation-20261024T0814Z/linux.log": "sha256:e9c7d2f05712eb2d5bbf2be7640f6466c168234b82184ade2b3d624a1dbf9310",
+      "reports/generated/neo-validation-20261024T0814Z/start.json": "sha256:82d7c0c81ca293d5a191a215623d713ba00bd2ff8d82eb924d3a9883b17b3d55",
+      "reports/generated/neo-validation-20261024T0814Z/windows.log": "sha256:788e3d813bd68e532193209c290c2ffb5dd30b2a53c8d642fa74ee121a868cc7"
+    },
+    "historical_blocked_and_failed_results_retained": true,
+    "limits": [
+      "No new holdout export is present in local data/raw",
+      "No fresh live BloodHound comparison was run in this confirmation phase"
+    ],
+    "production_code_changed": false,
+    "recorded_at_utc": "2026-10-24T08:18:57.729030+00:00",
+    "remaining": [
+      "Unseen authorized holdout dataset and its predeclared evaluation"
+    ],
+    "supersedes_pending_items": [
+      "Updated Windows CI",
+      "Configured guided Case B acceptance"
+    ],
+    "tested_code_commit": "2566a964526c93c8297e6cd8de73278a9073221b"
+  },
   "diagnostics": {
     "after_collection_fix": {
       "errors": 131,

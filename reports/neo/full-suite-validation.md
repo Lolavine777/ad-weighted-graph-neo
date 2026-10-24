@@ -60,3 +60,14 @@ The opt-in test now requires the three inputs already documented in the guided-e
 The recheck passed four tests and explicitly skipped guided acceptance for the missing labels; that skip does not turn the retained blocked runner result into a pass.
 All six raw files remained byte-identical, and the blocked evidence was preserved in the unique local namespace `reports/generated/neo-validation-20261024T0311Z/`.
 Configured guided Case B acceptance and the unseen holdout evaluation remain pending.
+
+Remote CI is now confirmed on exact commit `2566a96`: [all four jobs passed](https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795).
+Linux completed with 3723 tests passing and 147 skips in 673.25s; Windows completed with 3722 tests passing and 148 skips in 1281.77s.
+These default-suite runs retain their platform and private-input prerequisite skips; they do not replace the separately recorded local raw-data checks.
+
+The guide already provided explicit labels for its historical Baseline Case B example, which were missed in the previous prerequisite assessment.
+Using that documented configuration on the pinned SEAMLESS fixture, the unchanged guided acceptance module passed all three pytest tests in 34.29s, and the runner passed all 24 acceptance checks without blocked or failed checks.
+All six raw files remained byte-identical, and private artifacts were copied into the unique local namespace `reports/generated/neo-validation-20261024T0814Z/` with a complete artifact hash manifest.
+This confirmation clears the current Windows CI and configured Case B blockers; earlier failures, blocked results, and source snapshots remain intact in their original evidence phases.
+No production code or numeric ratings changed in this confirmation.
+The unseen holdout remains pending a new authorized export; no fresh live BloodHound comparison was run in this phase.
