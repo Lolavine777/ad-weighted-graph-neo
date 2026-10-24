@@ -1,0 +1,732 @@
+{
+  "version": "neo-goodhound-external-evaluation/1",
+  "recorded_at_utc": "2026-10-24T06:30:26.544334+00:00",
+  "status": "completed_external_validation_on_audited_input_adaptation",
+  "blind_holdout": false,
+  "branch": "evaluation/holdout-local-20261024",
+  "execution_base_commit": "64c3e9788f2fcf0b77379cbc4c5354c407e0da00",
+  "unchanged_core_commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "ci_baseline": {
+    "head": "2566a964526c93c8297e6cd8de73278a9073221b",
+    "conclusion": "success",
+    "run": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795"
+  },
+  "input": {
+    "source": "https://github.com/idnahacks/GoodHound",
+    "source_commit": "c2d8915619d54c752425e6e3fdee3ac8499b32f2",
+    "archive_git_blob_sha1": "d7bb8cd6ed79796e6413d9d3a3ca45892b70dfdd",
+    "archive_sha256": "8477a020eb9312ce469177500941f23f13563bdae3f2a4813370c174e72dc4ed",
+    "domain": "WINDOMAIN.LOCAL",
+    "schema_version": 3,
+    "collector": "SharpHound",
+    "collector_version": null,
+    "confirmed_collection_time": null,
+    "timezone": null,
+    "filename_time_is_unverified": "20211017151337",
+    "assumed_reference_time": "2021-10-17T15:13:37Z",
+    "raw_files": 6,
+    "raw_records": 1386,
+    "license": "Upstream GPLv3 and explicit sample-import README; local use, no raw redistribution.",
+    "license_git_blob_sha1": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+    "raw_snapshot_id": "sha256:53c9a08c82fb4dfc3afd8b5be6d4da30afa06695a90dc10f2b7454caec371c06",
+    "raw_manifest_sha256": "sha256:fd631dd83ff4f7021ea1143ada733cd0495162220edd05350e0e8b57f3671cd9",
+    "adapted_snapshot_id": "sha256:0f32416444ab00c68e8291ff3fddc773b238e342310a56420b49f79c0e99ad3b",
+    "adapted_manifest_sha256": "sha256:a855d7f34c52964da638a6cd4f5bfd263407938a724e700b68d4b76d45aee9ae",
+    "ce_manifest_sha256": "sha256:e4dc3ca2a84d16980430a3245fcebb74974d92676e68fff32c048631521e69cd"
+  },
+  "import_attempts": [
+    {
+      "input": "original",
+      "neo": "input_error",
+      "neo_exit_code": 2,
+      "reason": "Domain-qualified NETWORK SERVICE membership has no host scope.",
+      "query_runs": 0,
+      "ce": "all six legacy uploads HTTP 500: no data tag found; zero ingested files, not success"
+    },
+    {
+      "input": "adaptation-v1",
+      "neo": "input_error",
+      "neo_exit_code": 2,
+      "reason": "Additional unresolved membership has type Unknown.",
+      "query_runs": 0
+    },
+    {
+      "input": "adaptation-v2",
+      "neo": "success",
+      "nodes": 1387,
+      "edges": 24781,
+      "ce": "success after existing losslessly audited v3-to-CE6 conversion; 6/6 files ingested",
+      "raw_changed": false,
+      "core_changed": false,
+      "records_retained": 1386,
+      "membership_references_withheld": 2,
+      "withheld_reference_audits": [
+        "input-adaptation-v1-audit.json",
+        "input-adaptation-v2-audit.json"
+      ],
+      "adaptation_is_lossy_for_two_unresolvable_references": true,
+      "conservation": "All records retained; reinserting the two audited references recovers original parsed JSON. Reproduction checks exactly match all three evaluated manifests."
+    }
+  ],
+  "config": {
+    "primary": "neo_guided",
+    "secondary": "neo_refine",
+    "selection_seed": "neo-decision-v1",
+    "sources": {
+      "User": 3,
+      "Computer": 2
+    },
+    "targets": [
+      "DA",
+      "EA"
+    ],
+    "scenario": "host-compromise: User usable network identity; Computer local admin only",
+    "scenario_policy": {
+      "profile_id": "neo-host-session-v1",
+      "version": "1.0.0",
+      "bound_snapshot_id": "sha256:0f32416444ab00c68e8291ff3fddc773b238e342310a56420b49f79c0e99ad3b",
+      "evaluation_mode": "seamless_standard_scenario",
+      "description": "Static host-compromise scenario: Computer sources have declared local admin control; observed sessions are assumed fresh with accessible reusable domain credentials. These are conditional assumptions, not observed credential recovery or P=1.",
+      "forbidden_predicates": [
+        "actor_authenticated",
+        "actor_controlled",
+        "admin_control",
+        "control",
+        "controlled_service",
+        "delegated_context",
+        "rbcd_descriptor",
+        "rbcd_secret",
+        "recovery_success",
+        "relationship_exists",
+        "source_admin_control",
+        "source_authorized",
+        "usable_identity"
+      ],
+      "rules": [
+        {
+          "rule_id": "rule-global-kdc-reachable",
+          "predicate": "network_kdc_reachable",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/network/kdc",
+          "rationale": "Domain Controllers (KDCs) are network-reachable on port 88 within intranet",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-rpc-reachable",
+          "predicate": "network_rpc_reachable",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/network/rpc",
+          "rationale": "MS-RPC port 135/dynamic RPC reachable for directory/SAMR operations",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-winrm-reachable",
+          "predicate": "network_winrm_reachable",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/network/winrm",
+          "rationale": "WinRM ports 5985/5986 reachable to servers configured for remote management",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-winrm-service-running",
+          "predicate": "service_winrm_running",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/service/winrm",
+          "rationale": "WinRM service is running and listening on target computer",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-asrep-request-accepted",
+          "predicate": "asrep_request_accepted",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/kerberos/asrep",
+          "rationale": "KDC standard AS-REQ accepted for accounts with DONT_REQ_PREAUTH flag",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-service-ticket-accepted",
+          "predicate": "service_ticket_request_accepted",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/kerberos/tgs",
+          "rationale": "KDC standard TGS-REQ accepted for accounts with valid SPN",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-kerberos-usable",
+          "predicate": "kerberos_authentication_usable",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/kerberos/auth",
+          "rationale": "Kerberos authentication package is functional on domain member systems",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-global-kerberos-actor-authenticated",
+          "predicate": "kerberos_actor_authenticated",
+          "taxonomy": "global",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/kerberos/tgt",
+          "rationale": "Authenticated logon session holds a valid Kerberos TGT",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-admin-channel",
+          "predicate": "admin_channel",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/host/admin-channel",
+          "rationale": "Administrative channel (SMB/WMI/WinRM) is available for local administrators",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-admin-execution-context",
+          "predicate": "admin_execution_context",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/host/exec-context",
+          "rationale": "Host execution context permits remote code execution for administrators",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-endpoint-authorized",
+          "predicate": "endpoint_authorized",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/host/endpoint-auth",
+          "rationale": "Target endpoint authorizes connections from designated administrator accounts",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-host-admin-mapping",
+          "predicate": "host_admin_mapping",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/host/admin-mapping",
+          "rationale": "Local administrator group mapping corresponds to AdminTo entitlement",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-auth-accepted",
+          "predicate": "authentication_accepted",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/auth/accepted",
+          "rationale": "Target validates and accepts valid domain credentials",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-winrm-auth-accepted",
+          "predicate": "winrm_authentication_accepted",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/auth/winrm-accepted",
+          "rationale": "WinRM listener validates and accepts administrative credentials",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-rdp-available",
+          "predicate": "rdp_available",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/service/rdp",
+          "rationale": "Remote Desktop service is enabled and accepting connections",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-winrm-available",
+          "predicate": "winrm_available",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Computer",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/service/winrm-available",
+          "rationale": "WinRM PowerShell remoting endpoint is available",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-directory-write",
+          "predicate": "directory_write_allowed",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/directory/write",
+          "rationale": "Active Directory directory modification allowed under granted ACE rights",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-password-policy-accepts",
+          "predicate": "password_policy_accepts",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "User",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/directory/password-policy",
+          "rationale": "Password reset value satisfies domain password complexity and length policy",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-membership-change",
+          "predicate": "membership_change_allowed",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/directory/member-add",
+          "rationale": "Modifying group member attribute allowed under granted object control ACE",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-membership-usable",
+          "predicate": "membership_usable",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/token/member-usable",
+          "rationale": "Group SID is incorporated into access token upon session logon",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-secret-valid",
+          "predicate": "secret_valid",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": null,
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/credential/secret-valid",
+          "rationale": "Target account secret is current, unexpired, and matches directory password hash",
+          "metadata": {}
+        },
+        {
+          "rule_id": "rule-typed-security-group",
+          "predicate": "security_group",
+          "taxonomy": "typed",
+          "subject_kind": null,
+          "target_kind": "Group",
+          "default_value": true,
+          "provenance_reference": "policy://seamless/v1/token/security-group",
+          "rationale": "Target group is a security-enabled group capable of token authorization",
+          "metadata": {}
+        },
+        {
+          "rule_id": "neo-session-session_present",
+          "predicate": "session_present",
+          "taxonomy": "typed",
+          "subject_kind": "Computer",
+          "target_kind": "User",
+          "default_value": true,
+          "provenance_reference": "policy://neo/host-session/v1/session_present",
+          "rationale": "Reported session remains present in the static scenario",
+          "metadata": {}
+        },
+        {
+          "rule_id": "neo-session-session_fresh",
+          "predicate": "session_fresh",
+          "taxonomy": "typed",
+          "subject_kind": "Computer",
+          "target_kind": "User",
+          "default_value": true,
+          "provenance_reference": "policy://neo/host-session/v1/session_fresh",
+          "rationale": "Reported session remains fresh in the static scenario",
+          "metadata": {}
+        },
+        {
+          "rule_id": "neo-session-credential_accessible",
+          "predicate": "credential_accessible",
+          "taxonomy": "typed",
+          "subject_kind": "Computer",
+          "target_kind": "User",
+          "default_value": true,
+          "provenance_reference": "policy://neo/host-session/v1/credential_accessible",
+          "rationale": "Scenario assumes credential access is not blocked by host protections",
+          "metadata": {}
+        },
+        {
+          "rule_id": "neo-session-session_identity_usable",
+          "predicate": "session_identity_usable",
+          "taxonomy": "typed",
+          "subject_kind": "Computer",
+          "target_kind": "User",
+          "default_value": true,
+          "provenance_reference": "policy://neo/host-session/v1/session_identity_usable",
+          "rationale": "Scenario assumes reusable domain credentials, not merely an opaque artifact",
+          "metadata": {}
+        }
+      ],
+      "assume_missing_group_type_security": true
+    },
+    "effort_profile": {
+      "id": "neo-c-v1",
+      "version": "1.2.0",
+      "canonical_digest": "sha256:3c5a9b349768c9bea7463f0d5110fff22969b75bb7090c852c7099a9c2367b7c",
+      "basis": "estimated_expert_scenario",
+      "source_git_blob_sha1": "105a5a52407756f205aabf13c6d0fd210e20ff69"
+    },
+    "budget": {
+      "max_paths": 10,
+      "max_steps": 12,
+      "max_expansions": 4096,
+      "top_k_C": 3
+    },
+    "session_edges": 0,
+    "session_stratum_pairs": 0,
+    "ce_scope": "HOST_EDGES, 12 graph hops, structural and enabled-user variants; different from 12 semantic steps",
+    "catalog_sha256": "sha256:d96d631183e21e309c6b7f779a1a1bcc8bcbe4b330d3c2ffd61bb827b2a6c8d1",
+    "contract_sha256": "sha256:f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea",
+    "compose_sha256": "sha256:c3602eb4f85206648bf0b15450221d6911720fbbfd91275fb8df08f85ecec57e",
+    "frozen_core_config_record_sha256": "sha256:e9b44a5697377ebb3a5d456b42317102af1bb3f4c126f1b87b9d4ea2516fdd88"
+  },
+  "primary": {
+    "declared_pairs": 10,
+    "evaluated_pairs": 10,
+    "excluded_pairs": 0,
+    "query_errors": 0,
+    "witness_pairs": 0,
+    "cap_pairs": 4,
+    "no_path_pairs": 2,
+    "blocked_pairs": 4,
+    "engine_no_path_flags_including_blocked": 6,
+    "unknown_pairs": 0,
+    "C_values": []
+  },
+  "secondary": {
+    "evaluated_pairs": 10,
+    "witness_pairs": 0,
+    "cap_pairs": 4,
+    "no_path_pairs": 2,
+    "blocked_pairs": 4,
+    "improvements_observed": 0
+  },
+  "evidence_only_sensitivity": {
+    "evaluated_pairs": 10,
+    "indeterminate_user_pairs": 6,
+    "blocked_computer_pairs": 4,
+    "unknown_predicate_counts": {
+      "security_group": 30,
+      "membership_usable": 30
+    }
+  },
+  "ce": {
+    "request_count": 20,
+    "pair_count": 10,
+    "returned_paths": 0,
+    "confirmed_empty_requests": 20,
+    "input_errors_in_adapted_run": 0
+  },
+  "input_parity": {
+    "shared_core_ids": 1387,
+    "type_mismatches": 0,
+    "enabled_mismatches": 0,
+    "alias_collisions": 0,
+    "primary_group_references_matching": 597,
+    "ce_extra_ADLocalGroup_nodes": 4,
+    "shared_host_scoped_triples": 24762,
+    "neo_only_triples": 19,
+    "neo_only_self_acl": {
+      "GenericAll": 14,
+      "WriteDacl": 3
+    },
+    "neo_only_inferred_AdminTo": 2,
+    "inferred_AdminTo_equivalent_in_ce": true,
+    "ce_only_common_node_scoped_triples": 0,
+    "full_graphs_identical": false
+  },
+  "pair_results": [
+    {
+      "source": "REGINA_COMBS@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "DA",
+      "primary": "truncated",
+      "secondary": "truncated",
+      "expansions": 4096,
+      "native_no_path_proven_in_scope": false,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "REGINA_COMBS@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "EA",
+      "primary": "truncated",
+      "secondary": "truncated",
+      "expansions": 4096,
+      "native_no_path_proven_in_scope": false,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "BRENT_DAUGHERTY@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "DA",
+      "primary": "no_path",
+      "secondary": "no_path",
+      "expansions": 112,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "BRENT_DAUGHERTY@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "EA",
+      "primary": "no_path",
+      "secondary": "no_path",
+      "expansions": 112,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "FREDA_CAMPOS@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "DA",
+      "primary": "truncated",
+      "secondary": "truncated",
+      "expansions": 4096,
+      "native_no_path_proven_in_scope": false,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "FREDA_CAMPOS@WINDOMAIN.LOCAL",
+      "source_kind": "User",
+      "target": "EA",
+      "primary": "truncated",
+      "secondary": "truncated",
+      "expansions": 4096,
+      "native_no_path_proven_in_scope": false,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "FINWVIR1000001.WINDOMAIN.LOCAL",
+      "source_kind": "Computer",
+      "target": "DA",
+      "primary": "blocked",
+      "secondary": "blocked",
+      "expansions": 1,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "FINWVIR1000001.WINDOMAIN.LOCAL",
+      "source_kind": "Computer",
+      "target": "EA",
+      "primary": "blocked",
+      "secondary": "blocked",
+      "expansions": 1,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "AWSWWKS1000000.WINDOMAIN.LOCAL",
+      "source_kind": "Computer",
+      "target": "DA",
+      "primary": "blocked",
+      "secondary": "blocked",
+      "expansions": 1,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    },
+    {
+      "source": "AWSWWKS1000000.WINDOMAIN.LOCAL",
+      "source_kind": "Computer",
+      "target": "EA",
+      "primary": "blocked",
+      "secondary": "blocked",
+      "expansions": 1,
+      "native_no_path_proven_in_scope": true,
+      "C": null,
+      "ce_structural_path": false,
+      "ce_enabled_path": false
+    }
+  ],
+  "replay_and_cost": {
+    "witnesses": 0,
+    "replayed_witnesses": 0,
+    "ledger_checked_programs": 0,
+    "status": "not_applicable_no_discovered_programs; not a replay/ledger pass claim",
+    "missing_C_is_zero": false,
+    "fixed_program_C_sensitivity": "not_applicable_empty_program_set",
+    "all_shortest_path_C_tie_audit": "not_required_no_C_difference_claim"
+  },
+  "remediation": {
+    "selector": "scripts.neo_decision.membership_points",
+    "eligible_memberships": [],
+    "intervention_runs": 0,
+    "reason": "No discovered positive-C program in the declared primary cohort; do not substitute another intervention."
+  },
+  "validation": {
+    "pytest": {
+      "passed": 145,
+      "skipped": 9,
+      "failures": 0,
+      "errors": 0,
+      "junit_xml": "reports/generated/goodhound-evaluation-20261024-v1/pytest.xml",
+      "junit_sha256": "sha256:1b1374040d48a91cc8b6dae50b52dd6b44995ec8b87f9219361c487178c8059b"
+    },
+    "original_import_errors_reproduced": true,
+    "raw_and_derived_checksums_verified": true,
+    "all_core_and_config_pins_unchanged": true,
+    "input_reproduction_exact": true,
+    "local_full_suite_run": false,
+    "quality_checks": {
+      "ruff-check.log": 0,
+      "ruff-format.log": 0,
+      "yamllint.log": 0,
+      "repository-check.log": 0,
+      "contract-check.log": 0,
+      "diff-check.log": 0
+    }
+  },
+  "environment": {
+    "python": "3.14.7",
+    "compose_project": "neo-goodhound-20261024-adaptation-v2",
+    "images": [
+      "postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "neo4j:4.4.42@sha256:73b5a47eb9952f47fcc42fcc80bdd6bd0d6b71eea9a1a345c216675498c790e4",
+      "specterops/bloodhound:9.8.0@sha256:88aeb60228d8ad09a8ac1cdcea8218b4aabe3d9ac642f2f66d50a6b144f4d301"
+    ],
+    "volume_isolation": {
+      "existing_volumes": 37,
+      "all_existing_volumes_retained": true,
+      "existing_volumes_mounted": [],
+      "new_project_mounts": [
+        "neo-goodhound-20261024-adaptation-v2_seamless-postgres",
+        "neo-goodhound-20261024-adaptation-v2_seamless-neo4j",
+        "cab2e71f2f5e073de9138071a074f886404b9da5a0519fe8a128abc38a650fea"
+      ]
+    },
+    "timing_ram_comparison": "Not measured as an equivalent workload; no speedup claim.",
+    "final_service_state": "Only the new experiment project stopped after evaluation; all database volumes retained."
+  },
+  "reproduction": {
+    "evidence_directory": "reports/generated/goodhound-evaluation-20261024-v1",
+    "input_driver": "reproduce-inputs.py ARCHIVE.zip NEW_OUTPUT_DIRECTORY (PYTHONPATH=. and .venv/bin/python); uses existing converter and snapshot_manifest CLI",
+    "primary_native_command": [
+      ".venv/bin/python",
+      "-m",
+      "scripts.neo_domain",
+      "--snapshot",
+      "reports/generated/goodhound-evaluation-20261024-v1/import-adaptation-v2/snapshot.json",
+      "--scenario",
+      "host-compromise",
+      "--output-dir",
+      "reports/generated/goodhound-evaluation-20261024-v1/native-guided",
+      "--workers",
+      "2",
+      "--domain-sid",
+      "S-1-5-21-1017245484-488396236-2120164556",
+      "--max-paths",
+      "10",
+      "--max-steps",
+      "12",
+      "--max-expansions",
+      "4096",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1335",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1350",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1542",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-2107",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-2140"
+    ],
+    "secondary_native_command": [
+      ".venv/bin/python",
+      "-m",
+      "scripts.neo_domain",
+      "--snapshot",
+      "reports/generated/goodhound-evaluation-20261024-v1/import-adaptation-v2/snapshot.json",
+      "--scenario",
+      "host-compromise",
+      "--output-dir",
+      "reports/generated/goodhound-evaluation-20261024-v1/native-refine",
+      "--workers",
+      "2",
+      "--domain-sid",
+      "S-1-5-21-1017245484-488396236-2120164556",
+      "--max-paths",
+      "10",
+      "--max-steps",
+      "12",
+      "--max-expansions",
+      "4096",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1335",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1350",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-1542",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-2107",
+      "--source",
+      "S-1-5-21-1017245484-488396236-2120164556-2140",
+      "--search-order",
+      "neo_refine"
+    ],
+    "ce_driver": "BLOODHOUND_PORT=48080 NEO4J_WEB_PORT=48474 NEO4J_BOLT_PORT=48687 PYTHONPATH=. .venv/bin/python reports/generated/goodhound-evaluation-20261024-v1/run-ce-comparison.py",
+    "limits": "CE driver was executed against a fresh project. Recreate only a new isolated project for independent reruns; never reset preexisting volumes. Adaptation, pack and driver sources are retained in local evidence with SHA256.",
+    "native_rerun_rule": "Use a new --output-dir for each mode, retaining every source, scenario, search order and budget argument from the recorded commands."
+  },
+  "claim_boundaries": [
+    "Original raw import fails; successful native/CE query results use declared input adaptation-v2, not untouched raw.",
+    "All ten unfavorable pairs retained; cap is not no-path.",
+    "Blocked/no-path flags apply only to declared foothold/catalog/scenario; no forest-wide safety claim.",
+    "This fixed sample provides no positive example of cost ranking or remediation benefit.",
+    "No minimum-C, BloodHound superiority, speedup or blind holdout claim."
+  ],
+  "evidence_manifest_sha256": "sha256:10017d69e666b2aec62bf9df41e397dc3d2470087858f6f5eebd181103cb235c",
+  "evidence_directory": "reports/generated/goodhound-evaluation-20261024-v1"
+}

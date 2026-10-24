@@ -15,6 +15,9 @@ Chuẩn bị này không khép yêu cầu minimum-C của đề gốc hoặc ch�
 Chưa ứng viên nào đủ điều kiện holdout: còn thiếu xác nhận collector/schema, thời điểm thu thập và lịch sử sử dụng; MYLAB cần làm rõ quyền tái sử dụng raw.
 Chỉ đọc tài liệu và metadata GitHub, không tải/mở raw mới hoặc chạy đánh giá; không dùng ngày commit hay timestamp trong tên file làm thời điểm thu thập đã xác nhận.
 
+[Đánh giá công khai GoodHound](goodhound-evaluation.md) sau đó đã mở raw và chạy cohort cố định với core/bảng C/budget giữ nguyên, không dùng nhãn blind holdout.
+Báo cáo tách lỗi import nguyên bản với lượt input adaptation; kết quả này không đánh dấu protocol holdout đã hoàn tất.
+
 ## Điều kiện đầu vào
 
 Môi trường holdout phải do chủ sở hữu cho phép dùng trong nghiên cứu và chưa được dùng để chỉnh parser, search, scenario hoặc bảng C của neo.
