@@ -1,0 +1,259 @@
+{
+  "version": "neo-rubric-review/1",
+  "date": "2026-10-24",
+  "source_revision": "08755cfdf939dc7f0beae1daa4b2a23e95225a1b",
+  "review_plan_recorded_at_utc": "2026-10-24T08:36:00.326Z",
+  "source_sha256": {
+    "reports/neo/cost-sensitivity-results.json": "5f4cd9c012ad53c6a44b8c752cca017e4d288d63ea06b99603059a3ecb019b87",
+    "reports/neo/minimum-probe.json": "4278d71a1ce1584dfbf74e8d8f3d68df94064fcc95ac337b65a6af1695f0a339",
+    "reports/neo/decision-sample.json": "5ee4634c67ba61ac86f86615d4e581450985cf9470e29f1810930cb8a1d54df4",
+    "src/engine/ranking/effort_profiles.py": "63b8486429c6005691f1dd5d85295179a4103c869a8383eee6de880a14dccb91",
+    "reports/neo/cost-sensitivity.md": "6bc99e0dc4eba6ad9846537cd256e9a61086a1d7ec5a0791ab2b230cf33f66b9"
+  },
+  "reviewer": "AI-assisted retrospective review with prior C exposure",
+  "selection": "Six existing User cells; same-route disclosed inclusion preferred, else first two canonical program IDs; one published WRAITH tradeoff and two synthetic controls.",
+  "criteria": [
+    "Check disclosed arithmetic against unchanged prices.",
+    "Check index monotonicity for disclosed extensions and the zero anchor.",
+    "Retain ties for identical priced family vectors.",
+    "Leave cross-family real-effort preferences unresolved without independent anchors."
+  ],
+  "arithmetic_checked_program_summaries": 30,
+  "cases": [
+    {
+      "id": "S01",
+      "label": "SEAMLESS User 1 / DA",
+      "category": "same_profile_tie",
+      "source": "reports/neo/decision-sample.json#/cells/0/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 2,
+        "scenario_reset_password": 2
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 2,
+        "scenario_reset_password": 2
+      },
+      "A_C": 2,
+      "B_C": 2,
+      "program_ids": [
+        "sha256:96c9521cd6af6914bee2a098ac4e534f20a6ce31a31938c59a764f59a56fa1a9",
+        "sha256:cf242ccc3084862b3d4b649ad9e8b4d0679ed4c19edaf6607a515ea89fe2430d"
+      ],
+      "same_route": false,
+      "published_C": [
+        2,
+        2
+      ]
+    },
+    {
+      "id": "S02",
+      "label": "SEAMLESS User 1 / EA",
+      "category": "disclosed_extension",
+      "source": "reports/neo/decision-sample.json#/cells/1/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 2,
+        "genericall_add_member": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 2
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 2,
+        "genericall_add_member": 1,
+        "genericall_grant_write_dacl": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 2
+      },
+      "A_C": 5,
+      "B_C": 6,
+      "program_ids": [
+        "sha256:d35b652684cbaaecce7bc13d6d5d5b5c71fd552004c1496b1ae549a51ee5d792",
+        "sha256:3ae8fab75f5d28e754e730ca55291190402b26380e7946754b0c5c50d45ea44d"
+      ],
+      "same_route": true,
+      "published_C": [
+        5,
+        6
+      ]
+    },
+    {
+      "id": "S03",
+      "label": "SEAMLESS User 2 / DA",
+      "category": "same_profile_tie",
+      "source": "reports/neo/decision-sample.json#/cells/2/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 1,
+        "scenario_reset_password": 1
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 1,
+        "scenario_reset_password": 1
+      },
+      "A_C": 1,
+      "B_C": 1,
+      "program_ids": [
+        "sha256:3ee55a4d9a83474c0ce162b8fad78a659505b92eea5df6cf742f9f69ed98c280",
+        "sha256:4100d42b0099be3abe4dfa4d8a080054f58c9fa1a2ffb4f50857998184c85080"
+      ],
+      "same_route": false,
+      "published_C": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "S04",
+      "label": "SEAMLESS User 2 / EA",
+      "category": "disclosed_extension",
+      "source": "reports/neo/decision-sample.json#/cells/3/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 1,
+        "genericall_add_member": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 1
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 1,
+        "genericall_add_member": 1,
+        "genericall_grant_write_dacl": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 1
+      },
+      "A_C": 4,
+      "B_C": 5,
+      "program_ids": [
+        "sha256:1671b53c84674b71bcc13e2d4af86053f0799a6aa610bec6661edac484114e45",
+        "sha256:247fe7bc1adb656714fab8756240f815afa5461fd95feb17860070b885de8596"
+      ],
+      "same_route": true,
+      "published_C": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "S05",
+      "label": "SEAMLESS User 3 / DA",
+      "category": "same_profile_tie",
+      "source": "reports/neo/decision-sample.json#/cells/4/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 1,
+        "scenario_reset_password": 1
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 1,
+        "scenario_reset_password": 1
+      },
+      "A_C": 1,
+      "B_C": 1,
+      "program_ids": [
+        "sha256:97bf9e6f0b159c49be2e226a0ae9335c35a3243e7a57617c3c1a4911dba8cc96",
+        "sha256:d10ad9229a7544a79406055ab243dd65c7eb4bd8d1d492bb5a3fa76a572a75de"
+      ],
+      "same_route": false,
+      "published_C": [
+        1,
+        1
+      ]
+    },
+    {
+      "id": "S06",
+      "label": "SEAMLESS User 3 / EA",
+      "category": "disclosed_extension",
+      "source": "reports/neo/decision-sample.json#/cells/5/programs",
+      "A_family_counts": {
+        "acquire_reset_identity": 1,
+        "genericall_add_member": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 1
+      },
+      "B_family_counts": {
+        "acquire_reset_identity": 1,
+        "genericall_add_member": 1,
+        "genericall_grant_write_dacl": 1,
+        "grant_new_object_right": 1,
+        "scenario_reset_password": 1
+      },
+      "A_C": 4,
+      "B_C": 5,
+      "program_ids": [
+        "sha256:fe3e3df81e50751c1649f709d7c16a6eecdb52c7f90ef642904f74920e3af0e1",
+        "sha256:df05370b12e753e6f78f4471b02c7d46ddf159cb536d2bfd7e3bd1a6e7da4731"
+      ],
+      "same_route": true,
+      "published_C": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "W01",
+      "label": "WRAITH / published DA family-profile tradeoff",
+      "category": "cross_family_unresolved",
+      "source": "reports/neo/cost-sensitivity.md#ví-dụ-đảo-thứ-hạng-nhưng-không-thay-minimum",
+      "A_family_counts": {
+        "use_session_identity": 2
+      },
+      "B_family_counts": {
+        "use_session_identity": 1,
+        "grant_new_object_right": 1,
+        "genericall_add_member": 1
+      },
+      "A_C": 4,
+      "B_C": 5,
+      "evidence_level": "Published family profiles, not full programs or empirical effort"
+    },
+    {
+      "id": "T01",
+      "label": "Synthetic / two_routes",
+      "category": "cross_family_unresolved",
+      "source": "reports/neo/minimum-probe.json#/references/two_routes",
+      "A_family_counts": {
+        "grant_new_object_right": 1,
+        "genericall_add_member": 1
+      },
+      "B_family_counts": {
+        "scenario_reset_password": 1,
+        "acquire_reset_identity": 1
+      },
+      "A_C": 3,
+      "B_C": 1,
+      "evidence_level": "Existing fixture oracle reuses rubric; not independent cost validation"
+    },
+    {
+      "id": "T02",
+      "label": "Synthetic / existing entitlement",
+      "category": "zero_anchor",
+      "source": "reports/neo/minimum-probe.json#/references/free_membership",
+      "A_family_counts": {},
+      "B_family_counts": {
+        "grant_new_object_right": 1,
+        "genericall_add_member": 1
+      },
+      "A_C": 0,
+      "B_C": 3,
+      "evidence_level": "No additional work in the declared fixture; not zero real-world time"
+    }
+  ],
+  "category_counts": {
+    "cross_family_unresolved": 2,
+    "disclosed_extension": 3,
+    "same_profile_tie": 3,
+    "zero_anchor": 1
+  },
+  "reasoning_patterns": 4,
+  "decision": "retain_numeric_prices; clarify interpretation and validation scope",
+  "limits": [
+    "Not blind, independent human review, a representative sample, or empirical calibration.",
+    "Six SEAMLESS cases repeat two patterns; do not count them as six independent validations.",
+    "Published work descriptions omit actor/context/work-unit IDs: no new identity-dedup, state-equivalence or replay proof.",
+    "Synthetic oracle checks reuse current prices and cannot validate those prices.",
+    "WRAITH tradeoff has aggregate profiles only; no new program or feasibility result.",
+    "GoodHound full local ledgers were not available in Git and were not reconstructed.",
+    "No search, new paths, candidate-set changes, repricing, production changes or minimum-C claim."
+  ],
+  "method_reference": {
+    "url": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-30r1.pdf",
+    "section": "2.3.2, printed page 14",
+    "use": "General guidance on explicit semi-quantitative scales; not a source for AD action prices or an approval of this additive formula."
+  }
+}
