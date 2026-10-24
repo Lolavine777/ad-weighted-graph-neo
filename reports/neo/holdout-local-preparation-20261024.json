@@ -1,0 +1,231 @@
+{
+  "version": "neo-holdout-local-preparation/1",
+  "recorded_at_utc": "2026-10-24T04:10:33.609785+00:00",
+  "status": "prepared_awaiting_eligible_export",
+  "evaluation_executed": false,
+  "repository": "https://github.com/Lolavine777/ad-weighted-graph-neo",
+  "branch": "evaluation/holdout-local-20261024",
+  "code_commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "code_tree": "a3e6e50521d55ee4fda1d4db224c4afc0e465f87",
+  "main_verified_by_fetch_and_ls_remote": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "historical_preparation": {
+    "branch": "evaluation/holdout-freeze-20261024",
+    "commit": "a4a9c5b6e9d73d2156098e907a6ee280139d1bb6",
+    "record_path": "reports/neo/holdout-freeze-20261024.json",
+    "record_sha256": "sha256:1dbb1ea1691d1f0276de403c0cc86bac960220c66b65430664d54e15e7df9c22",
+    "comparison": "Same core/config as main; only historical status paragraph and freeze JSON differ. No cherry-pick. Evaluation protocol body unchanged.",
+    "frozen_source_blobs_all_match_main": true
+  },
+  "freeze_verified_before_any_new_raw_opened_at_utc": "2026-10-24T04:07:31.286851+00:00",
+  "effort_profile": {
+    "id": "neo-c-v1",
+    "version": "1.2.0",
+    "canonical_digest": "sha256:3c5a9b349768c9bea7463f0d5110fff22969b75bb7090c852c7099a9c2367b7c",
+    "basis": "estimated_expert_scenario",
+    "source_git_blob_sha1": "105a5a52407756f205aabf13c6d0fd210e20ff69"
+  },
+  "frozen_source_config_hashes": {
+    "reports/neo/holdout-evaluation-protocol.md": {
+      "git_blob_sha1": "e62a357c3214cfe002a428ab62b98fd2ccfec5ae",
+      "sha256": "801e7691095050c97238947718b6978fdfc0080b258ad455b34410224fb2ea16"
+    },
+    "src/engine/ranking/effort_profiles.py": {
+      "git_blob_sha1": "105a5a52407756f205aabf13c6d0fd210e20ff69",
+      "sha256": "63b8486429c6005691f1dd5d85295179a4103c869a8383eee6de880a14dccb91"
+    },
+    "src/engine/ranking/resolution_service.py": {
+      "git_blob_sha1": "e0ca01f865533ddc700a65b6ef6af3c74801c25a",
+      "sha256": "62599bdc26dd9e553bccab59ca531b419193c5f0a1b74dcc5c015905a90cc1b9"
+    },
+    "src/engine/semantics/scenario_policy.py": {
+      "git_blob_sha1": "c59f5727c782a91df412dcde1be1a13d2107f9a1",
+      "sha256": "df7fbe47510f103f1e97cd31358265f29baab6c72777dcba85f811ad464d6093"
+    },
+    "configs/attack_semantics.yml": {
+      "git_blob_sha1": "b403e2ced1012aca69bd7eacc2b9245c8476cb60",
+      "sha256": "d96d631183e21e309c6b7f779a1a1bcc8bcbe4b330d3c2ffd61bb827b2a6c8d1"
+    },
+    "configs/contract.yml": {
+      "git_blob_sha1": "a7e1cebb3bd5914736f08a72eb016dd48c6016c9",
+      "sha256": "f461e6e8d8d48b9841797da41ff9cee829b979148685f6a5185db66e23d79eea"
+    },
+    "scripts/neo_decision.py": {
+      "git_blob_sha1": "9145ca4e8747df2e4667855bbc967e7624608864",
+      "sha256": "8da9ae34919d3d4e1cfc0db3daec92116d4e3f3055b36637d7fd5e3a7eda3663"
+    },
+    "scripts/neo_bloodhound.py": {
+      "git_blob_sha1": "58994291aeca0d3490f3aa91876a1f031cdc818f",
+      "sha256": "ee08399c90380c2994a07cc9fe21454f5c463daadb5e99b65b1f40718a5a2285"
+    },
+    "scripts/neo_remediation.py": {
+      "git_blob_sha1": "f96a83f4bb7d653b44d147c0df968efa5574328b",
+      "sha256": "dd7ac7ef5830d6f515465feb9c88ac946da6ea0c59dfd52917ca7db14c3d9ef9"
+    },
+    "src/parser/inference.py": {
+      "git_blob_sha1": "7b275c2f16fefd433070c43d1ab8ebf246f384f2",
+      "sha256": "23b257becd2c6fcc3ae67cb93a2b1d7ee4f9fcadcace3c28bfa2ba159c337823"
+    },
+    "src/engine/search.py": {
+      "git_blob_sha1": "107e73b536bb310f3f8370488b309b0114e97ade",
+      "sha256": "bb1836d0937e34b8b0930b67d1149166d01dc73381867e9768959be5f6d8cfc2"
+    },
+    "requirements-neo.lock": {
+      "git_blob_sha1": "8c913da955053c7e5e5c2da620a80368abbfc823",
+      "sha256": "19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4"
+    },
+    "deploy/bloodhound/compose.seamless.yml": {
+      "git_blob_sha1": "39a61ccd4a1ca2f7f2f76f551bf9524a53190eb0",
+      "sha256": "c3602eb4f85206648bf0b15450221d6911720fbbfd91275fb8df08f85ecec57e"
+    },
+    "scripts/neo_cost_sensitivity.py": {
+      "git_blob_sha1": "93ad9796da69321714abe296e8fbebce37b64ced",
+      "sha256": "d844de1abfa153ed255e743c0a62fb20aec92a4397e420979b7b5d8d418309d2"
+    }
+  },
+  "current_protocol_sha256": "sha256:bc17ea71557a537c99a8fcfd51fc0d43847dc6a2aea56e6bdfe24252a9e9391b",
+  "query_protocol": {
+    "cohort_seed": "neo-decision-v1",
+    "user_count": 3,
+    "computer_count": 2,
+    "observed_computer_sessions_separate_stratum": true,
+    "primary": "neo_guided",
+    "secondary": "neo_refine",
+    "max_paths": 10,
+    "max_steps": 12,
+    "max_expansions": 4096,
+    "top_k_cost": 3,
+    "scenario_policy": "neo-standard-v1",
+    "computer_foothold": "local-admin-only",
+    "ce_graph_hops": 12,
+    "semantic_steps_equivalent_to_graph_hops": false,
+    "remediation_selector": "scripts.neo_decision.membership_points"
+  },
+  "ci": {
+    "observed_at_utc": "2026-10-24T04:07:30.930849+00:00",
+    "commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+    "run": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": {
+      "quality": "success",
+      "tests (ubuntu-latest)": "success",
+      "compose": "success",
+      "tests (windows-latest)": "success"
+    },
+    "historical_in_progress_status_superseded_by_this_observation": true
+  },
+  "inputs": {
+    "eligible_datasets": [],
+    "holdout_export": null,
+    "manifest_sha256": null,
+    "new_raw_opened": false,
+    "eligibility_confirmed": false,
+    "search_scope": [
+      "base/neo/identity-graph/identity-graph-268 data locations",
+      "workspace export filenames including legacy snapshot16926",
+      "neo dataset registry and documented data inventory"
+    ],
+    "excluded_corpora": [
+      "SEAMLESS",
+      "NORTH",
+      "NORTH_CE_PYTHON",
+      "ad_sampledata (GHOST/WRAITH/PHANTOM)",
+      "fixtures and telemetry used by base or neo"
+    ],
+    "uuid_archive_is_ad_sampledata": "docs/research/bloodhound-import-baseline.md:46",
+    "public_candidate_search_performed": false,
+    "next_required_input": [
+      "authorized independent export path/source and reuse permission",
+      "collector/version/schema and collection time provenance",
+      "confirmation of prior tuning use in base or neo before opening raw",
+      "immutable raw with manifest/checksums verified before import"
+    ]
+  },
+  "local_environment": {
+    "python": "3.14.7",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "dependencies": "requirements-neo.lock; uv pip sync and uv pip check succeeded",
+    "requirements_lock_sha256": "sha256:19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4",
+    "docker": "29.6.2",
+    "docker_desktop": "4.83.0",
+    "compose": "5.3.1",
+    "project": "neo-holdout-20261024-local",
+    "service_images": [
+      "postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+      "neo4j:4.4.42@sha256:73b5a47eb9952f47fcc42fcc80bdd6bd0d6b71eea9a1a345c216675498c790e4",
+      "specterops/bloodhound:9.8.0@sha256:88aeb60228d8ad09a8ac1cdcea8218b4aabe3d9ac642f2f66d50a6b144f4d301"
+    ],
+    "resolved_compose_sha256": "sha256:f61b6f10929f20c2a6df0068d0e65c7f155adfcd03bcace95112dfbf4d11e3eb",
+    "compose_env": {
+      "NEO4J_WEB_PORT": "28474",
+      "NEO4J_BOLT_PORT": "28687",
+      "BLOODHOUND_PORT": "28080"
+    },
+    "services": "smoke_passed_then_only_new_project_stopped; volumes retained",
+    "existing_volumes_retained": 34,
+    "preexisting_volumes_mounted": 0,
+    "new_named_volumes": [
+      "neo-holdout-20261024-local_seamless-postgres",
+      "neo-holdout-20261024-local_seamless-neo4j"
+    ],
+    "additional_new_volume": "anonymous volume declared by Neo4j image",
+    "smoke": {
+      "observed_at_utc": "2026-10-24T04:08:37.595983+00:00",
+      "initial_zero_total_nodes_assertion": "failed: one CE MigrationData node, retained as observed",
+      "total_nodes": 1,
+      "metadata_labels": [
+        "MigrationData"
+      ],
+      "ad_nodes": 0,
+      "relationships": 0,
+      "dataset_imports": 0,
+      "export_queries": 0,
+      "api_version_without_authentication": 401,
+      "/health": 200,
+      "/ui/login": 200
+    }
+  },
+  "validation": {
+    "scope": "Existing focused tests using fixtures/mocks; not a holdout benchmark or live CE comparison",
+    "pytest": {
+      "tests": 140,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 3,
+      "passed": 137,
+      "junit_xml": "reports/generated/holdout-preparation-20261024/pytest.xml",
+      "junit_sha256": "sha256:7e71e17127a99a1603d9074c982eb09ae860f6a2cca2de0b66650480c38ebdce"
+    },
+    "full_suite_run_locally": false,
+    "quality_checks": {
+      "ruff_check": 0,
+      "ruff_format": 0,
+      "yamllint": 0,
+      "repository": 0,
+      "contract": 0
+    }
+  },
+  "execution": {
+    "holdout_query_runs": 0,
+    "holdout_remediation_runs": 0,
+    "new_ce_export_comparisons": 0,
+    "old_corpus_benchmark_reruns": 0
+  },
+  "reproduce_preparation": [
+    "uv venv --python 3.14 .venv",
+    "uv pip sync --python .venv/bin/python requirements-neo.lock",
+    "uv pip check --python .venv/bin/python",
+    ".venv/bin/python -m pytest tests/test_manifest.py tests/test_neo_import.py tests/test_neo_decision.py tests/test_neo_bloodhound.py tests/test_neo_bloodhound_live.py tests/test_neo_effort.py tests/test_neo_scenario_policy.py tests/test_neo_remediation.py -q --junitxml=reports/generated/holdout-preparation-20261024/pytest.xml",
+    "NEO4J_WEB_PORT=28474 NEO4J_BOLT_PORT=28687 BLOODHOUND_PORT=28080 docker compose -p neo-holdout-20261024-local -f deploy/bloodhound/compose.seamless.yml up -d --pull never --wait --wait-timeout 180"
+  ],
+  "reproduction_limits": "This project has already been initialized locally. For an independent future evaluation use a new project/volume name and free ports, verify pinned images exist or pull exact digests, and complete dataset eligibility and manifest verification before import.",
+  "evidence_directory": "reports/generated/holdout-preparation-20261024",
+  "claim_boundaries": [
+    "Preparation only; holdout not executed.",
+    "C remains ordinal scenario effort and capped results remain best-found.",
+    "No minimum-C proof or BloodHound superiority claim.",
+    "No engine/search/preset/C changes.",
+    "Original base checkout and preexisting changes retained."
+  ],
+  "evidence_manifest_sha256": "sha256:d963e90159c13ed62083ed8ba7fc70b6001027e2d678a8241d257cb0c1601251"
+}

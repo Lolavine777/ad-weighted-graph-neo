@@ -3,6 +3,14 @@
 Trạng thái: protocol, chưa chạy và chưa có kết quả holdout.
 Chốt trước khi nhận hoặc mở một export AD mới; không chuyển một corpus đã xem thành test mù.
 
+[Chuẩn bị local ngày 24/10/2026](holdout-local-preparation-20261024.json) đã đối chiếu bản freeze `a4a9c5b` với main `2566a96`, xác minh các pin code/config/bảng C và giữ nguyên quy tắc đánh giá bên dưới.
+CI của `2566a96` đã hoàn tất thành công trên Ubuntu, Windows, quality và Compose; trạng thái đang chạy trong bản freeze là lịch sử.
+Python 3.14.7 và dependencies theo lock đã sẵn sàng; CE dùng đúng ba image digest đã pin, project/volume mới và cổng loopback riêng.
+Smoke check CE thành công, chưa nạp export AD; các volume có sẵn được giữ nguyên và không gắn vào project mới.
+Chưa tìm thấy export mới đủ điều kiện trong các vị trí dữ liệu đã kiểm tra, chưa mở raw mới, số lượt đánh giá holdout/remediation vẫn bằng 0.
+Cần nguồn/quyền dùng, collector/schema, thời điểm và xác nhận lịch sử sử dụng trước khi xét một export là holdout.
+Chuẩn bị này không khép yêu cầu minimum-C của đề gốc hoặc chứng minh ưu thế so với BloodHound.
+
 ## Điều kiện đầu vào
 
 Môi trường holdout phải do chủ sở hữu cho phép dùng trong nghiên cứu và chưa được dùng để chỉnh parser, search, scenario hoặc bảng C của neo.
