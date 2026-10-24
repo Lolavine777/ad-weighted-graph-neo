@@ -1,0 +1,97 @@
+{
+  "version": "neo-holdout-freeze/1",
+  "recorded_at_utc": "2026-10-24T03:39:33.122Z",
+  "status": "awaiting_new_export_and_ce_runtime",
+  "code_commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "code_tree": "a3e6e50521d55ee4fda1d4db224c4afc0e465f87",
+  "protocol": {
+    "path": "reports/neo/holdout-evaluation-protocol.md",
+    "git_blob_sha1": "e62a357c3214cfe002a428ab62b98fd2ccfec5ae"
+  },
+  "effort_profile": {
+    "id": "neo-c-v1",
+    "version": "1.2.0",
+    "canonical_digest": "sha256:3c5a9b349768c9bea7463f0d5110fff22969b75bb7090c852c7099a9c2367b7c",
+    "basis": "estimated_expert_scenario",
+    "source_git_blob_sha1": "105a5a52407756f205aabf13c6d0fd210e20ff69"
+  },
+  "source_git_blobs": {
+    "reports/neo/holdout-evaluation-protocol.md": "e62a357c3214cfe002a428ab62b98fd2ccfec5ae",
+    "src/engine/ranking/effort_profiles.py": "105a5a52407756f205aabf13c6d0fd210e20ff69",
+    "src/engine/ranking/resolution_service.py": "e0ca01f865533ddc700a65b6ef6af3c74801c25a",
+    "src/engine/semantics/scenario_policy.py": "c59f5727c782a91df412dcde1be1a13d2107f9a1",
+    "configs/attack_semantics.yml": "b403e2ced1012aca69bd7eacc2b9245c8476cb60",
+    "configs/contract.yml": "a7e1cebb3bd5914736f08a72eb016dd48c6016c9",
+    "scripts/neo_decision.py": "9145ca4e8747df2e4667855bbc967e7624608864",
+    "scripts/neo_bloodhound.py": "58994291aeca0d3490f3aa91876a1f031cdc818f",
+    "scripts/neo_remediation.py": "f96a83f4bb7d653b44d147c0df968efa5574328b",
+    "src/parser/inference.py": "7b275c2f16fefd433070c43d1ab8ebf246f384f2",
+    "src/engine/search.py": "107e73b536bb310f3f8370488b309b0114e97ade",
+    "requirements-neo.lock": "8c913da955053c7e5e5c2da620a80368abbfc823",
+    "deploy/bloodhound/compose.seamless.yml": "39a61ccd4a1ca2f7f2f76f551bf9524a53190eb0",
+    "scripts/neo_cost_sensitivity.py": "93ad9796da69321714abe296e8fbebce37b64ced"
+  },
+  "requirements_lock_sha256": "sha256:19ad78e852f45308c8fc2b26a9bd2a877edd20faaa86eee5d4c6dc7ec61752f4",
+  "bloodhound_compose_sha256": "sha256:c3602eb4f85206648bf0b15450221d6911720fbbfd91275fb8df08f85ecec57e",
+  "service_images": [
+    "postgres:16-alpine@sha256:cf78e76683b9ca8c5733cbbdce6c9262b45b6767934dd0a95e671f9a0fc20685",
+    "neo4j:4.4.42@sha256:73b5a47eb9952f47fcc42fcc80bdd6bd0d6b71eea9a1a345c216675498c790e4",
+    "specterops/bloodhound:9.8.0@sha256:88aeb60228d8ad09a8ac1cdcea8218b4aabe3d9ac642f2f66d50a6b144f4d301"
+  ],
+  "inputs": {
+    "holdout_export": null,
+    "manifest": null,
+    "eligibility_confirmed": false,
+    "new_raw_opened": false,
+    "excluded_corpora": [
+      "SEAMLESS",
+      "NORTH",
+      "NORTH_CE_PYTHON",
+      "ad_sampledata (GHOST/WRAITH/PHANTOM)",
+      "fixtures and telemetry used by base or neo"
+    ]
+  },
+  "execution": {
+    "holdout_query_runs": 0,
+    "holdout_remediation_runs": 0,
+    "new_bloodhound_run": false,
+    "docker_cli_available_in_preparation_environment": false
+  },
+  "validation_observation": {
+    "current_baseline": {
+      "commit": "2566a964526c93c8297e6cd8de73278a9073221b",
+      "ci_run": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795",
+      "as_observed_utc": "2026-10-24T03:39:33.122Z",
+      "status": "in_progress"
+    },
+    "previous_revision": {
+      "commit": "e261412d5b8cd2003590bd32128060471324bd51",
+      "ci_run": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40057048164",
+      "as_observed_utc": "2026-10-24T03:35:53.640Z",
+      "ubuntu_tests": {
+        "conclusion": "success",
+        "passed": 3723,
+        "skipped": 147,
+        "seconds": 646.68
+      },
+      "windows_tests": {
+        "conclusion": "failure",
+        "failed": 13,
+        "passed": 3709,
+        "skipped": 148,
+        "seconds": 1357.45
+      },
+      "quality": "success",
+      "compose": "success"
+    }
+  },
+  "claim_boundaries": {
+    "cost": "Ordinal scenario estimates; capped results remain best-found.",
+    "original_assignment_minimum_cost_requirement": "Not closed by this freeze or by an unseen-dataset benchmark; see minimum-probe.md and cost-first-pilot.md.",
+    "bloodhound_superiority": "Not established.",
+    "existing_rating_reviews": "Preserved as joint human-reviewed AI-assisted judgments; not independent inter-rater validation of neo-c-v1.",
+    "windows_portability": "The previous e261412 baseline had 13 Windows CI failures. Commit 2566a96 contains portability fixes; its CI was still running when this record was prepared. Cross-platform validation is not claimed here."
+  },
+  "next_required_input": "One authorized lab/export not used to tune base or neo, with source, collector/schema and time provenance; eligibility must be established before raw analysis.",
+  "scope_change": false
+}

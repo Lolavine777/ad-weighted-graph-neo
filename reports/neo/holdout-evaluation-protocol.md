@@ -3,6 +3,16 @@
 Trạng thái: protocol, chưa chạy và chưa có kết quả holdout.
 Chốt trước khi nhận hoặc mở một export AD mới; không chuyển một corpus đã xem thành test mù.
 
+[Bản đóng băng chuẩn bị ngày 24/10/2026](holdout-freeze-20261024.json) pin commit,
+bảng C, source/config và các image CE hiện có. Chưa nhận được export mới đủ điều
+kiện, chưa có Docker trong môi trường chuẩn bị và số lượt holdout vẫn bằng 0.
+Đây là chuẩn bị đánh giá, không phải kết quả thực nghiệm. Benchmark holdout cũng
+không tự khép yêu cầu minimum-C của đề gốc: xem [minimum probe](minimum-probe.md)
+và [pilot C-first](cost-first-pilot.md); các kết quả bị cap tiếp tục là best-found.
+Baseline pin là `2566a96`, có bản sửa portability mới và CI còn đang chạy.
+Kết quả Linux/Windows của bản trước `e261412` được giữ riêng trong bản ghi;
+không chuyển kết quả kiểm thử cũ thành xác nhận cho revision mới.
+
 ## Điều kiện đầu vào
 
 Môi trường holdout phải do chủ sở hữu cho phép dùng trong nghiên cứu và chưa được dùng để chỉnh parser, search, scenario hoặc bảng C của neo.
