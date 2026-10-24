@@ -1,0 +1,526 @@
+{
+  "version": "goodhound-positive-control/1",
+  "classification": "selected public-data positive control; external validation after input adaptation, not blind holdout",
+  "code_revision_evaluated": "87b7424c83d9ee12e8fd37160e09d61329415b4d",
+  "unchanged_core_baseline": "2566a964526c93c8297e6cd8de73278a9073221b",
+  "original_results_unchanged": {
+    "sha256": "sha256:5838920b631a8c1c9084f2782c2090ec53b6d32894550cf0cc415b0ab06e4233",
+    "matrices_sha256": {
+      "native-guided": "sha256:0d2eb58b7d05bec6f7aabdb319f7c7133a72db5e3a04c74473dc5f737bf96d9b",
+      "native-refine": "sha256:773876a4ba36bdf27a5f3002e42c6f663029a00f43f06abfd609efad07fc1f49"
+    }
+  },
+  "input": {
+    "snapshot_sha256": "sha256:2d463b0cc7bf6e46d5e2612d052e8a578413f40dd11232a5a9910a85788c2a66",
+    "snapshot_id": "sha256:0f32416444ab00c68e8291ff3fddc773b238e342310a56420b49f79c0e99ad3b",
+    "manifest_sha256": "sha256:a855d7f34c52964da638a6cd4f5bfd263407938a724e700b68d4b76d45aee9ae",
+    "raw_metadata": "goodhound-evaluation-results.json; collector version/collection time/timezone unverified; assumed time only",
+    "source": "BENNY_SNIDER@WINDOMAIN.LOCAL",
+    "ground_truth": "hand-calculated from export and existing catalog; independent lab execution ground truth not verified",
+    "sample_documentation": "https://github.com/idnahacks/GoodHound/blob/c2d8915619d54c752425e6e3fdee3ac8499b32f2/Sample%20SharpHound%20Output/README.md",
+    "sample_session_limit": "upstream sample README states BadBlood does not create session data",
+    "selection": "sole non-DA-member User/Computer in supported structural predecessor closure of DA; already a member of built-in Administrators, so not an unprivileged foothold",
+    "selection_timing": "supported-edge structural audit before semantic-control freeze; outcome-directed candidate discovery",
+    "independently_predeclared_expected_C": 3,
+    "expected_C_basis": {
+      "grant_new_object_right": 2,
+      "genericall_add_member": 1,
+      "propagate_group_entitlement": 0
+    }
+  },
+  "scope": {
+    "scenario": "host-compromise / neo-host-session-v1",
+    "effort_profile": "neo-c-v1",
+    "effort_profile_sha256": "sha256:3c5a9b349768c9bea7463f0d5110fff22969b75bb7090c852c7099a9c2367b7c",
+    "budget": {
+      "max_paths": 10,
+      "max_steps": 12,
+      "max_expansions": 4096
+    },
+    "top_k": 3,
+    "goals": [
+      "DA",
+      "EA"
+    ],
+    "policy_assumptions": "usable source network identity and unchanged scenario gates; not observed live feasibility",
+    "query_sha256": [
+      "sha256:53d0e79d786f577ab8aa1cd9055a536f8043f662dc0924f62ffa65ea325a97de",
+      "sha256:a7ea69d19114ae36b68608c915b7faa55dfae862a1afa21bb191b7f9852b7657",
+      "sha256:1f55f7ebe998369f5d9cea36e8b50af89b22eb7419c6012829ec46d7ec6671bd",
+      "sha256:aa35d35e9670e6e0a3c64d51cc3b4abafcc5b2e869175460e8c6a7d33f5f7f50"
+    ]
+  },
+  "before": [
+    {
+      "status": "success",
+      "reached": true,
+      "C": 3,
+      "expansions": 36,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "caps": {
+        "max_paths": 10,
+        "max_steps": 12,
+        "max_expansions": 4096
+      },
+      "complete": false,
+      "minimum_proven": false,
+      "no_path_proven": false,
+      "unknown": {},
+      "failed": {},
+      "replayed_programs": 10,
+      "ledger_checked_programs": 10,
+      "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+      "strategy": "neo_guided"
+    },
+    {
+      "status": "success",
+      "reached": true,
+      "C": 3,
+      "expansions": 33,
+      "truncated": true,
+      "truncation_reason": "path_limit_reached",
+      "caps": {
+        "max_paths": 10,
+        "max_steps": 12,
+        "max_expansions": 4096
+      },
+      "complete": false,
+      "minimum_proven": false,
+      "no_path_proven": false,
+      "unknown": {},
+      "failed": {},
+      "replayed_programs": 10,
+      "ledger_checked_programs": 10,
+      "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+      "strategy": "neo_guided"
+    },
+    {
+      "status": "success",
+      "reached": true,
+      "C": 3,
+      "expansions": 4096,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "caps": {
+        "max_paths": 10,
+        "max_steps": 12,
+        "max_expansions": 4096
+      },
+      "complete": false,
+      "minimum_proven": false,
+      "no_path_proven": false,
+      "unknown": {
+        "directory_write_allowed": 3
+      },
+      "failed": {},
+      "replayed_programs": 10,
+      "ledger_checked_programs": 10,
+      "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+      "strategy": "neo_refine"
+    },
+    {
+      "status": "success",
+      "reached": true,
+      "C": 3,
+      "expansions": 4096,
+      "truncated": true,
+      "truncation_reason": "expansion_limit_reached",
+      "caps": {
+        "max_paths": 10,
+        "max_steps": 12,
+        "max_expansions": 4096
+      },
+      "complete": false,
+      "minimum_proven": false,
+      "no_path_proven": false,
+      "unknown": {
+        "directory_write_allowed": 3
+      },
+      "failed": {},
+      "replayed_programs": 10,
+      "ledger_checked_programs": 10,
+      "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+      "strategy": "neo_refine"
+    }
+  ],
+  "ranking": {
+    "scope": "returned eligible candidates only, not global Top-3",
+    "candidate_C_histogram_per_cell": {
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "6": 5,
+      "8": 1
+    },
+    "top3_C_per_cell": [
+      [
+        3,
+        4,
+        4
+      ],
+      [
+        3,
+        4,
+        4
+      ],
+      [
+        3,
+        4,
+        4
+      ],
+      [
+        3,
+        4,
+        4
+      ]
+    ],
+    "deterministic_candidate_set_reproduced": true,
+    "sorted_C_verified": true,
+    "minimum_proven": false,
+    "global_k_best_proven": false,
+    "replayed_observations": 40,
+    "ledger_checked_observations": 40,
+    "independent_recipe_check": "best witness C=2+1=3 matches literal predeclared recipe, not an empirical calibration of weights"
+  },
+  "remediation": {
+    "selector": "unchanged scripts.neo_decision.membership_points, primary guided corpus only",
+    "selected_membership": {
+      "id": "sha256:ebe9bc09280c07866d1d260a84ad76699ce905206d7ebfabc354f97b33943244",
+      "source": "S-1-5-21-1017245484-488396236-2120164556-1306",
+      "kind": "MemberOf",
+      "target": "domain:sid:S-1-5-21-1017245484-488396236-2120164556:S-1-5-32-544"
+    },
+    "primary_support": {
+      "programs": 20,
+      "pairs": 2
+    },
+    "rebuild": {
+      "baseline_reproduced_exactly": true,
+      "raw_records_unchanged": true,
+      "input_records_digest": "sha256:c3b4a55fb2a06aa30de579ff6f55cd81d26d6bc5ca473f3ba813c2cb5b0d3a4e",
+      "after_graph_digest": "sha256:26b98748d68b43ea6ade42bc15de11ecc90414e6c99f1db51bb65325b0fd2841"
+    },
+    "removed_observations": 1,
+    "removed_edges": 1,
+    "added_edges": 0,
+    "changed_edges": 0,
+    "counterfactual": "copied records fully rebuilt, same fresh declared foothold/token refresh; generic replay/rediscovery separately verified",
+    "replay": [
+      {
+        "strategy": "neo_guided",
+        "independently_verified": true,
+        "programs_cut": {
+          "numerator": 20,
+          "denominator": 20,
+          "percent": 100.0,
+          "scope": "observed_corpus_only"
+        },
+        "after_cells_with_witness": 0,
+        "unresolved_after": 2,
+        "proven_disconnected_pairs": 0
+      },
+      {
+        "strategy": "neo_refine",
+        "independently_verified": true,
+        "programs_cut": {
+          "numerator": 20,
+          "denominator": 20,
+          "percent": 100.0,
+          "scope": "observed_corpus_only"
+        },
+        "after_cells_with_witness": 0,
+        "unresolved_after": 2,
+        "proven_disconnected_pairs": 0
+      }
+    ],
+    "after_rebuilt": [
+      {
+        "status": "truncated",
+        "reached": false,
+        "C": null,
+        "outcome": "inconclusive",
+        "expansions": 4096,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "caps": {
+          "max_paths": 10,
+          "max_steps": 12,
+          "max_expansions": 4096
+        },
+        "complete": false,
+        "minimum_proven": false,
+        "no_path_proven": false,
+        "unknown": {},
+        "failed": {},
+        "replayed_programs": 0,
+        "ledger_checked_programs": 0,
+        "rating_exclusions": [],
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "strategy": "neo_guided"
+      },
+      {
+        "status": "truncated",
+        "reached": false,
+        "C": null,
+        "outcome": "inconclusive",
+        "expansions": 4096,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "caps": {
+          "max_paths": 10,
+          "max_steps": 12,
+          "max_expansions": 4096
+        },
+        "complete": false,
+        "minimum_proven": false,
+        "no_path_proven": false,
+        "unknown": {},
+        "failed": {},
+        "replayed_programs": 0,
+        "ledger_checked_programs": 0,
+        "rating_exclusions": [],
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "strategy": "neo_guided"
+      },
+      {
+        "status": "truncated",
+        "reached": false,
+        "C": null,
+        "outcome": "inconclusive",
+        "expansions": 4096,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "caps": {
+          "max_paths": 10,
+          "max_steps": 12,
+          "max_expansions": 4096
+        },
+        "complete": false,
+        "minimum_proven": false,
+        "no_path_proven": false,
+        "unknown": {},
+        "failed": {},
+        "replayed_programs": 0,
+        "ledger_checked_programs": 0,
+        "rating_exclusions": [],
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "strategy": "neo_refine"
+      },
+      {
+        "status": "truncated",
+        "reached": false,
+        "C": null,
+        "outcome": "inconclusive",
+        "expansions": 4096,
+        "truncated": true,
+        "truncation_reason": "expansion_limit_reached",
+        "caps": {
+          "max_paths": 10,
+          "max_steps": 12,
+          "max_expansions": 4096
+        },
+        "complete": false,
+        "minimum_proven": false,
+        "no_path_proven": false,
+        "unknown": {},
+        "failed": {},
+        "replayed_programs": 0,
+        "ledger_checked_programs": 0,
+        "rating_exclusions": [],
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "strategy": "neo_refine"
+      }
+    ],
+    "conclusion": "old witnesses cut; all four neo rediscoveries capped, no source-disconnection proof; after C missing, no cost delta"
+  },
+  "bloodhound_ce": {
+    "project": "neo-goodhound-20261024-adaptation-v2",
+    "nodecount": 1391,
+    "relationship_digest_before": "sha256:4ed46097d9f22d95441523d8e080c0e47a36e13425fcde79ff1a5a82947ea43a",
+    "relationship_digest_restored": "sha256:4ed46097d9f22d95441523d8e080c0e47a36e13425fcde79ff1a5a82947ea43a",
+    "restore_verified": true,
+    "before": [
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "enabled_users": false,
+        "http_status": 200,
+        "all_shortest_count": 1
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "enabled_users": true,
+        "http_status": 200,
+        "all_shortest_count": 1
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "enabled_users": false,
+        "http_status": 200,
+        "all_shortest_count": 1
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "enabled_users": true,
+        "http_status": 200,
+        "all_shortest_count": 1
+      }
+    ],
+    "after": [
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "enabled_users": false,
+        "http_status": 404,
+        "empty_confirmed": true,
+        "all_shortest_count": 0
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-512",
+        "enabled_users": true,
+        "http_status": 404,
+        "empty_confirmed": true,
+        "all_shortest_count": 0
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "enabled_users": false,
+        "http_status": 404,
+        "empty_confirmed": true,
+        "all_shortest_count": 0
+      },
+      {
+        "target": "S-1-5-21-1017245484-488396236-2120164556-519",
+        "enabled_users": true,
+        "http_status": 404,
+        "empty_confirmed": true,
+        "all_shortest_count": 0
+      }
+    ],
+    "C_comparison": "not claimed: CE graph hops and neo semantic programs are different workloads"
+  },
+  "verification": {
+    "tests": {
+      "tests": 139,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 1
+    },
+    "passed": 138,
+    "skip_reason": "private SEAMLESS raw opt-in not set; not a GoodHound result exclusion",
+    "junit_sha256": "sha256:805ed1ff8599b01515708435e0e4a8798ded1360118e98c6f015b07764640c64",
+    "quality_checks": [
+      {
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "ruff",
+          "check",
+          "."
+        ],
+        "exit_code": 0,
+        "log": "quality-0.log"
+      },
+      {
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "ruff",
+          "format",
+          "--check",
+          "."
+        ],
+        "exit_code": 0,
+        "log": "quality-1.log"
+      },
+      {
+        "command": [
+          ".venv/bin/python",
+          "-m",
+          "yamllint",
+          "."
+        ],
+        "exit_code": 0,
+        "log": "quality-2.log"
+      },
+      {
+        "command": [
+          ".venv/bin/python",
+          "scripts/check_repository.py"
+        ],
+        "exit_code": 0,
+        "log": "quality-3.log"
+      },
+      {
+        "command": [
+          ".venv/bin/python",
+          "scripts/check_contract.py"
+        ],
+        "exit_code": 0,
+        "log": "quality-4.log"
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "log": "quality-5.log"
+      }
+    ],
+    "input_integrity": [
+      {
+        "manifest": "reports/generated/goodhound-evaluation-20261024-v1/manifest.json",
+        "snapshot_id": "sha256:53c9a08c82fb4dfc3afd8b5be6d4da30afa06695a90dc10f2b7454caec371c06",
+        "verified_files": 6
+      },
+      {
+        "manifest": "reports/generated/goodhound-evaluation-20261024-v1/adapted-manifest-v2.json",
+        "snapshot_id": "sha256:0f32416444ab00c68e8291ff3fddc773b238e342310a56420b49f79c0e99ad3b",
+        "verified_files": 6
+      },
+      {
+        "manifest": "reports/generated/goodhound-evaluation-20261024-v1/ce-schema6-manifest.json",
+        "snapshot_id": "sha256:4ecf81317cdbaa9f889a492d0d06809d6af0acc248bb225287278fa309867c31",
+        "verified_files": 6
+      }
+    ],
+    "core_config_deploy_lock_unchanged": true,
+    "main_revision": "2566a964526c93c8297e6cd8de73278a9073221b",
+    "latest_main_ci": "https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40059055795",
+    "main_ci_status": "completed/success; not CI for this report commit"
+  },
+  "local_glue_failure": {
+    "before": "rebuild-counterfactual-pre-fix.log: removed-observation accumulator overwritten by duplicate empty Group record",
+    "after": "accumulate observations across duplicate records; exact baseline and one-edge delta assertions pass",
+    "engine_input_query_changed": false
+  },
+  "limitations": [
+    "Selected already privileged source, not typical unprivileged User or Computer/session control.",
+    "GoodHound raw still needs documented v2 input adaptation.",
+    "No minimum-C, global Top-3, empirical C calibration or superiority over CE established.",
+    "No live exploitation or live remediation.",
+    "No new dataset, engine/search/preset/profile/budget changes."
+  ],
+  "reproduction": {
+    "cwd": "repo root",
+    "original_input_rebuild": "See goodhound-evaluation-results.json and local goodhound-evaluation-20261024-v1/reproduce-inputs.py; require exact recorded manifests.",
+    "local_scripts": "Copy run-controls.py, check-ranking.py, run-remediation.py, rebuild-counterfactual.py, run-ce-controls.py from evidence directory to an empty sibling directory; OUT resolves to each script directory.",
+    "native_commands": [
+      "PYTHONPATH=. .venv/bin/python <new-directory>/run-controls.py",
+      "PYTHONPATH=. .venv/bin/python <new-directory>/check-ranking.py",
+      "PYTHONPATH=. .venv/bin/python <new-directory>/run-remediation.py",
+      "PYTHONPATH=. .venv/bin/python <new-directory>/rebuild-counterfactual.py"
+    ],
+    "ce_start": "docker compose --env-file reports/generated/goodhound-evaluation-20261024-v1/compose.env -f deploy/bloodhound/compose.seamless.yml -p neo-goodhound-20261024-adaptation-v2 up -d",
+    "ce_command": "BLOODHOUND_PORT=48080 NEO4J_WEB_PORT=48474 PYTHONPATH=. .venv/bin/python <new-directory>/run-ce-controls.py",
+    "ce_stop": "same compose command with stop; retain volumes",
+    "pytest_command": ".venv/bin/python -m pytest tests/test_neo_domain.py tests/test_neo_effort.py tests/test_neo_remediation.py tests/test_neo_decision.py tests/test_remediation_executor.py tests/test_remediation_runner.py tests/test_top_k_search.py --junitxml=<new-directory>/pytest.xml"
+  },
+  "local_evidence": {
+    "directory": "reports/generated/goodhound-suitability-20261024-v1",
+    "manifest_sha256": "sha256:fc07f578a6a4895c8cfecab8c04f992fa1abebaaa57ae82d2f2b6002639bf355",
+    "freeze_sha256": "sha256:2d64690146fdb76b16d91793212dbe364ef3316293c9a46371f47db91f423e52",
+    "large_raw_and_evidence_in_git": false
+  }
+}

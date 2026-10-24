@@ -192,11 +192,19 @@ chỉ bật `obtain_admin_execution_on_host`, cap 100 expansions và ba steps.
 repository và contract checks pass. Lượt full suite được dừng trước khi hoàn tất
 do thời gian chạy các test lịch sử; không dùng lượt đó để tuyên bố full-suite pass.
 
-## Ba ưu tiên tiếp theo
+## Trạng thái và việc còn lại
 
-1. Xây cost-guided search C-first trong planner stateful hiện hữu, tái dùng preparation giữa queries, với oracle finite kiểm work deduplication, zero-cost actions và bằng chứng optimality dưới budget.
-2. Mở rộng benchmark nguồn/goal/technique trên cùng snapshot, kiểm replay và chất lượng đường; đối chứng BloodHound trên cùng scope, tách hop count, C ordinal, semantic feasibility và runtime.
-3. Hoàn thiện cohort nhiều nguồn và remediation: báo riêng phần chưa chạy, quan sát đường thay thế sau can thiệp và kiểm độ nhạy của assumptions/C trước khi xếp hạng rủi ro cho thesis.
+Các mục bên dưới ghi lại từng mốc nghiên cứu; hướng dẫn chạy hiện tại nằm trong [README](../README.md).
+`neo_guided` và `neo_refine` đã có trong core; [pilot C-first](../reports/neo/cost-first-pilot.md) không được adopt vì giảm coverage trong budget.
+[Đối chứng CE sau sửa LocalGroup](../reports/neo/localgroup-fix.md), [độ nhạy C](../reports/neo/cost-sensitivity.md) và [demo remediation WRAITH](../reports/neo/remediation-rediscovery-results.json) đã có kết quả.
+[GoodHound](../reports/neo/goodhound-evaluation.md) bổ sung đánh giá công khai ngoài dữ liệu cũ: giữ riêng cohort âm và positive control, không gọi là blind holdout.
+
+Phần còn lại để bàn giao khóa luận:
+
+1. Đưa các helper tái lập GoodHound đang nằm trong evidence local vào Git và kiểm tra chạy từ checkout mới; hiện repo mới có báo cáo/hash, chưa có đủ helper đó.
+2. Dùng demo và kết quả đã có để hoàn thiện bài viết: giải thích C, đối chiếu CE cùng scope, phân biệt cắt witness với ngắt đường và nêu giới hạn tìm kiếm.
+
+Giữ bảng `neo-c-v1` đã giải thích ở trên. Minimum-C trên dữ liệu thật và ưu thế tổng quát so với BloodHound chưa được chứng minh; không coi chúng là kết quả đã đạt hoặc tự mở thêm scope để đóng gói bản hiện tại.
 
 Để cập nhật integrity baseline neo sau một thay đổi source có chủ đích:
 
@@ -647,3 +655,4 @@ Evidence remediation của lượt cũ vẫn gắn với code/budget cũ; chưa 
 Validation: 389 focused tests pass, 1 optional raw-remediation test skip; chưa chạy
 full suite. Native replay, source/snapshot integrity, Ruff, repository và contract
 checks pass. Dùng output directory mới; thêm `--resume` khi tiếp tục cùng scope.
+

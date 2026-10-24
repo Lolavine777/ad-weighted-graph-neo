@@ -5,18 +5,32 @@ Repo này dùng lịch sử Git mới và workflow cá nhân.
 Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụng; evidence lịch sử được giữ nguyên để đối chiếu.
 
 Hướng khóa luận: phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng
-biện pháp giảm thiểu. Phải đánh giá ngoài SEAMLESS và đo ưu thế trên cùng phạm vi
-với BloodHound; chưa coi “tốt hơn BloodHound” là kết luận đã có.
-[Kết quả ngoài SEAMLESS và tiêu chí đánh giá](reports/neo/transfer-brief.md):
-đã chạy GHOST/WRAITH với cùng bảng C; có ca C=3 và can thiệp được kiểm chứng.
-PHANTOM còn lỗi đầu vào; đối chứng BloodHound CE live đã hoàn tất trên bộ nhỏ cố định.
-[Bộ đối chứng cố định và cách chạy](reports/neo/bloodhound-comparison.md)
-ghi nhận trước sửa: BloodHound 22/24 và neo 20/24 cặp có đường, cùng các bypass sau can thiệp.
-[Bản sửa LocalGroup theo host](reports/neo/localgroup-fix.md) khép lỗi nhập liệu đã đo: neo đạt 22/24, TRUSTER→DA/EA có C=3, giữ nguyên các kết quả cũ.
-[Kiểm lại remediation sau sửa](reports/neo/remediation-post-localgroup.md) xác nhận ba kết quả cũ; TRUSTER còn bypass qua UNCON khi chỉ bỏ session BM trên EXTCA01.
-[Độ nhạy bảng C](reports/neo/cost-sensitivity.md) đã đo trên 220 quan sát chương trình theo cặp; Top-3 có thể đổi do ties, kết quả chỉ áp dụng trong candidate set đã tìm được.
-[Protocol holdout](reports/neo/holdout-evaluation-protocol.md) chốt đánh giá trên môi trường chưa dùng để chỉnh neo; chưa có kết quả holdout.
-[Kiểm tra toàn bộ regression](reports/neo/full-suite-validation.md): 3.852 tests và 99 subtests pass trong worktree cố định, 8 skips; giữ nguyên evidence và phạm vi rating lịch sử.
+biện pháp giảm thiểu. Phần neo bổ sung để đối chiếu là cách giải thích công việc/C
+và kết quả tìm lại sau can thiệp; chưa có kết luận tốt hơn BloodHound nói chung.
+
+## Kết quả đã kiểm chứng
+
+Các bộ dữ liệu kiểm những phần khác nhau; không gộp chúng thành một tỷ lệ thành công chung.
+
+| Bộ dữ liệu / phép kiểm | Kết quả | Phạm vi |
+| --- | --- | --- |
+| [SEAMLESS, khảo sát danh tính mạng](reports/neo/domain-discovery-fix.json) | 5.171/5.180 cặp có witness và C; 9 hết budget | Mỗi nguồn độc lập có danh tính mạng dùng được; không đại diện preset Computer chỉ có local admin |
+| [Bộ đối chứng CE cố định, sau sửa LocalGroup](reports/neo/localgroup-fix.md) | Neo và CE đều có đường cho 22/24 cặp | Cùng bộ cặp đã chốt; [báo cáo gốc](reports/neo/bloodhound-comparison.md) giữ kết quả trước sửa |
+| [WRAITH, remediation](reports/neo/remediation-rediscovery-results.json) | Hai can thiệp còn bypass; một can thiệp chặn trong scope | Tìm mới từ foothold ban đầu; witness được replay và kiểm ledger C |
+| [GoodHound, đánh giá công khai](reports/neo/goodhound-evaluation.md) | 10 cặp ban đầu: 0 witness, 4 hết budget, 2 no-path, 4 blocked, ở mỗi mode | Cần adaptation đầu vào; không có session; giữ đủ các kết quả bất lợi |
+| [GoodHound, positive control riêng](reports/neo/goodhound-positive-control-results.json) | User đã thuộc Administrators: C best-found=3, Top-3=3/4/4; 40 witness replay hợp lệ | Không gộp vào 10 cặp ban đầu; tìm lại sau can thiệp hết budget, chưa kết luận ngắt đường |
+
+[Bảng C và lý do chọn mức](docs/neo.md#chi-phi-c-cho-neo) giữ `neo-c-v1`;
+[độ nhạy](reports/neo/cost-sensitivity.md) đã đo trên candidate set cố định.
+GoodHound là đánh giá công khai sau adaptation, không phải blind holdout.
+Ba file báo cáo GoodHound được giữ nguyên từ nhánh đánh giá tại `74cb3ab`.
+Các helper adaptation/CE/control vẫn chỉ nằm trong evidence local được báo cáo dẫn tới;
+chưa thể tái lập trọn lượt GoodHound chỉ bằng checkout repo.
+Demo WRAITH bên dưới có hướng dẫn tải input đã pin và không cần Docker.
+
+[Kiểm thử hồi quy](reports/neo/full-suite-validation.md) và
+[kiểm chứng cài mới](reports/neo/clean-checkout-results.json) ghi rõ revision và môi trường;
+[CI tại mốc rubric](https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40116555549) đã pass trên Ubuntu/Windows.
 
 C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
 Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
@@ -217,10 +231,11 @@ Output có `report.md`, brief/ledger từng cặp và các gói kiểm chứng n
 Thêm `--resume` để nối tiếp cùng code/snapshot. Kết quả SEAMLESS:
 [bản đọc ngắn](reports/neo/decision-brief.md).
 
-- Một foothold → tự chọn mục tiêu quan trọng: [demo exposure](docs/research/awg-r04/DEMO.md).
-- Nhiều nguồn độc lập → ưu tiên rủi ro, thử can thiệp và tìm bypass: [runner remediation](docs/research/awg-r04/DEMO.md).
+- Một foothold → DA/EA, hoặc khảo sát nhiều nguồn độc lập: [runner neo_domain](scripts/neo_domain.py), theo các lệnh phía trên.
+- Sửa record và tìm lại bypass: [demo neo_remediation](scripts/neo_remediation.py), theo ba ca WRAITH phía trên.
 - Thiết kế và giới hạn hiện tại, datasets, số đo và ưu tiên nghiên cứu: [ghi chú neo](docs/neo.md).
 - [Đề bài gốc](docs/00_todo.md), [quy ước dữ liệu](data/README.md), [đóng góp và kiểm thử](CONTRIBUTING.md).
 
 Raw data và output dẫn xuất nằm local trong `data/raw`, `data/processed`, `reports/generated` và không được commit.
 Tài liệu cũ ghi nhận các giai đoạn nghiên cứu trước; không tự chuyển các approval hoặc số đo đó thành kết luận mới của neo.
+
