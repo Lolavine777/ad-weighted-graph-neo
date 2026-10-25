@@ -23,7 +23,7 @@ Lệnh dựng WRAITH trong README tải 31 file public có manifest pin; raw và
 | Phép kiểm | Kết quả mới |
 | --- | --- |
 | Viewer Node adapter/DOM | 20 pass, 0 skip; kiểm import/metadata/assumptions/lỗi ở DOM, không tính là kiểm browser |
-| Archive GoodHound | 2 pytest pass; hai manifest khớp hash công bố và tám helper nguyên bytes khớp manifest |
+| Archive GoodHound | 3 pytest pass; gồm Git checkout `core.autocrlf=true`; hai manifest khớp hash công bố và tám helper nguyên bytes khớp manifest |
 | Quality | Ruff check/format và yamllint pass; contract và hai synthetic fixture hợp lệ |
 | Checkout mới, Python 3.14.7 | `uv venv` + `uv pip sync` lock thành công; toy query CLI, brief và standalone build thành công |
 | WRAITH từ checkout mới | Download/manifest 31 file, import và runner theo README; 24 lượt, 200 witness replay/ledger hợp lệ; baseline giữ nguyên |
@@ -39,6 +39,7 @@ Công cụ chặn giao thức `file:` nên HTML được phục vụ tĩnh chỉ
 ## Hoàn tất, giới hạn và phần còn mở
 
 **Hoàn tất:** A/B của issue, kiểm demo trực quan/tương tác nêu trên, cài mới/build và WRAITH CLI, thu hồi đúng helper lịch sử và kiểm input/native controls GoodHound.
+Đã sửa rule `.gitattributes` sau khi tái hiện manifest bị đổi newline trên checkout `core.autocrlf=true`; các helper/manifest lịch sử giữ nguyên bytes.
 Không thay core/search, semantics, bảng C, budget, dataset/backend hoặc số liệu lịch sử; không chạy Docker hoặc đổi volume cũ.
 [Recipe GoodHound](../../../docs/research/evidence/goodhound-20261024/README.md) phân biệt helper gốc với yêu cầu môi trường và bản sao cho lượt chạy mới.
 Hai matrix cohort lịch sử được sao chép chỉ để tính hash trong freeze controls; full cohort, remediation và CE không chạy lại trong wrap-up.

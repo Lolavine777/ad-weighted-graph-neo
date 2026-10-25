@@ -63,3 +63,5 @@ docs/research/ratings/week3-closeout/** -text
 docs/research/ratings/week4-maintainer-v1/** -text
 reports/neo/*.json text eol=lf
 docs/research/remediation/catalog-v1.json -text
+# Recovered GoodHound helpers and manifests retain their published exact bytes.
+docs/research/evidence/goodhound-20261024/** -text

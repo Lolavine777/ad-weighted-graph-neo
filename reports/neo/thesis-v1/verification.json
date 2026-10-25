@@ -22,7 +22,7 @@
       "skipped": 0
     },
     "goodhound_archive_pytest": {
-      "passed": 2,
+      "passed": 3,
       "skipped": 0
     }
   },
@@ -433,7 +433,12 @@
     "historical_matrices_used_only_as_freeze_hash_inputs": true,
     "full_cohort_remediation_ce_rerun": false,
     "controls_sha256": "sha256:5620a2739e5a8639b35d42b2bf8ba16f3c925f1d60e7393c0f8f16ee31f8fac9",
-    "ranking_sha256": "sha256:2facc7852e175f5afa8bba2216d5da8eb3376701e656a94d65cda0dc19be816d"
+    "ranking_sha256": "sha256:2facc7852e175f5afa8bba2216d5da8eb3376701e656a94d65cda0dc19be816d",
+    "windows_autocrlf_checkout": {
+      "reproduced_missing_attribute_hash_failure": true,
+      "regression_passed_with_archive_no_text_conversion": true,
+      "historical_artifacts_modified": false
+    }
   },
   "screenshots": {
     "paths-assumptions.jpg": "sha256:ec1326dd07627aefbb6fb64c4eb6c126583d8749d678c2e748bb858a346fafe4",

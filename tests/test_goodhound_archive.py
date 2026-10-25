@@ -3,6 +3,7 @@
 import ast
 import hashlib
 import json
+import subprocess
 from pathlib import Path
 
 import pytest
@@ -38,3 +39,32 @@ def test_goodhound_original_helpers_match_published_manifest(kind):
         ast.parse(helper.read_text(encoding="utf-8"))
     if kind == "evaluation":
         assert sha(folder / "time-policy.json") == entries["time-policy.json"]
+
+
+def test_goodhound_archive_survives_windows_checkout(tmp_path):
+    paths = (
+        subprocess.check_output(
+            ["git", "ls-files", "-z", "--", ARCHIVE.relative_to(ROOT).as_posix()], cwd=ROOT
+        )
+        .decode("utf-8")
+        .split("\0")[:-1]
+    )
+    assert paths
+    subprocess.run(
+        [
+            "git",
+            "-c",
+            "core.autocrlf=true",
+            "checkout-index",
+            "--force",
+            f"--prefix={tmp_path.as_posix()}/",
+            "--stdin",
+            "-z",
+        ],
+        cwd=ROOT,
+        input=("\0".join(paths) + "\0").encode("utf-8"),
+        capture_output=True,
+        check=True,
+    )
+    for name in paths:
+        assert sha(tmp_path / name) == sha(ROOT / name), name
