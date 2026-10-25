@@ -1,0 +1,32 @@
+name: Viewer
+'on':
+  push:
+    paths:
+      - web/neo-viewer/**
+      - reports/neo/ranking-C-example.md
+      - reports/neo/remediation-rediscovery-results.json
+      - .github/workflows/viewer.yml
+  pull_request:
+    paths:
+      - web/neo-viewer/**
+      - reports/neo/ranking-C-example.md
+      - reports/neo/remediation-rediscovery-results.json
+      - .github/workflows/viewer.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  adapters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check adapters and published playback pins
+        run: node --test web/neo-viewer/model.test.cjs
+      - name: Check JavaScript syntax
+        run: |
+          node --check web/neo-viewer/model.js
+          node --check web/neo-viewer/app.js
+          node --check web/neo-viewer/demo.js

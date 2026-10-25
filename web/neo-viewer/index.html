@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>neo · Graph explorer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="neo trang đầu"
+        ><span class="brandmark">n</span>neo<span class="brand-sub"
+          >GRAPH EXPLORER</span
+        ></a
+      >
+      <div class="top-actions">
+        <span class="local-indicator">● <span>Đọc kết quả offline</span></span
+        ><button id="open-file">Mở JSON <span>↗</span></button
+        ><input id="file" type="file" accept=".json,application/json" hidden />
+      </div>
+    </header>
+    <main>
+      <aside class="sidebar">
+        <div class="section-label">KHÔNG GIAN LÀM VIỆC</div>
+        <button class="nav active" id="paths-mode">
+          <span>⌘</span> Đường &amp; công sức
+        </button>
+        <button class="nav" id="remediation-mode">
+          <span>◈</span> Remediation
+        </button>
+        <div class="sidebar-rule"></div>
+        <div class="section-label">KẾT QUẢ</div>
+        <div id="dataset" class="dataset-title"></div>
+        <div id="source-card"></div>
+        <div class="section-label list-label" id="list-title">
+          CÁC ĐƯỜNG ĐÃ XẾP HẠNG
+        </div>
+        <div id="choices"></div>
+        <div class="sidebar-bottom">
+          <span class="tiny-dot"></span
+          ><span id="input-origin">Playback từ evidence đã công bố</span
+          ><button id="reset-demo" title="Trở về dữ liệu demo">↺</button>
+        </div>
+      </aside>
+      <section class="workspace">
+        <div class="workspace-head">
+          <div>
+            <div class="eyebrow" id="eyebrow">SEAMLESS / PATH ANALYSIS</div>
+            <h1 id="heading">Đường tới Enterprise Admins</h1>
+          </div>
+          <span class="status-pill" id="status"></span>
+        </div>
+        <div class="graph-toolbar">
+          <div class="segmented" id="phase-controls" hidden>
+            <button id="before">Trước</button
+            ><button id="after">Sau can thiệp</button>
+          </div>
+          <span id="graph-caption">Chương trình hành động</span>
+          <div class="toolbar-right">
+            <button id="zoom-out" aria-label="Thu nhỏ">−</button
+            ><button id="zoom-in" aria-label="Phóng to">+</button
+            ><button id="fit">Vừa khung</button>
+          </div>
+        </div>
+        <div class="canvas" id="canvas">
+          <svg
+            id="graph"
+            viewBox="0 0 1200 660"
+            aria-label="Đồ thị chương trình hành động"
+            role="img"
+          >
+            <defs>
+              <marker
+                id="arrow"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="6"
+                markerHeight="6"
+                orient="auto-start-reverse"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
+              </marker>
+            </defs>
+            <g id="viewport">
+              <g id="edges"></g>
+              <g id="nodes"></g>
+            </g>
+          </svg>
+          <div id="empty" hidden></div>
+          <div class="canvas-legend">
+            <span><i class="user-dot"></i>User</span
+            ><span><i class="group-dot"></i>Group</span
+            ><span><i class="host-dot"></i>Computer</span
+            ><span class="legend-note"
+              >Bấm đối tượng hoặc thao tác để xem chi tiết</span
+            >
+          </div>
+        </div>
+        <div class="result-strip" id="result-strip"></div>
+        <div class="scope-note" id="scope-note"></div>
+      </section>
+      <aside class="inspector">
+        <div class="inspector-head">
+          <span class="section-label">CHI TIẾT</span
+          ><button id="clear-selection" aria-label="Bỏ chọn">×</button>
+        </div>
+        <div id="details"></div>
+      </aside>
+    </main>
+    <div id="error" role="alert" hidden></div>
+    <script src="model.js"></script>
+    <script src="demo.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

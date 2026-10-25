@@ -8,6 +8,13 @@ Hướng khóa luận: phân tích đường leo thang đặc quyền có xét c
 biện pháp giảm thiểu. Phần neo bổ sung để đối chiếu là cách giải thích công việc/C
 và kết quả tìm lại sau can thiệp; chưa có kết luận tốt hơn BloodHound nói chung.
 
+## Demo visual
+
+Mở [viewer](web/neo-viewer/index.html) bằng trình duyệt từ checkout: graph hành động,
+Top-3/C/ledger và trước/sau remediation. Không cần cài thêm dependencies hoặc Docker.
+Có playback SEAMLESS/WRAITH và nút đọc JSON query CLI từ máy; dữ liệu không upload.
+[Phạm vi, định dạng input và nguồn demo](web/neo-viewer/README.md).
+
 ## Kết quả đã kiểm chứng
 
 Các bộ dữ liệu kiểm những phần khác nhau; không gộp chúng thành một tỷ lệ thành công chung.
