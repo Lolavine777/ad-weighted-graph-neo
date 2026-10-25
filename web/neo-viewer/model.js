@@ -7,6 +7,39 @@
   function normalize(input) {
     if (!input || typeof input !== "object" || Array.isArray(input))
       throw Error("Cần một JSON object kết quả neo.");
+    if (input.schema_version === "neo-decision-sample/1.0.0") {
+      if (
+        !Array.isArray(input.cells) ||
+        !input.cells.length ||
+        input.cells.length > 1000 ||
+        !input.selected_point?.edge ||
+        !input.totals
+      )
+        throw Error("Khảo sát thiếu cells/selected_point/totals.");
+      for (const c of input.cells) {
+        if (
+          !text(c.source_node_id) ||
+          !text(c.target_node_id) ||
+          !text(c.source) ||
+          !text(c.target) ||
+          !c.intervention_result?.before ||
+          !c.intervention_result?.after ||
+          !c.intervention_result?.effort ||
+          !Array.isArray(c.programs)
+        )
+          throw Error("Cặp khảo sát thiếu thông tin.");
+        for (const p of c.programs)
+          if (!Array.isArray(p.work_units)) throw Error("Thiếu work units.");
+      }
+      return {
+        kind: "survey",
+        title: "SEAMLESS · Nhiều nguồn độc lập",
+        cells: input.cells,
+        totals: input.totals,
+        point: input.selected_point,
+        original: input,
+      };
+    }
     if (input.version === "neo-remediation-rediscovery-summary/1") {
       if (
         !Array.isArray(input.cases) ||
@@ -70,7 +103,7 @@
     const s = input.semantic || input;
     if (!s.materialized || !Array.isArray(s.candidates))
       throw Error(
-        "Hỗ trợ JSON query CLI (semantic/candidates), playback và remediation summary. Không hỗ trợ snapshot hoặc decision-sample.",
+        "Hỗ trợ query CLI, decision-sample, playback và remediation summary; không hỗ trợ snapshot hoặc cells.jsonl.",
       );
     if (!text(s.materialized.initial_actor) || !text(s.materialized.target))
       throw Error("Query thiếu nguồn/đích.");

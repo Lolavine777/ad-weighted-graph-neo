@@ -6,6 +6,26 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { createHash } = require("node:crypto");
 const copy = (x) => JSON.parse(JSON.stringify(x));
+test("multi-source survey preserves all pairs and separates cut programs from disconnection", () => {
+  const v = M.normalize(demo.survey);
+  assert.equal(v.kind, "survey");
+  assert.equal(v.cells.length, 10);
+  assert.equal(v.totals.programs_cut, 15);
+  assert.equal(v.totals.pairs_disconnected, 0);
+  assert.equal(new Set(v.cells.map((c) => c.source_node_id)).size, 5);
+  assert(
+    v.cells.every(
+      (c) => c.intervention_result.after.reachability === "reachable",
+    ),
+  );
+  const published = JSON.parse(
+    fs.readFileSync(
+      path.join(__dirname, "../../reports/neo/decision-sample.json"),
+      "utf8",
+    ),
+  );
+  assert.deepEqual(demo.survey, published);
+});
 function native() {
   return {
     schema_version: "week4-query-result/0.4.0",

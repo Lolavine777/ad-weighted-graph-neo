@@ -24,10 +24,13 @@
       <aside class="sidebar">
         <div class="section-label">KHÔNG GIAN LÀM VIỆC</div>
         <button class="nav active" id="paths-mode">
-          <span>⌘</span> Đường &amp; công sức
+          <span>⌘</span> Một nguồn bị lộ
+        </button>
+        <button class="nav" id="survey-mode">
+          <span>▦</span> Khảo sát nhiều nguồn
         </button>
         <button class="nav" id="remediation-mode">
-          <span>◈</span> Remediation
+          <span>◈</span> Chi tiết can thiệp
         </button>
         <div class="sidebar-rule"></div>
         <div class="section-label">KẾT QUẢ</div>
@@ -44,6 +47,7 @@
         </div>
       </aside>
       <section class="workspace">
+        <div class="flow-guide" id="flow-guide"></div>
         <div class="workspace-head">
           <div>
             <div class="eyebrow" id="eyebrow">SEAMLESS / PATH ANALYSIS</div>
@@ -63,6 +67,7 @@
             ><button id="fit">Vừa khung</button>
           </div>
         </div>
+        <div id="survey" class="survey" hidden></div>
         <div class="canvas" id="canvas">
           <svg
             id="graph"

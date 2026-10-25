@@ -71,7 +71,7 @@
   function load(input, imported = false) {
     const next = M.normalize(input);
     view = next;
-    mode = next.kind === "remediation" ? "remediation" : "paths";
+    mode = next.kind;
     index = 0;
     queryIndex = 0;
     selection = null;
@@ -99,6 +99,7 @@
     $("dataset").textContent = view.title;
     $("paths-mode").classList.toggle("active", mode === "paths");
     $("remediation-mode").classList.toggle("active", mode === "remediation");
+    $("survey-mode").classList.toggle("active", mode === "survey");
     $("input-origin").textContent =
       custom && custom.mode === mode
         ? "File JSON trên máy · không upload"
@@ -127,6 +128,19 @@
     $("before").classList.toggle("active", phase === "before");
     $("after").classList.toggle("active", phase === "after");
     $("empty").hidden = true;
+    $("canvas").hidden = mode === "survey";
+    $("survey").hidden = mode !== "survey";
+    document.querySelector(".toolbar-right").hidden = mode === "survey";
+    $("flow-guide").textContent =
+      mode === "paths"
+        ? "Một nguồn bị lộ → xem đích và công sức → mở từng bước để hiểu điều kiện."
+        : mode === "survey"
+          ? "Chọn nguồn → xem các đích → đối chiếu sau can thiệp. Mỗi nguồn là một kịch bản độc lập."
+          : "Chọn can thiệp → so trước/sau → kiểm tra còn bypass hay đã chặn trong scope.";
+    if (mode === "survey") {
+      renderSurvey();
+      return;
+    }
     if (mode === "paths") renderPath();
     else renderRemediation();
     draw();
@@ -141,6 +155,149 @@
       el("p", "", target),
     );
     $("source-card").append(box);
+  }
+  function renderSurvey() {
+    $("eyebrow").textContent = "SEAMLESS / KHẢO SÁT ĐÃ CÔNG BỐ";
+    $("heading").textContent = "Gỡ quyền có chặn được đường không?";
+    pill("Kết quả trong scope");
+    $("graph-caption").textContent =
+      "Bảng tổng hợp · mỗi hàng là một nguồn–đích";
+    $("list-title").textContent = "LỌC NGUỒN";
+    sourceBox(
+      new Set(view.cells.map((c) => c.source_node_id)).size + " nguồn độc lập",
+      "Các đích trong khảo sát",
+    );
+    const sources = [
+      ...new Map(view.cells.map((c) => [c.source_node_id, c.source])).entries(),
+    ];
+    const select = el("select");
+    select.setAttribute("aria-label", "Lọc nguồn khảo sát");
+    const all = el("option", "", "Tất cả nguồn");
+    all.value = "";
+    select.append(all);
+    for (const [id, name] of sources) {
+      const o = el("option", "", name);
+      o.value = id;
+      select.append(o);
+    }
+    const selectedFilter = view.filter || "";
+    select.value = selectedFilter;
+    select.onchange = () => {
+      view.filter = select.value;
+      index = 0;
+      render();
+    };
+    $("source-card").append(select);
+    const cells = view.cells.filter(
+      (c) => !selectedFilter || c.source_node_id === selectedFilter,
+    );
+    const host = $("survey");
+    host.replaceChildren();
+    const summary = el("div", "survey-intro");
+    summary.append(
+      el("h2", "", "Điểm can thiệp đã chọn: gỡ " + view.point.edge.kind),
+      el(
+        "p",
+        "note",
+        `Trong cohort gốc: cắt ${view.totals.programs_cut}/${view.totals.baseline_programs} chương trình mẫu; ${view.totals.pairs_disconnected}/${view.totals.pairs} cặp bị ngắt. Cắt đường mẫu không đồng nghĩa chặn nguồn.`,
+      ),
+    );
+    host.append(summary);
+    const table = el("table");
+    const head = el("thead"),
+      tr = el("tr");
+    for (const name of ["Nguồn", "Đích", "C trước → sau", "Sau can thiệp"])
+      tr.append(el("th", "", name));
+    head.append(tr);
+    table.append(head);
+    const body = el("tbody");
+    cells.forEach((c, i) => {
+      const r = c.intervention_result;
+      const row = el("tr", i === index ? "selected" : "");
+      const b = button(
+        c.source.split("@")[0],
+        () => {
+          index = i;
+          render();
+        },
+        "row-button",
+      );
+      const td = el("td");
+      td.append(b);
+      const status =
+        r.after.reachability === "reachable"
+          ? "Còn đường"
+          : r.disconnected === true
+            ? "Chặn trong scope"
+            : "Chưa kết luận";
+      row.append(
+        td,
+        el("td", "", c.target),
+        el(
+          "td",
+          "",
+          `${M.cost(r.effort.before) ?? "—"} → ${M.cost(r.effort.after) ?? "—"}`,
+        ),
+        el("td", "", status),
+      );
+      body.append(row);
+    });
+    table.append(body);
+    host.append(table);
+    metrics([
+      ["Cặp đang xem", cells.length, ""],
+      [
+        "Còn đường sau",
+        cells.filter(
+          (c) => c.intervention_result.after.reachability === "reachable",
+        ).length,
+        "",
+      ],
+      [
+        "Bị ngắt trong scope",
+        cells.filter((c) => c.intervention_result.disconnected === true).length,
+        "",
+      ],
+    ]);
+    $("scope-note").textContent =
+      "C và đường là best-found trong budget. Đây là cohort cố định từ decision-sample, không phải khảo sát mới hay chứng minh tối ưu điểm can thiệp.";
+    const box = $("details");
+    box.replaceChildren();
+    const c = cells[index];
+    if (!c) return;
+    box.append(
+      el("h2", "", c.source.split("@")[0]),
+      el("p", "detail-subtitle", c.source_kind + " → " + c.target),
+    );
+    fact(
+      box,
+      "Quyền ban đầu",
+      c.source_kind === "Computer"
+        ? "Danh tính mạng máy dùng được"
+        : "Danh tính User dùng được",
+    );
+    fact(
+      box,
+      "Kết quả sau",
+      c.intervention_result.after.reachability === "reachable"
+        ? "Vẫn tới được đích"
+        : "Xem giới hạn scope",
+    );
+    fact(
+      box,
+      "Chương trình mẫu bị cắt",
+      c.intervention_result.cut_program_ids?.length ?? 0,
+    );
+    fact(box, "Nguồn membership bị gỡ", view.point.edge.source);
+    fact(box, "Nhóm đích", view.point.edge.target);
+    box.append(el("h3", "", "C CỦA CÁC CHƯƠNG TRÌNH TRƯỚC"));
+    c.programs.forEach((p, i) =>
+      fact(box, "Chương trình " + (i + 1), M.cost(p.C) ?? "Chưa chấm"),
+    );
+    note(
+      box,
+      "Summary không có toàn bộ trace trước/sau của từng cặp; không tự dựng witness graph từ ledger. Mở JSON query riêng ở màn Một nguồn để xem graph.",
+    );
   }
   function choice(i, title, subtitle, costValue) {
     const b = button(
@@ -652,9 +809,19 @@
     if (custom?.mode === "remediation") load(custom.input);
     else load(NEO_DEMOS.remediation);
   };
+  $("survey-mode").onclick = () => {
+    if (custom?.mode === "survey") load(custom.input);
+    else load(NEO_DEMOS.survey);
+  };
   $("reset-demo").onclick = () => {
     custom = null;
-    load(mode === "paths" ? NEO_DEMOS.paths : NEO_DEMOS.remediation);
+    load(
+      mode === "paths"
+        ? NEO_DEMOS.paths
+        : mode === "survey"
+          ? NEO_DEMOS.survey
+          : NEO_DEMOS.remediation,
+    );
   };
   $("before").onclick = () => {
     phase = "before";
@@ -665,6 +832,11 @@
     render();
   };
   $("clear-selection").onclick = () => {
+    if (mode === "survey") {
+      index = 0;
+      render();
+      return;
+    }
     selection = null;
     draw();
     details();

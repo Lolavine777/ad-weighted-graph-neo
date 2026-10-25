@@ -754,3 +754,50 @@ h3 {
   fill: #222c38;
   stroke: #8898ac;
 }
+.flow-guide {
+  padding: 12px 25px;
+  background: #131e2c;
+  color: #9aafca;
+  font-size: 11px;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--line);
+}
+.survey {
+  flex: 1;
+  overflow: auto;
+  padding: 26px;
+}
+.survey-intro {
+  margin-bottom: 23px;
+}
+.survey table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.survey th {
+  text-align: left;
+  color: #859bb8;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 13px 10px;
+  border-bottom: 1px solid #344258;
+}
+.survey td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #263346;
+  color: #aec2dd;
+}
+.survey tr.selected {
+  background: #182c43;
+}
+.row-button {
+  border: 0;
+  background: transparent;
+  padding: 4px 0;
+  text-align: left;
+  color: #c7defb;
+}
+.survey .note {
+  max-width: 650px;
+}

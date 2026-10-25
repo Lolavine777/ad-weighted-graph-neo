@@ -11,9 +11,11 @@ và kết quả tìm lại sau can thiệp; chưa có kết luận tốt hơn Bl
 ## Demo visual
 
 Mở [viewer](web/neo-viewer/index.html) bằng trình duyệt từ checkout: graph hành động,
-Top-3/C/ledger và trước/sau remediation. Không cần cài thêm dependencies hoặc Docker.
+Top-3/C/ledger, bảng khảo sát nhiều nguồn và trước/sau remediation. Không cần cài thêm dependencies hoặc Docker.
 Có playback SEAMLESS/WRAITH và nút đọc JSON query CLI từ máy; dữ liệu không upload.
 [Phạm vi, định dạng input và nguồn demo](web/neo-viewer/README.md).
+
+Để mang đi trình bày, chạy `python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó. UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệt.
 
 ## Kết quả đã kiểm chứng
 
