@@ -15,7 +15,8 @@ Top-3/C/ledger, bảng khảo sát nhiều nguồn và trước/sau remediation.
 Có playback SEAMLESS/WRAITH và nút đọc JSON query CLI từ máy; dữ liệu không upload.
 [Phạm vi, định dạng input và nguồn demo](web/neo-viewer/README.md).
 
-Để mang đi trình bày, chạy `python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó. UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệt.
+Để mang đi trình bày, chạy `.venv/bin/python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó.
+UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệt.
 
 ### Bắt đầu với hai use case
 
@@ -34,7 +35,7 @@ Có playback SEAMLESS/WRAITH và nút đọc JSON query CLI từ máy; dữ li�
 ### Trạng thái bàn giao
 
 - **Đã có:** pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
-- **Đang chốt:** [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4), gồm kiểm giao diện trong trình duyệt thật và thu hồi helper GoodHound local. Chưa đóng phiên bản dùng viết luận.
+- **Bàn giao:** [nghiệm thu và screenshot Brave](reports/neo/thesis-v1/acceptance.md), cùng trạng thái đóng gói tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
 - **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc. GoodHound chưa tái lập trọn lượt chỉ từ checkout. Phạm vi và mức bằng chứng của từng bộ được giữ riêng bên dưới.
 - **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset, search mới và điều khiển engine từ trình duyệt. Giữ core và bảng C cho đợt hoàn thiện hiện tại.
 
@@ -54,8 +55,9 @@ Các bộ dữ liệu kiểm những phần khác nhau; không gộp chúng thà
 [độ nhạy](reports/neo/cost-sensitivity.md) đã đo trên candidate set cố định.
 GoodHound là đánh giá công khai sau adaptation, không phải blind holdout.
 Ba file báo cáo GoodHound được giữ nguyên từ nhánh đánh giá tại `74cb3ab`.
-Các helper adaptation/CE/control vẫn chỉ nằm trong evidence local được báo cáo dẫn tới;
-chưa thể tái lập trọn lượt GoodHound chỉ bằng checkout repo.
+[Helper GoodHound gốc và recipe](docs/research/evidence/goodhound-20261024/README.md) đã được thu hồi, khớp hash công bố.
+Đã tái lập input và native controls/ranking; toàn bộ cohort/remediation/CE lịch sử chưa được chạy lại từ checkout trong wrap-up.
+Không coi việc thu hồi helper là đã tái lập trọn nghiên cứu GoodHound.
 Demo WRAITH bên dưới có hướng dẫn tải input đã pin và không cần Docker.
 
 [Kiểm thử hồi quy](reports/neo/full-suite-validation.md) và

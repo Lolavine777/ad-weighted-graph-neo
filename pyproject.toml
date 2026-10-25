@@ -10,6 +10,8 @@ extend-exclude = [
     "reports/generated",
     "notebooks",
     "docs/research/awg-r03/prepare_evidence.py",
+    # Recovered historical helpers: hashes are pinned in published evidence manifests.
+    "docs/research/evidence/goodhound-20261024",
 ]
 
 [tool.ruff.lint]

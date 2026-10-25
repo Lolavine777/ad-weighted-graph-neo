@@ -34,10 +34,10 @@ Tối đa 25 MB/file, 200 candidates/query và 120 bước/chương trình. Top-
 
 Đây là UI đọc kết quả đã chạy, chưa khởi chạy engine hoặc quét một dataset mới qua trình duyệt.
 
-Đóng gói một file HTML để mang đi demo (Python stdlib, không cần venv):
+Đóng gói một file HTML để mang đi demo (Python stdlib, dùng venv của repo):
 
 ```sh
-python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html
+.venv/bin/python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html
 ```
 
 Mở file HTML vừa tạo bằng Chrome/Safari/Firefox. Builder từ chối ghi đè output cũ; dùng tên mới cho mỗi bản. Có thể mở `index.html` trực tiếp nếu giữ đủ các file cùng thư mục.
@@ -61,4 +61,8 @@ npm test --prefix web/neo-viewer
 
 Mã UI sử dụng DOM `textContent` và SVG thuộc tính số cho nội dung file; không render HTML từ JSON, không gọi tài nguyên ngoài. Dữ liệu nhập được xem như báo cáo do người dùng cung cấp, không được UI chứng thực provenance/replay.
 
-Đã kiểm adapter và tương tác bằng DOM tests trong repo (chọn đường/cạnh, chuyển phase/strategy, import, giả định tổng quan, metadata và trạng thái chưa kết luận/no-path). Chưa kiểm layout, kéo chuột hoặc responsive bằng screenshot trình duyệt; đây vẫn là mục mở trong [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4). GoodHound cũng còn helper cần thu hồi từ local; chưa chốt phiên bản dùng viết luận. Các mở rộng engine/dataset/backend là add-on sau bàn giao.
+Đã kiểm demo ba view trong Brave 152.1.94.119 ở 1366×768 và 720×900, gồm chọn đường/cạnh/nút, lọc nguồn, chuyển phase/strategy, kéo node, zoom, vừa khung, cuộn và bàn phím.
+HTML tự chứa không có script/CSS ngoài; các demo vẫn thao tác được khi ngắt mạng của tab bằng DevTools.
+Chi tiết input, giới hạn kiểm trình duyệt, screenshot và revision nằm trong [nghiệm thu](../../reports/neo/thesis-v1/acceptance.md).
+[Helper GoodHound](../../docs/research/evidence/goodhound-20261024/README.md) đã được thu hồi đúng hash; không tuyên bố toàn bộ nghiên cứu đã tái lập.
+Các mở rộng engine/dataset/backend là add-on sau bàn giao.

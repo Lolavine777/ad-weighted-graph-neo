@@ -89,7 +89,16 @@ GoodHound vì vậy phù hợp để kiểm portability, ca âm và positive con
 Lượt này kiểm được việc xếp hạng trong candidate set và cắt witness, nhưng chưa khép yêu cầu minimum-C, hiệu quả ngắt đường sau remediation hoặc use case Computer foothold có session của khóa luận.
 Không cần đổi engine hoặc tìm dataset mới để có ca dương này.
 
-## Kiểm chứng và evidence
+## Tái lập từ checkout hiện hành
+
+Ngày 25/10/2026 đã thu hồi đủ bảy helper của issue #4, thêm helper chuẩn bị CE và time policy cần thiết, nguyên bytes theo hai manifest có hash đã công bố.
+[Archive và lệnh tái lập](../../docs/research/evidence/goodhound-20261024/README.md) ghi rõ đường dẫn, dependencies và điều kiện local/CE.
+Lượt wrap-up từ checkout sạch đã tải ZIP pin, khớp ba manifest, nhập snapshot và chạy controls/ranking: 40 witness replay/ledger hợp lệ, Top-3=3/4/4 ở cả hai đích/hai mode.
+Hai matrix cohort lịch sử chỉ được sao chép làm đầu vào hash cho freeze; cohort, remediation và CE không được tính là vừa chạy lại.
+[Biên bản nghiệm thu](thesis-v1/acceptance.md) giữ kết quả mới tách khỏi số liệu lịch sử dưới đây.
+GoodHound vẫn chưa được tái lập đầy đủ toàn bộ nghiên cứu từ checkout; không suy việc có helper thành đã đạt mức đó.
+
+## Kiểm chứng và evidence lịch sử
 
 145 tests pass, 9 skip, có JUnit XML; skips gồm kiểm tra filesystem khác nền tảng và raw SEAMLESS opt-in, không phải kết quả GoodHound bị bỏ.
 Đã tái lập hai lỗi import, kiểm manifest nguyên bản/dẫn xuất/CE, dựng lại byte-identical ba manifest và xác minh core/config không đổi.

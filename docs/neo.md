@@ -2,7 +2,7 @@
 
 > **Hướng dẫn hiện hành:** bắt đầu từ [README](../README.md) và [viewer](../web/neo-viewer/README.md).
 > Tài liệu này giữ các mốc nghiên cứu; số liệu ở mỗi mốc gắn với code, dữ liệu và scope khi đó.
-> Checklist đóng gói trước khi viết luận nằm tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
+> [Nghiệm thu và screenshot](../reports/neo/thesis-v1/acceptance.md), [helper GoodHound gốc](research/evidence/goodhound-20261024/README.md) và trạng thái freeze tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
 
 ## Phạm vi
 

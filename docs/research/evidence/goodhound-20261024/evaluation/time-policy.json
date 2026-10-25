@@ -1,0 +1,5 @@
+{
+  "timestamp": "2021-10-17T15:13:37Z",
+  "status": "assumed",
+  "reason": "Explicit evaluation reference derived from filename token; collection timestamp and source timezone are unverified. Not an observed collection time; no temporal comparison is evaluated."
+}
