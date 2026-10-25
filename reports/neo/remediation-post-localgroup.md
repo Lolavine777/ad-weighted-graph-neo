@@ -1,5 +1,7 @@
 # Remediation WRAITH sau sửa LocalGroup
 
+> **Mốc lịch sử sau sửa LocalGroup.** Với ba can thiệp RODCMANAGER/EXTCA01/BM, dùng [kết quả rediscovery mới](remediation-rediscovery-results.json) và [hướng dẫn demo hiện hành](../../README.md#các-use-case): lượt mới dựng lại cạnh suy diễn từ record sau can thiệp. Đối chứng CE và ca TRUSTER trong báo cáo này vẫn thuộc lượt lịch sử bên dưới, chưa được chạy lại trong lượt rediscovery mới.
+
 Ngày 23/10/2026, chạy lại từ code `e22fd59` với parser LocalGroup đã sửa, raw WRAITH prefix `20240305111414` đúng manifest và graph có 150 node, 770 cạnh, gồm 22 AdminTo.
 Engine, policy, preset và bảng C không đổi về ngữ nghĩa.
 Một lỗi indentation YAML có sẵn trong catalog được sửa; đã kiểm parsed YAML trước/sau giống hệt nhau.

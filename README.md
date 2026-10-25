@@ -17,6 +17,27 @@ Có playback SEAMLESS/WRAITH và nút đọc JSON query CLI từ máy; dữ li�
 
 Để mang đi trình bày, chạy `python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó. UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệt.
 
+### Bắt đầu với hai use case
+
+| Câu hỏi | Thao tác trong demo | Đọc kết luận |
+| --- | --- | --- |
+| Một nguồn bị lộ có thể tới đâu, tốn bao nhiêu công sức? | Mở **Một nguồn bị lộ**, chọn một đường rồi bấm từng bước | C và các công việc ở bảng bên phải; mở **Giả định chương trình** để biết điều kiện đã dùng |
+| Can thiệp có giảm khả năng tiếp cận từ nhiều nguồn không? | Mở **Khảo sát nhiều nguồn**, lọc nguồn và chọn hàng; mở **Chi tiết can thiệp** để xem ví dụ WRAITH trước/sau | Phân biệt số đường mẫu bị cắt với số cặp nguồn–đích bị ngắt; còn đường vòng hoặc hết budget chưa phải đã chặn |
+
+Để xem kết quả mới, dùng **Mở JSON** với output query CLI có `semantic.candidates`
+(ví dụ `neo_guided.json` từ baseline bên dưới), hoặc `results.json` của demo
+`neo_remediation`. Bảng khảo sát demo đọc từ `reports/neo/decision-sample.json`.
+`neo_domain` xuất `cells.jsonl` và brief, không xuất JSON query CLI cho viewer;
+đọc brief cho lượt này. Snapshot và JSON query **đầu vào** cũng không phải kết quả để mở.
+[Bảng định dạng và hướng dẫn viewer](web/neo-viewer/README.md).
+
+### Trạng thái bàn giao
+
+- **Đã có:** pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
+- **Đang chốt:** [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4), gồm kiểm giao diện trong trình duyệt thật và thu hồi helper GoodHound local. Chưa đóng phiên bản dùng viết luận.
+- **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc. GoodHound chưa tái lập trọn lượt chỉ từ checkout. Phạm vi và mức bằng chứng của từng bộ được giữ riêng bên dưới.
+- **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset, search mới và điều khiển engine từ trình duyệt. Giữ core và bảng C cho đợt hoàn thiện hiện tại.
+
 ## Kết quả đã kiểm chứng
 
 Các bộ dữ liệu kiểm những phần khác nhau; không gộp chúng thành một tỷ lệ thành công chung.

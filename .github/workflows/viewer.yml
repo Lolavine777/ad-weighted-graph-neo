@@ -5,12 +5,14 @@ name: Viewer
       - web/neo-viewer/**
       - reports/neo/ranking-C-example.md
       - reports/neo/remediation-rediscovery-results.json
+      - reports/neo/decision-sample.json
       - .github/workflows/viewer.yml
   pull_request:
     paths:
       - web/neo-viewer/**
       - reports/neo/ranking-C-example.md
       - reports/neo/remediation-rediscovery-results.json
+      - reports/neo/decision-sample.json
       - .github/workflows/viewer.yml
   workflow_dispatch:
 permissions:
@@ -23,8 +25,15 @@ jobs:
       - uses: actions/checkout@v7.0.1
         with:
           persist-credentials: false
-      - name: Check adapters and published playback pins
-        run: node --test web/neo-viewer/model.test.cjs
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: web/neo-viewer/package-lock.json
+      - name: Install test dependencies only
+        run: npm ci --prefix web/neo-viewer --ignore-scripts --no-audit --no-fund
+      - name: Check adapters, UI interactions and published playback pins
+        run: npm test --prefix web/neo-viewer
       - name: Check JavaScript syntax
         run: |
           node --check web/neo-viewer/model.js

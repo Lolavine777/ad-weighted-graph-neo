@@ -1,5 +1,9 @@
 # AWG neo: baseline và hướng nghiên cứu
 
+> **Hướng dẫn hiện hành:** bắt đầu từ [README](../README.md) và [viewer](../web/neo-viewer/README.md).
+> Tài liệu này giữ các mốc nghiên cứu; số liệu ở mỗi mốc gắn với code, dữ liệu và scope khi đó.
+> Checklist đóng gói trước khi viết luận nằm tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
+
 ## Phạm vi
 
 Neo là repo cá nhân có lịch sử mới, được dựng từ nội dung upstream `main` ngày 2026-10-21.
@@ -201,10 +205,13 @@ Các mục bên dưới ghi lại từng mốc nghiên cứu; hướng dẫn ch�
 
 Phần còn lại để bàn giao khóa luận:
 
-1. Đưa các helper tái lập GoodHound đang nằm trong evidence local vào Git và kiểm tra chạy từ checkout mới; hiện repo mới có báo cáo/hash, chưa có đủ helper đó.
-2. Dùng demo và kết quả đã có để hoàn thiện bài viết: giải thích C, đối chiếu CE cùng scope, phân biệt cắt witness với ngắt đường và nêu giới hạn tìm kiếm.
+1. Hoàn tất [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4): kiểm viewer trên trình duyệt thật, khép tình trạng tái lập GoodHound và chốt gói demo/revision. Viewer đã có kiểm hồi quy cho file nhập và đọc trực tiếp `results.json` của demo remediation; điều này không thay cho kiểm trực quan.
+2. Thu hồi các helper GoodHound đang nằm trong evidence local và kiểm từ checkout mới; hiện repo mới có báo cáo/hash. Nếu chưa thu hồi được, ghi rõ ngoại lệ chưa tái lập đầy đủ khi bàn giao, không tự nhận đã kiểm lại.
+3. Chuyển sang viết bài bằng kết quả đã có: giải thích C, đối chiếu CE cùng scope, phân biệt cắt đường mẫu với ngắt khả năng tiếp cận. UI đọc báo cáo offline; phần engine vẫn dùng CLI.
 
 Giữ bảng `neo-c-v1` đã giải thích ở trên. Minimum-C trên dữ liệu thật và ưu thế tổng quát so với BloodHound chưa được chứng minh; không coi chúng là kết quả đã đạt hoặc tự mở thêm scope để đóng gói bản hiện tại.
+Vì vậy chưa đáp ứng nguyên văn tiêu chí minimum-C từ node bất kỳ trong đề gốc.
+Hướng luận văn là phân tích có xét công sức và kiểm tra biện pháp giảm thiểu; kỹ thuật/dataset mới, cải tiến search và backend UI là add-on sau bàn giao.
 
 Để cập nhật integrity baseline neo sau một thay đổi source có chủ đích:
 

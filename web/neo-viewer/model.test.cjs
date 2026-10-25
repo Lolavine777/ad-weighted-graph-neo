@@ -191,3 +191,53 @@ test("oversized programs and malformed requests are rejected", () => {
   delete c.semantic.candidates[0].transition_history[0].result.request.actor;
   assert.throws(() => M.normalize(c), /actor/);
 });
+
+test("runner results pair before/after by case, strategy, source and target without altering data", () => {
+  const report = {
+    version: "neo-remediation-rediscovery/1",
+    interventions: [
+      {
+        case: "fixture",
+        removed_edges: [{ source: "u", target: "g", kind: "MemberOf" }],
+        removed_observations: {},
+      },
+    ],
+    rows: [
+      {
+        case: "fixture",
+        strategy: "s",
+        source: "u",
+        target: "g",
+        phase: "after",
+        reached: false,
+        no_path_proven: false,
+        C: null,
+        truncation_reason: "expansion_limit_reached",
+      },
+      {
+        case: "fixture",
+        strategy: "s",
+        source: "u",
+        target: "g",
+        phase: "before",
+        reached: true,
+        C: 3,
+      },
+    ],
+  };
+  const original = copy(report),
+    v = M.normalize(report),
+    q = v.cases[0].queries[0];
+  assert.equal(q.source, "u");
+  assert.equal(q.goal, "g");
+  assert.deepEqual(q.before, original.rows[1]);
+  assert.deepEqual(q.after, original.rows[0]);
+  assert.deepEqual(report, original);
+  assert.equal(M.outcome(q.after).label, "Chưa kết luận");
+  const missing = copy(report);
+  missing.rows.pop();
+  assert.throws(() => M.normalize(missing), /trước\/sau/);
+  const duplicate = copy(report);
+  duplicate.rows.push(copy(report.rows[0]));
+  assert.throws(() => M.normalize(duplicate), /trùng phase/);
+});

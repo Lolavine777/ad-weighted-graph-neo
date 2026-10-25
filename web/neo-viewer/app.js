@@ -38,12 +38,14 @@
     zoom = 1,
     pan = { x: 0, y: 0 },
     nodePositions = Object.create(null),
-    custom = null;
+    custom = null,
+    bundled = false;
   const label = (id) =>
     view.labels?.[id]?.label ||
     id?.replace(/^.*-(\d+)$/, "SID …$1") ||
     "Chưa khai báo";
   const action = (id) => names[id] || id;
+  const caseTitle = (c) => (bundled && caseNames[c.case]) || c.case;
   function el(tag, cls, content) {
     const n = document.createElement(tag);
     if (cls) n.className = cls;
@@ -70,6 +72,10 @@
   }
   function load(input, imported = false) {
     const next = M.normalize(input);
+    bundled = Object.values(NEO_DEMOS).includes(input);
+    if (input === NEO_DEMOS.survey)
+      next.title = "SEAMLESS · Nhiều nguồn độc lập";
+    if (input === NEO_DEMOS.remediation) next.title = "WRAITH · Can thiệp";
     view = next;
     mode = next.kind;
     index = 0;
@@ -100,10 +106,9 @@
     $("paths-mode").classList.toggle("active", mode === "paths");
     $("remediation-mode").classList.toggle("active", mode === "remediation");
     $("survey-mode").classList.toggle("active", mode === "survey");
-    $("input-origin").textContent =
-      custom && custom.mode === mode
-        ? "File JSON trên máy · không upload"
-        : "Playback từ evidence đã công bố";
+    $("input-origin").textContent = bundled
+      ? "Demo từ báo cáo đã công bố"
+      : "File trên máy · nguồn chưa xác minh · không upload";
   }
   function currentProgram() {
     return view.programs?.[index];
@@ -157,9 +162,9 @@
     $("source-card").append(box);
   }
   function renderSurvey() {
-    $("eyebrow").textContent = "SEAMLESS / KHẢO SÁT ĐÃ CÔNG BỐ";
+    $("eyebrow").textContent = view.title.toUpperCase();
     $("heading").textContent = "Gỡ quyền có chặn được đường không?";
-    pill("Kết quả trong scope");
+    pill("Kết quả trong phạm vi báo cáo");
     $("graph-caption").textContent =
       "Bảng tổng hợp · mỗi hàng là một nguồn–đích";
     $("list-title").textContent = "LỌC NGUỒN";
@@ -228,7 +233,7 @@
         r.after.reachability === "reachable"
           ? "Còn đường"
           : r.disconnected === true
-            ? "Chặn trong scope"
+            ? "Chặn trong phạm vi xét"
             : "Chưa kết luận";
       row.append(
         td,
@@ -260,7 +265,7 @@
       ],
     ]);
     $("scope-note").textContent =
-      "C và đường là best-found trong budget. Đây là cohort cố định từ decision-sample, không phải khảo sát mới hay chứng minh tối ưu điểm can thiệp.";
+      "Bảng đọc từ báo cáo đã chạy; C tốt nhất trong tập đã tìm được. Số đường mẫu bị cắt và số cặp bị ngắt là hai kết quả khác nhau.";
     const box = $("details");
     box.replaceChildren();
     const c = cells[index];
@@ -269,13 +274,7 @@
       el("h2", "", c.source.split("@")[0]),
       el("p", "detail-subtitle", c.source_kind + " → " + c.target),
     );
-    fact(
-      box,
-      "Quyền ban đầu",
-      c.source_kind === "Computer"
-        ? "Danh tính mạng máy dùng được"
-        : "Danh tính User dùng được",
-    );
+    fact(box, "Quyền ban đầu", M.sourceCapability(view, c));
     fact(
       box,
       "Kết quả sau",
@@ -338,7 +337,7 @@
     $("eyebrow").textContent = view.title.toUpperCase();
     $("heading").textContent = "Đường tới " + label(view.target);
     sourceBox(label(view.source), label(view.target));
-    $("list-title").textContent = "CÁC CHƯƠNG TRÌNH";
+    $("list-title").textContent = "CÁC ĐƯỜNG TRONG BÁO CÁO";
     view.programs.forEach((p, i) =>
       choice(
         i,
@@ -353,10 +352,10 @@
     pill(
       p
         ? view.minimum
-          ? "Minimum trong scope"
-          : "Best-found"
+          ? "C nhỏ nhất trong phạm vi xét"
+          : "Đường đã tìm được"
         : view.noPath
-          ? "No-path trong scope"
+          ? "Không có đường trong phạm vi xét"
           : "Chưa kết luận",
       p ? "blue" : view.noPath ? "green" : "amber",
     );
@@ -370,16 +369,21 @@
         view.budget?.max_expansions ? "/ " + view.budget.max_expansions : "",
       ],
     ]);
-    $("scope-note").textContent =
-      (view.truncated ? "Giới hạn: " + (view.reason || "budget") + ". " : "") +
-      "C là điểm công sức theo scenario. Thứ hạng áp dụng trong tập đã tìm được.";
+    $("scope-note").textContent = [
+      M.limitation(view),
+      "C là công sức tương đối theo kịch bản. Thứ hạng áp dụng trong tập đã tìm được.",
+    ]
+      .filter(Boolean)
+      .join(" ");
     if (!p || !p.steps.length) {
       $("empty").hidden = false;
       $("empty").textContent = p
         ? "Mục tiêu đã có trong trạng thái đầu; không cần hành động mới."
         : view.noPath
           ? "Không có đường trong scope đã kiểm tra."
-          : "Chưa có witness để vẽ. Không đồng nghĩa an toàn.";
+          : "Chưa tìm được đường. " +
+            (M.limitation(view) || "Báo cáo chưa cung cấp lý do cụ thể.") +
+            " Không đồng nghĩa an toàn.";
     }
   }
   function renderRemediation() {
@@ -387,21 +391,18 @@
       q = currentQuery(),
       s = q[phase],
       out = M.outcome(s);
-    $("eyebrow").textContent = "WRAITH / REMEDIATION";
+    $("eyebrow").textContent = view.title.toUpperCase();
     $("heading").textContent = "Kiểm tra sau can thiệp";
     pill(out.label, out.tone);
     sourceBox(
-      "Foothold mới · không giữ credential cũ",
-      "Domain / Enterprise Admins",
+      bundled
+        ? "Foothold mới · không giữ credential cũ"
+        : q.source || "Nguồn chưa ghi trong summary",
+      q.goal || "Đích chưa ghi trong báo cáo",
     );
-    $("list-title").textContent = "CAN THIỆP ĐÃ KIỂM CHỨNG";
+    $("list-title").textContent = "CAN THIỆP TRONG BÁO CÁO";
     view.cases.forEach((c, i) =>
-      choice(
-        i,
-        caseNames[c.case] || c.case,
-        c.removed_edges.length + " quan hệ bị gỡ",
-        "",
-      ),
+      choice(i, caseTitle(c), c.removed_edges.length + " quan hệ bị gỡ", ""),
     );
     const select = el("select");
     select.setAttribute("aria-label", "Strategy và mục tiêu");
@@ -432,7 +433,8 @@
       ["Tìm lại", M.outcome(q.after).label, ""],
     ]);
     $("scope-note").textContent =
-      "Playback kết quả đã chạy. Graph chỉ vẽ các quan hệ can thiệp được summary công bố; không có witness graph của bypass trong file này.";
+      "Đọc kết quả đã chạy. Đồ thị chỉ vẽ quan hệ bị gỡ; summary không có đường vòng đầy đủ. " +
+      M.limitation(s);
   }
   function graphData() {
     if (mode === "remediation")
@@ -631,7 +633,7 @@
       const c = currentCase(),
         q = currentQuery();
       box.append(
-        el("h2", "", caseNames[c.case] || c.case),
+        el("h2", "", caseTitle(c)),
         el("p", "detail-subtitle", q.strategy + " → " + q.goal),
       );
       fact(
@@ -641,7 +643,12 @@
       );
       fact(box, "Sau", M.outcome(q.after).label + " · C " + (q.after.C ?? "—"));
       fact(box, "Lần mở rộng sau", q.after.expansions);
-      fact(box, "Giới hạn sau", q.after.truncation_reason || "Không truncated");
+      fact(
+        box,
+        "Giới hạn sau",
+        q.after.truncation_reason || "Không ghi lý do dừng",
+      );
+      fact(box, "Kịch bản theo báo cáo", view.scenario || "Chưa có thông tin");
       if (selection?.type === "edge") {
         const e = c.removed_edges[selection.id];
         fact(box, "Quan hệ", e.kind);
@@ -654,14 +661,17 @@
         fact(box, k, v);
       note(
         box,
-        "Mỗi lần tìm lại bắt đầu từ foothold mới trong scenario đã công bố. Cắt witness cũ không tự chứng minh ngắt mọi đường.",
+        (bundled
+          ? "Demo tìm lại từ foothold mới, không giữ credential cũ. "
+          : "") + "Cắt đường cũ không tự chứng minh ngắt mọi đường.",
       );
       note(
         box,
         q.after.no_path_proven
-          ? "No-path được engine chứng minh trong scope local-admin-only này."
-          : "C sau là best-found nếu có witness; hết budget vẫn là chưa kết luận.",
+          ? "Báo cáo ghi không có đường trong phạm vi đã xét; không suy rộng thành an toàn toàn hệ thống."
+          : "C sau là mức tốt nhất đã tìm nếu có đường; hết ngân sách vẫn là chưa kết luận.",
       );
+      if (M.limitation(q.after)) note(box, M.limitation(q.after));
       return;
     }
     const p = currentProgram();
@@ -715,7 +725,9 @@
       } else
         note(
           box,
-          "Playback này giữ giả định ở cấp chương trình; không suy ra giả định riêng cho bước.",
+          s.assumptionsComplete === true
+            ? "Không ghi nhận giả định trong trace của bước này."
+            : "Chưa có đủ thông tin giả định riêng cho bước; xem tổng quan chương trình nếu báo cáo có ghi.",
         );
       return;
     }
@@ -726,7 +738,9 @@
         "detail-subtitle",
         view.minimum
           ? "Minimum được engine báo trong scope"
-          : "Thứ hạng trong tập đã tìm được",
+          : p
+            ? "Thứ hạng trong tập đã tìm được"
+            : "Báo cáo chưa có đường để xếp hạng",
       ),
     );
     const hero = el("div", "cost-hero");
@@ -763,16 +777,30 @@
       const summary = el(
         "summary",
         "note",
-        "Giả định chương trình (" + assumptions.length + ")",
+        p.assumptionsComplete
+          ? "Giả định chương trình (" + assumptions.length + ")"
+          : "Giả định chương trình · chưa đầy đủ (đã ghi " +
+              assumptions.length +
+              ")",
       );
       det.append(summary);
       assumptions.forEach((f) =>
         note(det, typeof f === "string" ? f : JSON.stringify(f)),
       );
+      if (!p.assumptionsComplete)
+        note(
+          det,
+          "Một số bước không có danh sách kiểm tra điều kiện. Số đã ghi không phải tổng số giả định của đường.",
+        );
       box.append(det);
     }
     box.append(el("h3", "", "NGUỒN KẾT QUẢ"));
     note(box, view.provenance || "File người dùng");
+    if (!bundled)
+      note(
+        box,
+        "Thông tin do file cung cấp; viewer không xác minh nguồn hoặc chạy lại kiểm chứng.",
+      );
     if (view.notice) note(box, view.notice);
     fact(box, "Context xác thực", label(view.context));
   }

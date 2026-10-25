@@ -1,5 +1,8 @@
 # Ngoài SEAMLESS: nhập dữ liệu, tìm đường và thử can thiệp
 
+> **Báo cáo lịch sử, không dùng làm trạng thái hiện tại.** Kết luận RODCMANAGER bị chặn ở phần ví dụ ACL bên dưới đã được thay thế: [sau sửa LocalGroup](remediation-post-localgroup.md) và [tìm lại từ record sau can thiệp](remediation-rediscovery-results.json) đều xác nhận còn đường vòng, C=3 tới DA/EA.
+> Đối chứng CE và đánh giá ngoài dữ liệu cũ cũng đã có các lượt mới; xem [README hiện hành](../../README.md#kết-quả-đã-kiểm-chứng) và [GoodHound](goodhound-evaluation.md). Nội dung lịch sử bên dưới được giữ nguyên để đối chiếu theo từng mốc.
+
 Hướng khóa luận: phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng
 biện pháp giảm thiểu. Phạm vi hiện tại là snapshot tĩnh, phân tích từng miền,
 nguồn User/Computer độc lập và đích DA/EA thực sự có trong miền.

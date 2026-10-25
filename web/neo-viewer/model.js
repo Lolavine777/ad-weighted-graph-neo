@@ -4,9 +4,109 @@
   const cost = (v) =>
     typeof v === "number" && Number.isFinite(v) && v >= 0 ? v : null;
   const text = (v) => (typeof v === "string" ? v : "");
+  function uniqueAssumptions(steps) {
+    const facts = new Map();
+    for (const step of steps)
+      for (const f of step.assumptions) {
+        // Same condition across steps counts once; each step keeps its full fact.
+        const key = JSON.stringify([f.predicate, f.subject, f.target, f.value]);
+        if (!facts.has(key)) facts.set(key, f);
+      }
+    return [...facts.values()];
+  }
+  function sourceCapability(view, cell) {
+    const sources = view.original?.scope?.request?.sources;
+    const source = Array.isArray(sources)
+      ? sources.find(
+          (s) =>
+            s?.source_id === cell.source_id &&
+            s?.node_id === cell.source_node_id,
+        )
+      : null;
+    const profile = text(source?.profile_kind);
+    if (profile === "computer_usable_identity")
+      return "Danh tính mạng máy dùng được";
+    if (profile === "user_usable_identity") return "Danh tính User dùng được";
+    return profile || "Chưa có thông tin trong báo cáo";
+  }
+  function limitation(s) {
+    const reason = text(s?.truncation_reason || s?.reason);
+    const reasons = {
+      expansion_limit_reached: "Đã hết ngân sách tìm kiếm",
+      path_limit_reached: "Đã đạt số đường tối đa được yêu cầu",
+      step_limit_reached: "Đã đạt giới hạn số bước",
+    };
+    const parts = [];
+    if (reason)
+      parts.push(
+        (reasons[reason] || "Giới hạn báo cáo") + " (" + reason + ").",
+      );
+    else if (s?.truncated === true)
+      parts.push("Tìm kiếm bị giới hạn; báo cáo chưa nêu lý do cụ thể.");
+    const unknown = Object.keys(s?.unknown || {}).filter(
+      (k) => s.unknown[k] > 0,
+    );
+    if (unknown.length)
+      parts.push(
+        "Điều kiện thiếu thông tin: " + unknown.slice(0, 3).join(", ") + ".",
+      );
+    if (s?.status === "blocked")
+      parts.push("Báo cáo ghi thiếu điều kiện để tiếp tục.");
+    return parts.join(" ");
+  }
   function normalize(input) {
     if (!input || typeof input !== "object" || Array.isArray(input))
       throw Error("Cần một JSON object kết quả neo.");
+    if (input.version === "neo-remediation-rediscovery/1") {
+      if (
+        !Array.isArray(input.interventions) ||
+        !Array.isArray(input.rows) ||
+        input.rows.length > 4000
+      )
+        throw Error(
+          "Kết quả can thiệp thiếu interventions/rows hoặc quá nhiều hàng.",
+        );
+      const byCase = new Map();
+      for (const c of input.interventions) {
+        if (!text(c.case) || byCase.has(c.case))
+          throw Error("Mã can thiệp thiếu hoặc trùng.");
+        byCase.set(c.case, { ...c, pairs: new Map() });
+      }
+      for (const row of input.rows) {
+        const c = byCase.get(row.case);
+        if (
+          !c ||
+          !text(row.strategy) ||
+          !text(row.source) ||
+          !text(row.target) ||
+          !["before", "after"].includes(row.phase)
+        )
+          throw Error(
+            "Hàng can thiệp thiếu nguồn/đích/strategy/phase hoặc sai case.",
+          );
+        const key = JSON.stringify([row.strategy, row.source, row.target]);
+        if (!c.pairs.has(key))
+          c.pairs.set(key, {
+            strategy: row.strategy,
+            source: row.source,
+            goal: row.target,
+          });
+        const pair = c.pairs.get(key);
+        if (pair[row.phase]) throw Error("Kết quả can thiệp trùng phase.");
+        pair[row.phase] = row;
+      }
+      const result = normalize({
+        version: "neo-remediation-rediscovery-summary/1",
+        title: input.title,
+        scenario: input.scenario,
+        cases: [...byCase.values()].map(({ pairs, ...c }) => ({
+          ...c,
+          queries: [...pairs.values()],
+        })),
+      });
+      result.original = input;
+      return result;
+    }
     if (input.schema_version === "neo-decision-sample/1.0.0") {
       if (
         !Array.isArray(input.cells) ||
@@ -33,7 +133,7 @@
       }
       return {
         kind: "survey",
-        title: "SEAMLESS · Nhiều nguồn độc lập",
+        title: text(input.title) || "Báo cáo đã nhập · Khảo sát nhiều nguồn",
         cells: input.cells,
         totals: input.totals,
         point: input.selected_point,
@@ -64,7 +164,8 @@
       }
       return {
         kind: "remediation",
-        title: "WRAITH · Remediation",
+        title: text(input.title) || "Báo cáo đã nhập · Can thiệp",
+        scenario: text(input.scenario),
         cases: input.cases,
         original: input,
       };
@@ -98,12 +199,20 @@
       }
       if (input.programs.length > 200)
         throw Error("Tối đa 200 chương trình/view.");
-      return { ...input, kind: "paths" };
+      return {
+        ...input,
+        title: text(input.title) || "Báo cáo đã nhập · Đường và công sức",
+        kind: "paths",
+        programs: input.programs.map((p) => ({
+          ...p,
+          assumptionsComplete: true,
+        })),
+      };
     }
     const s = input.semantic || input;
     if (!s.materialized || !Array.isArray(s.candidates))
       throw Error(
-        "Hỗ trợ query CLI, decision-sample, playback và remediation summary; không hỗ trợ snapshot hoặc cells.jsonl.",
+        "Hỗ trợ kết quả query CLI, decision-sample, playback và remediation results/summary; không hỗ trợ snapshot, query đầu vào hoặc cells.jsonl.",
       );
     if (!text(s.materialized.initial_actor) || !text(s.materialized.target))
       throw Error("Query thiếu nguồn/đích.");
@@ -125,8 +234,11 @@
         if (!r?.request) throw Error("Transition thiếu request.");
         return {
           ...r.request,
-          assumptions: (r.decisions || [])
-            .map((d) => d.fact)
+          assumptionsComplete:
+            Array.isArray(r.decisions) &&
+            r.decisions.every((d) => d && typeof d === "object"),
+          assumptions: (Array.isArray(r.decisions) ? r.decisions : [])
+            .map((d) => d?.fact)
             .filter((f) => f?.origin === "declared_assumption"),
         };
       });
@@ -135,9 +247,17 @@
         id: p.candidate_id,
         C: cost(p.effort),
         steps,
+        assumptions: uniqueAssumptions(steps),
+        assumptionsComplete: steps.every((step) => step.assumptionsComplete),
         ledger: Object.values(p.work_unit_ledger || {}),
       };
     });
+    const unknown = Object.create(null);
+    for (const attempt of Array.isArray(s.attempts) ? s.attempts : [])
+      for (const predicate of Array.isArray(attempt?.unknown)
+        ? attempt.unknown
+        : [])
+        if (text(predicate)) unknown[predicate] = (unknown[predicate] || 0) + 1;
     return {
       kind: "paths",
       title: "Kết quả đã nhập",
@@ -155,6 +275,7 @@
       expansions: s.expansions,
       budget: s.materialized.budget,
       status: s.status,
+      unknown,
       provenance:
         input.reproducibility?.git_commit ||
         input.reproducibility?.commit ||
@@ -176,14 +297,14 @@
   function outcome(s) {
     if (s?.reached === true)
       return {
-        label: s.outcome === "bypass" ? "Còn bypass" : "Có witness",
+        label: s.outcome === "bypass" ? "Còn đường vòng" : "Có đường",
         tone: "blue",
       };
     if (s?.no_path_proven === true)
-      return { label: "Chặn trong scope", tone: "green" };
+      return { label: "Chặn trong phạm vi xét", tone: "green" };
     return { label: "Chưa kết luận", tone: "amber" };
   }
-  const api = { normalize, outcome, cost };
+  const api = { normalize, outcome, cost, sourceCapability, limitation };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   root.NeoViewModel = api;
 })(typeof globalThis !== "undefined" ? globalThis : this);

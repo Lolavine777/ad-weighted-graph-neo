@@ -3,14 +3,36 @@
 Mở `index.html` trực tiếp trong trình duyệt. Không cần cài dependencies, server, Docker hoặc kết nối AD.
 Viewer chỉ đọc kết quả; không chạy query, sửa graph, chấm lại C hoặc thực thi remediation.
 
-- **Đường & công sức:** chọn chương trình; bấm cạnh/nút để xem actor, nguồn quyền, đích, ledger và giả định. Kéo nút hoặc nền để bố trí, dùng zoom và Vừa khung.
-- **Remediation:** chọn can thiệp, strategy và DA/EA; chuyển Trước/Sau để xem quan hệ bị gỡ và kết luận tìm lại.
+- **Một nguồn bị lộ:** chọn đường, đọc C và các công việc ở bảng bên phải; mở **Giả định chương trình**, rồi bấm cạnh/nút để xem chi tiết. Kéo nút hoặc nền để bố trí, dùng zoom và Vừa khung.
+- **Chi tiết can thiệp:** chọn can thiệp, strategy và mục tiêu; chuyển Trước/Sau để xem quan hệ bị gỡ và kết luận tìm lại. Đường cũ bị cắt chưa có nghĩa mọi đường đã bị chặn.
 - **Khảo sát nhiều nguồn:** bảng 10 cặp từ 5 nguồn độc lập; lọc một nguồn để xem DA/EA, chọn hàng để xem C trước/sau và số chương trình bị cắt. Cohort công bố cắt 15/30 chương trình nhưng 0/10 cặp bị ngắt. Không tự suy đường từ ledger.
-- **Mở JSON:** đọc file trên máy, không upload hoặc lưu trình duyệt. Hỗ trợ output của query CLI (`semantic.materialized`, `semantic.candidates`, optional `semantic.top_k`), `neo-decision-sample/1.0.0` và `neo-remediation-rediscovery-summary/1`. Dùng JSON của query riêng trong output `neo_domain`/`neo_baseline` để vẽ graph; không dùng snapshot hoặc `cells.jsonl`.
+- **Mở JSON:** đọc file trên máy, không upload hoặc lưu trình duyệt. File nhập có nhãn nguồn chưa xác minh; tiêu đề do file cung cấp, nếu thiếu thì dùng “Báo cáo đã nhập”. Nút ↺ trở về demo.
+
+## Chọn đúng file
+
+| File / định dạng | Màn hình và nội dung |
+| --- | --- |
+| Output query CLI có `semantic.materialized` và `semantic.candidates`, ví dụ `neo_guided.json` của `neo_baseline` | Một nguồn bị lộ: đồ thị và công sức theo kết quả engine |
+| `reports/neo/decision-sample.json`, schema `neo-decision-sample/1.0.0` | Khảo sát nhiều nguồn: bảng cặp trước/sau, không có trace để vẽ đường |
+| `results.json` của `neo_remediation`, version `neo-remediation-rediscovery/1` | Chi tiết can thiệp: ghép đúng trước/sau theo case, strategy, nguồn và đích; giữ C và kết luận gốc |
+| `reports/neo/remediation-rediscovery-results.json`, version `neo-remediation-rediscovery-summary/1` | Chi tiết can thiệp: summary đã công bố |
+
+`neo_domain` xuất `cells.jsonl` và brief; viewer chưa đọc định dạng này. Đọc brief cho lượt đó.
+Snapshot, JSON query đầu vào, `summary.json` bất kỳ và output riêng của `neo_decision` cũng không tự trở thành một trong các định dạng trên.
+Nếu file không được hỗ trợ, viewer báo lỗi và giữ kết quả đang xem. Xem [README gốc](../../README.md) để dùng các lệnh CLI hiện có.
+
+## Hiểu kết luận
+
+- **Đường đã tìm được / Còn đường vòng:** có đường trong kết quả; C vẫn tốt nhất trong tập đã tìm, trừ khi engine báo chứng minh minimum.
+- **Chặn / Không có đường trong phạm vi xét:** báo cáo có proof tương ứng; kết luận chỉ áp dụng scope của lượt chạy.
+- **Chưa kết luận:** đọc lý do hết ngân sách hoặc thiếu điều kiện nếu file có ghi. Không đổi thành “đã chặn”.
+- **Chưa chấm C:** khác C=0. Giả định được đếm theo điều kiện `(predicate, subject, target, value)`, khử trùng giữa các bước; trace từng bước vẫn giữ đủ facts. Thiếu danh sách kiểm tra điều kiện ở một bước được hiện “chưa đầy đủ”, không phải 0 giả định.
+
+Quyền ban đầu của nguồn khảo sát được đọc từ source profile khớp ID trong báo cáo; chỉ biết node là Computer không đủ để khẳng định đã có danh tính mạng. Khi summary không có scenario hoặc nguồn ban đầu, viewer ghi thiếu thông tin.
 
 Tối đa 25 MB/file, 200 candidates/query và 120 bước/chương trình. Top-K giữ nguyên thứ tự của engine; thiếu ledger/C không được suy thành 0. Đồ thị biểu diễn **request source → target**, không phải canonical BloodHound edges; actor/context được giữ riêng trong chi tiết. Khi JSON không kèm nhãn/type, viewer dùng ID và ký hiệu đối tượng chưa rõ type.
 
-Viewer cũng nhận `neo-decision-sample/1.0.0` cho bảng khảo sát; summary này không thay được JSON query đầy đủ để vẽ witness. Đây là UI đọc kết quả đã chạy, chưa khởi chạy engine hoặc quét một dataset mới qua trình duyệt.
+Đây là UI đọc kết quả đã chạy, chưa khởi chạy engine hoặc quét một dataset mới qua trình duyệt.
 
 Đóng gói một file HTML để mang đi demo (Python stdlib, không cần venv):
 
@@ -26,13 +48,17 @@ Mở file HTML vừa tạo bằng Chrome/Safari/Firefox. Builder từ chối ghi
 
 - Ba đường C=4/5/5 được chép có cấu trúc từ [ranking-C-example.md](../../reports/neo/ranking-C-example.md) tại `f0e6899`; giữ thứ tự bước, ledger, giả định và cap. Đây là brief-level playback, không giữ toàn bộ trace gốc. Source SHA256 nằm trong payload. Tọa độ chỉ phục vụ trình bày.
 - Summary WRAITH được giữ nguyên từ [remediation-rediscovery-results.json](../../reports/neo/remediation-rediscovery-results.json) tại cùng revision. Summary chỉ có quan hệ bị gỡ và số liệu trước/sau, **không có witness của bypass**; viewer không tự dựng đường đó. Giữ cả kết quả `neo_refine` hết cap.
+- Khảo sát nhiều nguồn giữ nguyên [decision-sample.json](../../reports/neo/decision-sample.json): 5 nguồn độc lập, 10 cặp, cắt 15/30 đường mẫu nhưng 0/10 cặp bị ngắt. Các file demo được kiểm khớp nguồn đã công bố trong tests.
 
-Để kiểm tra adapter bằng Node (chỉ phục vụ phát triển):
+Kiểm adapter và tương tác DOM bằng Node 24.15+ (chỉ phục vụ phát triển, không cần để mở viewer):
 
 ```sh
-node --test web/neo-viewer/model.test.cjs
+npm ci --prefix web/neo-viewer --ignore-scripts
+npm test --prefix web/neo-viewer
 ```
+
+`jsdom` là dependency kiểm thử đã khóa phiên bản; không được đưa vào HTML hoặc cần cho người xem demo. CI chạy các kiểm tra này và build một file HTML.
 
 Mã UI sử dụng DOM `textContent` và SVG thuộc tính số cho nội dung file; không render HTML từ JSON, không gọi tài nguyên ngoài. Dữ liệu nhập được xem như báo cáo do người dùng cung cấp, không được UI chứng thực provenance/replay.
 
-Đã kiểm adapter và tương tác bằng DOM unit checks (chọn đường/cạnh, chuyển phase/strategy, import, trạng thái no-path và nội dung HTML trong nhãn). Chưa kiểm layout, kéo chuột hoặc responsive bằng screenshot trình duyệt trong môi trường cloud; cần kiểm trực quan bản đầu trước khi chốt giao diện.
+Đã kiểm adapter và tương tác bằng DOM tests trong repo (chọn đường/cạnh, chuyển phase/strategy, import, giả định tổng quan, metadata và trạng thái chưa kết luận/no-path). Chưa kiểm layout, kéo chuột hoặc responsive bằng screenshot trình duyệt; đây vẫn là mục mở trong [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4). GoodHound cũng còn helper cần thu hồi từ local; chưa chốt phiên bản dùng viết luận. Các mở rộng engine/dataset/backend là add-on sau bàn giao.
