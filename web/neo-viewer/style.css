@@ -264,6 +264,10 @@ main {
   gap: 14px;
   border-bottom: 1px solid var(--line);
 }
+.workspace-head > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
 .eyebrow {
   font-size: 10px;
   color: #71849d;
@@ -278,6 +282,7 @@ h1 {
   letter-spacing: -0.5px;
 }
 .status-pill {
+  flex-shrink: 0;
   white-space: nowrap;
   border: 1px solid #355471;
   background: #14283c;

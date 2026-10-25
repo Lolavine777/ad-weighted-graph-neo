@@ -332,3 +332,45 @@ test("runner results.json opens directly and uses the reported source and target
   ui.click("before");
   assert.equal(ui.text("status"), "Có đường");
 });
+
+test("invalid JSON syntax has an understandable message and preserves the selected report", async (t) => {
+  const ui = openViewer(t);
+  ui.d.querySelectorAll(".choice")[1].click();
+  const heading = ui.text("heading"),
+    choices = ui.text("choices"),
+    details = ui.text("details");
+  const file = ui.get("file");
+  Object.defineProperty(file, "files", {
+    configurable: true,
+    value: [{ size: 7, text: async () => "{broken" }],
+  });
+  await file.onchange({ target: file });
+  assert(!ui.get("error").hidden);
+  assert.match(ui.text("error"), /^JSON không hợp lệ\./);
+  assert.equal(ui.text("heading"), heading);
+  assert.equal(ui.text("choices"), choices);
+  assert.equal(ui.text("details"), details);
+});
+
+test("baseline-sized query files load while oversized files are rejected before reading", async (t) => {
+  const ui = openViewer(t),
+    file = ui.get("file");
+  Object.defineProperty(file, "files", {
+    configurable: true,
+    value: [{ size: 95 * 1024 * 1024, text: async () => JSON.stringify(native()) }],
+  });
+  await file.onchange({ target: file });
+  assert(ui.get("error").hidden);
+  assert.match(ui.text("dataset"), /Kết quả đã nhập/);
+  const details = ui.text("details");
+  Object.defineProperty(file, "files", {
+    configurable: true,
+    value: [{
+      size: 129 * 1024 * 1024,
+      text: async () => { throw Error("must not read"); },
+    }],
+  });
+  await file.onchange({ target: file });
+  assert.match(ui.text("error"), /File vượt 128 MB/);
+  assert.equal(ui.text("details"), details);
+});

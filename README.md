@@ -35,7 +35,7 @@ UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệ
 ### Trạng thái bàn giao
 
 - **Đã có:** pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
-- **Bàn giao:** [nghiệm thu và screenshot Brave](reports/neo/thesis-v1/acceptance.md), cùng trạng thái đóng gói tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
+- **Bản khóa luận:** `neo-thesis-v1`; [nghiệm thu và screenshot Brave](reports/neo/thesis-v1/acceptance.md), commit/tag và CI tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
 - **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc. GoodHound chưa tái lập trọn lượt chỉ từ checkout. Phạm vi và mức bằng chứng của từng bộ được giữ riêng bên dưới.
 - **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset, search mới và điều khiển engine từ trình duyệt. Giữ core và bảng C cho đợt hoàn thiện hiện tại.
 

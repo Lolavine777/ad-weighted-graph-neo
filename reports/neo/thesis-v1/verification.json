@@ -1,6 +1,5 @@
 {
   "date_local": "2026-10-25",
-  "product_source_commit": "6fb88e05b4c835b1645a8cf9ac2fc7a6acb539c6",
   "browser": "Brave 152.1.94.119 (macOS)",
   "viewports": [
     [
@@ -13,12 +12,44 @@
     ]
   ],
   "browser_delivery": "standalone HTML served only on 127.0.0.1; file: protocol blocked by tool",
-  "browser_import_checks": "pending extension file chooser permission; DOM checks are not browser evidence",
-  "html_sha256": "sha256:6b99ed3cac7e885f7d34e1604f3901dee2f9a74e2fe79313e52b603dc86029cf",
+  "browser_import_checks": {
+    "query_cli_real_baseline": true,
+    "query_file_size_bytes": 99412878,
+    "baseline_C": 1,
+    "baseline_assumptions": 7,
+    "native_missing_decisions_incomplete": true,
+    "zero_cost_and_unrated_distinct": true,
+    "budget_conditions_no_path_distinct": true,
+    "survey_and_remediation_without_demo_metadata": true,
+    "runner_results_json": true,
+    "invalid_syntax_and_schema_preserve_state": true,
+    "keyboard_reset_to_demo": true,
+    "long_heading_status_bounds_laptop": {
+      "status_right": 1036,
+      "workspace_right": 1066
+    },
+    "long_heading_status_bounds_narrow": {
+      "status_right": 304.2265625,
+      "workspace_right": 705
+    },
+    "file_limit_MiB": 128,
+    "offline_imports_and_demo_switches": true,
+    "synthetic_ui_fixtures": [
+      "missing-trace-long-label",
+      "zero-action",
+      "budget",
+      "conditions",
+      "no-path",
+      "invalid-syntax",
+      "invalid-schema",
+      "survey/remediation metadata controls"
+    ]
+  },
+  "html_sha256": "sha256:b29986786d36942d82cbf73aa2ffd08e63c4cf0465574e7704e0c2290790076b",
   "external_script_stylesheet_references": 0,
   "tests_fresh": {
     "viewer_node": {
-      "passed": 20,
+      "passed": 22,
       "skipped": 0
     },
     "goodhound_archive_pytest": {
@@ -441,10 +472,36 @@
     }
   },
   "screenshots": {
+    "import-invalid-json.jpg": "sha256:590f7c5667b37a6ac845e933248844dbf6c051b917fbfe573eea6aa1f191e766",
+    "import-long-after.jpg": "sha256:dfed6bc39b15ec1e9fcc649df2ac4a8eccfa7aff4e97b555ea0ba063016bf29a",
+    "import-long-before.jpg": "sha256:ebc16a819fd0cb67d02605589f774a0d4962c5e926d197a483ce509ec4e56dc5",
+    "import-long-narrow.jpg": "sha256:31f452f1f34b284374d5b67fa5af0edb4a07661595ca2d52f8d91394c3ec596d",
+    "import-native-baseline.jpg": "sha256:c7c194eed3a4dc51b387127babdc70f4aa8c0e4ba33f24a637493144f7d1bf59",
+    "import-no-path.jpg": "sha256:2979a4f4db6aae07b80737d062da8c7f76cd817d96b6130f82f48670586111fe",
+    "import-runner-results.jpg": "sha256:7980bab8cc56452d05f8a0128c078d3034560cd399a333539bff5775868ddae5",
     "paths-assumptions.jpg": "sha256:ec1326dd07627aefbb6fb64c4eb6c126583d8749d678c2e748bb858a346fafe4",
     "remediation-blocked.jpg": "sha256:07b11fa71adb6abfc01a24b34e0f9274f61bc5bd00ec29dbe6fdac75e657ac05",
     "remediation-bypass-cap.jpg": "sha256:a2de899a863289bf8625945c6fc9fbd8f538596d13044d112d839045c9b5e545",
     "survey-laptop.jpg": "sha256:3ec5c8cad435f511bece6ec13f897b2e0a554b8105dbfddefd278dae9a4ae74a",
     "survey-narrow.jpg": "sha256:5bf5a5a48bdb2c8380bc785ae471d05b42c3956583f7c9f7bfb0dbb5de02460b"
+  },
+  "unchanged_engine_baseline_commit": "6fb88e05b4c835b1645a8cf9ac2fc7a6acb539c6",
+  "version": "neo-thesis-v1",
+  "release_commit_reference": "Annotated tag neo-thesis-v1; exact SHA and final CI in issue #4",
+  "viewer_source_files_sha256": {
+    "app.js": "sha256:12221cdcf9a571ede362aa88f431098e7d51edc492e60c3240b8f721492cacc5",
+    "model.js": "sha256:a452a7f8957e902037012a335c109915988d610d52e1be6914f579bc25fdc434",
+    "demo.js": "sha256:96e64f7b383c70b91632f556c49cc3ad3de524b104ecdd3cec95463293e8f110",
+    "index.html": "sha256:1ab87e67f15af12f230fea6c2beb6d78a36956ce51ac8b39b8f8d46f28d20378",
+    "style.css": "sha256:61362c43146b8befb12379a9f716bc8655d0ca25898bb35de29673c7d00c42bd",
+    "build.py": "sha256:70f26a7605f628a8f6e32378705e015c71307a954c1e9a899e6f2de8e57af652"
+  },
+  "seamless_baseline": {
+    "summary_sha256": "sha256:d42a0fa4f819c27c6282074b9b9fdd60f2f1398908d975d1960d7c6accd89668",
+    "snapshot_sha256": "sha256:a3f855b709280bd1cd4a3065d0fe8eb337827821de599416cdcd01465c9e651c",
+    "native_replay_and_API_CLI_parity": true,
+    "neo_guided_C": 1,
+    "neo_guided_expansions": 6,
+    "minimum_proven": false
   }
 }

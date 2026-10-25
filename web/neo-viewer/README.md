@@ -19,6 +19,7 @@ Viewer chỉ đọc kết quả; không chạy query, sửa graph, chấm lại 
 
 `neo_domain` xuất `cells.jsonl` và brief; viewer chưa đọc định dạng này. Đọc brief cho lượt đó.
 Snapshot, JSON query đầu vào, `summary.json` bất kỳ và output riêng của `neo_decision` cũng không tự trở thành một trong các định dạng trên.
+C/ledger của query được đọc từ `semantic.top_k`; gói legacy chỉ có `ranking_result` hiện chưa chấm C trong viewer, nên đọc C ở brief CLI của gói đó.
 Nếu file không được hỗ trợ, viewer báo lỗi và giữ kết quả đang xem. Xem [README gốc](../../README.md) để dùng các lệnh CLI hiện có.
 
 ## Hiểu kết luận
@@ -30,7 +31,7 @@ Nếu file không được hỗ trợ, viewer báo lỗi và giữ kết quả �
 
 Quyền ban đầu của nguồn khảo sát được đọc từ source profile khớp ID trong báo cáo; chỉ biết node là Computer không đủ để khẳng định đã có danh tính mạng. Khi summary không có scenario hoặc nguồn ban đầu, viewer ghi thiếu thông tin.
 
-Tối đa 25 MB/file, 200 candidates/query và 120 bước/chương trình. Top-K giữ nguyên thứ tự của engine; thiếu ledger/C không được suy thành 0. Đồ thị biểu diễn **request source → target**, không phải canonical BloodHound edges; actor/context được giữ riêng trong chi tiết. Khi JSON không kèm nhãn/type, viewer dùng ID và ký hiệu đối tượng chưa rõ type.
+Tối đa 128 MB/file, 200 candidates/query và 120 bước/chương trình. Top-K giữ nguyên thứ tự của engine; thiếu ledger/C không được suy thành 0. Đồ thị biểu diễn **request source → target**, không phải canonical BloodHound edges; actor/context được giữ riêng trong chi tiết. Khi JSON không kèm nhãn/type, viewer dùng ID và ký hiệu đối tượng chưa rõ type.
 
 Đây là UI đọc kết quả đã chạy, chưa khởi chạy engine hoặc quét một dataset mới qua trình duyệt.
 

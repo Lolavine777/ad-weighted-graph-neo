@@ -816,13 +816,17 @@
     const f = ev.target.files[0];
     if (!f) return;
     try {
-      if (f.size > 25 * 1024 * 1024)
-        throw Error("File vượt 25 MB. Hãy dùng output query riêng.");
+      if (f.size > 128 * 1024 * 1024)
+        throw Error("File vượt 128 MB. Hãy dùng gói kết quả nhỏ hơn.");
       const data = JSON.parse(await f.text());
       load(data, true);
       $("error").hidden = true;
     } catch (e) {
-      showError(e);
+      showError(
+        e instanceof SyntaxError
+          ? new Error("JSON không hợp lệ. Hãy kiểm tra cú pháp hoặc xuất lại file kết quả.")
+          : e,
+      );
     } finally {
       $("file").value = "";
     }
