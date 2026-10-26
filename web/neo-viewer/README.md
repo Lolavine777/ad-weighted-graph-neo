@@ -6,7 +6,8 @@ Viewer chỉ đọc kết quả; không chạy query, sửa graph, chấm lại 
 - **Một nguồn bị lộ:** chọn đường, đọc C và các công việc ở bảng bên phải; mở **Giả định chương trình**, rồi bấm cạnh/nút để xem chi tiết. Kéo nút hoặc nền để bố trí, dùng zoom và Vừa khung.
 - **Chi tiết can thiệp:** chọn can thiệp, strategy và mục tiêu; chuyển Trước/Sau để xem quan hệ bị gỡ và kết luận tìm lại. Đường cũ bị cắt chưa có nghĩa mọi đường đã bị chặn.
 - **Khảo sát nhiều nguồn:** bảng 10 cặp từ 5 nguồn độc lập; lọc một nguồn để xem DA/EA, chọn hàng để xem C trước/sau và số chương trình bị cắt. Cohort công bố cắt 15/30 chương trình nhưng 0/10 cặp bị ngắt. Không tự suy đường từ ledger.
-- **Mở JSON:** đọc file trên máy, không upload hoặc lưu trình duyệt. File nhập có nhãn nguồn chưa xác minh; tiêu đề do file cung cấp, nếu thiếu thì dùng “Báo cáo đã nhập”. Nút ↺ trở về demo.
+- **Nền sáng/tối:** mặc định theo cài đặt của máy; nút ở góc trên đổi nền và chỉ lựa chọn này được nhớ trên trình duyệt. Khi in, viewer luôn dùng nền sáng.
+- **Mở JSON:** đọc file trên máy, không upload hoặc lưu nội dung file. File nhập có nhãn nguồn chưa xác minh; tiêu đề do file cung cấp, nếu thiếu thì dùng “Báo cáo đã nhập”. Nút ↺ trở về demo.
 
 ## Chọn đúng file
 

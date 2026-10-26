@@ -102,7 +102,7 @@ def render_query_brief(result, graph):
     if programs:
         lines.append(
             "Ưu tiên C thấp hơn trong các đường đã tìm và chấm được; "
-            "đồng C không có nghĩa một đường tốt hơn. Thiếu P/I không chặn xếp hạng C."
+            "đồng C không có nghĩa một đường tốt hơn."
         )
     elif result.paths:
         lines.append("Các đường dưới đây chưa được xếp hạng theo C; chưa chấm không phải C=0.")
@@ -123,7 +123,7 @@ def render_query_brief(result, graph):
         path = result.paths[index]
         effort = program["effort"] if program else None
         lines.extend(
-            ["", f"## Đường {rank} — C={effort if effort is not None else 'chưa chấm'}", ""]
+            ["", f"## Đường {rank} - C={effort if effort is not None else 'chưa chấm'}", ""]
         )
         if not path.transition_history:
             lines.append("Mục tiêu đã có trong trạng thái ban đầu; không cần hành động mới.")
@@ -157,13 +157,15 @@ def render_query_brief(result, graph):
                 lines.append("- Không có công việc chủ động; membership có sẵn không cộng C.")
             p = program.get("likelihood_interval")
             impact = program.get("impact")
-            lines.extend(
-                [
-                    "",
-                    f"P: {_text(p) if p is not None else 'chưa chấm'}; "
-                    f"I: {_text(impact) if impact is not None else 'chưa chấm'}.",
-                ]
-            )
+            # neo-c-v1 ranks by C only; P/I lines appear only for legacy profiles that rate them.
+            if p is not None or impact is not None:
+                lines.extend(
+                    [
+                        "",
+                        f"P: {_text(p) if p is not None else 'chưa chấm'}; "
+                        f"I: {_text(impact) if impact is not None else 'chưa chấm'}.",
+                    ]
+                )
         if assumptions:
             lines.extend(["", "Giả định đã dùng trên đường này (không phải quan sát):", ""])
             for predicate, subject, target, value in sorted(assumptions, key=str):

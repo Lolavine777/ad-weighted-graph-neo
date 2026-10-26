@@ -52,7 +52,8 @@ def test_winrm_C_one_does_not_change_semantics_or_grant_admin():
         assert not path.final_state.admin_control
     brief = render_query_brief(after, graph)
     assert "C=1" in brief and "không đồng nghĩa quyền quản trị" in brief
-    assert "P: chưa chấm; I: chưa chấm" in brief
+    assert "P:" not in brief and "I:" not in brief and "—" not in brief
+    assert "## Đường 1 - C=1" in brief
     assert "Giả định đã dùng" in brief and "winrm_available" in brief
 
 

@@ -40,20 +40,20 @@ globalThis.NEO_DEMOS = {
       "BADBLOOD.SEAMLESS.INTERNAL": {
         label: "BADBLOOD",
         kind: "Computer",
-        x: 550,
-        y: 490,
+        x: 430,
+        y: 560,
       },
       "ADMINISTRATORS@SEAMLESS.INTERNAL": {
         label: "ADMINISTRATORS",
         kind: "Group",
-        x: 1040,
-        y: 440,
+        x: 980,
+        y: 620,
       },
       "ENTERPRISE ADMINS@SEAMLESS.INTERNAL": {
         label: "ENTERPRISE ADMINS",
         kind: "Group",
-        x: 1040,
-        y: 190,
+        x: 1160,
+        y: 420,
       },
     },
     programs: [

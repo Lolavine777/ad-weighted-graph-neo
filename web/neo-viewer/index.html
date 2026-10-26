@@ -3,19 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
-    <title>neo · Graph explorer</title>
+    <meta name="color-scheme" content="light dark" />
+    <title>neo · Xem kết quả phân tích</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header class="topbar">
       <a class="brand" href="index.html" aria-label="neo trang đầu"
         ><span class="brandmark">n</span>neo<span class="brand-sub"
-          >GRAPH EXPLORER</span
+          >XEM KẾT QUẢ PHÂN TÍCH</span
         ></a
       >
       <div class="top-actions">
         <span class="local-indicator">● <span>Đọc kết quả offline</span></span
+        ><button id="theme" type="button">Nền sáng</button
         ><button id="open-file">Mở JSON <span>↗</span></button
         ><input id="file" type="file" accept=".json,application/json" hidden />
       </div>
@@ -42,7 +43,7 @@
         <div id="choices"></div>
         <div class="sidebar-bottom">
           <span class="tiny-dot"></span
-          ><span id="input-origin">Playback từ evidence đã công bố</span
+          ><span id="input-origin">Demo từ báo cáo đã công bố</span
           ><button id="reset-demo" title="Trở về dữ liệu demo">↺</button>
         </div>
       </aside>
@@ -50,7 +51,7 @@
         <div class="flow-guide" id="flow-guide"></div>
         <div class="workspace-head">
           <div>
-            <div class="eyebrow" id="eyebrow">SEAMLESS / PATH ANALYSIS</div>
+            <div class="eyebrow" id="eyebrow">SEAMLESS · ĐƯỜNG VÀ CÔNG SỨC</div>
             <h1 id="heading">Đường tới Enterprise Admins</h1>
           </div>
           <span class="status-pill" id="status"></span>

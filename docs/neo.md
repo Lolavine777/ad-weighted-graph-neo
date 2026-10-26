@@ -522,7 +522,7 @@ gồm paths, C/Top-K, diagnostics và proof/budget dispositions, giữ nguyên.
 Không trộn số đo này với lượt cohort chạy đồng thời test hoặc benchmark macOS.
 
 `scripts.neo_baseline` nay sinh `neo_guided.md` cạnh JSON, trình bày nguồn–đích,
-scope kỹ thuật/context, hành động, work ledger C, P/I, giả định đã dùng và best-found/minimum.
+scope kỹ thuật/context, hành động, work ledger C, giả định đã dùng và best-found/minimum.
 `scripts.neo_cohort` sinh `brief.md` cho mỗi cell. CLI query bất kỳ nhận
 `--brief reports/generated/result.md` cùng `--output reports/generated/result.json`.
 Cả hai được dựng từ cùng một execution; bản đọc nhanh không tìm lại đường hay tự chấm điểm.
