@@ -257,7 +257,7 @@ test("demo results and controls remain faithful across all three views", (t) => 
   strategy.value = "2";
   strategy.dispatchEvent(new ui.w.Event("change"));
   assert.equal(ui.text("status"), "Còn đường vòng");
-  assert.match(ui.text("details"), /expansion_limit_reached/);
+  assert.match(ui.text("details"), /Đã hết ngân sách tìm kiếm/);
   ui.click("survey-mode");
   assert.match(ui.text("survey"), /15\/30/);
   assert.match(ui.text("survey"), /0\/10/);
@@ -286,7 +286,7 @@ test("file errors preserve the previous report; unrated and label text remain li
   n.semantic.top_k.programs[0].effort = null;
   await ui.load(n);
   assert.match(ui.text("result-strip"), /Chưa chấm/);
-  assert.equal(ui.d.querySelector(".cost-hero strong").textContent, "—");
+  assert.equal(ui.d.querySelector(".cost-hero strong").textContent, "-");
 });
 
 test("runner results.json opens directly and uses the reported source and target", async (t) => {
@@ -373,4 +373,42 @@ test("baseline-sized query files load while oversized files are rejected before 
   await file.onchange({ target: file });
   assert.match(ui.text("error"), /File vượt 128 MB/);
   assert.equal(ui.text("details"), details);
+});
+
+test("bundled demos read in Vietnamese without developer provenance or raw SIDs", (t) => {
+  const ui = openViewer(t);
+  const visible = () => ui.d.body.textContent;
+  for (const english of ["Use identity", "Add member", "Grant rights", "Reset password", "LEDGER", "FOOTHOLD"])
+    assert(!visible().includes(english), english);
+  assert(!visible().includes("—"));
+  assert(!ui.text("details").includes("ranking-C-example.md"));
+  assert(!ui.text("details").includes("Playback"));
+  assert.match(ui.text("details"), /Thêm thành viên nhóm/);
+  ui.click("remediation-mode");
+  assert(!ui.text("details").includes("neo_guided"));
+  assert.match(ui.text("details"), /Tìm có hướng dẫn/);
+  ui.click("survey-mode");
+  assert.match(ui.text("details"), /KATRINA_GREEN/);
+  assert.match(ui.text("details"), /ADMINISTRATORS/);
+  assert(!ui.text("details").includes("S-1-5-21"));
+});
+
+test("graph view fits the laid-out nodes instead of a fixed wide canvas", (t) => {
+  const ui = openViewer(t);
+  const [, , w, h] = ui.get("graph").getAttribute("viewBox").split(" ").map(Number);
+  assert(w >= 640 && h >= 360);
+  assert.notEqual(ui.get("graph").getAttribute("viewBox"), "0 0 1200 660");
+});
+
+test("theme toggle switches the page and survives blocked storage", (t) => {
+  const ui = openViewer(t);
+  const root = ui.d.documentElement;
+  const first = root.dataset.theme;
+  ui.click("theme");
+  const next = root.dataset.theme;
+  assert(next === "light" || next === "dark");
+  assert.notEqual(next, first);
+  assert.equal(ui.text("theme"), next === "dark" ? "Nền sáng" : "Nền tối");
+  ui.click("theme");
+  assert.notEqual(root.dataset.theme, next);
 });

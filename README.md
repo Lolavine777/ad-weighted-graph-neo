@@ -35,7 +35,7 @@ UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệ
 ### Trạng thái bàn giao
 
 - **Đã có:** pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
-- **Bản khóa luận:** `neo-thesis-v1`; [nghiệm thu và screenshot Brave](reports/neo/thesis-v1/acceptance.md), commit/tag và CI tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
+- **Bản khóa luận:** `neo-thesis-v2` thêm nền sáng, nhãn tiếng Việt cho viewer và bỏ dòng P/I khỏi brief CLI; engine, bảng C và số liệu giữ nguyên như `neo-thesis-v1`. [Nghiệm thu v1 và screenshot Brave](reports/neo/thesis-v1/acceptance.md), commit/tag và CI tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
 - **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc. GoodHound chưa tái lập trọn lượt chỉ từ checkout. Phạm vi và mức bằng chứng của từng bộ được giữ riêng bên dưới.
 - **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset, search mới và điều khiển engine từ trình duyệt. Giữ core và bảng C cho đợt hoàn thiện hiện tại.
 
@@ -71,7 +71,6 @@ cho thấy đường đầu C=3 có thể bỏ sót đường dài hơn C=1; tă
 trong mô hình nhỏ, chưa giải yêu cầu minimum trên dữ liệu thật.
 [Pilot C-first trên dữ liệu thật](reports/neo/cost-first-pilot.md) không được đưa
 vào core: có cải thiện ở mô hình nhỏ nhưng làm giảm số cặp có witness trong budget.
-P/I thiếu vẫn được hiển thị là chưa chấm.
 Quyền điều khiển máy không tự cấp danh tính mạng của tài khoản máy.
 
 ## Cài đặt
@@ -115,10 +114,10 @@ Runner mặc định dùng bảng `neo-c-v1`. Để đối chiếu bảng reset 
 
 `neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi host/WinRM,
 kể cả khi quyền đến từ nhóm hoặc danh tính thu được giữa đường.
-Membership có sẵn không thêm công sức; P/I không bắt buộc để có C.
+Membership có sẵn không thêm công sức.
 Runner trên vẫn chỉ bật ba techniques của benchmark cũ;
 dùng `scripts.exposure --effort-profile neo-c-v1` cho truy vấn nhiều techniques.
-Profile neo mặc định xuất Top-3 theo C; thiếu P/I không loại đường đủ C.
+Profile neo mặc định xuất Top-3 theo C.
 Exposure chọn `neo_guided` khi dùng profile neo; catalog ngoài nhóm techniques hỗ trợ
 sẽ ghi rõ fallback FIFO. `--search-order fifo` giữ cách tìm cũ.
 Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).

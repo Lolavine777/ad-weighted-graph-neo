@@ -39,7 +39,7 @@
     const parts = [];
     if (reason)
       parts.push(
-        (reasons[reason] || "Giới hạn báo cáo") + " (" + reason + ").",
+        reasons[reason] ? reasons[reason] + "." : "Giới hạn báo cáo: " + reason + ".",
       );
     else if (s?.truncated === true)
       parts.push("Tìm kiếm bị giới hạn; báo cáo chưa nêu lý do cụ thể.");
