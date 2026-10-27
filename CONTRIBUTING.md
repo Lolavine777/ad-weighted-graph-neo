@@ -13,6 +13,8 @@ Có thể làm trên nhánh ngắn hoặc commit trực tiếp khi đã kiểm t
 .venv/bin/python scripts/check_repository.py
 .venv/bin/python scripts/check_contract.py
 .venv/bin/python -m pytest -q
+npm ci --prefix web/neo-viewer --ignore-scripts
+npm test --prefix web/neo-viewer
 ```
 
 Chạy thêm E2E hoặc benchmark phù hợp khi thay đổi parser, semantics, search, rating hoặc remediation.
@@ -28,7 +30,7 @@ Tạo baseline neo mới bằng công cụ sinh khi source hoặc context thay �
 
 ## Remote
 
-`origin` trỏ tới repo neo private.
+`origin` trỏ tới repo neo public.
 `upstream` chỉ dùng để đọc và có push URL `disabled://upstream-read-only` trong checkout migration.
 Một clone mới cần tự cấu hình lại khóa push nếu thêm upstream.
 Không force push để ghi đè thay đổi trên remote.
