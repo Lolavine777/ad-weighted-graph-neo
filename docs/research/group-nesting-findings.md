@@ -4,8 +4,8 @@
 - Tác giả: Nguyễn Đăng Long (@Lolavine777, TTS A)
 - Người thẩm định: Lê Long (@nairyuuu, TTS B)
 - Liên kết: Refs #53, Refs #44, Refs #45, Refs #47, [taxonomy.md](taxonomy.md), [bloodhound-import-baseline.md](bloodhound-import-baseline.md)
-- Chiến lược hiện hành: [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md)
-- Quyết định direct-only: [ADR-0009](../adr/ADR-0009-direct-memberof-transitive-resolution.md)
+- Chiến lược hiện hành: [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md)
+- Quyết định direct-only: [ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md)
 
 ---
 

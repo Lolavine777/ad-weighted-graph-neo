@@ -3,7 +3,7 @@
 Trạng thái: Historical / experimental reference; không phải production weighting specification.
 Chủ trì: Thực tập sinh A (@Lolavine777).
 Reviewer: Thực tập sinh B (@nairyuuu).
-Liên kết: Refs #5, [ADR-0001](../adr/ADR-0001-maut-weighting-model.md), [#42](https://github.com/nairyuuu/ad-weighted-graph/issues/42).
+Liên kết: Refs #5, [ADR-0001](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0001-maut-weighting-model.md), [#42](https://github.com/nairyuuu/ad-weighted-graph/issues/42).
 
 > [!IMPORTANT]
 > Tài liệu này bảo tồn rubric và score `maut_v1` để audit lịch sử.

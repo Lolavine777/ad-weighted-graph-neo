@@ -7,7 +7,7 @@ Thiếu bằng chứng bắt buộc có nghĩa là `unknown` hoặc `indetermina
 
 Bảng tổng hợp [structural taxonomy](taxonomy.md), [runtime semantic catalog](../../configs/attack_semantics.yml), [giải thích Attack Semantics](attack-semantics.md) và [M1 evidence audit](m1-evidence-audit.md).
 Các tên transition trong bảng là ID của catalog; audit cung cấp nguồn và giới hạn bằng chứng cho từng relationship.
-Quy tắc tách graph, transition và activity thuộc [ADR-0008](../adr/ADR-0008-structural-graph-attack-semantics-layering.md); cách lưu `MemberOf` trực tiếp thuộc [ADR-0009](../adr/ADR-0009-direct-memberof-transitive-resolution.md).
+Quy tắc tách graph, transition và activity thuộc [ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md); cách lưu `MemberOf` trực tiếp thuộc [ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md).
 
 | Relationship: ý nghĩa trong graph | Attacker tận dụng / semantic transition | Điều kiện quan trọng | Yếu tố ảnh hưởng độ khó thực tế | Weighting hiện tại |
 | --- | --- | --- | --- | --- |

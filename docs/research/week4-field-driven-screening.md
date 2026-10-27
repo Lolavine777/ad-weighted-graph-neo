@@ -138,7 +138,7 @@ Nghiệm thu extension phải có:
 
 C là công sức các công việc mới; P là khả năng toàn chuỗi đạt đúng asset goal trong horizon/kịch bản; I là hậu quả tại asset success có căn cứ nghiệp vụ. DA là checkpoint, không tự là I=Critical hoặc final asset compromise. Các số Week 3 không mặc nhiên phù hợp cracking hoặc các cơ chế mới.
 
-Theo [ADR-0013](../adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), `P(E1,…,Ek | F,S) = ∏ P(Ei | F,S,E1,…,Ei−1)`. Đây là xác suất của một chương trình tuần tự, không xác suất “domain sẽ bị compromise qua ít nhất một đường”. Không giả các bước độc lập, không cộng các đường chung tiền tố như độc lập.
+Theo [ADR-0013](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), `P(E1,…,Ek | F,S) = ∏ P(Ei | F,S,E1,…,Ei−1)`. Đây là xác suất của một chương trình tuần tự, không xác suất “domain sẽ bị compromise qua ít nhất một đường”. Không giả các bước độc lập, không cộng các đường chung tiền tố như độc lập.
 
 - Gắn work-unit/event theo bí mật/chủ thể/đích/context/budget/causal parent. Nhiều SPN cùng khóa không tự là nhiều lần crack; sử dụng lại secret không tính lại recovery. Một lần authentication mới ở context khác có thể là công việc/rủi ro mới.
 - MemberOf/ACL propagation thụ động không thêm một lần khai thác ngẫu nhiên; chia/gộp cùng công việc không làm P thay đổi giả tạo. Code chỉ khử trùng ID, A/B vẫn phải review sự tương đương về nghĩa.

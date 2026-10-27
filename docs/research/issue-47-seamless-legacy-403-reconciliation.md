@@ -296,5 +296,5 @@ Full MemberOf và bốn narrow views khác có exact equality; Members-only sele
 Full M1 equivalence, product parity và Week 3 completion chưa accepted; #47/#48 không đóng.
 #48 dùng evidence checkpoint integrated `294cba3` này cùng contract #195.
 Clean-checkout cross-reproduction ở revision nghiệm thu cuối thuộc #196 sau khi scope #195 được accepted; không thực hiện trong PR tài liệu này.
-Required checks và PR review của phép đo được ghi tại [worklog rerun](../worklog/2026-10-05-ttsA-issue47-post189-reconciliation.md); [worklog #184](../worklog/2026-10-04-ttsA-issue47-real-reconciliation.md) giữ historical import evidence.
-Checks và handoff contract #195 nằm tại [worklog comparison contract](../worklog/2026-10-05-ttsA-issue195-comparison-contract.md).
+Required checks và PR review của phép đo được ghi tại [worklog rerun](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-05-ttsA-issue47-post189-reconciliation.md); [worklog #184](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-04-ttsA-issue47-real-reconciliation.md) giữ historical import evidence.
+Checks và handoff contract #195 nằm tại [worklog comparison contract](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-05-ttsA-issue195-comparison-contract.md).

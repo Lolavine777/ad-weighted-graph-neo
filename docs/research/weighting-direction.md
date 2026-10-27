@@ -6,7 +6,7 @@ Nghiên cứu Phase A trong PR #132 đã được merge vào develop như bằng
 
 ## Vì sao chưa chốt một weight cho mỗi relationship
 
-[ADR-0008](../adr/ADR-0008-structural-graph-attack-semantics-layering.md) tách structural relationship trong snapshot, semantic transition do attacker chọn và runtime context khi thực hiện.
+[ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md) tách structural relationship trong snapshot, semantic transition do attacker chọn và runtime context khi thực hiện.
 Một relationship chứng minh quyền hoặc quan sát có nguồn; nó không chứng minh kỹ thuật đã được chọn, có thể chạy, đã thành công hay đã được quan sát.
 [Semantic catalog](../../configs/attack_semantics.yml) sở hữu prerequisites, effects, failure conditions và expected telemetry của từng transition; [Attack Semantics](attack-semantics.md) giải thích cách các lớp tương tác.
 Vì một loại cạnh có thể hỗ trợ nhiều transition và cùng transition có thể bị chặn bởi context, một fixed weight theo relationship không tự đại diện cho chi phí của một bước tấn công thực tế.

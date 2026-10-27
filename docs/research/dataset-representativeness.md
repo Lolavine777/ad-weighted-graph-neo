@@ -3,7 +3,7 @@
 Tài liệu này đánh giá tính đại diện của các bộ dữ liệu Active Directory phục vụ bài toán phân tích đường đi tấn công có trọng số (weighted attack-path analysis).
 Nghiên cứu tiến hành so sánh đối chiếu chuẩn hóa giữa ba tập dữ liệu: `SEAMLESS.INTERNAL` (Enterprise scale), `NORTH` (Game of Active Directory) và `ad_sampledata`.
 Báo cáo giải quyết toàn diện yêu cầu tại [Issue #57](https://github.com/nairyuuu/ad-weighted-graph/issues/57) (M2-11) và phản hồi từ Mentor về việc lựa chọn nguồn dữ liệu có giá trị doanh nghiệp thực tế.
-Theo [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), SEAMLESS la primary structural/topology dataset cho M2+.
+Theo [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), SEAMLESS la primary structural/topology dataset cho M2+.
 NORTH va `ad_sampledata` la historical baseline cho regression, collector comparison, multi-domain/parser robustness va BloodHound reference.
 Current SEAMLESS counts below distinguish 66.374 raw/reference-shaped observations in the data-quality audit from 66.371 entries materialized in the EDA graph; 3 raw RDU-only references do not become verified `CanRDP`.
 EDA graph paths and metrics are descriptive, not canonical output of #44/#45 or proof of effective authorization, attack execution, or collection completeness.

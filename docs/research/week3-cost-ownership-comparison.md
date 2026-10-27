@@ -224,7 +224,7 @@ Thứ tự đọc tối thiểu:
 3. [Scenario contract](week3-scenario-contract.md): initial state, foothold boundary, target candidate, 4 tầng dữ kiện và hai chế độ evidence-only vs scenario mode.
 4. Tài liệu comparison này: recommendation, counterexamples và những quyết định cần reviewer xác nhận.
 5. [Catalog](../../configs/attack_semantics.yml), [attack semantics](attack-semantics.md), hai script trong `scripts/research/` và [tests](../../tests/test_research_probes.py) khi cần kiểm tra implementation.
-6. Worklog [26/9](../worklog/2026-09-26-ttsA.md), [27/9](../worklog/2026-09-27-ttsA.md), [28/9](../worklog/2026-09-28-ttsA.md), [29/9](../worklog/2026-09-29-ttsA.md) và review history để phân biệt kết quả từng checkpoint.
+6. Worklog [26/9](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-09-26-ttsA.md), [27/9](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-09-27-ttsA.md), [28/9](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-09-28-ttsA.md), [29/9](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-09-29-ttsA.md) và review history để phân biệt kết quả từng checkpoint.
 
 Tại checkpoint bàn giao ngày 2026-09-29, Phase A đã hoàn thành triển khai tài liệu và artifacts kịch bản qua issue #140, đang chờ review và nghiệm thu.
 Lộ trình tiếp nối được phân chia thành các issue cụ thể:

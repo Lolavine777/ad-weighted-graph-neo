@@ -4,7 +4,7 @@
 - Trạng thái: ADR-0013, Interface 1.0.0 quy chuẩn và Scoped Parameter Bundle 1.0.0 đã được TTS A và TTS B chấp thuận trong phạm vi PR #165 (Approval #5387665338, commit fdf5928); hai phiếu chấm người thật tiếp tục bảo lưu pending.
 - Chủ trì: A @Lolavine777; reviewer: B @nairyuuu.
 - Refs [PR #165](https://github.com/nairyuuu/ad-weighted-graph/pull/165), [#163](https://github.com/nairyuuu/ad-weighted-graph/pull/163), [#143](https://github.com/nairyuuu/ad-weighted-graph/issues/143), [#158](https://github.com/nairyuuu/ad-weighted-graph/issues/158), [PR #159](https://github.com/nairyuuu/ad-weighted-graph/pull/159), #42, #48.
-- Quy chiếu: [ADR-0013](../adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [Interface Specification 1.0.0](path-ranking-interface-specification.md), [Scoped Parameter Bundle 1.0.0](../../tests/fixtures/ranking/seamless_parameter_bundle.json), [governance 1.0.0](evidence-rating-governance.md), [acceptance disposition](path-ranking-acceptance-disposition.md).
+- Quy chiếu: [ADR-0013](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [Interface Specification 1.0.0](path-ranking-interface-specification.md), [Scoped Parameter Bundle 1.0.0](../../tests/fixtures/ranking/seamless_parameter_bundle.json), [governance 1.0.0](evidence-rating-governance.md), [acceptance disposition](path-ranking-acceptance-disposition.md).
 
 ## 1. Scope, foothold và outcome
 

@@ -2,7 +2,7 @@
 
 Trạng thái: Implemented architecture reference (research v0.1) + M3 predictive-state decision proposal.
 Liên kết nhiệm vụ: Refs #58, #63, #70, #145, #174, #180, PR #66, PR #173.
-Quyết định kiến trúc: [ADR-0008](../adr/ADR-0008-structural-graph-attack-semantics-layering.md); data/telemetry evaluation scope: [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md).
+Quyết định kiến trúc: [ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md); data/telemetry evaluation scope: [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md).
 Contract tham chiếu: `configs/contract.yml` v1.2.0 (graphs v1.0.0/1.1.0 vẫn tương thích ngược; legacy timestamp status là `unknown_legacy`).
 Phạm vi: 8 canonical edge kinds của M1.
 
@@ -704,7 +704,7 @@ Kết luận của #58:
 
 - [`taxonomy.md`](taxonomy.md)
 - [`weight-model.md`](weight-model.md)
-- [`ADR-0002-edge-directionality-semantics.md`](../adr/ADR-0002-edge-directionality-semantics.md)
+- [`ADR-0002-edge-directionality-semantics.md`](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0002-edge-directionality-semantics.md)
 - [`contract.yml`](../../configs/contract.yml)
 - Issue #58: `https://github.com/nairyuuu/ad-weighted-graph/issues/58`
 

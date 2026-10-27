@@ -5,7 +5,7 @@ Danh sách này là nội dung để tạo GitHub issues, chưa phải issues đ
 ## Ghi chú chiến lược hiện hành
 
 Bảng backlog bên dưới là kế hoạch khởi đầu và được lưu giữ như tài liệu lịch sử của Tuần 1.
-Theo [ADR-0007](adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), W02/W03 và các công việc phụ thuộc không còn được xem là dữ liệu đánh giá chính của A/B.
+Theo [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), W02/W03 và các công việc phụ thuộc không còn được xem là dữ liệu đánh giá chính của A/B.
 SEAMLESS đóng vai trò là tập dữ liệu cấu trúc tô-pô thô và EDA chính cho mốc M2 trở đi.
 Telemetry là nguồn độc lập phục vụ ngữ nghĩa tấn công (Attack Semantics) và khả năng quan sát (observability).
 Dữ liệu A/B tiếp tục phục vụ kiểm thử hồi quy (regression), so sánh collector, độ bền bỉ đa miền/parser và làm mốc đối chứng chuẩn cho BloodHound.
@@ -48,7 +48,7 @@ Week 4 #192/#200 giữ ngoài scope; các checkpoint dưới đây là lịch s�
 
 ## Closure và amendments hiện hành
 
-[Week 1 review](worklog/week-01-review.md), [Week 2 review](worklog/week-02-review.md) và [closure audit](research/week-01-02-closure-audit.md) ghi evidence cùng successor ownership.
+[Week 1 review](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-01-review.md), [Week 2 review](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-02-review.md) và [closure audit](research/week-01-02-closure-audit.md) ghi evidence cùng successor ownership.
 Bảng W01-W16 phía trên là kế hoạch khởi đầu được giữ như lịch sử và các ô `Chưa tạo` không còn là live issue tracker.
 M0 / Week 1 và M1 / Week 2 đã hoàn thành về technical deliverables.
 ADR-0007/0008/0009/0010 và các accepted truth-migration issues là nguồn quyết định hiện hành khi chúng supersede mô tả lịch sử.

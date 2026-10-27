@@ -4,7 +4,7 @@ Trạng thái: Completed (Refs #32).
 Người thực hiện: @nairyuuu (Thực tập sinh B).
 Người review: @Lolavine777 (Thực tập sinh A).
 Liên kết nhiệm vụ: Refs #32, Refs #20, Refs #26, Refs #27, Refs #31.
-Quyết định kiến trúc liên quan: [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), [ADR-0006](../adr/ADR-0006-two-dataset-evaluation-framework.md) (lich su), [ADR-0002](../adr/ADR-0002-edge-directionality-semantics.md), [ADR-0003](../adr/ADR-0003-host-access-inference-policy.md).
+Quyết định kiến trúc liên quan: [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), [ADR-0006](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0006-two-dataset-evaluation-framework.md) (lich su), [ADR-0002](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0002-edge-directionality-semantics.md), [ADR-0003](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0003-host-access-inference-policy.md).
 Mã nguồn tái lập: `deploy/bloodhound/compose.yml`, `scripts/run_bloodhound_baseline.py`, `scripts/bloodhound_baseline_audit.py`.
 
 ---

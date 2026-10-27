@@ -8,7 +8,7 @@ Key components:
 - `configs/contract.yml`: Core contract defining schema versions, canonical ID formats, allowed node/edge kinds, required/optional fields, and weight profiles.
 - `src/parser/`: Raw BloodHound data ingestion, canonical ID normalization, provenance preservation, and graph assembly.
 - `src/engine/`: Weighted pathfinding (Dijkstra, Top-K), deterministic tie-breaking, and path reconstruction.
-- `docs/research/` & `docs/adr/`: Security semantics research, taxonomy, and Architectural Decision Records (ADR-0001 through ADR-0006).
+- `docs/research/`: Security semantics research and taxonomy. Historical ADRs are archived at tag `neo-thesis-v2`.
 - `tests/` & `data/samples/`: Unit/contract test suite and synthetic sample fixtures.
 
 ---
@@ -28,7 +28,7 @@ Key components:
    - Never assume code or weights are correct just because CI checks pass. Rigorously evaluate AD security semantics, directionality, and boundary assumptions.
 
 4. **Contract, Taxonomy & ADR Consistency**:
-   - Code, tests, and documentation must strictly align with `configs/contract.yml` and approved ADRs (`docs/adr/`).
+   - Code, tests, and documentation must strictly align with `configs/contract.yml` and the ADRs archived at tag `neo-thesis-v2`.
    - Flag any schema, ID formatting, or directionality drift that lacks an accompanying contract or ADR update.
 
 5. **Strict Data & Assumption Stratification**:
@@ -53,5 +53,5 @@ When files in the following areas are touched, verify their specific invariants 
 - **`configs/contract.yml`**: Verify schema backward compatibility, valid node/edge kinds, non-negative weight profiles with `production_ready: false`, and strict distinction between absent optional fields and rejected explicit `null` values.
 - **`src/parser/`**: Verify canonical ID normalization (`sid_then_scoped_sid_then_guid`, lowercase GUIDs, no guessing), edge directionality per ADR-0002, provenance integrity, host access inference per ADR-0003, and `process_records` error policy compliance.
 - **`src/engine/`**: Verify non-negative edge costs for Dijkstra, multigraph edge handling, deterministic tie-breaking, comprehensive path reconstruction (`node_ids`, `edge_ids`, `total_cost`, `profile`), and graceful handling of disconnected nodes/cycles.
-- **`docs/research/` & `docs/adr/`**: Verify technical claim alignment with code/contract, explicitly stated assumptions, complete ADR format, and fulfillment of linked issue criteria.
+- **`docs/research/`**: Verify technical claim alignment with code/contract, explicitly stated assumptions, and fulfillment of linked issue criteria.
 - **`tests/` & `data/samples/`**: Verify coverage of the 8 Milestone 1 edge kinds, edge cases, clear labeling of synthetic fixtures, and strict absence of real AD customer data or secrets.

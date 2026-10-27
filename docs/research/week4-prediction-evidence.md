@@ -44,7 +44,7 @@ Pin mã được đọc và pipeline được chạy là `develop@891bda0001b995
 [#175 đã đóng](https://github.com/nairyuuu/ad-weighted-graph/issues/175#issuecomment-5992315230) sau golden nền; [#196 đã đóng](https://github.com/nairyuuu/ad-weighted-graph/issues/196#issuecomment-6008002642) sau cross-reproduction trên comparison contract được chấp nhận.
 Không làm lại hai phần này; full comparator vẫn NOT_MEASURABLE trong boundary đã chốt, không là parity CE toàn sản phẩm.
 [#174](https://github.com/nairyuuu/ad-weighted-graph/issues/174) vẫn mở và thuộc B: A đưa yêu cầu/kỳ vọng, không chọn schema, thêm catalog hoặc sửa engine trong lượt này.
-[ADR-0004, amendment hiện hành](../adr/ADR-0004-synthetic-goal-edges-and-dcsync-co-occurrence.md) cũng không cho phép biến kế hoạch DCSync cũ thành implementation đã có.
+[ADR-0004, amendment hiện hành](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0004-synthetic-goal-edges-and-dcsync-co-occurrence.md) cũng không cho phép biến kế hoạch DCSync cũ thành implementation đã có.
 
 ## B. Vì sao khảo sát sáu cơ chế này?
 
@@ -420,7 +420,7 @@ A cung cấp luận cứ và review expected outcomes sau khi hướng được 
 
 ## 7. Xác suất toàn đường và chống đếm lặp
 
-[ADR-0013](../adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [interface](path-ranking-interface-specification.md) và mã assessment hiện dùng conditional prefix bounds.
+[ADR-0013](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [interface](path-ranking-interface-specification.md) và mã assessment hiện dùng conditional prefix bounds.
 Gọi F là foothold đã cho, S là kịch bản cố định, Eᵢ là một thành công cần thiết mới trong chương trình công việc:
 
 $$P(E_1,\ldots,E_k\mid F,S)=\prod_{i=1}^{k}P(E_i\mid F,S,E_1,\ldots,E_{i-1}).$$
