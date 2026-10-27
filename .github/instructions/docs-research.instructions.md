@@ -1,9 +1,9 @@
 ---
-applyTo: "docs/research/**, docs/adr/**"
+applyTo: "docs/research/**"
 ---
-# Review Checklist: Research Docs & ADRs (`docs/research/`, `docs/adr/`)
+# Review Checklist: Research Docs (`docs/research/`)
 
-When reviewing changes to `docs/research/` or `docs/adr/`, verify the following requirements:
+When reviewing changes to `docs/research/`, verify the following requirements:
 
 1. **Alignment with Contract & Code**:
    - Technical specifications, node/edge naming, and formulas must strictly match `configs/contract.yml` and implementation in `src/`.
@@ -14,9 +14,5 @@ When reviewing changes to `docs/research/` or `docs/adr/`, verify the following 
    - Any claim regarding Active Directory internals, BloodHound collector mechanics, or Windows security behaviors must cite
      official documentation, research papers, or reproducible test methodology.
 
-3. **ADR Structure & Standards**:
-   - New ADRs must follow `docs/templates/adr.md` (Title, Status, Context, Decision, Consequences, Alternatives Considered).
-   - Invariants and trade-offs must be clearly articulated.
-
-4. **Issue Acceptance Criteria Alignment**:
+3. **Issue Acceptance Criteria Alignment**:
    - Ensure the documentation directly addresses the goals and acceptance criteria of the referenced GitHub issue.

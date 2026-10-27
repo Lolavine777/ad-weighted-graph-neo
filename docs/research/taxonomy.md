@@ -5,8 +5,8 @@ Chủ trì: Thực tập sinh A (@Lolavine777).
 Reviewer: Thực tập sinh B (@nairyuuu).
 Liên kết nhiệm vụ: Refs #1, Refs #2, Refs #3, Refs #4, Refs #5, Refs #53, Refs #79, Refs #80.
 Phiên bản schema: historical contract v0.1.0 reference; contract hien hanh la v1.0.0.
-Chiến lược hiện hành: [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), [Attack Semantics](attack-semantics.md).
-Quyết định direct-only: [ADR-0009](../adr/ADR-0009-direct-memberof-transitive-resolution.md).
+Chiến lược hiện hành: [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md), [Attack Semantics](attack-semantics.md).
+Quyết định direct-only: [ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md).
 
 Tài liệu này ghi lại tám relationship M1 và phân biệt structural evidence hiện hành với các ví dụ kỹ thuật, traversal và weighting lịch sử.
 Quy tắc runtime nằm trong [catalog](../../configs/attack_semantics.yml), còn nguồn raw-field và confidence của từng claim nằm trong [evidence matrix](m1-evidence-audit.md) và [#94 audit](claim-to-field-traceability.md).
@@ -150,7 +150,7 @@ PR #96 đã thay thế RODC/DCSync wording; canonical boundary fields theo Graph
 ### 2.5. Quy chuẩn Semantics và Biểu diễn Group Nesting (Giải quyết Issue #53)
 
 Dựa trên kết quả khảo sát thực nghiệm tại [group-nesting-findings.md](group-nesting-findings.md), quan hệ lồng nhóm (Group Nesting) chiếm tới gần 40% tổng số quan hệ thành viên trong dữ liệu thực tế (15/42 ở Dataset A và 63/161 ở Dataset B).
-Phần này diễn giải quy chuẩn taxonomy theo [ADR-0009](../adr/ADR-0009-direct-memberof-transitive-resolution.md):
+Phần này diễn giải quy chuẩn taxonomy theo [ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md):
 
 #### 1. Quyết định lưu trữ Direct-Only (Không materialize transitive MemberOf)
 - **Quyết định:** Structural graph chỉ lưu `MemberOf` trực tiếp (direct-only), sau identity resolution và reconciliation của source-backed evidence; không mặc định raw occurrences ánh xạ 1:1 thành canonical edges.

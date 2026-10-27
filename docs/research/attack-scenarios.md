@@ -15,8 +15,8 @@ causal dependencies và terminal security predicate. Không yêu cầu observed 
 Golden correctness là lời khẳng định trong **bounded catalog được khai cho mỗi fixture**;
 không tuyên bố bao phủ toàn bộ kỹ thuật tấn công AD.
 
-Authority: [ADR-0008](../adr/ADR-0008-structural-graph-attack-semantics-layering.md),
-[ADR-0009](../adr/ADR-0009-direct-memberof-transitive-resolution.md),
+Authority: [ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md),
+[ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md),
 [Graph Contract 1.3.0](../../configs/contract.yml),
 [Catalog 0.3](../../configs/attack_semantics.yml), immutable `AttackState` và
 public `generate_attack_paths`/semantics API. Week 3 scenario contract còn ghi catalog

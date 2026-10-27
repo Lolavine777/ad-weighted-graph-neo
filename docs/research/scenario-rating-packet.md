@@ -8,7 +8,7 @@
 - Trạng thái gói định mức: Prepared (Hai người phù hợp trong nhóm có thể đánh giá độc lập; actual ratings PENDING, chữ ký tùy chọn)
 - Người biên soạn: @Lolavine777 (TTS A)
 - Reviewer: @nairyuuu (TTS B)
-- Tài liệu quy chuẩn đi kèm: [ADR-0013](../adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [evidence-rating-governance.md](evidence-rating-governance.md), [path-ranking-interface-specification.md](path-ranking-interface-specification.md)
+- Tài liệu quy chuẩn đi kèm: [ADR-0013](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [evidence-rating-governance.md](evidence-rating-governance.md), [path-ranking-interface-specification.md](path-ranking-interface-specification.md)
 - Issue / PR: Refs #143, Refs #42, Refs #48
 
 ## Làm rõ workflow hiện hành - 2026-10-01

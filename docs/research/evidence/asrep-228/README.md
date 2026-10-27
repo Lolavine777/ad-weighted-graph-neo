@@ -51,4 +51,4 @@ thành PASS. Private reproduction cần authorized manifest-verified inputs;
 không có private run, cracking hay live exploitation.
 
 Xem [thiết kế và review fixes](../../asrep-228.md) và
-[worklog](../../../worklog/2026-10-08-ttsB-issue228-asrep.md).
+[worklog](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-08-ttsB-issue228-asrep.md).

@@ -4,7 +4,7 @@
 - Người chuẩn bị: A @Lolavine777; reviewer: B @nairyuuu.
 - Trạng thái: thiết kế/giao diện #165 và scoped parameters #176 accepted; final integration #182, reconciliation #47 và A/B reproduction #196 accepted; final package #48/#158 technically accepted bởi B, chờ merge #202 và closure issues.
 - Refs [PR #165](https://github.com/nairyuuu/ad-weighted-graph/pull/165), [#163](https://github.com/nairyuuu/ad-weighted-graph/pull/163), [#162](https://github.com/nairyuuu/ad-weighted-graph/issues/162), [#143](https://github.com/nairyuuu/ad-weighted-graph/issues/143), [#158](https://github.com/nairyuuu/ad-weighted-graph/issues/158), [PR #159](https://github.com/nairyuuu/ad-weighted-graph/pull/159), [PR #161](https://github.com/nairyuuu/ad-weighted-graph/pull/161), #42, #48.
-- Quy chiếu: [ADR-0013](../adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [Interface Specification 1.0.0](path-ranking-interface-specification.md), [Scoped Parameter Bundle 1.0.0](../../tests/fixtures/ranking/seamless_parameter_bundle.json), [governance 1.0.0](evidence-rating-governance.md), [SEAMLESS packet và brief](seamless-scenario-rating-packet.md).
+- Quy chiếu: [ADR-0013](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0013-scoped-path-ranking-and-pareto-frontier.md), [Interface Specification 1.0.0](path-ranking-interface-specification.md), [Scoped Parameter Bundle 1.0.0](../../tests/fixtures/ranking/seamless_parameter_bundle.json), [governance 1.0.0](evidence-rating-governance.md), [SEAMLESS packet và brief](seamless-scenario-rating-packet.md).
 
 ## Current-state amendment - 2026-10-06
 

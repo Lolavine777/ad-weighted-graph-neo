@@ -16,7 +16,7 @@ Refs #196 #47 #48 #158 #195.
 A tạo worktree mới từ exact `develop@cc5f971435dc7d14476d6055024f441e398a4ff8`; `git status --porcelain=v1` rỗng trước cả hai runs.
 Đây là revision được đo, không phải tuyên bố revision nghiệm thu cuối cho Week 3.
 [Manifest A](../../reports/research/issue-196-ttsa-clean-reproduction.json) được sinh bởi [replay harness](../../scripts/research/reproduce_seamless_legacy.py), không hand-edit output để khớp.
-[Worklog](../worklog/2026-10-05-ttsA-issue196-clean-reproduction.md) ghi checks và phần B còn lại.
+[Worklog](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-05-ttsA-issue196-clean-reproduction.md) ghi checks và phần B còn lại.
 
 ## Boundary và prerequisites
 

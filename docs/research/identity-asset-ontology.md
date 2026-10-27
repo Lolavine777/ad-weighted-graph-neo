@@ -3,7 +3,7 @@
 ## Tiêu đề & Metadata
 - **Status:** Proposed (Research v0.1)
 - **Liên kết nhiệm vụ:** Refs #62
-- **Quyết định kiến trúc:** [ADR-0010](../adr/ADR-0010-identity-asset-semantic-facets.md)
+- **Quyết định kiến trúc:** [ADR-0010](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0010-identity-asset-semantic-facets.md)
 - **Contract tham chiếu:** `configs/contract.yml` v1.0.0
 - **Phạm vi:** Toàn bộ node kinds và 8 canonical M1 edge kinds.
 
@@ -166,5 +166,5 @@ Ví dụ minh họa cụ thể cho mô hình phân tách này:
 
 ## 9. Nguồn Tham khảo
 - [Taxonomy](./taxonomy.md)
-- [ADR-0002: Edge Directionality Semantics](../adr/ADR-0002-edge-directionality-semantics.md)
+- [ADR-0002: Edge Directionality Semantics](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0002-edge-directionality-semantics.md)
 - [Contract Schema](../../configs/contract.yml)

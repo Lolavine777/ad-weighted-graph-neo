@@ -1,8 +1,8 @@
 # Attack Semantics implementation
 
 Refs [issue #63](https://github.com/nairyuuu/ad-weighted-graph/issues/63).
-Authority: [ADR-0008](adr/ADR-0008-structural-graph-attack-semantics-layering.md),
-[research #58](research/attack-semantics.md), [ADR-0007](adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md),
+Authority: [ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md),
+[research #58](research/attack-semantics.md), [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md),
 [M1 contract](../configs/contract.yml), and existing tests. Catalog version: `0.2`.
 
 ## Architecture and public API

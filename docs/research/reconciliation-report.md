@@ -7,7 +7,7 @@
 
 **Evidence #194 xác nhận full MemberOf exact-equal; [comparison contract #195](seamless-legacy-403-comparison-contract.md) là source of truth cho semantics và disposition của tám relation M1.**
 Contract chốt lựa chọn của A để @nairyuuu review; không coi accepted evidence #194 là human acceptance của common-semantics contract.
-Xem [report thật và reproduction](issue-47-seamless-legacy-403-reconciliation.md), [machine evidence](../../reports/research/issue-47-seamless-legacy-403-reconciliation.json) và [worklog mới](../worklog/2026-10-05-ttsA-issue47-post189-reconciliation.md).
+Xem [report thật và reproduction](issue-47-seamless-legacy-403-reconciliation.md), [machine evidence](../../reports/research/issue-47-seamless-legacy-403-reconciliation.json) và [worklog mới](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-05-ttsA-issue47-post189-reconciliation.md).
 Rerun verify raw manifest và reuse native Legacy 4.0.3 full exports của #184, khớp đúng ba handoff digests #183.
 Full MemberOf có 15.917 matching, 0/0 differences; full comparator giữ `NOT_MEASURABLE` vì `export_complete=false` và full machine scope không tương đương các common slices đã chọn.
 Không claim parity hoặc đóng #47/#48.
@@ -214,4 +214,4 @@ SID synthetic cũ có subauthority `000` đã được đổi thành `100` hợp
 
 Những ca CLI trước sửa đã tái hiện mất scope, false MATCH do metadata/input, Contains ngoài scope, ledger 12 còn 10 và evidence count 13 không có provenance.
 Các regression sau sửa kiểm tra exit/verdict, danh tính và counts bằng kỳ vọng độc lập; lỗi input có stderr rõ, không traceback.
-Kết quả kiểm chứng cuối và giới hạn môi trường được ghi tại [worklog](../worklog/2026-10-01-ttsA-reconciliation.md).
+Kết quả kiểm chứng cuối và giới hạn môi trường được ghi tại [worklog](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-01-ttsA-reconciliation.md).

@@ -17,7 +17,7 @@ Phạm vi cơ sở: snapshot tĩnh, đơn miền, phân tích dữ liệu đư�
 
 ## Chien luoc du lieu va danh gia hien hanh
 
-[ADR-0007](adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md) la nguon quyet dinh hien hanh.
+[ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md) la nguon quyet dinh hien hanh.
 SEAMLESS la primary raw structural/topology dataset va EDA source cho M2+.
 Contract 1.3 accepts the observed AD Domain SID as typed Domain scope when objectGUID is absent.
 The complete fail-fast canonical graph passes Contract validation; its structural node/edge projection was imported into project Neo4j while assessments remain in canonical JSON.
@@ -58,7 +58,7 @@ Ma trận trên ghi kế hoạch đầu ra ban đầu theo [templates](templates
 
 ## Current-state amendment - 2026-09-23
 
-M0 / Week 1 và M1 / Week 2 đã hoàn thành về technical deliverables theo [Week 1 review](worklog/week-01-review.md), [Week 2 review](worklog/week-02-review.md) và [closure audit](research/week-01-02-closure-audit.md); checkpoint này không tạo mentor sign-off mới.
+M0 / Week 1 và M1 / Week 2 đã hoàn thành về technical deliverables theo [Week 1 review](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-01-review.md), [Week 2 review](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-02-review.md) và [closure audit](research/week-01-02-closure-audit.md); checkpoint này không tạo mentor sign-off mới.
 Trong ma trận, data inventory, taxonomy, graph contract và parser foundation đã có; parser hiện gồm manifest-backed loader, canonical normalizer, reconciliation và direct-edge builder cho năm quan hệ source-backed.
 Đây là một phần nền tảng M2 được triển khai sớm, nhưng M2 end-to-end chưa hoàn thành: host-derived graph, production weighting, CLI/integration và SEAMLESS same-snapshot evaluation còn các gate riêng.
 Dijkstra và choke-point analysis thuộc các mốc M3/M4 và cũng chưa hoàn tất.

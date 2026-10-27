@@ -13,7 +13,7 @@ data/samples/ ───────── kiểm thử không cần dữ liệu 
 
 ## Thống nhất trước khi viết parser
 
-[contract.yml](../configs/contract.yml) là contract structural M2 phiên bản `1.3.0`; graph `1.0.0`, `1.1.0` và `1.2.0` vẫn được nạp tương thích ngược. Chỉ 1.0/1.1 thiếu timestamp status được hiểu là `unknown_legacy`; 1.2 yêu cầu `timestamp_status` trên từng provenance record. Contract giữ lineage dẫn xuất có thứ tự và status thời gian ở từng provenance record, đồng thời cho phép scope Domain bằng objectGUID hoặc SID có thẩm quyền. ADR-0011 và ADR-0012 ghi lại các chiều độc lập về lineage và time. [ADR-0010](adr/ADR-0010-identity-asset-semantic-facets.md) quy định `Identity`, `Asset`, `PrivilegeContainer` và `ControlPlane` là semantic facets, không phải `node.kind`, còn `security_labels` là chiều riêng. Semantic layer có thể tham chiếu graph structural mà không thay đổi schema này.
+[contract.yml](../configs/contract.yml) là contract structural M2 phiên bản `1.3.0`; graph `1.0.0`, `1.1.0` và `1.2.0` vẫn được nạp tương thích ngược. Chỉ 1.0/1.1 thiếu timestamp status được hiểu là `unknown_legacy`; 1.2 yêu cầu `timestamp_status` trên từng provenance record. Contract giữ lineage dẫn xuất có thứ tự và status thời gian ở từng provenance record, đồng thời cho phép scope Domain bằng objectGUID hoặc SID có thẩm quyền. ADR-0011 và ADR-0012 ghi lại các chiều độc lập về lineage và time. [ADR-0010](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0010-identity-asset-semantic-facets.md) quy định `Identity`, `Asset`, `PrivilegeContainer` và `ControlPlane` là semantic facets, không phải `node.kind`, còn `security_labels` là chiều riêng. Semantic layer có thể tham chiếu graph structural mà không thay đổi schema này.
 
 `unit` là baseline mọi cạnh bằng 1; `illustrative` và `maut_v1` chỉ là profile thử nghiệm, **không phải kết quả nghiên cứu hoặc xác suất thực tế**. Mọi profile hiện đều yêu cầu trọng số tối thiểu `1.0` và chưa production-ready.
 
@@ -135,8 +135,8 @@ normalized_records = process_records(raw_records, normalizer.normalize)
 graph = builder.build(normalized_records)
 ```
 
-Builder phải tuân thủ [ADR-0002](adr/ADR-0002-edge-directionality-semantics.md)
-và [ADR-0003](adr/ADR-0003-host-access-inference-policy.md): `MemberOf` đi từ
+Builder phải tuân thủ [ADR-0002](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0002-edge-directionality-semantics.md)
+và [ADR-0003](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0003-host-access-inference-policy.md): `MemberOf` đi từ
 User/Group tới Group, `HasSession` từ Computer tới User. Suy luận quyền host cần
 SID builtin đầy đủ và bằng chứng gắn host hoặc GPO có phạm vi hợp lệ; `CanRDP`
 cần cả quyền allow và không có deny. `StatusAccessDenied` là `unknown`, không
@@ -144,7 +144,7 @@ tự sinh cạnh. Assessment `inferred` (ví dụ `reason: scoped_gpo`) và `rej
 cũng tách khỏi cạnh; chỉ positive evidence có provenance hợp lệ mới được xuất
 với weight theo profile.
 
-[ADR-0009](adr/ADR-0009-direct-memberof-transitive-resolution.md) quy định canonical graph
+[ADR-0009](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0009-direct-memberof-transitive-resolution.md) quy định canonical graph
 chi luu direct `MemberOf` co raw provenance. Transitive/effective membership thuoc
 traversal, query hoac host-access inference layer va phai giu chain, cycle guard va domain scope.
 
@@ -189,8 +189,8 @@ The implemented semantic layer lives in `src/engine/semantics/` and reads
 [attack_semantics.yml](../configs/attack_semantics.yml). Its public interfaces,
 runtime predicate meanings, limitations and acceptance-test mapping are documented in
 [Attack Semantics implementation](attack-semantics-implementation.md).
-The authoritative layering decision is [ADR-0008](adr/ADR-0008-structural-graph-attack-semantics-layering.md);
-[ADR-0007](adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md) owns the separate data/telemetry evaluation boundary.
+The authoritative layering decision is [ADR-0008](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0008-structural-graph-attack-semantics-layering.md);
+[ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md) owns the separate data/telemetry evaluation boundary.
 Canonical structural graph records and `maut_v1` remain unchanged. The evaluator
 returns explicit scenario effects; applying them creates a new attack state without
 modifying the snapshot. This layer does not execute attacks or infer observed activity.

@@ -4,7 +4,7 @@ Trạng thái: Active reference cho M2+; A/B duoc giu lam historical baseline.
 Người lập: @Lolavine777 (Thực tập sinh A).
 Người review: @nairyuuu (Thực tập sinh B).
 Liên kết nhiệm vụ: Refs #20, Refs #1, Refs #2, Refs #3, Refs #4, Refs #5, Refs #6, Refs #7, Refs #8.
-Quyết định kiến trúc liên quan: [ADR-0007](../adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md); [ADR-0006](../adr/ADR-0006-two-dataset-evaluation-framework.md) la lich su.
+Quyết định kiến trúc liên quan: [ADR-0007](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0007-enterprise-topology-independent-telemetry-evaluation.md); [ADR-0006](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/adr/ADR-0006-two-dataset-evaluation-framework.md) la lich su.
 Mã nguồn kiểm chứng độc lập: `scripts/verify_data_inventory.py`.
 
 ---

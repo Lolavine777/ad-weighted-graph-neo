@@ -185,7 +185,7 @@ correctness của #212 được upstream theo dõi riêng; PR này không claim 
 [Hai outputs/digests và lệnh reproduction](evidence/kerberoasting-216/README.md)
 pin source `afd0f68`; clean suite 1977 passed / 11 skipped. Actual SEAMLESS có
 manifest-verified trace, raw unknown, same-input comparison và witness đủ tới C0
-dưới assumptions ở scope riêng. [Worklog](../worklog/2026-10-07-ttsB-issue216-kerberoasting.md)
+dưới assumptions ở scope riêng. [Worklog](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/2026-10-07-ttsB-issue216-kerberoasting.md)
 ghi checks/skips và phần A cần cross-review. Exact PR head CI được bàn giao trong PR.
 
 ## Review #230: ranh giới semantic replay và initial actor set

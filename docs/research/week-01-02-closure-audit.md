@@ -3,7 +3,7 @@
 Audit date: 2026-09-22.
 Scope: original GitHub acceptance criteria, merged PR evidence, repository artifacts and accepted successor decisions.
 This is a retrospective audit, not a new mentor sign-off or proof of M2 end-to-end readiness.
-See [Week 1](../worklog/week-01-review.md) and [Week 2](../worklog/week-02-review.md) for the weekly template summaries.
+See [Week 1](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-01-review.md) and [Week 2](https://github.com/Lolavine777/ad-weighted-graph-neo/blob/282450279ae0afa035b9597b86b2d250f6feca69/docs/worklog/week-02-review.md) for the weekly template summaries.
 
 ## Historical issue disposition
 

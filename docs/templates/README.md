@@ -9,8 +9,6 @@ Copy mẫu tới đường dẫn đích, thay các chỗ `<...>` và xóa hướ
 | [Weight model](weight-model.md) | `docs/research/weight-model.md` |
 | [ADR](adr.md) | `docs/decisions/0001-<decision>.md` |
 | [Experiment](experiment.md) | `docs/experiments/EXP-001-<slug>.md` |
-| [Daily worklog](daily-worklog.md) | `docs/worklog/YYYY-MM-DD-ttsA.md` |
-| [Weekly review](weekly-review.md) | `docs/worklog/week-01-review.md` |
 | [Final report](final-report.md) | `reports/final-report.md` |
 
 Khi thêm bảng số liệu, luôn ghi đơn vị, tập mẫu, version dataset/profile/code và cách tái lập. Hình/bảng từ dữ liệu riêng phải được kiểm tra trước khi đưa lên GitHub.
