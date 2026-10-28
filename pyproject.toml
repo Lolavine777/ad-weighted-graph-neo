@@ -21,4 +21,7 @@ select = ["E", "F", "I", "B", "UP"]
 testpaths = ["tests"]
 pythonpath = ["."]
 addopts = "-ra --strict-markers"
-markers = ["integration: tests crossing parser and engine boundaries"]
+markers = [
+    "integration: tests crossing parser and engine boundaries",
+    "slow: release and acceptance replays; CI runs them on Ubuntu per push and on Windows nightly",
+]
