@@ -1,6 +1,6 @@
 -r requirements.txt
 pytest==9.1.1
-ruff==0.16.8
+ruff==0.17.1
 yamllint==1.38.0
 # Transitive dependencies from the verified Python 3.14 environment.
 colorama==0.4.6; sys_platform == "win32"
