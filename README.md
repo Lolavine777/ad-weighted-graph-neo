@@ -1,5 +1,13 @@
 # AD Weighted Graph neo
 
+> **English summary.** neo finds attack paths in Active Directory, from a compromised user or computer to critical groups such as Domain Admins, using BloodHound data.
+> Each path gets an effort score C (an ordinal estimate of attacker work), a step-by-step explanation, and the assumptions it relied on.
+> After you try a remediation, neo searches again from scratch to show whether a bypass remains.
+> On the public SEAMLESS dataset it found a scored path for 5,171 of 5,180 source-target pairs; on WRAITH, two of three remediations still left a bypass.
+> This is my undergraduate thesis (tag `neo-thesis-v2`); the documentation is in Vietnamese.
+>
+> **[Open the live demo](https://lolavine777.github.io/ad-weighted-graph-neo/)**: sample results in the browser, nothing to install.
+
 Hệ thống phân tích đường tấn công trong Active Directory dựa trên đồ thị và công sức thực hiện.
 Từ một User hoặc Computer bị chiếm, neo tìm các chuỗi hành động có điều kiện tới tài sản quan trọng như Domain Admins (DA) hoặc Enterprise Admins (EA).
 Mỗi đường được chấm công sức C, một điểm thứ bậc cho lượng việc kẻ tấn công phải làm, và được giải thích theo từng bước cùng các giả định đã dùng.
@@ -12,7 +20,7 @@ Repo là sản phẩm khóa luận tốt nghiệp; bản dùng trong khóa luậ
 
 ### 1. Xem demo, không cần cài đặt
 
-Mở file [`web/neo-viewer/index.html`](web/neo-viewer/index.html) bằng trình duyệt.
+Mở [bản demo trên GitHub Pages](https://lolavine777.github.io/ad-weighted-graph-neo/), hoặc mở file [`web/neo-viewer/index.html`](web/neo-viewer/index.html) bằng trình duyệt.
 Viewer chạy offline với kết quả mẫu từ SEAMLESS và WRAITH: đồ thị hành động, Top-3 theo C, khảo sát nhiều nguồn và trước/sau can thiệp.
 Không cần Docker, server hay kết nối AD, và dữ liệu không được upload.
 Cách đọc từng màn hình nằm trong [hướng dẫn viewer](web/neo-viewer/README.md).
