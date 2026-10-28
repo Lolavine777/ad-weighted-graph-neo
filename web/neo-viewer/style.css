@@ -743,6 +743,21 @@ h3 {
     gap: 10px;
   }
 }
+@media (max-width: 600px) {
+  main {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .graph-toolbar {
+    height: auto;
+    min-height: 59px;
+    padding: 8px 12px;
+    flex-wrap: wrap;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
