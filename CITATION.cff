@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use neo in your work, please cite it as below."
+title: "AD Weighted Graph neo: effort-scored attack-path analysis for Active Directory"
+type: software
+authors:
+  - family-names: "Nguyễn"
+    given-names: "Đăng Long"
+license: MIT
+repository-code: "https://github.com/Lolavine777/ad-weighted-graph-neo"
+url: "https://lolavine777.github.io/ad-weighted-graph-neo/"
+version: "neo-thesis-v2"
+date-released: "2026-10-26"
+keywords:
+  - active-directory
+  - attack-path-analysis
+  - bloodhound
+  - graph-algorithms
+  - security
