@@ -4,7 +4,7 @@ ruff==0.16.8
 yamllint==1.38.0
 # Transitive dependencies from the verified Python 3.14 environment.
 colorama==0.4.6; sys_platform == "win32"
-iniconfig==2.3.0
+iniconfig==2.3.1
 packaging==26.3
 pathspec==1.1.1
 pluggy==1.6.0
