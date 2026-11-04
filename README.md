@@ -7,13 +7,14 @@
 > This is my undergraduate thesis (tag `neo-thesis-v2`); the documentation is in Vietnamese.
 >
 > **[Open the live demo](https://lolavine777.github.io/ad-weighted-graph-neo/)**: sample results in the browser, nothing to install.
+> To analyse your own export, run the local app: `.venv/bin/python -m scripts.neo_app`.
 
 Hệ thống phân tích đường tấn công trong Active Directory dựa trên đồ thị và công sức thực hiện.
 Từ một User hoặc Computer bị chiếm, neo tìm các chuỗi hành động có điều kiện tới tài sản quan trọng như Domain Admins (DA) hoặc Enterprise Admins (EA).
 Mỗi đường được chấm công sức C, một điểm thứ bậc cho lượng việc kẻ tấn công phải làm, và được giải thích theo từng bước cùng các giả định đã dùng.
 Sau khi thử một biện pháp giảm thiểu, neo tìm lại từ đầu để biết còn đường vòng hay không.
 
-Đầu vào là dữ liệu BloodHound thu bằng SharpHound hoặc BloodHound.py.
+Đầu vào là dữ liệu BloodHound thu bằng SharpHound hoặc BloodHound.py, mở qua ứng dụng trên máy mà không cần chuẩn bị gì thêm.
 Repo là sản phẩm khóa luận tốt nghiệp; bản dùng trong khóa luận được đánh dấu bằng tag `neo-thesis-v2`.
 
 ## Bắt đầu nhanh
@@ -37,7 +38,22 @@ uv pip sync --python .venv/bin/python requirements-neo.lock
 
 Trên Windows, thay `.venv/bin/python` bằng `.venv\Scripts\python` trong mọi lệnh.
 
-### 3. Chạy một phân tích
+### 3. Phân tích trong ứng dụng
+
+```sh
+.venv/bin/python -m scripts.neo_app
+```
+
+Lệnh mở trình duyệt tại một địa chỉ trên máy này.
+Trình tự dùng giống BloodHound: mở dữ liệu, tìm đối tượng theo tên, xem các quan hệ quanh nó, chọn điểm xuất phát và mục tiêu, rồi tìm đường.
+Bấm một bước của đường để thử gỡ quan hệ đó: neo dựng lại đồ thị rồi tìm lại từ đầu, và cho biết còn đường vòng, đã chặn trong phạm vi xét, hay chưa kết luận được.
+Mọi việc chỉ là mô phỏng trên bản dữ liệu; ứng dụng không kết nối Active Directory và dữ liệu không rời khỏi máy.
+
+Ứng dụng liệt kê các bản xuất trong `data/raw` và nhận thêm tệp `.zip` do SharpHound hoặc BloodHound.py tạo.
+Bản ghi không đọc được hoặc tham chiếu tới đối tượng ngoài bản xuất được bỏ qua và liệt kê ở màn hình báo cáo sau khi mở.
+Để có dữ liệu mẫu, chạy `.venv/bin/python -m scripts.download_ad_sampledata` (WRAITH và hai miền khác).
+
+### 4. Chạy một phân tích bằng dòng lệnh
 
 ```sh
 .venv/bin/python -m scripts.neo_baseline --output-dir reports/generated/neo-run-001
@@ -52,7 +68,7 @@ Trong thư mục output:
 - `neo_guided.json`: đầy đủ witness, giả định, ledger C, Top-K và giới hạn.
 - `summary.json`: tóm tắt lượt chạy.
 
-### 4. Mở kết quả trong viewer
+### 5. Mở kết quả trong viewer
 
 Mở lại viewer, bấm **Mở JSON** và chọn `reports/generated/neo-run-001/neo_guided.json`.
 
@@ -101,13 +117,13 @@ Phần neo bổ sung để đối chiếu là cách giải thích công việc/C
 Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụng; evidence lịch sử được giữ nguyên để đối chiếu.
 Tài liệu cũ ghi nhận các giai đoạn nghiên cứu trước; không tự chuyển các approval hoặc số đo đó thành kết luận mới của neo.
 
-- **Đã có:** pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
+- **Đã có:** ứng dụng phân tích trên máy, pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
 - **Bản khóa luận:** `neo-thesis-v2` thêm nền sáng, nhãn tiếng Việt cho viewer và bỏ dòng P/I khỏi brief CLI; engine, bảng C và số liệu giữ nguyên như `neo-thesis-v1`.
   [Nghiệm thu v1 và screenshot Brave](reports/neo/thesis-v1/acceptance.md), commit/tag và CI tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
 - **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc.
   GoodHound chưa tái lập trọn lượt chỉ từ checkout.
   Phạm vi và mức bằng chứng của từng bộ được giữ riêng ở [Kết quả đã kiểm chứng](#kết-quả-đã-kiểm-chứng).
-- **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset, search mới và điều khiển engine từ trình duyệt.
+- **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset và search mới.
   Giữ core và bảng C cho đợt hoàn thiện hiện tại.
 
 ## Hướng dẫn chi tiết
@@ -115,7 +131,7 @@ Tài liệu cũ ghi nhận các giai đoạn nghiên cứu trước; không tự
 ### Viewer
 
 Để mang đi trình bày, chạy `.venv/bin/python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó.
-UI đọc kết quả đã chạy; chưa khởi chạy engine từ trình duyệt.
+Bản viewer này chỉ đọc kết quả đã chạy; để chạy phân tích từ trình duyệt, dùng [ứng dụng trên máy](#3-phân-tích-trong-ứng-dụng).
 
 | Câu hỏi | Thao tác trong demo | Đọc kết luận |
 | --- | --- | --- |
@@ -213,6 +229,7 @@ Một máy đã bị chiếm với quyền local admin (preset local-admin-only)
 ```
 
 Thay `COMPUTER_ID` bằng ID máy trong snapshot.
+Với snapshot có nhiều miền như WRAITH, thêm `--domain-sid` để chọn miền.
 Neo tự tìm tới DA/EA và xuất `goal-*.md` giải thích đường, C và các giả định.
 Kịch bản này giả định các session được báo cáo còn mới và có credential dùng được; host có quyền admin mới dùng được session.
 C cho lấy credential và xác thực là 2 theo rubric neo, chưa phải số đo thực tế.

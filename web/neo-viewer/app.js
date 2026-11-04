@@ -1,4 +1,5 @@
-/* Local presentation only: no network requests or execution; only the theme choice is remembered. */
+/* Local presentation only: no network requests or execution; only the theme choice is remembered.
+   The local app adds workspace.js through NeoViewer; Pages and the offline copy never load it. */
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id),
@@ -42,7 +43,9 @@
     pan = { x: 0, y: 0 },
     nodePositions = Object.create(null),
     custom = null,
-    bundled = false;
+    bundled = false,
+    host = null,
+    lastNodeClick = 0;
   const label = (id) =>
     view.labels?.[id]?.label ||
     id?.replace(/^.*-(\d+)$/, "SID …$1") ||
@@ -132,6 +135,11 @@
     $("paths-mode").classList.toggle("active", mode === "paths");
     $("remediation-mode").classList.toggle("active", mode === "remediation");
     $("survey-mode").classList.toggle("active", mode === "survey");
+    $("workspace-mode")?.classList.toggle("active", mode === "workspace");
+    $("reset-demo").hidden = mode === "workspace";
+    $("dataset-label").textContent =
+      mode === "workspace" ? "DỮ LIỆU ĐANG MỞ" : "KẾT QUẢ";
+    if (mode === "workspace") return;
     $("input-origin").textContent = bundled
       ? "Demo từ báo cáo đã công bố"
       : "File trên máy · nguồn chưa xác minh · không upload";
@@ -159,6 +167,14 @@
     $("before").classList.toggle("active", phase === "before");
     $("after").classList.toggle("active", phase === "after");
     $("empty").hidden = true;
+    $("result-strip").hidden = false;
+    $("list-title").hidden = false;
+    if (mode === "workspace") {
+      host.render();
+      draw();
+      host.details(selection);
+      return;
+    }
     $("canvas").hidden = mode === "survey";
     $("survey").hidden = mode !== "survey";
     document.querySelector(".toolbar-right").hidden = mode === "survey";
@@ -461,6 +477,7 @@
       M.limitation(s);
   }
   function graphData() {
+    if (mode === "workspace") return host.graph();
     if (mode === "remediation")
       return {
         edges: currentCase().removed_edges.map((e, i) => ({
@@ -475,8 +492,8 @@
     };
   }
   function draw() {
-    const { edges } = graphData();
-    const ids = [...new Set(edges.flatMap((e) => [e.source, e.target]))];
+    const { edges, nodes: lone = [] } = graphData();
+    const ids = [...new Set([...edges.flatMap((e) => [e.source, e.target]), ...lone])];
     if (!ids.length && mode === "paths" && currentProgram())
       ids.push(view.source);
     const layout = Object.create(null),
@@ -541,23 +558,28 @@
         class:
           "edge-group" +
           (e.removed ? " removed" : "") +
+          (e.cls ? " " + e.cls : "") +
           (selection?.type === "edge" && selection.id === e.id
             ? " selected"
             : ""),
         tabindex: 0,
         role: "button",
-        "aria-label": `${e.id + 1}. ${action(e.technique_id)}: ${label(e.source)} → ${label(e.target)}`,
+        "aria-label": `${e.label || `${e.id + 1}. ${action(e.technique_id)}`}: ${label(e.source)} → ${label(e.target)}`,
       });
       g.append(
         svg("path", { d: path, class: "edge-hit" }),
         svg("path", { d: path, class: "edge-line" }),
       );
+      const at = e.labelAt ?? 0.5;
+      // Parallel arrows between two stacked nodes bend sideways; their labels also need rows.
+      const row = (n - (pairCount.get(key) - 1) / 2) * 16;
       const t = svg("text", {
-        x: (a.x + b.x) / 2 - ((dy / len) * bend) / 2,
-        y: (a.y + b.y) / 2 + ((dx / len) * bend) / 2 - 10,
+        x: a.x + dx * at - ((dy / len) * bend) / 2,
+        y: a.y + dy * at + ((dx / len) * bend) / 2 - 10 + row,
         class: "edge-label",
       });
-      t.textContent = `${mode === "paths" ? e.id + 1 + ". " : ""}${action(e.technique_id)}`;
+      t.textContent =
+        e.label || `${mode === "paths" ? e.id + 1 + ". " : ""}${action(e.technique_id)}`;
       g.append(t);
       if (e.source === e.target) {
         t.setAttribute("x", cx);
@@ -587,6 +609,7 @@
         class:
           "node " +
           kind +
+          (view.labels?.[id]?.cls ? " " + view.labels[id].cls : "") +
           (selection?.type === "node" && selection.id === id
             ? " selected"
             : ""),
@@ -612,9 +635,17 @@
         g.append(role);
       }
       g.onclick = () => {
+        // Drawing replaces this element, so a browser double click would never reach it.
+        const repeated =
+          mode === "workspace" &&
+          selection?.type === "node" &&
+          selection.id === id &&
+          performance.now() - lastNodeClick < 400;
+        lastNodeClick = performance.now();
         selection = { type: "node", id };
         draw();
         details();
+        if (repeated) host.expand(id);
       };
       g.onkeydown = (ev) => {
         if (ev.key === "Enter" || ev.key === " ") {
@@ -664,6 +695,7 @@
     details();
   }
   function details() {
+    if (mode === "workspace") return host.details(selection);
     const box = $("details");
     box.replaceChildren();
     if (mode === "remediation") {
@@ -960,4 +992,38 @@
   };
   themeLabel();
   load(NEO_DEMOS.paths);
+  // The local app's workspace screen shares this canvas, its drawing and its helpers.
+  globalThis.NeoViewer = {
+    el,
+    button,
+    fact,
+    note,
+    metrics,
+    pill,
+    action,
+    factText,
+    attach(next) {
+      host = next;
+    },
+    show(nextView) {
+      view = nextView;
+      mode = "workspace";
+      fillDataset();
+      render();
+    },
+    select(next) {
+      selection = next;
+    },
+    phase: () => phase,
+    setPhase(next) {
+      phase = next;
+    },
+    resetCanvas() {
+      selection = null;
+      nodePositions = Object.create(null);
+      zoom = 1;
+      pan = { x: 0, y: 0 };
+    },
+    showError,
+  };
 })();

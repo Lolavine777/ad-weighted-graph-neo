@@ -2,6 +2,7 @@
 
 Mở `index.html` trực tiếp trong trình duyệt. Không cần cài dependencies, server, Docker hoặc kết nối AD.
 Viewer chỉ đọc kết quả; không chạy query, sửa graph, chấm lại C hoặc thực thi remediation.
+Để chạy phân tích trên dữ liệu của bạn, dùng `.venv/bin/python -m scripts.neo_app`: ứng dụng này phục vụ cùng giao diện cộng thêm màn hình **Phân tích** từ `workspace.js`. GitHub Pages và file HTML đóng gói không tải `workspace.js`, nên vẫn chỉ đọc và không gửi request nào.
 
 - **Một nguồn bị lộ:** chọn đường, đọc C và các công việc ở bảng bên phải; mở **Giả định chương trình**, rồi bấm cạnh/nút để xem chi tiết. Kéo nút hoặc nền để bố trí, dùng zoom và Vừa khung.
 - **Chi tiết can thiệp:** chọn can thiệp, strategy và mục tiêu; chuyển Trước/Sau để xem quan hệ bị gỡ và kết luận tìm lại. Đường cũ bị cắt chưa có nghĩa mọi đường đã bị chặn.
@@ -34,7 +35,7 @@ Quyền ban đầu của nguồn khảo sát được đọc từ source profile
 
 Tối đa 128 MB/file, 200 candidates/query và 120 bước/chương trình. Top-K giữ nguyên thứ tự của engine; thiếu ledger/C không được suy thành 0. Đồ thị biểu diễn **request source → target**, không phải canonical BloodHound edges; actor/context được giữ riêng trong chi tiết. Khi JSON không kèm nhãn/type, viewer dùng ID và ký hiệu đối tượng chưa rõ type.
 
-Đây là UI đọc kết quả đã chạy, chưa khởi chạy engine hoặc quét một dataset mới qua trình duyệt.
+Bản mở trực tiếp này là UI đọc kết quả đã chạy; việc chạy phân tích nằm ở ứng dụng trên máy.
 
 Đóng gói một file HTML để mang đi demo (Python stdlib, dùng venv của repo):
 

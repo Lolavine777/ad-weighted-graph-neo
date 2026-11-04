@@ -2,7 +2,7 @@
   "name": "neo-viewer-tests",
   "private": true,
   "scripts": {
-    "test": "node --test model.test.cjs app.test.cjs"
+    "test": "node --test model.test.cjs app.test.cjs workspace.test.cjs"
   },
   "devDependencies": {
     "jsdom": "30.1.3"

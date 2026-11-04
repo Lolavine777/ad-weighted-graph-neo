@@ -432,6 +432,18 @@ h1 {
 .edge-group.removed .edge-label {
   fill: light-dark(#551c1c, #e0a1a1);
 }
+.edge-group.on-path .edge-line {
+  stroke: light-dark(#002865, #8fbcff);
+  stroke-width: 2.2;
+}
+.edge-group.cut-target .edge-line {
+  stroke: light-dark(#8a1f1f, #e88f8f);
+  stroke-width: 3;
+}
+.edge-group.cut-target .edge-label {
+  fill: light-dark(#6f1717, #f0a9a9);
+  font-weight: 650;
+}
 .node {
   cursor: pointer;
 }
@@ -663,6 +675,152 @@ h3 {
   padding: 16px 24px;
   border-radius: 8px;
   cursor: pointer;
+}
+.has-workspace .sidebar {
+  padding-top: 18px;
+}
+.has-workspace .nav {
+  margin-top: 2px;
+  padding: 8px 12px;
+}
+.has-workspace .nav:first-of-type {
+  margin-top: 10px;
+}
+.has-workspace .sidebar-rule {
+  margin: 14px 0;
+}
+.has-workspace .dataset-title {
+  margin: 8px 0 12px;
+}
+.has-workspace #empty {
+  top: 9%;
+}
+.ws-spaced {
+  margin-top: 14px;
+}
+.ws-busy {
+  font-size: 14px;
+  color: light-dark(#344860, #94aac5);
+}
+.ws-search,
+.ws-form select {
+  width: 100%;
+  font: inherit;
+  font-size: 12px;
+  color: inherit;
+  padding: 10px 9px;
+  background: light-dark(#d3dbe8, #171f2c);
+  border: 1px solid light-dark(#b9c4d5, #2a3546);
+  border-radius: 7px;
+}
+.ws-search {
+  margin: 10px 0 8px;
+}
+.ws-search:focus-visible {
+  outline: 2px solid light-dark(#00285d, #98c4ff);
+  outline-offset: 2px;
+}
+.ws-form select {
+  margin: 10px 0 6px;
+}
+.ws-results {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  max-height: 210px;
+  overflow-y: auto;
+  margin-bottom: 8px;
+}
+.ws-result {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  padding: 7px 6px;
+  text-align: left;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.ws-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: light-dark(#4b596b, #8898ac);
+}
+.ws-dot.user {
+  background: light-dark(#042a5b, #9ac4fa);
+}
+.ws-dot.group {
+  background: light-dark(#1d1152, #b1a4ec);
+}
+.ws-dot.computer {
+  background: light-dark(#40726a, #80b8af);
+}
+.ws-form {
+  margin: 16px 0 22px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.ws-chosen {
+  margin: 8px 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: light-dark(#08101c, #e0e9f6);
+  overflow-wrap: anywhere;
+}
+.ws-hint {
+  margin: 0 0 16px;
+  line-height: 1.5;
+  font-size: 10px;
+}
+.ws-primary,
+.ws-secondary {
+  width: 100%;
+  font-size: 12px;
+  margin-top: 10px;
+}
+.ws-primary {
+  border: 0;
+  font-weight: 650;
+  background: light-dark(#002865, #a6caff);
+  color: light-dark(#eef4ff, #10223c);
+}
+.ws-primary:hover {
+  background: light-dark(#0b3a82, #bcd8ff);
+}
+.ws-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+.ws-secondary {
+  background: transparent;
+  margin: 0 0 16px;
+}
+.inspector .ws-secondary {
+  margin: 16px 0 0;
+}
+.ws-data-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+  text-align: left;
+  margin-bottom: 8px;
+  padding: 13px 15px;
+  background: transparent;
+}
+.ws-open {
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--accent);
+}
+.survey > .ws-primary {
+  width: auto;
+  margin-top: 0;
 }
 [hidden] {
   display: none !important;
