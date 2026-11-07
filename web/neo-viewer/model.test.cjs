@@ -146,7 +146,7 @@ test("cap/blocked without proof never becomes no-path or zero cost", () => {
   assert.equal(
     M.outcome({ reached: false, truncation_reason: "expansion_limit_reached" })
       .tone,
-    "amber",
+    "pending",
   );
   assert.equal(
     M.outcome({ status: "blocked", reached: false, no_path_proven: false })
@@ -155,7 +155,7 @@ test("cap/blocked without proof never becomes no-path or zero cost", () => {
   );
   assert.equal(
     M.outcome({ reached: false, no_path_proven: true }).tone,
-    "green",
+    "clear",
   );
 });
 test("WRAITH summary retains DA/EA and both strategies without inferred bypass graphs", () => {

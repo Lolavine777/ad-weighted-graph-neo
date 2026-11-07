@@ -1,326 +1,101 @@
 # AD Weighted Graph neo
 
-> **English summary.** neo finds attack paths in Active Directory, from a compromised user or computer to critical groups such as Domain Admins, using BloodHound data.
-> Each path gets an effort score C (an ordinal estimate of attacker work), a step-by-step explanation, and the assumptions it relied on.
-> After you try a remediation, neo searches again from scratch to show whether a bypass remains.
-> On the public SEAMLESS dataset it found a scored path for 5,171 of 5,180 source-target pairs; on WRAITH, two of three remediations still left a bypass.
-> This is my undergraduate thesis (tag `neo-thesis-v2`); the documentation is in Vietnamese.
->
-> **[Open the live demo](https://lolavine777.github.io/ad-weighted-graph-neo/)**: sample results in the browser, nothing to install.
-> To analyse your own export, run the local app: `.venv/bin/python -m scripts.neo_app`.
+neo cho biết từ một tài khoản hoặc máy bị chiếm, kẻ tấn công đi tới Domain Admins theo những đường nào, tốn bao nhiêu công sức, và gỡ quan hệ nào thì đường đó hết.
+Đầu vào là dữ liệu BloodHound thu bằng SharpHound hoặc BloodHound.py.
 
-Hệ thống phân tích đường tấn công trong Active Directory dựa trên đồ thị và công sức thực hiện.
-Từ một User hoặc Computer bị chiếm, neo tìm các chuỗi hành động có điều kiện tới tài sản quan trọng như Domain Admins (DA) hoặc Enterprise Admins (EA).
-Mỗi đường được chấm công sức C, một điểm thứ bậc cho lượng việc kẻ tấn công phải làm, và được giải thích theo từng bước cùng các giả định đã dùng.
-Sau khi thử một biện pháp giảm thiểu, neo tìm lại từ đầu để biết còn đường vòng hay không.
+> **English summary.** neo finds attack paths in Active Directory from BloodHound data, scores each path by attacker effort (C), and tests a remediation by searching again from scratch.
+> Run the local app with `.venv/bin/python -m scripts.neo_app`, or [open the read-only demo](https://lolavine777.github.io/ad-weighted-graph-neo/).
+> This is my undergraduate thesis project; the documentation is in Vietnamese.
 
-Đầu vào là dữ liệu BloodHound thu bằng SharpHound hoặc BloodHound.py, mở qua ứng dụng trên máy mà không cần chuẩn bị gì thêm.
-Repo là sản phẩm khóa luận tốt nghiệp; bản dùng trong khóa luận được đánh dấu bằng tag `neo-thesis-v2`.
+## Dùng thử
 
-## Bắt đầu nhanh
+[Bản xem mẫu](https://lolavine777.github.io/ad-weighted-graph-neo/) chạy ngay trên trình duyệt, không cần cài đặt.
 
-### 1. Xem demo, không cần cài đặt
-
-Mở [bản demo trên GitHub Pages](https://lolavine777.github.io/ad-weighted-graph-neo/), hoặc mở file [`web/neo-viewer/index.html`](web/neo-viewer/index.html) bằng trình duyệt.
-Viewer chạy offline với kết quả mẫu từ SEAMLESS và WRAITH: đồ thị hành động, Top-3 theo C, khảo sát nhiều nguồn và trước/sau can thiệp.
-Không cần Docker, server hay kết nối AD, và dữ liệu không được upload.
-Cách đọc từng màn hình nằm trong [hướng dẫn viewer](web/neo-viewer/README.md).
-
-### 2. Cài đặt
-
-Cần Python 3.14 và [uv](https://docs.astral.sh/uv/).
-Chạy các lệnh từ thư mục gốc repo:
+Để phân tích dữ liệu của bạn, cần Python 3.14 và [uv](https://docs.astral.sh/uv/):
 
 ```sh
 uv venv --python 3.14 .venv
 uv pip sync --python .venv/bin/python requirements-neo.lock
-```
-
-Trên Windows, thay `.venv/bin/python` bằng `.venv\Scripts\python` trong mọi lệnh.
-
-### 3. Phân tích trong ứng dụng
-
-```sh
+.venv/bin/python -m scripts.download_ad_sampledata
 .venv/bin/python -m scripts.neo_app
 ```
 
-Lệnh mở trình duyệt tại một địa chỉ trên máy này.
-Trình tự dùng giống BloodHound: mở dữ liệu, tìm đối tượng theo tên, xem các quan hệ quanh nó, chọn điểm xuất phát và mục tiêu, rồi tìm đường.
-Bấm một bước của đường để thử gỡ quan hệ đó: neo dựng lại đồ thị rồi tìm lại từ đầu, và cho biết còn đường vòng, đã chặn trong phạm vi xét, hay chưa kết luận được.
-Mọi việc chỉ là mô phỏng trên bản dữ liệu; ứng dụng không kết nối Active Directory và dữ liệu không rời khỏi máy.
+Lệnh cuối mở ứng dụng trong trình duyệt.
+Ứng dụng chỉ chạy trên máy này và không kết nối tới Active Directory.
+Trên Windows, thay `.venv/bin/python` bằng `.venv\Scripts\python`.
 
-Ứng dụng liệt kê các bản xuất trong `data/raw` và nhận thêm tệp `.zip` do SharpHound hoặc BloodHound.py tạo.
-Bản ghi không đọc được hoặc tham chiếu tới đối tượng ngoài bản xuất được bỏ qua và liệt kê ở màn hình báo cáo sau khi mở.
-Để có dữ liệu mẫu, chạy `.venv/bin/python -m scripts.download_ad_sampledata` (WRAITH và hai miền khác).
+## Cách dùng
 
-### 4. Chạy một phân tích bằng dòng lệnh
+1. Chọn một bản xuất trong `data/raw`, hoặc mở tệp `.zip` của BloodHound. Phần bên phải cho biết những gì đã đọc và đã bỏ qua.
+2. Tìm tài khoản, máy hoặc nhóm theo tên. Bấm đúp một đối tượng để mở rộng các quan hệ quanh nó.
+3. Chọn **Xuất phát từ đây**, chọn giả định và mục tiêu, rồi bấm **Tìm đường**.
+4. Bấm một bước trên đường rồi chọn **Gỡ thử quan hệ này**. neo dựng lại đồ thị, tìm lại từ đầu và cho biết còn đường vòng hay đã chặn.
+5. Bấm **Tìm điểm nghẽn** để xem quan hệ nào nằm trên nhiều đường nhất, và gỡ nó thì được bao nhiêu nguồn.
 
-```sh
-.venv/bin/python -m scripts.neo_baseline --output-dir reports/generated/neo-run-001
-```
+Ví dụ trên WRAITH: từ `EXTCA01` tới Domain Admins có đường C=2 qua phiên của `BM`.
+Gỡ `BM` khỏi Domain Admins thì vẫn còn đường vòng với C=5; gỡ phiên của `BM` trên `EXTCA01` thì `EXTCA01` hết đường.
 
-Lần chạy đầu tải bộ dữ liệu công khai SEAMLESS theo manifest đã pin và kiểm checksum; raw đã đúng manifest được dùng lại mà không tải lại.
-Lệnh dựng snapshot, đặt một máy bị chiếm làm foothold rồi tìm đường tới Domain Admins.
-Dùng thư mục output mới cho mỗi lượt.
-Trong thư mục output:
+## C là gì
 
-- `neo_guided.md`: bản tóm tắt tiếng Việt gồm nguồn, đích, hành động, C và giả định đã dùng.
-- `neo_guided.json`: đầy đủ witness, giả định, ledger C, Top-K và giới hạn.
-- `summary.json`: tóm tắt lượt chạy.
+C cộng điểm các việc kẻ tấn công phải chủ động làm: đặt lại mật khẩu, sửa danh sách quyền, thêm thành viên nhóm, thực thi trên máy, dùng lại phiên đăng nhập.
+Quyền có sẵn nhờ thuộc nhóm không tốn điểm.
+C dùng để so sánh các đường với nhau; nó không phải số phút hay xác suất.
+[Bảng điểm và lý do chọn mức](docs/neo.md#chi-phi-c-cho-neo) nằm trong ghi chú thiết kế.
 
-### 5. Mở kết quả trong viewer
+## Kết quả
 
-Mở lại viewer, bấm **Mở JSON** và chọn `reports/generated/neo-run-001/neo_guided.json`.
-
-## Tài liệu
-
-- [Hướng dẫn chi tiết](#hướng-dẫn-chi-tiết) bên dưới: các lệnh cho một foothold, khảo sát nhiều nguồn, tìm đường rẻ hơn và thử can thiệp.
-- [Ghi chú neo](docs/neo.md): thiết kế, bảng C, datasets, số đo và giới hạn theo từng mốc.
-- [Hướng dẫn viewer](web/neo-viewer/README.md): định dạng file đầu vào và cách hiểu kết luận.
-- [Đề bài gốc](docs/00_todo.md), [quy ước dữ liệu](data/README.md), [đóng góp và kiểm thử](CONTRIBUTING.md).
-- [Nghiên cứu nền và evidence lịch sử](docs/research/); ADR và nhật ký công việc của giai đoạn trước được lưu tại tag `neo-thesis-v2`.
-
-Raw data và output dẫn xuất nằm local trong `data/raw`, `data/processed`, `reports/generated` và không được commit.
-
-## Kết quả đã kiểm chứng
-
-Các bộ dữ liệu kiểm những phần khác nhau; không gộp chúng thành một tỷ lệ thành công chung.
-
-| Bộ dữ liệu / phép kiểm | Kết quả | Phạm vi |
+| Bộ dữ liệu | Kết quả | Số liệu |
 | --- | --- | --- |
-| [SEAMLESS, khảo sát danh tính mạng](reports/neo/domain-discovery-fix.json) | 5.171/5.180 cặp có witness và C; 9 hết budget | Mỗi nguồn độc lập có danh tính mạng dùng được; không đại diện preset Computer chỉ có local admin |
-| [Bộ đối chứng CE cố định, sau sửa LocalGroup](reports/neo/localgroup-fix.md) | Neo và CE đều có đường cho 22/24 cặp | Cùng bộ cặp đã chốt; [báo cáo gốc](reports/neo/bloodhound-comparison.md) giữ kết quả trước sửa |
-| [WRAITH, remediation](reports/neo/remediation-rediscovery-results.json) | Hai can thiệp còn bypass; một can thiệp chặn trong scope | Tìm mới từ foothold ban đầu; witness được replay và kiểm ledger C |
-| [GoodHound, đánh giá công khai](reports/neo/goodhound-evaluation.md) | 10 cặp ban đầu: 0 witness, 4 hết budget, 2 no-path, 4 blocked, ở mỗi mode | Cần adaptation đầu vào; không có session; giữ đủ các kết quả bất lợi |
-| [GoodHound, positive control riêng](reports/neo/goodhound-positive-control-results.json) | User đã thuộc Administrators: C best-found=3, Top-3=3/4/4; 40 witness replay hợp lệ | Không gộp vào 10 cặp ban đầu; tìm lại sau can thiệp hết budget, chưa kết luận ngắt đường |
+| SEAMLESS, 2.590 nguồn tới DA và EA | 5.171/5.180 cặp có đường và C | [domain-discovery-fix.json](reports/neo/domain-discovery-fix.json) |
+| Đối chứng với BloodHound CE, 24 cặp | Cùng có đường ở 22/24 cặp | [localgroup-fix.md](reports/neo/localgroup-fix.md) |
+| WRAITH, ba can thiệp | Hai còn đường vòng, một chặn được nguồn đang xét | [remediation-rediscovery-results.json](reports/neo/remediation-rediscovery-results.json) |
+| GoodHound, 10 cặp | Không cặp nào có đường | [goodhound-evaluation.md](reports/neo/goodhound-evaluation.md) |
+| WRAITH, NORTH và SEAMLESS trên ứng dụng | Điểm nghẽn, C so với số bước, hiệu năng | [workspace-evaluation.json](reports/neo/workspace-evaluation.json) |
 
-[Bảng C và lý do chọn mức](docs/neo.md#chi-phi-c-cho-neo) giữ `neo-c-v1`; [độ nhạy](reports/neo/cost-sensitivity.md) đã đo trên candidate set cố định.
-GoodHound là đánh giá công khai sau adaptation, không phải blind holdout.
-Ba file báo cáo GoodHound được giữ nguyên từ nhánh đánh giá tại `74cb3ab`.
-[Helper GoodHound gốc và recipe](docs/research/evidence/goodhound-20261024/README.md) đã được thu hồi, khớp hash công bố.
-Đã tái lập input và native controls/ranking; toàn bộ cohort/remediation/CE lịch sử chưa được chạy lại từ checkout trong wrap-up.
-Không coi việc thu hồi helper là đã tái lập trọn nghiên cứu GoodHound.
-Demo WRAITH bên dưới có hướng dẫn tải input đã pin và không cần Docker.
+## Dòng lệnh
 
-[Kiểm thử hồi quy](reports/neo/full-suite-validation.md) và [kiểm chứng cài mới](reports/neo/clean-checkout-results.json) ghi rõ revision và môi trường; [CI tại mốc rubric](https://github.com/Lolavine777/ad-weighted-graph-neo/actions/runs/40116555549) đã pass trên Ubuntu/Windows.
-
-C là công sức ordinal theo scenario, không phải thời gian khai thác thực tế.
-Kết quả bị giới hạn tìm kiếm là best-found; chỉ gọi minimum khi engine có bằng chứng trong scope đã khai báo.
-[Thử nghiệm minimum-C có đáp án tính tay](reports/neo/minimum-probe.md) cho thấy đường đầu C=3 có thể bỏ sót đường dài hơn C=1; tăng cap tìm được minimum trong mô hình nhỏ, chưa giải yêu cầu minimum trên dữ liệu thật.
-[Pilot C-first trên dữ liệu thật](reports/neo/cost-first-pilot.md) không được đưa vào core: có cải thiện ở mô hình nhỏ nhưng làm giảm số cặp có witness trong budget.
-Quyền điều khiển máy không tự cấp danh tính mạng của tài khoản máy.
-
-## Trạng thái và giới hạn
-
-Hướng khóa luận là phân tích đường leo thang đặc quyền có xét chi phí và kiểm chứng biện pháp giảm thiểu.
-Phần neo bổ sung để đối chiếu là cách giải thích công việc/C và kết quả tìm lại sau can thiệp; chưa có kết luận tốt hơn BloodHound nói chung.
-Parser, taxonomy, semantic planner và nghiên cứu AD được tái sử dụng; evidence lịch sử được giữ nguyên để đối chiếu.
-Tài liệu cũ ghi nhận các giai đoạn nghiên cứu trước; không tự chuyển các approval hoặc số đo đó thành kết luận mới của neo.
-
-- **Đã có:** ứng dụng phân tích trên máy, pipeline CLI, bảng C, đối chứng CE theo scope, ví dụ can thiệp và viewer offline.
-- **Bản khóa luận:** `neo-thesis-v2` thêm nền sáng, nhãn tiếng Việt cho viewer và bỏ dòng P/I khỏi brief CLI; engine, bảng C và số liệu giữ nguyên như `neo-thesis-v1`.
-  [Nghiệm thu v1 và screenshot Brave](reports/neo/thesis-v1/acceptance.md), commit/tag và CI tại [issue #4](https://github.com/Lolavine777/ad-weighted-graph-neo/issues/4).
-- **Giới hạn đã biết:** dữ liệu thật chủ yếu cho C tốt nhất trong tập tìm được, chưa đáp ứng bảo đảm minimum-C từ node bất kỳ của đề gốc.
-  GoodHound chưa tái lập trọn lượt chỉ từ checkout.
-  Phạm vi và mức bằng chứng của từng bộ được giữ riêng ở [Kết quả đã kiểm chứng](#kết-quả-đã-kiểm-chứng).
-- **Add-on sau bàn giao:** mở rộng kỹ thuật/dataset và search mới.
-  Giữ core và bảng C cho đợt hoàn thiện hiện tại.
-
-## Hướng dẫn chi tiết
-
-### Viewer
-
-Để mang đi trình bày, chạy `.venv/bin/python web/neo-viewer/build.py --output reports/generated/neo-viewer-v1.html` rồi mở file HTML đó.
-Bản viewer này chỉ đọc kết quả đã chạy; để chạy phân tích từ trình duyệt, dùng [ứng dụng trên máy](#3-phân-tích-trong-ứng-dụng).
-
-| Câu hỏi | Thao tác trong demo | Đọc kết luận |
-| --- | --- | --- |
-| Một nguồn bị lộ có thể tới đâu, tốn bao nhiêu công sức? | Mở **Một nguồn bị lộ**, chọn một đường rồi bấm từng bước | C và các công việc ở bảng bên phải; mở **Giả định chương trình** để biết điều kiện đã dùng |
-| Can thiệp có giảm khả năng tiếp cận từ nhiều nguồn không? | Mở **Khảo sát nhiều nguồn**, lọc nguồn và chọn hàng; mở **Chi tiết can thiệp** để xem ví dụ WRAITH trước/sau | Phân biệt số đường mẫu bị cắt với số cặp nguồn–đích bị ngắt; còn đường vòng hoặc hết budget chưa phải đã chặn |
-
-Để xem kết quả mới, dùng **Mở JSON** với output query CLI có `semantic.candidates` (ví dụ `neo_guided.json` từ baseline), hoặc `results.json` của demo `neo_remediation`.
-Bảng khảo sát demo đọc từ `reports/neo/decision-sample.json`.
-`neo_domain` xuất `cells.jsonl` và brief, không xuất JSON query CLI cho viewer; đọc brief cho lượt này.
-Snapshot và JSON query **đầu vào** cũng không phải kết quả để mở.
-[Bảng định dạng và hướng dẫn viewer](web/neo-viewer/README.md).
-
-### SEAMLESS → foothold → Domain Admins → attack path
+Các lệnh dưới đây tái lập số liệu trong khóa luận.
+Chúng đọc nghiêm ngặt: bản ghi lạ làm dừng lượt chạy, nên cần bản kê dữ liệu đã có trong repo.
 
 ```sh
+# Một nguồn trên SEAMLESS, tải dữ liệu nếu chưa có
 .venv/bin/python -m scripts.neo_baseline --output-dir reports/generated/neo-run-001
-```
 
-Lệnh tải hoặc kiểm tra SEAMLESS theo manifest, dựng snapshot, khai báo machine foothold và scenario assumptions, đối chiếu FIFO/goal-guided/neo-guided qua CLI, rồi kiểm native replay và parity API/CLI.
-Scenario mặc định là `neo-standard-v1`: nhóm thiếu thuộc tính loại được giả định là security group, kể cả tên DISTLIST; thuộc tính non-security và fact False vẫn chặn.
-Các giả định được ghi rõ trong trace.
-Dùng `--scenario-policy seamless-standard-v1` để tái lập scenario thận trọng của baseline cũ.
-Dùng output directory mới cho mỗi lượt để giữ kết quả cũ.
-Đọc `summary.json`; `neo_guided.json` giữ đầy đủ witness, assumptions, C ledger, Top-K và giới hạn.
-Mở `neo_guided.md` để đọc bản tóm tắt tiếng Việt: nguồn–đích, hành động, C và giả định đã dùng.
-Đây là benchmark một machine-to-DA query với ba techniques và cap 6.000 expansions.
-Không phải chứng minh an toàn toàn miền hoặc phép so sánh BloodHound.
-[Biên bản kiểm chứng cài mới](reports/neo/clean-checkout-results.json) ghi môi trường, checksum, kiểm thử và các demo đã tái lập.
+# Mọi nguồn SEAMLESS tới DA và EA
+.venv/bin/python -m scripts.neo_domain --snapshot reports/generated/neo-run-001/snapshot.json \
+  --output-dir reports/generated/neo-domain-001 --workers 4
 
-Runner mặc định dùng bảng `neo-c-v1`.
-Để đối chiếu bảng reset cũ:
-
-```sh
-.venv/bin/python -m scripts.neo_baseline --effort-profile reset-activation-c-v2 \
-  --output-dir reports/generated/neo-reset-001
-```
-
-`neo-c-v1` gán C theo hành động reset, thêm membership, sửa ACL và thực thi host/WinRM, kể cả khi quyền đến từ nhóm hoặc danh tính thu được giữa đường.
-Membership có sẵn không thêm công sức.
-Runner trên vẫn chỉ bật ba techniques của benchmark cũ; dùng `scripts.exposure --effort-profile neo-c-v1` cho truy vấn nhiều techniques.
-Profile neo mặc định xuất Top-3 theo C.
-Exposure chọn `neo_guided` khi dùng profile neo; catalog ngoài nhóm techniques hỗ trợ sẽ ghi rõ fallback FIFO.
-`--search-order fifo` giữ cách tìm cũ.
-Xem [bảng C và giới hạn](docs/neo.md#chi-phi-c-cho-neo).
-
-### Tìm đường rẻ hơn với neo_refine
-
-Để tìm đường rẻ hơn sau khi đã có witness, chọn `neo_refine`.
-Chế độ này dùng guided trước, rồi tìm cải tiến C trong phần ngân sách còn lại; chỉ giữ cải tiến nghiêm ngặt và không làm mất kết quả tốt nhất ban đầu.
-Ví dụ một nguồn SEAMLESS:
-
-```sh
-.venv/bin/python -m scripts.neo_domain \
-  --snapshot reports/generated/neo-run-001/snapshot.json \
-  --source S-1-5-21-1271839998-3495686680-2211690266-1815 \
-  --search-order neo_refine --max-paths 10 --max-expansions 256 --workers 1 \
-  --output-dir reports/generated/neo-refine-demo
-```
-
-[Kết quả kiểm chứng](reports/neo/refinement-results.json): cùng cap 256 expansions, giữ 22/24 cặp có witness, hai cặp SEAMLESS giảm C=2→1 ở cả cap 1 và 10 witness.
-451 test liên quan pass; đã replay 528 chương trình thật và chạy CLI/worker E2E.
-[Lượt full suite sau đó](reports/neo/full-suite-validation.md) đã bao gồm mã refinement.
-Refinement tốn thêm lượt tìm kiếm; mặc định vẫn `neo_guided`.
-Chỉ áp dụng với bảng `neo-c-v1` chuẩn và techniques neo hỗ trợ.
-Khi còn cap/gap, kết quả vẫn là best-found, không tự nâng thành minimum đã chứng minh.
-
-Đối chiếu bộ 10 query trên snapshot vừa dựng; đổi `--max-paths 1` thành `3` để khảo sát nhiều đường:
-
-```sh
-.venv/bin/python -m scripts.neo_cohort \
-  --snapshot reports/generated/neo-run-001/snapshot.json \
-  --output-dir reports/generated/neo-cohort-001 --max-paths 1
-```
-
-### Query nhỏ có chi phí
-
-```sh
-.venv/bin/python -m src.engine query \
-  --query tests/fixtures/query_cli/two-routes-query.json \
-  --graph tests/fixtures/attack_scenarios/graphs/two-routes.json \
-  --ranking-query docs/research/ratings/week4/synthetic-a2-e.json \
-  --label synthetic --output reports/generated/toy-query.json \
-  --brief reports/generated/toy-query.md
-```
-
-### Use case 1: một máy bị chiếm
-
-Một máy đã bị chiếm với quyền local admin (preset local-admin-only):
-
-```sh
-.venv/bin/python -m scripts.neo_domain \
-  --snapshot reports/generated/neo-run-001/snapshot.json \
-  --scenario host-compromise --source COMPUTER_ID \
-  --output-dir reports/generated/neo-host-001 --workers 1
-```
-
-Thay `COMPUTER_ID` bằng ID máy trong snapshot.
-Với snapshot có nhiều miền như WRAITH, thêm `--domain-sid` để chọn miền.
-Neo tự tìm tới DA/EA và xuất `goal-*.md` giải thích đường, C và các giả định.
-Kịch bản này giả định các session được báo cáo còn mới và có credential dùng được; host có quyền admin mới dùng được session.
-C cho lấy credential và xác thực là 2 theo rubric neo, chưa phải số đo thực tế.
-Không tự biến quyền local admin thành danh tính mạng của tài khoản máy.
-User source vẫn bắt đầu bằng danh tính User dùng được.
-Bỏ `--source` để chạy các nguồn độc lập; giữ `--scenario identity` để tái lập cấu hình khảo sát danh tính mạng.
-CLI và brief nêu quyền ban đầu cùng số cạnh session trước khi diễn giải kết quả.
-Raw SEAMLESS không có session: dùng bộ này cho đường quyền/C; WRAITH kiểm chứng nhánh host/session.
-[Lượt kiểm tra SEAMLESS](reports/neo/seamless-host-check.json) giữ riêng kết quả local-admin-only và danh tính tài khoản máy.
-
-### Use case 2: sửa membership/session rồi tìm lại bypass
-
-Sửa một membership/session rồi tìm lại bypass tới DA/EA, không cần Docker:
-
-```sh
-.venv/bin/python -m scripts.download_ad_sampledata
-.venv/bin/python -m scripts.neo_import \
-  --raw-dir data/raw/ad_sampledata \
+# Ba can thiệp trên WRAITH
+.venv/bin/python -m scripts.neo_import --raw-dir data/raw/ad_sampledata \
   --manifest data/samples/manifests/ad-sampledata-v1.json \
   --time-policy data/samples/time-policies/ad-sampledata-v1.json \
   --export-prefix 20240305111414 --output-dir reports/generated/neo-inputs/wraith
 .venv/bin/python -m scripts.neo_remediation \
   --snapshot reports/generated/neo-inputs/wraith/snapshot.json \
-  --output-dir reports/generated/neo-remediation-demo-001
+  --output-dir reports/generated/neo-remediation-001
+
+# Đánh giá ứng dụng: điểm nghẽn, C so với số bước, hiệu năng
+.venv/bin/python -m scripts.neo_evaluation
 ```
 
-Các bước trên tải bộ lab public đã pin, kiểm 31 file theo manifest rồi dựng snapshot WRAITH bằng parser hiện tại.
-Nếu đã có raw đúng manifest, downloader chỉ kiểm lại; có thể dùng `--raw-dir` khi dữ liệu nằm ở nơi khác.
-Đọc `reports/generated/neo-remediation-demo-001/results.json`: mỗi hàng giữ case, trước/sau, strategy và kết luận `bypass`, `blocked_in_scope` hoặc `inconclusive`.
-Runner đối chiếu bản dựng nền với snapshot, sửa bản sao record trong bộ nhớ và dùng lại parser để cập nhật cả cạnh suy diễn.
-Chạy độc lập đúng ba can thiệp với cả `neo_guided`/`neo_refine`, cùng preset host/session, techniques, bảng `neo-c-v1` và budget 10 programs / 12 steps / 4.096 expansions.
-Mỗi lượt tìm mới từ foothold ban đầu; mọi witness được replay và đối chiếu C với ledger.
+Kết quả dòng lệnh dạng JSON mở được bằng nút **Mở JSON**; [hướng dẫn](web/neo-viewer/README.md) ghi rõ định dạng nào mở được.
 
-| Can thiệp và nguồn | C DA/EA trước | C DA/EA sau, cả hai strategy | Kết luận và giới hạn |
-| --- | --- | --- | --- |
-| RODCMANAGER, gỡ Administrators | 3 / 3 | 3 / 3 | Còn bypass; C best-found |
-| EXTCA01, bỏ session BM | 2 / 2 | Không có / Không có | Đã chặn trong scope, 3 expansions/đích, không truncated |
-| EXTCA01, gỡ BM khỏi DA | 2 / 2 | 5 / 2 | Còn bypass; refine tới DA hết 4.096 expansions, C best-found |
+## Phạm vi
 
-[Kết quả và hash evidence](reports/neo/remediation-rediscovery-results.json): 24 lượt, 200 witness replay/ledger hợp lệ.
-Đã sửa cách dựng graph remediation của demo: gỡ BM→DA cũng bỏ hai AdminTo phụ thuộc và bỏ nhánh suy diễn qua DA trên EXTDC01, giữ hỗ trợ qua EA.
-Session EXTCA01→BM có ba observation trùng nguồn hỗ trợ; demo bỏ cả hai PrivilegedSessions và một RegistrySessions.
-Evidence lớn nằm trong `reports/generated/neo-remediation-rediscovery-20261023-verified/`; BloodHound chỉ là baseline lịch sử, không chạy lại.
-Không có âm tính chưa kết luận trong ba ca này; chưa chứng minh C tối thiểu cho các ca thành công vì còn cap.
-Riêng refine trước can thiệp RODCMANAGER có 210 Unknown/đích ở `directory_write_allowed`; các nhánh này còn thiếu điều kiện, witness C=3 vẫn replay hợp lệ.
-No-path chỉ áp dụng snapshot/catalog/scenario local-admin-only đã khai báo, không bao phủ danh tính mạng tài khoản máy hoặc credential đã bị lấy trước can thiệp.
+neo xét 11 kỹ thuật chủ động trong một miền, trên ảnh chụp dữ liệu tĩnh.
+Ủy quyền Kerberos, AD CS, GPO và đường qua nhiều miền chưa nằm trong danh mục.
+Khi hết ngân sách tìm kiếm, C là mức tốt nhất đã tìm; nó chỉ được gọi là nhỏ nhất khi đã duyệt hết.
+Bản dùng trong khóa luận được đánh dấu bằng tag; số liệu và phiên bản mã của từng lượt chạy nằm trong tệp kết quả tương ứng.
 
-### Khảo sát mọi nguồn SEAMLESS
+## Tài liệu
 
-Khảo sát mọi User/Computer đủ điều kiện của SEAMLESS tới DA/EA, mỗi nguồn là một scenario độc lập có danh tính mạng dùng được (không gộp quyền):
-
-```sh
-.venv/bin/python -m scripts.neo_domain \
-  --snapshot reports/generated/neo-run-001/snapshot.json \
-  --output-dir reports/generated/neo-domain-001 --workers 4
-```
-
-Mặc định 1.024 expansions, 12 bước và một witness mỗi cặp; hết cap không phải no-path.
-Thêm `--resume` để tiếp tục cùng scope, hoặc dùng `--max-cells` để chia lượt.
-Đổi độ sâu bằng `--max-steps`; giới hạn quá ngắn có thể bỏ sót chuỗi hợp lệ.
-Thêm `--max-paths 10` để tìm tối đa 10 chương trình mỗi cặp và lấy Top-3 theo C.
-Với một `--source`, brief hiển thị các lựa chọn; JSON giữ điểm của các candidate và witness của Top-3.
-Đây là thứ hạng trong tập đã tìm được, chưa phải Top-3 toàn cục.
-Neo-guided v2 giảm ưu tiên các nhánh sửa ACL trên Computer không dẫn tới danh tính hoặc host/session trong catalog đang bật.
-Chỉ đổi thứ tự thử, không bỏ nhánh hoặc cấp quyền.
-Trên đúng 9 ca SEAMLESS từng hết cap, 7 ca nay có witness sau 14–42 expansions với cùng cap 1.024; hai ca BADBLOOD còn hết cap.
-Chưa chạy lại toàn miền để suy rộng.
-[Khảo sát search và ranking C](reports/neo/search-quality.json).
-[Ví dụ Top-3 theo C](reports/neo/ranking-C-example.md) giữ thao tác và ledger thực tế.
-Trên SEAMLESS, cùng 5.180 cặp nguồn–đích: sau sửa tìm được đường và C cho 5.171 cặp (trước: 255); còn 9 cặp hết lượt tìm, không ghi nhận Unknown.
-Số liệu và giới hạn: [kết quả discovery](reports/neo/domain-discovery-fix.json).
-`scope.json` giữ recipe/profile/source pins; `cells.jsonl` giữ kết quả và witness với các facts đã dùng, được native replay kiểm tra.
-Không lưu lặp toàn bộ graph/facts cho hàng nghìn query.
-Cần output directory mới khi đổi budget hoặc code.
-
-### Chọn đường theo C và thử can thiệp
-
-```sh
-.venv/bin/python -m scripts.neo_decision \
-  --snapshot reports/generated/neo-run-001/snapshot.json \
-  --output-dir reports/generated/neo-decision-001
-```
-
-Chọn cố định 3 User và 2 Computer, tìm tối đa 3 chuỗi tới mỗi đích DA/EA, xếp theo C, thử gỡ một membership đặc quyền rồi tìm lại đường vòng.
-Output có `report.md`, brief/ledger từng cặp và các gói kiểm chứng native.
-Thêm `--resume` để nối tiếp cùng code/snapshot.
-Kết quả SEAMLESS: [bản đọc ngắn](reports/neo/decision-brief.md).
-
-Mã nguồn của hai luồng chính: [runner neo_domain](scripts/neo_domain.py) cho một foothold hoặc nhiều nguồn độc lập, và [demo neo_remediation](scripts/neo_remediation.py) cho sửa record rồi tìm lại bypass.
+- [Ghi chú thiết kế](docs/neo.md): mô hình, bảng C và dữ liệu.
+- [Hướng dẫn giao diện](web/neo-viewer/README.md): các màn hình và định dạng tệp.
+- [Đóng góp và kiểm thử](CONTRIBUTING.md), [quy ước dữ liệu](data/README.md), [đề bài gốc](docs/00_todo.md).
+- [Nghiên cứu nền](docs/research/) và [số liệu các lượt chạy](reports/neo/).
 
 ## Giấy phép
 
 Mã nguồn phát hành theo [giấy phép MIT](LICENSE).
-Các bộ dữ liệu bên thứ ba mà repo dùng (SEAMLESS, bộ lab WRAITH, GoodHound) thuộc giấy phép của nguồn gốc.
+Các bộ dữ liệu bên thứ ba (SEAMLESS, WRAITH, GoodHound, NORTH) thuộc giấy phép của nguồn gốc.
+NORTH là bản xuất của lab GOADv2 lấy từ [m4lwhere/Bloodhound-CE-Sample-Data](https://github.com/m4lwhere/Bloodhound-CE-Sample-Data) (Unlicense).

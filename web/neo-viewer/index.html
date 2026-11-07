@@ -4,76 +4,60 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="color-scheme" content="light dark" />
-    <title>neo · Xem kết quả phân tích</title>
+    <title>neo, đường tấn công trong Active Directory</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="topbar">
-      <a class="brand" href="index.html" aria-label="neo trang đầu"
-        ><span class="brandmark">n</span>neo<span class="brand-sub"
-          >XEM KẾT QUẢ PHÂN TÍCH</span
-        ></a
-      >
-      <div class="top-actions">
-        <span class="local-indicator">● <span>Đọc kết quả offline</span></span
-        ><button id="theme" type="button">Nền sáng</button
-        ><button id="open-file">Mở JSON <span>↗</span></button
-        ><input id="file" type="file" accept=".json,application/json" hidden />
-      </div>
-    </header>
-    <main>
+    <main class="app">
       <aside class="sidebar">
-        <div class="section-label">KHÔNG GIAN LÀM VIỆC</div>
-        <button class="nav active" id="paths-mode">
-          <span>⌘</span> Một nguồn bị lộ
-        </button>
-        <button class="nav" id="survey-mode">
-          <span>▦</span> Khảo sát nhiều nguồn
-        </button>
-        <button class="nav" id="remediation-mode">
-          <span>◈</span> Chi tiết can thiệp
-        </button>
-        <div class="sidebar-rule"></div>
-        <div class="section-label" id="dataset-label">KẾT QUẢ</div>
-        <div id="dataset" class="dataset-title"></div>
-        <div id="source-card"></div>
-        <div class="section-label list-label" id="list-title">
-          CÁC ĐƯỜNG ĐÃ XẾP HẠNG
+        <a class="brand" href="index.html" aria-label="neo trang đầu">neo</a>
+        <nav class="modes" aria-label="Màn hình">
+          <button class="nav" id="paths-mode">Một nguồn bị lộ</button>
+          <button class="nav" id="survey-mode">Khảo sát nhiều nguồn</button>
+          <button class="nav" id="remediation-mode">Chi tiết can thiệp</button>
+        </nav>
+        <div class="sidebar-group">
+          <div class="label" id="dataset-label">Kết quả</div>
+          <div id="dataset" class="dataset-title"></div>
+          <div id="source-card"></div>
         </div>
+        <div class="label" id="list-title">Các đường</div>
         <div id="choices"></div>
         <div class="sidebar-bottom">
-          <span class="tiny-dot"></span
-          ><span id="input-origin">Demo từ báo cáo đã công bố</span
-          ><button id="reset-demo" title="Trở về dữ liệu demo">↺</button>
+          <span id="input-origin"></span>
+          <div class="sidebar-actions">
+            <button id="reset-demo" title="Trở về dữ liệu mẫu">Về mẫu</button>
+            <button id="open-file">Mở JSON</button>
+            <button id="theme" type="button">Nền sáng</button>
+          </div>
+          <input id="file" type="file" accept=".json,application/json" hidden />
         </div>
       </aside>
       <section class="workspace">
-        <div class="flow-guide" id="flow-guide"></div>
-        <div class="workspace-head">
-          <div>
-            <div class="eyebrow" id="eyebrow">SEAMLESS · ĐƯỜNG VÀ CÔNG SỨC</div>
-            <h1 id="heading">Đường tới Enterprise Admins</h1>
+        <header class="workspace-head">
+          <div class="head-text">
+            <h1 id="heading"></h1>
+            <p class="status" id="status"></p>
           </div>
-          <span class="status-pill" id="status"></span>
-        </div>
-        <div class="graph-toolbar">
-          <div class="segmented" id="phase-controls" hidden>
-            <button id="before">Trước</button
-            ><button id="after">Sau can thiệp</button>
-          </div>
-          <span id="graph-caption">Chương trình hành động</span>
-          <div class="toolbar-right">
-            <button id="zoom-out" aria-label="Thu nhỏ">−</button
-            ><button id="zoom-in" aria-label="Phóng to">+</button
-            ><button id="fit">Vừa khung</button>
-          </div>
-        </div>
+          <div class="result-strip" id="result-strip"></div>
+        </header>
         <div id="survey" class="survey" hidden></div>
         <div class="canvas" id="canvas">
+          <div class="graph-toolbar">
+            <div class="segmented" id="phase-controls" hidden>
+              <button id="before">Trước khi gỡ</button
+              ><button id="after">Sau khi gỡ</button>
+            </div>
+            <div class="toolbar-right">
+              <button id="zoom-out" aria-label="Thu nhỏ">−</button
+              ><button id="zoom-in" aria-label="Phóng to">+</button
+              ><button id="fit">Vừa khung</button>
+            </div>
+          </div>
           <svg
             id="graph"
             viewBox="0 0 1200 660"
-            aria-label="Đồ thị chương trình hành động"
+            aria-label="Đồ thị đường tấn công"
             role="img"
           >
             <defs>
@@ -88,6 +72,23 @@
               >
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="context-stroke" />
               </marker>
+              <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4.5 20.5c0-4.2 3.3-6.5 7.5-6.5s7.5 2.3 7.5 6.5" />
+              </symbol>
+              <symbol id="i-group" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <circle cx="9" cy="8.5" r="3.4" />
+                <circle cx="17" cy="9.5" r="2.5" />
+                <path d="M2.8 20c0-3.6 2.8-5.8 6.2-5.8s6.2 2.2 6.2 5.8" />
+                <path d="M17 14.4c2.6.2 4.4 2 4.4 4.7" />
+              </symbol>
+              <symbol id="i-computer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="3" y="4.5" width="18" height="12" rx="1.5" />
+                <path d="M8 20.5h8M12 16.5v4" />
+              </symbol>
+              <symbol id="i-object" viewBox="0 0 24 24" fill="currentColor">
+                <circle cx="12" cy="12" r="3.5" />
+              </symbol>
             </defs>
             <g id="viewport">
               <g id="edges"></g>
@@ -95,23 +96,11 @@
             </g>
           </svg>
           <div id="empty" hidden></div>
-          <div class="canvas-legend">
-            <span><i class="user-dot"></i>User</span
-            ><span><i class="group-dot"></i>Group</span
-            ><span><i class="host-dot"></i>Computer</span
-            ><span class="legend-note"
-              >Bấm đối tượng hoặc thao tác để xem chi tiết</span
-            >
-          </div>
         </div>
-        <div class="result-strip" id="result-strip"></div>
-        <div class="scope-note" id="scope-note"></div>
+        <p class="scope-note" id="scope-note"></p>
       </section>
       <aside class="inspector">
-        <div class="inspector-head">
-          <span class="section-label">CHI TIẾT</span
-          ><button id="clear-selection" aria-label="Bỏ chọn">×</button>
-        </div>
+        <button id="clear-selection" aria-label="Bỏ chọn">×</button>
         <div id="details"></div>
       </aside>
     </main>

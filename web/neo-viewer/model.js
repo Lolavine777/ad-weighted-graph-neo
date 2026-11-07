@@ -26,32 +26,26 @@
     const profile = text(source?.profile_kind);
     if (profile === "computer_usable_identity")
       return "Danh tính mạng máy dùng được";
-    if (profile === "user_usable_identity") return "Danh tính User dùng được";
+    if (profile === "user_usable_identity") return "Danh tính tài khoản dùng được";
     return profile || "Chưa có thông tin trong báo cáo";
   }
   function limitation(s) {
     const reason = text(s?.truncation_reason || s?.reason);
     const reasons = {
-      expansion_limit_reached: "Đã hết ngân sách tìm kiếm",
-      path_limit_reached: "Đã đạt số đường tối đa được yêu cầu",
-      step_limit_reached: "Đã đạt giới hạn số bước",
+      expansion_limit_reached: "Đã hết ngân sách tìm kiếm.",
+      step_limit_reached: "Đã đạt giới hạn số bước.",
     };
     const parts = [];
-    if (reason)
-      parts.push(
-        reasons[reason] ? reasons[reason] + "." : "Giới hạn báo cáo: " + reason + ".",
-      );
-    else if (s?.truncated === true)
-      parts.push("Tìm kiếm bị giới hạn; báo cáo chưa nêu lý do cụ thể.");
+    // Finding the requested number of paths is a normal finish, so it needs no note.
+    if (reason && reason !== "path_limit_reached")
+      parts.push(reasons[reason] || "Dừng vì " + reason + ".");
+    else if (!reason && s?.truncated === true) parts.push("Tìm kiếm dừng sớm.");
     const unknown = Object.keys(s?.unknown || {}).filter(
       (k) => s.unknown[k] > 0,
     );
     if (unknown.length)
-      parts.push(
-        "Điều kiện thiếu thông tin: " + unknown.slice(0, 3).join(", ") + ".",
-      );
-    if (s?.status === "blocked")
-      parts.push("Báo cáo ghi thiếu điều kiện để tiếp tục.");
+      parts.push("Thiếu thông tin về " + unknown.slice(0, 3).join(", ") + ".");
+    if (s?.status === "blocked") parts.push("Thiếu điều kiện để đi tiếp.");
     return parts.join(" ");
   }
   function normalize(input) {
@@ -133,7 +127,7 @@
       }
       return {
         kind: "survey",
-        title: text(input.title) || "Báo cáo đã nhập · Khảo sát nhiều nguồn",
+        title: text(input.title) || "Báo cáo đã nhập, khảo sát nhiều nguồn",
         cells: input.cells,
         totals: input.totals,
         point: input.selected_point,
@@ -164,7 +158,7 @@
       }
       return {
         kind: "remediation",
-        title: text(input.title) || "Báo cáo đã nhập · Can thiệp",
+        title: text(input.title) || "Báo cáo đã nhập, can thiệp",
         scenario: text(input.scenario),
         cases: input.cases,
         original: input,
@@ -201,7 +195,7 @@
         throw Error("Tối đa 200 chương trình/view.");
       return {
         ...input,
-        title: text(input.title) || "Báo cáo đã nhập · Đường và công sức",
+        title: text(input.title) || "Báo cáo đã nhập, đường và công sức",
         kind: "paths",
         programs: input.programs.map((p) => ({
           ...p,
@@ -279,7 +273,7 @@
       provenance:
         input.reproducibility?.git_commit ||
         input.reproducibility?.commit ||
-        "File người dùng · chưa xác minh nguồn",
+        "Tệp bạn mở",
     };
   }
   function validateSteps(steps) {
@@ -298,11 +292,10 @@
     if (s?.reached === true)
       return {
         label: s.outcome === "bypass" ? "Còn đường vòng" : "Có đường",
-        tone: "blue",
+        tone: "route",
       };
-    if (s?.no_path_proven === true)
-      return { label: "Chặn trong phạm vi xét", tone: "green" };
-    return { label: "Chưa kết luận", tone: "amber" };
+    if (s?.no_path_proven === true) return { label: "Đã chặn", tone: "clear" };
+    return { label: "Chưa kết luận", tone: "pending" };
   }
   const api = { normalize, outcome, cost, sourceCapability, limitation };
   if (typeof module !== "undefined" && module.exports) module.exports = api;

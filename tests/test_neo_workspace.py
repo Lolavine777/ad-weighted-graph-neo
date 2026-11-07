@@ -15,6 +15,7 @@ from scripts.neo_workspace import (
     list_sources,
     open_dataset,
     remove_relationship,
+    sample_sources,
 )
 from src.parser import RawRecord
 
@@ -165,6 +166,32 @@ def test_removing_the_only_right_blocks_and_the_answer_says_so(tmp_path):
     assert answer["after"]["outcome"] == "blocked_in_scope"
     # The opened graph itself stays intact for the next question.
     assert any(e["kind"] == "GenericAll" for e in workspace.graph.edges())
+
+
+def test_chokepoints_are_ranked_then_tested_by_removal(tmp_path):
+    workspace = open_dataset(_write_export(tmp_path / "export"))
+    found = workspace.chokepoints(f"{SID}-512")
+    assert found["sources_reached"] >= 1
+    direct = next(c for c in found["candidates"] if c["edge"]["kind"] == "GenericAll")
+    assert direct["edge"] == {
+        "source": f"{SID}-1002",
+        "kind": "GenericAll",
+        "target": f"{SID}-512",
+    }
+    assert direct["in_best_paths"] == 1
+    assert direct["blocked"] == 1
+    assert direct["source_label"] == "USER2@A.LOCAL"
+    # A repeated question is answered from memory, and the opened graph is untouched.
+    assert workspace.chokepoints(f"{SID}-512") is found
+    assert any(e["kind"] == "GenericAll" for e in workspace.graph.edges())
+    with pytest.raises(ValueError, match="Mục tiêu"):
+        workspace.chokepoints(f"{SID}-516")
+
+
+def test_cohort_sampling_is_stable_and_independent_of_input_order():
+    sources = [f"s{i}" for i in range(50)]
+    assert sample_sources(sources, 5) == sample_sources(list(reversed(sources)), 5)
+    assert len(sample_sources(sources, None)) == 50
 
 
 def test_a_source_or_target_outside_the_scope_is_refused(tmp_path):

@@ -51,6 +51,7 @@ class AppState:
         self.data_dir = Path(data_dir)
         self.workspace = None
         self.job = threading.Lock()
+        self.progress = {}
 
     def sources(self):
         return [
@@ -210,6 +211,8 @@ def make_handler(state, allowed_hosts):
                 self._send(HTTPStatus.OK, content, content_type)
             elif url.path == "/api/status":
                 self._json({"sources": state.sources(), "opened": state.opened()})
+            elif url.path == "/api/progress":
+                self._json(state.progress)
             elif url.path == "/api/search":
                 text = query.get("q", [""])[0]
                 self._json({"results": state.require_workspace().search(text)})
@@ -230,6 +233,7 @@ def make_handler(state, allowed_hosts):
                 "/api/upload": self._upload,
                 "/api/paths": self._paths,
                 "/api/remove": self._remove,
+                "/api/chokepoints": self._chokepoints,
             }
             if path not in actions:
                 raise Refused(HTTPStatus.NOT_FOUND, "Không có trang này.")
@@ -258,6 +262,19 @@ def make_handler(state, allowed_hosts):
             self._json(
                 workspace.find_paths(
                     _text(body, "source"), _text(body, "target"), scenario=_scenario(body)
+                )
+            )
+
+        def _chokepoints(self):
+            body = self._body()
+            workspace = state.require_workspace()
+
+            def report(stage, done, total):
+                state.progress = {"stage": stage, "done": done, "total": total}
+
+            self._json(
+                workspace.chokepoints(
+                    _text(body, "target"), scenario=_scenario(body), progress=report
                 )
             )
 

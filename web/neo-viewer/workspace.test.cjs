@@ -34,7 +34,6 @@ const answer = (outcome, programs = []) => ({
   max_expansions: 4096,
   status: "success",
   unknown: {},
-  coverage_notes: [],
 });
 const program = {
   id: "generated_0001",
@@ -124,13 +123,13 @@ async function openedWithSource(t, routes) {
   await app.searchFor("alice");
   app.d.querySelector(".ws-result").click();
   await settle();
-  await app.press("Làm điểm xuất phát");
+  await app.press("Xuất phát từ đây");
   return app;
 }
 
 test("starts on the data screen, reads the list from the server and offers no fake switch", async (t) => {
   const app = await openApp(t);
-  assert.equal(app.text("heading"), "Mở dữ liệu");
+  assert.equal(app.text("heading"), "Chọn dữ liệu");
   assert.ok(app.get("workspace-mode").classList.contains("active"));
   assert.ok(app.button("A.LOCAL"));
   assert.equal(app.button("Đổi dữ liệu"), undefined);
@@ -140,13 +139,13 @@ test("starts on the data screen, reads the list from the server and offers no fa
 test("opening data lists everything that was set aside", async (t) => {
   const app = await openApp(t);
   await app.press("A.LOCAL");
-  assert.equal(app.text("heading"), "Khám phá đồ thị");
+  assert.equal(app.text("heading"), "Tìm một đối tượng");
   const details = app.text("details");
   assert.match(details, /containers 3/);
   assert.match(details, /Không có dữ liệu phiên đăng nhập/);
   assert.match(details, /Bỏ 4 tham chiếu tới 1 đối tượng/);
   assert.match(details, /2 tham chiếu không rõ loại/);
-  assert.match(details, /Bỏ qua 1 bản ghi/);
+  assert.match(details, /Bỏ 1 bản ghi/);
 });
 
 test("search, choose a source, find a path and read its cost", async (t) => {
@@ -156,8 +155,10 @@ test("search, choose a source, find a path and read its cost", async (t) => {
   const sent = JSON.parse(app.calls.find((c) => c.route === "/api/paths").options.body);
   assert.deepEqual(sent, { source: "u", target: "da", scenario: "identity" });
   assert.equal(app.text("status"), "Có đường");
-  assert.match(app.text("details"), /Công sức tương đối2/);
+  assert.match(app.text("result-strip"), /C tốt nhất đã tìm2/);
+  assert.match(app.text("details"), /Tổng C2/);
   assert.equal(app.d.querySelectorAll("#edges .on-path").length, 1);
+  assert.equal(app.d.querySelector("#edges .step-num").textContent, "1");
 });
 
 test("a computer source starts from the host assumption", async (t) => {
@@ -171,7 +172,7 @@ test("a computer source starts from the host assumption", async (t) => {
   await app.searchFor("pc01");
   app.d.querySelector(".ws-result").click();
   await settle();
-  await app.press("Làm điểm xuất phát");
+  await app.press("Xuất phát từ đây");
   assert.equal(app.d.querySelector(".ws-chosen").textContent, "PC01");
   assert.equal(app.d.querySelector(".ws-form select").value, "host-compromise");
 });
@@ -181,20 +182,19 @@ test("trying a removal shows the verdict and the removed edge, never a real chan
   await app.press("Tìm đường");
   app.d.querySelector(".step-button").click();
   await settle();
-  await app.press("Thử gỡ quan hệ này");
+  await app.press("Gỡ thử quan hệ này");
   const sent = JSON.parse(app.calls.find((c) => c.route === "/api/remove").options.body);
   assert.equal(sent.edge_kind, "GenericAll");
-  assert.equal(app.text("status"), "Chặn trong phạm vi xét");
-  assert.match(app.text("empty"), /Không còn đường/);
+  assert.equal(app.text("status"), "Đã chặn");
+  assert.match(app.text("empty"), /ALICE không còn đường tới DOMAIN ADMINS/);
   assert.equal(app.d.querySelectorAll("#edges .removed").length, 1);
-  assert.match(app.text("scope-note"), /không bị thay đổi/);
-  assert.doesNotMatch(app.text("scope-note"), /C là mức tốt nhất/);
+  assert.equal(app.text("scope-note"), "");
 
   app.get("before").click();
   await settle();
   assert.equal(app.text("status"), "Có đường");
   assert.equal(app.d.querySelectorAll("#edges .cut-target").length, 1);
-  assert.match(app.text("details"), /Chặn trong phạm vi xét/);
+  assert.match(app.text("details"), /Đã chặn/);
 
   await app.press("Quay lại đường ban đầu");
   assert.equal(app.get("phase-controls").hidden, true);
@@ -212,9 +212,9 @@ test("a derived relationship explains itself instead of pretending to be removed
   await app.press("Tìm đường");
   app.d.querySelector(".step-button").click();
   await settle();
-  await app.press("Thử gỡ quan hệ này");
-  assert.equal(app.text("status"), "Chưa gỡ được trực tiếp");
-  assert.match(app.text("details"), /được suy ra/);
+  await app.press("Gỡ thử quan hệ này");
+  assert.equal(app.text("status"), "Không gỡ trực tiếp được");
+  assert.match(app.text("details"), /nhờ thuộc một nhóm/);
   assert.equal(app.get("phase-controls").hidden, true);
 });
 
@@ -226,18 +226,21 @@ test("a step the chain itself created cannot be removed", async (t) => {
   await app.press("Tìm đường");
   app.d.querySelector(".step-button").click();
   await settle();
-  assert.equal(app.button("Thử gỡ quan hệ này"), undefined);
-  assert.match(app.text("details"), /do chính chuỗi hành động tạo ra/);
+  assert.equal(app.button("Gỡ thử quan hệ này"), undefined);
+  assert.match(app.text("details"), /Chuỗi hành động tự tạo ra/);
 });
 
-test("no path names the target and refuses to call the source safe", async (t) => {
+test("no path says so plainly and offers the wider assumption", async (t) => {
   const app = await openedWithSource(t, {
     "/api/paths": () => json(200, answer("blocked_in_scope")),
   });
   await app.press("Tìm đường");
   assert.match(app.text("heading"), /ALICE → DOMAIN ADMINS/);
-  assert.match(app.text("empty"), /Không có đường/);
-  assert.match(app.text("details"), /không phải kết luận rằng nguồn này an toàn/);
+  assert.match(app.text("empty"), /ALICE không có đường tới DOMAIN ADMINS/);
+  assert.equal(app.text("status"), "Không có đường");
+  await app.press("Tìm lại với máy và phiên");
+  const sent = app.calls.filter((c) => c.route === "/api/paths").at(-1);
+  assert.equal(JSON.parse(sent.options.body).scenario, "host-compromise");
 });
 
 test("server errors surface and keep the screen usable", async (t) => {
@@ -261,7 +264,7 @@ test("a disabled account says why it cannot be a source", async (t) => {
   await app.searchFor("alice");
   app.d.querySelector(".ws-result").click();
   await settle();
-  assert.equal(app.button("Làm điểm xuất phát"), undefined);
+  assert.equal(app.button("Xuất phát từ đây"), undefined);
   assert.match(app.text("details"), /vô hiệu hóa/);
 });
 
@@ -284,7 +287,44 @@ test("a zip holding several exports asks which one", async (t) => {
   assert.equal(app.get("error").hidden, true);
   await app.press("TWO.LOCAL");
   assert.equal(uploads, 2);
-  assert.equal(app.text("heading"), "Khám phá đồ thị");
+  assert.equal(app.text("heading"), "Tìm một đối tượng");
+});
+
+test("choke points list what was tested and say when one cut stops nobody", async (t) => {
+  const item = {
+    edge: EDGE,
+    source_label: "ALICE@A.LOCAL",
+    target_label: "DOMAIN ADMINS@A.LOCAL",
+    in_best_paths: 6,
+    in_any_path: 9,
+    blocked: 0,
+    bypass: 9,
+    inconclusive: 0,
+    other_support_remains: false,
+    C_before_mean: 2,
+    C_after_mean: 4,
+  };
+  const app = await openApp(t, {
+    "/api/progress": () => json(200, {}),
+    "/api/chokepoints": () =>
+      json(200, {
+        target: "da",
+        scenario: "identity",
+        eligible_sources: 36,
+        sources_tried: 36,
+        sources_reached: 9,
+        budget: 1024,
+        candidates: [item],
+        derived_skipped: 0,
+      }),
+  });
+  await app.press("A.LOCAL");
+  await app.press("Tìm điểm nghẽn");
+  assert.equal(app.text("heading"), "Điểm nghẽn tới DOMAIN ADMINS");
+  assert.match(app.text("survey"), /9\/36 nguồn tới được/);
+  assert.match(app.text("survey"), /ALICE có toàn quyền trên DOMAIN ADMINS/);
+  assert.match(app.text("survey"), /2 → 4/);
+  assert.match(app.text("details"), /cần gỡ nhiều quan hệ cùng lúc/);
 });
 
 test("the read-only screens still work beside the analysis screen", async (t) => {
@@ -293,9 +333,9 @@ test("the read-only screens still work beside the analysis screen", async (t) =>
   await settle();
   assert.equal(app.get("workspace-mode").classList.contains("active"), false);
   assert.equal(app.get("result-strip").hidden, false);
-  assert.equal(app.text("dataset-label"), "KẾT QUẢ");
+  assert.equal(app.text("dataset-label"), "Kết quả");
   app.get("workspace-mode").click();
   await settle();
-  assert.equal(app.text("dataset-label"), "DỮ LIỆU ĐANG MỞ");
-  assert.equal(app.text("heading"), "Mở dữ liệu");
+  assert.equal(app.text("dataset-label"), "Dữ liệu đang mở");
+  assert.equal(app.text("heading"), "Chọn dữ liệu");
 });

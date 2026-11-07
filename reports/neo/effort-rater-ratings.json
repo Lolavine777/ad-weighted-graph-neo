@@ -1,0 +1,189 @@
+{
+  "version": "neo-effort-raters/1",
+  "date": "2026-11-07",
+  "method": "Ba phiên mô hình AI mới, độc lập nhau, chỉ nhận docs/research/effort-raters/rating-packet.md; không thấy bảng neo-c-v1 và không đọc tệp nào.",
+  "packet": "docs/research/effort-raters/rating-packet.md",
+  "not_used": "Một phiên Claude Opus bị bộ lọc an ninh mạng tự động chặn và một phiên Claude Fable không chạy vì hết hạn mức; hai phiên này không trả lời và không được tính.",
+  "raters": {
+    "rater_a": {
+      "model": "Claude Sonnet 5.5 (claude-sonnet-5-5), phiên thứ nhất",
+      "ratings": {
+        "genericall_reset_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn, thực thi và kiểm tra kết quả đặt lại"
+        },
+        "reset_target_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "ForceChangePassword qua công cụ chuẩn, cần thực thi và xác minh"
+        },
+        "scenario_reset_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "giống trên, thêm ý định đăng nhập sau nhưng không đổi độ phức tạp thao tác"
+        },
+        "acquire_reset_identity": {
+          "t1": 1,
+          "t2": 1,
+          "why": "chỉ là xác thực đơn giản với mật khẩu đã biết"
+        },
+        "genericall_add_member": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn, thêm thành viên và kiểm tra lại nhóm"
+        },
+        "genericall_grant_write_dacl": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn, thực thi và kiểm tra ACE"
+        },
+        "grant_new_object_right": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn thêm ACE GenericAll, cần thực thi và xác minh"
+        },
+        "obtain_admin_execution_on_host": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn, xác thực và chạy lệnh từ xa"
+        },
+        "scenario_winrm_admin": {
+          "t1": 1,
+          "t2": 2,
+          "why": "WinRM chuẩn, thực thi lệnh và kiểm tra kết quả"
+        },
+        "open_winrm_remote_session": {
+          "t1": 1,
+          "t2": 1,
+          "why": "chỉ mở phiên WinRM khi đã thuộc nhóm quyền, thao tác đơn giản"
+        },
+        "use_session_identity": {
+          "t1": 2,
+          "t2": 2,
+          "why": "cần công cụ trích xuất thông tin xác thực rồi xác thực lại"
+        }
+      }
+    },
+    "rater_b": {
+      "model": "Claude Sonnet 5.5 (claude-sonnet-5-5), phiên thứ hai",
+      "ratings": {
+        "genericall_reset_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn, cần thực thi và xác minh đổi mật khẩu"
+        },
+        "reset_target_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn qua ForceChangePassword, thực thi và kiểm tra"
+        },
+        "scenario_reset_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "giống đổi mật khẩu GenericAll, thêm ý định đăng nhập sau"
+        },
+        "acquire_reset_identity": {
+          "t1": 1,
+          "t2": 1,
+          "why": "xác thực đơn giản bằng mật khẩu đã biết"
+        },
+        "genericall_add_member": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn thêm thành viên nhóm và kiểm tra kết quả"
+        },
+        "genericall_grant_write_dacl": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn sửa DACL, cần thực thi và xác minh"
+        },
+        "grant_new_object_right": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn thêm ACE mới, thực thi và kiểm tra"
+        },
+        "obtain_admin_execution_on_host": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn thực thi lệnh qua quyền quản trị cục bộ"
+        },
+        "scenario_winrm_admin": {
+          "t1": 1,
+          "t2": 2,
+          "why": "công cụ chuẩn WinRM, thực thi lệnh và kiểm tra"
+        },
+        "open_winrm_remote_session": {
+          "t1": 1,
+          "t2": 1,
+          "why": "mở phiên đơn giản khi đã có quyền thành viên nhóm"
+        },
+        "use_session_identity": {
+          "t1": 1,
+          "t2": 3,
+          "why": "công cụ chuẩn nhưng trích xuất và tái sử dụng thông tin xác thực nặng hơn"
+        }
+      }
+    },
+    "rater_c": {
+      "model": "Claude Haiku 5.5 (claude-haiku-5-5)",
+      "ratings": {
+        "genericall_reset_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "Công cụ AD chuẩn; đặt lại mật khẩu rồi kiểm tra kết quả."
+        },
+        "reset_target_password": {
+          "t1": 1,
+          "t2": 2,
+          "why": "ForceChangePassword dùng công cụ chuẩn, thêm bước kiểm tra."
+        },
+        "scenario_reset_password": {
+          "t1": 1,
+          "t2": 1,
+          "why": "Chỉ một lệnh đặt lại chuẩn; đăng nhập là bước riêng sau đó."
+        },
+        "acquire_reset_identity": {
+          "t1": 1,
+          "t2": 2,
+          "why": "Xác thực bằng mật khẩu mới với công cụ chuẩn, kiểm tra quyền truy cập."
+        },
+        "genericall_add_member": {
+          "t1": 1,
+          "t2": 2,
+          "why": "Lệnh thêm nhóm chuẩn, cần kiểm tra thành viên sau khi thêm."
+        },
+        "genericall_grant_write_dacl": {
+          "t1": 2,
+          "t2": 2,
+          "why": "Phải tùy biến tham số DACL cho công cụ, rồi kiểm tra ACE."
+        },
+        "grant_new_object_right": {
+          "t1": 2,
+          "t2": 2,
+          "why": "Cần cấu hình ACE GenericAll đúng khuôn mẫu, kiểm tra lại quyền."
+        },
+        "obtain_admin_execution_on_host": {
+          "t1": 1,
+          "t2": 2,
+          "why": "Thực thi quản trị từ xa bằng công cụ chuẩn, kiểm tra kết quả."
+        },
+        "scenario_winrm_admin": {
+          "t1": 1,
+          "t2": 1,
+          "why": "Lệnh WinRM chuẩn trên máy có quyền quản trị, ít thao tác."
+        },
+        "open_winrm_remote_session": {
+          "t1": 1,
+          "t2": 1,
+          "why": "Mở phiên WinRM chuẩn, chỉ một bước kết nối đơn giản."
+        },
+        "use_session_identity": {
+          "t1": 2,
+          "t2": 3,
+          "why": "Trích thông tin xác thực của phiên cần công cụ tùy biến và xử lý nặng."
+        }
+      }
+    }
+  }
+}

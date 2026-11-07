@@ -83,6 +83,15 @@ def test_the_analyst_flow_opens_searches_finds_and_tries_a_removal(app):
     assert removal["after"]["outcome"] == "blocked_in_scope"
 
 
+def test_chokepoints_report_progress_and_results(app):
+    call(app, "POST", "/api/open", {"source": 0})
+    status, found, _ = call(app, "POST", "/api/chokepoints", {"target": f"{SID}-512"})
+    assert status == 200 and found["candidates"]
+    status, progress, _ = call(app, "GET", "/api/progress")
+    assert status == 200 and progress["stage"] == "Xong"
+    assert call(app, "POST", "/api/chokepoints", {})[0] == 400
+
+
 def test_an_uploaded_zip_opens_without_touching_the_data_folder(app, tmp_path):
     folder = _write_export(tmp_path / "other", prefix="20250101000000")
     buffer = io.BytesIO()

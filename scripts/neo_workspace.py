@@ -19,7 +19,7 @@ from dataclasses import dataclass, field, replace
 from datetime import UTC, datetime
 from pathlib import Path
 
-from scripts.neo_domain import build_survey, input_coverage, scenario_profile, techniques_for
+from scripts.neo_domain import build_survey, scenario_profile, techniques_for
 from scripts.neo_import import KINDS, prepare_records
 from scripts.neo_remediation import classify
 from src.data.manifest import generate_manifest
@@ -27,6 +27,7 @@ from src.engine.batch import _query_for_cell
 from src.engine.graph import EngineGraph
 from src.engine.query import run_attack_query
 from src.engine.ranking.effort_profiles import load_effort_profile
+from src.engine.ranking.resolution_service import canonical_digest
 from src.engine.semantics.credentials import replay_path
 from src.engine.top_k import collect_assessments, effort_programs
 from src.parser import (
@@ -49,6 +50,9 @@ MAX_EXPANDED_BYTES = 8 * 1024**3  # Refuses a zip bomb before anything is writte
 MAX_DIRECT_NEIGHBORS = 24
 MAX_BUILD_PASSES = 25
 SEARCH_BUDGET = 4096  # The budget of the fixed comparison in the thesis, so results line up.
+COHORT_SEED = "neo-workspace-cohort-v1"
+COHORT_BUDGET = 1024  # The budget of the domain survey in the thesis.
+LARGE_GRAPH_EDGES = 5000
 UNRESOLVED_REFERENCE = re.compile(r"unresolvable (?:\w+ )?reference '([^']+)'")
 ACE_RIGHTS = {"GenericAll", "WriteDacl", "ForceChangePassword"}
 # Host access edges name a builtin local group and the older flat collector field for it.
@@ -365,12 +369,22 @@ class Workspace:
         wanted = {self.domain_sid + "-512", self.domain_sid + "-519"}
         return [_node_view(n) for n in self.graph.nodes() if n["id"] in wanted]
 
-    def find_paths(self, source, target, *, scenario="identity", max_expansions=SEARCH_BUDGET):
+    def find_paths(self, source, target, *, scenario="identity", max_expansions=None):
+        if max_expansions is None:
+            # On a large graph the extra budget costs minutes and rarely lowers C.
+            large = len(self.graph.edges()) > LARGE_GRAPH_EDGES
+            max_expansions = COHORT_BUDGET if large else SEARCH_BUDGET
         key = (source, target, scenario, max_expansions)
         if key not in self._answers:
             self._answers[key] = _search(
                 self.graph, self.domain_sid, source, target, scenario, max_expansions
             )
+        return self._answers[key]
+
+    def chokepoints(self, target, *, scenario="identity", progress=None):
+        key = ("chokepoints", target, scenario)
+        if key not in self._answers:
+            self._answers[key] = find_chokepoints(self, target, scenario, progress=progress)
         return self._answers[key]
 
     def try_removal(
@@ -404,6 +418,135 @@ class Workspace:
             after["outcome"] = "bypass"
         status = "other_support_remains" if remains else "removed"
         return {"edit": {**edit, "status": status}, "before": before, "after": after}
+
+
+class _Planner:
+    """Answer many questions on one graph; the survey behind them costs a second to build."""
+
+    def __init__(self, graph, domain_sid, scenario, *, budget, max_paths, search_order):
+        _, request = build_survey(
+            graph,
+            max_expansions=budget,
+            max_paths=max_paths,
+            domain_sid=domain_sid,
+            scenario=scenario,
+        )
+        self.graph, self.request, self.scenario = graph, request, scenario
+        self.budget, self.search_order = budget, search_order
+        self.sources = {s.node_id: s for s in request.sources}
+        self.goals = {g.target_node_id: g for g in request.resolve_target_goals()}
+        self.policy = scenario_profile(graph, scenario)
+        self.effort = load_effort_profile("neo-c-v1")
+
+    def run(self, source, target):
+        query, error = _query_for_cell(
+            self.request,
+            self.sources[source],
+            self.goals[target],
+            self.graph,
+            techniques_for(self.scenario),
+            self.request.common_budget,
+            scenario_policy=self.policy,
+            effort_profile=self.effort,
+            search_order=self.search_order,
+        )
+        if error is not None:
+            raise ValueError(str(error))
+        return run_attack_query(query, self.graph)
+
+    def ask(self, source, target):
+        return _result_view(self.run(source, target), self.graph, self.scenario, self.budget)
+
+
+def sample_sources(sources, limit):
+    """Choose before looking at any result, the same way on every run."""
+    ordered = sorted(sources, key=lambda s: canonical_digest([s, COHORT_SEED]))
+    return ordered if limit is None else ordered[:limit]
+
+
+def _edge_key(edge):
+    return edge["source"], edge["kind"], edge["target"]
+
+
+def find_chokepoints(workspace, target, scenario, *, sources=None, candidates=None, progress=None):
+    """Rank relationships by how many sources' best paths use them, then test each by removal.
+
+    A count alone would flatter a relationship with an easy way around it, so every
+    candidate is removed and all reached sources search again from scratch.
+    """
+    graph = workspace.graph
+    large = len(graph.edges()) > LARGE_GRAPH_EDGES
+    sources = sources if sources is not None else (12 if large else 40)
+    candidates = candidates if candidates is not None else (3 if large else 5)
+    notify = progress or (lambda *_: None)
+    settings = {"budget": COHORT_BUDGET, "max_paths": 3, "search_order": "neo_guided"}
+    planner = _Planner(graph, workspace.domain_sid, scenario, **settings)
+    if target not in planner.goals:
+        raise ValueError("Mục tiêu phải là Domain Admins hoặc Enterprise Admins của miền đang mở.")
+    cohort = sample_sources(planner.sources, sources)
+    baseline, in_best, in_any = {}, Counter(), Counter()
+    for index, source in enumerate(cohort):
+        notify("Đang tìm đường cho từng nguồn", index, len(cohort))
+        answer = planner.ask(source, target)
+        baseline[source] = answer
+        for rank, program in enumerate(answer["programs"]):
+            edges = {_edge_key(s["edge"]) for s in program["steps"] if s["edge"]}
+            in_any.update(edges)
+            if rank == 0:
+                in_best.update(edges)
+    reached = [s for s, a in baseline.items() if a["programs"]]
+    ranked = sorted(in_best, key=lambda k: (-in_best[k], -in_any[k], k))
+    tested, skipped = [], 0
+    for edge in ranked:
+        if len(tested) == candidates:
+            break
+        notify("Đang gỡ thử từng quan hệ", len(tested), candidates)
+        records, removed = remove_relationship(workspace.records, *edge)
+        if not removed:
+            skipped += 1  # Derived from membership: its own membership edge is the one to cut.
+            continue
+        after_graph, _ = _build(records, graph.metadata)
+        remains = any(_edge_key(e) == edge for e in after_graph.edges())
+        try:
+            after = _Planner(after_graph, workspace.domain_sid, scenario, **settings)
+        except ValueError:
+            skipped += 1  # The cut removes something the survey itself needs, such as the DC.
+            continue
+        outcomes, before_cost, after_cost = Counter(), [], []
+        for source in reached:
+            answer = after.ask(source, target)
+            outcome = "bypass" if answer["outcome"] == "reachable" else answer["outcome"]
+            outcomes[outcome] += 1
+            if answer["programs"]:
+                before_cost.append(baseline[source]["programs"][0]["C"])
+                after_cost.append(answer["programs"][0]["C"])
+        tested.append(
+            {
+                "edge": {"source": edge[0], "kind": edge[1], "target": edge[2]},
+                "source_label": graph.node(edge[0]).get("label") or edge[0],
+                "target_label": graph.node(edge[2]).get("label") or edge[2],
+                "in_best_paths": in_best[edge],
+                "in_any_path": in_any[edge],
+                "blocked": outcomes["blocked_in_scope"],
+                "bypass": outcomes["bypass"],
+                "inconclusive": outcomes["inconclusive"],
+                "other_support_remains": remains,
+                "C_before_mean": sum(before_cost) / len(before_cost) if before_cost else None,
+                "C_after_mean": sum(after_cost) / len(after_cost) if after_cost else None,
+            }
+        )
+    tested.sort(key=lambda c: (-c["blocked"], c["bypass"], -c["in_best_paths"]))
+    notify("Xong", candidates, candidates)
+    return {
+        "target": target,
+        "scenario": scenario,
+        "eligible_sources": len(planner.sources),
+        "sources_tried": len(cohort),
+        "sources_reached": len(reached),
+        "budget": COHORT_BUDGET,
+        "candidates": tested,
+        "derived_skipped": skipped,
+    }
 
 
 def _rank(node, needle):
@@ -468,10 +611,10 @@ def _search(graph, domain_sid, source, target, scenario, max_expansions):
     if error is not None:
         raise ValueError(str(error))
     result = run_attack_query(query, graph)
-    return _result_view(result, graph, request, scenario, max_expansions)
+    return _result_view(result, graph, scenario, max_expansions)
 
 
-def _result_view(result, graph, request, scenario, max_expansions):
+def _result_view(result, graph, scenario, max_expansions):
     """Replay every ranked path, then shape it as the viewer's playback programs."""
     assessments = collect_assessments(result)
     programs_found, exclusions = effort_programs(result)
@@ -550,7 +693,6 @@ def _result_view(result, graph, request, scenario, max_expansions):
         "unknown": dict(unknown),
         "rating_exclusions": exclusions,
         "scenario": scenario,
-        "coverage_notes": input_coverage(graph, request, scenario)["notes"],
     }
 
 

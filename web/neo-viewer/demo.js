@@ -2,7 +2,7 @@
 globalThis.NEO_DEMOS = {
   paths: {
     version: "neo-viewer-playback/1",
-    title: "SEAMLESS · Top-3 theo C",
+    title: "SEAMLESS, Top-3 theo C",
     source: "QUEEN_COX@SEAMLESS.INTERNAL",
     target: "ENTERPRISE ADMINS@SEAMLESS.INTERNAL",
     context: "BADBLOOD.SEAMLESS.INTERNAL",

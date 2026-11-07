@@ -1,0 +1,1403 @@
+{
+  "cohort_seed": "neo-workspace-cohort-v1",
+  "datasets": {
+    "NORTH": {
+      "app_seconds": {
+        "chokepoints_seconds": 2.5680469588842243,
+        "find_paths_seconds": [
+          0.019051916897296906,
+          0.9885236250702292,
+          0.016292333137243986
+        ],
+        "neighbors_seconds": 0.0006200829520821571,
+        "search_seconds": 9.449990466237068e-05,
+        "try_removal_edge": {
+          "id": "sha256:d877913fdc214854d1ef0f4c4b9c41f3835139ad4fe315f0e1007ac187f12876",
+          "kind": "MemberOf",
+          "source": "S-1-5-21-1252223512-2665318757-2669098637-1000",
+          "status": "removed",
+          "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+        },
+        "try_removal_seconds": 0.5947676249779761
+      },
+      "budget": 4096,
+      "domains": [
+        "NORTH.SEVENKINGDOMS.LOCAL"
+      ],
+      "edges": 254,
+      "export": "NORTH_20240410083414",
+      "nodes": 74,
+      "open_seconds": 0.08945579105056822,
+      "outside_references": 70,
+      "scenarios": {
+        "host-compromise": {
+          "C_range_by_hops": {
+            "1": {
+              "max": 0,
+              "min": 0,
+              "pairs": 2
+            },
+            "2": {
+              "max": 3,
+              "min": 3,
+              "pairs": 3
+            },
+            "3": {
+              "max": 5,
+              "min": 5,
+              "pairs": 2
+            }
+          },
+          "best_C_values": {
+            "0": 2,
+            "3": 3,
+            "5": 2
+          },
+          "by_target": {
+            "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 2
+                },
+                "2": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 3
+                },
+                "3": {
+                  "max": 5,
+                  "min": 5,
+                  "pairs": 2
+                }
+              },
+              "best_C_values": {
+                "0": 2,
+                "3": 3,
+                "5": 2
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 7,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 10,
+              "pairs": 17,
+              "pairs_with_several_paths": 7,
+              "reached": 7,
+              "seconds_max": 1.1023886250331998,
+              "seconds_median": 0.027699459111317992,
+              "spearman_C_hops": 1.0,
+              "spearman_C_steps": 1.0
+            }
+          },
+          "chokepoints": {
+            "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 2.3333333333333335,
+                  "C_before_mean": 2.3333333333333335,
+                  "blocked": 1,
+                  "bypass": 6,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1001",
+                    "target": "S-1-5-21-1252223512-2665318757-2669098637-1113"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "WINTERFELL.NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ROBB.STARK@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 2.3333333333333335,
+                  "C_before_mean": 2.3333333333333335,
+                  "blocked": 1,
+                  "bypass": 6,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1105",
+                    "target": "S-1-5-21-1252223512-2665318757-2669098637-1113"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "CASTELBLACK.NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ROBB.STARK@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 1.5,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1113",
+                    "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+                  },
+                  "in_any_path": 9,
+                  "in_best_paths": 3,
+                  "inconclusive": 3,
+                  "other_support_remains": false,
+                  "source_label": "ROBB.STARK@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 2.7142857142857144,
+                  "C_before_mean": 2.7142857142857144,
+                  "blocked": 0,
+                  "bypass": 7,
+                  "edge": {
+                    "kind": "WriteDacl",
+                    "source": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544",
+                    "target": "S-1-5-21-1252223512-2665318757-2669098637-512"
+                  },
+                  "in_any_path": 17,
+                  "in_best_paths": 5,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 3.142857142857143,
+                  "C_before_mean": 2.7142857142857144,
+                  "blocked": 0,
+                  "bypass": 7,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1000",
+                    "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "VAGRANT@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 17,
+              "scenario": "host-compromise",
+              "sources_reached": 7,
+              "sources_tried": 17,
+              "target": "S-1-5-21-1252223512-2665318757-2669098637-512"
+            }
+          },
+          "eligible_sources": 17,
+          "fewest_steps_costs_more": 0,
+          "hop_path_exists": 7,
+          "hop_path_without_neo_path": 0,
+          "inconclusive": 0,
+          "neo_path_without_hop_path": 0,
+          "no_path": 10,
+          "pairs": 17,
+          "pairs_with_several_paths": 7,
+          "reached": 7,
+          "seconds_max": 1.1023886250331998,
+          "seconds_median": 0.027699459111317992,
+          "sources": 17,
+          "spearman_C_hops": 1.0,
+          "spearman_C_steps": 1.0
+        },
+        "identity": {
+          "C_range_by_hops": {
+            "1": {
+              "max": 0,
+              "min": 0,
+              "pairs": 2
+            },
+            "2": {
+              "max": 3,
+              "min": 3,
+              "pairs": 3
+            }
+          },
+          "best_C_values": {
+            "0": 2,
+            "3": 3
+          },
+          "by_target": {
+            "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 2
+                },
+                "2": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 3
+                }
+              },
+              "best_C_values": {
+                "0": 2,
+                "3": 3
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 5,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 12,
+              "pairs": 17,
+              "pairs_with_several_paths": 5,
+              "reached": 5,
+              "seconds_max": 1.108101666904986,
+              "seconds_median": 0.027117166901007295,
+              "spearman_C_hops": 1.0,
+              "spearman_C_steps": 1.0
+            }
+          },
+          "chokepoints": {
+            "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 1.5,
+                  "blocked": 1,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1000",
+                    "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "VAGRANT@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 1.5,
+                  "blocked": 1,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1112",
+                    "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "CATELYN.STARK@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 1.5,
+                  "blocked": 1,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1113",
+                    "target": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ROBB.STARK@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 0.0,
+                  "C_before_mean": 0.0,
+                  "blocked": 0,
+                  "bypass": 2,
+                  "edge": {
+                    "kind": "WriteDacl",
+                    "source": "domain:sid:S-1-5-21-1252223512-2665318757-2669098637:S-1-5-32-544",
+                    "target": "S-1-5-21-1252223512-2665318757-2669098637-512"
+                  },
+                  "in_any_path": 11,
+                  "in_best_paths": 3,
+                  "inconclusive": 3,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATORS@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL"
+                },
+                {
+                  "C_after_mean": 2.4,
+                  "C_before_mean": 1.8,
+                  "blocked": 0,
+                  "bypass": 5,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1252223512-2665318757-2669098637-1111",
+                    "target": "S-1-5-21-1252223512-2665318757-2669098637-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "EDDARD.STARK@NORTH.SEVENKINGDOMS.LOCAL",
+                  "target_label": "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 17,
+              "scenario": "identity",
+              "sources_reached": 5,
+              "sources_tried": 17,
+              "target": "S-1-5-21-1252223512-2665318757-2669098637-512"
+            }
+          },
+          "eligible_sources": 17,
+          "fewest_steps_costs_more": 0,
+          "hop_path_exists": 5,
+          "hop_path_without_neo_path": 0,
+          "inconclusive": 0,
+          "neo_path_without_hop_path": 0,
+          "no_path": 12,
+          "pairs": 17,
+          "pairs_with_several_paths": 5,
+          "reached": 5,
+          "seconds_max": 1.108101666904986,
+          "seconds_median": 0.027117166901007295,
+          "sources": 17,
+          "spearman_C_hops": 1.0,
+          "spearman_C_steps": 1.0
+        }
+      },
+      "session_edges": 4,
+      "skipped_records": 0,
+      "targets": [
+        "DOMAIN ADMINS@NORTH.SEVENKINGDOMS.LOCAL"
+      ],
+      "untyped_references": 70
+    },
+    "SEAMLESS": {
+      "app_seconds": {
+        "chokepoints_seconds": 165.95712895900942,
+        "find_paths_seconds": [
+          12.035301457857713,
+          12.009996500099078,
+          12.212040791055188
+        ],
+        "neighbors_seconds": 0.27677712496370077,
+        "search_seconds": 0.004631167044863105,
+        "try_removal_edge": {
+          "id": "sha256:ffa61bb38730e885f1df20d239a1f2e448e3be1c097957ab5c4534f466cbc9be",
+          "kind": "MemberOf",
+          "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+          "status": "removed",
+          "target": "S-1-5-11"
+        },
+        "try_removal_seconds": 17.656688207993284
+      },
+      "budget": 1024,
+      "domains": [
+        "SEAMLESS.INTERNAL"
+      ],
+      "edges": 56367,
+      "export": "20210920185958",
+      "nodes": 3370,
+      "open_seconds": 7.193492291029543,
+      "outside_references": 0,
+      "scenarios": {
+        "identity": {
+          "C_range_by_hops": {
+            "3": {
+              "max": 1,
+              "min": 1,
+              "pairs": 6
+            },
+            "4": {
+              "max": 5,
+              "min": 1,
+              "pairs": 31
+            },
+            "5": {
+              "max": 5,
+              "min": 1,
+              "pairs": 113
+            },
+            "6": {
+              "max": 6,
+              "min": 4,
+              "pairs": 90
+            }
+          },
+          "best_C_values": {
+            "1": 119,
+            "2": 1,
+            "4": 94,
+            "5": 24,
+            "6": 2
+          },
+          "by_target": {
+            "DOMAIN ADMINS@SEAMLESS.INTERNAL": {
+              "C_range_by_hops": {
+                "3": {
+                  "max": 1,
+                  "min": 1,
+                  "pairs": 6
+                },
+                "4": {
+                  "max": 2,
+                  "min": 1,
+                  "pairs": 22
+                },
+                "5": {
+                  "max": 1,
+                  "min": 1,
+                  "pairs": 92
+                }
+              },
+              "best_C_values": {
+                "1": 119,
+                "2": 1
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 120,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 0,
+              "pairs": 120,
+              "pairs_with_several_paths": 120,
+              "reached": 120,
+              "seconds_max": 65.8641804580111,
+              "seconds_median": 36.45239545847289,
+              "spearman_C_hops": -0.15440846812420833,
+              "spearman_C_steps": 0.3448488357531743
+            },
+            "ENTERPRISE ADMINS@SEAMLESS.INTERNAL": {
+              "C_range_by_hops": {
+                "4": {
+                  "max": 5,
+                  "min": 4,
+                  "pairs": 9
+                },
+                "5": {
+                  "max": 5,
+                  "min": 4,
+                  "pairs": 21
+                },
+                "6": {
+                  "max": 6,
+                  "min": 4,
+                  "pairs": 90
+                }
+              },
+              "best_C_values": {
+                "4": 94,
+                "5": 24,
+                "6": 2
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 120,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 0,
+              "pairs": 120,
+              "pairs_with_several_paths": 120,
+              "reached": 120,
+              "seconds_max": 117.64394929097034,
+              "seconds_median": 68.25090791645925,
+              "spearman_C_hops": -0.3835252575136938,
+              "spearman_C_steps": 0.6212738242810001
+            }
+          },
+          "chokepoints": {
+            "DOMAIN ADMINS@SEAMLESS.INTERNAL": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 1.375,
+                  "C_before_mean": 1.375,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1271839998-3495686680-2211690266-2014",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+                  },
+                  "in_any_path": 35,
+                  "in_best_paths": 33,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "OLLIE_LONG@SEAMLESS.INTERNAL",
+                  "target_label": "DOMAIN ADMINS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 1.375,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-11",
+                    "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554"
+                  },
+                  "in_any_path": 75,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+                  "target_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 1.375,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+                    "target": "S-1-5-11"
+                  },
+                  "in_any_path": 75,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "DOMAIN USERS@SEAMLESS.INTERNAL",
+                  "target_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 1.375,
+                  "C_before_mean": 1.375,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "GenericAll",
+                    "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+                  },
+                  "in_any_path": 25,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+                  "target_label": "OLLIE_LONG@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 1.375,
+                  "C_before_mean": 1.375,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "GenericAll",
+                    "source": "S-1-5-21-1271839998-3495686680-2211690266-3610",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-2014"
+                  },
+                  "in_any_path": 5,
+                  "in_best_paths": 5,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "JE-MAR-DISTLIST1@SEAMLESS.INTERNAL",
+                  "target_label": "OLLIE_LONG@SEAMLESS.INTERNAL"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 2590,
+              "scenario": "identity",
+              "sources_reached": 40,
+              "sources_tried": 40,
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-512"
+            },
+            "ENTERPRISE ADMINS@SEAMLESS.INTERNAL": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 4.325,
+                  "C_before_mean": 4.3,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1271839998-3495686680-2211690266-1116",
+                    "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544"
+                  },
+                  "in_any_path": 105,
+                  "in_best_paths": 35,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "KATRINA_GREEN@SEAMLESS.INTERNAL",
+                  "target_label": "ADMINISTRATORS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 4.375,
+                  "C_before_mean": 4.3,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "WriteDacl",
+                    "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-544",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+                  },
+                  "in_any_path": 105,
+                  "in_best_paths": 35,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATORS@SEAMLESS.INTERNAL",
+                  "target_label": "ENTERPRISE ADMINS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 4.925,
+                  "C_before_mean": 4.3,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-11",
+                    "target": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554"
+                  },
+                  "in_any_path": 75,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL",
+                  "target_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 4.925,
+                  "C_before_mean": 4.3,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-1271839998-3495686680-2211690266-513",
+                    "target": "S-1-5-11"
+                  },
+                  "in_any_path": 75,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "DOMAIN USERS@SEAMLESS.INTERNAL",
+                  "target_label": "AUTHENTICATED USERS@SEAMLESS.INTERNAL"
+                },
+                {
+                  "C_after_mean": 4.3,
+                  "C_before_mean": 4.3,
+                  "blocked": 0,
+                  "bypass": 40,
+                  "edge": {
+                    "kind": "GenericAll",
+                    "source": "domain:sid:S-1-5-21-1271839998-3495686680-2211690266:S-1-5-32-554",
+                    "target": "S-1-5-21-1271839998-3495686680-2211690266-1116"
+                  },
+                  "in_any_path": 75,
+                  "in_best_paths": 25,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "PRE-WINDOWS 2000 COMPATIBLE ACCESS@SEAMLESS.INTERNAL",
+                  "target_label": "KATRINA_GREEN@SEAMLESS.INTERNAL"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 2590,
+              "scenario": "identity",
+              "sources_reached": 40,
+              "sources_tried": 40,
+              "target": "S-1-5-21-1271839998-3495686680-2211690266-519"
+            }
+          },
+          "eligible_sources": 2590,
+          "fewest_steps_costs_more": 0,
+          "hop_path_exists": 240,
+          "hop_path_without_neo_path": 0,
+          "inconclusive": 0,
+          "neo_path_without_hop_path": 0,
+          "no_path": 0,
+          "pairs": 240,
+          "pairs_with_several_paths": 240,
+          "reached": 240,
+          "seconds_max": 117.64394929097034,
+          "seconds_median": 40.21035483293235,
+          "sources": 120,
+          "spearman_C_hops": 0.6090851020054684,
+          "spearman_C_steps": 0.9559404463092598
+        }
+      },
+      "session_edges": 0,
+      "skipped_records": 0,
+      "targets": [
+        "DOMAIN ADMINS@SEAMLESS.INTERNAL",
+        "ENTERPRISE ADMINS@SEAMLESS.INTERNAL"
+      ],
+      "untyped_references": 0
+    },
+    "WRAITH": {
+      "app_seconds": {
+        "chokepoints_seconds": 5.6212427909486,
+        "find_paths_seconds": [
+          0.22898920811712742,
+          0.030229583149775863,
+          0.03648216719739139
+        ],
+        "neighbors_seconds": 0.0019321248400956392,
+        "search_seconds": 0.00019370787777006626,
+        "try_removal_edge": {
+          "id": "sha256:71be9853b9739e737e82aa55144caa68356b00d835934849002df776ea1f629d",
+          "kind": "HasSession",
+          "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+          "status": "removed",
+          "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+        },
+        "try_removal_seconds": 0.10921820905059576
+      },
+      "budget": 4096,
+      "domains": [
+        "WRAITH.CORP"
+      ],
+      "edges": 770,
+      "export": "20240305111414",
+      "nodes": 150,
+      "open_seconds": 0.16119737504050136,
+      "outside_references": 0,
+      "scenarios": {
+        "host-compromise": {
+          "C_range_by_hops": {
+            "1": {
+              "max": 0,
+              "min": 0,
+              "pairs": 6
+            },
+            "2": {
+              "max": 3,
+              "min": 2,
+              "pairs": 8
+            },
+            "3": {
+              "max": 3,
+              "min": 3,
+              "pairs": 2
+            },
+            "4": {
+              "max": 6,
+              "min": 6,
+              "pairs": 1
+            },
+            "5": {
+              "max": 6,
+              "min": 6,
+              "pairs": 1
+            }
+          },
+          "best_C_values": {
+            "0": 6,
+            "2": 6,
+            "3": 4,
+            "6": 2
+          },
+          "by_target": {
+            "DOMAIN ADMINS@WRAITH.CORP": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 3
+                },
+                "2": {
+                  "max": 3,
+                  "min": 2,
+                  "pairs": 4
+                },
+                "3": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 1
+                },
+                "4": {
+                  "max": 6,
+                  "min": 6,
+                  "pairs": 1
+                }
+              },
+              "best_C_values": {
+                "0": 3,
+                "2": 3,
+                "3": 2,
+                "6": 1
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 10,
+              "hop_path_without_neo_path": 1,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 27,
+              "pairs": 36,
+              "pairs_with_several_paths": 9,
+              "reached": 9,
+              "seconds_max": 2.817877124994993,
+              "seconds_median": 0.04997608356643468,
+              "spearman_C_hops": 0.95417037340238,
+              "spearman_C_steps": 0.9955257046261682
+            },
+            "ENTERPRISE ADMINS@WRAITH.CORP": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 3
+                },
+                "2": {
+                  "max": 3,
+                  "min": 2,
+                  "pairs": 4
+                },
+                "3": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 1
+                },
+                "5": {
+                  "max": 6,
+                  "min": 6,
+                  "pairs": 1
+                }
+              },
+              "best_C_values": {
+                "0": 3,
+                "2": 3,
+                "3": 2,
+                "6": 1
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 10,
+              "hop_path_without_neo_path": 1,
+              "inconclusive": 0,
+              "neo_path_without_hop_path": 0,
+              "no_path": 27,
+              "pairs": 36,
+              "pairs_with_several_paths": 9,
+              "reached": 9,
+              "seconds_max": 2.8137101670727134,
+              "seconds_median": 0.04959645855706185,
+              "spearman_C_hops": 0.95417037340238,
+              "spearman_C_steps": 0.9955257046261682
+            }
+          },
+          "chokepoints": {
+            "DOMAIN ADMINS@WRAITH.CORP": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 1,
+                  "bypass": 8,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                  },
+                  "in_any_path": 9,
+                  "in_best_paths": 3,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "EXTCA01.WRAITH.CORP",
+                  "target_label": "BM@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 1,
+                  "bypass": 8,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "EXTDC01.WRAITH.CORP",
+                  "target_label": "BM@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 4.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 18,
+                  "in_best_paths": 6,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "BM@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "AdminTo",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                  },
+                  "in_any_path": 6,
+                  "in_best_paths": 2,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "TRUSTER@WRAITH.CORP",
+                  "target_label": "EXTCA01.WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.3333333333333335,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "XADMIN@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 36,
+              "scenario": "host-compromise",
+              "sources_reached": 9,
+              "sources_tried": 36,
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+            },
+            "ENTERPRISE ADMINS@WRAITH.CORP": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 1,
+                  "bypass": 8,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1120",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                  },
+                  "in_any_path": 9,
+                  "in_best_paths": 3,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "EXTCA01.WRAITH.CORP",
+                  "target_label": "BM@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 1,
+                  "bypass": 8,
+                  "edge": {
+                    "kind": "HasSession",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1000",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1113"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "EXTDC01.WRAITH.CORP",
+                  "target_label": "BM@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 4.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+                  },
+                  "in_any_path": 18,
+                  "in_best_paths": 6,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "BM@WRAITH.CORP",
+                  "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 10,
+                  "in_best_paths": 6,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "BM@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 2.0,
+                  "C_before_mean": 2.0,
+                  "blocked": 0,
+                  "bypass": 9,
+                  "edge": {
+                    "kind": "AdminTo",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1166",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-1120"
+                  },
+                  "in_any_path": 6,
+                  "in_best_paths": 2,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "TRUSTER@WRAITH.CORP",
+                  "target_label": "EXTCA01.WRAITH.CORP"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 36,
+              "scenario": "host-compromise",
+              "sources_reached": 9,
+              "sources_tried": 36,
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+            }
+          },
+          "eligible_sources": 36,
+          "fewest_steps_costs_more": 0,
+          "hop_path_exists": 20,
+          "hop_path_without_neo_path": 2,
+          "inconclusive": 0,
+          "neo_path_without_hop_path": 0,
+          "no_path": 54,
+          "pairs": 72,
+          "pairs_with_several_paths": 18,
+          "reached": 18,
+          "seconds_max": 2.817877124994993,
+          "seconds_median": 0.04976466647349298,
+          "sources": 36,
+          "spearman_C_hops": 0.953608270040842,
+          "spearman_C_steps": 0.9955257046261682
+        },
+        "identity": {
+          "C_range_by_hops": {
+            "1": {
+              "max": 0,
+              "min": 0,
+              "pairs": 6
+            },
+            "2": {
+              "max": 3,
+              "min": 3,
+              "pairs": 2
+            }
+          },
+          "best_C_values": {
+            "0": 6,
+            "3": 2
+          },
+          "by_target": {
+            "DOMAIN ADMINS@WRAITH.CORP": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 3
+                },
+                "2": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 1
+                }
+              },
+              "best_C_values": {
+                "0": 3,
+                "3": 1
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 6,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 2,
+              "neo_path_without_hop_path": 0,
+              "no_path": 30,
+              "pairs": 36,
+              "pairs_with_several_paths": 4,
+              "reached": 4,
+              "seconds_max": 2.350373542169109,
+              "seconds_median": 0.04803339601494372,
+              "spearman_C_hops": 1.0,
+              "spearman_C_steps": 1.0
+            },
+            "ENTERPRISE ADMINS@WRAITH.CORP": {
+              "C_range_by_hops": {
+                "1": {
+                  "max": 0,
+                  "min": 0,
+                  "pairs": 3
+                },
+                "2": {
+                  "max": 3,
+                  "min": 3,
+                  "pairs": 1
+                }
+              },
+              "best_C_values": {
+                "0": 3,
+                "3": 1
+              },
+              "fewest_steps_costs_more": 0,
+              "hop_path_exists": 6,
+              "hop_path_without_neo_path": 0,
+              "inconclusive": 2,
+              "neo_path_without_hop_path": 0,
+              "no_path": 30,
+              "pairs": 36,
+              "pairs_with_several_paths": 4,
+              "reached": 4,
+              "seconds_max": 2.3528822499793023,
+              "seconds_median": 0.04910506249871105,
+              "spearman_C_hops": 1.0,
+              "spearman_C_steps": 1.0
+            }
+          },
+          "chokepoints": {
+            "DOMAIN ADMINS@WRAITH.CORP": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 0.0,
+                  "C_before_mean": 0.0,
+                  "blocked": 1,
+                  "bypass": 3,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+                    "target": "domain:sid:S-1-5-21-3702535222-3822678775-2090119576:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "RODCMANAGER@WRAITH.CORP",
+                  "target_label": "ADMINISTRATORS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "XADMIN@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "BM@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-500",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATOR@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "WriteDacl",
+                    "source": "domain:sid:S-1-5-21-3702535222-3822678775-2090119576:S-1-5-32-544",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATORS@WRAITH.CORP",
+                  "target_label": "DOMAIN ADMINS@WRAITH.CORP"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 36,
+              "scenario": "identity",
+              "sources_reached": 4,
+              "sources_tried": 36,
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-512"
+            },
+            "ENTERPRISE ADMINS@WRAITH.CORP": {
+              "budget": 1024,
+              "candidates": [
+                {
+                  "C_after_mean": 0.0,
+                  "C_before_mean": 0.0,
+                  "blocked": 1,
+                  "bypass": 3,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1119",
+                    "target": "domain:sid:S-1-5-21-3702535222-3822678775-2090119576:S-1-5-32-544"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "RODCMANAGER@WRAITH.CORP",
+                  "target_label": "ADMINISTRATORS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1104",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "XADMIN@WRAITH.CORP",
+                  "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-1113",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "BM@WRAITH.CORP",
+                  "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "MemberOf",
+                    "source": "S-1-5-21-3702535222-3822678775-2090119576-500",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATOR@WRAITH.CORP",
+                  "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+                },
+                {
+                  "C_after_mean": 1.5,
+                  "C_before_mean": 0.75,
+                  "blocked": 0,
+                  "bypass": 4,
+                  "edge": {
+                    "kind": "WriteDacl",
+                    "source": "domain:sid:S-1-5-21-3702535222-3822678775-2090119576:S-1-5-32-544",
+                    "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+                  },
+                  "in_any_path": 3,
+                  "in_best_paths": 1,
+                  "inconclusive": 0,
+                  "other_support_remains": false,
+                  "source_label": "ADMINISTRATORS@WRAITH.CORP",
+                  "target_label": "ENTERPRISE ADMINS@WRAITH.CORP"
+                }
+              ],
+              "derived_skipped": 0,
+              "eligible_sources": 36,
+              "scenario": "identity",
+              "sources_reached": 4,
+              "sources_tried": 36,
+              "target": "S-1-5-21-3702535222-3822678775-2090119576-519"
+            }
+          },
+          "eligible_sources": 36,
+          "fewest_steps_costs_more": 0,
+          "hop_path_exists": 12,
+          "hop_path_without_neo_path": 0,
+          "inconclusive": 4,
+          "neo_path_without_hop_path": 0,
+          "no_path": 60,
+          "pairs": 72,
+          "pairs_with_several_paths": 8,
+          "reached": 8,
+          "seconds_max": 2.3528822499793023,
+          "seconds_median": 0.04903110407758504,
+          "sources": 36,
+          "spearman_C_hops": 1.0,
+          "spearman_C_steps": 1.0
+        }
+      },
+      "session_edges": 3,
+      "skipped_records": 0,
+      "targets": [
+        "DOMAIN ADMINS@WRAITH.CORP",
+        "ENTERPRISE ADMINS@WRAITH.CORP"
+      ],
+      "untyped_references": 0
+    }
+  },
+  "peak_rss_bytes": 1556758528,
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "python": "3.14.7",
+  "runner_sha256": "sha256:2a2176d14518fbdaa0398625bd0cd9d99d437167f36b81704d92dd8f2de255ab",
+  "source_pins_sha256": "sha256:dd41f28bb742d268ea9f1f2639160595e887176b73dbe4f7710dc8db80f0fad9",
+  "version": "neo-workspace-evaluation/1",
+  "workspace_sha256": "sha256:40ad50497741ae2d79774227d3f76ab4fb07e6b0e3c893d0ac11593293459043"
+}
