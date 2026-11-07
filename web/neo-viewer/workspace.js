@@ -614,7 +614,11 @@
     } else if (showingPaths() && currentProgram()) {
       const program = currentProgram();
       V.metrics([
-        [S.answer.minimum ? "C nhỏ nhất" : "C tốt nhất đã tìm", program.C, ""],
+        [
+          program !== S.answer.programs[0] ? "C của đường này" : S.answer.minimum ? "C nhỏ nhất" : "C tốt nhất đã tìm",
+          program.C,
+          "",
+        ],
         ["bước", program.steps.length, ""],
       ]);
     } else strip.replaceChildren();
@@ -646,8 +650,14 @@
     }
     const table = el("table", "ws-table");
     const head = el("tr");
-    for (const title of ["Quan hệ", "Trên đường tốt nhất", "Nguồn mất đường", "Còn đường vòng", "C trước → sau"])
-      head.append(el("th", "", title));
+    for (const [index, title] of [
+      "Quan hệ",
+      "Trên đường tốt nhất",
+      "Nguồn mất đường",
+      "Còn đường vòng",
+      "C trước → sau",
+    ].entries())
+      head.append(el("th", index ? "num" : "", title));
     const thead = el("thead");
     thead.append(head);
     const body = el("tbody");
@@ -666,7 +676,8 @@
             }),
         ),
       );
-      const mean = (value) => (value == null ? "-" : Number(value.toFixed(1)));
+      const mean = (value) =>
+        value == null ? "-" : value.toLocaleString("vi-VN", { maximumFractionDigits: 1 });
       row.append(
         name,
         el("td", "num", item.in_best_paths),
@@ -763,7 +774,9 @@
       notes.push(`${report.failed_session_collections} máy không thu được dữ liệu phiên.`);
     const outside = count(report.outside_references);
     if (outside)
-      notes.push(`Bỏ ${outside} tham chiếu tới ${Object.keys(report.outside_references).length} đối tượng ngoài bản xuất.`);
+      notes.push(
+        `Bỏ tham chiếu ở ${outside} bản ghi tới ${Object.keys(report.outside_references).length} đối tượng ngoài bản xuất.`,
+      );
     if (count(report.untyped_references))
       notes.push(`${count(report.untyped_references)} tham chiếu không rõ loại được nhận theo mã đối tượng.`);
     if (Object.keys(report.dropped_identifiers).length)

@@ -756,7 +756,7 @@ summary {
   padding: 7px 10px 7px 0;
   border-bottom: 1px solid var(--line);
   vertical-align: top;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .ws-table button {
   border: 0;
@@ -767,6 +767,9 @@ summary {
 .ws-table .num {
   text-align: right;
   white-space: nowrap;
+}
+.ws-table th.num {
+  white-space: normal;
 }
 .ws-verdict-clear {
   color: var(--clear);

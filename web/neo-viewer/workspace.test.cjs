@@ -143,7 +143,7 @@ test("opening data lists everything that was set aside", async (t) => {
   const details = app.text("details");
   assert.match(details, /containers 3/);
   assert.match(details, /Không có dữ liệu phiên đăng nhập/);
-  assert.match(details, /Bỏ 4 tham chiếu tới 1 đối tượng/);
+  assert.match(details, /Bỏ tham chiếu ở 4 bản ghi tới 1 đối tượng/);
   assert.match(details, /2 tham chiếu không rõ loại/);
   assert.match(details, /Bỏ 1 bản ghi/);
 });
@@ -159,6 +159,16 @@ test("search, choose a source, find a path and read its cost", async (t) => {
   assert.match(app.text("details"), /Tổng C2/);
   assert.equal(app.d.querySelectorAll("#edges .on-path").length, 1);
   assert.equal(app.d.querySelector("#edges .step-num").textContent, "1");
+});
+
+test("a later path shows its own C, not the best one", async (t) => {
+  const app = await openedWithSource(t, {
+    "/api/paths": () => json(200, answer("reachable", [program, { ...program, C: 5 }])),
+  });
+  await app.press("Tìm đường");
+  app.d.querySelectorAll("button.choice")[1].click();
+  await settle();
+  assert.match(app.text("result-strip"), /C của đường này5/);
 });
 
 test("a computer source starts from the host assumption", async (t) => {
@@ -302,7 +312,7 @@ test("choke points list what was tested and say when one cut stops nobody", asyn
     inconclusive: 0,
     other_support_remains: false,
     C_before_mean: 2,
-    C_after_mean: 4,
+    C_after_mean: 2.3333,
   };
   const app = await openApp(t, {
     "/api/progress": () => json(200, {}),
@@ -323,7 +333,7 @@ test("choke points list what was tested and say when one cut stops nobody", asyn
   assert.equal(app.text("heading"), "Điểm nghẽn tới DOMAIN ADMINS");
   assert.match(app.text("survey"), /9\/36 nguồn tới được/);
   assert.match(app.text("survey"), /ALICE có toàn quyền trên DOMAIN ADMINS/);
-  assert.match(app.text("survey"), /2 → 4/);
+  assert.match(app.text("survey"), /2 → 2,3/);
   assert.match(app.text("details"), /cần gỡ nhiều quan hệ cùng lúc/);
 });
 
