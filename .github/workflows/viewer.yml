@@ -39,5 +39,6 @@ jobs:
           node --check web/neo-viewer/model.js
           node --check web/neo-viewer/app.js
           node --check web/neo-viewer/demo.js
+          node --check web/neo-viewer/workspace.js
       - name: Build standalone offline demo
         run: python web/neo-viewer/build.py --output "$RUNNER_TEMP/neo-viewer.html"

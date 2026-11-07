@@ -1,4 +1,5 @@
-/* Local presentation only: no network requests or execution; only the theme choice is remembered. */
+/* Local presentation only: no network requests or execution; only the theme choice is remembered.
+   The local app adds workspace.js through NeoViewer; Pages and the offline copy never load it. */
 (() => {
   "use strict";
   const $ = (id) => document.getElementById(id),
@@ -22,15 +23,30 @@
     "Dùng danh tính vừa reset": "Dùng danh tính vừa đặt lại",
     "Sửa DACL để cấp quyền": "Cấp quyền đối tượng",
   };
+  const factNames = {
+    security_group: "Là nhóm bảo mật",
+    membership_usable: "Dùng được quyền thành viên",
+    membership_change_allowed: "Được đổi thành viên nhóm",
+    directory_write_allowed: "Được ghi vào thư mục",
+    authentication_accepted: "Xác thực được chấp nhận",
+    network_kdc_reachable: "Kết nối được tới KDC",
+    network_rpc_reachable: "Kết nối được qua RPC",
+    session_present: "Có phiên đăng nhập",
+    session_fresh: "Phiên còn mới",
+    credential_accessible: "Lấy được thông tin xác thực",
+    session_identity_usable: "Dùng được danh tính từ phiên",
+    admin_channel: "Có kênh quản trị",
+    password_policy_accepts: "Chính sách mật khẩu chấp nhận",
+  };
   const strategyNames = {
     neo_guided: "Tìm có hướng dẫn",
     neo_refine: "Tìm cải tiến C",
     fifo: "Tìm theo thứ tự hàng đợi",
   };
   const caseNames = {
-    "rodc-membership": "RODCMANAGER · Administrators",
-    "extca-session": "EXTCA01 · Phiên của BM",
-    "bm-da-membership": "BM · Domain Admins",
+    "rodc-membership": "RODCMANAGER khỏi Administrators",
+    "extca-session": "Phiên của BM trên EXTCA01",
+    "bm-da-membership": "BM khỏi Domain Admins",
   };
   let view,
     mode = "paths",
@@ -42,7 +58,9 @@
     pan = { x: 0, y: 0 },
     nodePositions = Object.create(null),
     custom = null,
-    bundled = false;
+    bundled = false,
+    host = null,
+    lastNodeClick = 0;
   const label = (id) =>
     view.labels?.[id]?.label ||
     id?.replace(/^.*-(\d+)$/, "SID …$1") ||
@@ -51,12 +69,11 @@
   const strategy = (id) => strategyNames[id] || id;
   const empty = "-";
   // Imported decisions carry structured facts; show them as one readable line.
-  const factText = (f) =>
-    typeof f === "string"
-      ? f
-      : `${f.predicate}: ${label(f.subject)} → ${label(f.target)} = ${
-          f.value === true ? "đúng" : f.value === false ? "sai" : "chưa rõ"
-        }`;
+  const factText = (f, name = label) => {
+    if (typeof f === "string") return f;
+    const value = f.value === true ? "" : f.value === false ? " (sai)" : " (chưa rõ)";
+    return `${factNames[f.predicate] || f.predicate}: ${name(f.subject)} → ${name(f.target)}${value}`;
+  };
   const caseTitle = (c) => (bundled && caseNames[c.case]) || c.case;
   function el(tag, cls, content) {
     const n = document.createElement(tag);
@@ -86,11 +103,10 @@
     const next = M.normalize(input);
     bundled = Object.values(NEO_DEMOS).includes(input);
     if (input === NEO_DEMOS.survey)
-      next.title = "SEAMLESS · Nhiều nguồn độc lập";
+      next.title = "SEAMLESS, nhiều nguồn độc lập";
     if (input === NEO_DEMOS.remediation) {
-      next.title = "WRAITH · Can thiệp";
-      next.scenario =
-        "neo-host-session-v1: nguồn User có danh tính dùng được, nguồn Computer chỉ có quyền quản trị cục bộ";
+      next.title = "WRAITH, can thiệp";
+      next.scenario = "Nguồn tài khoản có danh tính dùng được; nguồn máy có quyền quản trị cục bộ";
     }
     view = next;
     mode = next.kind;
@@ -132,9 +148,12 @@
     $("paths-mode").classList.toggle("active", mode === "paths");
     $("remediation-mode").classList.toggle("active", mode === "remediation");
     $("survey-mode").classList.toggle("active", mode === "survey");
-    $("input-origin").textContent = bundled
-      ? "Demo từ báo cáo đã công bố"
-      : "File trên máy · nguồn chưa xác minh · không upload";
+    $("workspace-mode")?.classList.toggle("active", mode === "workspace");
+    $("reset-demo").hidden = mode === "workspace";
+    $("dataset-label").textContent =
+      mode === "workspace" ? "Dữ liệu đang mở" : "Kết quả";
+    if (mode === "workspace") return;
+    $("input-origin").textContent = bundled ? "Dữ liệu mẫu" : "Tệp bạn mở";
   }
   function currentProgram() {
     return view.programs?.[index];
@@ -159,15 +178,19 @@
     $("before").classList.toggle("active", phase === "before");
     $("after").classList.toggle("active", phase === "after");
     $("empty").hidden = true;
+    $("result-strip").hidden = false;
+    $("list-title").hidden = false;
+    document.querySelector(".inspector").hidden = false;
+    $("scope-note").textContent = "";
+    if (mode === "workspace") {
+      host.render();
+      draw();
+      host.details(selection);
+      return;
+    }
     $("canvas").hidden = mode === "survey";
     $("survey").hidden = mode !== "survey";
     document.querySelector(".toolbar-right").hidden = mode === "survey";
-    $("flow-guide").textContent =
-      mode === "paths"
-        ? "Một nguồn bị lộ → xem đích và công sức → mở từng bước để hiểu điều kiện."
-        : mode === "survey"
-          ? "Chọn nguồn → xem các đích → đối chiếu sau can thiệp. Mỗi nguồn là một kịch bản độc lập."
-          : "Chọn can thiệp → so trước/sau → kiểm tra còn đường vòng hay đã chặn trong phạm vi xét.";
     if (mode === "survey") {
       renderSurvey();
       return;
@@ -180,20 +203,18 @@
   function sourceBox(source, target) {
     const box = el("div", "source-box");
     box.append(
-      el("small", "", "NGUỒN"),
+      el("small", "", "Nguồn"),
       el("p", "", source),
-      el("small", "", "ĐÍCH"),
+      el("small", "", "Đích"),
       el("p", "", target),
     );
     $("source-card").append(box);
   }
   function renderSurvey() {
-    $("eyebrow").textContent = view.title.toUpperCase();
-    $("heading").textContent = "Gỡ quyền có chặn được đường không?";
-    pill("Kết quả trong phạm vi báo cáo");
-    $("graph-caption").textContent =
-      "Bảng tổng hợp · mỗi hàng là một nguồn–đích";
-    $("list-title").textContent = "LỌC NGUỒN";
+    $("heading").textContent = "Gỡ một quan hệ, nhiều nguồn còn tới được không?";
+    pill("");
+    $("list-title").textContent = "";
+    $("list-title").hidden = true;
     sourceBox(
       new Set(view.cells.map((c) => c.source_node_id)).size + " nguồn độc lập",
       "Các đích trong khảo sát",
@@ -226,11 +247,11 @@
     host.replaceChildren();
     const summary = el("div", "survey-intro");
     summary.append(
-      el("h2", "", "Điểm can thiệp đã chọn: gỡ quan hệ " + view.point.edge.kind),
+      el("h2", "", "Gỡ quan hệ " + view.point.edge.kind),
       el(
         "p",
         "note",
-        `Trong tập khảo sát: cắt ${view.totals.programs_cut}/${view.totals.baseline_programs} chương trình mẫu; ${view.totals.pairs_disconnected}/${view.totals.pairs} cặp bị ngắt. Cắt đường mẫu chưa có nghĩa là đã chặn được nguồn.`,
+        `Cắt ${view.totals.programs_cut}/${view.totals.baseline_programs} đường mẫu, nhưng chỉ ngắt ${view.totals.pairs_disconnected}/${view.totals.pairs} cặp nguồn và đích.`,
       ),
     );
     host.append(summary);
@@ -259,7 +280,7 @@
         r.after.reachability === "reachable"
           ? "Còn đường"
           : r.disconnected === true
-            ? "Chặn trong phạm vi xét"
+            ? "Đã chặn"
             : "Chưa kết luận";
       row.append(
         td,
@@ -276,22 +297,15 @@
     table.append(body);
     host.append(table);
     metrics([
-      ["Cặp đang xem", cells.length, ""],
       [
-        "Còn đường sau",
+        "cặp còn đường",
         cells.filter(
           (c) => c.intervention_result.after.reachability === "reachable",
         ).length,
-        "",
-      ],
-      [
-        "Bị ngắt trong phạm vi xét",
-        cells.filter((c) => c.intervention_result.disconnected === true).length,
-        "",
+        "/ " + cells.length,
       ],
     ]);
-    $("scope-note").textContent =
-      "Bảng đọc từ báo cáo đã chạy; C tốt nhất trong tập đã tìm được. Số đường mẫu bị cắt và số cặp bị ngắt là hai kết quả khác nhau.";
+    $("scope-note").textContent = "";
     const box = $("details");
     box.replaceChildren();
     const c = cells[index];
@@ -306,22 +320,18 @@
       "Kết quả sau",
       c.intervention_result.after.reachability === "reachable"
         ? "Vẫn tới được đích"
-        : "Xem giới hạn của phạm vi xét",
+        : "Không còn đường",
     );
     fact(
       box,
-      "Chương trình mẫu bị cắt",
+      "Đường mẫu bị cắt",
       c.intervention_result.cut_program_ids?.length ?? 0,
     );
     fact(box, "Thành viên bị gỡ", label(view.point.edge.source));
     fact(box, "Nhóm đích", label(view.point.edge.target));
-    box.append(el("h3", "", "C CỦA CÁC CHƯƠNG TRÌNH TRƯỚC"));
+    box.append(el("h3", "", "C của các đường trước khi gỡ"));
     c.programs.forEach((p, i) =>
-      fact(box, "Chương trình " + (i + 1), M.cost(p.C) ?? "Chưa chấm"),
-    );
-    note(
-      box,
-      "Bảng tổng hợp không kèm các bước của từng cặp. Để xem đồ thị, mở kết quả truy vấn riêng ở màn Một nguồn bị lộ.",
+      fact(box, "Đường " + (i + 1), M.cost(p.C) ?? "Chưa chấm"),
     );
   }
   function choice(i, title, subtitle, costValue) {
@@ -333,16 +343,12 @@
     b.setAttribute("aria-pressed", String(index === i));
     const copy = el("span", "choice-copy");
     copy.append(el("strong", "", title), el("small", "", subtitle));
-    b.append(
-      el("span", "rank", String(i + 1).padStart(2, "0")),
-      copy,
-      el("span", "choice-cost", costValue),
-    );
+    b.append(copy, el("span", "choice-cost", costValue));
     $("choices").append(b);
   }
-  function pill(label, tone = "blue") {
+  function pill(label, tone = "route") {
     $("status").textContent = label;
-    $("status").className = "status-pill " + tone;
+    $("status").className = "status " + tone;
   }
   function metrics(items) {
     $("result-strip").replaceChildren(
@@ -360,15 +366,14 @@
     );
   }
   function renderPath() {
-    $("eyebrow").textContent = view.title.toUpperCase();
-    $("heading").textContent = "Đường tới " + label(view.target);
+    $("heading").textContent = label(view.source) + " → " + label(view.target);
     sourceBox(label(view.source), label(view.target));
-    $("list-title").textContent = "CÁC ĐƯỜNG TRONG BÁO CÁO";
+    $("list-title").textContent = "Các đường, xếp theo C";
     view.programs.forEach((p, i) =>
       choice(
         i,
         "Đường " + (i + 1),
-        p.steps.length + " bước" + (p.C == null ? " · chưa chấm C" : ""),
+        p.steps.length + " bước" + (p.C == null ? ", chưa chấm C" : ""),
         p.C == null ? empty : "C " + p.C,
       ),
     );
@@ -376,38 +381,25 @@
     pill(
       p
         ? view.minimum
-          ? "C nhỏ nhất trong phạm vi xét"
-          : "Đường đã tìm được"
+          ? "Có đường, C nhỏ nhất"
+          : "Có đường"
         : view.noPath
-          ? "Không có đường trong phạm vi xét"
+          ? "Không có đường"
           : "Chưa kết luận",
-      p ? "blue" : view.noPath ? "green" : "amber",
+      p ? "route" : view.noPath ? "clear" : "pending",
     );
-    $("graph-caption").textContent = "Chương trình hành động · mũi tên từ nguồn quyền tới đích thao tác";
     metrics([
       ["Công sức C", p?.C ?? "Chưa chấm", ""],
-      ["Bước trong chương trình", p?.steps.length ?? 0, ""],
-      [
-        "Lần mở rộng",
-        view.expansions ?? empty,
-        view.budget?.max_expansions ? "/ " + view.budget.max_expansions : "",
-      ],
+      ["bước", p?.steps.length ?? 0, ""],
     ]);
-    $("scope-note").textContent = [
-      M.limitation(view),
-      "C là công sức tương đối theo kịch bản. Thứ hạng áp dụng trong tập đã tìm được.",
-    ]
-      .filter(Boolean)
-      .join(" ");
+    $("scope-note").textContent = p ? "" : M.limitation(view);
     if (!p || !p.steps.length) {
       $("empty").hidden = false;
       $("empty").textContent = p
-        ? "Mục tiêu đã có trong trạng thái đầu; không cần hành động mới."
+        ? "Nguồn đã có sẵn mục tiêu, không cần bước nào."
         : view.noPath
-          ? "Không có đường trong phạm vi đã kiểm tra."
-          : "Chưa tìm được đường. " +
-            (M.limitation(view) || "Báo cáo chưa cung cấp lý do cụ thể.") +
-            " Chưa thể kết luận là an toàn.";
+          ? "Không có đường."
+          : "Chưa tìm được đường. " + (M.limitation(view) || "Tệp không ghi lý do.");
     }
   }
   function renderRemediation() {
@@ -415,18 +407,15 @@
       q = currentQuery(),
       s = q[phase],
       out = M.outcome(s);
-    $("eyebrow").textContent = view.title.toUpperCase();
-    $("heading").textContent = "Kiểm tra sau can thiệp";
+    $("heading").textContent = "Gỡ " + caseTitle(c);
     pill(out.label, out.tone);
     sourceBox(
-      bundled
-        ? "Điểm xuất phát ban đầu · không giữ thông tin xác thực cũ"
-        : q.source || "Nguồn chưa ghi trong summary",
-      q.goal || "Đích chưa ghi trong báo cáo",
+      bundled ? "Điểm xuất phát ban đầu" : q.source || "Không ghi trong tệp",
+      q.goal || "Không ghi trong tệp",
     );
-    $("list-title").textContent = "CAN THIỆP TRONG BÁO CÁO";
+    $("list-title").textContent = "Các can thiệp";
     view.cases.forEach((c, i) =>
-      choice(i, caseTitle(c), c.removed_edges.length + " quan hệ bị gỡ", ""),
+      choice(i, caseTitle(c), c.removed_edges.length + " quan hệ", ""),
     );
     const select = el("select");
     select.setAttribute("aria-label", "Chế độ tìm kiếm và mục tiêu");
@@ -442,25 +431,19 @@
       render();
     };
     $("source-card").append(select);
-    $("graph-caption").textContent =
-      phase === "before"
-        ? "Quan hệ được chọn để can thiệp"
-        : "Quan hệ đã gỡ khỏi mô hình";
     metrics([
-      ["C trước", M.cost(q.before.C) ?? "Chưa chấm", ""],
       [
-        "C sau",
+        "C sau khi gỡ",
         M.cost(q.after.C) ??
-          (q.after.no_path_proven ? "Không có đường" : "Chưa xác định"),
+          (q.after.no_path_proven ? "Không có đường" : "Chưa rõ"),
         "",
       ],
-      ["Tìm lại", M.outcome(q.after).label, ""],
+      ["C trước", M.cost(q.before.C) ?? "Chưa chấm", ""],
     ]);
-    $("scope-note").textContent =
-      "Đồ thị chỉ vẽ quan hệ đã gỡ; báo cáo tổng hợp không kèm các bước của đường vòng. " +
-      M.limitation(s);
+    $("scope-note").textContent = s.reached ? "" : M.limitation(s);
   }
   function graphData() {
+    if (mode === "workspace") return host.graph();
     if (mode === "remediation")
       return {
         edges: currentCase().removed_edges.map((e, i) => ({
@@ -475,8 +458,8 @@
     };
   }
   function draw() {
-    const { edges } = graphData();
-    const ids = [...new Set(edges.flatMap((e) => [e.source, e.target]))];
+    const { edges, nodes: lone = [] } = graphData();
+    const ids = [...new Set([...edges.flatMap((e) => [e.source, e.target]), ...lone])];
     if (!ids.length && mode === "paths" && currentProgram())
       ids.push(view.source);
     const layout = Object.create(null),
@@ -521,7 +504,7 @@
       const key = JSON.stringify([e.source, e.target]),
         n = pairIndex.get(key) || 0;
       pairIndex.set(key, n + 1);
-      const bend = (n - (pairCount.get(key) - 1) / 2) * 65,
+      const bend = (n - (pairCount.get(key) - 1) / 2) * 110,
         dx = b.x - a.x,
         dy = b.y - a.y,
         len = Math.hypot(dx, dy) || 1;
@@ -541,27 +524,39 @@
         class:
           "edge-group" +
           (e.removed ? " removed" : "") +
+          (e.cls ? " " + e.cls : "") +
           (selection?.type === "edge" && selection.id === e.id
             ? " selected"
             : ""),
         tabindex: 0,
         role: "button",
-        "aria-label": `${e.id + 1}. ${action(e.technique_id)}: ${label(e.source)} → ${label(e.target)}`,
+        "aria-label": `${e.label || `${e.id + 1}. ${action(e.technique_id)}`}: ${label(e.source)} → ${label(e.target)}`,
       });
       g.append(
         svg("path", { d: path, class: "edge-hit" }),
         svg("path", { d: path, class: "edge-line" }),
       );
+      const at = e.labelAt ?? 0.5;
+      const mx = e.source === e.target ? cx : a.x + dx * at - ((dy / len) * bend) / 2,
+        my = e.source === e.target ? cy : a.y + dy * at + ((dx / len) * bend) / 2;
+      const stop = e.removed ? "×" : (e.step ?? (mode === "paths" ? e.id + 1 : null));
+      // Beside a steep line a label stays readable, on the side the line bends towards.
+      // Above a flat line it clears the stop. A middle line among parallels moves up a row.
+      const steep = Math.abs(dy) > Math.abs(dx);
+      const gap = stop === null ? 8 : 18;
+      const lean = -(dy / len) * bend;
+      const parallel = pairCount.get(key) > 1 && bend === 0 ? -26 : 0;
       const t = svg("text", {
-        x: (a.x + b.x) / 2 - ((dy / len) * bend) / 2,
-        y: (a.y + b.y) / 2 + ((dx / len) * bend) / 2 - 10,
-        class: "edge-label",
+        x: steep ? mx + (lean < 0 ? -gap : gap) : mx,
+        y: steep ? my + 4 + parallel : my - (stop === null ? 12 : 21) + parallel,
+        class: "edge-label" + (steep ? (lean < 0 ? " before" : " beside") : ""),
       });
-      t.textContent = `${mode === "paths" ? e.id + 1 + ". " : ""}${action(e.technique_id)}`;
+      t.textContent = e.label || action(e.technique_id);
       g.append(t);
-      if (e.source === e.target) {
-        t.setAttribute("x", cx);
-        t.setAttribute("y", cy);
+      if (stop !== null) {
+        const number = svg("text", { x: mx, y: my, class: "step-num" });
+        number.textContent = stop;
+        g.append(svg("circle", { cx: mx, cy: my, r: 11, class: "step-dot" }), number);
       }
       g.onclick = () => selectEdge(e.id);
       g.onkeydown = (ev) => {
@@ -587,6 +582,7 @@
         class:
           "node " +
           kind +
+          (view.labels?.[id]?.cls ? " " + view.labels[id].cls : "") +
           (selection?.type === "node" && selection.id === id
             ? " selected"
             : ""),
@@ -595,26 +591,52 @@
         role: "button",
         "aria-label": label(id),
       });
-      g.append(svg("circle", { r: 26, class: "outer" }));
-      const icon = svg("text", { class: "node-icon", y: 0 });
-      icon.textContent =
-        k === "Group" ? "G" : k === "Computer" ? "▣" : k === "User" ? "U" : "◇";
-      g.append(icon);
-      const lab = svg("text", { class: "node-label", y: 49 });
+      g.append(
+        k === "Group"
+          ? svg("polygon", { points: "-13,-25 13,-25 27,0 13,25 -13,25 -27,0", class: "outer" })
+          : k === "Computer"
+            ? svg("rect", { x: -23, y: -23, width: 46, height: 46, rx: 6, class: "outer" })
+            : k === "User"
+              ? svg("circle", { r: 25, class: "outer" })
+              : svg("polygon", { points: "0,-27 27,0 0,27 -27,0", class: "outer" }),
+        svg("use", {
+          href:
+            k === "Group"
+              ? "#i-group"
+              : k === "Computer"
+                ? "#i-computer"
+                : k === "User"
+                  ? "#i-user"
+                  : "#i-object",
+          x: -13,
+          y: -13,
+          width: 26,
+          height: 26,
+        }),
+      );
+      const lab = svg("text", { class: "node-label", y: 44 });
       const short = label(id);
       lab.textContent = short.length > 25 ? short.slice(0, 23) + "…" : short;
       const title = svg("title");
       title.textContent = id;
       g.append(title, lab);
       if (id === view.source || id === view.target) {
-        const role = svg("text", { y: -42, class: "node-role" });
-        role.textContent = id === view.source ? "XUẤT PHÁT" : "ĐÍCH";
+        const role = svg("text", { y: 60, class: "node-role" });
+        role.textContent = id === view.source ? "Xuất phát" : "Đích";
         g.append(role);
       }
       g.onclick = () => {
+        // Drawing replaces this element, so a browser double click would never reach it.
+        const repeated =
+          mode === "workspace" &&
+          selection?.type === "node" &&
+          selection.id === id &&
+          performance.now() - lastNodeClick < 400;
+        lastNodeClick = performance.now();
         selection = { type: "node", id };
         draw();
         details();
+        if (repeated) host.expand(id);
       };
       g.onkeydown = (ev) => {
         if (ev.key === "Enter" || ev.key === " ") {
@@ -664,6 +686,7 @@
     details();
   }
   function details() {
+    if (mode === "workspace") return host.details(selection);
     const box = $("details");
     box.replaceChildren();
     if (mode === "remediation") {
@@ -676,16 +699,11 @@
       fact(
         box,
         "Trước",
-        M.outcome(q.before).label + " · C " + (q.before.C ?? empty),
+        M.outcome(q.before).label + ", C " + (q.before.C ?? empty),
       );
-      fact(box, "Sau", M.outcome(q.after).label + " · C " + (q.after.C ?? empty));
-      fact(box, "Lần mở rộng sau", q.after.expansions);
-      fact(
-        box,
-        "Giới hạn sau",
-        M.limitation(q.after) || "Không ghi lý do dừng",
-      );
-      fact(box, "Kịch bản theo báo cáo", view.scenario || "Chưa có thông tin");
+      fact(box, "Sau", M.outcome(q.after).label + ", C " + (q.after.C ?? empty));
+      if (!q.after.reached && M.limitation(q.after)) note(box, M.limitation(q.after));
+      fact(box, "Giả định", view.scenario || "Chưa có thông tin");
       if (selection?.type === "edge") {
         const e = c.removed_edges[selection.id];
         fact(box, "Quan hệ", e.kind);
@@ -693,21 +711,9 @@
         fact(box, "Đích", label(e.target));
       } else if (selection?.type === "node")
         fact(box, "ID đối tượng", selection.id);
-      box.append(el("h3", "", "BẢN GHI ĐÃ LOẠI"));
+      box.append(el("h3", "", "Bản ghi đã bỏ"));
       for (const [k, v] of Object.entries(c.removed_observations || {}))
         fact(box, k, v);
-      note(
-        box,
-        (bundled
-          ? "Demo tìm lại từ điểm xuất phát ban đầu, không giữ thông tin xác thực đã lấy trước đó. "
-          : "") + "Cắt đường cũ chưa chứng minh đã ngắt mọi đường.",
-      );
-      note(
-        box,
-        q.after.no_path_proven
-          ? "Báo cáo ghi không có đường trong phạm vi đã xét; kết luận này chỉ áp dụng cho phạm vi đó."
-          : "C sau là mức tốt nhất đã tìm nếu có đường; hết ngân sách vẫn là chưa kết luận.",
-      );
       return;
     }
     const p = currentProgram();
@@ -717,12 +723,11 @@
         el(
           "p",
           "detail-subtitle",
-          view.labels?.[selection.id]?.kind ||
-            "Đối tượng · chưa có type trong output",
+          view.labels?.[selection.id]?.kind || "Đối tượng",
         ),
       );
-      fact(box, "ID / nhãn gốc", selection.id);
-      box.append(el("h3", "", "THAO TÁC LIÊN QUAN"));
+      fact(box, "Mã đối tượng", selection.id);
+      box.append(el("h3", "", "Các bước liên quan"));
       p?.steps.forEach((s, i) => {
         if ([s.actor, s.source, s.target].includes(selection.id))
           box.append(button("", () => selectEdge(i), "step-button"));
@@ -732,7 +737,7 @@
       p?.steps.forEach((s, i) => {
         if ([s.actor, s.source, s.target].includes(selection.id)) {
           buttons[j++].append(
-            el("span", "", String(i + 1).padStart(2, "0")),
+            el("span", "", i + 1),
             el("div", "", action(s.technique_id)),
           );
         }
@@ -742,56 +747,31 @@
     if (selection?.type === "edge") {
       const s = p.steps[selection.id];
       box.append(
-        el("span", "tag", "BƯỚC " + (selection.id + 1)),
+        el("span", "tag", "Bước " + (selection.id + 1)),
         el("h2", "", action(s.technique_id)),
       );
-      fact(box, "Chủ thể thực hiện", label(s.actor));
-      fact(box, "Nguồn quyền", label(s.source));
-      fact(box, "Đích thao tác", label(s.target));
-      fact(box, "Mã kỹ thuật", s.technique_id);
-      note(
-        box,
-        "Mũi tên đi từ nguồn quyền tới đích của thao tác. Chủ thể thực hiện có thể khác nguồn quyền, ví dụ khi dùng quyền của nhóm; mũi tên này không phải cạnh BloodHound.",
-      );
+      fact(box, "Người thực hiện", label(s.actor));
+      fact(box, "Quyền từ", label(s.source));
+      fact(box, "Tác động lên", label(s.target));
       if (s.assumptions?.length) {
-        box.append(el("h3", "", "GIẢ ĐỊNH CỦA BƯỚC"));
-        s.assumptions.forEach((f) =>
-          note(box, factText(f)),
-        );
-      } else
-        note(
-          box,
-          s.assumptionsComplete === true
-            ? "Không ghi nhận giả định trong trace của bước này."
-            : "Chưa có đủ thông tin giả định riêng cho bước; xem tổng quan chương trình nếu báo cáo có ghi.",
-        );
+        box.append(el("h3", "", "Giả định của bước"));
+        s.assumptions.forEach((f) => note(box, factText(f)));
+      } else if (s.assumptionsComplete !== true)
+        note(box, "Tệp không ghi giả định của bước này.");
       return;
     }
     box.append(
-      el("h2", "", p ? "Tổng quan chương trình" : "Kết quả tìm kiếm"),
-      el(
-        "p",
-        "detail-subtitle",
-        view.minimum
-          ? "C nhỏ nhất đã được chứng minh trong phạm vi xét"
-          : p
-            ? "Thứ hạng trong tập đã tìm được"
-            : "Báo cáo chưa có đường để xếp hạng",
-      ),
+      el("h2", "", p ? "Đường " + (index + 1) : "Chưa có đường"),
     );
     const hero = el("div", "cost-hero");
     hero.append(
-      el("span", "", "Công sức tương đối"),
+      el("span", "", view.minimum ? "C nhỏ nhất" : "C tốt nhất đã tìm"),
       el("strong", "", p?.C ?? empty),
     );
     box.append(hero);
     if (p) {
-      box.append(el("h3", "", "THÀNH PHẦN CỦA C"));
-      if (!p.ledger?.length)
-        note(
-          box,
-          "File không có sổ công việc; viewer không tự suy C từ tên hành động.",
-        );
+      box.append(el("h3", "", "C gồm những việc"));
+      if (!p.ledger?.length) note(box, "Tệp không có sổ công việc.");
       for (const unit of p.ledger || []) {
         const row = el("div", "ledger-row");
         row.append(
@@ -804,10 +784,6 @@
         );
         box.append(row);
       }
-      note(
-        box,
-        "C=0 là mức thấp nhất của thang; bước đó vẫn là một thao tác. Tổng C lấy từ kết quả của engine.",
-      );
       const assumptions = p.assumptions || [];
       const det = el("details");
       const summary = el(
@@ -815,7 +791,7 @@
         "note",
         p.assumptionsComplete
           ? "Giả định chương trình (" + assumptions.length + ")"
-          : "Giả định chương trình · chưa đầy đủ (đã ghi " +
+          : "Giả định chương trình, chưa đầy đủ (đã ghi " +
               assumptions.length +
               ")",
       );
@@ -823,23 +799,8 @@
       assumptions.forEach((f) =>
         note(det, factText(f)),
       );
-      if (!p.assumptionsComplete)
-        note(
-          det,
-          "Một số bước không có danh sách kiểm tra điều kiện. Số đã ghi không phải tổng số giả định của đường.",
-        );
       box.append(det);
     }
-    if (!bundled) {
-      box.append(el("h3", "", "NGUỒN KẾT QUẢ"));
-      note(box, view.provenance || "File người dùng");
-      note(
-        box,
-        "Thông tin do file cung cấp; viewer không xác minh nguồn hoặc chạy lại kiểm chứng.",
-      );
-      if (view.notice) note(box, view.notice);
-    }
-    fact(box, "Ngữ cảnh xác thực", label(view.context));
   }
   function showError(e) {
     $("error").textContent = e.message || String(e);
@@ -960,4 +921,38 @@
   };
   themeLabel();
   load(NEO_DEMOS.paths);
+  // The local app's workspace screen shares this canvas, its drawing and its helpers.
+  globalThis.NeoViewer = {
+    el,
+    button,
+    fact,
+    note,
+    metrics,
+    pill,
+    action,
+    factText,
+    attach(next) {
+      host = next;
+    },
+    show(nextView) {
+      view = nextView;
+      mode = "workspace";
+      fillDataset();
+      render();
+    },
+    select(next) {
+      selection = next;
+    },
+    phase: () => phase,
+    setPhase(next) {
+      phase = next;
+    },
+    resetCanvas() {
+      selection = null;
+      nodePositions = Object.create(null);
+      zoom = 1;
+      pan = { x: 0, y: 0 };
+    },
+    showError,
+  };
 })();

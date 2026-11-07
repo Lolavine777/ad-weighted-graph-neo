@@ -22,6 +22,7 @@ Chi tiet cac nguon du lieu duoc giu lai de co provenance day du:
 1. **Dataset A (Benchmark Lab - GOADv2 NORTH):** Môi trường phòng thí nghiệm Game of Active Directory v2 chuẩn hóa đơn miền (`NORTH.SEVENKINGDOMS.LOCAL`).
    Tập dữ liệu này cung cấp hai bản trích xuất song song từ SharpHound C# (12 tệp, 347 bản ghi thô, 320 ID duy nhất) và BloodHound-Python (7 tệp, 94 bản ghi thô, 94 ID duy nhất).
    Dataset A đóng vai trò là tập dữ liệu tham chiếu (benchmark / reference dataset) phục vụ so sánh sự sai khác giữa các công cụ thu thập và kiểm thử hồi quy dựa trên kịch bản lab biết trước.
+   Nguồn công khai: [m4lwhere/Bloodhound-CE-Sample-Data](https://github.com/m4lwhere/Bloodhound-CE-Sample-Data) (Unlicense, thu thập ngày 10/4/2024); SHA blob git của hai tệp zip khớp với bản trong kho đó.
 2. **Dataset B (Enterprise Multi-Domain - `ad_sampledata`):** Tập dữ liệu môi trường phòng thí nghiệm mô phỏng doanh nghiệp đa miền quy mô lớn (enterprise-style multi-domain lab dataset), bao gồm 3 miền được xuất khẩu (`PHANTOM.CORP`, `GHOST.CORP`, `WRAITH.CORP`), tổng cộng 31 tệp JSON với 1.718 bản ghi thô, 1.469 ObjectIdentifier duy nhất, và 407 ID duy nhất thuộc 6 loại đối tượng M1.
    Tập dữ liệu này cung cấp cấu trúc quan hệ tin cậy liên miền (Trusts), máy chủ điều khiển miền chỉ đọc (RODC), hạ tầng chứng chỉ doanh nghiệp đa tầng (AD CS), và cấu trúc phân quyền cục bộ chuyên sâu (`LocalGroups`, `UserRights`).
    Dataset B đóng vai trò là bộ kiểm chuẩn quy mô, độ bền vững (robustness), và kiểm tra khả năng xử lý ranh giới miền.

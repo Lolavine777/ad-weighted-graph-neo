@@ -1,0 +1,168 @@
+{
+  "C_by_technique": {
+    "acquire_reset_identity": {
+      "consensus": 0,
+      "neo-c-v1": 0,
+      "rater_a": 0,
+      "rater_b": 0,
+      "rater_c": 1
+    },
+    "genericall_add_member": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 1
+    },
+    "genericall_grant_write_dacl": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 2
+    },
+    "genericall_reset_password": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 1
+    },
+    "grant_new_object_right": {
+      "consensus": 1,
+      "neo-c-v1": 2,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 2
+    },
+    "obtain_admin_execution_on_host": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 1
+    },
+    "open_winrm_remote_session": {
+      "consensus": 0,
+      "neo-c-v1": 1,
+      "rater_a": 0,
+      "rater_b": 0,
+      "rater_c": 0
+    },
+    "reset_target_password": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 1
+    },
+    "scenario_reset_password": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 0
+    },
+    "scenario_winrm_admin": {
+      "consensus": 1,
+      "neo-c-v1": 1,
+      "rater_a": 1,
+      "rater_b": 1,
+      "rater_c": 0
+    },
+    "use_session_identity": {
+      "consensus": 3,
+      "neo-c-v1": 2,
+      "rater_a": 2,
+      "rater_b": 2,
+      "rater_c": 3
+    }
+  },
+  "agreement_with_neo_c_v1": {
+    "consensus": {
+      "exact_C": 8,
+      "mean_C_difference": -0.09090909090909091,
+      "quadratic_weighted_kappa_C": 0.6666666666666667,
+      "within_one_C": 11
+    },
+    "rater_a": {
+      "exact_C": 9,
+      "mean_C_difference": -0.18181818181818182,
+      "quadratic_weighted_kappa_C": 0.6764705882352942,
+      "within_one_C": 11
+    },
+    "rater_b": {
+      "exact_C": 9,
+      "mean_C_difference": -0.18181818181818182,
+      "quadratic_weighted_kappa_C": 0.6764705882352942,
+      "within_one_C": 11
+    },
+    "rater_c": {
+      "exact_C": 5,
+      "mean_C_difference": 0.0,
+      "quadratic_weighted_kappa_C": 0.49230769230769234,
+      "within_one_C": 11
+    }
+  },
+  "consensus": "median of the AI raters' T1 and T2, rounded",
+  "fixed_programs": {
+    "evidence": "reports/generated/neo-C-sensitivity-20261023/analysis-verified",
+    "pairs": 24
+  },
+  "krippendorff_alpha_interval_C": 0.6018518518518519,
+  "raters": {
+    "rater_a": "Claude Sonnet 5.5 (claude-sonnet-5-5), phiên thứ nhất",
+    "rater_b": "Claude Sonnet 5.5 (claude-sonnet-5-5), phiên thứ hai",
+    "rater_c": "Claude Haiku 5.5 (claude-haiku-5-5)"
+  },
+  "ratings_sha256": "sha256:3fdd65c02c426670b1ce29ab59718178f1a646bb4364b5166a7df01e185b05a2",
+  "repricing": {
+    "consensus": {
+      "best_C_changed": 15,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "pairs_with_strict_reversals": 2,
+      "strict_rank_reversals": 4,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "neo-c-v1": {
+      "best_C_changed": 0,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 0,
+      "witness_pairs": 22
+    },
+    "rater_a": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "rater_b": {
+      "best_C_changed": 7,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    },
+    "rater_c": {
+      "best_C_changed": 8,
+      "best_set_changed": 0,
+      "best_set_disjoint": 0,
+      "pairs_with_strict_reversals": 0,
+      "strict_rank_reversals": 0,
+      "top_3_set_changed": 7,
+      "witness_pairs": 22
+    }
+  },
+  "runner_sha256": "sha256:49a4598b769dee2df0b5fded468e53e77e822ff9710f4556acff4726e7eff866",
+  "version": "neo-effort-rater-agreement/1"
+}

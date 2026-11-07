@@ -146,17 +146,17 @@ test("imported survey without metadata does not inherit demo domain or machine c
   });
   await ui.load(survey);
   assert.match(ui.text("dataset"), /Báo cáo đã nhập/);
-  assert.doesNotMatch(ui.text("eyebrow"), /SEAMLESS|ĐÃ CÔNG BỐ/);
+  assert.doesNotMatch(ui.text("heading"), /SEAMLESS/);
   assert.match(ui.text("details"), /Chưa có thông tin trong báo cáo/);
   assert.doesNotMatch(ui.text("details"), /Danh tính mạng máy dùng được/);
-  assert.match(ui.text("input-origin"), /nguồn chưa xác minh/);
+  assert.match(ui.text("input-origin"), /Tệp bạn mở/);
   ui.click("paths-mode");
-  assert.match(ui.text("input-origin"), /Demo/);
+  assert.match(ui.text("input-origin"), /Dữ liệu mẫu/);
   ui.click("survey-mode");
-  assert.match(ui.text("input-origin"), /nguồn chưa xác minh/);
+  assert.match(ui.text("input-origin"), /Tệp bạn mở/);
   ui.click("reset-demo");
   assert.match(ui.text("dataset"), /SEAMLESS/);
-  assert.match(ui.text("input-origin"), /Demo/);
+  assert.match(ui.text("input-origin"), /Dữ liệu mẫu/);
 });
 
 test("survey capability comes from the matching source profile, never its node kind alone", async (t) => {
@@ -194,7 +194,7 @@ test("imported remediation keeps its own goal and scenario without demo claims",
   assert.doesNotMatch(ui.text("choices"), /RODCMANAGER/);
   assert.doesNotMatch(ui.text("details"), /local-admin-only/);
   assert.match(ui.text("details"), /Chưa có thông tin/);
-  assert.match(ui.text("status"), /Chặn trong phạm vi xét/);
+  assert.match(ui.text("status"), /Đã chặn/);
   r.title = "OTHERLAB";
   r.scenario = "fixture-scenario";
   await ui.load(r);
@@ -219,20 +219,20 @@ test("caps and missing conditions stay inconclusive; proof and zero-action succe
   n.semantic.attempts = [];
   n.semantic.status = "blocked";
   await ui.load(n);
-  assert.match(ui.text("empty"), /thiếu điều kiện/);
+  assert.match(ui.text("empty"), /Thiếu điều kiện/);
   delete n.semantic.status;
   await ui.load(n);
-  assert.match(ui.text("empty"), /chưa cung cấp lý do/);
+  assert.match(ui.text("empty"), /không ghi lý do/);
   n.semantic.engine_reported_guarantees.is_no_path_proven_over_scope = true;
   await ui.load(n);
-  assert.match(ui.text("status"), /Không có đường trong phạm vi xét/);
+  assert.match(ui.text("status"), /Không có đường/);
   const z = native();
   z.semantic.candidates[0].transition_history = [];
   z.semantic.top_k.programs[0].effort = 0;
   z.semantic.top_k.programs[0].work_unit_ledger = {};
   await ui.load(z);
-  assert.match(ui.text("status"), /Đường đã tìm được/);
-  assert.match(ui.text("empty"), /trạng thái đầu/);
+  assert.match(ui.text("status"), /Có đường/);
+  assert.match(ui.text("empty"), /không cần bước nào/);
   assert.equal(ui.d.querySelector(".cost-hero strong").textContent, "0");
 });
 
@@ -248,7 +248,7 @@ test("demo results and controls remain faithful across all three views", (t) => 
   ui.click("remediation-mode");
   assert.equal(ui.text("status"), "Còn đường vòng");
   ui.d.querySelectorAll(".choice")[1].click();
-  assert.equal(ui.text("status"), "Chặn trong phạm vi xét");
+  assert.equal(ui.text("status"), "Đã chặn");
   ui.click("before");
   assert.equal(ui.text("status"), "Có đường");
   ui.click("after");
@@ -257,7 +257,7 @@ test("demo results and controls remain faithful across all three views", (t) => 
   strategy.value = "2";
   strategy.dispatchEvent(new ui.w.Event("change"));
   assert.equal(ui.text("status"), "Còn đường vòng");
-  assert.match(ui.text("details"), /Đã hết ngân sách tìm kiếm/);
+  assert.doesNotMatch(ui.text("details"), /ngân sách/); // A found bypass needs no budget note.
   ui.click("survey-mode");
   assert.match(ui.text("survey"), /15\/30/);
   assert.match(ui.text("survey"), /0\/10/);
@@ -267,7 +267,7 @@ test("demo results and controls remain faithful across all three views", (t) => 
   source.dispatchEvent(new ui.w.Event("change"));
   assert.equal(ui.d.querySelectorAll("tbody tr").length, 2);
   ui.d.querySelectorAll(".row-button")[1].click();
-  assert.match(ui.text("details"), /CỦA CÁC CHƯƠNG TRÌNH/);
+  assert.match(ui.text("details"), /C của các đường/);
 });
 
 test("file errors preserve the previous report; unrated and label text remain literal", async (t) => {
