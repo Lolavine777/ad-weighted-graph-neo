@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import json
 import platform
-import resource
 import statistics
 import time
 from collections import Counter, defaultdict, deque
@@ -296,6 +295,16 @@ def evaluate_dataset(name, workers, with_chokepoints, previous=None):
     return report
 
 
+def peak_rss_bytes():
+    """Peak memory of this process, or None where the platform does not report it."""
+    try:
+        import resource
+    except ImportError:  # Windows
+        return None
+    peak = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+    return peak if platform.system() == "Darwin" else peak * 1024  # Linux reports KiB
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -326,14 +335,13 @@ def main(argv=None):
             folder, export, scenarios, *_ = DATASETS[name]
             workspace = open_dataset(ROOT / folder, export=export)
             result["datasets"][name]["app_seconds"] = measure_app(workspace, scenarios[-1])
-            result["peak_rss_bytes"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+            result["peak_rss_bytes"] = peak_rss_bytes()
             _atomic_json(args.output, result)
             continue
         result["datasets"][name] = evaluate_dataset(
             name, args.workers, not args.skip_chokepoints, result["datasets"].get(name)
         )
-        # Divided by 1024 on Linux and already in bytes on macOS; reported for this one machine.
-        result["peak_rss_bytes"] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+        result["peak_rss_bytes"] = peak_rss_bytes()
         _atomic_json(args.output, result)
     return 0
 

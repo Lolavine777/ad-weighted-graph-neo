@@ -2,7 +2,7 @@
 
 import pytest
 
-from scripts.neo_evaluation import hop_distances, spearman, summarize
+from scripts.neo_evaluation import hop_distances, peak_rss_bytes, spearman, summarize
 
 
 class _Graph:
@@ -51,3 +51,8 @@ def test_summary_counts_when_the_shortest_choice_costs_more():
         "1": {"pairs": 1, "min": 1, "max": 1},
         "2": {"pairs": 1, "min": 2, "max": 2},
     }
+
+
+def test_peak_memory_is_bytes_or_unreported():
+    peak = peak_rss_bytes()
+    assert peak is None or peak > 1024 * 1024
